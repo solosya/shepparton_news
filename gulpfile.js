@@ -59,38 +59,38 @@ gulp.task('scripts', function(){
 		'./bower_components/jquery/dist/jquery.js',
 		'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 		
-        './static/developement/js/plugins/slick.js',
-        './static/developement/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
-        './static/developement/js/plugins/bootstrap-modalmanager.js',
-        './static/developement/js/plugins/bootstrap-modal.js',
-        './static/developement/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
-        './static/developement/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
-        './static/developement/js/plugins/bootbox.min.js',
-        './static/developement/js/plugins/jquery.validate/jquery.validate.min.js',
-        './static/developement/js/plugins/waypoint/lib/jquery.waypoints.min.js',
-        './static/developement/js/plugins/handlebars-v4.0.5.js',
-        './static/developement/js/plugins/jquery.lazyload.min.js',
-        './static/developement/js/plugins/jquery.dotdotdot.min.js',
-        './static/developement/js/plugins/owl.carousel.min.js',
+        './static/development/js/plugins/slick.js',
+        './static/development/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
+        './static/development/js/plugins/bootstrap-modalmanager.js',
+        './static/development/js/plugins/bootstrap-modal.js',
+        './static/development/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
+        './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
+        './static/development/js/plugins/bootbox.min.js',
+        './static/development/js/plugins/jquery.validate/jquery.validate.min.js',
+        './static/development/js/plugins/waypoint/lib/jquery.waypoints.min.js',
+        './static/development/js/plugins/handlebars-v4.0.5.js',
+        './static/development/js/plugins/jquery.lazyload.min.js',
+        './static/development/js/plugins/jquery.dotdotdot.min.js',
+        './static/development/js/plugins/owl.carousel.min.js',
 
-        './static/developement/js/sdk/cloudinary/jquery.cloudinary.js',
-        './static/developement/js/sdk/common.js',
-        './static/developement/js/sdk/blog.js',
-        './static/developement/js/sdk/article.js',
-        './static/developement/js/sdk/search.js',
-        './static/developement/js/sdk/disqus.js',
-        './static/developement/js/sdk/video-player.js',
-        './static/developement/js/sdk/user-articles.js',
-        './static/developement/js/sdk/follow.js',
-        './static/developement/js/sdk/login.js',
-        './static/developement/js/sdk/image.js',
-        './static/developement/js/sdk/social-share.js',
-        './static/developement/js/sdk/yii/yii.js',
-        './static/developement/js/sdk/yii/yii.captcha.js',
-        './static/developement/js/sdk/uploadfile.js',
-        './static/developement/js/sdk/media-player/mediaelement-and-player.min.js',
+        './static/development/js/sdk/cloudinary/jquery.cloudinary.js',
+        './static/development/js/sdk/common.js',
+        './static/development/js/sdk/blog.js',
+        './static/development/js/sdk/article.js',
+        './static/development/js/sdk/search.js',
+        './static/development/js/sdk/disqus.js',
+        './static/development/js/sdk/video-player.js',
+        './static/development/js/sdk/user-articles.js',
+        './static/development/js/sdk/follow.js',
+        './static/development/js/sdk/login.js',
+        './static/development/js/sdk/image.js',
+        './static/development/js/sdk/social-share.js',
+        './static/development/js/sdk/yii/yii.js',
+        './static/development/js/sdk/yii/yii.captcha.js',
+        './static/development/js/sdk/uploadfile.js',
+        './static/development/js/sdk/media-player/mediaelement-and-player.min.js',
 
-		'./static/developement/js/*.js',
+		'./static/development/js/*.js',
 		])
 		.pipe(concat('concat.js'))
 		.pipe(gulp.dest('./static/deploy'))
@@ -134,7 +134,7 @@ gulp.task('user_scripts', function(){
 
 gulp.task('watch', function (){
 	gulp.watch('./static/css/**/*.scss', ['styles']);
-	gulp.watch('./static/developement/js/**/*.js', ['scripts']);
+	gulp.watch('./static/development/js/**/*.js', ['scripts']);
 });
 
 gulp.task('default', ['scripts', 'user_scripts', 'styles']);
