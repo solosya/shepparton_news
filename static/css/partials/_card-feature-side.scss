@@ -1,0 +1,56 @@
+.feature-side {
+    @include card-image-left(80px, 95px);
+    height:96px;
+    margin-bottom:20px;
+    font-family: $base-font-family;
+
+    a.card {
+        height:100%;
+        padding-top:13px;
+        border-top: 1px solid green;
+
+        article {
+        
+            > figure {
+                margin-right:15px;
+            }
+
+            > .content {
+                width:100%;
+
+                .category{
+                    color: color(red);
+                    font-size: rem(10);
+                }
+
+
+                h2{
+                    font-size: rem(14);
+                    font-weight:700;
+                    margin-top: 0;
+                    overflow:hidden;
+                }
+
+
+                >p {
+                    font-size: rem(13);
+                    color: color(lightgrey);
+                    height:16px;
+                }
+
+
+                .author{
+                    img{
+                        display:none;
+                    }
+                    p{
+
+                    }
+                }
+
+                time{
+                }
+            }
+        }
+    }
+}

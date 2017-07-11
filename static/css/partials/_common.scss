@@ -15,8 +15,9 @@ body{
     // overflow-y:scroll;
     -webkit-overflow-scrolling:touch;
     color: color(dark);
-    background: #fff;
-    
+    // background: #fff;
+    font-family: $font-family-sans-serif;
+
     // @media screen and (max-width: $sm-break){
     //     overflow-x: hidden;
     // }
@@ -47,22 +48,6 @@ fieldset {
 }
 
 
-.breadcrumb {
-    height:60px;
-    width:100%;
-    font-size:rem(13);
-    padding-left: 15px;
-    padding-top: 40px;
-    margin-top: 30px;
-    span {
-        color: color(darkgreen);
-        font-weight:bold;
-    }
-
-    a {
-        color: color(grey);
-    }
-}
 
 
 .search-icon{
@@ -73,29 +58,8 @@ fieldset {
     width: 20px;
     height: 20px;
 }
-.down-arrow{
-    display:inline-block;
-    background-image: url(../images/drop-down-arrow.svg);
-    background-repeat: no-repeat;
-    background-size:contain;
-    position: relative;
-    top: 6px;
-    left: 6px;
-    width: 15px;
-    height: 15px;
-}
 
 
-.link-arrow {
-    display:inline-block;
-    background-image: url(../images/link-arrow.svg);
-    background-repeat: no-repeat;
-    background-size:contain;
-    position: relative;
-    top: 6px;
-    width: 14px;
-    height: 27px;
-}
 
 a.fancybox-close {
     z-index:1 !important;
@@ -139,31 +103,19 @@ h4.modal-title {
     font-family: $font-family-sans-serif;
 }
 
-.container-fluid{
-    max-width: 1600px;
-}
+// .container-fluid{
+//     max-width: 1600px;
+// }
 
 .btn{
     font-size: rem(14);
     font-weight: 600;
     border-radius: 0;
     padding: 10px 9px;
-border-bottom: 2px solid $brand-secondary;  
+    border-bottom: 2px solid $brand-secondary;  
 }
 
 
-.card-group{
-    @media screen and (max-width: $sm-break){
-        margin-bottom: 35px;
-    }
-}
-
-
-.mobile-full-width {
-    @media screen and (max-width: $mobile-break){
-        padding:0;
-    }
-}
 
 figcaption{
     margin-top: 10px;

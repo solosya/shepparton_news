@@ -1,0 +1,50 @@
+.home-feature {
+    @include card-image-full;
+    height:400px;
+    a.card {
+        height:100%;
+        color:$white;
+
+        article {
+        
+            > .content {
+                width:100%;
+
+                .category{
+                     
+                }
+
+
+                h2{
+                    font-family: $base-font-family;
+                    font-size: rem(48);
+                    font-weight:300;
+                    margin-top: 0;
+                    overflow:hidden;
+                }
+
+
+                >p {
+                    display:none;
+                }
+
+
+                .author{
+                    img{
+                        display:none;
+                    }
+                    p{
+                        padding-top: 5px;
+                        font-family: $base-font-family;
+                        font-size: rem(16.5);
+                        font-weight: 700;
+                    }
+                }
+
+                time{
+                    // display:none;
+                }
+            }
+        }
+    }
+}

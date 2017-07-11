@@ -1,36 +1,10 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
-{% set blogData      = _Blog.getBlog() %}
-{% set blogName      = blogData.title %}
-
-
-<!-- This is latest seminar that is shown in the main card of this index page -->
-        {% set foundSection = false %}
-        {% set currentSection = "" %}
-        {% set sectionMap = blogData.blogHeaderMenu %}
-        {% for key, value in sectionMap if not foundSection %}
-            {% if value['children'] | length > 0 %}
-                {% set currentSection = value['children'][0] %}
-                {% set foundSection = true %}
-            {% endif %}
-        {% endfor %}
-
-        {% set currentSection =  _Blog.getBlog({'guid': currentSection.blogGuid}) %}
-
-        {% set sectionCard = {
-            "title": currentSection.title,
-            "excerpt": currentSection.shortDescription,
-            "featuredMedia": currentSection.media.cover,
-            "url": currentSection.url,
-            "hasMedia": 'TRUE'
-        } %}
-<!-- END -->
-
 
 
 {{this.registerJs("CardController();")}}
 
-{% set limit = 3 %}
+{% set limit = 30 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -41,94 +15,113 @@
 
 
 
-    <main id="main" class="container site-main" role="main">
+    <main id="main" class="site-main container" role="main">
         
-        <div class="row index-top">
 
-            <div class="col-sm-12 col-md-9 mobile-full-width">
-                {% if currentSection %}                                                                
-                    {{this.render('partials/_single-article.twig', {
-                        article: sectionCard,
-                        imageSize: {width: 576, height: 450},
-                        isArticle: true,
-                        containerClass: 'card-front-main card-front-main_mob'
-                    }) | raw}}
-                {% endif %}
-            </div><!-- .col-sm-8-->
-
-
-            <div class="col-sm-12 col-md-3">
-                <div class="kit">
-                    <figure>
-                        <img class="" src="{{networkData.templatePath}}/static/images/sexual-abuse-kit2.jpg">
-                    </figure>
-
-                    <div>
-                        <a target="_blank" href="https://www.cwpracticelive.facs.nsw.gov.au/See_Understand_Respond_to_CSA_Practical_Kit.pdf" class="kit-link">
-
-                            <h1>The Child Sexual Assault kit</h1>
-                            <p>NOW AVAILABLE ONLINE</p>
-
-                            <img src="{{networkData.templatePath}}/static/images/arrow.svg">
-                        </a>
+        <section class="home-main-stories" style="background:yellow">
+            <div class="row">
+                <div class="col-sm-12 col-md-8">
+                    <div class="row">
+                        {% if articles[0] %}                                                                
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[0], 
+                                position: 1, 
+                                imageSize: {width:630, height:400},
+                                containerClass: 'col-sm-12 home-feature'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
                     </div>
-
                 </div>
 
-                <div class="feedback">
-                    <h1>What do you want?</h1>
-                    <p>Share what practice ideas you would like us to explore next.</p>
-                    <a href="mailto:OSPbroadcast@facs.nsw.gov.au" class="feedback-link">Leave feedback</a>
-                </div>
 
-            </div><!-- .col-sm-4-->
-        </div><!-- .row-->
+                {% if articles[articleCount] %}
+                <div class="cold-sm-12 col-md-4">
+                    <div class="row">
+                        {% for i in 0..2 if articles[i] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: 1, 
+                                containerClass: 'col-sm-12 feature-side'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endfor %}
+                    </div>
+                </div><!-- .row-->
+                {% endif %}
+
+            </div>
+        </section><!-- .featured-slider-->
 
 
-        <section class="row index-bottom">
+
+        {% set articleCount = 0 %}
+
+
+
+        <section class="row five-cols top-stories-row">
             
-            <div class="col-sm-8">
-                <section class="row about">
-                    <div class="col-sm-12">
-                        <h1>About Practice Live</h1>
-                        <p>
-                            Your place to discover practice. Practice Live brings together 
-                            inspiring child protection experts from across the globe. 
-                            The FACS Office of the Senior Practitioner gives you the opportunity 
-                            to explore dozens of live speakers, practice notes, register for 
-                            upcoming events and live stream. Delve deep into new ideas today.
-                        </p>
-                    </div>
-                </section>
-            </div>
-
-            <div class="col-sm-offset-1 col-sm-3 loop">
-                <h1>Stay in the loop</h1>
-                <p>Register to hear about practice events and promotions.</p>
-                <a href="{{networkData.defaultBlogUrl}}/@register" class="_btn">REGISTER HERE</a>
-            </div>
-        </section>
-
-
-
-        <section class="row speakers">
-            <div class="col-sm-12">
-                <h1>Speakers in Demand</h1>
-            </div>
-
-            {% for i in 0..2 %}
-                {% if articles[articleCount] %}                                                                
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: (articleCount+1),
-                        imageSize: {width: 330, height: 235},
-                        containerClass: 'col-sm-4 card-sm card-sm-mob'
-                    }) | raw}}
-                    {% set articleCount = articleCount + 1 %}
-                {% endif %}
+            {% for i in 0..4 if articles[articleCount] %}
+                {{this.render('partials/_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: 1, 
+                    imageSize: {width:500},
+                    containerClass: 'col-sm-1 top-stories'
+                }) | raw}}
+                {% set articleCount = articleCount + 1 %}
             {% endfor %}
         </section>
-    
+
+        {% set articleCount = 0 %}
+
+
+        <section class="row middle" style="height:600px">
+            <div class="col-md-8" style="background:cyan;">
+                <div class="row" style="height:250px">
+{#                     {% for i in 0..2 if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: 1, 
+                            imageSize: {width:200},
+                            containerClass: 'col-sm-4'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endfor %}
+ #}                </div>
+
+                {% set articleCount = 0 %}
+
+
+
+                <div class="row" style="background:purple;height:250px">
+{#                     {% for i in 0..1 if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: 6, 
+                            imageSize: {width:200},
+                            containerClass: 'col-sm-4'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endfor %}
+ #}
+                </div>
+            </div>
+            <div class="col-md-4" style="background:orange;height:600px">
+{#                     {% for i in 0..1 if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: 6, 
+                            imageSize: {width:500},
+                            containerClass: 'col-sm-12'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endfor %}
+ #}
+            </div>
+
+
+        </section>
+
 
 
 

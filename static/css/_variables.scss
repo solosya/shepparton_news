@@ -1,7 +1,8 @@
 //Fonts
-$font-family-sans-serif:    "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:    "adelle-sans", Helvetica, Arial, sans-serif;
 $font-family-serif:    		"PT Serif", "Times New Roman", Times, serif;
-$base-font-family: 			"Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif !default;
+$base-font-family: 			"adelle-sans", Helvetica, Arial, sans-serif !default;
+// $headings-font-family:      "adelle-sans", Helvetica, Arial, sans-serif;
 
 
 $font-size-base:            16px;
@@ -52,10 +53,14 @@ $colors: (
 	linkedin:    		#0077b5,
 	youtube:     		#e34336,
     vimeo:       		#00b3ec,
+						
+	red:				#f03746,
+	lightblue:    		#B3B3B3,
+
+
 
     dark:     			#1C2A38,
     darklighter: 		#334150,
-	lightblue:    		#B3B3B3,
 	darkblue: 			#687085,
 	grey:   			#6F777B,
 	lightgrey:          #4a4a4a,
@@ -63,7 +68,6 @@ $colors: (
 	cyan:     			#BFC7DC,
 	green:  	   		#89BB9F,
 	darkgreen: 		    #00823b,
-    red:   	    		#C10018,
     purple:   			#62288a,
 );
 

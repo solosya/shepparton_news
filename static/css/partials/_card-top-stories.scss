@@ -1,0 +1,45 @@
+.top-stories {
+    @include card-image-none;
+
+    a.card {
+        height:100%;
+
+        article {
+       
+
+            > .content {
+                width:100%;
+
+
+                h2{
+                    font-size: rem(15);
+                    font-weight:700;
+                    margin-top: 0;
+                    overflow:hidden;
+                }
+
+
+                >p {
+                    display:none;
+                }
+
+
+                .author{
+                    img{
+                        display:none;
+                    }
+                    p{
+                        padding-top: 5px;
+                        font-size: rem(11);
+                        font-weight: 300;
+                    }
+                }
+
+                time{
+                    font-size: rem(11);
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+}

@@ -50,9 +50,9 @@ a.card {
 
         > .content {
             width:100%;
-            @include flexbox;
-            @include flex-direction(column);
-            justify-content: flex-start;
+            // @include flexbox;
+            // @include flex-direction(column);
+            // justify-content: flex-start;
 
             >p {
                 overflow:hidden;
@@ -60,7 +60,9 @@ a.card {
 
 
             .category{
-                display:none;    
+                font-size: rem(10.5);
+                color:color(red);
+                text-transform:uppercase;
             }
 
             h2{
@@ -72,20 +74,25 @@ a.card {
             }
 
             .author{
+                display:inline-block;
+                float:left;
+
+
                 img{
                     display:none;
                 }
                 p{
                     padding-top: 5px;
-                    font-family: $base-font-family;
-                    font-size: rem(16.5);
-                    font-weight: 700;
-                    color:  #333333;
+                    color:color(lightgrey);
+                    font-size: rem(11);
+                    font-weight: 300;
                 }
             }
 
             time{
-                display:none;
+                font-size: rem(11);
+                font-weight: 300;
+                color:color(lightgrey);
             }
         }
     }

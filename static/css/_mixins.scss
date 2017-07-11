@@ -17,6 +17,17 @@
     height: $height;
 }
 
+@mixin card-image-none {
+	a.card {
+		> article {
+			> figure{
+				display:none;
+			}
+		}
+	}
+}
+
+
 @mixin card-image-full {
 	a.card {
 		> article {
@@ -26,6 +37,9 @@
 				top: 0;
 				height:100%;
 				width: 100%;
+			}
+			> .content {
+				position:relative;
 			}
 		}
 	}
