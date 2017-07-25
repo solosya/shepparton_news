@@ -1,4 +1,4 @@
-.card-sm{
+.card-sm-wide{
     @media screen and (min-width: $md-break){
         @include card-image-top(auto, 160px);
 
@@ -30,22 +30,31 @@
                     }
 
                     > h2{
-                        font-weight: normal;
+                        font-weight: 600;
                         font-size: rem(17);
                         line-height:1.29;
                         margin-top:5px;
-                        margin-bottom:10px;
-                        max-height:45px;
+                        max-height:22px;
                     }
 
                     > p {
-                        display:none;
+                        font-size: rem(15);
+                        height:17px;
+                        line-height: 1;
+                        margin-top: 2px;
+
                     }
 
+                    >time {
+                        margin-top:13px;
+                    }
 
                     > .author{
+                        margin-top:13px;
 
                         >p {
+                            margin: 0;
+                            padding: 0;
                         }
                     }
 

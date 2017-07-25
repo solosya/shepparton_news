@@ -69,16 +69,14 @@
                     
                     <h2 class="{{figureClass}}">{{ articleTitle }}</h2>
                     
-                    {% if cardClass != 'instagram no-caption' %}  
-                        <p>{{ quotes.smarten(article.excerpt | raw) }}</p>
-                    {% endif %}
-                    
-                    <time datetime="{{publishDate}}">{{publishDate}}</time>
-                    
+                    <p class="excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
+                   
                     <div class="author">
                         <img src="{{profileImg}}" class="img-circle">
                         <p>{{ article.createdBy['displayName'] }}</p>
                     </div>
+
+                    <time datetime="{{publishDate}}">{{publishDate}}</time>
 
                 </div>
             </article>
@@ -93,7 +91,7 @@
                     <i class="fa fa-eye-slash"></i><span class="hide">Hide</span>
                 </button>
 
-                <button onclick="window.open({{article.editUrl}}, '_blank')'; return false;" title="Edit" class="btnhide social-tooltip" type="button">
+                <button onclick="window.open('{{article.editUrl}}', '_blank'); return false;" title="Edit" class="btnhide social-tooltip" type="button">
                     <i class="fa fa-edit"></i><span class="hide">Edit</span>
                 </button>
                  {% set pinTitle = 'Pin Article' %}

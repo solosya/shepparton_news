@@ -1,0 +1,43 @@
+.card-popular {
+    @include card-image-none;
+
+    a.card {
+        height:32px;
+        margin-bottom:15px;
+
+        article {
+       
+
+            > .content {
+                width:100%;
+
+                .category {
+                    display:none;
+                }
+
+                h2{
+                    font-size: rem(12);
+                    font-weight:normal;
+                    margin-top: 0;
+                    line-height:1.41;
+                    overflow:hidden;
+                    max-height:32px;
+                }
+
+
+                >p {
+                    display:none;
+                }
+
+
+                .author{
+                    display:none;
+                }
+
+                time{
+                    display:none;
+                }
+            }
+        }
+    }
+}

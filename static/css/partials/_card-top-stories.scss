@@ -13,9 +13,11 @@
 
                 h2{
                     font-size: rem(15);
-                    font-weight:700;
-                    margin-top: 0;
+                    font-weight:normal;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
                     overflow:hidden;
+                    max-height:34px;
                 }
 
 
@@ -29,15 +31,15 @@
                         display:none;
                     }
                     p{
-                        padding-top: 5px;
-                        font-size: rem(11);
-                        font-weight: 300;
+                        // padding-top: 5px;
+                        // font-size: rem(11);
+                        // font-weight: 300;
                     }
                 }
 
                 time{
-                    font-size: rem(11);
-                    font-weight: 300;
+                    // font-size: rem(11);
+                    // font-weight: 300;
                 }
             }
         }
