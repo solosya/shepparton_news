@@ -42,7 +42,9 @@
 .sb-custom-menu{
     margin:0;
     list-style: none;
-    color: $black;
+    color: #fff;
+    float:right;
+    margin-top:19px;
     
     ul.mobile {
         @media screen and (min-width: $header-break){
@@ -73,7 +75,7 @@
 
     ul.menu{
         height:100%;
-        margin: 0 30px 0 0;
+        margin: 0;
         padding-left: 0;
 
         @media screen and (max-width: $mmd-break) {
@@ -92,11 +94,13 @@
             }
 
             > a{
-                padding: 12px 20px 10px 10px;
+                font-size:rem(12);
+                margin-left:22px;
+                // padding: 12px 20px 10px 10px;
                 display:block;
-                color:color(dark);
+                color: #fff;
+                text-transform:uppercase;
                 font-weight:normal;
-                height: 100%;
                 position: relative; 
 
                 @media screen and (max-width: $header-break){

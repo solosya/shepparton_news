@@ -36,8 +36,8 @@
             }
         }
         .navbar-brand {
-            background-image: url(../images/facs-logo-reverse.svg);
-            background-size: 40px;
+
+            // background-size: 40px;
         }
 
     }
@@ -66,7 +66,10 @@
         }
 
         .header-top {
-            height:80px;
+            height:84px;
+            padding-top:30px;
+            background:black;
+
             @media screen and (max-width: $sm-break) {
                 height:60px;
             }
@@ -93,19 +96,30 @@
 
         .header-bottom {
             padding:0;
-            height:47px;
-            border-top:1px color(lightblue) solid;
-            border-bottom:1px color(lightblue) solid;
+            margin-top:2px;
+            height:19px;
+            background:color(red);
 
             @media screen and (max-width: $mmd-break){
                 display:none;
             }
 
+            ul.auth-links {
+                float:right;
+                padding:0;
+                margin:0;
+                line-height:1;
 
-            fieldset {
-                border-left:1px color(lightblue) solid;
-                border-right:1px color(lightblue) solid;
-                height:45px;
+                >li {
+                    padding-left: 4px;
+                    padding-right: 6px;
+                    display:inline-block;
+
+                    >a {
+                        color:#fff;
+                        font-size: rem(11);
+                    }
+                }
             }
         }
 
@@ -114,11 +128,8 @@
         .navbar-brand {
             display:inline-block;
             padding:0;
-            width: 145px;
-            height:48px;
-            margin-top: 15px;
-            margin-left:15px;
-            background-image: url(../images/facs-logo.svg);
+            width: 140px;
+            height:37px;
             background-repeat:no-repeat;
             background-size:cover;
 

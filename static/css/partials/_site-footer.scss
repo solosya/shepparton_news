@@ -1,8 +1,9 @@
 .site-footer{
     width: 100%;
     margin-top: 0;
-    background: color(dark);
-    height:103px;
+    padding-top:45px;
+    background: rgba(0,0,0,.85);
+    height:265px;
 
     // @media screen and (max-width: $sm-break-down){
     //     height:auto;
@@ -11,11 +12,12 @@
 
     .footer-brand {
      
-        h1 {
-            color:white;
-            font-size: rem(18);
-            margin-top:40px;
-        }
+        display:inline-block;
+        padding:0;
+        width: 140px;
+        height:37px;
+        background-repeat:no-repeat;
+        background-size:cover;
     }
 
     ul.footer-links {
