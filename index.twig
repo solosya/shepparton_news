@@ -18,35 +18,43 @@
     {% set sections =  {
             "videos": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             }, 
             "local news": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             }, 
             "regional news": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             },
             "opinion": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             },
             "rural news": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             },
             "national": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             },
             "sport": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             },
             "business": {
                 "feed": "",
-                "link": ""
+                "link": "",
+                "limit" : 10
             }
         }
     %}
@@ -56,7 +64,7 @@
             {% if blog.title | lower == key %}
                 {% set sections = sections | merge({
                     (key) : {
-                        'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                        'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
                         'link' : blog.url
                         }
                     }) %}
