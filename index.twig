@@ -81,9 +81,9 @@
             <section class="home-main-stories">
                 <div class="row">
                     <div class="col-sm-9 col-md-6">
-                        {% if articles[testCount] %}                                                                
+                        {% if articles[articleCount] %}                                                                
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:630, height:400},
                                 containerClass: 'home-feature home-feature-mobile'
@@ -93,11 +93,11 @@
                     </div>
 
 
-                    {% if articles[testCount] %}
+                    {% if articles[articleCount] %}
                     <div class="cold-sm-9 col-md-3">
                         {% for i in 0..2 if articles[i] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 containerClass: 'feature-side'
                             }) | raw}}
@@ -116,9 +116,9 @@
 
             <section class="row five-cols top-stories-row">
                 
-                {% for i in 0..4 if articles[testCount] %}
+                {% for i in 0..4 if articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
-                        article: articles[testCount], 
+                        article: articles[articleCount], 
                         position: 1, 
                         imageSize: {width:500},
                         containerClass: 'col-sm-1 top-stories top-stories-mobile'
@@ -142,9 +142,9 @@
                     <div class="col-md-2 most-popular">
                         <h2>Most popular</h2>
 
-                        {% for i in 0..4 if articles[testCount] %}
+                        {% for i in 0..4 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: 1,
                                 imageSuppress: true, 
                                 containerClass: 'card-popular'
@@ -154,9 +154,9 @@
                     </div>
 
                     <div class="col-md-2">
-                        {% if articles[testCount] %}
+                        {% if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:190},
                                 containerClass: 'card-sm card-sm-mobile'
@@ -167,9 +167,9 @@
 
 
                     <div class="col-md-2">
-                        {% if articles[testCount] %}
+                        {% if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:190},
                                 containerClass: 'card-sm card-sm-mobile'
@@ -187,9 +187,9 @@
 
                 <div class="row">
                     <div class="col-md-3">
-                        {% if articles[testCount] %}
+                        {% if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:300},
                                 containerClass: 'card-sm-wide card-sm2-mobile'
@@ -200,9 +200,9 @@
 
 
                     <div class="col-md-3">
-                        {% if articles[testCount] %}
+                        {% if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:300},
                                 containerClass: 'card-sm-wide card-sm2-mobile'
@@ -213,9 +213,9 @@
 
                     </div>
                     <div class="col-md-3">
-                        {% for i in 0..1 if articles[testCount] %}
+                        {% for i in 0..1 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[testCount], 
+                                article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:95},
                                 containerClass: 'card-xs card-sm2-mobile'
@@ -258,9 +258,9 @@
                     </div>
 
                     <div class="row">
-                        {% for i in 0..2 if sections['videos'].feed.articles[testCount] %}
+                        {% for i in 0..2 if sections['videos'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['videos'].feed.articles[testCount], 
+                                article: sections['videos'].feed.articles[articleCount], 
                                 imageSize: {width:95},
                                 containerClass: 'col-md-3 card-sm-wide card-sm-wide-mobile'
                             }) | raw}}
@@ -295,9 +295,9 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-9">
-                                {% if sections['local news'].feed.articles[testCount] %}
+                                {% if sections['local news'].feed.articles[articleCount] %}
                                     {{this.render('partials/_single-article.twig', {
-                                        article: sections['local news'].feed.articles[testCount], 
+                                        article: sections['local news'].feed.articles[articleCount], 
                                         position: articleCount + 1, 
                                         imageSize: {width:630},
                                         containerClass: 'home-feature-sm home-feature-mobile'
@@ -313,9 +313,9 @@
                             <div class="col-md-3">
                                 <h2>Events</h2>
 
-                                {% for i in 0..4 if events[testCount] %}
+                                {% for i in 0..4 if events[articleCount] %}
                                     {{this.render('partials/_single-article.twig', {
-                                        article: events[testCount], 
+                                        article: events[articleCount], 
                                         containerClass: 'card-popular'
                                     }) | raw}}
                                 {% endfor %}
@@ -327,9 +327,9 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         
-                                        {% if sections['local news'].feed.articles[testCount] %}
+                                        {% if sections['local news'].feed.articles[articleCount] %}
                                             {{this.render('partials/_single-article.twig', {
-                                                article: sections['local news'].feed.articles[testCount], 
+                                                article: sections['local news'].feed.articles[articleCount], 
                                                 imageSize: {width:630},
                                                 containerClass: 'card-rec-full'
                                             }) | raw}}
@@ -342,9 +342,9 @@
 
                                     <div class="row two-cols">
 
-                                        {% for i in 0..1 if sections['local news'].feed.articles[testCount] %}
+                                        {% for i in 0..1 if sections['local news'].feed.articles[articleCount] %}
                                             {{this.render('partials/_single-article.twig', {
-                                                article: sections['local news'].feed.articles[testCount], 
+                                                article: sections['local news'].feed.articles[articleCount], 
                                                 imageSize: {width:95},
                                                 containerClass: 'col-md-1 card-sm card-sm-mobile'
                                             }) | raw}}
@@ -360,9 +360,9 @@
                     </div>
                     <div class="col-md-3">
                         
-                        {% for i in 0..1 if sections['local news'].feed.articles[testCount] %}
+                        {% for i in 0..1 if sections['local news'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['local news'].feed.articles[testCount], 
+                                article: sections['local news'].feed.articles[articleCount], 
                                 imageSuppress: true,
                                 containerClass: 'card-xs card-xs-mobile'
                             }) | raw}}
@@ -394,9 +394,9 @@
                     </div>
 
 
-                    {% for i in 0..1 if sections['regional news'].feed.articles[testCount] %}
+                    {% for i in 0..1 if sections['regional news'].feed.articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: sections['regional news'].feed.articles[testCount], 
+                            article: sections['regional news'].feed.articles[articleCount], 
                             imageSuppress: true,
                             containerClass: 'col-md-3 card-blogger card-blogger-mobile'
                         }) | raw}}
@@ -428,9 +428,9 @@
                     </div>
 
                     <div class="col-md-4">
-                        {% if sections['regional news'].feed.articles[testCount] %}
+                        {% if sections['regional news'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['regional news'].feed.articles[testCount], 
+                                article: sections['regional news'].feed.articles[articleCount], 
                                 imageSize: {width:409, height:530},
                                 containerClass: 'home-feature-thin home-feature-thin-mobile'
                             }) | raw}}
@@ -442,9 +442,9 @@
                     </div>
                     <div class="col-md-2">
                         
-                        {% for i in 0..1 if sections['regional news'].feed.articles[testCount] %}
+                        {% for i in 0..1 if sections['regional news'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['regional news'].feed.articles[testCount], 
+                                article: sections['regional news'].feed.articles[articleCount], 
                                 imageSize: {width:190},
                                 containerClass: 'card-sm card-sm-mobile'
                             }) | raw}}
@@ -457,9 +457,9 @@
 
                     <div class="col-md-3">
                         
-                        {% for i in 0..1 if sections['regional news'].feed.articles[testCount] %}
+                        {% for i in 0..1 if sections['regional news'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['regional news'].feed.articles[testCount], 
+                                article: sections['regional news'].feed.articles[articleCount], 
                                 imageSuppress: true,
                                 containerClass: 'card-xs card-xs-mobile'
                             }) | raw}}
@@ -522,9 +522,9 @@
                     </div>
 
                     <div class="row">
-                        {% for i in 0..2 if sections['rural news'].feed.articles[testCount] %}
+                        {% for i in 0..2 if sections['rural news'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['rural news'].feed.articles[testCount], 
+                                article: sections['rural news'].feed.articles[articleCount], 
                                 imageSize: {width:95},
                                 containerClass: 'col-md-3 card-sm-wide card-sm2-mobile'
                             }) | raw}}
@@ -556,9 +556,9 @@
                         </div>
                     </div>
 
-                    {% for i in 0..2 if sections['national'].feed.articles[testCount] %}
+                    {% for i in 0..2 if sections['national'].feed.articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: sections['national'].feed.articles[testCount], 
+                            article: sections['national'].feed.articles[articleCount], 
                             imageSize: {width:95},
                             containerClass: 'col-md-2 card-sm card-sm-mobile'
                         }) | raw}}
@@ -566,9 +566,9 @@
 
                     {% endfor %}
 
-                    {% if sections['national'].feed.articles[testCount] %}
+                    {% if sections['national'].feed.articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: sections['national'].feed.articles[testCount], 
+                            article: sections['national'].feed.articles[articleCount], 
                             imageSize: {width:95},
                             containerClass: 'col-md-3 card-sm-wide card-sm2-mobile'
                         }) | raw}}
@@ -602,9 +602,9 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                           {% if sections['sport'].feed.articles[testCount] %}
+                           {% if sections['sport'].feed.articles[articleCount] %}
                                {{this.render('partials/_single-article.twig', {
-                                   article: sections['sport'].feed.articles[testCount], 
+                                   article: sections['sport'].feed.articles[articleCount], 
                                    imageSize: {width:630},
                                    containerClass: 'home-feature-sm home-feature-mobile'
                                }) | raw}}
@@ -617,9 +617,9 @@
                         
                             <div class="ad-square" style="margin-bottom:30px;"></div>
 
-                             {% if sections['sport'].feed.articles[testCount] %}
+                             {% if sections['sport'].feed.articles[articleCount] %}
                                  {{this.render('partials/_single-article.twig', {
-                                     article: sections['sport'].feed.articles[testCount], 
+                                     article: sections['sport'].feed.articles[articleCount], 
                                      imageSize: {width:80},
                                      containerClass: 'card-xs card-xs-mobile'
                                  }) | raw}}
@@ -636,9 +636,9 @@
 
                     <div class="row" style="margin-top:30px;">
 
-                        {% for i in 0..2 if sections['sport'].feed.articles[testCount] %}
+                        {% for i in 0..2 if sections['sport'].feed.articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['sport'].feed.articles[testCount], 
+                                article: sections['sport'].feed.articles[articleCount], 
                                 imageSize: {width:80},
                                 containerClass: 'col-md-3 card-xs card-xs-mobile divideright'
                             }) | raw}}
@@ -668,9 +668,9 @@
                      </div>
 
                      <div class="col-md-4">
-                         {% if sections['business'].feed.articles[testCount] %}
+                         {% if sections['business'].feed.articles[articleCount] %}
                              {{this.render('partials/_single-article.twig', {
-                                 article: sections['business'].feed.articles[testCount], 
+                                 article: sections['business'].feed.articles[articleCount], 
                                  imageSize: {width:630},
                                  containerClass: 'home-feature-thin home-feature-thin-mobile'
                              }) | raw}}
@@ -682,9 +682,9 @@
                      </div>
                      <div class="col-md-2">
                          
-                         {% for i in 0..1 if sections['business'].feed.articles[testCount] %}
+                         {% for i in 0..1 if sections['business'].feed.articles[articleCount] %}
                              {{this.render('partials/_single-article.twig', {
-                                 article: sections['business'].feed.articles[testCount], 
+                                 article: sections['business'].feed.articles[articleCount], 
                                  imageSize: {width:190},
                                  containerClass: 'card-sm card-sm-mobile'
                              }) | raw}}
@@ -697,9 +697,9 @@
                      <div class="col-md-3">
                          <div class="ad-square" style="margin-bottom:30px;"></div>
 
-                         {% for i in 0..1 if sections['business'].feed.articles[testCount] %}
+                         {% for i in 0..1 if sections['business'].feed.articles[articleCount] %}
                              {{this.render('partials/_single-article.twig', {
-                                 article: sections['business'].feed.articles[testCount], 
+                                 article: sections['business'].feed.articles[articleCount], 
                                  imageSize: {width:80},
                                  containerClass: 'card-xs card-xs-mobile'
                              }) | raw}}
