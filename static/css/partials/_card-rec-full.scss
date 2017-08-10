@@ -1,8 +1,9 @@
 .card-rec-full{
-    @include card-image-full;
     height:144px;
     
     a.card {
+        @include card-image-full;
+
         height:100%;
         color:$white;
 

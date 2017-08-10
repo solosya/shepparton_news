@@ -62,8 +62,8 @@ $('document').ready(function() {
             masthead.removeClass('mobile-menu-active')
                     .removeClass('fixHeader');
         } else if (pageWindow.width() < 620 && menu.hasClass('open')) {
-            masthead.addClass('mobile-menu-active')
-                    .addClass('fixHeader'); 
+            masthead.addClass('mobile-menu-active');
+                    // .addClass('fixHeader'); 
         }
     }
 
@@ -102,8 +102,8 @@ $('document').ready(function() {
         thisMenuElem.find('.menuContainer').toggleClass("show-on-tablet");
         thisMenuElem.toggleClass('open');
         if (pageWindow.width() < 620) {
-            masthead.toggleClass('mobile-menu-active')
-                    .toggleClass('fixHeader');
+            masthead.toggleClass('mobile-menu-active');
+                    // .toggleClass('fixHeader');
         }
         e.preventDefault();
     });

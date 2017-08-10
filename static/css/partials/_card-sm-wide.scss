@@ -1,11 +1,12 @@
 .card-sm-wide{
-    @media screen and (min-width: $md-break){
-        @include card-image-top(auto, 160px);
+    @media screen and (min-width: $mmd-break){
 
         position:relative;
 
 
         a.card {
+            @include card-image-top(auto, 160px);
+
             > article {
                 position:relative;
 
@@ -55,6 +56,170 @@
                         >p {
                             margin: 0;
                             padding: 0;
+                        }
+                    }
+
+
+                }
+            }
+
+
+            &.article.without__image {
+                .content {
+                    padding-top:87px;
+                    height:100%;
+
+                    h2 {
+                        font-size: rem(17);
+                        font-weight:bold;
+                        max-height:52px;
+                    }
+
+                    > p {
+                        font-size: rem(13);
+                        display: block;
+                        max-height:100px;
+                        margin-bottom: 18px;
+                    }
+                }
+            }   
+        }
+    }
+}
+
+.card-sm-wide-mobile{
+
+    @media screen and (max-width: $mmd-break){
+        margin-bottom:20px;
+        position:relative;
+
+
+        a.card {
+            @include card-image-top(auto, 160px);
+
+            > article {
+                position:relative;
+
+                > figure{
+                    overflow: hidden;
+                    margin-bottom:6px;
+
+                    &.video {
+                        &:before{
+                           @include videoIcon();
+                        }
+                    }
+                }
+
+
+                > .content{
+
+                    position:relative;
+                    padding: 0;
+
+                    > .category{
+                    }
+
+                    > h2{
+                        font-weight: 600;
+                        font-size: rem(17);
+                        line-height:1.29;
+                        margin-top:5px;
+                        max-height:45px;
+                    }
+
+                    > p {
+                        display:none;
+                    }
+
+                    >time {
+                        display:none;
+                    }
+
+                    > .author{
+                        display:none;
+                    }
+
+
+                }
+            }
+
+
+            &.article.without__image {
+                .content {
+                    padding-top:87px;
+                    height:100%;
+
+                    h2 {
+                        font-size: rem(17);
+                        font-weight:bold;
+                        max-height:52px;
+                    }
+
+                    > p {
+                        font-size: rem(13);
+                        display: block;
+                        max-height:100px;
+                        margin-bottom: 18px;
+                    }
+                }
+            }   
+        }
+    }
+}
+
+
+.card-sm2-mobile{
+    @media screen and (max-width: $mmd-break){
+
+        position:relative;
+
+
+        a.card {
+            @include card-image-left(89px, 85px);
+            padding-top:15px;
+            border-top: 1px solid color(lightgrey);
+
+            > article {
+                position:relative;
+
+                > figure{
+                    overflow: hidden;
+                    margin-right:8px;
+
+                    &.video {
+                        &:before{
+                           @include videoIcon();
+                        }
+                    }
+                }
+
+
+                > .content{
+
+                    position:relative;
+                    padding: 0;
+
+                    > .category{
+                    }
+
+                    > h2{
+                        font-weight: 700;
+                        font-size: rem(17);
+                        line-height:1.29;
+                        margin-top:5px;
+                        margin-bottom:10px;
+                        max-height:45px;
+                    }
+
+                    > p {
+                        display:none;
+                    }
+
+
+                    > .author{
+
+                        >p {
                         }
                     }
 

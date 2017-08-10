@@ -3,6 +3,8 @@
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == 'true' ? 'true' : 'false'  %}
 {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
+{% set inline = inline is defined and inline != '' ? inline : ''  %}
+
 {% set lightbox = ''  %}
 {% set articleImg = '' %}
 
@@ -40,7 +42,7 @@
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
 
-    <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}">
+    <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}" {{inline}}>
         {% set articleImgSmall = _Media.getMediaUrl(article.featuredMedia,500, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 

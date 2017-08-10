@@ -1,0 +1,184 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+
+
+{{this.registerJs("CardController();")}}
+
+{% set limit = 30 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+{% set testCount = 0 %}
+
+
+
+
+
+
+    <main id="main" class="site-main" role="main">
+        
+        <div class="container">
+
+            <section>
+                <div class="row">
+                    <div class="col-md-9 header">
+                        <div class="hk">
+                            <h2>{{this.title}}</h2>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                       {% if articles[testCount] %}
+                           {{this.render('partials/_single-article.twig', {
+                               article: articles[testCount],
+                               position: articleCount + 1,
+                               imageSize: {width:630},
+                               containerClass: 'home-feature-sm home-feature-mobile'
+                           }) | raw}}
+                           {% set articleCount = articleCount + 1 %}
+                       {% endif %}
+            
+
+                    </div>
+
+                    <div class="col-md-3">
+                    
+                        <div class="ad-square" style="margin-bottom:30px;"></div>
+
+                         {% if articles[testCount] %}
+                             {{this.render('partials/_single-article.twig', {
+                                 article: articles[testCount], 
+                                 imageSize: {width:80},
+                                 position: articleCount + 1,
+                                 containerClass: 'card-xs card-xs-mobile'
+                             }) | raw}}
+
+                            <hr class="divide visible-sm-block visible-xs-block">
+
+                             {% set articleCount = articleCount + 1 %}
+                         {% endif %}
+               
+            
+
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:30px;">
+
+                    {% for i in 0..2 if articles[testCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[testCount], 
+                            imageSize: {width:80},
+                            position: articleCount + 1,
+                            containerClass: 'col-md-3 card-xs card-xs-mobile divideright'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                        <hr class="divide visible-sm-block visible-xs-block">
+                    {% endfor %}
+
+                </div>
+            </section>
+
+
+
+
+
+
+            <section class="">
+                <div class="row">
+                    {% for i in 0..2 if articles[testCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[testCount], 
+                            imageSize: {width:95},
+                            containerClass: 'col-md-3 card-sm-wide card-sm-wide-mobile'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+                    {% endfor %}
+
+                </div>
+            </section>
+
+
+
+
+            <section class="advert" style="background:gray;height:200px;"></section>
+
+
+
+
+
+
+            <section class="">
+                <div class="row">
+                    <div class="col-md-2">
+                        {% for i in 0..2 if articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[testCount], 
+                                imageSize: {width:95},
+                                containerClass: 'card-sm card-sm-mobile',
+                                inline: 'style=margin-bottom:40px;'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="col-md-2">
+                        {% for i in 0..2 if articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[testCount], 
+                                imageSize: {width:95},
+                                containerClass: 'card-sm card-sm-mobile',
+                                inline: 'style=margin-bottom:40px;'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endfor %}
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                        {% for i in 0..2 if articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[testCount], 
+                                imageSize: {width:95},
+                                containerClass: 'card-sm card-sm-mobile',
+                                inline: 'style=margin-bottom:40px;'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="col-md-3">
+                        {% for i in 0..3 if articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[testCount], 
+                                imageSize: {width:95},
+                                containerClass: 'card-xs card-sm2-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+
+                            <hr class="divide24 visible-md-block visible-lg-block">
+
+                        {% endfor %}
+
+
+                        <div class="ad-square" style="margin-top:45px;"></div>
+
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+    </main><!-- .site-main -->

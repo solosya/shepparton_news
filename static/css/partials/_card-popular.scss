@@ -1,7 +1,8 @@
 .card-popular {
-    @include card-image-none;
 
     a.card {
+        @include card-image-none;
+
         height:32px;
         margin-bottom:15px;
 

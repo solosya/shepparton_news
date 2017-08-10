@@ -45,10 +45,22 @@ hr.divide {
     border-top: 1px solid color(lightgrey);
 }
 
+hr.divide24 {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+}
+
 
 .ad-square {
     height:250px;
     background: color(grey);
+
+    @media screen and (max-width: $mmd-break){
+        margin: 30px 0;
+    }
+
 }
 
 .ad-large-vert {

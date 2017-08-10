@@ -15,6 +15,65 @@
 {% set testCount = 0 %}
 
 
+    {% set sections =  {
+            "videos": {
+                "feed": "",
+                "link": ""
+            }, 
+            "local news": {
+                "feed": "",
+                "link": ""
+            }, 
+            "regional news": {
+                "feed": "",
+                "link": ""
+            },
+            "opinion": {
+                "feed": "",
+                "link": ""
+            },
+            "rural news": {
+                "feed": "",
+                "link": ""
+            },
+            "national": {
+                "feed": "",
+                "link": ""
+            },
+            "sport": {
+                "feed": "",
+                "link": ""
+            },
+            "business": {
+                "feed": "",
+                "link": ""
+            }
+        }
+    %}
+
+    {% for key, value in sections %}
+        {% for blog in networkData.networkBlogs %}
+            {% if blog.title | lower == key %}
+                {% set sections = sections | merge({
+                    (key) : {
+                        'feed': _Blog.getBlogFeed({'limit': 4, 'offset': 0, 'blogid':blog.guid}),
+                        'link' : blog.url
+                        }
+                    }) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
     <main id="main" class="site-main" role="main">
         
         <div class="container">
@@ -27,7 +86,7 @@
                                 article: articles[testCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:630, height:400},
-                                containerClass: 'home-feature'
+                                containerClass: 'home-feature home-feature-mobile'
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
@@ -62,7 +121,7 @@
                         article: articles[testCount], 
                         position: 1, 
                         imageSize: {width:500},
-                        containerClass: 'col-sm-1 top-stories'
+                        containerClass: 'col-sm-1 top-stories top-stories-mobile'
                     }) | raw}}
                     {% set articleCount = articleCount + 1 %}
                 {% endfor %}
@@ -100,7 +159,7 @@
                                 article: articles[testCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:190},
-                                containerClass: 'card-sm'
+                                containerClass: 'card-sm card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
@@ -113,7 +172,7 @@
                                 article: articles[testCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:190},
-                                containerClass: 'card-sm'
+                                containerClass: 'card-sm card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
@@ -133,7 +192,7 @@
                                 article: articles[testCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:300},
-                                containerClass: 'card-sm-wide'
+                                containerClass: 'card-sm-wide card-sm2-mobile'
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
@@ -146,7 +205,7 @@
                                 article: articles[testCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:300},
-                                containerClass: 'card-sm-wide'
+                                containerClass: 'card-sm-wide card-sm2-mobile'
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endif %}
@@ -159,12 +218,12 @@
                                 article: articles[testCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:95},
-                                containerClass: 'card-xs'
+                                containerClass: 'card-xs card-sm2-mobile'
                             }) | raw}}
                             {% set articleCount = articleCount + 1 %}
                             
                             {% if i == 0 %}
-                                <hr class="divide">
+                                <hr class="divide visible-md-block visible-lg-block">
                             {% endif %}
                         {% endfor %}
 
@@ -179,41 +238,41 @@
 
 
 
-            <section class="advert" style="background:gray;height:200px;">
-            </section>
+            <section class="advert" style="background:gray;height:200px;"></section>
 
         </div>
 
 
 
-
-        <section class="section-background">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 section-header">
-                        <p>View All</p>
-                        <div class="hk">
-                            <h2>HEADER 1</h2>
-                            <p></p>
+        {% if sections['videos'].feed.articles|length > 0 %}
+            <section class="section-background">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 section-header">
+                            <p><a href="{{sections['videos'].link}}">View All</a></p>
+                            <div class="hk">
+                                <h2>VIDEOS</h2>
+                                <p></p>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        {% for i in 0..2 if sections['videos'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['videos'].feed.articles[testCount], 
+                                imageSize: {width:95},
+                                containerClass: 'col-md-3 card-sm-wide card-sm-wide-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+
+                        {% endfor %}
+
+                    </div>
                 </div>
+            </section>
+        {% endif %}
 
-                <div class="row">
-                    {% for i in 0..2 if articles[testCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
-                            imageSize: {width:95},
-                            containerClass: 'col-md-3 card-sm-wide'
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-
-                    {% endfor %}
-
-                </div>
-            </div>
-        </section>
 
 
 
@@ -224,207 +283,209 @@
 
 
 
-            <section class="row">
-                <div class="col-md-9 section-header">
-                    <p>View All</p>
-                    <div class="hk">
-                        <h2>HEADER 2</h2>
-                        <p></p>
+            {% if sections['local news'].feed.articles|length > 0 %}
+                <section class="row">
+                    <div class="col-md-9 section-header">
+                        <p><a href="{{sections['local news'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>LOCAL NEWS</h2>
+                            <p></p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-9">
-                            {% if articles[testCount] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[testCount], 
-                                    position: articleCount + 1, 
-                                    imageSize: {width:630},
-                                    containerClass: 'home-feature-sm'
-                                }) | raw}}
-                                {% set articleCount = articleCount + 1 %}
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9">
+                                {% if sections['local news'].feed.articles[testCount] %}
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: sections['local news'].feed.articles[testCount], 
+                                        position: articleCount + 1, 
+                                        imageSize: {width:630},
+                                        containerClass: 'home-feature-sm home-feature-mobile'
+                                    }) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-top:30px">
+                            <div class="col-md-3">
+                                <h2>Events</h2>
+
+                                {% for i in 0..4 if events[testCount] %}
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: events[testCount], 
+                                        containerClass: 'card-popular'
+                                    }) | raw}}
+                                {% endfor %}
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        
+                                        {% if sections['local news'].feed.articles[testCount] %}
+                                            {{this.render('partials/_single-article.twig', {
+                                                article: sections['local news'].feed.articles[testCount], 
+                                                imageSize: {width:630},
+                                                containerClass: 'card-rec-full'
+                                            }) | raw}}
+                                            {% set articleCount = articleCount + 1 %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:30px">
+
+                                    <div class="row two-cols">
+
+                                        {% for i in 0..1 if sections['local news'].feed.articles[testCount] %}
+                                            {{this.render('partials/_single-article.twig', {
+                                                article: sections['local news'].feed.articles[testCount], 
+                                                imageSize: {width:95},
+                                                containerClass: 'col-md-1 card-sm card-sm-mobile'
+                                            }) | raw}}
+                                            {% set articleCount = articleCount + 1 %}
+
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        
+                        {% for i in 0..1 if sections['local news'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['local news'].feed.articles[testCount], 
+                                imageSuppress: true,
+                                containerClass: 'card-xs card-xs-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                           
+                            {% if i == 0 %}
+                                <hr class="divide">
                             {% endif %}
 
-                        </div>
+                        {% endfor %}
+                
+                        <div class="ad-large-vert" style="margin-top:30px;"></div>
+                    </div>
+
+                </section>
+            {% endif %}
+
+
+
+
+
+
+
+{#             {% if sections['regional news'].feed.articles|length > 0 %}
+ #}
+                <section class="row">
+                    <div class="col-md-3">
+                        <img src="{{networkData.templatePath}}/static/images/bloggers.svg">
                     </div>
 
 
-                    <div class="row" style="margin-top:30px">
-                        <div class="col-md-3">
-                            <h2>Events</h2>
-
-                            {% for i in 0..4 if articles[testCount] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[testCount], 
-                                    position: 1,
-                                    imageSuppress: true, 
-                                    containerClass: 'card-popular'
-                                }) | raw}}
-                            {% endfor %}
-                        </div>
-
-
-
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    
-                                    {% if articles[testCount] %}
-                                        {{this.render('partials/_single-article.twig', {
-                                            article: articles[testCount], 
-                                            position: articleCount + 1, 
-                                            imageSize: {width:630},
-                                            containerClass: 'card-rec-full'
-                                        }) | raw}}
-                                        {% set articleCount = articleCount + 1 %}
-                                    {% endif %}
-                                </div>
-                            </div>
-
-                            <div class="row" style="margin-top:30px">
-
-                                <div class="row two-cols">
-
-                                    {% for i in 0..1 if articles[testCount] %}
-                                        {{this.render('partials/_single-article.twig', {
-                                            article: articles[testCount], 
-                                            position: articleCount + 1, 
-                                            imageSize: {width:95},
-                                            containerClass: 'col-md-1 card-sm'
-                                        }) | raw}}
-                                        {% set articleCount = articleCount + 1 %}
-
-                                    {% endfor %}
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    
-                    {% for i in 0..1 if articles[testCount] %}
+                    {% for i in 0..1 if sections['regional news'].feed.articles[testCount] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
+                            article: sections['regional news'].feed.articles[testCount], 
                             imageSuppress: true,
-                            containerClass: 'card-xs'
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                       
-                        {% if i == 0 %}
-                            <hr class="divide">
-                        {% endif %}
-
-                    {% endfor %}
-            
-                    <div class="ad-large-vert" style="margin-top:30px;"></div>
-                </div>
-
-
-            
-
-            </section>
-
-
-
-
-
-
-
-
-            <section class="row">
-                <div class="col-md-3">
-                    <img src="{{networkData.templatePath}}/static/images/bloggers.svg">
-
-                </div>
-
-
-                {% for i in 0..1 if articles[testCount] %}
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[testCount], 
-                        position: articleCount + 1, 
-                        imageSuppress: true,
-                        containerClass: 'col-md-3 card-blogger'
-                    }) | raw}}
-                    {% set articleCount = articleCount + 1 %}
-                {% endfor %}
-
-            </section>
-
-
-
-
-            <section class="row">
-                <div class="col-md-9 section-header">
-                    <p>View All</p>
-                    <div class="hk">
-                        <h2>HEADER 3</h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    {% if articles[testCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
-                            imageSize: {width:630},
-                            containerClass: 'home-feature-thin'
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endif %}
-
-
-
-                </div>
-                <div class="col-md-2">
-                    
-                    {% for i in 0..1 if articles[testCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
-                            imageSize: {width:190},
-                            containerClass: 'card-sm'
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endfor %}
-
-
-
-                </div>
-                <div class="col-md-3">
-                    
-                    {% for i in 0..1 if articles[testCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
-                            imageSuppress: true,
-                            containerClass: 'card-xs'
+                            containerClass: 'col-md-3 card-blogger card-blogger-mobile'
                         }) | raw}}
                         {% set articleCount = articleCount + 1 %}
                         {% if i == 0 %}
-                            <hr class="divide">
+                            <hr class="divide visible-sm-block visible-xs-block">
                         {% endif %}
 
                     {% endfor %}
 
-
-                    <div class="ad-square" style="margin-top:30px;"></div>
-
-                </div>
-            </section>
+                </section>
+{#             {% endif %}
+ #}
 
 
 
 
 
 
+            {% if sections['regional news'].feed.articles|length > 0 %}
+
+                <section class="row">
+                    <div class="col-md-9 section-header">
+                        <p><a href="{{sections['regional news'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>REGIONAL NEWS</h2>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        {% if sections['regional news'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['regional news'].feed.articles[testCount], 
+                                imageSize: {width:409, height:530},
+                                containerClass: 'home-feature-thin home-feature-thin-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+
+
+
+                    </div>
+                    <div class="col-md-2">
+                        
+                        {% for i in 0..1 if sections['regional news'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['regional news'].feed.articles[testCount], 
+                                imageSize: {width:190},
+                                containerClass: 'card-sm card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endfor %}
+
+                    </div>
+
+                    <hr class="divide visible-xs-block visible-sm-block">
+
+                    <div class="col-md-3">
+                        
+                        {% for i in 0..1 if sections['regional news'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['regional news'].feed.articles[testCount], 
+                                imageSuppress: true,
+                                containerClass: 'card-xs card-xs-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                            {% if i == 0 %}
+                                <hr class="divide">
+                            {% endif %}
+
+                        {% endfor %}
+
+
+                        <div class="ad-square" style="margin-top:30px;"></div>
+
+                    </div>
+                </section>
+            {% endif %}
 
 
 
 
+
+
+
+
+
+{# 
             <section class="row">
                 <div class="col-md-9 section-header">
                     <p>View All</p>
@@ -440,6 +501,40 @@
             </section>
 
 
+ #}
+
+
+
+
+
+
+            {% if sections['rural news'].feed.articles|length > 0 %}
+
+                <section>
+                    <div class="row">
+                        <div class="col-md-9 section-header">
+                            <p><a href="{{sections['rural news'].link}}">View All</a></p>
+                            <div class="hk">
+                                <h2>RURAL NEWS</h2>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        {% for i in 0..2 if sections['rural news'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['rural news'].feed.articles[testCount], 
+                                imageSize: {width:95},
+                                containerClass: 'col-md-3 card-sm-wide card-sm2-mobile'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+
+                        {% endfor %}
+
+                    </div>
+                </section>
+            {% endif %}
 
 
 
@@ -448,31 +543,40 @@
 
 
 
-            <section>
-                <div class="row">
+
+
+            {% if sections['national'].feed.articles|length > 0 %}
+
+                <section class="row">
                     <div class="col-md-9 section-header">
-                        <p>View All</p>
+                        <p><a href="{{sections['national'].link}}">View All</a></p>
                         <div class="hk">
-                            <h2>HEADER 5</h2>
+                            <h2>NATIONAL</h2>
                             <p></p>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    {% for i in 0..2 if articles[testCount] %}
+                    {% for i in 0..2 if sections['national'].feed.articles[testCount] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
+                            article: sections['national'].feed.articles[testCount], 
                             imageSize: {width:95},
-                            containerClass: 'col-md-3 card-sm-wide'
+                            containerClass: 'col-md-2 card-sm card-sm-mobile'
                         }) | raw}}
                         {% set articleCount = articleCount + 1 %}
 
                     {% endfor %}
 
-                </div>
-            </section>
+                    {% if sections['national'].feed.articles[testCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: sections['national'].feed.articles[testCount], 
+                            imageSize: {width:95},
+                            containerClass: 'col-md-3 card-sm-wide card-sm2-mobile'
+                        }) | raw}}
+                        {% set articleCount = articleCount + 1 %}
+
+                    {% endif %}
+                </section>
+            {% endif %}
 
 
 
@@ -483,174 +587,134 @@
 
 
 
+            {% if sections['sport'].feed.articles|length > 0 %}
 
-            <section class="row">
-                <div class="col-md-9 section-header">
-                    <p>View All</p>
-                    <div class="hk">
-                        <h2>HEADER 6</h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                {% for i in 0..2 if articles[testCount] %}
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[testCount], 
-                        position: articleCount + 1, 
-                        imageSize: {width:95},
-                        containerClass: 'col-md-2 card-sm'
-                    }) | raw}}
-                    {% set articleCount = articleCount + 1 %}
-
-                {% endfor %}
-
-                {% if articles[testCount] %}
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[testCount], 
-                        position: articleCount + 1, 
-                        imageSize: {width:95},
-                        containerClass: 'col-md-3 card-sm-wide'
-                    }) | raw}}
-                    {% set articleCount = articleCount + 1 %}
-
-                {% endif %}
-            </section>
-
-
-
-
-
-
-
-
-
-
-
-            <section>
-                <div class="row">
-                    <div class="col-md-9 section-header">
-                        <p>View All</p>
-                        <div class="hk">
-                            <h2>HEADER 7</h2>
-                            <p></p>
+                <section>
+                    <div class="row">
+                        <div class="col-md-9 section-header">
+                            <p><a href="{{sections['sport'].link}}">View All</a></p>
+                            <div class="hk">
+                                <h2>SPORT</h2>
+                                <p></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                       {% if articles[testCount] %}
-                           {{this.render('partials/_single-article.twig', {
-                               article: articles[testCount], 
-                               position: articleCount + 1, 
-                               imageSize: {width:630},
-                               containerClass: 'home-feature-sm'
-                           }) | raw}}
-                           {% set articleCount = articleCount + 1 %}
-                       {% endif %}
- 
+                    <div class="row">
+                        <div class="col-md-6">
+                           {% if sections['sport'].feed.articles[testCount] %}
+                               {{this.render('partials/_single-article.twig', {
+                                   article: sections['sport'].feed.articles[testCount], 
+                                   imageSize: {width:630},
+                                   containerClass: 'home-feature-sm home-feature-mobile'
+                               }) | raw}}
+                               {% set articleCount = articleCount + 1 %}
+                           {% endif %}
+     
+
+                        </div>
+                        <div class="col-md-3">
+                        
+                            <div class="ad-square" style="margin-bottom:30px;"></div>
+
+                             {% if sections['sport'].feed.articles[testCount] %}
+                                 {{this.render('partials/_single-article.twig', {
+                                     article: sections['sport'].feed.articles[testCount], 
+                                     imageSize: {width:80},
+                                     containerClass: 'card-xs card-xs-mobile'
+                                 }) | raw}}
+
+                                <hr class="divide visible-sm-block visible-xs-block">
+
+                                 {% set articleCount = articleCount + 1 %}
+                             {% endif %}
+                   
+        
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:30px;">
+
+                        {% for i in 0..2 if sections['sport'].feed.articles[testCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['sport'].feed.articles[testCount], 
+                                imageSize: {width:80},
+                                containerClass: 'col-md-3 card-xs card-xs-mobile divideright'
+                            }) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                            <hr class="divide visible-sm-block visible-xs-block">
+                        {% endfor %}
 
                     </div>
-                    <div class="col-md-3">
-                    
-                        <div class="ad-square"></div>
+                </section>
+            {% endif %}
 
-                         {% if articles[testCount] %}
+
+
+
+
+
+
+            {% if sections['business'].feed.articles|length > 0 %}
+
+                <section class="row">
+                     <div class="col-md-9 section-header">
+                        <p><a href="{{sections['business'].link}}">View All</a></p>
+                         <div class="hk">
+                             <h2>BUSINESS</h2>
+                             <p></p>
+                         </div>
+                     </div>
+
+                     <div class="col-md-4">
+                         {% if sections['business'].feed.articles[testCount] %}
                              {{this.render('partials/_single-article.twig', {
-                                 article: articles[testCount], 
-                                 position: articleCount + 1, 
-                                 imageSize: {width:80},
-                                 containerClass: 'card-xs'
+                                 article: sections['business'].feed.articles[testCount], 
+                                 imageSize: {width:630},
+                                 containerClass: 'home-feature-thin home-feature-thin-mobile'
                              }) | raw}}
                              {% set articleCount = articleCount + 1 %}
                          {% endif %}
-               
-    
-
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    {% for i in 0..2 if articles[testCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: articleCount + 1, 
-                            imageSize: {width:80},
-                            containerClass: 'col-md-3 card-xs'
-                        }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
-                    {% endfor %}
-
-                </div>
-            </section>
 
 
 
-
-
-
-
-
-            <section class="row">
-                 <div class="col-md-9 section-header">
-                     <p>View All</p>
-                     <div class="hk">
-                         <h2>HEADER 8</h2>
-                         <p></p>
                      </div>
-                 </div>
-
-                 <div class="col-md-4">
-                     {% if articles[testCount] %}
-                         {{this.render('partials/_single-article.twig', {
-                             article: articles[testCount], 
-                             position: articleCount + 1, 
-                             imageSize: {width:630},
-                             containerClass: 'home-feature-thin'
-                         }) | raw}}
-                         {% set articleCount = articleCount + 1 %}
-                     {% endif %}
+                     <div class="col-md-2">
+                         
+                         {% for i in 0..1 if sections['business'].feed.articles[testCount] %}
+                             {{this.render('partials/_single-article.twig', {
+                                 article: sections['business'].feed.articles[testCount], 
+                                 imageSize: {width:190},
+                                 containerClass: 'card-sm card-sm-mobile'
+                             }) | raw}}
+                             {% set articleCount = articleCount + 1 %}
+                         {% endfor %}
 
 
 
-                 </div>
-                 <div class="col-md-2">
-                     
-                     {% for i in 0..1 if articles[testCount] %}
-                         {{this.render('partials/_single-article.twig', {
-                             article: articles[testCount], 
-                             position: articleCount + 1, 
-                             imageSize: {width:190},
-                             containerClass: 'card-sm'
-                         }) | raw}}
-                         {% set articleCount = articleCount + 1 %}
-                     {% endfor %}
+                     </div>
+                     <div class="col-md-3">
+                         <div class="ad-square" style="margin-bottom:30px;"></div>
+
+                         {% for i in 0..1 if sections['business'].feed.articles[testCount] %}
+                             {{this.render('partials/_single-article.twig', {
+                                 article: sections['business'].feed.articles[testCount], 
+                                 imageSize: {width:80},
+                                 containerClass: 'card-xs card-xs-mobile'
+                             }) | raw}}
+                             {% set articleCount = articleCount + 1 %}
+                             {% if i == 0 %}
+                                 <hr class="divide">
+                             {% endif %}
+
+                         {% endfor %}
 
 
 
-                 </div>
-                 <div class="col-md-3">
-                     <div class="ad-square" style="margin-bottom:30px;"></div>
-
-                     {% for i in 0..1 if articles[testCount] %}
-                         {{this.render('partials/_single-article.twig', {
-                             article: articles[testCount], 
-                             position: articleCount + 1, 
-                             imageSize: {width:80},
-                             containerClass: 'card-xs'
-                         }) | raw}}
-                         {% set articleCount = articleCount + 1 %}
-                         {% if i == 0 %}
-                             <hr class="divide">
-                         {% endif %}
-
-                     {% endfor %}
-
-
-
-                 </div>
-            </section>
+                     </div>
+                </section>
+            {% endif %}
 
 
 

@@ -1,57 +1,64 @@
 .home-feature-sm {
-    @include card-image-full;
-    height:400px;
-    a.card {
-        height:100%;
-        color:$white;
+    @media screen and (min-width: $mmd-break){
 
-        article {
-        
-            > figure {
-                right:15px;
-                left:15px;
-                width:auto;
-                // height:10px;
-            }
+        height:400px;
+        a.card {
+            @include card-image-full;
 
-            > .content {
-                width:100%;
-                padding: 220px 20px 10px 30px;
+            height:100%;
+            color:$white;
 
-
-                .category{
-                    color:white;
+            article {
+            
+                > figure {
+                    @include gradientbefore;
+                    right:15px;
+                    left:15px;
+                    width:auto;
+                    // height:10px;
                 }
 
-
-                h2{
-                    font-size: rem(22);
-                    font-weight:600;
-                    margin-top: 0;
-                    overflow:hidden;
-                    max-height: 80px;
-                    line-height: 1.18;
-                }
+                > .content {
+                    width:100%;
+                    padding: 270px 20px 10px 30px;
 
 
-                >p {
-                    display:none;
-                }
-
-
-                .author{
-                    border-right: 1px solid color(white);
-
-                    img{
-                        display:none;
-                    }
-                    p{
+                    .category{
                         color:white;
                     }
-                }
 
-                time{
-                    color:white;
+
+                    h2{
+                        font-size: rem(22);
+                        width:50%;
+                        font-weight:600;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        overflow:hidden;
+                        max-height: 80px;
+                        line-height: 1.18;
+                    }
+
+
+                    >p {
+                        display:none;
+                    }
+
+
+                    .author{
+                        border-right: 1px solid color(white);
+
+                        img{
+                            display:none;
+                        }
+                        p{
+                            color:white;
+                        }
+                    }
+
+                    time{
+                        color:white;
+                    }
                 }
             }
         }

@@ -10,6 +10,13 @@
     .home-main-stories {
         height:400px;
         margin-bottom:40px;
+
+        @media screen and (max-width: $mmd-break-down){
+            height:auto;
+            margin-bottom:20px;
+
+        }
+
     }
 
     .most-popular {
@@ -27,7 +34,7 @@
     }
 
     .section-header {
-        p {
+        p>a {
             margin:0;
             font-family: $font-family-serif;
             font-size: rem(14);
@@ -58,7 +65,5 @@
                 }
             }
         }
-
     }
-
 }
