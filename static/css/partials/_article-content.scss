@@ -1,6 +1,25 @@
 .article {
 
 	.article_content {
+
+		&:before {
+			content: '';
+			display:block;
+			position:absolute;
+			top:0;
+			right:7px;
+			bottom:0;
+			width:1px;
+			background:color(lightgrey);
+
+			@media screen and (max-width: $mmd-break) {
+				display:none;
+			}
+
+
+		}
+
+
 		> {
 			& span, u, p, ul, li, strong, b, h1, h2, h3, h4, h5, h6, figure, figcaption, img, blockquote {
 				&[style] {
@@ -74,7 +93,6 @@
 			padding-right: 10px;
 			clear: both;
 			margin-bottom: 20px;
-			margin-top: 10px;
 			@media screen and (max-width: $sm-break) {
 				font-size: rem(14);
 
