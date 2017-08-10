@@ -5495,7 +5495,7 @@ ul.sub-menu a:focus {
       .site-main .home-main-stories {
         height: auto;
         margin-bottom: 20px; } }
-  .site-main .most-popular > h2 {
+  .site-main .most-popular > h2, .site-main .events > h2 {
     font-size: 1.375rem;
     color: #F03746;
     margin-bottom: 13px;
@@ -6598,7 +6598,7 @@ a.card {
       position: relative; }
       .card-rec-full a.card article > figure {
         width: auto; }
-        .card-rec-full a.card article > figure:before {
+        .card-rec-full a.card article > figure:after {
           content: '';
           position: absolute;
           top: 0;

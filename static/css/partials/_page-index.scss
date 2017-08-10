@@ -57,8 +57,9 @@
 
     }
 
-    .most-popular {
+    .most-popular, .events {
         >h2 {
+            font-weight:600;
             font-size: rem(22);
             color: color(red);
             margin-bottom:13px;

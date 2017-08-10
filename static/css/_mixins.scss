@@ -10,6 +10,18 @@
 	  z-index: 1;
 	}
 }
+@mixin tintafter($value:0.4) {
+	&:after {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  bottom: 0;
+	  width: 100%;
+	  opacity: $value;
+	  background-color: #000;
+	  z-index: 1;
+	}
+}
 
 @mixin gradientbefore() {
 	&:before {
