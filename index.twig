@@ -109,6 +109,18 @@
 
                     {% if articles[articleCount] %}
                     <div class="cold-sm-9 col-md-3">
+
+                        <div id="weather" class="weather">
+                            <div>
+                                <p class="location">location</p>
+                                <p class="description">Partly Cloudy</p>
+                            </div>
+                            <img class="icon" src="{{networkData.templatePath}}/static/icons/weather_partly_cloudy.svg">
+                            <p class="temp">21&deg;</p>
+                        </div>
+
+
+                        
                         {% for i in 0..2 if articles[i] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 

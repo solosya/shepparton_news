@@ -7,6 +7,44 @@
     }
 
 
+
+    .weather {
+
+        margin-bottom:41px;
+        >div {
+            float:left;
+            display:inline-block;
+            margin-right:10px;
+        }
+        .temp {
+            margin:0;
+            margin-top:5px;
+            float:left;
+            color:color(red);
+            font-size: rem(16);
+        }
+        .location {
+            font-size: rem(13);
+            font-weight:600;
+            margin:0;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-top: 3px;
+        }
+        .description {
+            font-size: rem(13);
+            margin:0;
+            color: color(lightgrey);
+        }
+        .icon {
+            float:left;
+            vertical-align:top;
+            margin-right:10px;
+        }
+    }
+
+
+
     .home-main-stories {
         height:400px;
         margin-bottom:40px;
