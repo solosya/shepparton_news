@@ -84,7 +84,7 @@
             article {
             
                 > figure {
-                    @include gradientbefore;
+                    @include gradientafter;
 
                     right:15px;
                     left:15px;

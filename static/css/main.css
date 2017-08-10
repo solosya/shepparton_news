@@ -4399,11 +4399,10 @@ a.card {
         right: 15px;
         left: 15px;
         width: auto; }
-        .home-feature-mobile a.card article > figure:before {
+        .home-feature-mobile a.card article > figure:after {
           content: '';
           position: absolute;
           top: 0;
-          height: 100%;
           bottom: 0;
           width: 100%;
           z-index: 1;
@@ -4454,11 +4453,10 @@ a.card {
         right: 15px;
         left: 15px;
         width: auto; }
-        .home-feature-sm a.card article > figure:before {
+        .home-feature-sm a.card article > figure:after {
           content: '';
           position: absolute;
           top: 0;
-          height: 100%;
           bottom: 0;
           width: 100%;
           z-index: 1;
