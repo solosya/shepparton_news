@@ -315,9 +315,9 @@
                             <div class="col-md-3">
                                 <h2>Events</h2>
 
-                                {% for i in 0..4 if events[articleCount] %}
+                                {% for i in 0..4 if events[localCount] %}
                                     {{this.render('partials/_single-article.twig', {
-                                        article: events[articleCount], 
+                                        article: events[localCount], 
                                         containerClass: 'card-popular'
                                     }) | raw}}
                                 {% endfor %}
@@ -329,13 +329,13 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         
-                                        {% if sections['local news'].feed.articles[articleCount] %}
+                                        {% if sections['local news'].feed.articles[localCount] %}
                                             {{this.render('partials/_single-article.twig', {
-                                                article: sections['local news'].feed.articles[articleCount], 
+                                                article: sections['local news'].feed.articles[localCount], 
                                                 imageSize: {width:630},
                                                 containerClass: 'card-rec-full'
                                             }) | raw}}
-                                            {% set articleCount = articleCount + 1 %}
+                                            {% set localCount = localCount + 1 %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -344,13 +344,13 @@
 
                                     <div class="row two-cols">
 
-                                        {% for i in 0..1 if sections['local news'].feed.articles[articleCount] %}
+                                        {% for i in 0..1 if sections['local news'].feed.articles[localCount] %}
                                             {{this.render('partials/_single-article.twig', {
-                                                article: sections['local news'].feed.articles[articleCount], 
+                                                article: sections['local news'].feed.articles[localCount], 
                                                 imageSize: {width:95},
                                                 containerClass: 'col-md-1 card-sm card-sm-mobile'
                                             }) | raw}}
-                                            {% set articleCount = articleCount + 1 %}
+                                            {% set localCount = localCount + 1 %}
 
                                         {% endfor %}
                                     </div>
@@ -362,13 +362,13 @@
                     </div>
                     <div class="col-md-3">
                         
-                        {% for i in 0..1 if sections['local news'].feed.articles[articleCount] %}
+                        {% for i in 0..1 if sections['local news'].feed.articles[localCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections['local news'].feed.articles[articleCount], 
+                                article: sections['local news'].feed.articles[localCount], 
                                 imageSuppress: true,
                                 containerClass: 'card-xs card-xs-mobile'
                             }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
+                            {% set localCount = localCount + 1 %}
                            
                             {% if i == 0 %}
                                 <hr class="divide">
