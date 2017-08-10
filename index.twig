@@ -55,7 +55,13 @@
                 "feed": "",
                 "link": "",
                 "limit" : 10
+            },
+            "bloggers": {
+                "feed": "",
+                "link": "",
+                "limit" : 2
             }
+
         }
     %}
 
@@ -398,21 +404,21 @@
 
 
 
-{#             {% if sections['regional news'].feed.articles|length > 0 %}
- #}
+            {% if sections['bloggers'].feed.articles|length > 0 %}
+
                 <section class="row">
                     <div class="col-md-3">
                         <img src="{{networkData.templatePath}}/static/images/bloggers.svg">
                     </div>
 
 
-                    {% for i in 0..1 if sections['regional news'].feed.articles[0] %}
+                    {% for i in 0..1 if sections['bloggers'].feed.articles[i] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: sections['regional news'].feed.articles[1], 
+                            article: sections['bloggers'].feed.articles[i], 
                             imageSuppress: true,
                             containerClass: 'col-md-3 card-blogger card-blogger-mobile'
                         }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
+
                         {% if i == 0 %}
                             <hr class="divide visible-sm-block visible-xs-block">
                         {% endif %}
@@ -420,8 +426,8 @@
                     {% endfor %}
 
                 </section>
-{#             {% endif %}
- #}
+            {% endif %}
+
 
 
 
