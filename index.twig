@@ -284,6 +284,8 @@
 
 
             {% if sections['local news'].feed.articles|length > 0 %}
+                {% set localCount = 0 %}
+
                 <section class="row">
                     <div class="col-md-9 section-header">
                         <p><a href="{{sections['local news'].link}}">View All</a></p>
@@ -295,14 +297,14 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-9">
-                                {% if sections['local news'].feed.articles[articleCount] %}
+                                {% if sections['local news'].feed.articles[localCount] %}
                                     {{this.render('partials/_single-article.twig', {
-                                        article: sections['local news'].feed.articles[articleCount], 
+                                        article: sections['local news'].feed.articles[localCount], 
                                         position: articleCount + 1, 
                                         imageSize: {width:630},
                                         containerClass: 'home-feature-sm home-feature-mobile'
                                     }) | raw}}
-                                    {% set articleCount = articleCount + 1 %}
+                                    {% set localCount = localCount + 1 %}
                                 {% endif %}
 
                             </div>
