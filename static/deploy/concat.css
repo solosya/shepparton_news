@@ -5513,7 +5513,7 @@ ul.sub-menu a:focus {
     margin-bottom: 13px;
     line-height: 1; }
   .site-main .section-background {
-    padding: 25px;
+    padding: 25px 0;
     background: rgba(185, 185, 185, 0.2); }
   .site-main .section-header p > a {
     margin: 0;

@@ -5,9 +5,15 @@
 
 
         a.card {
-            @include card-image-top(auto, 160px);
+            // @media screen and (min-width: $mmd-break){
+                @include card-image-top(auto, 160px);
+            // }
+            // @include card-image-top(auto, 116px);
+
+
             height:250px;
             > article {
+
                 position:relative;
 
                 > figure{
@@ -145,10 +151,18 @@
             height: 90px;
             > article {
                 position:relative;
+                // @include flexbox;
+                // @include flex-direction(row);
+                // align-items:stretch;
+
 
                 > figure{
+                    // flex: 1;
+
                     overflow: hidden;
                     margin-right:8px;
+                    // width:20%;
+                    // height:100%;
 
                     &.video {
                         &:before{
@@ -159,6 +173,7 @@
 
 
                 > .content{
+                    // flex:4;
                     position:relative;
                     padding: 0;
 
@@ -168,6 +183,8 @@
                     > h2{
                         font-weight: normal;
                         font-size: rem(17);
+                        // font-size: calc(12px + 1.5vw);
+
                         line-height:1.29;
                         margin-top:5px;
                         margin-bottom:10px;
