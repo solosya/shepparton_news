@@ -45,6 +45,12 @@ hr.divide {
     border-top: 1px solid color(lightgrey);
 }
 
+hr.divide.visible-xs-block {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
 hr.divide24 {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -222,9 +228,9 @@ span.leadsentence{
     }
 }
 @media (min-width: 768px) {
-    .two-cols {
-        margin:0;
-    }
+    // .two-cols {
+    //     margin:0;
+    // }
 
     .two-cols .col-md-1,
     .two-cols .col-sm-1,

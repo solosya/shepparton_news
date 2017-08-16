@@ -198,6 +198,9 @@
                     .icon {
                         display:none;
                     }
+                    >p {
+                        max-height:44px;
+                    }
                 }
                 &.instagram{ 
                     &.without__content {

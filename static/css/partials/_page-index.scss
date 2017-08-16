@@ -1,11 +1,33 @@
 .site-main {
     margin-top:80px;
+    @media screen and (max-width: $sm-break-down){
+        margin-top:10px;
+    }
+
     margin-bottom:100px;
 
     section {
       margin-bottom:80px;
     }
 
+
+    .row-space {
+        @media screen and (min-width: $sm-break){
+            margin-top:29px;
+        }
+    }
+
+    #weather-mob {
+        @media screen and (min-width: $sm-break){
+            display:none;
+        }
+    }
+
+    #weather-dt {
+        @media screen and (max-width: $sm-break-down){
+            display:none;
+        }
+    }
 
 
     .weather {

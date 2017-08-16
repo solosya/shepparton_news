@@ -45,20 +45,21 @@
 
 
                 .author{
-                    border-right: 1px solid color(white);
 
                     img{
                         display:none;
                     }
                     p{
                         color:white;
+                        border-right: 1px solid color(white);
+
+                    }
+                    time{
+                        font-family:$font-family-serif;
+                        color:white;
                     }
                 }
 
-                time{
-                    font-family:$font-family-serif;
-                    color:white;
-                }
             }
 
         }
@@ -74,13 +75,13 @@
                     color:color(darkgrey)
                 }
                 .author {
-                    border-right:1px solid color(darkgray);
                     >p {
                         color:color(darkgray);
+                        border-right:1px solid color(darkgray);
                     }
-                }
-                time {
-                    color:color(darkgray);
+                    time {
+                        color:color(darkgray);
+                    }
                 }
 
             }

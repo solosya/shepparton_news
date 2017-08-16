@@ -36,6 +36,15 @@
                     }
                 }
             }
+            
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+                }
+            }
+
         }
     }
 }
@@ -67,6 +76,13 @@
                     }
 
                     >p {
+                        display:none;
+                    }
+                }
+            }
+            &.social {
+                .content {
+                    .icon {
                         display:none;
                     }
                 }

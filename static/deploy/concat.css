@@ -4697,6 +4697,10 @@ hr.divide {
   border: 0;
   border-top: 1px solid rgba(74, 74, 74, 0.3); }
 
+hr.divide.visible-xs-block {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
 hr.divide24 {
   margin-top: 24px;
   margin-bottom: 24px;
@@ -4828,8 +4832,6 @@ span.leadsentence {
     *width: 100%; } }
 
 @media (min-width: 768px) {
-  .two-cols {
-    margin: 0; }
   .two-cols .col-md-1,
   .two-cols .col-sm-1,
   .two-cols .col-lg-1 {
@@ -5459,8 +5461,20 @@ ul.sub-menu a:focus {
 .site-main {
   margin-top: 80px;
   margin-bottom: 100px; }
+  @media screen and (max-width: 767px) {
+    .site-main {
+      margin-top: 10px; } }
   .site-main section {
     margin-bottom: 80px; }
+  @media screen and (min-width: 768px) {
+    .site-main .row-space {
+      margin-top: 29px; } }
+  @media screen and (min-width: 768px) {
+    .site-main #weather-mob {
+      display: none; } }
+  @media screen and (max-width: 767px) {
+    .site-main #weather-dt {
+      display: none; } }
   .site-main .weather {
     margin-bottom: 41px; }
     .site-main .weather > div {
@@ -6477,6 +6491,8 @@ a.card {
             display: none; }
       .card-sm-mobile a.card.social .content .icon {
         display: none; }
+      .card-sm-mobile a.card.social .content > p {
+        max-height: 44px; }
       .card-sm-mobile a.card.social.instagram.without__content .content {
         padding-top: 25px; } }
 
@@ -6846,13 +6862,12 @@ a.card {
           margin-bottom: 8px; }
         .card-rec-full a.card article > .content > p.excerpt {
           display: none; }
-        .card-rec-full a.card article > .content .author {
+        .card-rec-full a.card article > .content .author img {
+          display: none; }
+        .card-rec-full a.card article > .content .author p {
+          color: white;
           border-right: 1px solid; }
-          .card-rec-full a.card article > .content .author img {
-            display: none; }
-          .card-rec-full a.card article > .content .author p {
-            color: white; }
-        .card-rec-full a.card article > .content time {
+        .card-rec-full a.card article > .content .author time {
           font-family: "PT Serif", "Times New Roman", Times, serif;
           color: white; }
     .card-rec-full a.card.without__image {
@@ -6861,11 +6876,10 @@ a.card {
         color: red; }
         .card-rec-full a.card.without__image .content .category {
           color: #4A4A4A; }
-        .card-rec-full a.card.without__image .content .author {
+        .card-rec-full a.card.without__image .content .author > p {
+          color: #4A4A4A;
           border-right: 1px solid #4A4A4A; }
-          .card-rec-full a.card.without__image .content .author > p {
-            color: #4A4A4A; }
-        .card-rec-full a.card.without__image .content time {
+        .card-rec-full a.card.without__image .content .author time {
           color: #4A4A4A; }
     .card-rec-full a.card.social .content .icon {
       display: none; }
@@ -6940,11 +6954,10 @@ a.card {
           color: red; }
           .home-feature a.card.without__image .content .category {
             color: #4A4A4A; }
-          .home-feature a.card.without__image .content .author {
+          .home-feature a.card.without__image .content .author > p {
+            color: #4A4A4A;
             border-right: 1px solid #4A4A4A; }
-            .home-feature a.card.without__image .content .author > p {
-              color: #4A4A4A; }
-          .home-feature a.card.without__image .content time {
+          .home-feature a.card.without__image .content .author time {
             color: #4A4A4A; }
       .home-feature a.card.social .content {
         padding-top: 31px; }
@@ -7412,7 +7425,9 @@ a.card {
         overflow: hidden;
         max-height: 34px; }
       .top-stories a.card article > .content > p {
-        display: none; } }
+        display: none; }
+    .top-stories a.card.social .content .icon {
+      display: none; } }
 
 @media screen and (max-width: 767px) {
   .top-stories-mobile a.card {
@@ -7432,7 +7447,9 @@ a.card {
         overflow: hidden;
         max-height: 40px; }
       .top-stories-mobile a.card article > .content > p {
-        display: none; } }
+        display: none; }
+    .top-stories-mobile a.card.social .content .icon {
+      display: none; } }
 
 .card-popular a.card {
   height: 32px;

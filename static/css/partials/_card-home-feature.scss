@@ -80,13 +80,14 @@
                         color:color(darkgrey)
                     }
                     .author {
-                        border-right:1px solid color(darkgray);
                         >p {
                             color:color(darkgray);
+                            border-right:1px solid color(darkgray);
                         }
-                    }
-                    time {
-                        color:color(darkgray);
+                        time {
+                            color:color(darkgray);
+                        }
+
                     }
 
                 }
