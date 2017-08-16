@@ -1,12 +1,12 @@
 .card-sm-wide{
-    @media screen and (min-width: $mmd-break){
+    @media screen and (min-width: $sm-break){
 
         position:relative;
 
 
         a.card {
             @include card-image-top(auto, 160px);
-
+            height:250px;
             > article {
                 position:relative;
 
@@ -23,7 +23,7 @@
 
 
                 > .content{
-
+                
                     position:relative;
                     padding: 0;
 
@@ -38,16 +38,12 @@
                         max-height:22px;
                     }
 
-                    > p {
+                    > p.excerpt {
                         font-size: rem(15);
                         height:17px;
                         line-height: 1;
                         margin-top: 2px;
 
-                    }
-
-                    >time {
-                        margin-top:13px;
                     }
 
                     > .author{
@@ -56,6 +52,7 @@
                         >p {
                             margin: 0;
                             padding: 0;
+                            padding-right:5px;
                         }
                     }
 
@@ -64,39 +61,105 @@
             }
 
 
-            &.article.without__image {
+            &.without__image {
+                background:color(offwhite);
                 .content {
-                    padding-top:87px;
+                    padding:63px 20px 5px 20px;
+
                     height:100%;
 
                     h2 {
                         font-size: rem(17);
-                        font-weight:bold;
-                        max-height:52px;
+                        font-weight:normal;
+                        line-height: 1.29;
+                        max-height:70px;
                     }
 
-                    > p {
-                        font-size: rem(13);
-                        display: block;
-                        max-height:100px;
-                        margin-bottom: 18px;
+                    .author {
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:20px;
+                        }
+                    }
+
+                }
+            }  
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        max-height:65px;
+                        margin-bottom:6px;
                     }
                 }
-            }   
+
+                &.facebook {
+                    .content{
+                        .icon {
+                            width:10px;
+                            height:20px;
+                            background-size:contain;
+                        }
+                    }
+                    // &.without__image {
+                    //     .content {
+                    //         >p {
+                    //             max-height: 60px;
+                    //         }
+                    //     }
+                    // }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                    }
+                }
+                &.without__image {
+                    .content {
+                        .icon {
+                            display:block;
+                            position:absolute;
+                            bottom:20px;
+                        }
+                        >p {
+                            max-height:70px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 .card-sm-wide-mobile{
 
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $sm-break-down){
         margin-bottom:20px;
         position:relative;
 
 
         a.card {
             @include card-image-top(auto, 160px);
-
+            height:250px;
             > article {
                 position:relative;
 
@@ -113,7 +176,7 @@
 
 
                 > .content{
-
+                
                     position:relative;
                     padding: 0;
 
@@ -125,19 +188,23 @@
                         font-size: rem(17);
                         line-height:1.29;
                         margin-top:5px;
-                        max-height:45px;
+                        max-height:44px;
                     }
 
-                    > p {
+                    > p.excerpt {
                         display:none;
-                    }
 
-                    >time {
-                        display:none;
                     }
 
                     > .author{
                         display:none;
+                        // margin-top:13px;
+
+                        // >p {
+                        //     margin: 0;
+                        //     padding: 0;
+                        //     padding-right:5px;
+                        // }
                     }
 
 
@@ -145,40 +212,126 @@
             }
 
 
-            &.article.without__image {
+            &.without__image {
+                background:color(offwhite);
                 .content {
-                    padding-top:87px;
+                    padding:63px 20px 5px 20px;
+
                     height:100%;
 
                     h2 {
                         font-size: rem(17);
-                        font-weight:bold;
-                        max-height:52px;
+                        font-weight:700;
+                        line-height: 1.29;
+                        max-height:45px;
                     }
 
-                    > p {
-                        font-size: rem(13);
-                        display: block;
-                        max-height:100px;
-                        margin-bottom: 18px;
+                    >p.excerpt {
+                        display:block;
+                        font-size: rem(15);
+                        max-height:60px;
+                        line-height: 1.33;
+                        margin-top: 7px;
+                    }
+
+                    .author {
+                        font-family:$font-family-serif;
+                        display:block;
+                        margin-top:10px;
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:20px;
+                        }
+                    }
+
+                }
+            }  
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        max-height:65px;
+                        margin-bottom:6px;
                     }
                 }
-            }   
+
+                &.facebook {
+                    .content{
+                        .icon {
+                            width:10px;
+                            height:20px;
+                            background-size:contain;
+                        }
+                    }
+                    // &.without__image {
+                    //     .content {
+                    //         >p {
+                    //             max-height: 60px;
+                    //         }
+                    //     }
+                    // }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                        .author {
+                            display:block;
+                        }
+                    }
+                }
+                &.without__image {
+
+                    .content {
+                        padding-top:31px;
+                        .category {
+                            margin-bottom:10px;
+                        }
+                        >p {
+                            max-height:90px;
+                        }
+                        .icon {
+                            display:block;
+                            position:absolute;
+                            bottom:20px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 
 .card-sm2-mobile{
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $sm-break-down){
 
         position:relative;
 
 
         a.card {
             @include card-image-left(89px, 85px);
-            padding-top:15px;
-            border-top: 1px solid color(lightgrey);
+            // padding-top:15px;
+            // border-top: 1px solid color(lightgrey);
+            height: 90px;
 
             > article {
                 position:relative;
@@ -196,7 +349,7 @@
 
 
                 > .content{
-
+                    height:100%;
                     position:relative;
                     padding: 0;
 
@@ -212,7 +365,7 @@
                         max-height:45px;
                     }
 
-                    > p {
+                    > p.excerpt {
                         display:none;
                     }
 
@@ -228,7 +381,7 @@
             }
 
 
-            &.article.without__image {
+            &.without__image {
                 .content {
                     padding-top:87px;
                     height:100%;
@@ -246,7 +399,29 @@
                         margin-bottom: 18px;
                     }
                 }
-            }   
+            } 
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+                    >p {
+                        max-height:65px;
+                        margin-bottom:6px;
+                    }
+
+                }
+                &.instagram{ 
+                    &.without__content {
+                        .content {
+                            padding-top:25px;
+                        }
+                    }
+                }
+
+            }
+  
         }
     }
 }

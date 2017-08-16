@@ -76,6 +76,7 @@
                     <div class="author">
                         <img src="{{profileImg}}" class="img-circle">
                         <p>{{ article.createdBy['displayName'] }}</p>
+                        <time datetime="{{publishDate}}">{{publishDate}}</time>
                     </div>
 
                     <time datetime="{{publishDate}}">{{publishDate}}</time>
@@ -159,18 +160,21 @@
 
 
                 <div class="content">
+                    <div class="icon"></div>
+
                     <div class="category {{social.source}}">{{social.source}}</div>
                     
                     <p id="updateSocial{{article.socialId}}" data-update="0">
                              {{ quotes.smarten(social.content  | raw) }}
                     </p>
 
-                    <time datetime="2016-11-16">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'F, Y')}}</time>
                     
                     <div class="author">
                         <img src="{{social.user.media.path}}" class="img-circle">
                         <p class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
+                        <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'F, Y')}}</time>
                     </div><!-- .author-->
+                    <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'F, Y')}}</time>
 
                 </div>
             </article>

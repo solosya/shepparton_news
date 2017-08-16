@@ -1,6 +1,6 @@
 .card-xs{
 
-    @media screen and (min-width: $mmd-break){
+    @media screen and (min-width: $sm-break){
 
         &.divideright {
             &:after {
@@ -63,16 +63,13 @@
                         margin-top: 2px;
                     }
 
-                    > time {
-                        margin-top:9px;
-                    }
-
                     > .author{
                         margin-top:9px;
 
                         >p {
                             margin: 0;
                             padding: 0;
+                            padding-right:5px;
                         }
                     }
 
@@ -81,7 +78,7 @@
             }
 
 
-            &.article.without__image {
+            &.without__image {
                 .content {
                     padding-top:87px;
                     height:100%;
@@ -100,13 +97,48 @@
                     }
                 }
             }   
+
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        max-height:65px;
+                        margin-bottom:6px;
+                    }
+                }
+
+                &.facebook, &.twitter, &.instagram, &.youtube{
+                    .content{
+                        >p {
+                            font-weight:600;
+                            line-height:1.33;
+                        }
+                    }
+                }
+                &.instagram{ 
+
+                    &.without__content {
+                        .content{
+                            padding-top:34px;
+                        }
+                    }
+                }
+
+            }
+
+
+            
         }
     }
 }
 
 .card-xs-mobile{
 
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $sm-break-down){
 
         position:relative;
 
@@ -154,16 +186,13 @@
                         margin-top: 2px;
                     }
 
-                    > time {
-                        margin-top:9px;
-                    }
-
                     > .author{
                         margin-top:9px;
 
                         >p {
                             margin: 0;
                             padding: 0;
+                            padding-left:5px;
                         }
                     }
 
@@ -172,25 +201,56 @@
             }
 
 
-            &.article.without__image {
+            &.without__image {
                 .content {
-                    padding-top:87px;
-                    height:100%;
-
-                    h2 {
-                        font-size: rem(17);
-                        font-weight:bold;
-                        max-height:52px;
-                    }
-
-                    > p {
-                        font-size: rem(13);
-                        display: block;
-                        max-height:100px;
-                        margin-bottom: 18px;
+                    p.excerpt {
+                        display:block;
+                        margin-top:2px;
+                        max-height:35px;
+                        font-size:rem(12);
                     }
                 }
-            }   
+
+            }
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        max-height:65px;
+                        margin-bottom:6px;
+                    }
+                }
+
+                &.facebook, &.twitter, &.instagram, &.youtube{
+                    .content{
+                        >p {
+                            font-size: rem(12);
+                            margin-top:10px;
+                            max-height:50px;
+                            font-weight:600;
+                            line-height:1.33;
+                        }
+                    }
+                }
+                &.instagram{ 
+
+                    &.without__content {
+                        .content{
+                            padding-top:34px;
+                            >p {
+                                margin-top:0;
+                            }
+                            >.author{
+                                position:static;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

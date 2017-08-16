@@ -1,12 +1,12 @@
 .card-sm{
-    @media screen and (min-width: $mmd-break){
+    @media screen and (min-width: $sm-break){
 
         position:relative;
 
 
         a.card {
             @include card-image-top(auto, 160px);
-
+            height:250px;
             > article {
                 position:relative;
 
@@ -23,7 +23,7 @@
 
 
                 > .content{
-
+                    height:100%;
                     position:relative;
                     padding: 0;
 
@@ -39,57 +39,110 @@
                         max-height:45px;
                     }
 
-                    > p {
+                    > p.excerpt {
                         display:none;
                     }
-
-
-                    > .author{
-
-                        >p {
-                        }
-                    }
-
 
                 }
             }
 
 
-            &.article.without__image {
+            &.without__image {
+                background:color(offwhite);
                 .content {
-                    padding-top:87px;
+                    padding:63px 20px 5px 20px;
+
                     height:100%;
 
                     h2 {
                         font-size: rem(17);
-                        font-weight:bold;
-                        max-height:52px;
+                        font-weight:normal;
+                        line-height: 1.29;
+                        max-height:70px;
                     }
 
-                    > p {
-                        font-size: rem(13);
-                        display: block;
-                        max-height:100px;
-                        margin-bottom: 18px;
+                    .author {
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:20px;
+                        }
+                    }
+
+                }
+            }  
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        max-height:65px;
+                        margin-bottom:6px;
                     }
                 }
-            }   
+
+                &.facebook {
+                    .content{
+                        .icon {
+                            width:10px;
+                            height:20px;
+                            background-size:contain;
+                        }
+                    }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                    }
+                }
+                &.without__image {
+                    .content {
+                        .icon {
+                            display:block;
+                            position:absolute;
+                            bottom:20px;
+                        }
+                        >p {
+                            max-height:70px;
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }
 
 
 .card-sm-mobile{
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $sm-break-down){
 
         position:relative;
 
 
         a.card {
             @include card-image-left(89px, 85px);
-            padding-top:15px;
-            border-top: 1px solid color(lightgrey);
-
+            // padding-top:15px;
+            // border-top: 1px solid color(lightgrey);
+            height: 90px;
             > article {
                 position:relative;
 
@@ -106,7 +159,6 @@
 
 
                 > .content{
-
                     position:relative;
                     padding: 0;
 
@@ -122,7 +174,7 @@
                         max-height:45px;
                     }
 
-                    > p {
+                    > p.excerpt {
                         display:none;
                     }
 
@@ -138,25 +190,23 @@
             }
 
 
-            &.article.without__image {
+            &.without__image {
+            }  
+
+            &.social {
                 .content {
-                    padding-top:87px;
-                    height:100%;
-
-                    h2 {
-                        font-size: rem(17);
-                        font-weight:bold;
-                        max-height:52px;
-                    }
-
-                    > p {
-                        font-size: rem(13);
-                        display: block;
-                        max-height:100px;
-                        margin-bottom: 18px;
+                    .icon {
+                        display:none;
                     }
                 }
-            }   
+                &.instagram{ 
+                    &.without__content {
+                        .content {
+                            padding-top:25px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

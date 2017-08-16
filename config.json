@@ -2,6 +2,88 @@
     "module" : {
         "event" : {
            "enabled" : true
-        }
+        },
+        "article": {
+    		"extendedAttributes": [
+    			{
+    				"name": "auction_date",
+    				"label": "Auction Date",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspection_date",
+    				"label": "Inspection Date",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "listing_type",
+    				"label": "Listing Type",
+    				"type": "dropdown",
+    				"options": {
+    					"rent": "Rent",
+    					"buy": "Bye"
+    				}
+    			},
+    			{
+    				"name": "bedroom_count",
+    				"label": "Number of bedrooms",
+    				"type": "inputbox"
+    			},
+    			{
+    				"name": "bathroom_count",
+    				"label": "Number of bathrooms",
+    				"type": "inputbox"
+    			},
+    			{
+    				"name": "car_count",
+    				"label": "Number of parking spaces",
+    				"type": "inputbox"
+    			},
+    			{
+    				"name": "price",
+    				"label": "Price",
+    				"type": "inputbox"
+    			},
+    			{
+    				"name": "hobbies",
+    				"label": "Select Hobby",
+    				"type": "dropdown",
+    				"options": {
+    					"listening_music": "Listening Music",
+    					"reading_books": "Reading Books"
+    				}
+    			},
+    			{
+    				"label": "Favorite Actors",
+    				"type": "checkbox",
+    				"name": "fav_actor",
+    				"options": {
+    					"tom_cruise": "Tom Cruise",
+    					"liz_hurley": "Liz Hurley"
+    				}
+    			},
+    			{
+    				"label": "Mother Tongue",
+    				"type": "radio",
+    				"name": "mother_tongue",
+    				"options": {
+    					"hindi": "Hindi",
+    					"english": "English"
+    				}
+    			},
+    			{
+    				"name": "big_description",
+    				"label": "Large Description",
+    				"type": "textarea"
+    			},
+    			{
+    				"name": "document",
+    				"label": "My Documents",
+    				"type": "file"
+    			}
+    		]
+    	}
     }
 }

@@ -1,5 +1,5 @@
 .top-stories {
-    @media screen and (min-width: $mmd-break){
+    @media screen and (min-width: $sm-break){
 
         a.card {
             @include card-image-none;
@@ -41,7 +41,7 @@
 }
 
 .top-stories-mobile {
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $sm-break-down){
 
         a.card {
             @include card-image-none;

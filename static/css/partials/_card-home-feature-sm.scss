@@ -1,9 +1,10 @@
 .home-feature-sm {
-    @media screen and (min-width: $mmd-break){
+    @media screen and (min-width: $sm-break){
 
         height:400px;
         a.card {
             @include card-image-full;
+            position:relative;
 
             height:100%;
             color:$white;
@@ -12,9 +13,9 @@
             
                 > figure {
                     @include gradientafter;
-                    right:15px;
-                    left:15px;
-                    width:auto;
+                    // right:15px;
+                    // left:15px;
+                    // width:auto;
                     // height:10px;
                 }
 
@@ -40,26 +41,111 @@
                     }
 
 
-                    >p {
+                    >p.excerpt {
                         display:none;
                     }
 
 
                     .author{
-                        border-right: 1px solid color(white);
 
                         img{
                             display:none;
                         }
                         p{
                             color:white;
+                            border-right: 1px solid color(white);
+
+                        }
+                        > time{
+                            color:white;
+                        }
+
+                    }
+
+                }
+            }
+            &.without__image {
+            
+                background:color(offwhite);
+
+                .content {
+                    color:red;
+
+                    .category{
+                        color:color(darkgrey)
+                    }
+                    .author {
+                        >p {
+                            color:color(darkgray);
+                            border-right:1px solid color(darkgray);
+
+                        }
+                        time {
+                            color:color(darkgray);
+                        }
+
+                    }
+
+                }
+            }   
+
+
+            &.social {
+                .content {
+                    padding-top:31px;
+                    .icon {
+                        margin-bottom:200px;
+                    }
+                    .category {
+
+                    }
+                    > p {
+                        font-size: rem(22);
+                        width:50%;
+                        font-weight:600;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        overflow:hidden;
+                        max-height: 80px;
+                        line-height: 1.18;
+
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        padding-top: 31;
+                        .icon {
+                            margin-bottom:170px;
+                        }
+
+                        >p {
+                            max-height:100px;
+                            font-size:rem(18);
+                            line-height:1.33;
+                        }
+
+                    }
+                    &.without__image {
+                        .content {
+                            > p {
+                                color:black;
+                            }
+                        }
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content{
+                            .icon {
+                                margin-bottom:250px;
+                            }
                         }
                     }
 
-                    time{
-                        color:white;
-                    }
                 }
+
             }
         }
     }

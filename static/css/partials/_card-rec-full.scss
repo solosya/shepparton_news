@@ -3,7 +3,6 @@
     
     a.card {
         @include card-image-full;
-
         height:100%;
         color:$white;
 
@@ -40,7 +39,7 @@
                 }
 
 
-                >p {
+                >p.excerpt {
                     display:none;
                 }
 
@@ -64,24 +63,86 @@
 
         }
 
-        &.article.without__image {
+        &.without__image {
+        
+            background:color(offwhite);
+
             .content {
-                padding-top:87px;
-                height:100%;
+                color:red;
 
-                h2 {
-                    font-size: rem(17);
-                    font-weight:bold;
-                    max-height:52px;
+                .category{
+                    color:color(darkgrey)
+                }
+                .author {
+                    border-right:1px solid color(darkgray);
+                    >p {
+                        color:color(darkgray);
+                    }
+                }
+                time {
+                    color:color(darkgray);
                 }
 
-                > p {
-                    font-size: rem(13);
-                    display: block;
-                    max-height:100px;
-                    margin-bottom: 18px;
-                }
             }
         }   
+
+
+        &.social {
+            .content {
+                // padding-top:31px;
+                .icon {
+                    display:none;
+                }
+                .category {
+
+                }
+                > p {
+                    font-family:$font-family-serif;
+                    font-size: rem(22);
+                    font-weight:600;
+                    margin-top: 7px;
+                    overflow:hidden;
+                    max-height: 52px;
+                    line-height: 1.18;
+                    margin-bottom:8px;
+                }
+            }
+
+            &.twitter, &.instagram{
+                .content{
+                    // padding-top: 31;
+                    .icon {
+                        // margin-bottom:300px;
+                    }
+
+                    >p {
+                        // max-height:110px;
+                        font-size:rem(22);
+                        line-height:1.18;
+                    }
+
+                }
+                &.without__image {
+                    .content {
+                        > p {
+                            color:black;
+                        }
+                    }
+                }
+            }
+
+            &.instagram{
+                &.without__content {
+                    .content{
+                        padding-top:60px;
+                        .icon {
+                            // margin-bottom:400px;
+                        }
+                    }
+                }
+
+            }
+        }
+  
     }
 }

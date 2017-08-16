@@ -1,0 +1,115 @@
+.card-rec{
+    height:192px;
+    
+    a.card {
+        @include card-image-left(300px, 192px);
+
+        height:100%;
+
+        article {
+            position:relative;
+
+            > figure {
+                margin-right:30px;
+            }
+
+            > .content {
+                width:100%;
+                height:100%;
+                position:relative;
+
+
+                h2{
+                    font-family:$font-family-serif;
+                    font-size: rem(20);
+                    font-weight:600;
+                    margin-top: 12px;
+                    line-height: 1.3;
+                }
+
+
+                >p.excerpt {
+                    display:none;
+                }
+
+
+                .author{
+                    position:absolute;
+                    bottom:22px;
+                    border:none;
+                    img{
+                        display:none;
+                    }
+                    p{
+                        font-size: rem(14);
+                        font-weight:700;
+                        color:color(red);
+                    }
+                }
+
+                time{
+                    position:absolute;
+                    bottom:5px;
+                    font-family:$font-family-serif;
+                }
+            }
+
+        }
+
+
+        &.without__image {
+
+            .content {
+                // padding:63px 20px 5px 20px;
+
+                height:100%;
+
+                h2 {
+                    font-family:$font-family-serif;
+                    font-size: rem(20);
+                    font-weight:600;
+                    margin-top: 12px;
+                    line-height: 1.3;
+                }
+
+                p.excerpt {
+                    display:block;
+                }
+
+            }
+        }  
+
+
+
+        &.social {
+            .content {
+                .icon {
+                    display:none;
+                }
+
+                >p {
+                    max-height:65px;
+                    margin-bottom:6px;
+                }
+            }
+
+            &.facebook, &.twitter, &.instagram, &.youtube{
+                .content{
+                    >p {
+                        font-weight:600;
+                        line-height:1.33;
+                    }
+                }
+            }
+            &.instagram{ 
+
+                &.without__content {
+                    .content{
+                        padding-top:34px;
+                    }
+                }
+            }
+
+        }
+    }
+}

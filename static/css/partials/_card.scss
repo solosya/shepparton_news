@@ -3,13 +3,14 @@
     content: '';
     width: 56px;
     height: 56px;
-    background-image: url(../icons/large-play-button.svg);
+    background-image: url(../icons/play-icon.svg);
     background-repeat: no-repeat;
     background-size: cover;
     top: 50%;
     left: 50%;
     margin-left:-28px;
     margin-top:-28px;
+    z-index: 100;
 }
 
 
@@ -106,8 +107,6 @@ a.card {
                 display:inline-block;
                 vertical-align:top;
                 line-height:1;
-                padding-right: 5px;
-                border-right: 1px solid color(mediumgrey);
                 
                 img{
                     display:none;
@@ -120,17 +119,24 @@ a.card {
                     font-weight: 300;
                     margin: 0;
                     padding: 0;
+                    display:inline-block;
+                    padding-right: 5px;
+                    border-right: 1px solid color(mediumgrey);
 
+
+                }
+                > time{
+                    display:inline-block;
+                    // vertical-align:top;
+                    // line-height:1;
+                    color:color(mediumgrey);
+                    font-size: rem(11);
+                    font-weight: 300;
                 }
             }
 
-            time{
-                display:inline-block;
-                vertical-align:top;
-                line-height:1;
-                color:color(mediumgrey);
-                font-size: rem(11);
-                font-weight: 300;
+            > time{
+                display:none;
             }
         }
     }
@@ -146,36 +152,48 @@ a.card {
 
     &.social {
         .content {
-            .category {
 
-            }
-            
-            > p {
-                display:block;
-                font-family: $base-font-family;
-            }
+        }
 
-            .author {
-                > p {
-                    font-family: $base-font-family;
+        &.facebook{
+            .content{
+
+                .icon {
+                    width:13px;
+                    height:27px;
+                    background-image: url("../icons/facebook.svg");
+                    // background-size:cover;
+                    background-repeat: no-repeat;
                 }
             }
         }
 
-
         &.twitter{
             .content{
-                p{
+
+                .icon {
+                    width:31px;
+                    height:31px;
+                    background-image: url("../icons/twitter.svg");
+                    // background-size:cover;
+                    background-repeat: no-repeat;
                 }
             }
         }
 
         &.instagram{
             .content{
-                p{
+
+                .icon {
+                    width:27px;
+                    height:27px;
+                    background-image: url("../icons/instagram.svg");
+                    // background-size:cover;
+                    background-repeat: no-repeat;
                 }
             }
         }
+
     }
 }
 

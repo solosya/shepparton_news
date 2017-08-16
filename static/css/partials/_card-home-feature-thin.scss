@@ -1,5 +1,5 @@
 .home-feature-thin {
-    @media screen and (min-width: $mmd-break){
+    @media screen and (min-width: $sm-break){
 
         height:530px;
         a.card {
@@ -12,7 +12,7 @@
                 position:relative;
 
                 > figure {
-                    @include tintbefore();
+                    @include tintafter();
                     // width:auto;
                     // height:10px;
                 }
@@ -40,33 +40,112 @@
                     }
 
 
-                    >p {
+                    >p.excerpt {
                         display:none;
                     }
 
 
                     .author{
-                        border-right: 1px solid color(white);
-
-                        img{
-                            display:none;
-                        }
                         p{
                             color:white;
+                            border-right: 1px solid color(white);
+                        }
+                        time{
+                            color:white;
+                        }
+
+                    }
+
+                }
+            }
+
+            &.without__image {
+            
+                background:color(offwhite);
+
+                .content {
+                    color:red;
+
+                    .category{
+                        color:color(darkgrey)
+                    }
+                    .author {
+                        border-right:1px solid color(darkgray);
+                        >p {
+                            color:color(darkgray);
+                        }
+                    }
+                    time {
+                        color:color(darkgray);
+                    }
+
+                }
+            }   
+
+
+            &.social {
+                .content {
+                    padding-top:31px;
+                    .icon {
+                        margin-bottom:320px;
+                    }
+                    .category {
+
+                    }
+                    > p {
+                        font-family:$font-family-serif;
+                        font-size: rem(22);
+                        font-weight:600;
+                        margin-top: 10px;
+                        margin-bottom:10px;
+                        overflow:hidden;
+                        max-height: 55px;
+                        line-height: 1.18;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        padding-top: 31;
+                        .icon {
+                            margin-bottom:300px;
+                        }
+
+                        >p {
+                            max-height:110px;
+                            font-size:rem(22);
+                            line-height:1.18;
+                        }
+
+                    }
+                    &.without__image {
+                        .content {
+                            > p {
+                                color:black;
+                            }
+                        }
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content{
+                            .icon {
+                                margin-bottom:400px;
+                            }
                         }
                     }
 
-                    time{
-                        color:white;
-                    }
                 }
             }
+
+
         }
     }
 }
 
 .home-feature-thin-mobile {
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $sm-break-down){
 
         height:387px;
         margin-bottom:20px;
@@ -81,9 +160,7 @@
                 position:relative;
 
                 > figure {
-                    @include tintbefore();
-                    // width:auto;
-                    // height:10px;
+                    @include tintafter();
                 }
 
                 > .content {
@@ -109,27 +186,119 @@
                     }
 
 
-                    >p {
+                    >p.excerpt {
                         display:none;
                     }
 
 
                     .author{
-                        border-right: 1px solid color(white);
-
-                        img{
-                            display:none;
-                        }
                         p{
                             color:white;
+                            border-right: 1px solid color(white);
+
                         }
+                        time{
+                            color:white;
+                        }
+
                     }
 
-                    time{
-                        color:white;
-                    }
                 }
             }
+
+            &.without__image {
+            
+                background:color(offwhite);
+
+                .content {
+                    color:red;
+
+                    .category{
+                        color:color(darkgrey)
+                    }
+                    .author {
+                        >p {
+                            color:color(darkgray);
+                            border-right:1px solid color(darkgray);
+                        }
+                        time {
+                            color:color(darkgray);
+                        }
+
+                    }
+
+                }
+            }   
+
+
+            &.social {
+                .content {
+
+                    padding: 16px 20px 5px 10px;
+
+                    .icon {
+                        margin-bottom: 220px;
+                    }
+
+                    > p {
+                        font-size: rem(26);
+                        font-weight:600;
+                        margin-top: 5px;
+                        margin-bottom:6px;
+                        overflow:hidden;
+                        min-height:20px;
+                        max-height: 60px;
+                        line-height: 1.15;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        .icon {
+                            margin-bottom: 195px;
+                        }
+
+
+
+                        >p {
+                            max-height:80px;
+                            font-size:rem(22);
+                            line-height:1.22;
+                            margin-bottom:10px;
+                        }
+
+                    }
+                    &.without__image {
+                        .content {
+                            > p {
+                                color:black;
+                            }
+                        }
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content {
+                            .icon {
+                                margin-bottom: 275px;
+                            }
+                            >p {
+                                margin:0;
+                            }
+                        }
+                    }
+                }
+                &.youtube{
+                    .content{
+                        .icon {
+                            margin-bottom:90px;
+                        }
+                    }
+                }
+
+            }
+
         }
     }
 }

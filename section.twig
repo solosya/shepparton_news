@@ -12,7 +12,7 @@
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
-{% set testCount = 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
 
@@ -42,7 +42,7 @@
                                imageSize: {width:630},
                                containerClass: 'home-feature-sm home-feature-mobile'
                            }) | raw}}
-                           {% set articleCount = articleCount + 1 %}
+                           {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                        {% endif %}
             
 
@@ -62,7 +62,7 @@
 
                             <hr class="divide visible-sm-block visible-xs-block">
 
-                             {% set articleCount = articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                          {% endif %}
                
             
@@ -79,7 +79,7 @@
                             position: articleCount + 1,
                             containerClass: 'col-md-3 card-xs card-xs-mobile divideright'
                         }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-sm-block visible-xs-block">
                     {% endfor %}
 
@@ -99,7 +99,7 @@
                             imageSize: {width:95},
                             containerClass: 'col-md-3 card-sm-wide card-sm-wide-mobile'
                         }) | raw}}
-                        {% set articleCount = articleCount + 1 %}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endfor %}
 
                 </div>
@@ -125,7 +125,7 @@
                                 containerClass: 'card-sm card-sm-mobile',
                                 inline: 'style=margin-bottom:40px;'
                             }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
 
@@ -138,7 +138,7 @@
                                 containerClass: 'card-sm card-sm-mobile',
                                 inline: 'style=margin-bottom:40px;'
                             }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
 
@@ -152,7 +152,7 @@
                                 containerClass: 'card-sm card-sm-mobile',
                                 inline: 'style=margin-bottom:40px;'
                             }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
 
@@ -164,7 +164,7 @@
                                 imageSize: {width:95},
                                 containerClass: 'card-xs card-sm2-mobile'
                             }) | raw}}
-                            {% set articleCount = articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
                             <hr class="divide24 visible-md-block visible-lg-block">
 

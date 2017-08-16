@@ -1,0 +1,26 @@
+body.blog {
+    .site-main {
+        // margin-top:80px;
+        margin-bottom:100px;
+
+
+        .header {
+        
+            h2 {
+                font-size:rem(28);
+                font-weight: 700;
+                font-family: $font-family-serif;
+            }
+
+            p.blogowner {
+                margin-top:17px;
+                font-size: rem(20);
+                color:color(red);
+            }
+
+
+        }
+
+
+    }
+}

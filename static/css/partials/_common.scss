@@ -196,7 +196,7 @@ span.leadsentence{
 
 
 
-@media (min-width: 768px){
+@media (max-width: 767px){
     .five-cols .col-md-1,
     .five-cols .col-sm-1,
     .five-cols .col-lg-1  {
@@ -204,7 +204,7 @@ span.leadsentence{
         *width: 100%;
     }
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .five-cols .col-md-1,
     .five-cols .col-sm-1,
     .five-cols .col-lg-1 {
@@ -213,7 +213,7 @@ span.leadsentence{
     }
 }
 
-@media (min-width: 768px){
+@media (max-width: 767px){
     .two-cols .col-md-1,
     .two-cols .col-sm-1,
     .two-cols .col-lg-1  {
@@ -221,7 +221,7 @@ span.leadsentence{
         *width: 100%;
     }
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .two-cols {
         margin:0;
     }
