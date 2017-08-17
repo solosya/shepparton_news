@@ -4731,6 +4731,13 @@ hr.divide15 {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px; }
 
+div.bloggerImg {
+  position: relative;
+  background: #F03746;
+  /* fallback */
+  -webkit-clip-path: polygon(15% 0%, 100% 0%, 100% 20%, 100% 77%, 85% 100%, 0% 100%, 0% 100%, 0% 25%);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 20%, 100% 77%, 85% 100%, 0% 100%, 0% 100%, 0% 25%); }
+
 .search-icon {
   display: block;
   padding: 0;
@@ -5463,6 +5470,22 @@ ul.sub-menu a:focus {
       margin-top: 10px; } }
   .site-main section {
     margin-bottom: 80px; }
+  .site-main .bloggerImg > div {
+    position: absolute;
+    top: 20px;
+    left: 40px; }
+    .site-main .bloggerImg > div > p.header {
+      font-size: 1.6875rem;
+      color: white;
+      font-family: "PT Serif", "Times New Roman", Times, serif; }
+    .site-main .bloggerImg > div > p.local {
+      font-size: 0.75rem;
+      color: black; }
+  .site-main .bloggerImg > img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -80px; }
   @media screen and (min-width: 768px) {
     .site-main .row-space {
       margin-top: 29px; } }
@@ -5651,7 +5674,7 @@ body.blog .site-main {
       margin-top: 44px; }
     .article article.article-main .page-content figure.featured > img {
       width: 100%; }
-  .article article.article-main .article-sidebar > h2 {
+  .article article.article-main .article-sidebar h2.sidebar-header {
     margin-top: 40px;
     font-weight: 700;
     font-size: 1.375rem;
@@ -6243,11 +6266,13 @@ a.card {
         .card-xs a.card > article > .content {
           position: relative;
           padding: 0; }
+          .card-xs a.card > article > .content > .category {
+            line-height: 1; }
           .card-xs a.card > article > .content > h2 {
             font-weight: 600;
             font-size: 0.875rem;
             line-height: 1.14;
-            margin-top: 5px;
+            margin-top: 8px;
             height: 32px;
             margin-bottom: 7px; }
           .card-xs a.card > article > .content > p {
@@ -6256,7 +6281,7 @@ a.card {
             line-height: 1;
             margin-top: 2px; }
           .card-xs a.card > article > .content > .author {
-            margin-top: 9px; }
+            margin-top: 4px; }
             .card-xs a.card > article > .content > .author > p {
               margin: 0;
               padding: 0;
@@ -7511,22 +7536,22 @@ a.card {
           max-height: 80px; }
         .card-blogger a.card > article > .content > p {
           display: none; }
-        .card-blogger a.card > article > .content > time {
-          display: block; }
         .card-blogger a.card > article > .content > .author {
           display: block;
-          border: none;
           margin-top: 50px; }
           .card-blogger a.card > article > .content > .author > p {
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 5px;
             color: #F03746;
-            display: block; }
+            display: block;
+            border: none; }
           .card-blogger a.card > article > .content > .author > img {
             margin-right: 14px;
             float: left;
             display: inline-block; }
+          .card-blogger a.card > article > .content > .author > time {
+            display: block; }
     .card-blogger a.card.article.without__image .content {
       padding-top: 87px;
       height: 100%; }
@@ -7579,8 +7604,6 @@ a.card {
           max-height: 65px; }
         .card-blogger-mobile a.card > article > .content > p {
           display: none; }
-        .card-blogger-mobile a.card > article > .content > time {
-          display: block; }
         .card-blogger-mobile a.card > article > .content > .author {
           display: block;
           border: none;
@@ -7595,6 +7618,8 @@ a.card {
             margin-right: 14px;
             float: left;
             display: inline-block; }
+          .card-blogger-mobile a.card > article > .content > .author > time {
+            display: block; }
     .card-blogger-mobile a.card.article.without__image .content {
       padding-top: 87px;
       height: 100%; }

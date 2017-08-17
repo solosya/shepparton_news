@@ -94,6 +94,16 @@ hr.divide15 {
 
 
 
+div.bloggerImg {
+    position:relative;
+    background: color(red); /* fallback */
+    -webkit-clip-path: polygon(15% 0%, 100% 0%, 100% 20%, 100% 77%, 85% 100%, 0% 100%, 0% 100%, 0% 25%);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 20%, 100% 77%, 85% 100%, 0% 100%, 0% 100%, 0% 25%);
+}
+
+
+
+
 
 .search-icon{
     display:block;

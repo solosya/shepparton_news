@@ -11,6 +11,30 @@
     }
 
 
+    .bloggerImg {
+        >div {
+            position:absolute;
+            top:20px;
+            left:40px;
+            >p.header {
+                font-size: rem(27);
+                color:white;
+                font-family:$font-family-serif;
+            }
+            >p.local {
+                font-size: rem(12);
+                color:black;
+            }
+        }
+        >img {
+            position:absolute;
+            bottom:0;
+            left:50%;
+            margin-left:-80px;
+        }
+
+    }
+
     .row-space {
         @media screen and (min-width: $sm-break){
             margin-top:29px;

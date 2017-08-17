@@ -98,42 +98,56 @@
 
                     <div class="col-md-3">
                         <div class="article-sidebar">
-                            <div class="ad-square"></div>
 
-                            <h2>Latest articles</h2>
-
-
-                            {% for i in 0..4 if articles[testCount] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[testCount], 
-                                    position: (articleCount+1),
-                                    imageSize: {width: 75, height: 63},
-                                    containerClass: 'card-xs card-xs-mobile'
-                                }) | raw}}
+                            <div class="row">
+                                <div class="ad-square"></div>
                                 
-                                {% if i != 4 %}
-                                    <hr class="divide15">
-                                {% endif %}
-
-                                {% set articleCount = articleCount + 1 %}
-                            {% endfor %}
+                                <div class="col-sm-9">
+                                    <h2 class="sidebar-header">Latest articles</h2>
+                                </div>
 
 
-                            <h2>Suggested Videos</h2>
 
-                            {% for i in 0..2  if articles[testCount] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[testCount], 
-                                    position: (articleCount+1),
-                                    imageSize: {width: 300, height: 180},
-                                    containerClass: 'card-sm-wide card-sm-wide-mobile'
-                                }) | raw}}
-                                {% if i != 2 %}
-                                    <hr class="divide15 ">
-                                {% endif %}
+                                {% for i in 0..4 if articles[testCount] %}
+                                    <div class="col-md-9 col-sm-4">
+                                        {{this.render('partials/_single-article.twig', {
+                                            article: articles[testCount], 
+                                            position: (articleCount+1),
+                                            imageSize: {width: 75, height: 63},
+                                            containerClass: 'card-xs card-xs-mobile'
+                                        }) | raw}}
+                                        
+                                        {% if i < 4 %}
+                                            <hr class="divide15">
+                                        {% endif %}
 
-                            {% endfor%}
+                                        {% set articleCount = articleCount + 1 %}
+                                    </div>
+                                {% endfor %}
+                            </div>
 
+
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h2 class="sidebar-header">Suggested Videos</h2>
+                                </div>
+
+                                {% for i in 0..2  if articles[testCount] %}
+                                    <div class="col-md-9 col-sm-3">
+
+                                        {{this.render('partials/_single-article.twig', {
+                                            article: articles[testCount], 
+                                            position: (articleCount+1),
+                                            imageSize: {width: 300, height: 180},
+                                            containerClass: 'card-sm-wide card-sm-wide-mobile'
+                                        }) | raw}}
+                                        {% if i != 2 %}
+                                            <hr class="divide15 visible-md-block visible-lg-block">
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+
+                            </div>
                         </div>
                     </div>
 
@@ -149,19 +163,20 @@
                 <div class="col-md-9">
                     <h1>RELATED ARTICLES</h1>
                 </div>
-
-                {% for i in 0..2 if articles[testCount] %}
-                    <div class="col-md-3">
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[testCount], 
-                            position: (articleCount+1),
-                            imageSize: {width: 300, height: 180},
-                            containerClass: 'card-sm-wide card-sm-wide-mobile'
-                        }) | raw}}
-                    </div>
-                    {% set articleCount = articleCount + 1 %}
-                {% endfor %}
-
+                
+                <div class="row">
+                    {% for i in 0..2 if articles[testCount] %}
+                        <div class="col-sm-3">
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[testCount], 
+                                position: (articleCount+1),
+                                imageSize: {width: 300, height: 180},
+                                containerClass: 'card-sm-wide card-sm-wide-mobile'
+                            }) | raw}}
+                        </div>
+                        {% set articleCount = articleCount + 1 %}
+                    {% endfor %}
+                </div>
             </div>
 
 
