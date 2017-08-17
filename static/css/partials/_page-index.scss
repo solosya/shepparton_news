@@ -12,6 +12,14 @@
 
 
     .bloggerImg {
+
+        width:100%;
+        height:190px;
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+            height:139px;
+        }
+
+
         >div {
             position:absolute;
             top:20px;
@@ -38,6 +46,11 @@
     .row-space {
         @media screen and (min-width: $sm-break){
             margin-top:29px;
+        }
+        &.md {
+            @media screen and (max-width: $mmd-break){
+                margin-top:0;
+            }
         }
     }
 

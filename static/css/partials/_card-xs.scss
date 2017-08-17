@@ -141,6 +141,25 @@
     }
 }
 
+
+.card-xs-tablet {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        a.card {
+            article {
+                .content {
+                    >p.excerpt {
+                        display:none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
 .card-xs-mobile{
 
     @media screen and (max-width: $sm-break-down){

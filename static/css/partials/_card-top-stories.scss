@@ -31,6 +31,12 @@
                 > .content {
                     width:100%;
 
+                    .category {
+                        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+                            font-size:rem(10);
+                        }
+                    }
+
                     h2{
                         font-size: rem(15);
                         font-weight:normal;
@@ -38,7 +44,21 @@
                         margin-bottom: 10px;
                         overflow:hidden;
                         max-height:34px;
+
+                        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+                            font-size:rem(12);
+                            max-height:48px;
+                            line-height:1.33;
+
+                        }
                     }
+
+                    .author {
+                        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+                            font-size:rem(10);
+                        }
+                    }
+
 
                     >p {
                         display:none;

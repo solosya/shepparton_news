@@ -5477,25 +5477,34 @@ ul.sub-menu a:focus {
       margin-top: 10px; } }
   .site-main section {
     margin-bottom: 80px; }
-  .site-main .bloggerImg > div {
-    position: absolute;
-    top: 20px;
-    left: 40px; }
-    .site-main .bloggerImg > div > p.header {
-      font-size: 1.6875rem;
-      color: white;
-      font-family: "PT Serif", "Times New Roman", Times, serif; }
-    .site-main .bloggerImg > div > p.local {
-      font-size: 0.75rem;
-      color: black; }
-  .site-main .bloggerImg > img {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -80px; }
+  .site-main .bloggerImg {
+    width: 100%;
+    height: 190px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .site-main .bloggerImg {
+        height: 139px; } }
+    .site-main .bloggerImg > div {
+      position: absolute;
+      top: 20px;
+      left: 40px; }
+      .site-main .bloggerImg > div > p.header {
+        font-size: 1.6875rem;
+        color: white;
+        font-family: "PT Serif", "Times New Roman", Times, serif; }
+      .site-main .bloggerImg > div > p.local {
+        font-size: 0.75rem;
+        color: black; }
+    .site-main .bloggerImg > img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -80px; }
   @media screen and (min-width: 768px) {
     .site-main .row-space {
       margin-top: 29px; } }
+  @media screen and (max-width: 992px) {
+    .site-main .row-space.md {
+      margin-top: 0; } }
   @media screen and (min-width: 768px) {
     .site-main #weather-mob {
       display: none; } }
@@ -6318,6 +6327,10 @@ a.card {
       .card-xs a.card.social.instagram.without__content .content {
         padding-top: 34px; } }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-xs-tablet a.card article .content > p.excerpt {
+    display: none; } }
+
 @media screen and (max-width: 767px) {
   .card-xs-mobile {
     position: relative; }
@@ -6931,7 +6944,7 @@ a.card {
     .card-rec-full a.card.social.instagram.without__content .content {
       padding-top: 60px; }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .home-feature {
     height: 400px; }
     .home-feature a.card {
@@ -7017,6 +7030,98 @@ a.card {
       .home-feature a.card.social.twitter.without__image .content > p {
         color: black; }
       .home-feature a.card.social.instagram .content > p {
+        min-height: 20px;
+        max-height: 130px;
+        font-size: 1.375rem;
+        line-height: 1.27; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .home-feature-tablet {
+    height: 295px; }
+    .home-feature-tablet a.card {
+      position: relative;
+      height: 100%;
+      color: #ffffff; }
+      .home-feature-tablet a.card > article > figure {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1; }
+      .home-feature-tablet a.card > article > .content {
+        position: relative;
+        z-index: 2; }
+      .home-feature-tablet a.card article > figure:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+        background-image: -webkit-linear-gradient(transparent, #000000);
+        background-image: -o-linear-gradient(transparent, #000000);
+        background-image: linear-gradient(transparent, #000000); }
+      .home-feature-tablet a.card article > .content {
+        width: 100%;
+        padding: 133px 20px 10px 30px; }
+        .home-feature-tablet a.card article > .content .category {
+          color: white;
+          font-size: 0.625rem; }
+          .home-feature-tablet a.card article > .content .category:before {
+            content: '';
+            display: block;
+            height: 20px;
+            width: 80px;
+            background: url(../images/white-arrow.svg);
+            background-repeat: no-repeat;
+            margin-bottom: 5px; }
+        .home-feature-tablet a.card article > .content h2 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin-top: 0;
+          margin-bottom: 6px;
+          overflow: hidden;
+          max-height: 80px;
+          line-height: 1.18; }
+        .home-feature-tablet a.card article > .content > p.excerpt {
+          display: none; }
+        .home-feature-tablet a.card article > .content .author p {
+          font-family: "PT Serif", "Times New Roman", Times, serif;
+          color: white;
+          border-right: 1px solid; }
+        .home-feature-tablet a.card article > .content .author > time {
+          color: white; }
+      .home-feature-tablet a.card.without__image {
+        background: #F1F1F1; }
+        .home-feature-tablet a.card.without__image .content {
+          color: red; }
+          .home-feature-tablet a.card.without__image .content .category {
+            color: #4A4A4A; }
+          .home-feature-tablet a.card.without__image .content .author > p {
+            color: #4A4A4A;
+            border-right: 1px solid #4A4A4A; }
+          .home-feature-tablet a.card.without__image .content .author time {
+            color: #4A4A4A; }
+      .home-feature-tablet a.card.social .content {
+        padding-top: 31px; }
+        .home-feature-tablet a.card.social .content .icon {
+          margin-bottom: 200px; }
+        .home-feature-tablet a.card.social .content > p {
+          font-size: 2.125rem;
+          font-weight: 600;
+          margin-top: 0;
+          margin-bottom: 6px;
+          overflow: hidden;
+          max-height: 80px;
+          line-height: 1.18; }
+      .home-feature-tablet a.card.social.twitter .content > p {
+        max-height: 130px;
+        font-size: 1.375rem;
+        line-height: 1.27; }
+      .home-feature-tablet a.card.social.twitter.without__image .content > p {
+        color: black; }
+      .home-feature-tablet a.card.social.instagram .content > p {
         min-height: 20px;
         max-height: 130px;
         font-size: 1.375rem;
@@ -7472,6 +7577,72 @@ a.card {
       .feature-side a.card.social.instagram.without__content .content > .author {
         position: static; }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .feature-side-tablet {
+    clear: both;
+    height: 77px;
+    margin-bottom: 8px;
+    font-family: "adelle-sans", Helvetica, Arial, sans-serif; }
+    .feature-side-tablet a.card {
+      height: 100%;
+      padding-top: 8px;
+      border-top: 1px solid rgba(74, 74, 74, 0.3); }
+      .feature-side-tablet a.card > article > figure {
+        width: 58px;
+        height: 69px;
+        float: left; }
+      .feature-side-tablet a.card > article > .content {
+        display: block;
+        width: auto; }
+      .feature-side-tablet a.card article > figure {
+        margin-right: 15px; }
+        .feature-side-tablet a.card article > figure.video:before {
+          width: 42px;
+          height: 42px;
+          margin-left: -21px;
+          margin-top: -21px; }
+      .feature-side-tablet a.card article > .content {
+        width: 100%;
+        height: 100%;
+        position: relative; }
+        .feature-side-tablet a.card article > .content .category {
+          color: #F03746;
+          font-size: 0.625rem; }
+        .feature-side-tablet a.card article > .content h2 {
+          font-size: 0.75rem;
+          font-weight: 700;
+          margin-top: 4px;
+          overflow: hidden;
+          line-height: 1.15;
+          max-height: 33px; }
+        .feature-side-tablet a.card article > .content > p.excerpt {
+          display: none; }
+        .feature-side-tablet a.card article > .content .author {
+          position: absolute;
+          bottom: 0; }
+      .feature-side-tablet a.card.without__image .content p.excerpt {
+        display: block;
+        margin-top: 2px;
+        max-height: 35px;
+        font-size: 0.75rem; }
+      .feature-side-tablet a.card.social .content .icon {
+        display: none; }
+      .feature-side-tablet a.card.social .content > p {
+        max-height: 65px;
+        margin-bottom: 6px; }
+      .feature-side-tablet a.card.social.facebook .content > p, .feature-side-tablet a.card.social.twitter .content > p, .feature-side-tablet a.card.social.instagram .content > p, .feature-side-tablet a.card.social.youtube .content > p {
+        font-size: 0.75rem;
+        margin-top: 10px;
+        max-height: 50px;
+        font-weight: 600;
+        line-height: 1.33; }
+      .feature-side-tablet a.card.social.instagram.without__content .content {
+        padding-top: 34px; }
+        .feature-side-tablet a.card.social.instagram.without__content .content > p {
+          margin-top: 0; }
+        .feature-side-tablet a.card.social.instagram.without__content .content > .author {
+          position: static; } }
+
 .top-stories:last-child a.card:after {
   display: none; }
 
@@ -7490,14 +7661,29 @@ a.card {
       top: 0;
       right: 5px; }
     .top-stories a.card article > .content {
-      width: 100%; }
+      width: 100%; } }
+    @media screen and (min-width: 768px) and (min-width: 768px) and (max-width: 991px) {
+      .top-stories a.card article > .content .category {
+        font-size: 0.625rem; } }
+
+@media screen and (min-width: 768px) {
       .top-stories a.card article > .content h2 {
         font-size: 0.9375rem;
         font-weight: normal;
         margin-top: 5px;
         margin-bottom: 10px;
         overflow: hidden;
-        max-height: 34px; }
+        max-height: 34px; } }
+      @media screen and (min-width: 768px) and (min-width: 768px) and (max-width: 991px) {
+        .top-stories a.card article > .content h2 {
+          font-size: 0.75rem;
+          max-height: 48px;
+          line-height: 1.33; } }
+    @media screen and (min-width: 768px) and (min-width: 768px) and (max-width: 991px) {
+      .top-stories a.card article > .content .author {
+        font-size: 0.625rem; } }
+
+@media screen and (min-width: 768px) {
       .top-stories a.card article > .content > p {
         display: none; }
     .top-stories a.card.social .content .icon {
@@ -7679,7 +7865,8 @@ a.card {
             font-weight: 600;
             margin-bottom: 5px;
             color: #F03746;
-            display: block; }
+            display: block;
+            border: none; }
           .card-blogger-mobile a.card > article > .content > .author > img {
             margin-right: 14px;
             float: left;
