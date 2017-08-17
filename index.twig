@@ -210,16 +210,18 @@
                 <div class="row">
                     <div class="col-sm-2 most-popular">
                         <h2>Most popular</h2>
-
-                        {% for i in 0..4 if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: 1,
-                                imageSuppress: true, 
-                                containerClass: 'card-popular'
-                            }) | raw}}
+{#                         <ol>
+ #}                        {% for i in 0..4 if articles[articleCount] %}
+{#                             <li>
+ #}                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: 1,
+                                    imageSuppress: true, 
+                                    containerClass: 'card-popular'
+                                }) | raw}}
+                            {# </li> #}
                         {% endfor %}
-
+                        {# </ol> #}
                         <hr class="divide visible-xs-block">
 
                     </div>

@@ -1,4 +1,21 @@
+.most-popular {
+    counter-reset: my-badass-counter;
+}
+.most-popular > div:before {
+    content: counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+}
+
 .card-popular {
+
+    &:before {
+        float:left;
+        font-size:rem(17);
+        color: color(red);
+        margin-right:10px;
+        line-height:1;
+    }
+    
 
     a.card {
         @include card-image-none;

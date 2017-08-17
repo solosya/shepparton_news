@@ -1,4 +1,13 @@
 .top-stories {
+
+    &:last-child {
+        a.card {
+            &:after {
+                display:none;
+            }
+        }
+    }
+
     @media screen and (min-width: $sm-break){
 
         a.card {
