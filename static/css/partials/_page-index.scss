@@ -7,7 +7,9 @@
     margin-bottom:100px;
 
     section {
-      margin-bottom:80px;
+        @media screen and (min-width: $sm-break){
+            margin-bottom:80px;
+        }
     }
 
 
@@ -53,6 +55,18 @@
             }
         }
     }
+
+    .row-space40 {
+        @media screen and (min-width: $sm-break){
+            margin-top:35px;
+        }
+        &.md {
+            @media screen and (max-width: $mmd-break){
+                margin-top:0;
+            }
+        }
+    }
+
 
     #weather-mob {
         @media screen and (min-width: $sm-break){

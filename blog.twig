@@ -18,7 +18,7 @@
 {% endif %}    
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = 2 %}
+{% set articleCount = 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
@@ -34,19 +34,21 @@
     <div class="container">
 
         <section>
-            <div class="row">
-                <div class="col-md-9 header">
-                    <div class="hk">
-                        <img src="{{networkData.templatePath}}/static/images/bloggers.svg">
+            <div class="row header">
+                <div class="col-sm-9">
+                    <div class="bloggerImg">
+                        <img src="{{networkData.templatePath}}/static/images/megaphone.svg">
+                    </div>
 
-                        <h2>{{this.title}}</h2>
-                        <p class="blogowner">by Lee Neenan {{ blogInfo.owner.display_name }}</p>
+                    <div class="">
+                        <h2>Bloggers</h2>
+                        <p class="blogowner">Your local news</p>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     
                     {% if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
@@ -58,20 +60,14 @@
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endif %}
 
-                    <div class="" style="margin-top:30px;"></div>
-
 
                     {% for i in 0..1 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount],
                             position: articleCount + 1,
                             imageSize: {width:300},
-                            containerClass: 'card-rec'
+                            containerClass: 'card-rec card-rec-tablet card-sm-wide-mobile row-space'
                         }) | raw}}
-
-                        {% if i == 0 %}
-                            <div class="" style="margin-top:30px;"></div>
-                        {% endif %}
 
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endfor %}
@@ -81,9 +77,9 @@
 
 
 
-                <div class="col-md-3">
+                <div class="col-sm-3">
                 
-                    <div class="ad-square" style="margin-bottom:30px;"></div>
+                    <div class="ad-square visible-md-block visible-lg-block" style="margin-bottom:30px;"></div>
 
 
                     {% for i in 0..1 if articles[articleCount] %}
@@ -129,9 +125,13 @@
                         article: articles[articleCount], 
                         imageSize: {width:80},
                         position: articleCount + 1,
-                        containerClass: 'col-md-3 card-sm-wide card-sm-wide-mobile'
+                        containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% if i == 2 %}
+                        <hr class="divide visible-xs-block">
+                    {% endif %}
+
                 {% endfor %}
 
             </div>
@@ -142,14 +142,14 @@
         <section>
 
             <div class="row">
-                <div class="col-md-6">
-                    
+                <div class="col-sm-6">
+
                     {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount],
                             position: articleCount + 1,
                             imageSize: {width:300},
-                            containerClass: 'card-rec'
+                            containerClass: 'card-rec card-rec-tablet card-sm-wide-mobile row-space'
                         }) | raw}}
 
                         {% if i < 2 %}
@@ -164,7 +164,7 @@
 
 
 
-                <div class="col-md-3">
+                <div class="col-sm-3">
                 
                     <div class="ad-square" style="margin-bottom:30px;"></div>
 

@@ -60,11 +60,11 @@
 			{
 				"id": "716",
 				"guid": "5e994f7a-3eb1-408e-9740-ece27d85c118",
-				"title": "Videos",
+				"title": "News",
 				"type": "channel",
 				"is_default": null,
 				"network_id": "327",
-				"short_description": "Videos section",
+				"short_description": "News section",
 				"featured_color": null,
 				"status": "1",
 				"blogLayoutFileName": null,
@@ -81,12 +81,12 @@
 				"total_views": "0",
 				"total_articles": "0",
 				"created_at": "1493861433",
-				"url": "http:\/\/theme.aap.io\/@videos"
+				"url": "http:\/\/theme.aap.io\/@news"
 			},
 			{
 				"id": "718",
 				"guid": "5e994f7a-3eb1-408e-9740-ece27d85c119",
-				"title": "Local news",
+				"title": "Sport",
 				"type": "blog",
 				"is_default": null,
 				"network_id": "327",
@@ -107,12 +107,12 @@
 				"total_views": "0",
 				"total_articles": "0",
 				"created_at": "1493861433",
-				"url": "http:\/\/theme.aap.io\/@local-news"
+				"url": "http:\/\/theme.aap.io\/@sport"
 			},
 			{
 				"id": "723",
 				"guid": "4edecaf3-c3e8-4768-9454-9895b646e986",
-				"title": "Regional News",
+				"title": "Opinion",
 				"type": "channel",
 				"is_default": null,
 				"network_id": "327",
@@ -133,32 +133,6 @@
 				"total_views": "0",
 				"total_articles": "0",
 				"created_at": "1493862086",
-				"url": "http:\/\/theme.aap.io\/@regional-news"
-			},
-			{
-				"id": "720",
-				"guid": "667a8f2d-47ee-40db-89d0-86dadc56bfd0",
-				"title": "Opinion",
-				"type": "channel",
-				"is_default": null,
-				"network_id": "327",
-				"short_description": "Opinion section",
-				"featured_color": null,
-				"status": "1",
-				"blogLayoutFileName": null,
-				"thumbCloudinaryPublicId": null,
-				"thumbCloudinaryCloudName": null,
-				"thumbCdnPath": null,
-				"thumbMediaWidth": null,
-				"thumbMediaHeight": null,
-				"cloudinary_public_id": null,
-				"cloudinary_cloud_name": null,
-				"cdn_path": "http://res.cloudinary.com/cognitives/image/upload/c_fit,dpr_auto,f_auto,fl_lossy,q_auto/sqryt0id1pr8o50mutlf.jpg",
-				"coverMediaWidth": null,
-				"coverMediaHeight": null,
-				"total_views": "0",
-				"total_articles": "0",
-				"created_at": "1493861466",
 				"url": "http:\/\/theme.aap.io\/@opinion"
 			},
 

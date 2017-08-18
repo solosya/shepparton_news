@@ -70,14 +70,15 @@
                     </div>
                 </div>
 
-                <div class="row" style="margin-top:30px;">
+                <div class="row row-space">
 
+                    {% set divider = ['divideright', 'divideright', ''] %}
                     {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:80},
                             position: articleCount + 1,
-                            containerClass: 'col-sm-3 card-xs card-xs-mobile divideright'
+                            containerClass: 'col-sm-3 card-xs card-xs-mobile ' ~ divider[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">
@@ -119,26 +120,31 @@
             <section class="">
                 <div class="row">
                     <div class="col-sm-2 split">
+                        {% set cardspace = ['', 'row-space40', 'row-space40'] %}
                         {% for i in 0..2 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 imageSize: {width:95},
-                                containerClass: 'card-sm card-sm-mobile',
-                                inline: 'style=margin-bottom:40px;'
+                                containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
                             }) | raw}}
+                            <hr class="divide visible-xs-block">
+
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
 
 
                     <div class="col-sm-2">
+                        {% set cardspace = ['', 'row-space40', 'row-space40'] %}
+
                         {% for i in 0..2 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 imageSize: {width:95},
-                                containerClass: 'card-sm card-sm-mobile',
-                                inline: 'style=margin-bottom:40px;'
+                                containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
                             }) | raw}}
+                            <hr class="divide visible-xs-block">
+
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
@@ -146,13 +152,16 @@
 
 
                     <div class="col-sm-2 split">
+                        {% set cardspace = ['', 'row-space40', 'row-space40'] %}
+
                         {% for i in 0..2 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 imageSize: {width:95},
-                                containerClass: 'card-sm card-sm-mobile',
-                                inline: 'style=margin-bottom:40px;'
+                                containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
                             }) | raw}}
+                            <hr class="divide visible-xs-block">
+
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
@@ -165,9 +174,11 @@
                                 imageSize: {width:95},
                                 containerClass: 'card-xs card-sm2-mobile'
                             }) | raw}}
+
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
                             <hr class="divide24 visible-md-block visible-lg-block">
+                            <hr class="divide visible-xs-block">
 
                         {% endfor %}
 

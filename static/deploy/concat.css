@@ -5475,8 +5475,9 @@ ul.sub-menu a:focus {
   @media screen and (max-width: 767px) {
     .site-main {
       margin-top: 10px; } }
-  .site-main section {
-    margin-bottom: 80px; }
+  @media screen and (min-width: 768px) {
+    .site-main section {
+      margin-bottom: 80px; } }
   .site-main .bloggerImg {
     width: 100%;
     height: 190px; }
@@ -5504,6 +5505,12 @@ ul.sub-menu a:focus {
       margin-top: 29px; } }
   @media screen and (max-width: 992px) {
     .site-main .row-space.md {
+      margin-top: 0; } }
+  @media screen and (min-width: 768px) {
+    .site-main .row-space40 {
+      margin-top: 35px; } }
+  @media screen and (max-width: 992px) {
+    .site-main .row-space40.md {
       margin-top: 0; } }
   @media screen and (min-width: 768px) {
     .site-main #weather-mob {
@@ -5580,14 +5587,52 @@ ul.sub-menu a:focus {
 
 body.blog .site-main {
   margin-bottom: 100px; }
-  body.blog .site-main .header h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    font-family: "PT Serif", "Times New Roman", Times, serif; }
-  body.blog .site-main .header p.blogowner {
-    margin-top: 17px;
-    font-size: 1.25rem;
-    color: #F03746; }
+  body.blog .site-main .header {
+    margin-bottom: 45px; }
+    @media screen and (max-width: 767px) {
+      body.blog .site-main .header {
+        margin-bottom: 26px; } }
+    body.blog .site-main .header > div > div {
+      float: left; }
+    body.blog .site-main .header h2 {
+      margin-top: 15px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      font-family: "PT Serif", "Times New Roman", Times, serif; }
+    body.blog .site-main .header p.blogowner {
+      margin-top: 10px;
+      color: #F03746; }
+    @media screen and (min-width: 992px) {
+      body.blog .site-main .header p.blogowner {
+        margin-top: 10px; }
+      body.blog .site-main .header .bloggerImg {
+        height: 134px;
+        width: 203px;
+        margin-right: 15px; }
+        body.blog .site-main .header .bloggerImg > img {
+          height: 109px; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      body.blog .site-main .header p.blogowner {
+        margin-top: 10px; }
+      body.blog .site-main .header .bloggerImg {
+        height: 98px;
+        width: 146px;
+        margin-right: 15px; }
+        body.blog .site-main .header .bloggerImg > img {
+          height: 80px;
+          margin-left: -50px; } }
+    @media screen and (max-width: 767px) {
+      body.blog .site-main .header h2 {
+        margin-top: 0; }
+      body.blog .site-main .header p.blogowner {
+        margin-top: 10px; }
+      body.blog .site-main .header .bloggerImg {
+        height: 68px;
+        width: 101px;
+        margin-right: 10px; }
+        body.blog .site-main .header .bloggerImg > img {
+          height: 53px;
+          margin-left: -40px; } }
 
 .searchPage {
   margin-top: 50px; }
@@ -6674,8 +6719,10 @@ a.card {
             max-height: 44px; }
           .card-sm-wide-mobile a.card > article > .content > p.excerpt {
             display: none; }
-          .card-sm-wide-mobile a.card > article > .content > .author {
-            display: none; }
+          .card-sm-wide-mobile a.card > article > .content > .author > p {
+            margin: 0;
+            padding: 0;
+            padding-right: 5px; }
       .card-sm-wide-mobile a.card.without__image {
         background: #F1F1F1; }
         .card-sm-wide-mobile a.card.without__image .content {
@@ -6799,67 +6846,187 @@ a.card {
       .card-sm2-mobile a.card.social.instagram.without__content .content {
         padding-top: 25px; } }
 
-.card-rec {
-  height: 192px; }
-  .card-rec a.card {
-    height: 100%; }
-    .card-rec a.card > article > figure {
-      width: 300px;
-      height: 192px;
-      float: left; }
-    .card-rec a.card > article > .content {
-      display: block;
-      width: auto; }
-    .card-rec a.card article {
-      position: relative; }
-      .card-rec a.card article > figure {
-        margin-right: 30px; }
-      .card-rec a.card article > .content {
-        width: 100%;
-        height: 100%;
+@media screen and (min-width: 992px) {
+  .card-rec {
+    height: 192px; }
+    .card-rec a.card {
+      height: 100%; }
+      .card-rec a.card > article > figure {
+        width: 300px;
+        height: 192px;
+        float: left; }
+      .card-rec a.card > article > .content {
+        display: block;
+        width: auto; }
+      .card-rec a.card article {
         position: relative; }
-        .card-rec a.card article > .content h2 {
+        .card-rec a.card article > figure {
+          margin-right: 30px; }
+        .card-rec a.card article > .content {
+          width: 100%;
+          height: 100%;
+          position: relative; }
+          .card-rec a.card article > .content h2 {
+            font-family: "PT Serif", "Times New Roman", Times, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 12px;
+            line-height: 1.3; }
+          .card-rec a.card article > .content > p.excerpt {
+            display: none; }
+          .card-rec a.card article > .content .author {
+            position: absolute;
+            bottom: 5px; }
+            .card-rec a.card article > .content .author img {
+              display: none; }
+            .card-rec a.card article > .content .author p {
+              display: block;
+              font-size: 0.875rem;
+              font-weight: 700;
+              color: #F03746;
+              border: none; }
+            .card-rec a.card article > .content .author time {
+              display: block;
+              font-family: "PT Serif", "Times New Roman", Times, serif;
+              margin-top: 5px; }
+      .card-rec a.card.without__image .content {
+        height: 100%; }
+        .card-rec a.card.without__image .content h2 {
           font-family: "PT Serif", "Times New Roman", Times, serif;
           font-size: 1.25rem;
           font-weight: 600;
           margin-top: 12px;
-          line-height: 1.3; }
-        .card-rec a.card article > .content > p.excerpt {
-          display: none; }
-        .card-rec a.card article > .content .author {
-          position: absolute;
-          bottom: 22px;
-          border: none; }
-          .card-rec a.card article > .content .author img {
-            display: none; }
-          .card-rec a.card article > .content .author p {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #F03746; }
-        .card-rec a.card article > .content time {
-          position: absolute;
-          bottom: 5px;
-          font-family: "PT Serif", "Times New Roman", Times, serif; }
-    .card-rec a.card.without__image .content {
-      height: 100%; }
-      .card-rec a.card.without__image .content h2 {
-        font-family: "PT Serif", "Times New Roman", Times, serif;
+          line-height: 1.3;
+          max-height: 52px; }
+        .card-rec a.card.without__image .content p.excerpt {
+          font-size: 0.9375rem;
+          display: block;
+          margin-top: 10px;
+          max-height: 35px;
+          line-height: 1.13; }
+      .card-rec a.card.social .content .icon {
+        display: none; }
+      .card-rec a.card.social .content > p {
+        margin-top: 10px;
+        max-height: 65px;
+        margin-bottom: 6px; }
+      .card-rec a.card.social.twitter .content > p {
         font-size: 1.25rem;
         font-weight: 600;
-        margin-top: 12px;
-        line-height: 1.3; }
-      .card-rec a.card.without__image .content p.excerpt {
-        display: block; }
-    .card-rec a.card.social .content .icon {
-      display: none; }
-    .card-rec a.card.social .content > p {
-      max-height: 65px;
-      margin-bottom: 6px; }
-    .card-rec a.card.social.facebook .content > p, .card-rec a.card.social.twitter .content > p, .card-rec a.card.social.instagram .content > p, .card-rec a.card.social.youtube .content > p {
-      font-weight: 600;
-      line-height: 1.33; }
-    .card-rec a.card.social.instagram.without__content .content {
-      padding-top: 34px; }
+        line-height: 1.33;
+        max-height: 80px; }
+      .card-rec a.card.social.twitter.without__image .content > p {
+        font-size: 1.125rem;
+        max-height: 84px;
+        font-weight: normal;
+        line-height: 1.56; }
+      .card-rec a.card.social.facebook .content > p {
+        font-weight: 600;
+        line-height: 1.33; }
+      .card-rec a.card.social.facebook.without__image .content > p {
+        font-size: 1.125rem;
+        max-height: 84px;
+        font-weight: normal;
+        line-height: 1.56; }
+      .card-rec a.card.social.instagram .content > p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.33;
+        max-height: 80px; }
+      .card-rec a.card.social.instagram.without__content .content {
+        padding-top: 115px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .card-rec-tablet {
+    height: 140px; }
+    .card-rec-tablet a.card {
+      height: 100%; }
+      .card-rec-tablet a.card > article > figure {
+        width: 215px;
+        height: 140px;
+        float: left; }
+      .card-rec-tablet a.card > article > .content {
+        display: block;
+        width: auto; }
+      .card-rec-tablet a.card article {
+        position: relative; }
+        .card-rec-tablet a.card article > figure {
+          margin-right: 30px; }
+        .card-rec-tablet a.card article > .content {
+          width: 100%;
+          height: 100%;
+          position: relative; }
+          .card-rec-tablet a.card article > .content .category {
+            font-size: 0.625rem; }
+          .card-rec-tablet a.card article > .content h2 {
+            font-family: "PT Serif", "Times New Roman", Times, serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 12px;
+            line-height: 1.3; }
+          .card-rec-tablet a.card article > .content > p.excerpt {
+            display: none; }
+          .card-rec-tablet a.card article > .content .author {
+            position: absolute;
+            bottom: 5px; }
+            .card-rec-tablet a.card article > .content .author img {
+              display: none; }
+            .card-rec-tablet a.card article > .content .author p {
+              display: block;
+              font-size: 0.625rem;
+              font-weight: 700;
+              color: #F03746;
+              border: none; }
+            .card-rec-tablet a.card article > .content .author time {
+              display: block;
+              font-family: "PT Serif", "Times New Roman", Times, serif;
+              margin-top: 5px; }
+      .card-rec-tablet a.card.without__image .content {
+        height: 100%; }
+        .card-rec-tablet a.card.without__image .content h2 {
+          font-family: "PT Serif", "Times New Roman", Times, serif;
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-top: 12px;
+          line-height: 1.3;
+          max-height: 52px; }
+        .card-rec-tablet a.card.without__image .content p.excerpt {
+          font-size: 0.9375rem;
+          display: block;
+          margin-top: 10px;
+          max-height: 35px;
+          line-height: 1.13; }
+      .card-rec-tablet a.card.social .content .icon {
+        display: none; }
+      .card-rec-tablet a.card.social .content > p {
+        margin-top: 10px;
+        max-height: 65px;
+        margin-bottom: 6px; }
+      .card-rec-tablet a.card.social.twitter .content > p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.33;
+        max-height: 80px; }
+      .card-rec-tablet a.card.social.twitter.without__image .content > p {
+        font-size: 1.125rem;
+        max-height: 84px;
+        font-weight: normal;
+        line-height: 1.56; }
+      .card-rec-tablet a.card.social.facebook .content > p {
+        font-weight: 600;
+        line-height: 1.33; }
+      .card-rec-tablet a.card.social.facebook.without__image .content > p {
+        font-size: 1.125rem;
+        max-height: 84px;
+        font-weight: normal;
+        line-height: 1.56; }
+      .card-rec-tablet a.card.social.instagram .content > p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.33;
+        max-height: 80px; }
+      .card-rec-tablet a.card.social.instagram.without__content .content {
+        padding-top: 115px; } }
 
 .card-rec-full {
   height: 144px; }
@@ -7296,7 +7463,7 @@ a.card {
       .home-feature-sm a.card.social .content {
         padding-top: 31px; }
         .home-feature-sm a.card.social .content .icon {
-          margin-bottom: 200px; }
+          margin-bottom: 170px; }
         .home-feature-sm a.card.social .content > p {
           font-size: 1.375rem;
           width: 50%;
@@ -7308,8 +7475,6 @@ a.card {
           line-height: 1.18; }
       .home-feature-sm a.card.social.twitter .content, .home-feature-sm a.card.social.instagram .content {
         padding-top: 31; }
-        .home-feature-sm a.card.social.twitter .content .icon, .home-feature-sm a.card.social.instagram .content .icon {
-          margin-bottom: 170px; }
         .home-feature-sm a.card.social.twitter .content > p, .home-feature-sm a.card.social.instagram .content > p {
           max-height: 100px;
           font-size: 1.125rem;
