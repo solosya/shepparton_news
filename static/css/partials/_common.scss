@@ -52,8 +52,7 @@ div[class*="col-sm"] {
 
 
 hr.divide {
-    margin-top: 28px;
-    margin-bottom: 28px;
+    margin:28px 0;
     border: 0;
     border-top: 1px solid color(lightgrey);
 }
@@ -61,18 +60,20 @@ hr.divide {
 hr.divide.visible-xs-block {
     margin-top: 15px;
     margin-bottom: 15px;
-
 }
 
 hr.divide24 {
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin:24px 0;
     border: 0;
     border-top: 1px solid color(lightgrey);
 }
 hr.divide15 {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin:15px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+}
+hr.divide10 {
+    margin:10px 0;
     border: 0;
     border-top: 1px solid color(lightgrey);
 }

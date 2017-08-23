@@ -1,6 +1,46 @@
+@mixin card-xs-base() {
+    position:relative;
+    a.card {
+        > article {
+            position:relative;
+            > figure{
+                margin-right:15px;
+
+                &.video {
+                    &:before{
+                       @include videoIcon();
+                    }
+                }
+            }
+            > .content{
+                position:relative;
+                padding:0;
+
+                > .category{
+                }
+
+                > h2{
+                }
+                > p.excerpt {
+                }
+                .author {
+                    > p {
+                        margin: 0;
+                        padding: 0;
+                        padding-left:5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 .card-xs{
 
-    @media screen and (min-width: $sm-break){
+    @media screen and (min-width: $sm-break) {
+
+        @include card-xs-base();
 
         &.divideright {
             &:after {
@@ -21,7 +61,6 @@
         }
 
 
-        position:relative;
 
 
         a.card {
@@ -30,23 +69,9 @@
             height:95px;
 
             > article {
-                position:relative;
-
-                > figure{
-                    overflow: hidden;
-                    margin-right:15px;
-
-                    &.video {
-                        &:before{
-                           @include videoIcon();
-                        }
-                    }
-                }
 
 
                 > .content{
-                    position:relative;
-                    padding: 0;
 
                     > .category{
                         line-height:1;
@@ -70,12 +95,6 @@
 
                     > .author{
                         margin-top:4px;
-
-                        >p {
-                            margin: 0;
-                            padding: 0;
-                            padding-right:5px;
-                        }
                     }
 
 
@@ -132,11 +151,7 @@
                         }
                     }
                 }
-
             }
-
-
-            
         }
     }
 }
@@ -163,9 +178,7 @@
 .card-xs-mobile{
 
     @media screen and (max-width: $sm-break-down){
-
-        position:relative;
-
+        @include card-xs-base();
 
         a.card {
             @include card-image-left(80px, 95px);
@@ -173,24 +186,7 @@
             height:95px;
 
             > article {
-                position:relative;
-
-                > figure{
-                    overflow: hidden;
-                    margin-right:15px;
-
-                    &.video {
-                        &:before{
-                           @include videoIcon();
-                        }
-                    }
-                }
-
-
                 > .content{
-                    position:relative;
-                    padding: 0;
-
                     > .category{
                     }
 
@@ -212,15 +208,7 @@
 
                     > .author{
                         margin-top:9px;
-
-                        >p {
-                            margin: 0;
-                            padding: 0;
-                            padding-left:5px;
-                        }
                     }
-
-
                 }
             }
 
@@ -234,7 +222,6 @@
                         font-size:rem(12);
                     }
                 }
-
             }
 
             &.social {

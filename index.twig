@@ -8,6 +8,8 @@
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
+
 
 
 {% set events = _Event.getEvents() %}
@@ -16,7 +18,7 @@
 </pre> #}
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = 0  %}
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
@@ -145,9 +147,13 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
-                                containerClass: 'feature-side feature-side-tablet'
+                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% if i < 2 %}
+                                <hr class="divide15 visible-md-block visible-lg-block">
+                                <hr class="divide10 visible-xs-block visible-sm-block">
+                            {% endif %}
 
                         {% endfor %}
                     </div><!-- .row-->
@@ -156,30 +162,6 @@
                 </div>
             </section><!-- .featured-slider-->
 
-{# 
-            <div class="col-sm-12">
-                 <section class="" style="">
-                    <div class="row">
-                        <div class="ajaxArticles index clearfix"
-                             data-offset="{{limit}}"
-                             data-articlecount="10"
-                             data-containerclass="col-sm-4 card-sm"
-                             data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                         </div>
-                        <a class="loadMoreArticles" href="#">Load more articles</a>
-                    </div>
-
-                    {% set noDataCls = 'hide' %}
-                    {% if articles|length == 0 %}
-                        {% set noDataCls = '' %}
-                     {% endif %}
-                    <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                        <p class="no-data text-center">No articles found.</p>  
-                    </div>
-                </section>
-            </div>
-
- #}
 
 
             <section class="row five-cols top-stories-row">
@@ -210,10 +192,10 @@
                 <div class="row">
                     <div class="col-sm-3 col-md-2 most-popular">
                         <h2>Most popular</h2>
-                        {% for i in 0..4 if articles[articleCount] %}
+
+                        {% for i in 0..4 if popularArticles[i] %}
                                 {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount], 
-                                    position: 1,
+                                    article: popularArticles[i], 
                                     imageSuppress: true, 
                                     containerClass: 'card-popular'
                                 }) | raw}}
@@ -266,7 +248,7 @@
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:300},
-                                containerClass: 'card-sm-wide card-sm2-mobile'
+                                containerClass: 'card-sm-wide feature-side-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             
@@ -282,7 +264,7 @@
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:300},
-                                containerClass: 'card-sm-wide card-sm2-mobile'
+                                containerClass: 'card-sm-wide feature-side-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             <hr class="divide visible-xs-block">
@@ -297,7 +279,7 @@
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
                                 imageSize: {width:95},
-                                containerClass: 'card-xs card-xs-tablet card-sm2-mobile'
+                                containerClass: 'card-xs card-xs-tablet feature-side-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             
@@ -390,7 +372,7 @@
                                         imageSize: {width:630},
                                         containerClass: 'home-feature-sm home-feature-mobile'
                                     }) | raw}}
-                                    {% set localCount = (dev) ? localCount : localCount + 1 %}
+                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
                                 {% endif %}
                             </div>
 
@@ -403,7 +385,7 @@
                                         imageSuppress: true,
                                         containerClass: 'card-xs card-xs-mobile'
                                     }) | raw}}
-                                    {% set localCount = (dev) ? localCount : localCount + 1 %}
+                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
                                    
                                     <hr class="{{classdivide[i]}}">
                                 {% endfor %}
@@ -455,7 +437,7 @@
                                                         imageSize: {width:630},
                                                         containerClass: 'card-rec-full visible-md-block visible-lg-block'
                                                     }) | raw}}
-                                                    {% set localCount = (dev) ? localCount : localCount + 1 %}
+                                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
                                                     <hr class="divide visible-xs-block">
                                                 {% endif %}
 
@@ -469,7 +451,7 @@
                                                     imageSize: {width:188},
                                                     containerClass: 'col-sm-1 card-sm card-sm-mobile'
                                                 }) | raw}}
-                                                {% set localCount = (dev) ? localCount : localCount + 1 %}
+                                                {% set localCount = (dev) ? articleCount : localCount + 1 %}
                                                 <hr class="divide visible-xs-block">
 
                                             {% endfor %}
@@ -548,7 +530,7 @@
                                 imageSize: {width:409, height:530},
                                 containerClass: 'home-feature-thin home-feature-thin-mobile'
                             }) | raw}}
-                            {% set regionalCount = (dev) ? regionalCount : regionalCount + 1 %}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
                         {% endif %}
 
 
@@ -562,7 +544,7 @@
                                 imageSize: {width:190},
                                 containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
                             }) | raw}}
-                            {% set regionalCount = (dev) ? regionalCount : regionalCount + 1 %}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
                             <hr class="divide visible-xs-block">
 
                         {% endfor %}
@@ -578,7 +560,7 @@
                                 imageSuppress: true,
                                 containerClass: 'card-xs card-xs-mobile'
                             }) | raw}}
-                            {% set regionalCount = (dev) ? regionalCount : regionalCount + 1 %}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
                             {% if i == 0 %}
                                 <hr class="divide">
                             {% endif %}
@@ -642,9 +624,9 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['rural news'].feed.articles[ruralCount], 
                                 imageSize: {width:95},
-                                containerClass: 'col-sm-3 card-sm-wide card-sm2-mobile'
+                                containerClass: 'col-sm-3 card-sm-wide feature-side-mobile'
                             }) | raw}}
-                            {% set ruralCount = (dev) ? ruralCount : ruralCount + 1 %}
+                            {% set ruralCount = (dev) ? articleCount : ruralCount + 1 %}
                             {% if i < 2 %}
                                 <hr class="divide visible-xs-block">
                             {% endif %}
@@ -681,7 +663,7 @@
                             imageSize: {width:95},
                             containerClass: 'col-sm-2 card-sm card-sm-mobile'
                         }) | raw}}
-                        {% set nationalCount = (dev) ? nationalCount : nationalCount + 1 %}
+                        {% set nationalCount = (dev) ? articleCount : nationalCount + 1 %}
                         <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
                     {% endfor %}
 
@@ -689,9 +671,9 @@
                         {{this.render('partials/_single-article.twig', {
                             article: sections['national'].feed.articles[nationalCount], 
                             imageSize: {width:95},
-                            containerClass: 'col-sm-3 card-sm-wide card-sm2-mobile'
+                            containerClass: 'col-sm-3 card-sm-wide feature-side-mobile'
                         }) | raw}}
-                        {% set nationalCount = (dev) ? nationalCount : nationalCount + 1 %}
+                        {% set nationalCount = (dev) ? articleCount : nationalCount + 1 %}
 
                     {% endif %}
                 </section>
@@ -728,7 +710,7 @@
                                    imageSize: {width:630},
                                    containerClass: 'home-feature-sm home-feature-mobile'
                                }) | raw}}
-                               {% set sportCount = (dev) ? sportCount : sportCount + 1 %}
+                               {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
                            {% endif %}
      
 
@@ -746,7 +728,7 @@
 
                                 <hr class="divide visible-xs-block">
 
-                                {% set sportCount = (dev) ? sportCount : sportCount + 1 %}
+                                {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
                              {% endif %}
                    
         
@@ -762,7 +744,7 @@
                                 imageSize: {width:80},
                                 containerClass: 'col-sm-3 card-xs card-xs-mobile divideright'
                             }) | raw}}
-                            {% set sportCount = (dev) ? sportCount : sportCount + 1 %}
+                            {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
                             {% if i < 2 %}
                                 <hr class="divide visible-xs-block">
                             {% endif %}
@@ -797,7 +779,7 @@
                                  imageSize: {width:630},
                                  containerClass: 'home-feature-thin home-feature-thin-mobile'
                              }) | raw}}
-                             {% set businessCount = (dev) ? businessCount : businessCount + 1 %}
+                             {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
                          {% endif %}
 
 
@@ -812,7 +794,7 @@
                                  imageSize: {width:190},
                                  containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
                              }) | raw}}
-                             {% set businessCount = (dev) ? businessCount : businessCount + 1 %}
+                             {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
                              <hr class="divide visible-xs-block">
 
                          {% endfor %}
@@ -829,7 +811,7 @@
                                  imageSize: {width:80},
                                  containerClass: 'card-xs card-xs-mobile'
                              }) | raw}}
-                             {% set businessCount = (dev) ? businessCount : businessCount + 1 %}
+                             {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
                              {% if i == 0 %}
                                  <hr class="divide">
                              {% endif %}
