@@ -1,5 +1,155 @@
+@mixin card-rec-base() {
+    a.card {
+        article {
+            position:relative;
+
+            > figure {
+                margin-right:30px;
+            }
+
+            > .content {
+                width:100%;
+                height:100%;
+                position:relative;
+
+                > .category{
+                }
+                > h2{
+                    font-family:$font-family-serif;
+                    font-weight:600;
+                    margin-top: 12px;
+                    line-height: 1.3;
+                }
+                >p.excerpt {
+                    display:none;
+                }
+                .author{
+                    position:absolute;
+                    bottom:5px;
+                    p{
+                        display:block;
+                        font-weight:700;
+                        color:color(red);
+                        border:none;
+                    }
+                    time{
+                        display:block;
+                        font-family:$font-family-serif;
+                        margin-top:5px;
+                    }
+                }
+                
+                > time{
+                }
+            }
+        }
+
+        &.without__image {    
+            .content {
+                height:100%;
+
+                h2 {
+                    font-family:$font-family-serif;
+                    font-size: rem(20);
+                    font-weight:600;
+                    margin-top: 12px;
+                    line-height: 1.3;
+                    max-height:52px;
+                }
+
+                p.excerpt {
+                    font-size: rem(15);
+                    display:block;
+                    margin-top:10px;
+                    max-height:35px;
+                    line-height: 1.13;
+                }
+
+            }
+        }  
+
+
+
+        &.social {
+            .content {
+                .icon {
+                    display:none;
+                }
+
+                >p {
+                    margin-top:10px;
+                    max-height:65px;
+                    margin-bottom:6px;
+                }
+            }
+
+            &.twitter{
+                .content{
+                    >p {
+                        font-size:rem(20);
+                        font-weight:600;
+                        line-height:1.33;
+                        max-height:80px;
+                    }
+                }
+                &.without__image {
+                    .content{
+                        >p {
+                            font-size:rem(18);
+                            max-height:84px;
+                            font-weight:normal;
+                            line-height:1.56;
+                        }
+                    }
+                }
+            }
+
+
+
+            &.facebook{
+                .content{
+                    >p {
+                        font-weight:600;
+                        line-height:1.33;
+                    }
+                }
+                &.without__image {
+                    .content{
+                        >p {
+                            font-size:rem(18);
+                            max-height:84px;
+                            font-weight:normal;
+                            line-height:1.56;
+                        }
+                    }
+                }
+
+            }
+            &.instagram{ 
+                .content{
+                    >p {
+                        font-size:rem(20);
+                        font-weight:600;
+                        line-height:1.33;
+                        max-height:80px;
+                    }
+                }
+
+                &.without__content {
+                    .content{
+                        padding-top:115px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 .card-rec{
     @media screen and (min-width: $mmd-break){
+        @include card-rec-base();
 
         height:192px;
         
@@ -12,162 +162,20 @@
             height:100%;
 
             article {
-                position:relative;
-
-                > figure {
-                    margin-right:30px;
-                }
 
                 > .content {
-                    width:100%;
-                    height:100%;
-                    position:relative;
 
 
                     h2{
-                        font-family:$font-family-serif;
                         font-size: rem(20);
-                        font-weight:600;
-                        margin-top: 12px;
-                        line-height: 1.3;
                     }
- 
-
-                    >p.excerpt {
-                        display:none;
-                    }
-
 
                     .author{
-                        position:absolute;
-                        bottom:5px;
-                        img{
-                            display:none;
-                        }
                         p{
-                            display:block;
                             font-size: rem(14);
-                            font-weight:700;
-                            color:color(red);
-                            border:none;
-
-                        }
-                        time{
-                            display:block;
-                            font-family:$font-family-serif;
-                            margin-top:5px;
-                        }
-
-                    }
-
-                }
-
-            }
-
-
-            &.without__image {
-                
-                // background:color(offwhite);
-
-                .content {
-                    // padding:63px 20px 5px 20px;
-
-                    height:100%;
-
-                    h2 {
-                        font-family:$font-family-serif;
-                        font-size: rem(20);
-                        font-weight:600;
-                        margin-top: 12px;
-                        line-height: 1.3;
-                        max-height:52px;
-                    }
-
-                    p.excerpt {
-                        font-size: rem(15);
-                        display:block;
-                        margin-top:10px;
-                        max-height:35px;
-                        line-height: 1.13;
-                    }
-
-                }
-            }  
-
-
-
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
-                    }
-
-                    >p {
-                        margin-top:10px;
-                        max-height:65px;
-                        margin-bottom:6px;
-                    }
-                }
-
-                &.twitter{
-                    .content{
-                        >p {
-                            font-size:rem(20);
-                            font-weight:600;
-                            line-height:1.33;
-                            max-height:80px;
-                        }
-                    }
-                    &.without__image {
-                        .content{
-                            >p {
-                                font-size:rem(18);
-                                max-height:84px;
-                                font-weight:normal;
-                                line-height:1.56;
-                            }
                         }
                     }
                 }
-
-
-
-                &.facebook{
-                    .content{
-                        >p {
-                            font-weight:600;
-                            line-height:1.33;
-                        }
-                    }
-                    &.without__image {
-                        .content{
-                            >p {
-                                font-size:rem(18);
-                                max-height:84px;
-                                font-weight:normal;
-                                line-height:1.56;
-                            }
-                        }
-                    }
-
-                }
-                &.instagram{ 
-                    .content{
-                        >p {
-                            font-size:rem(20);
-                            font-weight:600;
-                            line-height:1.33;
-                            max-height:80px;
-                        }
-                    }
-
-                    &.without__content {
-                        .content{
-                            padding-top:115px;
-                        }
-                    }
-                }
-
             }
         }
     }
@@ -180,10 +188,10 @@
 
 
 .card-rec-tablet{
-    
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-        height:140px;
+        @include card-rec-base();
 
+        height:140px;
 
         a.card {
             @include card-image-left(215px, 140px);
@@ -191,167 +199,68 @@
             height:100%;
 
             article {
-                position:relative;
-
-                > figure {
-                    margin-right:30px;
-                }
-
                 > .content {
-                    width:100%;
-                    height:100%;
-                    position:relative;
-
 
                     .category {
                         font-size: rem(10);
                     }
 
                     h2{
-                        font-family:$font-family-serif;
                         font-size: rem(16);
-                        font-weight:600;
-                        margin-top: 12px;
-                        line-height: 1.3;
                     }
-
-
-                    >p.excerpt {
-                        display:none;
-                    }
-
 
                     .author{
-                        position:absolute;
-                        bottom:5px;
-                        img{
-                            display:none;
-                        }
-                        p{
-                            display:block;
+                        p {
                             font-size: rem(10);
-                            font-weight:700;
-                            color:color(red);
-                            border:none;
-
-                        }
-                        time{
-                            display:block;
-                            font-family:$font-family-serif;
-                            margin-top:5px;
-                        }
-
-                    }
-
-                }
-
-            }
-
-
-            &.without__image {
-                
-                // background:color(offwhite);
-
-                .content {
-                    // padding:63px 20px 5px 20px;
-
-                    height:100%;
-
-                    h2 {
-                        font-family:$font-family-serif;
-                        font-size: rem(20);
-                        font-weight:600;
-                        margin-top: 12px;
-                        line-height: 1.3;
-                        max-height:52px;
-                    }
-
-                    p.excerpt {
-                        font-size: rem(15);
-                        display:block;
-                        margin-top:10px;
-                        max-height:35px;
-                        line-height: 1.13;
-                    }
-
-                }
-            }  
-
-
-
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
-                    }
-
-                    >p {
-                        margin-top:10px;
-                        max-height:65px;
-                        margin-bottom:6px;
-                    }
-                }
-
-                &.twitter{
-                    .content{
-                        >p {
-                            font-size:rem(20);
-                            font-weight:600;
-                            line-height:1.33;
-                            max-height:80px;
-                        }
-                    }
-                    &.without__image {
-                        .content{
-                            >p {
-                                font-size:rem(18);
-                                max-height:84px;
-                                font-weight:normal;
-                                line-height:1.56;
-                            }
                         }
                     }
                 }
-
-
-
-                &.facebook{
-                    .content{
-                        >p {
-                            font-weight:600;
-                            line-height:1.33;
-                        }
-                    }
-                    &.without__image {
-                        .content{
-                            >p {
-                                font-size:rem(18);
-                                max-height:84px;
-                                font-weight:normal;
-                                line-height:1.56;
-                            }
-                        }
-                    }
-
-                }
-                &.instagram{ 
-                    .content{
-                        >p {
-                            font-size:rem(20);
-                            font-weight:600;
-                            line-height:1.33;
-                            max-height:80px;
-                        }
-                    }
-
-                    &.without__content {
-                        .content{
-                            padding-top:115px;
-                        }
-                    }
-                }
-
             }
         }
     }
 }
+
+
+.card-rec-mobile{
+    @media screen and (max-width: $sm-break-down){
+        @include card-rec-base();
+        margin-bottom:7vw;
+
+        height:auto;
+        
+
+
+        a.card {
+            @include card-image-top(auto, auto);
+            
+
+            height:100%;
+
+            article {
+                > figure {
+                    margin-right:0;
+                    margin-bottom:10px;
+                }
+
+                > .content {
+
+
+                    h2{
+                        font-size: rem(14);
+                        font-weight:700;
+                        margin-top:5px;
+                        margin-bottom:10px;
+                    }
+
+                    .author{
+                        position:static;
+                        p{
+                            font-size: rem(12);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

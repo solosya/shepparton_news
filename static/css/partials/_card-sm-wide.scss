@@ -13,9 +13,10 @@
                 > .category{
                 }
                 > h2{
-                    background:orange;
+                    // background:orange;
                 }
                 > p.excerpt {
+                    // background:pink;
                 }
                 .author {
                     img {
@@ -34,7 +35,7 @@
         &.without__image {
             background:color(offwhite);
             .content {
-                padding:63px 20px 5px 20px;
+                padding:43px 20px 5px 20px;
 
                 height:100%;
 
@@ -48,6 +49,7 @@
                 >p.excerpt {
                     display:block;
                     font-size: rem(15);
+                    height:60px;
                     max-height:60px;
                     line-height: 1.33;
                     margin-top: 7px;
@@ -198,12 +200,13 @@
 
     @media screen and (max-width: $sm-break-down){
         @include card-sm-wide-base();
-
-        margin-bottom:20px;
+        margin-bottom:7vw;
 
 
         a.card {
-            @include card-image-top(auto, 160px);
+            @include card-image-top(auto, auto);
+            height:auto;
+
             > article {
 
                 > figure{
@@ -227,6 +230,7 @@
                     }
 
                     > .author{
+                        display:none;
                         >p {
                             margin: 0;
                             padding: 0;

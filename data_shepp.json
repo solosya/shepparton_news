@@ -42,6 +42,7 @@
 				"short_description": "Default blog for Shepparton.",
 				"featured_color": null,
 				"status": "1",
+				"blogLayoutFileName": "special",
 				"thumbCloudinaryPublicId": null,
 				"thumbCloudinaryCloudName": null,
 				"thumbCdnPath": null,
@@ -135,8 +136,6 @@
 				"created_at": "1493862086",
 				"url": "http:\/\/theme.aap.io\/@opinion"
 			},
-
-
 			{
 				"id": "730",
 				"guid": "23bf1bee-0461-4693-9f0a-65b00ba6987c",
@@ -163,6 +162,31 @@
 				"url": "http:\/\/theme.aap.io\/@rural-news"
 			},
 			{
+				"id": "730",
+				"guid": "23bf1bee-0461-4693-9f0a-65b00ba6987c",
+				"title": "Regional News",
+				"type": "channel",
+				"is_default": null,
+				"network_id": "327",
+				"short_description": "Regional News section",
+				"featured_color": null,
+				"status": "1",
+				"thumbCloudinaryPublicId": null,
+				"thumbCloudinaryCloudName": null,
+				"thumbCdnPath": null,
+				"thumbMediaWidth": null,
+				"thumbMediaHeight": null,
+				"cloudinary_public_id": null,
+				"cloudinary_cloud_name": null,
+				"cdn_path": null,
+				"coverMediaWidth": null,
+				"coverMediaHeight": null,
+				"total_views": "0",
+				"total_articles": "0",
+				"created_at": "1493861482",
+				"url": "http:\/\/theme.aap.io\/@regional-news"
+			},
+			{
 				"id": "731",
 				"guid": "b1b7603e-85c9-4c74-bb11-e53cdfe92616",
 				"title": "National",
@@ -187,6 +211,31 @@
 				"created_at": "1493861446",
 				"url": "http:\/\/theme.aap.io\/@national"
 			},
+			{
+				"id": "731",
+				"guid": "b1b7603e-85c9-4c74-bb11-e53cdfe92616",
+				"title": "Local News",
+				"type": "channel",
+				"is_default": null,
+				"network_id": "327",
+				"short_description": "Local News section",
+				"featured_color": null,
+				"status": "1",
+				"thumbCloudinaryPublicId": null,
+				"thumbCloudinaryCloudName": null,
+				"thumbCdnPath": null,
+				"thumbMediaWidth": null,
+				"thumbMediaHeight": null,
+				"cloudinary_public_id": null,
+				"cloudinary_cloud_name": null,
+				"cdn_path": null,
+				"coverMediaWidth": null,
+				"coverMediaHeight": null,
+				"total_views": "0",
+				"total_articles": "0",
+				"created_at": "1493861446",
+				"url": "http:\/\/theme.aap.io\/@local"
+			},			
 			{
 				"id": "722",
 				"guid": "52c7ab9e-94d4-4af2-835a-a4c7dd01752f",
@@ -290,6 +339,32 @@
 				"total_articles": "0",
 				"created_at": "1493861496",
 				"url": "http:\/\/theme.aap.io\/@bloggers"
+			},
+			{
+				"id": "722",
+				"guid": "52c7ab9e-94d4-4af2-835a-a4c7dd01737a",
+				"title": "Videos",
+				"type": "channel",
+				"is_default": null,
+				"network_id": "327",
+				"short_description": "Videos section",
+				"featured_color": null,
+				"status": "1",
+				"blogLayoutFileName": null,
+				"thumbCloudinaryPublicId": null,
+				"thumbCloudinaryCloudName": null,
+				"thumbCdnPath": null,
+				"thumbMediaWidth": null,
+				"thumbMediaHeight": null,
+				"cloudinary_public_id": null,
+				"cloudinary_cloud_name": null,
+				"cdn_path": "",
+				"coverMediaWidth": null,
+				"coverMediaHeight": null,
+				"total_views": "0",
+				"total_articles": "0",
+				"created_at": "1493861496",
+				"url": "http:\/\/theme.aap.io\/@videos"
 			}		
 		],
 		"styling": {

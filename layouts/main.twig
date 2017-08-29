@@ -47,7 +47,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=d9978fae" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=278c5eb7" type="text/css" media="all">
 
     {% else %}
 {#             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" />
@@ -103,24 +103,8 @@
         <!-- End Google Analytics -->
     {% endif %}
     
-    {# {% set blogList = _Blog.getBlogList() %} #}
 
-{#     {% if blogList | length > 0 %}
-        <style type="text/css">
-            {% for blog in blogList %}
-                {% if blog.featuredColor is not empty %}
-                    {% set blogClass = 'card--blog_'~blog.id %}
-                    .card.{{blogClass | lower}} .title-section span {
-                        color: {{blog.featuredColor}} !important;
-                    }
-                    .card.{{blogClass | lower}} .caption_bottom .author_name {
-                        color: {{blog.featuredColor}} !important;
-                    }
-                {% endif %}
-            {% endfor%}
-        </style>
-    {% endif %}
- #}
+
     {{ this.head() }}
 
 </head>
@@ -128,7 +112,6 @@
 
 <body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}">
 {{ this.beginBody() }}
-
       
 
     {{ this.render('partials/_header_navigation.twig', {
@@ -138,7 +121,7 @@
     }) | raw }}
 
 
-    {{ content | raw}}
+    {{ content | raw }}
 
 
 

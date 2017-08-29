@@ -1,5 +1,37 @@
+@mixin card-home-feature-sm-base() {
+    a.card {
+        > article {
+            > figure{
+            }
+            > .content{
+                > .category{
+                }
+                > h2{
+                }
+                > p.excerpt {
+                }
+                .author {
+                    img {
+                    }
+                    p {
+                    }
+                    > time {
+                    }
+                }
+                
+                > time{
+                }
+            }
+        }
+    }
+}
+
+
+
+
 .home-feature-sm {
     @media screen and (min-width: $sm-break){
+        // @include card-home-feature-sm-base;
 
         height:400px;
         a.card {
@@ -13,10 +45,6 @@
             
                 > figure {
                     @include gradientafter;
-                    // right:15px;
-                    // left:15px;
-                    // width:auto;
-                    // height:10px;
                 }
 
                 > .content {
@@ -56,11 +84,7 @@
 
 
                     .author{
-
-                        img{
-                            display:none;
-                        }
-                        p{
+                        p {
                             color:white;
                             border-right: 1px solid color(white);
 
@@ -68,9 +92,7 @@
                         > time{
                             color:white;
                         }
-
                     }
-
                 }
             }
             &.without__image {
@@ -81,13 +103,16 @@
                     color:red;
 
                     .category{
-                        color:color(darkgrey)
+                        color:color(darkgrey);
+                        &:before {
+                            background: url(../images/black-arrow.svg);
+                            background-repeat:no-repeat;
+                        }
                     }
                     .author {
                         >p {
                             color:color(darkgray);
                             border-right:1px solid color(darkgray);
-
                         }
                         time {
                             color:color(darkgray);
@@ -104,9 +129,6 @@
                     padding-top:31px;
                     .icon {
                         margin-bottom:170px;
-                    }
-                    .category {
-
                     }
                     > p {
                         font-size: rem(22);
@@ -149,9 +171,7 @@
                             }
                         }
                     }
-
                 }
-
             }
         }
     }

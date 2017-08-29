@@ -11,7 +11,7 @@
 
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = 0 %}
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
@@ -57,7 +57,7 @@
                                  article: articles[articleCount], 
                                  imageSize: {width:80},
                                  position: articleCount + 1,
-                                 containerClass: 'card-xs card-xs-mobile'
+                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                              }) | raw}}
 
                             <hr class="divide visible-xs-block">
@@ -78,7 +78,7 @@
                             article: articles[articleCount], 
                             imageSize: {width:80},
                             position: articleCount + 1,
-                            containerClass: 'col-sm-3 card-xs card-xs-mobile ' ~ divider[i]
+                            containerClass: 'col-sm-3 feature-side feature-side-tablet feature-side-mobile ' ~ divider[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">
@@ -172,13 +172,13 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 imageSize: {width:95},
-                                containerClass: 'card-xs feature-side-mobile'
+                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
 
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
                             <hr class="divide24 visible-md-block visible-lg-block">
-                            <hr class="divide visible-xs-block">
+                            <hr class="divide visible-xs-block visible-sm-block">
 
                         {% endfor %}
 

@@ -1,0 +1,14 @@
+<section class="row five-cols top-stories-row">
+    
+    {% for i in 0..4 if articles[articleCount] %}
+        {{this.render('partials/_single-article.twig', {
+            article: articles[articleCount], 
+            position: 1, 
+            imageSize: {width:500},
+            containerClass: 'col-sm-1 top-stories top-stories-tablet top-stories-mobile'
+        }) | raw}}
+        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        <hr class="divide10 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+
+    {% endfor %}
+</section>

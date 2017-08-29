@@ -100,21 +100,24 @@
                         <div class="article-sidebar">
 
                             <div class="row">
-                                <div class="ad-square"></div>
-                                
+
                                 <div class="col-sm-9">
+                                    <div class="ad-side-container" style="height:850px;position:relative;">
+                                        <div id="articleAdScroll" class="ad-square fixad" style="width:300px;"></div>
+                                    </div>
+
                                     <h2 class="sidebar-header">Latest articles</h2>
                                 </div>
 
 
 
-                                {% for i in 0..4 if articles[testCount] %}
+                                {% for i in 0..3 if articles[testCount] %}
                                     <div class="col-md-9 col-sm-4">
                                         {{this.render('partials/_single-article.twig', {
                                             article: articles[testCount], 
                                             position: (articleCount+1),
-                                            imageSize: {width: 75, height: 63},
-                                            containerClass: 'card-xs card-xs-mobile'
+                                            imageSuppress: true,
+                                            containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                                         }) | raw}}
                                         
                                         {% if i < 4 %}
@@ -127,7 +130,7 @@
                             </div>
 
 
-                            <div class="row">
+{#                             <div class="row">
                                 <div class="col-sm-9">
                                     <h2 class="sidebar-header">Suggested Videos</h2>
                                 </div>
@@ -148,7 +151,7 @@
                                 {% endfor %}
 
                             </div>
-                        </div>
+ #}                        </div>
                     </div>
 
 

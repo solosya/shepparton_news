@@ -1,0 +1,65 @@
+<section class="home-main-stories">
+    <div class="row">
+        <div class="col-xs-9 col-sm-6">
+
+            <div id="weather-mob" class="weather">
+                <div>
+                    <p class="location">location</p>
+                    <p class="description">Partly Cloudy</p>
+                </div>
+                <img class="icon" src="{{networkData.templatePath}}/static/icons/weather_partly_cloudy.svg">
+                <p class="temp">21&deg;</p>
+            </div>
+
+
+
+
+            {% if articles[articleCount] %}                                                                
+                {{this.render('partials/_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: articleCount + 1, 
+                    imageSize: {width:630, height:400},
+                    containerClass: 'home-feature home-feature-tablet home-feature-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+            {% endif %}
+        </div>
+
+
+        {% if articles[articleCount] %}
+        <div class="cold-xs-9 col-sm-3">
+
+            <div id="weather-dt" class="weather">
+                <div>
+                    <p class="location">location</p>
+                    <p class="description">Partly Cloudy</p>
+                </div>
+                <img class="icon" src="{{networkData.templatePath}}/static/icons/weather_partly_cloudy.svg">
+                <p class="temp">21&deg;</p>
+            </div>
+
+
+            <hr class="divide10 visible-xs-block" style="clear:both">
+
+
+            {% for i in 0..2 if articles[i] %}
+                {{this.render('partials/_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: articleCount + 1, 
+                    containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% if i < 2 %}
+                    <hr class="divide15 visible-md-block visible-lg-block">
+                    <hr class="divide10 visible-xs-block visible-sm-block">
+                {% endif %}
+
+            {% endfor %}
+            <hr class="divide10 visible-xs-block">
+
+        </div><!-- .row-->
+        {% endif %}
+
+    </div>
+</section><!-- .featured-slider-->

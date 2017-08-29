@@ -1,36 +1,25 @@
-@mixin card-home-feature-base() {
+@mixin card-home-special-base() {
 
     a.card {
-        @include card-image-full;
+        @include card-image-bottom(100%, 405px);
         position:relative;
 
         height:100%;
-        color:$white;
 
         > article {
-            > figure {
-                @include gradientafter;
-            }
+
             > .content{
                 width:100%;
 
                 > .category{
-                    color:white;
-                    &:before {
-                        content: '';
-                        display: block;
-                        height: 20px;
-                        width: 80px;
-                        background: url(../images/white-arrow.svg);
-                        background-repeat: no-repeat;
-                        margin-bottom: 5px;
-                    }
+                    color:color(red);
                 }
                 > h2{
+                    font-size: rem(32);
                     font-weight:600;
                     margin-top: 0;
                     overflow:hidden;
-                    margin-bottom:6px;
+                    margin-bottom:23px;
                     max-height: 80px;
                     line-height: 1.18;
 
@@ -40,18 +29,9 @@
                 }
 
                 .author{
-                    p{
-                        font-family:$font-family-serif;
-                        color:white;
-                        border-right: 1px solid color(white);
-                    }
-                    >time {
-                        color:white;
-                    }
+                    display:none;
                 }
                 
-                > time{
-                }
             }
         }
         &.without__image {
@@ -135,15 +115,14 @@
 }
 
 
-.home-feature {
+.home-special {
     @media screen and (min-width: $mmd-break){
-        @include card-home-feature-base();
+        @include card-home-special-base();
 
-        height:400px;
+        height:550px;
         a.card {
             article {
                 > .content {
-                    padding: 233px 20px 10px 30px;
 
                     h2{
                         font-size: rem(34);
@@ -155,24 +134,23 @@
 }
 
 
-.home-feature-tablet {
+.home-special-tablet {
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-        @include card-home-feature-base();
+        @include card-home-special-base();
 
-        height:295px;
+        height:550px;
         a.card {
             article {
             
                 > .content {
                     width:100%;
-                    padding: 133px 20px 10px 30px;
 
                     .category{
                         font-size:rem(10);
                     }
 
                     h2{
-                        font-size: rem(24);
+                        font-size: rem(30);
                     }
                 }
             }
@@ -185,21 +163,18 @@
 
 
 
-.home-feature-mobile {
+.home-special-mobile {
     @media screen and (max-width: $sm-break-down){
-        @include card-home-feature-base();
+        @include card-home-special-base();
 
         margin-bottom:20px;
-        // height:210px;
-        height:60vw;
 
         a.card {
             article {
-        
+                > figure {
+                    height:60vw;
+                }
                 > .content {
-                    padding: 0 20px 15px 10px;
-                    position:absolute;
-                    bottom:0;
 
                     .category{
                         margin-bottom:5px;

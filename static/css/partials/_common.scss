@@ -51,6 +51,22 @@ div[class*="col-sm"] {
 }
 
 
+.addSpaceMobile {
+    @media screen and (max-width: $sm-break-down){
+        margin:40px 0;
+    }
+}
+
+
+div.space40 {
+    margin-top:40px;
+
+    @media screen and (max-width: $sm-break-down){
+        margin-top:20px;
+    }
+}
+
+
 hr.divide {
     margin:28px 0;
     border: 0;

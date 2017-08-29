@@ -1,3 +1,16 @@
+body.special {
+    .site-main {
+        margin-top:0;
+
+        .home-main-stories {
+            padding-top:41px;
+            padding-bottom:31px;
+            height:auto;
+            background:rgba(185,185,185,.2);
+        }
+    }
+}
+
 .site-main {
     margin-top:80px;
     @media screen and (max-width: $sm-break-down){
@@ -10,15 +23,23 @@
         @media screen and (min-width: $sm-break){
             margin-bottom:80px;
         }
+        @media screen and (max-width: $sm-break-down){
+            margin-bottom:45px;
+        }
+
     }
 
 
     .bloggerImg {
 
         width:100%;
+        max-width:300px;
         height:190px;
         @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
             height:139px;
+        }
+        @media screen and (max-width: $sm-break-down) {
+            margin-bottom:20px;
         }
 
 
@@ -82,8 +103,15 @@
 
 
     .weather {
+        height:35px;
+        margin-bottom:8px;
+        border-bottom: 1px solid (lightgrey);
+        
+        @media screen and (max-width: $sm-break-down){
+            border-bottom: none;
+        }
 
-        margin-bottom:41px;
+
         >div {
             float:left;
             display:inline-block;
@@ -125,10 +153,30 @@
         @media screen and (max-width: $mmd-break-down){
             height:auto;
             margin-bottom:20px;
+        }
+        @media screen and (max-width: $sm-break-down){
+            margin-bottom:0;
+        }
 
+
+        div.feature-side-mobile {
+            clear:both;
+        }
+        // div.card-sm-mobile {
+        //     clear:both;
+        // }
+
+
+    }
+
+
+    .most-popular {
+        @media screen and (max-width: $sm-break-down){
+            margin:40px 0;
         }
 
     }
+
 
     .most-popular, .events {
         >h2 {

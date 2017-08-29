@@ -64,7 +64,9 @@
 				max-width: 100%;
 				margin-right: 17px;
 				object-fit: cover;
-
+				@media screen and (max-width: $sm-break) {
+					margin-bottom:8px;
+				}
 			}
 
 			figcaption {
@@ -77,6 +79,13 @@
 				font-style: italic;
 				line-height: 1.47;
 				color: color(darkgrey);
+
+				@media screen and (max-width: $sm-break) {
+					font-size: rem(11);
+					width:100%;
+					float:none;
+					line-height: 1.36;
+				}
 			}
 		}
 
@@ -94,8 +103,8 @@
 			clear: both;
 			margin-bottom: 20px;
 			@media screen and (max-width: $sm-break) {
-				font-size: rem(14);
-
+				// font-size: rem(14);
+				line-height: 1.62;
 			}
 		}
 
@@ -131,15 +140,16 @@
 	            display: block;
 	            background:color(red);
 	        }
-            @media screen and (max-width: $sm-break) {
-                font-size: rem(22);
-            }
 
             > p {
             	font-size: rem(26);
 			    line-height: 1.54;
 			    font-weight: 700;
 			    text-transform:uppercase;
+			    @media screen and (max-width: $sm-break) {
+			        font-size: rem(22);
+			    }
+
             }
         }
         h2 {

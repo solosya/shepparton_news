@@ -1,18 +1,54 @@
-.top-stories {
+@mixin top-stories-base() {
+    a.card {
+        @include card-image-none;
+        height:100%;
 
-    &:last-child {
-        a.card {
-            &:after {
-                display:none;
+        > article {
+            > figure{
+            }
+            > .content{
+                width:100%;
+
+                > .category{
+                }
+                > h2{
+                    font-size: rem(15);
+                    font-weight:normal;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    overflow:hidden;
+
+                }
+                > p.excerpt {
+                    display:none;
+                }
+            }
+        }
+        &.social {
+            .content {
+                .icon {
+                    display:none;
+                }
             }
         }
     }
+}
+
+
+.top-stories {
 
     @media screen and (min-width: $sm-break){
+        @include top-stories-base();
+        
+        &:last-child {
+            a.card {
+                &:after {
+                    display:none;
+                }
+            }
+        }
 
         a.card {
-            @include card-image-none;
-            height:100%;
 
             &:after {
                 content: '';
@@ -26,93 +62,51 @@
             }        
 
             article {
-           
-
                 > .content {
-                    width:100%;
-
-                    .category {
-                        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-                            font-size:rem(10);
-                        }
-                    }
-
                     h2{
-                        font-size: rem(15);
-                        font-weight:normal;
-                        margin-top: 5px;
-                        margin-bottom: 10px;
-                        overflow:hidden;
                         max-height:34px;
-
-                        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-                            font-size:rem(12);
-                            max-height:48px;
-                            line-height:1.33;
-
-                        }
-                    }
-
-                    .author {
-                        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-                            font-size:rem(10);
-                        }
-                    }
-
-
-                    >p {
-                        display:none;
                     }
                 }
             }
-            
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
-                    }
-                }
-            }
-
         }
     }
 }
 
-.top-stories-mobile {
-    @media screen and (max-width: $sm-break-down){
-
+.top-stories-tablet {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include top-stories-base();
         a.card {
-            @include card-image-none;
-
-            padding-top:15px;
-            border-top: 1px solid color(lightgrey);
-
-            height:100%;
-
             article {
-
                 > .content {
-                    width:100%;
-
-                    h2{
-                        font-size: rem(15);
-                        font-weight:normal;
-                        line-height:1.2;
-                        margin-top: 5px;
-                        margin-bottom: 10px;
-                        overflow:hidden;
-                        max-height:40px;
+                    .category {
+                        font-size:rem(10);
                     }
-
-                    >p {
-                        display:none;
+                    h2 {
+                        font-size:rem(12);
+                        max-height:48px;
+                        line-height:1.33;
+                    }
+                    .author {
+                        font-size:rem(10);
                     }
                 }
             }
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
+        }
+    }
+}
+
+
+
+.top-stories-mobile {
+    @media screen and (max-width: $sm-break-down){
+        @include top-stories-base();
+
+        a.card {
+            article {
+                > .content {
+                    h2{
+                        line-height:1.2;
+                        max-height:40px;
                     }
                 }
             }

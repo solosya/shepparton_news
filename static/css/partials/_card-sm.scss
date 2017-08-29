@@ -13,6 +13,12 @@
                 > .category{
                 }
                 > h2{
+                    font-weight: normal;
+                    font-size: rem(17);
+                    line-height:1.29;
+                    margin-top:5px;
+                    margin-bottom:10px;
+                    max-height:45px;
                 }
                 > p.excerpt {
                     display:none;
@@ -52,15 +58,6 @@
 
                 > .content{
                     height:100%;
-
-                    > h2{
-                        font-weight: normal;
-                        font-size: rem(17);
-                        line-height:1.29;
-                        margin-top:5px;
-                        margin-bottom:10px;
-                        max-height:45px;
-                    }
                 }
             }
 
@@ -164,16 +161,6 @@
                     margin-right:8px;
                 }
 
-                > .content{
-                    > h2{
-                        font-weight: normal;
-                        font-size: rem(17);
-                        line-height:1.29;
-                        margin-top:5px;
-                        margin-bottom:10px;
-                        max-height:45px;
-                    }
-                }
             }
 
 

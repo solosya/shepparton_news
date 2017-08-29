@@ -1,6 +1,28 @@
 @mixin card-feature-side-base() {
-    clear:both;
+    // clear:both;
     font-family: $base-font-family;
+
+
+    &.divideright {
+        &:after {
+            content: '';
+            display: block;
+            height: 100%;
+            background: color(lightgrey);
+            width: 1px;
+            position: absolute;
+            top: 0;
+            right: 5px;
+        }
+        &:last-child {
+            &:after {
+                display:none;
+            }
+        }
+    }
+
+
+
 
     a.card {
         height:100%;

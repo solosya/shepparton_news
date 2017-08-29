@@ -59,7 +59,7 @@ gulp.task('sass', function() {
         .pipe(sass({includePaths: [
             './static/css/partials', 
         ]}).on('error', sass.logError))
-        .pipe(sourcemaps.write('.'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./static/css'));
 });
 

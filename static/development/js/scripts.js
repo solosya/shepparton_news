@@ -8,6 +8,7 @@ $('document').ready(function() {
     var scrollMetric = [pageWindow.scrollTop()];
     var menuContainer = $("#mainHeader");
     var masthead = $('#masthead');
+    var articleAd = $('#articleAdScroll');
 
     $('.video-player').videoPlayer();
     
@@ -32,12 +33,12 @@ $('document').ready(function() {
     // };
 
 
-    // var isScolledPast = function(position){
-    //     if (scrollMetric[0] >= position) {
-    //         return true;
-    //     }
-    //     return false;
-    // };
+    var isScolledPast = function(position){
+        if (scrollMetric[0] >= position) {
+            return true;
+        }
+        return false;
+    };
 
 
     // var scrollUpMenu = function() {
@@ -54,6 +55,17 @@ $('document').ready(function() {
     //         menuContainer.removeClass('showOnScroll');
     //     }
     // }
+
+
+    var adScroll = function() {
+        if ( scrollMetric[1] === 'up' && !isScolledPast(600)) {
+            articleAd.removeClass('bottomAd').addClass('fixad');
+        } 
+        else if ( scrollMetric[1] === 'down' && isScolledPast(600)) {
+            articleAd.removeClass('fixad').addClass('bottomAd');
+        }
+    }
+
 
     var removeMobileMenuStyles = function() {
         var menu = $('#sb-custom-menu');
@@ -76,16 +88,17 @@ $('document').ready(function() {
     }).resize();
 
     //On Scroll
-    // pageWindow.scroll(function() {
-    //     console.log('scrolling');
-    //     var direction = 'down';
-    //     var scroll = pageWindow.scrollTop();
-    //     if (scroll < scrollMetric[0]) {
-    //         direction = 'up';
-    //     }
-    //     scrollMetric = [scroll, direction];
-    //     scrollUpMenu();
-    // });
+    pageWindow.scroll(function() {
+        console.log('scrolling');
+        var direction = 'down';
+        var scroll = pageWindow.scrollTop();
+        if (scroll < scrollMetric[0]) {
+            direction = 'up';
+        }
+        scrollMetric = [scroll, direction];
+        adScroll();
+        console.log(scrollMetric);
+    });
 
 
 
@@ -167,6 +180,7 @@ $('document').ready(function() {
         });
     }), 750);
 
+    adScroll();
 
     // $('#submitlivestreamform').on('click', function(e) {
     //     e.preventDefault();
