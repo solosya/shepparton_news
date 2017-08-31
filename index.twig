@@ -19,7 +19,7 @@
 
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 1 : 0 %}
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
@@ -427,7 +427,7 @@
                         {% for i in 0..2 if sections['rural news'].feed.articles[ruralCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['rural news'].feed.articles[ruralCount], 
-                                imageSize: {width:95},
+                                imageSize: {width:300},
                                 containerClass: 'col-sm-3 card-sm-wide feature-side-mobile'
                             }) | raw}}
                             {% set ruralCount = (dev) ? articleCount : ruralCount + 1 %}
@@ -464,7 +464,7 @@
                     {% for i in 0..2 if sections['national'].feed.articles[nationalCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: sections['national'].feed.articles[nationalCount], 
-                            imageSize: {width:95},
+                            imageSize: {width:160},
                             containerClass: 'col-sm-2 card-sm card-sm-mobile'
                         }) | raw}}
                         {% set nationalCount = (dev) ? articleCount : nationalCount + 1 %}
@@ -474,7 +474,7 @@
                     {% if sections['national'].feed.articles[nationalCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: sections['national'].feed.articles[nationalCount], 
-                            imageSize: {width:95},
+                            imageSize: {width:300},
                             containerClass: 'col-sm-3 card-sm-wide feature-side-mobile'
                         }) | raw}}
                         {% set nationalCount = (dev) ? articleCount : nationalCount + 1 %}
@@ -526,7 +526,7 @@
                              {% if sections['sport'].feed.articles[sportCount] %}
                                  {{this.render('partials/_single-article.twig', {
                                      article: sections['sport'].feed.articles[sportCount], 
-                                     imageSize: {width:80},
+                                     imageSize: {width:80, height:95},
                                      containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                                  }) | raw}}
 
@@ -545,7 +545,7 @@
                         {% for i in 0..2 if sections['sport'].feed.articles[sportCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['sport'].feed.articles[sportCount], 
-                                imageSize: {width:80},
+                                imageSize: {width:80, height:95},
                                 containerClass: 'col-sm-3 feature-side feature-side-tablet feature-side-mobile divideright'
                             }) | raw}}
                             {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
@@ -612,7 +612,7 @@
                          {% for i in 0..1 if sections['business'].feed.articles[businessCount] %}
                              {{this.render('partials/_single-article.twig', {
                                  article: sections['business'].feed.articles[businessCount], 
-                                 imageSize: {width:80},
+                                 imageSize: {width:80, height:95},
                                  containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                              }) | raw}}
                              {% set businessCount = (dev) ? articleCount : businessCount + 1 %}

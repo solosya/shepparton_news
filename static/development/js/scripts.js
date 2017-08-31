@@ -188,32 +188,22 @@ $('document').ready(function() {
         });
     }), 750);
 
+
+    $("#owl-thumbnails").owlCarousel({
+        items: 1,
+        URLhashListener:true,
+        startPosition: 'URLHash',
+        pagination: true,
+        nav: true,
+        navText: [
+            "<i class='fa fa-angle-left fa-2x'></i>",
+            "<i class='fa fa-angle-right fa-2x'></i>"
+        ]
+    });   
+
+
+
     adScroll();
-
-    // $('#submitlivestreamform').on('click', function(e) {
-    //     e.preventDefault();
-    //     var email = $('#submitlivestreamformemail').val();
-    //     var name = $('#submitlivestreamformname').val();
-    //     var lastname = $('#submitlivestreamformlastname').val();
-    //     var wantsmail = $('#submitlivestreamformgetmail').is(":checked");
-
-    //     if (email !== '' && name !== '' && lastname !== ''){
-    //         $.get( 'http://submit.pagemasters.com.au/wobi/submit.php?email='+encodeURI(email)+'&name='+encodeURI(name)+'&lastname='+encodeURI(lastname)+'&wantsemail='+encodeURI(wantsmail) );
-
-    //         $('#streamform').html(
-    //             "<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe width='640' height='360' src='https://secure.metacdn.com/r/j/bekzoqlva/wbfs/embed' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen </iframe></div>"
-    //         );
-
-    //         $('#streamformfooter').html(
-    //             "<h2>Thanks</h2>"
-    //         );
-           
-
-    //     } else {
-    //         alert ("Please fill out all fields.");
-    //     }
-
-    // });
 
 
 });
