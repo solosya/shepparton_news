@@ -13,17 +13,17 @@ body.special {
 
 .site-main {
     margin-top:80px;
-    @media screen and (max-width: $sm-break-down){
+    @media screen and (max-width: $sm-break-down) {
         margin-top:10px;
     }
 
     margin-bottom:100px;
 
     section {
-        @media screen and (min-width: $sm-break){
+        @media screen and (min-width: $sm-break) {
             margin-bottom:80px;
         }
-        @media screen and (max-width: $sm-break-down){
+        @media screen and (max-width: $sm-break-down) {
             margin-bottom:45px;
         }
 

@@ -73,21 +73,6 @@
 
                                     <li id="menu-item-search" class="menu-item menu-item-search">
                                         <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                                    
-                                        <ul class="sub-menu normal-sub search-sub-menu">
-                                            <li class="search-container">
-                                                <fieldset>
-                                                    <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                                        <label for="header-search" class="assistive-text sr-only">Search</label>
-                                                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                                        <button class="btn btn-default" type="submit" id="searchsubmit">
-                                                            <span class="icon icon-search-blk"></span>
-                                                            <span class="screen-reader-text"></span>
-                                                        </button>
-                                                    </form>
-                                                </fieldset>
-                                            </li>
-                                        </ul>
                                     </li>
 
 
@@ -95,6 +80,17 @@
 
                                 </ul>
                             </div>
+
+                            <fieldset id="searchPanel" class="searchPanel">
+                                <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                                    <label for="header-search" class="assistive-text sr-only">Search</label>
+                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                    <button class="submit" type="submit" id="searchsubmit"></button>
+                                    <button class="close" type="button" id="searchclose"></button>
+                                </form>
+                            </fieldset>
+
+
                         </nav>
 
 

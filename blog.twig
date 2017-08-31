@@ -126,7 +126,7 @@
                 {% for i in 0..2 if articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
-                        imageSize: {width:80},
+                        imageSize: {width:300, height:160},
                         position: articleCount + 1,
                         containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
                     }) | raw}}

@@ -55,7 +55,7 @@
                          {% if articles[articleCount] %}
                              {{this.render('partials/_single-article.twig', {
                                  article: articles[articleCount], 
-                                 imageSize: {width:80},
+                                 imageSize: {width:80, height:95},
                                  position: articleCount + 1,
                                  containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                              }) | raw}}
@@ -76,7 +76,7 @@
                     {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
-                            imageSize: {width:80},
+                            imageSize: {width:80, height:95},
                             position: articleCount + 1,
                             containerClass: 'col-sm-3 feature-side feature-side-tablet feature-side-mobile ' ~ divider[i]
                         }) | raw}}
@@ -98,7 +98,7 @@
                     {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
-                            imageSize: {width:95},
+                            imageSize: {width:300, height:160},
                             containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile ' ~ split[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -124,7 +124,7 @@
                         {% for i in 0..2 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
-                                imageSize: {width:95},
+                                imageSize: {width:190, height:160},
                                 containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
                             }) | raw}}
                             <hr class="divide visible-xs-block">
@@ -140,7 +140,7 @@
                         {% for i in 0..2 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
-                                imageSize: {width:95},
+                                imageSize: {width:190, height:160},
                                 containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
                             }) | raw}}
                             <hr class="divide visible-xs-block">
@@ -157,7 +157,7 @@
                         {% for i in 0..2 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
-                                imageSize: {width:95},
+                                imageSize: {width:190, height:160},
                                 containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
                             }) | raw}}
                             <hr class="divide visible-xs-block">
@@ -171,7 +171,7 @@
                         {% for i in 0..3 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
-                                imageSize: {width:95},
+                                imageSize: {width:80, height:95},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
 

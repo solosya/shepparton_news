@@ -70,6 +70,44 @@
     }
 
 
+    .searchPanel {
+        display:none;
+        position:absolute;
+        top:-20px;
+        left: 0;
+        background: white;
+        width: 100%;
+        height:60px;
+
+        > form {
+            height:100%;
+            > input {
+                font-size: rem(26);
+                width: 90%;
+                height:100%;
+                border:none;
+                padding-left:20px;
+                color:black;
+            }
+            > button {
+                position: absolute;
+                border:none;
+                top: 50%;
+                height:25px;
+                width:25px;
+                margin-top: -12px;
+
+                &.submit {
+                    background:pink;
+                    right: 20px;
+                }
+                &.close {
+                    background:blue;
+                    right: 80px;
+                }
+            }
+        }
+    }
 
 
 
@@ -165,7 +203,7 @@
         position: absolute;
         list-style: none;
         margin: 0;
-        background: color(dark);
+        background: color(darkgrey);
         left: 0;
         right: 0;
         width: auto;
@@ -182,24 +220,6 @@
                 color:#fff;
                 &:hover {
                     text-decoration:none;
-                }
-            }
-            &.conference {
-                background:color(orange);
-                > a {
-                    >p {
-                        font-size: rem(14);
-                        margin-bottom:4px;
-                    }
-                    >h2 {
-                        font-size: rem(22);
-                        line-height: 1.09;
-                        margin-bottom:10px;
-                    }
-                    >h3 {
-                        color:#fff;
-                        font-size: rem(14);
-                    }
                 }
             }
         }
@@ -324,10 +344,6 @@ ul.sub-menu a:focus{
             border-bottom: 1px solid rgba(255,255,255,.3);
         }
 
-    }
-    .search-sub-menu .container{
-        width: 100%;
-        padding: 0;
     }
     .search-sub-menu input.field, .search-sub-menu input.field:focus{
         width: 100%;

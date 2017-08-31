@@ -43,7 +43,7 @@
 
 
     <div class="{{containerClass}}" data-title="{{ articleTitle | raw }}" {{inline}}>
-        {% set articleImgSmall = _Media.getMediaUrl(article.featuredMedia,500, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
+        {% set articleImgSmall = _Media.getMediaUrl(article.featuredMedia,500, 360, {'crop': 'fill', 'gravity': 'faces'} ) %}
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 
         <a  href="{{article.url}}" 

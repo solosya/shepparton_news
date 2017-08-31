@@ -370,22 +370,50 @@
 
 
 
+            {% if sections['opinion'].feed.articles|length > 0 %}
+                {% set opinionCount = (dev) ? articleCount : 0 %}
 
-            <section class="row">
-                <div class="col-sm-9 section-header">
-                    <p>View All</p>
-                    <div class="hk">
-                        <h2>Opinion</h2>
-                        <p></p>
+                <section class="row">
+                    <div class="col-sm-9 section-header">
+                        <p>View All</p>
+                        <div class="hk">
+                            <h2>Opinion</h2>
+                            <p></p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-2" style="background:red;height:100px;"></div>
-                <div class="col-sm-2" style="background:green;height:100px;"></div>
-                <div class="col-sm-2" style="background:orange;height:100px;"></div>
-                <div class="col-sm-3" style="background:pink;height:100px;"></div>
-            </section>
 
 
+                    {% set opinionClass = ["col-sm-2", "col-sm-2", "col-sm-2", "col-sm-3"] %}
+                    {% for i in 0..3 if sections['opinion'].feed.articles[opinionCount] %}
+                        <div class="{{opinionClass[i]}}">
+
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['regional news'].feed.articles[opinionCount], 
+                                imageSuppress: true,
+                                containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile'
+                            }) | raw}}
+                            {% set opinionCount = (dev) ? articleCount : opinionCount + 1 %}
+
+                            <hr class="divide visible-xs-block">
+
+                        </div>
+                    {% endfor %}
+
+{#                     <div class="col-sm-2" style="background:red;height:100px;">
+                        
+                    </div>
+                    <div class="col-sm-2" style="background:green;height:100px;">
+                        
+                    </div>
+                    <div class="col-sm-2" style="background:orange;height:100px;">
+                        
+                    </div>
+                    <div class="col-sm-3" style="background:pink;height:100px;">
+                        
+                    </div>
+ #}                </section>
+
+                {% endif %}
 
 
 
