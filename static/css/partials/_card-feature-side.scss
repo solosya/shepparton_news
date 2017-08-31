@@ -22,8 +22,6 @@
     }
 
 
-
-
     a.card {
         height:100%;
 
@@ -32,10 +30,7 @@
                 margin-right:15px;
                 &.video {
                     &:before{
-                        width:42px;
-                        height:42px;
-                        margin-left:-21px;
-                        margin-top:-21px;
+                        @include videoIconMiddle();
                     }
                 }
 

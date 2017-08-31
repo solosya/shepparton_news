@@ -1,18 +1,30 @@
-@mixin videoIcon() {
+@mixin videoIconMiddle() {
     position:absolute;
     content: '';
-    width: 56px;
-    height: 56px;
+    width: 42px;
+    height: 42px;
     background-image: url(../icons/play-icon.svg);
     background-repeat: no-repeat;
     background-size: cover;
     top: 50%;
     left: 50%;
-    margin-left:-28px;
-    margin-top:-28px;
+    margin-left:-21px;
+    margin-top:-21px;
     z-index: 100;
 }
 
+@mixin videoIcon() {
+    position:absolute;
+    content: '';
+    width: 42px;
+    height: 42px;
+    background-image: url(../icons/play-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+}
 
 
 
