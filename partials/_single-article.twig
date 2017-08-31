@@ -30,7 +30,15 @@
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
 
     {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate, 'F, Y') %}
-    {# {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate) %} #}
+
+    {% set publishedAgo = _AppHelper.getSecondsSincePublished(article.publishDateTime) %}
+    
+    {% if publishedAgo < 86400 %}
+        {% set publishDate = _AppHelper.getRelativeTime(article.publishDateTime) ~ " ago" %}
+    {% endif %}
+
+
+
 
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
