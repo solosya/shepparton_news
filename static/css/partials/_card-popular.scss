@@ -39,12 +39,12 @@
                 }
 
                 h2{
-                    font-size: rem(12);
+                    font-size: rem(13);
                     font-weight:normal;
                     margin-top: 0;
-                    line-height:1.41;
+                    line-height:1.38;
                     overflow:hidden;
-                    max-height:32px;
+                    max-height:35px;
                     @media screen and (max-width: $sm-break-down){
                         font-size: rem(14);
                     }
