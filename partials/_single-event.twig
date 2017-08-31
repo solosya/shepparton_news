@@ -24,7 +24,7 @@
 
 {% set placeholder   = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'' %}
 {% set promotedClass = (event.isPromoted) ? 'ad_icon' : '' %}
-{% set hasMedia      = (event.media | length > 0 and imageSuppress == 'false') ? 'withImage__content': 'without__image' %}
+{% set hasMedia      = (event.media | length > 0) ? 'withImage__content': 'without__image' %}
 {% set startDay      = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'd') %}
 {% set startMonth    = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'M') %}
 {% set startTime     = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
@@ -33,8 +33,8 @@
 
 
 <div class="{{containerClass}}" data-title="{{ eventTitle | raw }}">
-    {% set eventImgSmall = _Media.getMediaUrl(event.media[0],500, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
-    {% set eventImg = _Media.getMediaUrl(event.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set eventImgSmall = _Media.getMediaUrl(event.media[0],500, 500, {radius: 'max', 'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set eventImg = _Media.getMediaUrl(event.media[0],imgWidth, imgHeight, {radius: 'max', 'crop': 'fill', 'gravity': 'faces'} ) %}
 
     <a  href="{{event.url}}" 
         class="{{swap}} card event {{hasMedia}}" 
@@ -47,11 +47,6 @@
 
         <article class="{{lightbox}} {{figureClass}}">
             
-            <time class="startdate" datetime="{{event.startDate}}">
-                <span class="day">{{startDay}}</span>
-                <span class="month">{{startMonth | upper}}</span>
-            </time>
-
 
             {% if (hasMedia == 'withImage__content') %}
                 <figure class="{{figureClass}}">
@@ -65,12 +60,17 @@
 
             <div class="content">
                 <h2>{{ eventTitle }}</h2>
-
                 <time class="starttime" datetime="{{event.startDate}}">{{startTime}}</time>
-
-                
                 <p class="excerpt">{{ quotes.smarten(event.excerpt | raw) }}</p>
             </div>
+
+            <time class="startdate" datetime="{{event.startDate}}">
+                <span class="day">{{startDay}}</span>
+                <span class="month">{{startMonth | upper}}</span>
+            </time>
+
+
+
 
         </article>
     </a>

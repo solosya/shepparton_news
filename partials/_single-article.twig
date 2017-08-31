@@ -1,6 +1,5 @@
 {% import "quotes.twig" as quotes %}
 
-
 {% set imageSuppress = imageSuppress is defined and imageSuppress == 'true' ? 'true' : 'false'  %}
 {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
 {% set inline = inline is defined and inline != '' ? inline : ''  %}
@@ -24,8 +23,6 @@
     {% set imgHeight = (imageSize.height is defined) ? imageSize.height : 0 %}
 {% endif %}
 
-
-
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
 
     {% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'' %}
@@ -38,6 +35,7 @@
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
+
 
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 

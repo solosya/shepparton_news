@@ -179,7 +179,6 @@
                                         imageSuppress: true,
                                         containerClass: 'feature-side feature-side-tablet feature-side-mobile visible-xs-block visible-sm-block'
                                     }) | raw}}
-                                    {# {% set localCount = (dev) ? localCount : localCount + 1 %} #}
                                     <hr class="divide visible-xs-block">
                                 {% endif %}
 
@@ -198,13 +197,14 @@
                                 <div class="row">
                                     <div class="col-sm-3 events">
                                         <h2>Events</h2>
-
-                                        {% for i in 0..4 if events[0] %}
+                                        {% for i in 0..4 if events[i] %}
                                             {{this.render('partials/_single-event.twig', {
-                                                article: events[0], 
-                                                imageSize: {width: 60, height: 37},
-                                                containerClass: 'card-popular'
+                                                event: events[i],
+                                                imageSize: {width: 37},
+                                                containerClass: 'card-event'
                                             }) | raw}}
+                                            <hr class="divide12">
+
                                         {% endfor %}
                                     </div>
 
@@ -399,19 +399,7 @@
                         </div>
                     {% endfor %}
 
-{#                     <div class="col-sm-2" style="background:red;height:100px;">
-                        
-                    </div>
-                    <div class="col-sm-2" style="background:green;height:100px;">
-                        
-                    </div>
-                    <div class="col-sm-2" style="background:orange;height:100px;">
-                        
-                    </div>
-                    <div class="col-sm-3" style="background:pink;height:100px;">
-                        
-                    </div>
- #}                </section>
+                </section>
 
                 {% endif %}
 
