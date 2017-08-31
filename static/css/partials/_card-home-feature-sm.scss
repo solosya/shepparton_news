@@ -54,15 +54,15 @@
 
                     .category{
                         color:white;
-                        &:before {
-                            content: '';
-                            display: block;
-                            height: 20px;
-                            width: 80px;
-                            background: url(../images/white-arrow.svg);
-                            background-repeat: no-repeat;
-                            margin-bottom: 5px;
-                        }
+                        // &:before {
+                        //     content: '';
+                        //     display: block;
+                        //     height: 20px;
+                        //     width: 80px;
+                        //     background: url(../images/white-arrow.svg);
+                        //     background-repeat: no-repeat;
+                        //     margin-bottom: 5px;
+                        // }
                     }
 
 
@@ -104,10 +104,10 @@
 
                     .category{
                         color:color(darkgrey);
-                        &:before {
-                            background: url(../images/black-arrow.svg);
-                            background-repeat:no-repeat;
-                        }
+                        // &:before {
+                        //     background: url(../images/black-arrow.svg);
+                        //     background-repeat:no-repeat;
+                        // }
                     }
                     .author {
                         >p {
