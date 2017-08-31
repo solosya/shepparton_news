@@ -54,15 +54,6 @@
 
                     .category{
                         color:white;
-                        // &:before {
-                        //     content: '';
-                        //     display: block;
-                        //     height: 20px;
-                        //     width: 80px;
-                        //     background: url(../images/white-arrow.svg);
-                        //     background-repeat: no-repeat;
-                        //     margin-bottom: 5px;
-                        // }
                     }
 
 
@@ -73,7 +64,8 @@
                         margin-top: 10px;
                         margin-bottom: 10px;
                         overflow:hidden;
-                        max-height: 80px;
+                        max-height: 55px;
+                        max-width: 261px;
                         line-height: 1.18;
                     }
 
