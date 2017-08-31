@@ -8,6 +8,9 @@
             position:relative;
             > figure {
                 margin-right:17px;
+                img {
+                    border-radius:50%;
+                }
             }
 
             > .content {
@@ -32,7 +35,7 @@
             }
             > time {
                 display:block;
-                margin-left:4px;
+                margin-left:6px;
                 font-size: rem(8);
                 font-weight:700;
                 color:color(red);
