@@ -49,7 +49,7 @@
 
 
 .card-event{
-    @media screen and (min-width: $sm-break){
+    // @media screen and (min-width: $sm-break){
         @include card-event-base();
-    }
+    // }
 }
