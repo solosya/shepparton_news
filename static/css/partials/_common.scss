@@ -20,9 +20,9 @@ body{
     // background: #fff;
     font-family: $font-family-sans-serif;
 
-    // @media screen and (max-width: $sm-break){
-    //     overflow-x: hidden;
-    // }
+    @media screen and (max-width: $sm-break){
+        overflow-x: hidden;
+    }
 }
 fieldset {
     padding: 0;
