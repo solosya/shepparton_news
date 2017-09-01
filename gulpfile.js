@@ -127,6 +127,8 @@ gulp.task('user_scripts', function(){
         './assets/scripts/plugins/jquery.lazyload.min.js',
         './assets/scripts/plugins/jquery.dotdotdot.min.js',
         './assets/scripts/plugins/owl.carousel.min.js',
+        './static/development/js/plugins/owl.carousel.min.js',
+        './static/development/js/plugins/owl.carousel2.thumbs.min.js',
 
         './assets/scripts/sdk/search.js',
         './assets/scripts/sdk/video-player.js',

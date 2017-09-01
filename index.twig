@@ -525,7 +525,7 @@
                         {% for i in 0..1 if sections['regional news'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['regional news'].feed.articles[regionalCount], 
-                                imageSuppress: true,
+                                imageSize: {width:190},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
                             {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
