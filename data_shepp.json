@@ -4866,9 +4866,31 @@
 					"path": "http://www.angelfire.com/sc2/sunshinerose10sc/images/fantasy/3D-UNI.Jpg",
 					"caption": "Image gallery image 3. - AAP",
 					"isSystemVideo": false
+				},
+				{
+					"guid": "e0d883d4-4e11-4eaa-9bed-2d0985623a76",
+					"height": "720",
+					"width": "1280",
+					"id": "nrnm7hpir5h6ywpdqzip",
+					"type": "image",
+					"cloudName": "cognitives",
+					"path": "http://www.cookhousegallery.co.uk/shop/images/fullsize/twyford10.jpg",
+					"caption": "Image gallery image 2. - AAP",
+					"isSystemVideo": false
+				},
+				{
+					"guid": "e0d883d4-4e11-4eaa-9bed-2d0985623a76",
+					"height": "720",
+					"width": "1280",
+					"id": "nrnm7hpir5h6ywpdqzip",
+					"type": "image",
+					"cloudName": "cognitives",
+					"path": "http://www.cookhousegallery.co.uk/shop/images/fullsize/twyford10.jpg",
+					"caption": "Image gallery image 2. - AAP",
+					"isSystemVideo": false
 				}
 			],
-			"articleLayoutFileName": "layout-article-gallery"
+			"articleLayoutFileName": null
 		},
 		{
 			"id": "24354",

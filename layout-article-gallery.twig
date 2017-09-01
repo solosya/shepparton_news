@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-9">
 
-                        <div id="owl-thumbnails" class="owl-carousel owl-theme">
+                        <div id="owl-thumbnails" class="owl-carousel owl-shep-theme" data-slider-id="1">
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
@@ -56,6 +56,14 @@
                                 </figure>
                             {% endfor %}
                         </div>
+                        <div class="owl-thumbs" data-slider-id="1">
+
+                            {% for image in article.media %}
+                                {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
+                                <img src="{{articleImg}}" class="owl-thumb-item">
+                            {% endfor %}
+
+                        </div>
 
                         <div class="content-block-top">
 
@@ -75,8 +83,8 @@
             </div>
         </div>
 
-        <div class="container">
-            
+{#         <div class="container">
+
             <div class="row article-row">
                 <div class="col-md-6">
 
@@ -88,7 +96,7 @@
 
 
             </div>
-        </div><!-- .page-content-->
+        </div><!-- .page-content--> #}
 
     </article>
 </main><!--site-main-->

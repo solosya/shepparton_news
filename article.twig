@@ -40,7 +40,7 @@
                             
                             <p class="author"><span>By</span> {{ article.createdBy['displayName'] }}</p>
 
-                            <div class="time_to_read">
+{#                             <div class="time_to_read">
                                 {% set readtime = 3 %}
                                 {% if article.readingTime > 3 %}
                                     {% set readtime = 4 %}
@@ -55,7 +55,7 @@
                                 <img src="{{networkData.templatePath}}/static/images/reading_time/{{readtime}}_min.svg" />
                                 <p>{{article.readingTime}} minute read</p>
                             </div>
-                        </div><!--content-block-top-->
+ #}                        </div><!--content-block-top-->
 
 
 
@@ -102,7 +102,7 @@
                             <div class="row">
 
                                 <div class="col-sm-9">
-                                    <div class="ad-side-container" style="height:850px;position:relative;">
+                                    <div class="ad-side-container" style="height:450px;position:relative;">
                                         <div id="articleAdScroll" class="ad-square fixad" style="width:300px;"></div>
                                     </div>
 

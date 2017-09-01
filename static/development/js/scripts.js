@@ -58,10 +58,10 @@ $('document').ready(function() {
 
 
     var adScroll = function() {
-        if ( scrollMetric[1] === 'up' && !isScolledPast(600)) {
+        if ( scrollMetric[1] === 'up' && !isScolledPast(200)) {
             articleAd.removeClass('bottomAd').addClass('fixad');
         } 
-        else if ( scrollMetric[1] === 'down' && isScolledPast(600)) {
+        else if ( scrollMetric[1] === 'down' && isScolledPast(200)) {
             articleAd.removeClass('fixad').addClass('bottomAd');
         }
     }
@@ -191,13 +191,16 @@ $('document').ready(function() {
 
     $("#owl-thumbnails").owlCarousel({
         items: 1,
+        thumbs: true,
+        thumbsPrerendered: true,
         URLhashListener:true,
         startPosition: 'URLHash',
         pagination: true,
+        dots: false,
         nav: true,
         navText: [
-            "<i class='fa fa-angle-left fa-2x'></i>",
-            "<i class='fa fa-angle-right fa-2x'></i>"
+            "",
+            ""
         ]
     });   
 
