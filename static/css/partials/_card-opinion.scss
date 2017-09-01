@@ -21,7 +21,8 @@
                 > h2{
                     font-size: rem(18);
                     font-weight:700;
-                    font-family:$font-family-serif; 
+                    font-family:$font-family-serif;
+                    font-style:italic; 
                     margin-top: 4px;
                     overflow:hidden;
                     line-height:1.22;
@@ -29,15 +30,6 @@
                 }
                 >p.excerpt {
                     display:none;
-                }
-                .author{
-                    position:absolute;
-                    bottom:0;
-
-                    > time {
-                        position:absolute;
-                        top:0;
-                    }
                 }
             }
         }
