@@ -3,25 +3,6 @@
     font-family: $base-font-family;
 
 
-    &.divideright {
-        &:after {
-            content: '';
-            display: block;
-            height: 100%;
-            background: color(lightgrey);
-            width: 1px;
-            position: absolute;
-            top: 0;
-            right: 5px;
-        }
-        &:last-child {
-            &:after {
-                display:none;
-            }
-        }
-    }
-
-
     a.card {
         height:100%;
 
@@ -125,6 +106,26 @@
 
         height:95px;
 
+        &.divideright {
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                background: color(lightgrey);
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }
+            &:last-child {
+                &:after {
+                    display:none;
+                }
+            }
+        }
+
+
+
         a.card {
             @include card-image-left(80px, 95px);
 
@@ -147,6 +148,24 @@
         @include card-feature-side-base();
 
         height:70px;
+        &.divideright {
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                background: color(lightgrey);
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }
+            &:last-child {
+                &:after {
+                    display:none;
+                }
+            }
+        }
+
 
         a.card {
             @include card-image-left(58px, 69px);
