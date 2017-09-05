@@ -28838,7 +28838,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     <article class="">\
                                         {{#if social.hasMedia}}\
                                             <figure class="{{videoClass}}">\
-                                                <img class="img-responsive" src="{{social.media.path}}" style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)">\
+                                                <img class="img-responsive" src="{{social.media.path}}" style="background-image:url()">\
                                             </figure>\
                                         {{/if}}\
                                         \
@@ -30584,7 +30584,7 @@ UserArticlesController.Load = (function ($) {
                                         
                                         var ImageUrl = $.image({media:data.userArticles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
                                         data.userArticles[i]['imageUrl'] = ImageUrl;
-                                        data.userArticles[i]['placeholder'] = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250';
+                                        data.userArticles[i]['placeholder'] = '';
                                         var articleTemplate = Handlebars.compile(systemCardTemplate);
                                         var article = articleTemplate(data.userArticles[i]);
                                         $('#userArticleContainer').append(article);

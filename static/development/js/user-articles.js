@@ -81,7 +81,7 @@ UserArticlesController.Load = (function ($) {
                                         
                                         var ImageUrl = $.image({media:data.userArticles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
                                         data.userArticles[i]['imageUrl'] = ImageUrl;
-                                        data.userArticles[i]['placeholder'] = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250';
+                                        data.userArticles[i]['placeholder'] = 'placeholder';
                                         var articleTemplate = Handlebars.compile(systemCardTemplate);
                                         var article = articleTemplate(data.userArticles[i]);
                                         $('#userArticleContainer').append(article);

@@ -67,7 +67,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     <article class="">\
                                         {{#if social.hasMedia}}\
                                             <figure class="{{videoClass}}">\
-                                                <img class="img-responsive" src="{{social.media.path}}" style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)">\
+                                                <img class="img-responsive" src="{{social.media.path}}" style="background-image:url(placeholder">\
                                             </figure>\
                                         {{/if}}\
                                         \

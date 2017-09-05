@@ -89,7 +89,7 @@ $('document').ready(function() {
 
     //On Scroll
     pageWindow.scroll(function() {
-        console.log('scrolling');
+        // console.log('scrolling');
         var direction = 'down';
         var scroll = pageWindow.scrollTop();
         if (scroll < scrollMetric[0]) {
@@ -97,7 +97,7 @@ $('document').ready(function() {
         }
         scrollMetric = [scroll, direction];
         adScroll();
-        console.log(scrollMetric);
+        // console.log(scrollMetric);
     });
 
 
