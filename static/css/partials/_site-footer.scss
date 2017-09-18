@@ -3,7 +3,7 @@
     margin-top: 0;
     padding-top:45px;
     background: rgba(0,0,0,.85);
-    height:224px;
+    height:265px;
 
     @media screen and (max-width: $mmd-break-down){
         height:auto;
@@ -12,16 +12,20 @@
     .footer-brand {
         display:inline-block;
         padding:0;
-        width: 67px;
-        height:63px;
+        width: 116px;
+        height:31px;
         background-repeat:no-repeat;
         background-size:contain;
+        @media screen and (min-width: $sm-break) and (max-width: $md-break){
+            width: 102px;
+            height:28px;
+        }
     }
 
     
     .menu {
         float:left;
-        border-right:1px solid color(transwhite);
+        border-right:2px solid color(transwhite);
         padding-right: 30px;
         padding-left: 0;
         margin-right: 20px;
@@ -31,10 +35,15 @@
             margin-bottom:7px;
             > a {
                 font-size: rem(12.5);
-                font-weight:600;
+                font-weight:normal;
                 letter-spacing: 0.4px;
                 color:white;
                 text-transform:uppercase;
+
+                @media screen and (max-width: $sm-break-down){
+                    font-size: rem(10);
+                }
+
             }
         }
         
@@ -56,12 +65,19 @@
     }
 
     .publish {
-        margin-top:50px;
-        text-align:right;
+        margin-top:35px;
+        // text-align:right;
+        p {
+            font-size: rem(10);
+            color: white;
+            float: left;
+            color:color(grey);
+        }
         a {
             font-size: rem(10);
             letter-spacing: 0.3px;
             color:white;
+            float:right;
         }
     }
 
