@@ -28,7 +28,7 @@
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-                                <figure class="featured">
+                                <figure class="featured" data-hash="{{loop.index}}">
                                     <img src="{{articleImg}}" class="img-responsive">
                                     {% if image.type == 'video' %} 
                                         {% set mediaUrl = "" %}
@@ -52,15 +52,15 @@
                                     {% endif %}
                                     <figcaption>
                                         <p>{{image.caption}}</p>
+                                        <p>{{loop.index}} of {{loop.revindex + loop.index0}}</p>
                                     </figcaption>
                                 </figure>
                             {% endfor %}
                         </div>
-                        <div class="owl-thumbs" data-slider-id="1">
-
+                        <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1">
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
-                                <img src="{{articleImg}}" class="owl-thumb-item">
+                                <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
                             {% endfor %}
 
                         </div>

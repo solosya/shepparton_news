@@ -16,7 +16,16 @@
     max-height:500px;
   }
 
-
+  .owl-thumbs {
+    overflow:hidden;
+    // overflow-y:hidden;
+    white-space:nowrap;
+    .owl-thumb-item {
+      &.active {
+        border:4px solid rgba(255,255,255,.5);
+      }
+    }
+  }
 
   .owl-shep-theme .owl-nav [class*='owl-'] {
     color: #FFF;

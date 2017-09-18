@@ -1,5 +1,5 @@
 $('document').ready(function() {
-
+    window.Acme = {};
     var isMenuBroken, isMobile;
     var sbCustomMenuBreakPoint = 992;
     var mobileView = 620;
@@ -78,6 +78,35 @@ $('document').ready(function() {
                     // .addClass('fixHeader'); 
         }
     }
+
+    window.Acme.scrollThumbs = function(elem) {
+        console.log($(elem));
+        var elem = $(elem);
+        var elemWidth = elem.width();
+        var container = elem.parent();
+        var containerWidth = container.width();
+        var scrollAmount = container.scrollLeft();
+        var containerView = [scrollAmount, containerWidth + scrollAmount];
+
+        var middle = (containerView[1] - containerView[0]) / 2 ;
+        var middle = scrollAmount + middle;
+        var elempos = elem[0].offsetLeft + elemWidth/2;
+
+        if ( elempos > middle ) {
+            var scroll = true;
+            var scrollpos = scrollAmount + (elempos - middle);
+        } else if ( elem[0].offsetLeft < middle ) {
+            var scroll = true;
+            var scrollpos = scrollAmount - (middle - elempos);
+        }
+
+        if (scroll) {
+            container.animate({
+                scrollLeft : scrollpos
+            });
+        }
+    }
+
 
 
     // Onload and resize events
