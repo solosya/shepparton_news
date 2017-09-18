@@ -3,28 +3,65 @@
     margin-top: 0;
     padding-top:45px;
     background: rgba(0,0,0,.85);
-    height:265px;
+    height:224px;
 
-    @media screen and (max-width: $sm-break-down){
+    @media screen and (max-width: $mmd-break-down){
         height:auto;
     }
 
     .footer-brand {
         display:inline-block;
         padding:0;
-        width: 140px;
-        height:37px;
+        width: 67px;
+        height:63px;
         background-repeat:no-repeat;
-        background-size:cover;
+        background-size:contain;
     }
 
     
     .menu {
+        float:left;
+        border-right:1px solid color(transwhite);
+        padding-right: 30px;
+        padding-left: 0;
+        margin-right: 20px;
+
         > li {
             list-style:none;
+            margin-bottom:7px;
             > a {
+                font-size: rem(12.5);
+                font-weight:600;
+                letter-spacing: 0.4px;
                 color:white;
+                text-transform:uppercase;
             }
+        }
+        
+        &.padded {
+            padding-right: 50px;
+        }
+        &.padded70 {
+            padding-right: 70px;
+        }
+        &.policy {
+            border-right:none;
+            > li {
+                > a {
+                    font-size:rem(12);
+                    text-transform:none;
+                }
+            }
+        }
+    }
+
+    .publish {
+        margin-top:50px;
+        text-align:right;
+        a {
+            font-size: rem(10);
+            letter-spacing: 0.3px;
+            color:white;
         }
     }
 
