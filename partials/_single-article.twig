@@ -45,7 +45,15 @@
 
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
     
-    {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
+    {% set articleTitle = quotes.smarten(article.title)  %}
+    {% if article.titlePreview is defined and article.titlePreview != "" %}
+        {% set articleTitle = quotes.smarten(article.titlePreview) %}
+    {% endif %}
+
+
+
+    
+    {# {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %} #}
 
 
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
