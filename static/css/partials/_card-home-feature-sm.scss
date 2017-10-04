@@ -64,7 +64,7 @@
                         margin-top: 10px;
                         margin-bottom: 10px;
                         overflow:hidden;
-                        max-height: 55px;
+                        height: 55px;
                         max-width: 261px;
                         line-height: 1.18;
                     }
@@ -129,7 +129,7 @@
                         margin-top: 10px;
                         margin-bottom: 10px;
                         overflow:hidden;
-                        max-height: 80px;
+                        height: 80px;
                         line-height: 1.18;
 
                     }
@@ -140,7 +140,7 @@
                         padding-top: 31;
 
                         >p {
-                            max-height:100px;
+                            height:100px;
                             font-size:rem(18);
                             line-height:1.33;
                         }

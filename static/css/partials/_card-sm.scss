@@ -18,7 +18,7 @@
                     line-height:1.29;
                     margin-top:5px;
                     margin-bottom:10px;
-                    max-height:45px;
+                    height:45px;
                 }
                 > p.excerpt {
                     display:none;
@@ -73,7 +73,7 @@
                         font-size: rem(17);
                         font-weight:normal;
                         line-height: 1.29;
-                        max-height:70px;
+                        height:70px;
                     }
 
                     .author {
@@ -98,7 +98,7 @@
                     }
 
                     >p {
-                        max-height:65px;
+                        height:65px;
                         margin-bottom:6px;
                     }
                 }
@@ -135,7 +135,7 @@
                             bottom:20px;
                         }
                         >p {
-                            max-height:70px;
+                            height:70px;
                         }
                     }
                 }
@@ -175,7 +175,7 @@
                         display:none;
                     }
                     >p {
-                        max-height:44px;
+                        height:44px;
                     }
                 }
                 &.instagram{ 

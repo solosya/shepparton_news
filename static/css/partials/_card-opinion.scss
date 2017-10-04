@@ -36,7 +36,7 @@
         &.without__image {
             .content {
                 h2 {
-                    max-height:88px;
+                    height:88px;
                 }
             }
         }
@@ -48,7 +48,7 @@
                 }
 
                 >p {
-                    max-height:65px;
+                    height:65px;
                     margin-bottom:6px;
                 }
             }
@@ -58,7 +58,7 @@
                     >p {
                         font-size: rem(12);
                         margin-top:10px;
-                        max-height:50px;
+                        height:50px;
                         font-weight:600;
                         line-height:1.33;
                     }
@@ -103,14 +103,14 @@
                 > .content {
                     h2{
                         font-size: rem(12);
-                        max-height: 33px;
+                        height: 33px;
                     }
                 }
             }
             &.without__image {
                 .content {
                     h2 {
-                        max-height:88px;
+                        height:88px;
                     }
 
                 }
@@ -131,7 +131,7 @@
                 > .content {
                     h2{
                         font-size: rem(15);
-                        max-height: 60px;
+                        height: 60px;
                     }
                 }
             }

@@ -65,7 +65,7 @@
             article {
                 > .content {
                     h2{
-                        max-height:45px;
+                        height:45px;
                     }
                 }
             }
@@ -84,7 +84,7 @@
                     }
                     h2 {
                         font-size:rem(12);
-                        max-height:48px;
+                        height:48px;
                         line-height:1.33;
                     }
                     .author {
@@ -107,7 +107,7 @@
                 > .content {
                     h2{
                         line-height:1.2;
-                        max-height:40px;
+                        height:40px;
                     }
                 }
             }
