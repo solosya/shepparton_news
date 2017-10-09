@@ -12,7 +12,7 @@ body.special {
 }
 
 .site-main {
-    margin-top:80px;
+    margin-top:50px;
     @media screen and (max-width: $sm-break-down) {
         margin-top:10px;
     }
@@ -21,7 +21,7 @@ body.special {
 
     section {
         @media screen and (min-width: $sm-break) {
-            margin-bottom:80px;
+            margin-bottom:50px;
         }
         @media screen and (max-width: $sm-break-down) {
             margin-bottom:45px;
@@ -187,13 +187,18 @@ body.special {
             margin-bottom:13px;
             line-height:1;
             padding-bottom: 10px;
-            border-bottom:1px solid color(lightgrey);
         }
+    }
+
+    .advert-padding {
+        margin-top: 85px;
+        margin-bottom: 85px;
     }
 
     .section-background {
         padding: 25px 0;
         background:rgba(185,185,185,.2);
+        margin-bottom: 65px;
     }
 
     .section-header {
