@@ -31424,77 +31424,79 @@ UserArticlesController.Load = (function ($) {
 
 (function ($) {
 
-	var dropdown = function(date) {
-		return '<div class="weather-date">' + 
-					'<h1>Weather</h1>' + 
-					'<p>' + date + '</p>' + 
-				'</div>' + 
-				'<div id="weather-panels"></div>';
-	}
-
-    var weatherPanel = function(i, icon) {
-        return '<div id="weather-' + i + '" class="panel">' +
-                    '<div style="width: 140px;">' +
-                        '<p class="date"></p>' + 
-                        '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
+    $(document).ready(function() {
+        var dropdown = function(date) {
+            return '<div class="weather-date">' + 
+                        '<h1>Weather</h1>' + 
+                        '<p>' + date + '</p>' + 
                     '</div>' + 
-                    '<div>' +
-                        '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
-                    '</div>' + 
-                    '<div style="width: 100px;">' +
-                        '<div class="temp-desc"></div>' + 
-                        '<div class="wind"></div>' + 
-                    '</div>' + 
-                '</div>';
+                    '<div id="weather-panels"></div>';
         }
 
-    var location = 'Australia/Shepparton';
+        var weatherPanel = function(i, icon) {
+            return '<div id="weather-' + i + '" class="panel">' +
+                        '<div style="width: 140px;">' +
+                            '<p class="date"></p>' + 
+                            '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
+                        '</div>' + 
+                        '<div>' +
+                            '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
+                        '</div>' + 
+                        '<div style="width: 100px;">' +
+                            '<div class="temp-desc"></div>' + 
+                            '<div class="wind"></div>' + 
+                        '</div>' + 
+                    '</div>';
+            }
 
-    console.log(window.Acme.templatePath);
+        var location = 'Australia/Shepparton';
 
-    $.ajax({
-        url: 'https://weather.pagemasters.com.au/weather?q=' + location,
-        dataType: "json",
-        type: 'GET',
-        success: function(res) {
-            var local = res.data[0];
-            var name = local.location.split('/')[1];
+        console.log(window.Acme.templatePath);
 
-            var range = Math.round(local.day_high) + '&#176; - ' + Math.round(local.day_low) + '&#176;'
+        $.ajax({
+            url: 'https://weather.pagemasters.com.au/weather?q=' + location,
+            dataType: "json",
+            type: 'GET',
+            success: function(res) {
+                var local = res.data[0];
+                var name = local.location.split('/')[1];
 
-            $('#weather').html(weatherPanel(1, local.icon));
-            $('#weather-1 > div > p.date').text(local.date);
-            $('#weather-1 > div > p.location').text(name);
-            $('#weather-1 > div > .temp-desc').html(Math.round(local.temperature) + '&#176; ' + local.description);
-            $('#weather-1 > div > .wind').html(Math.round(local.wind_speed) + ' km/h | ' + range);
+                var range = Math.round(local.day_high) + '&#176; - ' + Math.round(local.day_low) + '&#176;'
 
-            $('.show-weather').on("click", function () {
-                $('.show-weather').toggleClass('flip');
+                $('#weather').html(weatherPanel(1, local.icon));
+                $('#weather-1 > div > p.date').text(local.date);
+                $('#weather-1 > div > p.location').text(name);
+                $('#weather-1 > div > .temp-desc').html(Math.round(local.temperature) + '&#176; ' + local.description);
+                $('#weather-1 > div > .wind').html(Math.round(local.wind_speed) + ' km/h | ' + range);
 
-                $.ajax({
-                    url: 'https://weather.pagemasters.com.au/weather?q=' + location,
-                    dataType: "json",
-                    type: 'GET',
-                    success: function(res) {
+                $('.show-weather').on("click", function () {
+                    $('.show-weather').toggleClass('flip');
 
-                        $('.weather-dropdown').toggleClass('hidden');
-                        $('.weather-dropdown').html(dropdown('Thursday, 28th September'));
+                    $.ajax({
+                        url: 'https://weather.pagemasters.com.au/weather?q=' + location,
+                        dataType: "json",
+                        type: 'GET',
+                        success: function(res) {
 
-                        res.data.forEach(function(l) {
-                            var name = l.location.split('/')[1];
+                            $('.weather-dropdown').toggleClass('hidden');
+                            $('.weather-dropdown').html(dropdown('Thursday, 28th September'));
 
-                            $('#weather-panels').append(weatherPanel(name, l.icon));
+                            res.data.forEach(function(l) {
+                                var name = l.location.split('/')[1];
 
-                            $('#' + name + '-weather > .location').text(name);
-                            $('#' + name + '-weather > .description').text(l.description);
-                            $('#' + name + '-weather > div > p.temp').html(Math.round(l.temperature) + '&#176;');
-                        })
-                    }
+                                $('#weather-panels').append(weatherPanel(name, l.icon));
+
+                                $('#' + name + '-weather > .location').text(name);
+                                $('#' + name + '-weather > .description').text(l.description);
+                                $('#' + name + '-weather > div > p.temp').html(Math.round(l.temperature) + '&#176;');
+                            })
+                        }
+                    })
                 })
-            })
 
 
-        }
+            }
+        })
     })
 
 }(jQuery));
