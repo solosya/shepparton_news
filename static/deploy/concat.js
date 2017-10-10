@@ -31436,10 +31436,10 @@ UserArticlesController.Load = (function ($) {
         return '<div id="weather-' + i + '" class="panel">' +
                     '<div style="width: 140px;">' +
                         '<p class="date"></p>' + 
-                        '<p class="location"></p><img class="show-weather" src="/themes/shepp/static/icons/weather/pointer-arrow-thin.svg">' + 
+                        '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
                     '</div>' + 
                     '<div>' +
-                        '<img class="icon" src="/themes/shepp/static/icons/weather/' + icon + '.svg">' + 
+                        '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
                     '</div>' + 
                     '<div style="width: 100px;">' +
                         '<div class="temp-desc"></div>' + 
@@ -31450,6 +31450,8 @@ UserArticlesController.Load = (function ($) {
 
     var location = 'Australia/Shepparton';
 
+    console.log(window.Acme.templatePath);
+
     $.ajax({
         url: 'https://weather.pagemasters.com.au/weather?q=' + location,
         dataType: "json",
@@ -31458,11 +31460,13 @@ UserArticlesController.Load = (function ($) {
             var local = res.data[0];
             var name = local.location.split('/')[1];
 
+            var range = Math.round(local.day_high) + '&#176; - ' + Math.round(local.day_low) + '&#176;'
+
             $('#weather').html(weatherPanel(1, local.icon));
             $('#weather-1 > div > p.date').text(local.date);
             $('#weather-1 > div > p.location').text(name);
             $('#weather-1 > div > .temp-desc').html(Math.round(local.temperature) + '&#176; ' + local.description);
-            $('#weather-1 > div > .wind').text(local.wind_speed + ' km/h');
+            $('#weather-1 > div > .wind').html(Math.round(local.wind_speed) + ' km/h | ' + range);
 
             $('.show-weather').on("click", function () {
                 $('.show-weather').toggleClass('flip');
