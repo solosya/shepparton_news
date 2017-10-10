@@ -31421,3 +31421,76 @@ UserArticlesController.Load = (function ($) {
     
 
 
+
+(function ($) {
+
+	var dropdown = function(date) {
+		return '<div class="weather-date">' + 
+					'<h1>Weather</h1>' + 
+					'<p>' + date + '</p>' + 
+				'</div>' + 
+				'<div id="weather-panels"></div>';
+	}
+
+    var weatherPanel = function(i, icon) {
+        return '<div id="weather-' + i + '" class="panel">' +
+                    '<div style="width: 140px;">' +
+                        '<p class="date"></p>' + 
+                        '<p class="location"></p><img class="show-weather" src="/themes/shepp/static/icons/weather/pointer-arrow-thin.svg">' + 
+                    '</div>' + 
+                    '<div>' +
+                        '<img class="icon" src="/themes/shepp/static/icons/weather/' + icon + '.svg">' + 
+                    '</div>' + 
+                    '<div style="width: 100px;">' +
+                        '<div class="temp-desc"></div>' + 
+                        '<div class="wind"></div>' + 
+                    '</div>' + 
+                '</div>';
+        }
+
+    var location = 'Australia/Shepparton';
+
+    $.ajax({
+        url: 'https://weather.pagemasters.com.au/weather?q=' + location,
+        dataType: "json",
+        type: 'GET',
+        success: function(res) {
+            var local = res.data[0];
+            var name = local.location.split('/')[1];
+
+            $('#weather').html(weatherPanel(1, local.icon));
+            $('#weather-1 > div > p.date').text(local.date);
+            $('#weather-1 > div > p.location').text(name);
+            $('#weather-1 > div > .temp-desc').html(Math.round(local.temperature) + '&#176; ' + local.description);
+            $('#weather-1 > div > .wind').text(local.wind_speed + ' km/h');
+
+            $('.show-weather').on("click", function () {
+                $('.show-weather').toggleClass('flip');
+
+                $.ajax({
+                    url: 'https://weather.pagemasters.com.au/weather?q=' + location,
+                    dataType: "json",
+                    type: 'GET',
+                    success: function(res) {
+
+                        $('.weather-dropdown').toggleClass('hidden');
+                        $('.weather-dropdown').html(dropdown('Thursday, 28th September'));
+
+                        res.data.forEach(function(l) {
+                            var name = l.location.split('/')[1];
+
+                            $('#weather-panels').append(weatherPanel(name, l.icon));
+
+                            $('#' + name + '-weather > .location').text(name);
+                            $('#' + name + '-weather > .description').text(l.description);
+                            $('#' + name + '-weather > div > p.temp').html(Math.round(l.temperature) + '&#176;');
+                        })
+                    }
+                })
+            })
+
+
+        }
+    })
+
+}(jQuery));

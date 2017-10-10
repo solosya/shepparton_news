@@ -6,6 +6,9 @@
 
 {{this.registerJs("CardController();")}}
 
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
 {% set limit = 30 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
@@ -103,18 +106,6 @@
                 <div class="row">
                     <div class="col-xs-9 col-sm-6">
 
-                        <div id="weather-mob" class="weather">
-                            <div>
-                                <p class="location">location</p>
-                                <p class="description">Partly Cloudy</p>
-                            </div>
-                            <img class="icon" src="{{networkData.templatePath}}/static/icons/weather_partly_cloudy.svg">
-                            <p class="temp">21&deg;</p>
-                        </div>
-
-
-
-
                         {% if articles[articleCount] %}                                                                
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
@@ -131,13 +122,9 @@
                     {% if articles[articleCount] %}
                     <div class="cold-xs-9 col-sm-3">
 
-                        <div id="weather-dt" class="weather">
-                            <div>
-                                <p class="location">location</p>
-                                <p class="description">Partly Cloudy</p>
-                            </div>
-                            <img class="icon" src="{{networkData.templatePath}}/static/icons/weather_partly_cloudy.svg">
-                            <p class="temp">21&deg;</p>
+                        <div id="weather" class="weather"></div>
+                        <div class="visible-md-block visible-lg-block">
+                            <div class="weather-dropdown hidden"></div>
                         </div>
 
 
