@@ -1,9 +1,25 @@
 .event{
 
-	margin-top:40px;
+
+	h2 {
+		font-size: rem(12);
+		font-weight: bold;
+		line-height: 0.85;
+		margin-top: 10px;
+		font-family: $font-family-sans-serif !important;
+
+		@media screen and (max-width: $mobile-break) {
+			margin-top: 5px;
+			line-height: 1.67;
+			
+		}
+		
+	}
+
 	margin-bottom:	96px;
 
 	.main-content {
+		margin-top:40px;
 		.event-content, .event-details {
 			
 			&:before {
@@ -70,21 +86,6 @@
 				@media screen and (max-width: $sm-break) {
 					font-size: rem(26);
 				}
-			}
-			h2 {
-				font-size: rem(12);
-				font-weight: bold;
-				line-height: 0.85;
-				margin-top: 10px;
-				color: #6f777b;
-				font-family: $font-family-sans-serif;
-
-				@media screen and (max-width: $mobile-break) {
-					margin-top: 5px;
-					line-height: 1.67;
-					
-				}
-				
 			}
 			
 			p.author {

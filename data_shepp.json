@@ -113,14 +113,14 @@
 			{
 				"id": "723",
 				"guid": "4edecaf3-c3e8-4768-9454-9895b646e986",
-				"title": "Opinion",
+				"title": "Events",
 				"type": "channel",
 				"is_default": null,
 				"network_id": "327",
 				"short_description": "Regional News section",
 				"featured_color": null,
 				"status": "1",
-				"blogLayoutFileName": null,
+				"blogLayoutFileName": "events",
 				"thumbCloudinaryPublicId": null,
 				"thumbCloudinaryCloudName": null,
 				"thumbCdnPath": null,
@@ -134,7 +134,7 @@
 				"total_views": "0",
 				"total_articles": "0",
 				"created_at": "1493862086",
-				"url": "http:\/\/theme.aap.io\/@opinion"
+				"url": "http:\/\/theme.aap.io\/@events"
 			},
 			{
 				"id": "730",
