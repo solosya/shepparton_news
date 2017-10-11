@@ -1,5 +1,8 @@
 {
     "module" : {
+        "debug" : {
+           "enabled" : true
+        },
         "event" : {
            "enabled" : true
         },
