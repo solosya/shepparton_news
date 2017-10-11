@@ -22,10 +22,10 @@
 
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{# {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false  %}
 
-
+ #}
 {% set sections =  {
         "videos": {
             "feed": "",
@@ -122,12 +122,12 @@
                     {% if articles[articleCount] %}
                     <div class="cold-xs-9 col-sm-3">
 
-{#                         <div id="weather" class="weather"></div>
+                        <div id="weather" class="weather"></div>
                         <div class="visible-md-block visible-lg-block">
                             <div class="weather-dropdown hidden"></div>
                         </div>
 
- #}
+
                         <hr class="divide10 visible-xs-block" style="clear:both">
 
 
