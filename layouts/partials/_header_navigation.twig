@@ -23,10 +23,11 @@
                             title="Home"
                             style="background-image:url({{logo}})">
                         </a>
-                        
+                    </div>
+                </div>
+                <div class="row menu-items">
 
-
-                        <!--  ************ -->
+                       <!--  ************ -->
                         <!--  DESKTOP MENU -->
                         <!--  ************ -->
 
@@ -92,83 +93,7 @@
 
 
                         </nav>
-
-
-
-
-
-
-
-
-
-
-
-                        <!--  *********** -->
-                        <!--  MOBILE MENU -->
-                        <!--  *********** -->
-
-                        {# <nav id="sb-custom-menu" class="sb-custom-menu">
-
-                            <a href="#" id="menu-mobile" class="menu-mobile"></a>
-
-                            <div class="menuContainer">
-
-                                <div id="menu-search" class="secondary-menu menu-search">
-                                    <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
-                                        <div>
-                                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                        </div>
-                                        <button class="btn btn-default" type="submit" id="searchsubmit">
-                                            <span class="icon-search icon"></span>
-                                        </button>
-                                    </form>
-                                </div>
-
-
-                                <ul id="menu-primary-menu" class="menu mobile">
-                                    {% set menuItems = blog.blogHeaderMenu %}
-                                    {% for parentItem in menuItems  %}
-
-                                        {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                        {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-                                        <li>
-                                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                                {% if parentItem.label != "" %}
-                                                    {{parentItem.label}}
-                                                {% elseif parentItem.blogTitle != "" %}
-                                                    {{parentItem.blogTitle}}
-                                                {% elseif parentItem.pageTitle != "" %}
-                                                    {{parentItem.pageTitle}}
-                                                {% endif %}
-                                            </a>
-                                            <span class="list-arrow"></span>
-
-                                            {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                  <span class="down-arrow"></span>
-                                                  <ul class="sub-menu">
-                                                    {% for childItem in parentItem.children %}
-                                                        {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                        <li>
-                                                            <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                            </a>
-                                                        </li>
-                                                   {% endfor %}
-                                                </ul>
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </nav> #}
-
-
-
-
-
-
-                    </div>
+                    
                 </div>
             </div><!-- .container-->  
         </div><!-- .header top-->  
