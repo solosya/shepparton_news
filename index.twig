@@ -6,26 +6,26 @@
 
 {{this.registerJs("CardController();")}}
 
-{# {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
- #}
-{# {% set limit = 30 %}
+
+{% set limit = 30 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
- #}
 
 
-{# {% set events = _Event.getEvents() %} #}
+
+{% set events = _Event.getEvents() %}
 
 
 
 <!-- used to index each article as we loop over throughout the template -->
-{# {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false  %}
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
- #}
+
 {% set sections =  {
         "videos": {
             "feed": "",
@@ -288,7 +288,7 @@
 
 
 
-        {{ include('index/videos.twig') }}
+        {# {{ include('index/videos.twig') }} #}
 
 
 
