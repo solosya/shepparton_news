@@ -31439,10 +31439,10 @@ UserArticlesController.Load = (function ($) {
                             '<p class="date"></p>' + 
                             '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
                         '</div>' + 
-                        '<div>' +
+                        '<div style="width: 48px;">' +
                             '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
                         '</div>' + 
-                        '<div style="width: 100px;">' +
+                        '<div style="width: 120px;">' +
                             '<div class="temp-desc"></div>' + 
                             '<div class="wind"></div>' + 
                         '</div>' + 
