@@ -34,7 +34,7 @@
 {% set publishDate = (event.publishDate is defined) ? event.publishDate : event.publishedDate %}
 {% set publishDateTime = (event.publishDateTime is defined) ? event.publishDateTime : event.publishedDateTime %}
 
-{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(publishDateTime, 'F Y') %}
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(publishDate, 'F Y') %}
 
 {% set publishedAgo = _AppHelper.getSecondsSincePublished(publishDateTime) %}
 
