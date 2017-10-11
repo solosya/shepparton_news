@@ -174,18 +174,13 @@
         </div><!-- .header top-->  
 
 
-
-
-
-
-
-
-
+        {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
+        {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
 
         <div class="header-bottom">
             <ul class="auth-links">
-                <li><a href="#">LOG IN</a></li>
-                <li><a href="#">SIGN UP</a></li>
+                <li><a href="{{ loginPath }}">LOG IN</a></li>
+                <li><a href="{{ signUpPath }}">SIGN UP</a></li>
             </ul>
         </div><!-- .site-branding-top -->
 
