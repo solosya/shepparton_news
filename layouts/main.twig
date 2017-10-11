@@ -16,7 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
 
-
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <title>{{ this.title }}</title>
     {{ Html.csrfMetaTags | raw }}
@@ -47,7 +46,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=565e1b1h" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=6fd554bb" type="text/css" media="all">
 
     {% else %}
 {#             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" />
