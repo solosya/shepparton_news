@@ -12,8 +12,8 @@
 {% set startDate = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j F Y') %}
 {% set endDate = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j F Y') %}
 
-{% set startTime = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'H:ia') %}
-{% set endTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'H:ia') %}
+{% set startTime = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
+{% set endTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia') %}
 
 
 <section class="">
@@ -62,7 +62,7 @@
                                 {{ event.address.suburb }} {{ event.address.state  }}
                             </p>
                             <p class="content">
-                                {{ event.content }}
+                                {{ event.content | raw }}
                             </p>
                         </div>
 
