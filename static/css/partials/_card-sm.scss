@@ -1,0 +1,193 @@
+@mixin card-sm-base() {
+    position:relative;
+    a.card {
+        > article {
+            position:relative;
+            > figure {
+            }
+
+            > .content {
+                position:relative;
+                padding: 0;
+
+                > .category{
+                }
+                > h2{
+                    font-weight: normal;
+                    font-size: rem(17);
+                    line-height:1.29;
+                    margin-top:5px;
+                    margin-bottom:10px;
+                    height:45px;
+                }
+                > p.excerpt {
+                    display:none;
+                }
+                .author {
+                    img {
+                    }
+                    p {
+                    }
+                    > time {
+                    }
+                }
+                
+                > time {
+                }
+            }
+        }
+    }
+}
+
+
+
+.card-sm{
+    @media screen and (min-width: $sm-break){
+        @include card-sm-base();
+
+        a.card {
+            @include card-image-top(auto, 160px);
+            height:250px;
+
+            > article {
+
+                > figure{
+                    margin-bottom:6px;
+                }
+
+
+                > .content{
+                    height:100%;
+                }
+            }
+
+
+            &.without__image {
+                background:color(offwhite);
+                .content {
+                    padding:63px 20px 5px 20px;
+
+                    height:100%;
+
+                    h2 {
+                        font-size: rem(17);
+                        font-weight:normal;
+                        line-height: 1.29;
+                        height:70px;
+                    }
+
+                    .author {
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:20px;
+                        }
+                    }
+
+                }
+            }  
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        height:65px;
+                        margin-bottom:6px;
+                    }
+                }
+
+                &.facebook {
+                    .content{
+                        .icon {
+                            width:10px;
+                            height:20px;
+                            background-size:contain;
+                        }
+                    }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                    }
+                }
+                &.without__image {
+                    .content {
+                        .icon {
+                            display:block;
+                            position:absolute;
+                            bottom:20px;
+                        }
+                        >p {
+                            height:70px;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+
+.card-sm-mobile{
+    @media screen and (max-width: $sm-break-down) {
+        @include card-sm-base();
+
+        a.card {
+            @include card-image-left(89px, 85px);
+            height: 90px;
+
+            > article {
+
+
+                > figure{
+                    margin-right:8px;
+                    &.video {
+                        &:before{
+                            @include videoIconMiddle();
+                        }
+                    }
+                }
+            }
+
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+                    >p {
+                        height:44px;
+                    }
+                }
+                &.instagram{ 
+                    &.without__content {
+                        .content {
+                            padding-top:25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

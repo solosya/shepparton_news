@@ -1,0 +1,70 @@
+.most-popular {
+    counter-reset: my-badass-counter;
+}
+.most-popular > div:before {
+    content: counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+}
+
+.card-popular {
+
+    &:before {
+        float:left;
+        font-size:rem(17);
+        color: color(red);
+        margin-right:10px;
+        line-height:1;
+        @media screen and (max-width: $sm-break-down){
+            font-size: rem(20);
+        }
+
+
+    }
+    
+
+    a.card {
+        @include card-image-none;
+
+        height:32px;
+        margin-bottom:12px;
+
+        article {
+       
+
+            > .content {
+                width:100%;
+
+                .category {
+                    display:none;
+                }
+
+                h2{
+                    font-size: rem(13);
+                    font-weight:600;
+                    margin-top: 0;
+                    line-height:1.38;
+                    overflow:hidden;
+                    height:40px;
+                    @media screen and (max-width: $sm-break-down){
+                        font-size: rem(14);
+                    }
+
+                }
+
+
+                >p {
+                    display:none;
+                }
+
+
+                .author{
+                    display:none;
+                }
+
+                time{
+                    display:none;
+                }
+            }
+        }
+    }
+}

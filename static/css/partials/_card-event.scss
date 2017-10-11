@@ -1,0 +1,55 @@
+@mixin card-event-base() {
+    position:relative;
+    a.card {
+        @include card-image-left(37px, 37px);
+        height:52px;
+
+        > article {
+            position:relative;
+            > figure {
+                margin-right:17px;
+                img {
+                    border-radius:50%;
+                }
+            }
+
+            > .content {
+                position:relative;
+                padding: 0;
+                padding-top:9px;
+
+                > .category{
+                }
+                > h2{
+                    font-weight: 600;
+                    font-size: rem(12);
+                    line-height:1;
+                    margin-bottom:0;
+                    max-height:21px;
+                }
+
+                > p.excerpt {
+                    font-size: rem(12);
+                    max-height: 17px;
+                }
+            }
+            > time {
+                display:block;
+                margin-left:6px;
+                font-size: rem(8);
+                font-weight:700;
+                color:color(red);
+                text-transform:uppercase;
+            }
+
+        }
+    }
+}
+
+
+
+.card-event{
+    // @media screen and (min-width: $sm-break){
+        @include card-event-base();
+    // }
+}

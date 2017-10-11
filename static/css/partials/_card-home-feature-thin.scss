@@ -1,0 +1,240 @@
+@mixin card-feature-thin-base() {
+    a.card {
+        @include card-image-full;
+
+        height:100%;
+        color:$white;
+
+
+        > article {
+            position:relative;
+
+            > figure {
+                @include tintafter();
+            }
+            > .content{
+                width:100%;
+                z-index:10;
+
+                .category{
+                    color:white;
+                    // &:before {
+                    //     content: '';
+                    //     display: block;
+                    //     height: 20px;
+                    //     width: 80px;
+                    //     background: url(../images/white-arrow.svg);
+                    //     background-repeat: no-repeat;
+                    //     margin-bottom: 5px;
+                    // }
+                }
+                h2{
+                    font-family:$font-family-serif;
+                    font-size: rem(22);
+                    font-weight:600;
+                    margin-top: 10px;
+                    margin-bottom:10px;
+                    overflow:hidden;
+                    height: 55px;
+                    max-width: 270px;
+                    line-height: 1.18;
+                }
+                >p.excerpt {
+                    display:none;
+                }
+                .author{
+                    p{
+                        color:white;
+                        border-right: 1px solid color(white);
+                    }
+                    time{
+                        color:white;
+                    }
+
+                }
+            }
+        }
+        &.without__image {
+            background:color(offwhite);
+            .content {
+                color:red;
+
+                .category{
+                    color:color(darkgrey);
+                    // &:before {
+                    //     background: url(../images/black-arrow.svg);
+                    //     background-repeat: no-repeat;
+                    // }
+                }
+                .author {
+                    >p {
+                        color:color(darkgray);
+                        border-right:1px solid color(darkgray);
+                    }
+                    time {
+                        color:color(darkgray);
+                    }
+                }
+            }
+        }
+        &.social {
+            .content {
+                > p {
+                    font-family:$font-family-serif;
+                    font-weight:600;
+                    overflow:hidden;
+                }
+            }
+            &.without__image {
+                .content {
+                    > p {
+                        color:black;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+
+.home-feature-thin {
+    @media screen and (min-width: $sm-break) {
+        @include card-feature-thin-base();
+
+        height:530px;
+        a.card {
+            article {
+
+                > .content {
+                    padding: 400px 20px 10px 30px;
+
+
+
+                }
+            }
+
+            &.social {
+                .content {
+                    padding-top:31px;
+                    .icon {
+                        margin-bottom:320px;
+                    }
+                    > p {
+                        font-size: rem(22);
+                        margin-top: 10px;
+                        margin-bottom:10px;
+                        height: 55px;
+                        line-height: 1.18;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        padding-top: 31;
+                        .icon {
+                            margin-bottom:300px;
+                        }
+
+                        >p {
+                            height:110px;
+                            font-size:rem(22);
+                            line-height:1.18;
+                        }
+
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content{
+                            .icon {
+                                margin-bottom:400px;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+.home-feature-thin-mobile {
+    @media screen and (max-width: $sm-break-down){
+        @include card-feature-thin-base();
+        height:387px;
+        margin-bottom:20px;
+
+        a.card {
+
+            article {
+
+                > .content {
+                    padding: 260px 20px 10px 30px;
+                }
+            }
+
+
+
+            &.social {
+                .content {
+                    padding: 16px 20px 5px 10px;
+                    .icon {
+                        margin-bottom: 220px;
+                    }
+
+                    > p {
+                        font-size: rem(26);
+                        margin-top: 5px;
+                        margin-bottom:6px;
+                        min-height:20px;
+                        height: 60px;
+                        line-height: 1.15;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        .icon {
+                            margin-bottom: 195px;
+                        }
+
+                        >p {
+                            height:80px;
+                            font-size:rem(22);
+                            line-height:1.22;
+                            margin-bottom:10px;
+                        }
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content {
+                            .icon {
+                                margin-bottom: 275px;
+                            }
+                            >p {
+                                margin:0;
+                            }
+                        }
+                    }
+                }
+                &.youtube{
+                    .content{
+                        .icon {
+                            margin-bottom:90px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

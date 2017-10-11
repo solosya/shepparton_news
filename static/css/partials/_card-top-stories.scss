@@ -1,0 +1,116 @@
+@mixin top-stories-base() {
+    a.card {
+        @include card-image-none;
+        height:100%;
+
+        > article {
+            > figure{
+            }
+            > .content{
+                width:100%;
+
+                > .category{
+                }
+                > h2{
+                    font-size: rem(16);
+                    line-height:1.18;
+                    font-weight:normal;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    overflow:hidden;
+
+                }
+                > p.excerpt {
+                    display:none;
+                }
+            }
+        }
+        &.social {
+            .content {
+                .icon {
+                    display:none;
+                }
+            }
+        }
+    }
+}
+
+
+.top-stories {
+
+    @media screen and (min-width: $sm-break){
+        @include top-stories-base();
+        
+        &:last-of-type {
+            a.card {
+                &:after {
+                    display:none;
+                }
+            }
+        }
+
+        a.card {
+
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                background: color(lightgrey);
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }        
+
+            article {
+                > .content {
+                    h2{
+                        height:45px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.top-stories-tablet {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include top-stories-base();
+        a.card {
+            article {
+                > .content {
+                    .category {
+                        font-size:rem(10);
+                    }
+                    h2 {
+                        font-size:rem(12);
+                        height:48px;
+                        line-height:1.33;
+                    }
+                    .author {
+                        font-size:rem(10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.top-stories-mobile {
+    @media screen and (max-width: $sm-break-down){
+        @include top-stories-base();
+
+        a.card {
+            article {
+                > .content {
+                    h2{
+                        line-height:1.2;
+                        height:40px;
+                    }
+                }
+            }
+        }
+    }
+}

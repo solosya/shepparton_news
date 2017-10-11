@@ -1,0 +1,142 @@
+@mixin card-opinion-base() {
+    // clear:both;
+    font-family: $base-font-family;
+
+
+
+    a.card {
+        height:100%;
+
+        > article {
+
+            > .content{
+                width:100%;
+                height:100%;
+                position:relative;
+
+                > .category{
+                    display:none;
+                }
+
+                > h2{
+                    font-size: rem(18);
+                    font-weight:700;
+                    font-family:$font-family-serif;
+                    font-style:italic; 
+                    margin-top: 4px;
+                    overflow:hidden;
+                    line-height:1.22;
+
+                }
+                >p.excerpt {
+                    display:none;
+                }
+            }
+        }
+        &.without__image {
+            .content {
+                h2 {
+                    height:88px;
+                }
+            }
+        }
+
+        &.social {
+            .content {
+                .icon {
+                    display:none;
+                }
+
+                >p {
+                    height:65px;
+                    margin-bottom:6px;
+                }
+            }
+
+            &.facebook, &.twitter, &.instagram, &.youtube{
+                .content{
+                    >p {
+                        font-size: rem(12);
+                        margin-top:10px;
+                        height:50px;
+                        font-weight:600;
+                        line-height:1.33;
+                    }
+                }
+            }
+            &.instagram{ 
+
+                &.without__content {
+                    .content{
+                        padding-top:34px;
+                        >p {
+                            margin-top:0;
+                        }
+                        >.author{
+                            position:static;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.card-opinion {
+    @media screen and (min-width: $mmd-break){
+        @include card-opinion-base();
+    }
+}
+
+
+.card-opinion-tablet {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include card-opinion-base();
+
+
+        a.card {
+
+            article {
+                > .content {
+                    h2{
+                        font-size: rem(12);
+                        height: 33px;
+                    }
+                }
+            }
+            &.without__image {
+                .content {
+                    h2 {
+                        height:88px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.card-opinion-mobile {
+    @media screen and (max-width: $sm-break-down){
+        @include card-opinion-base();
+
+        height:95px;
+
+        a.card {
+
+            article {
+                > .content {
+                    h2{
+                        font-size: rem(15);
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

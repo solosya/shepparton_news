@@ -1,0 +1,297 @@
+@mixin card-rec-full() {
+    a.card {
+        > article {
+            > figure{
+            }
+            > .content{
+                > .category{
+                }
+                > h2{
+                }
+                > p.excerpt {
+                }
+                .author {
+                    img {
+                    }
+                    p {
+                    }
+                    > time {
+                    }
+                }
+                
+                > time{
+                }
+            }
+        }
+    }
+}
+
+
+
+.card-rec-full {
+    @media screen and (min-width: $mmd-break) {
+
+        // @include card-rec-base();
+
+        height:144px;
+        
+        a.card {
+            @include card-image-full;
+            height:100%;
+            color:$white;
+
+            article {
+                position:relative;
+
+                > figure {
+                    @include tintafter();
+                    width:auto;
+                }
+
+                > .content {
+                    width:100%;
+                    z-index:10;
+                    padding: 25px;
+
+                    .category{
+                        color:white;
+                    }
+
+                    h2{
+                        font-family:$font-family-serif;
+                        font-size: rem(22);
+                        font-weight:600;
+                        margin-top: 7px;
+                        overflow:hidden;
+                        max-height: 52px;
+                        max-width: 222px;
+                        line-height: 1.18;
+                        margin-bottom:8px;
+                    }
+
+
+                    >p.excerpt {
+                        display:none;
+                    }
+
+
+                    .author{
+                        p{
+                            color:white;
+                            border-right: 1px solid color(white);
+                        }
+                        time{
+                            font-family:$font-family-serif;
+                            color:white;
+                        }
+                    }
+                }
+
+            }
+
+            &.without__image {
+            
+                background:color(offwhite);
+
+                .content {
+                    color:red;
+
+                    .category{
+                        color:color(darkgrey)
+                    }
+                    .author {
+                        >p {
+                            color:color(darkgray);
+                            border-right:1px solid color(darkgray);
+                        }
+                        time {
+                            color:color(darkgray);
+                        }
+                    }
+                }
+            }   
+
+
+            &.social {
+                .content {
+
+                    .icon {
+                        display:none;
+                    }
+                    .category {
+
+                    }
+                    > p {
+                        font-family:$font-family-serif;
+                        font-size: rem(22);
+                        font-weight:600;
+                        margin-top: 7px;
+                        overflow:hidden;
+                        max-height: 52px;
+                        line-height: 1.18;
+                        margin-bottom:8px;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        >p {
+                            font-size:rem(22);
+                            line-height:1.18;
+                        }
+
+                    }
+                    &.without__image {
+                        .content {
+                            > p {
+                                color:black;
+                            }
+                        }
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content{
+                            padding-top:60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.card-rec-full-mobile {
+    @media screen and (max-width: $mmd-break-down) {
+
+        // @include card-rec-base();
+
+        height:144px;
+        
+        a.card {
+            @include card-image-full;
+            height:100%;
+            color:$white;
+
+            article {
+                position:relative;
+
+                > figure {
+                    @include tintafter();
+                    width:auto;
+                }
+
+                > .content {
+                    width:100%;
+                    z-index:10;
+                    padding: 25px;
+
+                    .category{
+                        color:white;
+                    }
+
+                    h2{
+                        font-family:$font-family-serif;
+                        font-size: rem(22);
+                        font-weight:600;
+                        margin-top: 7px;
+                        overflow:hidden;
+                        max-height: 52px;
+                        line-height: 1.18;
+                        margin-bottom:8px;
+                    }
+
+
+                    >p.excerpt {
+                        display:none;
+                    }
+
+
+                    .author{
+                        p{
+                            color:white;
+                            border-right: 1px solid color(white);
+                        }
+                        time{
+                            font-family:$font-family-serif;
+                            color:white;
+                        }
+                    }
+                }
+
+            }
+
+            &.without__image {
+            
+                background:color(offwhite);
+
+                .content {
+                    color:red;
+
+                    .category{
+                        color:color(darkgrey)
+                    }
+                    .author {
+                        >p {
+                            color:color(darkgray);
+                            border-right:1px solid color(darkgray);
+                        }
+                        time {
+                            color:color(darkgray);
+                        }
+                    }
+                }
+            }   
+
+
+            &.social {
+                .content {
+
+                    .icon {
+                        display:none;
+                    }
+                    .category {
+
+                    }
+                    > p {
+                        font-family:$font-family-serif;
+                        font-size: rem(22);
+                        font-weight:600;
+                        margin-top: 7px;
+                        overflow:hidden;
+                        max-height: 52px;
+                        line-height: 1.18;
+                        margin-bottom:8px;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        >p {
+                            font-size:rem(22);
+                            line-height:1.18;
+                        }
+
+                    }
+                    &.without__image {
+                        .content {
+                            > p {
+                                color:black;
+                            }
+                        }
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content{
+                            padding-top:60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

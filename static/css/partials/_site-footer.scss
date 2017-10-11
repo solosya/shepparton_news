@@ -1,0 +1,111 @@
+.site-footer{
+    width: 100%;
+    margin-top: 0;
+    padding-top:45px;
+    background: rgba(0,0,0,.85);
+    height:265px;
+    @media screen and (max-width: $sm-break-down) {
+        height:auto;
+        padding-top:20px;
+
+    }
+
+    .footer-brand {
+        display:inline-block;
+        padding:0;
+        width: 116px;
+        height:31px;
+        background-repeat:no-repeat;
+        background-size:contain;
+        @media screen and (min-width: $sm-break) and (max-width: $md-break){
+            width: 102px;
+            height:28px;
+        }
+        @media screen and (max-width: $sm-break-down) {
+            width: 120px;
+            height:32px;
+            margin-bottom:30px;
+        }
+    }
+
+    
+    .menu {
+        float:left;
+        border-right:2px solid color(transwhite);
+        padding-right: 30px;
+        padding-left: 0;
+        margin-right: 20px;
+        
+        @media screen and (max-width: $sm-break-down) {
+            float:none;
+            border-right:none;
+            border-bottom:1px solid color(transwhite);
+            padding-bottom:10px;
+            margin-bottom:10px;
+        }
+
+        > li {
+            list-style:none;
+            margin-bottom:7px;
+            @media screen and (min-width: $sm-break) and (max-width: $md-break){
+                margin-bottom:0;
+            }
+            > a {
+                font-size: rem(12.5);
+                font-weight:normal;
+                letter-spacing: 0.4px;
+                color:white;
+                text-transform:uppercase;
+
+                @media screen and (min-width: $sm-break) and (max-width: $md-break){
+                    font-size: rem(10);
+                }
+
+            }
+        }
+        
+        &.padded {
+            padding-right: 50px;
+        }
+        &.padded70 {
+            padding-right: 70px;
+            @media screen and (min-width: $sm-break) and (max-width: $md-break){
+                padding-right: 30px;
+            }
+
+        }
+        &.policy {
+            border-right:none;
+            > li {
+                > a {
+                    font-size:rem(12);
+                    text-transform:none;
+                }
+            }
+        }
+    }
+
+    .publish {
+        margin-top:35px;
+
+        p {
+            font-size: rem(10);
+            color: white;
+            float: left;
+            color:color(grey);
+        }
+        a {
+            font-size: rem(10);
+            letter-spacing: 0.3px;
+            color:white;
+            float:right;
+        }
+        @media screen and (max-width: $sm-break-down) {
+            >p,>a {
+                float:none;
+            }
+        }
+
+    }
+
+}

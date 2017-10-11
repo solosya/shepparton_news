@@ -1,0 +1,221 @@
+@mixin card-feature-side-base() {
+    // clear:both;
+    font-family: $base-font-family;
+
+
+    a.card {
+        height:100%;
+
+        > article {
+            > figure{
+                margin-right:15px;
+                &.video {
+                    &:before{
+                        @include videoIconMiddle();
+                    }
+                }
+
+            }
+            > .content{
+                width:100%;
+                height:100%;
+                position:relative;
+
+                > .category{
+                    color: color(red);
+                    font-size: rem(10);
+                }
+                > h2{
+                    font-size: rem(16);
+                    font-weight:700;
+                    margin-top: 4px;
+                    overflow:hidden;
+                    line-height:1.15;
+
+                }
+                >p.excerpt {
+                    display:none;
+                }
+                .author{
+                    position:absolute;
+                    bottom:0;
+                }
+               
+            }
+        }
+        &.without__image {
+            .content {
+                h2 {
+                    height:19px;
+                }
+                p.excerpt {
+                    display:block;
+                    margin-top:2px;
+                    height:35px;
+                    font-size:rem(12);
+                }
+            }
+        }
+        &.social {
+            .content {
+                .icon {
+                    display:none;
+                }
+
+                >p {
+                    height:65px;
+                    margin-bottom:6px;
+                }
+            }
+
+            &.facebook, &.twitter, &.instagram, &.youtube{
+                .content{
+                    >p {
+                        font-size: rem(12);
+                        margin-top:10px;
+                        height:50px;
+                        font-weight:600;
+                        line-height:1.33;
+                    }
+                }
+            }
+            &.instagram{ 
+
+                &.without__content {
+                    .content{
+                        padding-top:34px;
+                        >p {
+                            margin-top:0;
+                        }
+                        >.author{
+                            position:static;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.feature-side {
+    @media screen and (min-width: $mmd-break){
+        @include card-feature-side-base();
+
+        height:95px;
+
+        &.divideright {
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                background: color(lightgrey);
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }
+            &:last-child {
+                &:after {
+                    display:none;
+                }
+            }
+        }
+
+
+
+        a.card {
+            @include card-image-left(80px, 95px);
+
+
+            article {
+            
+                > .content {
+                    h2{
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.feature-side-tablet {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include card-feature-side-base();
+
+        height:70px;
+        &.divideright {
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                background: color(lightgrey);
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }
+            &:last-child {
+                &:after {
+                    display:none;
+                }
+            }
+        }
+
+
+        a.card {
+            @include card-image-left(58px, 69px);
+
+            article {
+                > .content {
+                    h2{
+                        font-size: rem(12);
+                        height: 33px;
+                    }
+                    p.excerpt {
+                        display:none;
+                    }
+                }
+            }
+            &.without__image {
+                .content {
+                    h2 {
+                        height:33px;
+                    }
+                    p.excerpt {
+                        display:none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.feature-side-mobile {
+    @media screen and (max-width: $sm-break-down){
+        @include card-feature-side-base();
+
+        height:85px;
+
+        a.card {
+            @include card-image-left(89px, 85px);
+
+
+            article {
+            
+                > .content {
+                    h2{
+                        font-size: rem(15);
+                        height: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,88 @@
+{% set logo = networkData.templatePath~'/static/images/footer-logo.png'%}
+{% if networkData.logoMedia | length > 0 %}
+    {% set logo = _Media.getMediaUrl(networkData.logoMedia, 290, 80, {'crop': 'fit'} )%}
+{% endif %}
+
+
+
+
+
+
+<footer class="site-footer">
+    <div class="container">        
+        <div class="row">
+            <div class="col-sm-2">
+                <a class="footer-brand" 
+                    href="{{networkData.defaultBlogUrl}}" 
+                    style="background-image:url({{logo}})"
+                    rel="Home" 
+                    tabindex="-1" 
+                    title="Home">
+                </a>
+            </div>
+
+            <div class="col-md-7">
+
+                <ul class="menu">
+                    {% set menuItems = blog.blogFooterMenu %}
+                    {% for i in 0..4  %}
+
+                       {% set activeClass = (menuItems[i].link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                       {% set externalClass = (menuItems[i].isExternal) ? 'external-link' : '' %}
+
+                       <li>
+                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
+                                {% if menuItems[i].label != "" %}
+                                    {{menuItems[i].label}}
+                                {% elseif menuItems[i].blogTitle != "" %}
+                                    {{menuItems[i].blogTitle}}
+                                {% elseif menuItems[i].pageTitle != "" %}
+                                    {{menuItems[i].pageTitle}}
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                    </li>
+                </ul>
+
+                <ul id="" class="menu padded">
+                    {% for i in 5..8  %}
+                       <li>
+                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
+                                {% if menuItems[i].label != "" %}
+                                    {{menuItems[i].label}}
+                                {% elseif menuItems[i].blogTitle != "" %}
+                                    {{menuItems[i].blogTitle}}
+                                {% elseif menuItems[i].pageTitle != "" %}
+                                    {{menuItems[i].pageTitle}}
+                                {% endif %}
+                            </a>
+                        </li>
+                   {% endfor %}
+                </ul>
+
+                <ul id="" class="menu padded70">
+                    <li><a href="" class="{{activeClass}} {{externalClass}}">CONTACT US</a></li>
+                    <li><a href="" class="{{activeClass}} {{externalClass}}">ABOUT US </a></li>
+                </ul>
+                <ul id="" class="menu policy">
+                    <li><a href="" class="{{activeClass}} {{externalClass}}">General use policy</a></li>
+                    <li><a href="" class="{{activeClass}} {{externalClass}}">Privacy policy</a></li>
+                </ul>
+
+
+            </div>
+
+            <div class="col-xs-9 publish">
+                <a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a>1
+                <p>&#169; McPherson Media Group 2017</p>
+            </div>
+
+
+        </div><!--row-->
+
+    </div><!-- .container-->
+
+    
+</footer>
