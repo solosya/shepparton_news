@@ -31435,7 +31435,7 @@ UserArticlesController.Load = (function ($) {
 
         var weatherPanel = function(i, icon) {
             return '<div id="weather-' + i + '" class="panel">' +
-                        '<div style="width: 140px;">' +
+                        '<div style="width: 180px;">' +
                             '<p class="date"></p>' + 
                             '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
                         '</div>' + 
