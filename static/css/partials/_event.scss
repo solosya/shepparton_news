@@ -1,5 +1,32 @@
-.event{
+	.events-heading {
+        div.hk {
+            display:flex;
+            h2 {
+                flex-grow: 0;
+                font-size: rem(36);
+                font-weight:300;
+                margin-bottom:25px;
+                color:color(red) !important;
+                text-transform:uppercase;
 
+            }
+            p {
+                flex-grow: 1;
+                &:after {
+                    content: '';
+                    display:block;
+                    height:1px;
+                    background:color(lightgrey);
+                    width:99%;
+                    margin-top: 33px;
+                    margin-left: 7px;
+                }
+            }
+        }	
+	}
+
+
+.event{
 
 	h2 {
 		font-size: rem(12);
