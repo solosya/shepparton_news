@@ -26,7 +26,7 @@
                     font-size: rem(12);
                     line-height:1.33;
                     margin-bottom:0;
-                    max-height:45px;
+                    height:45px;
                 }
 
                 > p.excerpt {
@@ -34,16 +34,22 @@
                     // font-size: rem(12);
                     // max-height: 17px;
                 }
-            }
-            > time {
-                display:block;
-                margin-left:6px;
-                font-size: rem(8);
-                font-weight:700;
-                color:color(red);
-                text-transform:uppercase;
-            }
 
+                > time {
+                    display:block;
+                    margin-left:6px;
+                    font-size: rem(8);
+                    font-weight:700;
+                    color:color(red);
+                    text-transform: uppercase;
+                    position: relative;
+                    left: -60px;
+                    text-align: center;
+                    width: 40px;
+                    top: -12px;                    
+                }
+
+            }
         }
     }
 }
@@ -55,6 +61,9 @@
             .author {
                 p {
                     border: none !important;
+                }
+                time {
+                    display: none;
                 }
             }
         }

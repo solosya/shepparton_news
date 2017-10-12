@@ -42,6 +42,14 @@
     {% set publishDate = _AppHelper.getRelativeTime(publishDateTime) ~ " ago" %}
 {% endif %}
 
+
+{% set startDate = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j M') %}
+{% set endDate = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j M') %}
+
+{% set startTime = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
+{% set endTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia') %}
+
+
 <div class="{{containerClass}}" data-title="{{ eventTitle | raw }}">
     {% set eventImgSmall = _Media.getMediaUrl(event.media[0], 500, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
     {% set eventImg = _Media.getMediaUrl(event.media[0], imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
@@ -81,7 +89,7 @@
                     <time datetime="{{publishDate}}">{{publishDate}}</time>
                 </div>
 
-                <time datetime="{{publishDate}}">{{publishDate}}</time>
+                <time datetime="{{startDate}}">{{startDate}}</time>
 
             </div>
 
