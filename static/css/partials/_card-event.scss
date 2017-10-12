@@ -35,6 +35,10 @@
                     // max-height: 17px;
                 }
 
+                .author {
+                    display: none;
+                }
+
                 > time {
                     display:block;
                     margin-left:6px;
@@ -46,7 +50,6 @@
                     left: -60px;
                     text-align: center;
                     width: 40px;
-                    top: -12px;                    
                 }
 
             }
