@@ -16,6 +16,7 @@
             > .content {
                 position:relative;
                 padding: 0;
+                margin-left: 55px;
 
                 > .category{
                     display: none;
@@ -23,9 +24,9 @@
                 > h2{
                     font-weight: 600;
                     font-size: rem(12);
-                    line-height:1;
+                    line-height:1.33;
                     margin-bottom:0;
-                    max-height:21px;
+                    max-height:45px;
                 }
 
                 > p.excerpt {
@@ -47,6 +48,18 @@
     }
 }
 
+
+.card.event {
+    > article {
+        > .content {
+            .author {
+                p {
+                    border: none !important;
+                }
+            }
+        }
+    }
+}
 
 
 .card-event{

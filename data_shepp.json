@@ -6690,7 +6690,7 @@
 	"events": [
 		{
 			"eventGuid":"7713fead-dea7-40fd-ae20-ffd87db6e988",
-			"title":"First event",
+			"title":"Cheese Eating Competition",
 			"excerpt":"Big Event to happen on the day of the event!!",
 			"venue":"Big Event Factory",
 			"address": {
@@ -6802,7 +6802,7 @@
 			"eventId":"39208",
 			"publishedDate": "May 04 2217",
 			"eventGuid":"7713fead-dea7-40fd-ae20-ffd87db6e988",
-			"title":"First event",
+			"title":"Cheese Eating Competition",
 			"excerpt":"Big Event to happen on the day of the event!!",
 			"venue":"Big Event Factory",
 			"address":  {
