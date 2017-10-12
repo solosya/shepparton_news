@@ -29,8 +29,9 @@
                 }
 
                 > p.excerpt {
-                    font-size: rem(12);
-                    max-height: 17px;
+                    display: none;
+                    // font-size: rem(12);
+                    // max-height: 17px;
                 }
             }
             > time {
