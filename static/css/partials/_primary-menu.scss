@@ -43,7 +43,7 @@
     margin:0;
     list-style: none;
     color: #fff;
-    float:right;
+    // float:right;
     // margin-top:19px;
     
     ul.mobile {
@@ -166,6 +166,11 @@
                 //     }
                 // }
             }
+
+            &.menu-item-search {
+                float:right;
+            }
+
             span.list-arrow {
                 position:absolute;
                 display:inline-block;
