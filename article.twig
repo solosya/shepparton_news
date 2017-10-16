@@ -161,6 +161,10 @@
 
             </div><!-- .page-content-->
 
+            <!-- Disqus Comment Added -->
+            {% if networkData.thirdPartyIntegrations['disqus'] | length > 0 and networkData.thirdPartyIntegrations['disqus']['shortName'] != '' %}
+                {{this.render("partials/article/_disqus_comments.twig", {disqus: networkData.thirdPartyIntegrations['disqus'], userId: article.createdBy['id'], url:article.url, articleId: article.id}) | raw}}
+            {% endif %}
 
 
             <div class="row related-articles">
