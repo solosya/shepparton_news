@@ -57,7 +57,7 @@
                                                 {% endif %}
                                             </a>
 
-    {#                                         {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                             {% if parentItem.children is defined and parentItem.children | length > 0 %}
                                                  <ul class="sub-menu">
                                                     {% for childItem in parentItem.children %}
                                                         {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
@@ -68,7 +68,7 @@
                                                         </li>
                                                    {% endfor %}
                                                 </ul>
-                                            {% endif %} #}
+                                            {% endif %}
                                         </li>
                                     {% endfor %}
 
