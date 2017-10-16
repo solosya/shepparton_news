@@ -110,64 +110,45 @@
 
 
 
-            <section class="advert" style="background:gray;height:200px;"></section>
+        </div>
 
 
+        <div class="ad-container">
+            <section class="advert advert-padding" style="background:gray;height:200px;"></section>
+        </div>
 
-
-
-
+        <div class="container">
             <section class="">
                 <div class="row">
-                    <div class="col-sm-2 split">
+                    <div class="col-sm-6" style="margin-top:-35px;">
+                        <div class="row">
                         {% set cardspace = ['', 'row-space40', 'row-space40'] %}
-                        {% for i in 0..2 if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                imageSize: {width:190, height:160},
-                                containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
-                            }) | raw}}
-                            <hr class="divide visible-xs-block">
+                        {% for i in 0..8 if articles[articleCount] %}
+
+                            {% if i == 0 %}
+                                <div class="col-sm-3" style="padding-top:35px;">
+                            {% else %}
+                                <div class="col-sm-3">
+                            {% endif %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:190, height:160},
+                                    containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide18 visible-md-block visible-lg-block space-only">
+
+                            </div>
 
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
-                    </div>
+                        </div>
+                    </div>  
 
 
-                    <div class="col-sm-2">
-                        {% set cardspace = ['', 'row-space40', 'row-space40'] %}
+                    <div class="col-sm-3 split trending">
+                       <h2>Trending stories</h2>
 
-                        {% for i in 0..2 if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                imageSize: {width:190, height:160},
-                                containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
-                            }) | raw}}
-                            <hr class="divide visible-xs-block">
-
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% endfor %}
-                    </div>
-
-
-
-                    <div class="col-sm-2 split">
-                        {% set cardspace = ['', 'row-space40', 'row-space40'] %}
-
-                        {% for i in 0..2 if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                imageSize: {width:190, height:160},
-                                containerClass: 'card-sm card-sm-mobile ' ~cardspace[i]
-                            }) | raw}}
-                            <hr class="divide visible-xs-block">
-
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% endfor %}
-                    </div>
-
-
-                    <div class="col-sm-3 split">
                         {% for i in 0..3 if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
@@ -177,18 +158,17 @@
 
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
-                            <hr class="divide24 visible-md-block visible-lg-block">
-                            <hr class="divide visible-xs-block visible-sm-block">
+                            <hr class="divide18 visible-md-block visible-lg-block">
 
                         {% endfor %}
 
                     </div>
 
-
-                    <div class="ad-square col-sm-3 clearfixed"></div>
+                    <div class="col-sm-3">
+                        <div class="ad-square clearfixed"></div>
+                    </div>
 
                 </div>
-
 
         </div>
 
