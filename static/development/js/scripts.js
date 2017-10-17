@@ -1,5 +1,5 @@
 $('document').ready(function() {
-    window.Acme = {};
+    // window.Acme = {};
     var isMenuBroken, isMobile;
     var sbCustomMenuBreakPoint = 992;
     var mobileView = 620;
