@@ -12682,7 +12682,7 @@ function checkSyncWall() {
         createCookie(g_AUTHTOKEN, g, 36500, "/");
         var h = g_PAGEURL.toString().indexOf("sp-tk");
         g_PAGEURL = g_PAGEURL.toString().substr(0, h);
-        window.location.replace(_appJsConfig.appHostName + '/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL);
+        window.location.replace(_appJsConfig.appHostName + '/admin/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL + '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn');
     }
     var d = g_PAGEURL;
     g_PAGEURL = g_PAGEURL.replace(/#.*$/, "");
@@ -33845,7 +33845,7 @@ UserArticlesController.Load = (function ($) {
             return '<div id="weather-' + i + '" class="panel">' +
                         '<div style="width: 180px;">' +
                             '<p class="date"></p>' + 
-                            '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
+                            '<p class="location"></p>' + 
                         '</div>' + 
                         '<div style="width: 48px;">' +
                             '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
