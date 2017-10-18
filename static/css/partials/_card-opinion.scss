@@ -7,6 +7,10 @@
     a.card {
         height:100%;
 
+        &.final {
+            background-image:url("../images/opinion-background.svg");
+        }
+
         > article {
 
             > .content{
@@ -27,7 +31,7 @@
                     overflow:hidden;
                     line-height:1.22;
                     position: absolute;
-                    top: 36px;
+                    top: 60px;
 
                 }
                 >p.excerpt {
@@ -36,11 +40,11 @@
 
                 >div.author {
                     position: absolute;
-                    bottom: 0;
-                    color: color(red);
+                    bottom: 36px;
                     font-family:$font-family-serif;
                     p {
                         border-right: none;
+                        color: color(red);
                     }
                     time {
                         display: none;
@@ -49,13 +53,12 @@
 
                 >time {
                     position: absolute;
-                    top: 0;
+                    top: 36px;
                     display: inline-block;
                     color: rgba(74,74,74,.7);
                     font-size: rem(11);
                     font-weight: 300;                    
                 }
-
             }
         }
         &.without__image {
@@ -113,7 +116,7 @@
 .card-opinion {
     @media screen and (min-width: $mmd-break){
         @include card-opinion-base();
-        height: 184px;
+        height: 240px;
     }
 }
 
