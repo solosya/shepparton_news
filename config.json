@@ -4,7 +4,7 @@
            "enabled" : true
         },
         "blog" : {            
-            "endUserAccess" : ["616", "116"],
+            "endUserAccess" : ["616", "631", "116"],
             "extendedAttributes": [
                 {
                     "name": "publishto",
