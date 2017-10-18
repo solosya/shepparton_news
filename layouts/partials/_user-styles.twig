@@ -30,7 +30,15 @@
 {% endif %}
 
 {% if themeColors.headingColor != "" %}
-    h1, h2, h3, h4, h5, .category {
+    div.category {
+        color: {{themeColors.headingColor}} !important;
+    }
+    div.most-popular {
+        h2 {
+            color: {{themeColors.headingColor}} !important;
+        }
+    }
+    div.card-popular::before {
         color: {{themeColors.headingColor}} !important;
     }
 {% endif %}
