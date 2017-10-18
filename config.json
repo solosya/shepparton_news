@@ -7,8 +7,8 @@
             "endUserAccess" : ["616"],
             "extendedAttributes": [
                 {
-                    "name": "Publish to",
-                    "label": "publishto",
+                    "name": "publishto",
+                    "label": "Publish to...",
                     "type": "inputbox"
                 }
             ]
