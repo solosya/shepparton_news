@@ -234,6 +234,7 @@
                 letter-spacing: 0.4px;
                 &:hover {
                     text-decoration:none;
+                    color: white;
                 }
             }
             &:last-child {
@@ -247,7 +248,9 @@
             }
             &:hover {
                 background: color(red);
-                color:white;
+                > a {
+                    color: white;
+                }
             }
 
 
