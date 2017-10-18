@@ -2,14 +2,8 @@
     // clear:both;
     font-family: $base-font-family;
 
-
-
     a.card {
         height:100%;
-
-        &.final {
-            background-image:url("../images/opinion-background.svg");
-        }
 
         > article {
 
@@ -32,6 +26,7 @@
                     line-height:1.22;
                     position: absolute;
                     top: 60px;
+                    height:96px;
 
                 }
                 >p.excerpt {
@@ -61,6 +56,7 @@
                 }
             }
         }
+
         &.without__image {
             .content {
                 h2 {
@@ -108,6 +104,34 @@
             }
         }
     }
+
+    &.final {
+        a.card {
+            background-image:url("../images/opinion-background.svg");
+            background-repeat:no-repeat;
+            padding:0px 36px;
+
+            > article {
+                > .content {
+                    > h2 {
+                        height:72px;
+                    }
+
+                    >div.author {
+                        position: absolute;
+                        bottom: 72px;
+                        p {
+                            color: white;
+                        }
+                    }
+
+                    >time {
+                        color: white;
+                    }                    
+                }
+            }
+        }
+    }    
 }
 
 

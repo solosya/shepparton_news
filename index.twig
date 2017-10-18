@@ -541,13 +541,15 @@
 
 
                     {% set opinionClass = ["col-sm-2", "col-sm-2", "col-sm-2", "col-sm-3"] %}
+
                     {% for i in 0..3 if sections['opinion'].feed.articles[opinionCount] %}
+                        {% set finalClass = (i == 3) ? 'final' : '' %}
                         <div class="{{opinionClass[i]}}">
 
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['opinion'].feed.articles[opinionCount], 
                                 imageSuppress: true,
-                                containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile'
+                                containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
                             }) | raw}}
                             {% set opinionCount = (dev) ? articleCount : opinionCount + 1 %}
 
