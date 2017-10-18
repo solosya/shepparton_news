@@ -135,10 +135,10 @@
         .navbar-brand {
             display:inline-block;
             padding:0;
-            width: 140px;
-            height:37px;
+            width: 250px;
+            height:40px;
             background-repeat:no-repeat;
-            background-size:cover;
+            background-size:contain;
 
             @media screen and (max-width: $sm-break){
                 margin-top: 0;
