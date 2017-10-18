@@ -374,7 +374,7 @@
                                                 {% if sections['local news'].feed.articles[localCount] %}
                                                     {{this.render('partials/_single-article.twig', {
                                                         article: sections['local news'].feed.articles[localCount], 
-                                                        imageSize: {width:900},
+                                                        imageSize: {width:1200},
                                                         containerClass: 'card-rec-full visible-md-block visible-lg-block'
                                                     }) | raw}}
                                                     {% set localCount = (dev) ? articleCount : localCount + 1 %}
@@ -670,7 +670,7 @@
                            {% if sections['sport'].feed.articles[sportCount] %}
                                {{this.render('partials/_single-article.twig', {
                                    article: sections['sport'].feed.articles[sportCount], 
-                                   imageSize: {width:900},
+                                   imageSize: {width:1200},
                                    containerClass: 'home-feature-sm home-feature-mobile'
                                }) | raw}}
                                {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
