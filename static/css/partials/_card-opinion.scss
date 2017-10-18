@@ -2,8 +2,6 @@
     // clear:both;
     font-family: $base-font-family;
 
-
-
     a.card {
         height:100%;
 
@@ -19,6 +17,7 @@
                 }
 
                 > h2{
+                    color:black;
                     font-size: rem(18);
                     font-weight:700;
                     font-family:$font-family-serif;
@@ -26,13 +25,41 @@
                     margin-top: 4px;
                     overflow:hidden;
                     line-height:1.22;
+                    position: absolute;
+                    top: 60px;
+                    height:96px;
 
                 }
                 >p.excerpt {
                     display:none;
                 }
+
+                >div.author {
+                    position: absolute;
+                    bottom: 36px;
+                    font-family:$font-family-serif;
+                    p {
+                        font-size:rem(14);
+                        border-right: none;
+                        color: color(red);
+                    }
+                    time {
+                        display: none;
+                    }
+                }
+
+                >time {
+                    font-family:$font-family-serif;
+                    position: absolute;
+                    top: 36px;
+                    display: inline-block;
+                    color: rgba(74,74,74,.7);
+                    font-size: rem(11);
+                    font-weight: 300;                    
+                }
             }
         }
+
         &.without__image {
             .content {
                 h2 {
@@ -80,6 +107,35 @@
             }
         }
     }
+
+    &.final {
+        a.card {
+            background-image:url("../images/opinion-background.svg");
+            background-repeat:no-repeat;
+            padding:0px 42px;
+
+            > article {
+                > .content {
+                    > h2 {
+                        height:72px;
+                    }
+
+                    >div.author {
+                        position: absolute;
+                        bottom: 72px;
+                        p {
+                            font-size: rem(16);
+                            color: white;
+                        }
+                    }
+
+                    >time {
+                        color: white;
+                    }                    
+                }
+            }
+        }
+    }    
 }
 
 
@@ -88,6 +144,7 @@
 .card-opinion {
     @media screen and (min-width: $mmd-break){
         @include card-opinion-base();
+        height: 240px;
     }
 }
 

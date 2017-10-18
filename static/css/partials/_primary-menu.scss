@@ -222,30 +222,35 @@
             height:31px;
             // margin-bottom:2px;
             text-align:left;
+            border-top: 1px solid color(darkgrey);
 
             > a {
                 font-size:rem(9);
                 padding:10px;
                 display:block;
                 font-weight:bold;
-                color:#fff;
+                color:color(darkgrey);
                 text-transform:uppercase;
                 letter-spacing: 0.4px;
                 &:hover {
                     text-decoration:none;
+                    color: white;
                 }
             }
             &:last-child {
                 margin-bottom:0;
             }
             &:nth-child(even) {
-                background:rgba(185, 185, 185, 0.6);
+                background:white;
             }
             &:nth-child(odd) {
-                background:rgba(185, 185, 185, 0.4);
+                background:white;
             }
             &:hover {
                 background: color(red);
+                > a {
+                    color: white;
+                }
             }
 
 
