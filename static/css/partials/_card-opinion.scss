@@ -38,6 +38,7 @@
                     bottom: 36px;
                     font-family:$font-family-serif;
                     p {
+                        font-size:rem(14);
                         border-right: none;
                         color: color(red);
                     }
@@ -47,6 +48,7 @@
                 }
 
                 >time {
+                    font-family:$font-family-serif;
                     position: absolute;
                     top: 36px;
                     display: inline-block;
@@ -109,7 +111,7 @@
         a.card {
             background-image:url("../images/opinion-background.svg");
             background-repeat:no-repeat;
-            padding:0px 36px;
+            padding:0px 42px;
 
             > article {
                 > .content {
@@ -121,6 +123,7 @@
                         position: absolute;
                         bottom: 72px;
                         p {
+                            font-size: rem(16);
                             color: white;
                         }
                     }
