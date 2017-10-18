@@ -30,13 +30,11 @@
 {% endif %}
 
 {% if themeColors.headingColor != "" %}
-    div.category {
-        color: {{themeColors.headingColor}} !important;
-    }
-    div.most-popular > h2 {
-        color: {{themeColors.headingColor}} !important;
-    }
-    div.card-popular::before {
+    div.category,
+    p.category,
+    div.most-popular > h2,
+    div.card-popular::before,
+    h2.sidebar-header {
         color: {{themeColors.headingColor}} !important;
     }
 {% endif %}
