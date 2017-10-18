@@ -1,66 +1,41 @@
 (function ($) {
 
 
-console.log('In the events. jay ess');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 var ListingForm = function() {};
 ListingForm.prototype = new Acme._View();
 ListingForm.constructor = ListingForm;
-    ListingForm.prototype.init = function(blogId, layout) 
-    {
-        this.blogId = blogId;
+    // ListingForm.prototype.init = function(blogId, layout) 
+    // {
+    //     this.blogId = blogId;
 
-        this.data = {
-            'id': 0,
-            'blogs':this.blogId,
-            'media_ids': ''
-        };
-        this.layout = layout;
-        this.addPulldowns();
-        this.events();
-    };
+    //     this.data = {
+    //         'id': 0,
+    //         'blogs':this.blogId,
+    //         'media_ids': ''
+    //     };
+    //     this.layout = layout;
+    //     console.log(this.blogId);
+    //     this.events();
+    // };
     ListingForm.prototype.container = {
         'main' : $('#listingForm')
     };
     ListingForm.prototype.listeners = 
     {
-        "user listing" : function(data, topic) {
-            if (data['user listing'] == null) {
-                this.clear();
-                return;
-            }
-            this.data = data['user listing'];
-            this.render();
+        "start_date" : function(data, topic) {
+            this.data.start_date = data['start_date'];
+        },
+        "end_date" : function(data, topic) {
+            this.data.end_date = data['end_date'];
         },
         "after" : function(data, topic) {
-            var keys = Object.keys(data);
-
-            if(keys[0] === 'user listing') return;
-            var validated = this.validate(keys);
-
-            // if (!validated) {
-                this.render();
-                // return;
-            // }
+            console.log(this.data);
         }
     };
     ListingForm.prototype.render = function() 
     {
-        console.log('rendering');
         var form = this.container.main;
         var title = form.find("#title");
         var content = form.find("#content");
@@ -69,27 +44,6 @@ ListingForm.constructor = ListingForm;
         content.val(this.data.content);
 
         this.clearErrorHightlights();
-
-        for (key in this.data.extendedData) {
-            if (key === 'region') {
-                this.menus.regionMenu.select(this.data.extendedData[key]);
-                continue;
-            }
-            if (key === 'type') {
-                this.menus.propertyMenu.select(this.data.extendedData[key]);
-                continue;
-            }
-            if (key === 'contracttype') {
-                this.menus.buyMenu.select(this.data.extendedData[key]);
-                continue;
-            }
-            if (key === 'salary') {
-                $('#'+key+this.data.extendedData[key]).prop("checked", true);
-            }
-
-            $('#'+key).val(this.data.extendedData[key]);
-        }
-
 
         this.addErrorHightlights();
 
@@ -145,7 +99,6 @@ ListingForm.constructor = ListingForm;
     },
     ListingForm.prototype.events = function() 
     {
-        console.log('calling events!!');
         var self = this;
         $('input, textarea').on("change", function(e) {
             e.stopPropagation();
@@ -209,10 +162,8 @@ ListingForm.constructor = ListingForm;
             e.preventDefault();
 
             var validated = self.validate();
-            console.log(validated);
             if (!validated) {
                 self.render();
-                console.log('rendering and returning');
                 return;
             }
 
@@ -243,7 +194,6 @@ ListingForm.constructor = ListingForm;
         }
 
         var validated = true, fields = [];
-        console.log(this.compulsoryFields);
 
         if (checkFields) {
             var fields = intersect(this.compulsoryFields, checkFields);
@@ -281,7 +231,6 @@ ListingForm.constructor = ListingForm;
                 validated = false;
             }
         }
-        console.log(this.errorFields);
         return validated;
     };
 
@@ -289,7 +238,6 @@ ListingForm.constructor = ListingForm;
 
 
 Acme.EventForm = function(blogId) {
-        console.log(blogId);
         this.subscriptions = Acme.PubSub.subscribe({
             'Acme.eventForm.listener' : ['state_changed', 'update_state']
         });
@@ -301,22 +249,23 @@ Acme.EventForm = function(blogId) {
             "content" 
         ];
 
+        this.blogId = blogId;
+
         this.data = {
             'id': 0,
-            'blogs': blogId,
+            'blogs': this.blogId,
             'media_ids': '',
             'type': 'event'
         };
 
         this.events();
         this.events2();
-        // this.init(blogId, layout);
     }
     Acme.EventForm.prototype = new ListingForm();
     Acme.EventForm.prototype.constructor=Acme.EventForm;
     Acme.EventForm.prototype.events2 = function() {
 
-        $('#eventStart, #eventEnd').datetimepicker({
+        $('#start_date, #end_date').datetimepicker({
             format: "DD-MM-YYYY h:mm A",
             useCurrent: false,
             icons: {
@@ -327,8 +276,11 @@ Acme.EventForm = function(blogId) {
             },
             tooltips: {selectTime: ''}
         }).on('dp.change', function (e) {
-            if(e.target.id === 'eventStart') {
-                $('#eventEnd').data("DateTimePicker").minDate(e.date);
+            var data = {};
+            data[e.target.id] = e.date.format('YYYY-MM-DD HH:mm');
+            if(data['start_date'] || data['end_date']) {
+                $('#end_date').data("DateTimePicker").minDate(e.date);
+                Acme.PubSub.publish("update_state", data);
             }
         });
 
