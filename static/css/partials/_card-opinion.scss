@@ -26,11 +26,36 @@
                     margin-top: 4px;
                     overflow:hidden;
                     line-height:1.22;
+                    position: absolute;
+                    top: 36px;
 
                 }
                 >p.excerpt {
                     display:none;
                 }
+
+                >div.author {
+                    position: absolute;
+                    bottom: 0;
+                    color: color(red);
+                    font-family:$font-family-serif;
+                    p {
+                        border-right: none;
+                    }
+                    time {
+                        display: none;
+                    }
+                }
+
+                >time {
+                    position: absolute;
+                    top: 0;
+                    display: inline-block;
+                    color: rgba(74,74,74,.7);
+                    font-size: rem(11);
+                    font-weight: 300;                    
+                }
+
             }
         }
         &.without__image {
@@ -88,6 +113,7 @@
 .card-opinion {
     @media screen and (min-width: $mmd-break){
         @include card-opinion-base();
+        height: 184px;
     }
 }
 
