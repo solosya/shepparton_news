@@ -31463,10 +31463,10 @@ var systemCardTemplate =
             <div class="content">\
                     <div class="category">{{label}}</div>\
                     <h2>{{{ title }}}</h2>\
-                    <p>{{{ excerpt }}}</p>\
                     <div class="author">\
                         <img src="{{profileImg}}" class="img-circle">\
                         <p>{{ createdBy.displayName }}</p>\
+                        <time datetime="{{publishDate}}">{{publishDate}}</time>\
                     </div>\
             </div>\
         </article>'+
