@@ -194,7 +194,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
-                                imageSize: {width:190},
+                                imageSize: {width:300},
                                 containerClass: 'card-sm card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -210,7 +210,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
-                                imageSize: {width:190},
+                                imageSize: {width:300},
                                 containerClass: 'card-sm card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -262,7 +262,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
                                 position: articleCount + 1, 
-                                imageSize: {width:190},
+                                imageSize: {width:300},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -486,7 +486,7 @@
                         {% for i in 0..1 if sections['regional news'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['regional news'].feed.articles[regionalCount], 
-                                imageSize: {width:190},
+                                imageSize: {width:300},
                                 containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
                             }) | raw}}
                             {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
@@ -502,7 +502,7 @@
                         {% for i in 0..1 if sections['regional news'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['regional news'].feed.articles[regionalCount], 
-                                imageSize: {width:190},
+                                imageSize: {width:300},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
                             {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
@@ -754,7 +754,7 @@
                          {% for i in 0..1 if sections['business'].feed.articles[businessCount] %}
                              {{this.render('partials/_single-article.twig', {
                                  article: sections['business'].feed.articles[businessCount], 
-                                 imageSize: {width:190},
+                                 imageSize: {width:300},
                                  containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
                              }) | raw}}
                              {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
