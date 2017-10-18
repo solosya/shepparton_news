@@ -3,7 +3,7 @@
     $.fn.Ajax_LoadBlogArticles = function(options){
         
         var defaults = {
-            'limit': 20,
+            'limit': 9,
             'containerClass': 'ajaxArticles',
             'onSuccess' : function(){},
             'onError' : function(){},

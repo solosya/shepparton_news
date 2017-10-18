@@ -45,7 +45,6 @@
 
                 > figure {
                     @include tintafter();
-                    width:auto;
                 }
 
                 > .content {
@@ -63,7 +62,7 @@
                         font-weight:600;
                         margin-top: 7px;
                         overflow:hidden;
-                        max-height: 52px;
+                        height: 54px;
                         max-width: 222px;
                         line-height: 1.18;
                         margin-bottom:8px;

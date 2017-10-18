@@ -13,7 +13,7 @@
             return '<div id="weather-' + i + '" class="panel">' +
                         '<div style="width: 180px;">' +
                             '<p class="date"></p>' + 
-                            '<p class="location"></p><img class="show-weather" src="' + window.Acme.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' + 
+                            '<p class="location"></p>' + 
                         '</div>' + 
                         '<div style="width: 48px;">' +
                             '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 

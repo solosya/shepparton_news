@@ -43,8 +43,8 @@
     margin:0;
     list-style: none;
     color: #fff;
-    float:right;
-    margin-top:19px;
+    // float:right;
+    // margin-top:19px;
     
     ul.mobile {
         @media screen and (min-width: $header-break){
@@ -133,7 +133,8 @@
 
             > a{
                 font-size:rem(12);
-                margin-left:22px;
+                margin-left:14px;
+                margin-right:8px;
                 // padding: 12px 20px 10px 10px;
                 display:block;
                 color: #fff;
@@ -166,6 +167,11 @@
                 //     }
                 // }
             }
+
+            &.menu-item-search {
+                float:right;
+            }
+
             span.list-arrow {
                 position:absolute;
                 display:inline-block;
@@ -203,25 +209,51 @@
         position: absolute;
         list-style: none;
         margin: 0;
-        background: color(darkgrey);
-        left: 0;
-        right: 0;
+        left: 4px;
+        // top:43px;
         width: auto;
+        min-width:186px;
         padding: 0;
         margin-top: 0;
-
+        background:black;
+        padding-top: 13px;
+        
         > li {
-            border-bottom:1px solid rgb(255,255,255);
+            height:31px;
+            // margin-bottom:2px;
+            text-align:left;
+            border-top: 1px solid color(darkgrey);
 
             > a {
+                font-size:rem(9);
                 padding:10px;
                 display:block;
-                font-weight:300;
-                color:#fff;
+                font-weight:bold;
+                color:color(darkgrey);
+                text-transform:uppercase;
+                letter-spacing: 0.4px;
                 &:hover {
                     text-decoration:none;
+                    color: white;
                 }
             }
+            &:last-child {
+                margin-bottom:0;
+            }
+            &:nth-child(even) {
+                background:white;
+            }
+            &:nth-child(odd) {
+                background:white;
+            }
+            &:hover {
+                background: color(red);
+                > a {
+                    color: white;
+                }
+            }
+
+
         }
     }
 

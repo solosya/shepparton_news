@@ -16,7 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
 
-
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <title>{{ this.title }}</title>
     {{ Html.csrfMetaTags | raw }}
@@ -29,6 +28,22 @@
     <link rel="shortcut icon" href="{{favicon}}" />
     <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
 
+    <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
+    <script src="//gauge.lrcontent.com/v1/anonymousAuth.min.js"></script>
+    <script src="//hosted-pages.lrcontent.com/mcmedia/LoginRadiusSDK.2.0.1.min.js"></script>
+    <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
+    <script>
+        LoginRadiusSSO.init('mcmedia');
+        var options = { appName : 'mcmedia'};
+        aas.init(options);
+        LoginRadiusSSO.isNotLoginThenLogout(function(){}, function(key){
+            sessionStorage.setItem("LRTokenKey",key);
+            LoginRadiusSDK.getUserprofile( function( profile) {
+                aas.setUid(profile.Uid);
+                ga( 'set', '&uid',profile.Uid );
+            });
+        });
+    </script>
     
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
     {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
@@ -47,7 +62,7 @@
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=f64917b1" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=81bea5c3" type="text/css" media="all">
 
     {% else %}
 {#             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" />

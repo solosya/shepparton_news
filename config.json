@@ -6,17 +6,21 @@
         "event" : {
            "enabled" : true
         },
+        "blog" : {            
+            "endUserAccess" : ["616", "631", "116"],
+            "extendedAttributes": [
+                {
+                    "name": "publishto",
+                    "label": "Publish to...",
+                    "type": "inputbox"
+                }
+            ]
+        },
         "article": {
     		"extendedAttributes": [
     			{
     				"name": "auction_date",
     				"label": "Auction Date",
-    				"type": "inputbox",
-    				"datetimepicker": true
-    			},
-    			{
-    				"name": "inspection_date",
-    				"label": "Inspection Date",
     				"type": "inputbox",
     				"datetimepicker": true
     			},
@@ -33,30 +37,6 @@
     				"name": "bedroom_count",
     				"label": "Number of bedrooms",
     				"type": "inputbox"
-    			},
-    			{
-    				"name": "bathroom_count",
-    				"label": "Number of bathrooms",
-    				"type": "inputbox"
-    			},
-    			{
-    				"name": "car_count",
-    				"label": "Number of parking spaces",
-    				"type": "inputbox"
-    			},
-    			{
-    				"name": "price",
-    				"label": "Price",
-    				"type": "inputbox"
-    			},
-    			{
-    				"name": "hobbies",
-    				"label": "Select Hobby",
-    				"type": "dropdown",
-    				"options": {
-    					"listening_music": "Listening Music",
-    					"reading_books": "Reading Books"
-    				}
     			},
     			{
     				"label": "Favorite Actors",

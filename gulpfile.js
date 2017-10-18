@@ -75,21 +75,26 @@ gulp.task('scripts', function(){
 		'./bower_components/jquery/dist/jquery.js',
 		'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 		
-        './static/development/js/plugins/slick.js',
+        // './static/development/js/plugins/slick.js',
+        './static/development/js/plugins/syncronex/syncronex.js',
         './static/development/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
-        './static/development/js/plugins/bootstrap-modalmanager.js',
-        './static/development/js/plugins/bootstrap-modal.js',
+        // './static/development/js/plugins/bootstrap-modalmanager.js',
+        // './static/development/js/plugins/bootstrap-modal.js',
         './static/development/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
-        './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
-        './static/development/js/plugins/bootbox.min.js',
-        './static/development/js/plugins/jquery.validate/jquery.validate.min.js',
-        './static/development/js/plugins/waypoint/lib/jquery.waypoints.min.js',
+        // './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
+        // './static/development/js/plugins/bootbox.min.js',
+        // './static/development/js/plugins/jquery.validate/jquery.validate.min.js',
+        // './static/development/js/plugins/waypoint/lib/jquery.waypoints.min.js',
         './static/development/js/plugins/handlebars-v4.0.5.js',
         './static/development/js/plugins/jquery.lazyload.min.js',
         './static/development/js/plugins/jquery.dotdotdot.min.js',
         './static/development/js/plugins/owl.carousel.min.js',
         './static/development/js/plugins/owl.carousel2.thumbs.js',
-        
+        './static/development/js/plugins/moment.js',
+        './static/development/js/plugins/bootstrap-datetimepicker.js',
+
+
+
         './static/development/js/sdk/cloudinary/jquery.cloudinary.js',
         './static/development/js/sdk/common.js',
         './static/development/js/sdk/blog.js',
@@ -107,7 +112,8 @@ gulp.task('scripts', function(){
         './static/development/js/sdk/uploadfile.js',
         './static/development/js/sdk/media-player/mediaelement-and-player.min.js',
 
-		'./static/development/js/*.js',
+        './static/development/js/framework.js',
+        './static/development/js/!(framework)*.js', // all files that end in .js EXCEPT common*.js
 		])
 		.pipe(concat('concat.js'))
 		.pipe(gulp.dest('./static/deploy'))

@@ -1,5 +1,5 @@
 (function ($) {
-    window.Acme = {};
+    window.Acme       = {};
     Acme.View         = {};
     Acme.Model        = {};
     Acme.Collection   = {};
@@ -11,7 +11,7 @@
     Acme.server = {
 
         create: function(uri, queryParams) {return this.call(uri, queryParams, 'post');},
-        request: function(uri, queryParams, datatype){return this.call(uri, queryParams, 'get', datatype);},
+        fetch: function(uri, queryParams, datatype){return this.call(uri, queryParams, 'get', datatype);},
         update: function(uri, queryParams) {return this.call(uri, queryParams, 'put');},
         delete: function(uri, queryParams) {return this.call(uri, queryParams, 'delete');},
         call: function(uri, queryParams, type, datatype) {
@@ -25,9 +25,9 @@
 
             // console.log(type + ': ' + window.location.origin + '/api/' + uri);
             // if (Object.keys(queryParams).length > 0 ) console.log(queryParams);
-            console.log(_appJsConfig.appHostName + '/api/'+uri);
+            console.log(_appJsConfig.appHostName + uri, queryParams);
             return $.ajax({
-                url: _appJsConfig.appHostName + '/api/'+uri,
+                url: _appJsConfig.appHostName + uri,
                 data: queryParams,
                 dataType: datatype || "json",
                 type: type
@@ -57,13 +57,13 @@
         var keys = Object.keys(data);
 
         for (var i = 0; i<keys.length; i++) {
-
             for (var listener in this.listeners) {
 
                 if ( listener === keys[i] ) {
-
-                    this.listeners[listener].call(this, data);
-
+                    this.listeners[listener].call(this, data, topic);
+                    if (this.listeners.after) {
+                        this.listeners.after.call(this, data, topic);
+                    }
                     break;
                 }
             }
@@ -74,24 +74,25 @@
     Acme.Model.create = function(config)
     {
         var obj = Object.create(
-        Acme._Model.prototype, {'resource': {
-                                    'value' : config['url'],
-                                    'enumerable': true,
-                                },
-                                'alias' : {
-                                    'value' : config['alias'] || null,
-                                    'enumerable': true,
-                                },
-                                'resource_id': {
-                                    'value' : config['resource_id'],
-                                    'enumerable': true,
-                                },
-                                'query' : {
-                                    'value': [],
-                                    'writable': true,
-                                    'enumerable': true,
-                                }
-                     }
+        Acme._Model.prototype, {
+            'resource': {
+                    'value' : config['url'],
+                    'enumerable': true,
+                },
+                'alias' : {
+                    'value' : config['alias'] || null,
+                    'enumerable': true,
+                },
+                'resource_id': {
+                    'value' : config['resource_id'],
+                    'enumerable': true,
+                },
+                'query' : {
+                    'value': [],
+                    'writable': true,
+                    'enumerable': true,
+                }
+            }
         );
         for (var param in config['this']) {
             obj[param] = config['this'][param];
@@ -112,11 +113,64 @@
 
 
 
+    Acme._View = function() {};
+        Acme._View.prototype = new Acme.listen();
+        Acme._View.prototype.updateData = function(data) {
+            var key = Object.keys(data)[0];
+            var keySplit = key.split('.');
+            var scope = this.data;
+
+            for(var i=0; i<keySplit.length; i++) {
+                if (!scope[keySplit[i]]) {
+                    scope[keySplit[i]] = {};
+                }
+                if(i == keySplit.length -1 ) {
+                    scope[keySplit[i]] = data[key];
+                }
+                scope = scope[keySplit[i]];
+            }
+        }
+
+    Acme.View.create = function(config)
+    {
+        var obj = function(){};
+
+        for (conf in config) {
+            obj.prototype[conf] = config[conf];
+        }
+
+        return obj;
+    }
+
     Acme._Collection = function(model) {
         this.model = model || null;
     };
         Acme._Collection.prototype = Object.create(Acme.listen.prototype);
+        Acme._Collection.prototype.fetch = function(url)
+        {
+            var self = this;
+            var publishToken = self.name;
+            var url = (url === undefined) ? this.url() : url;
+            var data = Acme.server.fetch( url );
+            data.done( function(response) {
 
+                self.data = [];
+                for (var i=0; i<response.length; i++) {
+                    self.data.push( Object.create(self.model,
+                        {   'data' : {
+                                'value': response[i],
+                                'writable': true
+                            }
+                        }
+                    ));
+                }
+
+                var data = {};
+                data[publishToken] = self;
+                Acme.PubSub.publish('state_changed', data);
+            });
+            return data;
+        };
 
     Acme._Model = function() {};
         Acme._Model.prototype = Object.create(Acme.listen.prototype);
@@ -165,7 +219,7 @@
 
                     var message = self.resource + '/update';
 
-                    console.log(Acme.socket.send(JSON.stringify({action: message, value: self.data.id})));
+                    // console.log(Acme.socket.send(JSON.stringify({action: message, value: self.data.id})));
 
                 }
             });
@@ -206,7 +260,7 @@
             var name = self.alias || self.resource;
             var msg = name + '/delete';
 
-            console.log(Acme.socket.send(JSON.stringify({action: msg, value: self.data.id})));
+            // console.log(Acme.socket.send(JSON.stringify({action: msg, value: self.data.id})));
 
             return Acme.server.delete(self.url())
             .done(function(response) {
@@ -214,7 +268,7 @@
                     self.data = {};
                     var data =  {};
                     data[name] = null;
-                    console.log(data);
+                    // console.log(data);
                     Acme.PubSub.publish('update_state', data);
                 }
             });
@@ -251,17 +305,19 @@
 
             var notify = function(){
                 var subscribers = self.topics[topic];
+
                 for ( var i = 0, j = subscribers.length; i < j; i++ ){
                     var scope = window;
                     var scopeSplit = subscribers[i].context.split('.');
+
                     for (var k = 0; k < scopeSplit.length - 1; k++) {
                         scope = scope[scopeSplit[k]];
                         if (scope == undefined) return;
                     }
-                    console.log('notifying');
-                    console.log(scope);
 
                     scope[scopeSplit[scopeSplit.length - 1]][subscribers[i].func]( topic, data );
+                    // console.log(scope);
+
                 }
                 dfd.resolve();
             };
@@ -290,13 +346,15 @@
         Acme.PubSub.subscribe = function( subscription ) {
             var callbacks = Object.keys(subscription);
             var ret_topics = {};
-            console.log(subscription);
+
             for (var i=0;i<callbacks.length; i++) {
                 for(var j=0;j<subscription[callbacks[i]].length;j++) {
                     var topic = subscription[callbacks[i]][j];
 
                     var context = callbacks[i].substring(0, callbacks[i].lastIndexOf('.'));
+
                     var func = callbacks[i].substring(callbacks[i].lastIndexOf('.') + 1);
+
                     if ( !this.topics.hasOwnProperty( topic ) ) {
                         this.topics[topic] = [];
                     }
@@ -391,18 +449,18 @@
             var html = '';
 
             for (var i=0; i<this.list.length; i++) {
+                if (typeof this.list[i] === 'string') {
+                    var label = value = this.list[i];
+                } else {
+                    var label = this.list[i].label;
+                    var value = this.list[i].value;
+                }
                 html += itemTemp({
-                    'label'   :  this.list[i].label,
-                    'value'   :  this.list[i].value
+                    'label'   :  label,
+                    'value'   :  value
                 });
             }
             return html;
-        };
-        Acme.listMenu.prototype.select = function(item)
-        {
-            var menuid = '#' + this.name + ' > p';
-            $(menuid).text(item);
-            return this;
         };
         Acme.listMenu.prototype.listItemEvents = function()
         {
@@ -411,18 +469,27 @@
                 $.each(self.listElements, function(i,e) {
                     $(e).attr('checked', false);
                 });
-
                 var elem = $(e.target);
                 var value = elem.data('value');
                 elem.attr('checked', true);
                 var data = {};
-                data[self.name] = value;
+                data[self.key || self.name] = value;
                 Acme.PubSub.publish('update_state', data);
-                console.log('update_state', data);
                 self.defaultItem.text(elem.text());
-                self.defaultSelection.label = elem.text();
                 $(self.listContainer).hide(100);
             });
+        };
+        Acme.listMenu.prototype.select = function(item)
+        {
+            var menuid = '#' + this.name + ' > p';
+            $(menuid).text(item);
+            return this;
+        };
+        Acme.listMenu.prototype.reset = function()
+        {
+            var menuid = '#' + this.name + ' > p';
+            $(menuid).text(this.defaultSelection.label);
+            return this;
         };
         Acme.listMenu.prototype.remove = function()
         {
@@ -446,7 +513,149 @@
             this.render();
             return this;
         }
-    
+
+
+
+        Acme.modal = function(template, parent, layouts) {
+            this.parentCont = parent || null;
+            this.template = template || null;
+            this.layouts = layouts   || null;
+            this.dfd = $.Deferred();
+        }
+            Acme.modal.prototype.render = function(layout) {
+                var tmp = $('#'+this.template).html();
+                $('body').append(tmp);
+                if (layout) {
+                    console.log(layout);
+                    this.renderLayout(layout);
+                }
+                this.events();
+                return this.dfd.promise();
+            };
+            Acme.modal.prototype.renderLayout = function(layout) {
+                var layout = $(this.layouts[layout]).html();
+                $(this.parentCont).find('#dialogContent').empty().append(layout); 
+            };
+            Acme.modal.prototype.events = function() 
+            {
+                console.log('running events');
+                var self = this;
+                $(this.parentCont).on("click", function(e) {
+                    console.log('clicked');
+                    self.handle(e);
+                });
+
+            };
+            Acme.modal.prototype.handle = function(e) {
+                console.log('handling from parent');
+                var $elem = $(e.target);
+
+                if (!$elem.is('input')) {
+                    e.preventDefault();
+                }
+
+                if ( $elem.is('button') ) {
+                    if ($elem.text() === "Cancel") {
+                        Acme.dialog.closeWindow();
+                    } else if ($elem.text() === "Okay") {
+                        Acme.dialog.closeWindow();
+
+                        // State can be provided by client external to 'show' call
+                        if (data === undefined && that.state) {
+                            data = that.state;
+                        // If data is also provided we merge the two
+                        } else if (that.state) {
+                            var keys = Object.keys(that.state)
+                            for (var k=0; k<keys.length;k++) {
+                                data[keys[k]] = that.state[keys[k]];
+                            }
+                        }
+
+                        if (self != undefined) {
+                            if (data != undefined) {
+                                var result = callback.call(self, data);
+                                this.dfd.resolve(result);
+                            } else {
+                                var result = callback.call(self);
+                                this.dfd.resolve(result);
+                            }
+                        } else {
+                            var result = callback();
+                            this.dfd.resolve(result);
+                        }
+                    }
+                }
+                return $elem;
+            };
+            Acme.modal.prototype.closeWindow = function() {
+                $(this.parentCont).remove();
+            };
+        
+
+
+
+    Acme.dialog = {
+        type : '',
+        state : {},
+
+        show : function(message, type, callback, self, data) {
+            var that = this;
+            var template  = '<div id="wrapper" class="flex_col"> <div id="dialog"><div><p id="dialogTitle">{{title}}</p><div id="dialogMessage">{{message}}</div>';
+                template += '<ul id="dialogButtons"><button>Okay</button><button>Cancel</button></div></div></div>';
+
+            template = template.replace( /{{title}}/ig, type || "");
+            template = template.replace( /{{message}}/ig, message);
+            var dfd = $.Deferred();
+
+            $('body').append(template);
+            $('#dialog').on("click", function(e) {
+                var $elem = $(e.target);
+                if (!$elem.is('input')) {
+                    e.preventDefault();
+                }
+
+                if ( $elem.is('button') ) {
+                    if ($elem.text() === "Cancel") {
+                        Acme.dialog.closeWindow();
+                    } else if ($elem.text() === "Okay") {
+                        Acme.dialog.closeWindow();
+
+                        // State can be provided by client external to 'show' call
+                        if (data === undefined && that.state) {
+                            data = that.state;
+                        // If data is also provided we merge the two
+                        } else if (that.state) {
+                            var keys = Object.keys(that.state)
+                            for (var k=0; k<keys.length;k++) {
+                                data[keys[k]] = that.state[keys[k]];
+                            }
+                        }
+
+                        if (self != undefined) {
+                            if (data != undefined) {
+                                var result = callback.call(self, data);
+                                dfd.resolve(result);
+                            } else {
+                                var result = callback.call(self);
+                                dfd.resolve(result);
+                            }
+                        } else {
+                            var result = callback();
+                            dfd.resolve(result);
+                        }
+                    }
+                }
+            });
+            return dfd.promise();
+        },
+        closeWindow : function() {
+            $('#dialog').closest('#wrapper').remove();
+        }
+    };
+
+
+
+
 }(jQuery));
 
 
