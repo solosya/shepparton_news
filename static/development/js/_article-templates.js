@@ -11,10 +11,10 @@ var screenArticles_1 =
 ';
 
 var systemCardTemplate = 
-'<div class="{{containerClass}} "> \
+'<div class="col-sm-3"><div class="{{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap" \
+        class="card swap {{{hasArticleMediaClass}}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
@@ -53,7 +53,7 @@ var systemCardTemplate =
             '</div>'+
         "{{/if}}"+
     '</a>'+
-'</div>';
+'</div></div>';
                                                 
 var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                 '<a href="{{social.url}}"\

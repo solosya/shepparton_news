@@ -222,6 +222,7 @@
             height:31px;
             // margin-bottom:2px;
             text-align:left;
+            border-top: 1px solid color(darkgrey);
 
             > a {
                 font-size:rem(9);
@@ -239,10 +240,10 @@
                 margin-bottom:0;
             }
             &:nth-child(even) {
-                background:rgba(185, 185, 185, 0.6);
+                background:white;
             }
             &:nth-child(odd) {
-                background:rgba(185, 185, 185, 0.4);
+                background:white;
             }
             &:hover {
                 background: color(red);
