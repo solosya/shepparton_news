@@ -1,5 +1,5 @@
 {% if networkData.logoMedia | length > 0 %}
-    {% set logo = _Media.getMediaUrl(networkData.logoMedia, 290, 0, {'crop': 'fit'} )%}
+    {% set logo = _Media.getMediaUrl(networkData.logoMedia, 180, 0, {'crop': 'fit'} )%}
 {% else %}
     {% set logo = networkData.templatePath~'/static/images/logo.svg'%}
 {% endif %}
