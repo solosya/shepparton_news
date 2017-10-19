@@ -132,6 +132,11 @@ ListingForm.constructor = ListingForm;
                         'imgData' : resultJsonStr
                     };
 
+                    var outer = $("#uploadFileBtn");
+                    var inner = $("#InnerUploadFileBtn");
+                    outer.addClass("spinner");
+                    inner.hide();
+
                     Acme.server.create('/api/article/save-image', postdata).done(function(r) {
 
                         var newImageId = r.media.media_id;
@@ -146,6 +151,8 @@ ListingForm.constructor = ListingForm;
 
                         self.renderImageThumbs([data]);
                         $().General_ShowNotification({message: 'Image added successfully' });
+                        outer.removeClass("spinner");
+                        inner.show();
 
                     }).fail(function(r) {
                         console.log(r);

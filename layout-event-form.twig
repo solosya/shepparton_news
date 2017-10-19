@@ -43,52 +43,50 @@
 
         <section class="row">
 
-            <div class="col-md-6">
+            <div class="col-sm-7 col-md-6">
 
 
                 <form class="" method="post" action="#" id="listingForm">
                     <input type="text" class="articleExtendedData" name="title" id="title" value="" placeholder="Event name">
                     <input type="text" class="articleExtendedData" name="venue" id="venue" value="" placeholder="Host name">
                     
-                    <input type="text" class="articleExtendedData eventStart" name="start_date" id="start_date" value="" placeholder="Start date">
-                    <input type="text" class="articleExtendedData eventEnd" name="end_date" id="end_date" value="" placeholder="End date">
-
+                    <div class="row">
+                        <div class="col-sm-3 large-split">
+                            <input type="text" class="articleExtendedData  eventStart" name="start_date" id="start_date" value="" placeholder="Start date">
+                        </div>
+                        <div class="col-sm-3 large-split">
+                            <input type="text" class="articleExtendedData  eventEnd" name="end_date" id="end_date" value="" placeholder="End date">
+                        </div>
+                    </div>
                     <input type="hidden" class="articleExtendedData" name="event_latitude" id="event_latitude" value="" placeholder="">
                     <input type="hidden" class="articleExtendedData" name="event_longitude" id="event_longitude" value="" placeholder="">
                     
                     
                     <p class="form-section-label">Location</p>
 
-{#                     <fieldset>
-                        <div class="inline">
-                            <input type="radio" name="extendedData.salary" id="map1" class="articleExtendedData" value="1" checked="checked" />
-                            <label for="map1">Show map</label>
-                        </div>
-                        <div class="inline">
-                            <input type="radio" name="extendedData.salary" id="map2" class="articleExtendedData" value="2" />
-                            <label for="map2">Hide map</label>
-                        </div>
 
-                    </fieldset>
- #}                    
-                    
+
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <input type="text" class="articleExtendedData" name="address1" id="address1" value="" placeholder="Address">
                             <textarea name="content" id="content"></textarea>
                         </div>
-                        <div class="col-md-3">
-                            <div data-imgcls="images" data-id="imageArray" class="uploadFileBtn property">
+
+
+                        <div class="col-sm-3">
+                            <div id="uploadFileBtn" data-imgcls="images" data-id="imageArray" class="uploadFileBtn">
                                 <div class="innerImgBtn">
-                                    <img src="{{networkData.templatePath}}/static/icons/upload-img.svg">
-                                    <p>Upload images</p>
+                                    <div id="InnerUploadFileBtn" class="vertical">
+                                        <img src="{{networkData.templatePath}}/static/icons/upload-img.svg">
+                                        <p>Upload images</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-sm-9">
 
                             <div id="imageArray" data-media="" class="imagearray"></div>
                     
@@ -96,8 +94,8 @@
                             <div id="addressMap" data-latitude="" data-longitude="" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
 
 
-                            <button class="_btn" type="submit" id="listingFormSubmit">SUBMIT</button>
-                            <button class="_btn" type="reset" id="listingFormClear">CLEAR</button>
+                            <button class="_btn submit" type="submit" id="listingFormSubmit">SUBMIT</button>
+                            <button class="_btn submit" type="reset" id="listingFormClear">CLEAR</button>
                         </div>
                     </div>
                 </form>

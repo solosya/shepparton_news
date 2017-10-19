@@ -49,6 +49,35 @@ div[class*="col-sm"] {
         }
     }
 }
+div[class*="col-sm"] {
+    &.large-split {
+        width:50%;
+        float:left;
+    }
+    &.clearfixed {
+        clear:both;
+    }
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite;
+}
 
 
 .addSpaceMobile {
@@ -225,13 +254,13 @@ h4.modal-title {
 //     max-width: 1600px;
 // }
 
-.btn{
-    font-size: rem(14);
-    font-weight: 600;
-    border-radius: 0;
-    padding: 10px 9px;
-    border-bottom: 2px solid $brand-secondary;  
-}
+// .btn{
+//     font-size: rem(14);
+//     font-weight: 600;
+//     border-radius: 0;
+//     padding: 10px 9px;
+//     border-bottom: 2px solid $brand-secondary;  
+// }
 
 
 
