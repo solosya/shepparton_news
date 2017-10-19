@@ -30,7 +30,12 @@
 {% endif %}
 
 {% if themeColors.headingColor != "" %}
-    h1, h2, h3, h4, h5 {
+    div.category,
+    p.category,
+    div.most-popular > h2, div.trending > h2,
+    div.card-popular::before,
+    h2.sidebar-header,
+    div.hk h2 {
         color: {{themeColors.headingColor}} !important;
     }
 {% endif %}
@@ -60,7 +65,7 @@
 {% endif %}
 
 {% if themeColors.headerBgColor != "" %}
-.header__heading {
+.header-bottom {
     background-color: {{themeColors.headerBgColor}} !important;
 }
 {% endif %}
