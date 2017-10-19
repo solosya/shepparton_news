@@ -46,7 +46,6 @@
 .menu-items {
     float: left;
     margin-top: 10px;
-    width: 100%;
 }
 
 .site-header {
@@ -130,13 +129,17 @@
             }
         }
 
-
+        .masthead-logo {
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
 
         .navbar-brand {
             display:inline-block;
-            padding:0;
-            width: 250px;
-            height:40px;
+            width: 100%;
+            margin-bottom: 10px;
             background-repeat:no-repeat;
             background-size:contain;
 

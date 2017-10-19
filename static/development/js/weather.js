@@ -16,7 +16,7 @@
                             '<p class="location"></p>' + 
                         '</div>' + 
                         '<div style="width: 48px;">' +
-                            '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
+                            '<div class="icon weather-' + icon + '"></div>' + 
                         '</div>' + 
                         '<div style="width: 120px;">' +
                             '<div class="temp-desc"></div>' + 
