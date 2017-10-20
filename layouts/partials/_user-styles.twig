@@ -39,12 +39,18 @@
     div.temp-desc,
     .search a.card>article>.content .author p,
     div.hk h2,
-    .site-main .section-header p>a {
+    .site-main .section-header p>a,
+    .sb-custom-menu ul.menu>li>a:hover {
         color: {{themeColors.headingColor}} !important;
     }
 
     .sb-custom-menu .searchPanel>form>button.submit {
         background-color: {{themeColors.headingColor}} !important;
+    }
+
+    /* overrides */
+    .site-main .section-header div.hk h2 {
+        color: black !important;
     }
 
 {% endif %}
