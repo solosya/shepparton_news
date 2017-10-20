@@ -1,9 +1,23 @@
 .searchPage {
     margin-top: 50px;
+	font-family: $font-family-sans-serif;
 
     h1 {
-        margin-bottom: 50px;
+        flex-grow: 0;
+        font-size: rem(30);
+        font-weight:300;
+        margin-bottom:25px;
+        color:color(red);
+        text-transform:uppercase;
     }
+
+    h2 {
+    	font-size: rem(24);
+    	color:color(darkgrey);
+    	line-height:1.75;
+    	letter-spacing: 0.7px;
+    }
+
 
     .ajaxArticles {
         margin-top:60px;
