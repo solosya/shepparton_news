@@ -106,7 +106,7 @@
             height:19px;
             background:color(red);
 
-            @media screen and (max-width: $mmd-break){
+            @media screen and (max-width: $sm-break){
                 display:none;
             }
 
