@@ -33402,10 +33402,12 @@ $('document').ready(function() {
 
     $("ul > li.menu-item-search").on("click", function (e) {
         $("#searchPanel").show();
+        $("#menu-primary-menu").hide();
         $("#searchPanel input").focus();
     });
     $("#searchclose").on("click", function (e) {
         $("#searchPanel").hide();
+        $("#menu-primary-menu").show();        
     });
 
 
