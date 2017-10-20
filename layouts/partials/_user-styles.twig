@@ -32,10 +32,12 @@
 {% if themeColors.headingColor != "" %}
     div.category,
     p.category,
+    h1.search-header,
     div.most-popular > h2, div.trending > h2,
     div.card-popular::before,
     h2.sidebar-header,
     div.temp-desc,
+    .search a.card>article>.content .author,
     div.hk h2 {
         color: {{themeColors.headingColor}} !important;
     }
@@ -91,8 +93,6 @@ body, body > .section {
 {% else %}
 {%  set iconColour = '#F03746' %}
 {% endif %}
-
-{%  set iconColour = '#000' %}
 
 .weather-clear-day {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37">\
