@@ -32,12 +32,12 @@
 {% if themeColors.headingColor != "" %}
     div.category,
     p.category,
-    h1.search-header,
+    .searchPage h1,
     div.most-popular > h2, div.trending > h2,
     div.card-popular::before,
     h2.sidebar-header,
     div.temp-desc,
-    .search a.card>article>.content .author,
+    .search a.card>article>.content .author p,
     div.hk h2 {
         color: {{themeColors.headingColor}} !important;
     }
