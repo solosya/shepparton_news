@@ -11,6 +11,12 @@ body.special {
     }
 }
 
+.site-videos {
+    padding-top:25px;
+    margin-bottom:50px !important;
+    background:rgba(185,185,185,.2);
+}
+
 .site-main {
     margin-top:50px;
     @media screen and (max-width: $sm-break-down) {
@@ -164,7 +170,7 @@ body.special {
                 font-size: rem(20);
                 font-weight:600;
                 margin-bottom:25px;
-
+                text-transform: uppercase;
             }
             p {
                 flex-grow: 1;
