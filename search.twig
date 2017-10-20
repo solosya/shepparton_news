@@ -1,6 +1,6 @@
 {{this.registerJs("CardController();")}}
 
-{% set limit = 20 %}
+{% set limit = 100 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search}) %}
 {% set networkData = _Network.getNetworkData() %}
 
@@ -35,29 +35,7 @@
                         <div class="ad-square clearfixed"></div>
                     </div>
                 </div><!-- .row-->
-
-
-
-                {{ this.render('partials/ajaxarticles.twig', {
-                    limit: limit, 
-                    non_pinned: articlesArr.existingNonPinnedCount, 
-                    articles: articles,
-                    card_style: "col-sm-12 search search-mob",
-                    container:"mainAjaxArticles",
-                    loadtype: "search"
-                }) | raw }}
-
-
-
-
-
             </div><!-- .container-->
-
-
-
-
         </section><!-- .top-stories-->
-
-
     </main><!-- .site-main -->
 
