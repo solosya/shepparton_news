@@ -83,8 +83,13 @@ gulp.task('scripts', function(){
         './static/development/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         // './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
         // './static/development/js/plugins/bootbox.min.js',
-        // './static/development/js/plugins/jquery.validate/jquery.validate.min.js',
-        // './static/development/js/plugins/waypoint/lib/jquery.waypoints.min.js',
+
+        // validate used when signing in on login.twig
+        './static/development/js/plugins/jquery.validate/jquery.validate.min.js',
+
+        // waypint used for infinite scroll on section pages
+        './static/development/js/plugins/waypoint/lib/jquery.waypoints.min.js',
+        
         './static/development/js/plugins/handlebars-v4.0.5.js',
         './static/development/js/plugins/jquery.lazyload.min.js',
         './static/development/js/plugins/jquery.dotdotdot.min.js',

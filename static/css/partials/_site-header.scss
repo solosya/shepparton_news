@@ -44,9 +44,9 @@
 }
 
 .menu-items {
-    float: left;
+    // float: left;
     margin-top: 10px;
-    width: 100%;
+    // width: 100%;
 }
 
 .site-header {
@@ -75,10 +75,16 @@
             padding-top:22px;
             background:black;
 
+
+            @media screen and (max-width: $mmd-break) {
+                height:60px;
+                padding-top:13px;
+            }
+
+
             @media screen and (max-width: $sm-break) {
                 height:60px;
                 padding-top:13px;
-
             }
 
             h1 {
@@ -107,7 +113,7 @@
             height:19px;
             background:color(red);
 
-            @media screen and (max-width: $mmd-break){
+            @media screen and (max-width: $sm-break){
                 display:none;
             }
 

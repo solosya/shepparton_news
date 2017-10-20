@@ -1,6 +1,6 @@
 {{ set(this, 'title', 'Search - ' ~ search) }}
 
-{{this.registerJs("CardController();")}}
+{{this.registerJs("Acme.CardController();")}}
 
 {% set limit = 20 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search}) %}

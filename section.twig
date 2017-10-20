@@ -2,7 +2,8 @@
 {% set networkData = _Network.getNetworkData() %}
 
 
-{{this.registerJs("CardController();")}}
+{{this.registerJs("Acme.cardController = Acme.CardController();")}}
+{{this.registerJs("Acme.SectionController();")}}
 
 {% set limit = 17 %}
 
@@ -15,10 +16,10 @@
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set popCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
         
         <div class="container">
 
@@ -143,14 +144,20 @@
                             {% endfor %}
                         </div>
 
+
+
                         {{ this.render('partials/ajaxarticles.twig', {
-                            limit: limit, 
+                            offset: limit,
+                            limit: 12,
                             non_pinned: articlesArr.existingNonPinnedCount, 
                             articles: articles,
                             card_style: "card-sm card-sm-mobile row-space40",
                             container:"mainAjaxArticles",
+                            buttonClass: "infinite",
                             border: "visible"
                         }) | raw }}
+
+
 
                     </div>  
 

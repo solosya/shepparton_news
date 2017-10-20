@@ -1,17 +1,17 @@
-<div class="row maincards mainAjaxArticles">
+<div class="row maincards ajaxArticles">
     <div class="col-sm-9">
         <div class="row">
             <div id="{{container}}" 
-                 class="clearfix"
-                 data-offset="{{limit}}"
+                 class="clearfix col-sm-9"
+                 data-offset="{{offset}}"
                  data-blogid="{{blogid}}"
-                 data-articlecount="9"
+                 data-limit="{{limit}}"
                  data-containerclass="{{card_style}}"
                  data-loadtype="{{loadtype}}"
                  data-border="{{border}}"
                  data-existing-nonpinned-count="{{non_pinned}}">
              </div>
-            <a class="loadMoreArticles" 
+            <a class="loadMoreArticles {{buttonClass}}" 
                 data-container="{{container}}"
                 href="#">Load more</a>
         </div>

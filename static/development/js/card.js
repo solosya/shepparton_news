@@ -1,122 +1,12 @@
-var CardController = function() {
-    return new Card();
+Acme.CardController = function() {
+    return new Acme.Card();
 }
 
-var Card = function() {
+Acme.Card = function() {
     this.events();
 };
 
-// Card.prototype.renderScreenCards = function(options, data) 
-// {
-//     var self = this;
-
-//     var container = options.container;
-
-//     container.data('existing-nonpinned-count', data.existingNonPinnedCount);
-
-//     var html = "";
-//     for (var i in data.articles) {
-//         html += self.renderCard(data.articles[i], options.containerClass);
-//     }
-//     container.empty().append(html);
-
-//     // $('.two-card-logo').toggle();
-
-//     $(".card p, .card h1").dotdotdot();
-            
-//     $('.video-player').videoPlayer();
-    
-//     //Lazyload implement
-//     // $("div.lazyload").lazyload({
-//     //     effect: "fadeIn"
-//     // });
-//     // if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
-//     //     self.events();
-//     // }
-// };
-
-// Card.prototype.screen = function() 
-// {
-//     var self = this;
-
-//     var btn = $('.loadMoreArticles');
-//     var pageRefreshInterval = 60000 * 5;
-
-//     var currentScreen = 0;
-//     var articleCount = 0;
-
-//     var options = {
-//         'screens' : [
-//         {
-//             style: "screen-card card-lg-screen col-sm-12",
-//             limit: 1,
-//             logo: "large-logo"
-
-//         },
-
-//         {
-//             style: "screen-card card-sm-screen col-sm-6",
-//             limit: 2,
-//             logo: "small-logo"
-//         } 
-
-//         ],
-//         'container': $( '#'+btn.data('container') ),
-//         'currentScreen': currentScreen,
-//         'count': 20
-//     };
-
-//     var run = function() {
-//         console.log('running screen');
-
-//                             // 1 minute * amount of minutes
-//         var numberOfScreens = options.screens.length;
-//         currentScreen++;
-//         if (currentScreen > numberOfScreens) {
-//             currentScreen = 1;
-//         }
-//         var screenOption = currentScreen-1;
-//         options.currentScreen = currentScreen;
-
-//         // console.log('grigidig');
-//         options.limit = options.screens[screenOption].limit;
-//         options.containerClass = options.screens[screenOption].style;
-
-//         // articleCount = articleCount + options.limit;
-//         // console.log('Article Count: ', articleCount);
-//         if (articleCount >= options.count) {
-//             articleCount = 0;
-//         }
-
-//         options.offset = articleCount;
-//         options.nonpinned = articleCount;
-
-//         // console.log(options);
-//         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
-//             // console.log(data);
-//             if (data.articles.length == 0 ) {
-//                 // console.log('setting article count to zero');
-//                 articleCount = 0;
-//                 return;
-//             }
-//             articleCount = articleCount + data.articles.length;
-
-//             if (data.success == 1) {
-//                 self.renderScreenCards(options, data);
-//             }
-//         });
-//     }
-
-//     run();
-
-//     setInterval( run, 10000 ); 
-//     setInterval( function() {
-//         location.reload(false);
-//     } , pageRefreshInterval );
- 
-// };
-
-Card.prototype.renderCard = function(card, cardClass)
+Acme.Card.prototype.renderCard = function(card, cardClass)
 {
     var self = this;
 
@@ -149,7 +39,7 @@ Card.prototype.renderCard = function(card, cardClass)
     return articleTemplate(card);
 }
 
-Card.prototype.bindPinUnpinArticle = function()
+Acme.Card.prototype.bindPinUnpinArticle = function()
 {
 
     $('button.PinArticleBtn').Ajax_pinUnpinArticle({
@@ -165,7 +55,7 @@ Card.prototype.bindPinUnpinArticle = function()
     });
 };
 
-Card.prototype.bindDeleteHideArticle = function()
+Acme.Card.prototype.bindDeleteHideArticle = function()
 {
 
     $('button.HideBlogArticle').Ajax_deleteArticle({
@@ -184,7 +74,7 @@ Card.prototype.bindDeleteHideArticle = function()
     });
 };
 
-Card.prototype.bindSocialUpdatePost = function () 
+Acme.Card.prototype.bindSocialUpdatePost = function () 
 {
     $('.editSocialPost').on('click', function (e) {
         e.preventDefault();
@@ -207,7 +97,7 @@ Card.prototype.bindSocialUpdatePost = function ()
     });
 };
 
-Card.prototype.bindSocialShareArticle = function () 
+Acme.Card.prototype.bindSocialShareArticle = function () 
 {
     $('.shareIcons').SocialShare({
         onLoad: function (obj) {
@@ -226,7 +116,7 @@ Card.prototype.bindSocialShareArticle = function ()
     });
 };
 
-Card.prototype.renderReadingTime = function (time) 
+Acme.Card.prototype.renderReadingTime = function (time) 
 {
     if (time <= '59') {
         return ((time <= 0) ? 1 : time) + ' min read';
@@ -236,7 +126,7 @@ Card.prototype.renderReadingTime = function (time)
     }
 };
 
-Card.prototype.bindSocialPostPopup = function()
+Acme.Card.prototype.bindSocialPostPopup = function()
 {
     var isRequestSent = false;
     $(document).on('click', 'article.lightbox', function (e) {
@@ -259,7 +149,7 @@ Card.prototype.bindSocialPostPopup = function()
             var payload = {articleId: articleId, _csrf: csrfToken}
         }
 
-        console.log(_appJsConfig.appHostName);
+        // console.log(_appJsConfig.appHostName);
         // http://www.aapp.io/admin
 
         // var url = "/admin/article/save";
@@ -274,7 +164,7 @@ Card.prototype.bindSocialPostPopup = function()
                     data.hasMediaVideo = false;
                     if (data.media['type'] === 'video') {
                         data.hasMediaVideo = true;
-                    }1
+                    }
                     
                     if (data.source == 'youtube') {
                         var watch = data.media.videoUrl.split("=");
@@ -305,7 +195,7 @@ Card.prototype.bindSocialPostPopup = function()
     });
 };
 
-Card.prototype.initDraggable = function()
+Acme.Card.prototype.initDraggable = function()
 {
     $('.swap').draggable({
         helper: 'clone',
@@ -316,12 +206,11 @@ Card.prototype.initDraggable = function()
         cursorAt: { left: 150, top: 50 },
         appendTo:'body',
         drag: function( event, ui ) {
-            console.log(event);
-            console.log('h');
+            // console.log(event);
+            // console.log('h');
         },
 
         start: function( event, ui ) {
-            console.log('dragging');
             ui.helper.attr('class', '');
             var postImage = $(ui.helper).data('article-image');
             var postText = $(ui.helper).data('article-text');
@@ -337,7 +226,75 @@ Card.prototype.initDraggable = function()
     });
 }
 
-Card.prototype.initDroppable = function()
+
+
+Acme.Card.prototype.loadMore = function(elem, waypoint)
+{
+    var self = this;
+    elem.html("Please wait...");
+    
+    var container = $('#'+elem.data('container'));
+
+    var options = {
+        'offset': container.data('offset'),
+        'limit': container.data('limit'),
+        'containerClass': container.data('containerclass'),
+        'container': container,
+        'nonpinned' : container.data('offset'),
+        'blog_guid' : container.data('blogid')
+    };
+
+    if ( container.data('loadtype')) {
+        options.loadtype = container.data('loadtype');
+    }
+
+
+    $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
+        if (data.success == 1) {
+
+            if (data.articles.length < options.limit) {
+                elem.css('display', 'none');
+            }
+            var container = options.container;
+            container.data('existing-nonpinned-count', data.existingNonPinnedCount);
+            var cardClass = container.data('containerclass');
+
+            var html = "<div class='row'>";
+            for (var i in data.articles) {
+                html += self.renderCard(data.articles[i], cardClass);
+            }  html += "</div>";
+
+            container.append(html);
+
+            if (waypoint) {
+                if (data.articles.length < options.limit) {
+                    waypoint.destroy();
+                } else {
+                    waypoint.enable();
+                }
+            }
+
+            $(".card .content > p, .card h2").dotdotdot();
+            
+            self.bindSocialShareArticle();
+            
+            $('.video-player').videoPlayer();
+            
+            //Lazyload implement
+            $("div.lazyload").lazyload({
+                effect: "fadeIn"
+            });
+            if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
+                self.events();
+            }
+
+            elem.html("Load more");
+        }
+    });
+}
+
+
+Acme.Card.prototype.initDroppable = function()
 {
     var self = this;
 
@@ -444,9 +401,8 @@ Card.prototype.initDroppable = function()
     }); 
 }
 
-Card.prototype.events = function() 
+Acme.Card.prototype.events = function() 
 {
-    console.log('events');
     var self = this;
 
     if(_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
@@ -473,60 +429,7 @@ Card.prototype.events = function()
     self.bindSocialPostPopup();
 
     $('.loadMoreArticles').on('click', function(e){
-        console.log('loading more articles');
         e.preventDefault();
-        var btn = $(e.target);
-        console.log('loading more cards');
-        btn.html("Please wait...");
-        
-        var container = $('#'+btn.data('container'));
-
-        var options = {
-            'offset': container.data('offset'),
-            'containerClass': container.data('containerclass'),
-            'container': container,
-            'nonpinned' : container.data('offset'),
-            'blog_guid' : container.data('blogid')
-        };
-
-        if ( container.data('loadtype')) {
-            options.loadtype = container.data('loadtype');
-        }
-
-
-        $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
-
-            if (data.success == 1) {
-
-                if (data.articles.length < 20) {
-                    btn.css('display', 'none');
-                }
-                var container = options.container;
-                container.data('existing-nonpinned-count', data.existingNonPinnedCount);
-                var cardClass = container.data('containerclass');
-
-                var html = "";
-                for (var i in data.articles) {
-                    html += self.renderCard(data.articles[i], cardClass);
-                }
-                container.append(html);
-
-                $(".card .content > p, .card h2").dotdotdot();
-                
-                self.bindSocialShareArticle();
-                
-                $('.video-player').videoPlayer();
-                
-                //Lazyload implement
-                $("div.lazyload").lazyload({
-                    effect: "fadeIn"
-                });
-                if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
-                    self.events();
-                }
-
-                btn.html("Load more");
-            }
-        });
+        self.loadMore($(e.target));
     });
 };
