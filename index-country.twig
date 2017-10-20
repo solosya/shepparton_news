@@ -13,25 +13,14 @@
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
-
-
-
-{% set events = _Event.getEvents() %}
-
-
+{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'network' }) %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 
 {% set sections =  {
-        "videos": {
-            "feed": "",
-            "link": "",
-            "limit" : 10
-        }, 
         "dairy": {
             "feed": "",
             "link": "",
@@ -42,27 +31,12 @@
             "link": "",
             "limit" : 10
         },
-        "opinion": {
+        "horticulture": {
             "feed": "",
             "link": "",
             "limit" : 10
         },
-        "rural news": {
-            "feed": "",
-            "link": "",
-            "limit" : 10
-        },
-        "sport": {
-            "feed": "",
-            "link": "",
-            "limit" : 10
-        },
-        "national": {
-            "feed": "",
-            "link": "",
-            "limit" : 10
-        },
-        "business": {
+        "videos": {
             "feed": "",
             "link": "",
             "limit" : 10
@@ -87,14 +61,6 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
-
-
-
-
-
-
-
-
 
 
 
@@ -223,13 +189,12 @@
             </div>
 
 
-            {% set thisSection = (dev) ? 'rural news' : 'dairy' %}
-            {% if sections[thisSection].feed.articles|length > 0 %}
+            {% if sections['dairy'].feed.articles|length > 0 %}
                 {% set regionalCount = (dev) ? articleCount : 0 %}
 
                 <section class="row">
                     <div class="col-sm-9 section-header">
-                        <p><a href="{{sections[thisSection].link}}">View All</a></p>
+                        <p><a href="{{sections['dairy'].link}}">View All</a></p>
                         <div class="hk">
                             <h2>Dairy</h2>
                             <p></p>
@@ -237,23 +202,20 @@
                     </div>
 
                     <div class="col-sm-4">
-                        {% if sections[thisSection].feed.articles[regionalCount] %}
+                        {% if sections['dairy'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[regionalCount], 
+                                article: sections['dairy'].feed.articles[regionalCount], 
                                 imageSize: {width:409, height:530},
                                 containerClass: 'home-feature-thin home-feature-thin-mobile'
                             }) | raw}}
                             {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
                         {% endif %}
-
-
-
                     </div>
                     <div class="col-sm-2">
                         {% set cardspace = ['', 'row-space'] %}
-                        {% for i in 0..1 if sections[thisSection].feed.articles[regionalCount] %}
+                        {% for i in 0..1 if sections['dairy'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[regionalCount], 
+                                article: sections['dairy'].feed.articles[regionalCount], 
                                 imageSize: {width:300},
                                 containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
                             }) | raw}}
@@ -328,13 +290,12 @@
 
 
 
-            {% set thisSection = (dev) ? 'rural news' : 'water' %}
-            {% if sections[thisSection].feed.articles|length > 0 %}
+            {% if sections['water'].feed.articles|length > 0 %}
                 {% set regionalCount = (dev) ? articleCount : 0 %}
 
                 <section class="row">
                     <div class="col-sm-9 section-header">
-                        <p><a href="{{sections[thisSection].link}}">View All</a></p>
+                        <p><a href="{{sections['water'].link}}">View All</a></p>
                         <div class="hk">
                             <h2>Water</h2>
                             <p></p>
@@ -342,9 +303,9 @@
                     </div>
 
                     <div class="col-sm-4">
-                        {% if sections[thisSection].feed.articles[regionalCount] %}
+                        {% if sections['water'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[regionalCount], 
+                                article: sections['water'].feed.articles[regionalCount], 
                                 imageSize: {width:409, height:530},
                                 containerClass: 'home-feature-xs'
                             }) | raw}}
@@ -356,9 +317,9 @@
                     </div>
                     <div class="col-sm-2">
                         {% set cardspace = ['', 'row-space'] %}
-                        {% if sections[thisSection].feed.articles[regionalCount] %}
+                        {% if sections['water'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[regionalCount], 
+                                article: sections['water'].feed.articles[regionalCount], 
                                 imageSize: {width:300},
                                 containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
                             }) | raw}}
@@ -372,9 +333,9 @@
 
                     <div class="col-sm-3">
                         
-                        {% for i in 0..1 if sections[thisSection].feed.articles[regionalCount] %}
+                        {% for i in 0..1 if sections['water'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[regionalCount], 
+                                article: sections['water'].feed.articles[regionalCount], 
                                 imageSize: {width:300},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
@@ -390,24 +351,23 @@
             {% endif %}
 
 
-            {% set thisSection = (dev) ? 'rural news' : 'horticulture' %}
-            {% if sections[thisSection].feed.articles|length > 0 %}
+            {% if sections['horticulture'].feed.articles|length > 0 %}
                 {% set horticultureCount = (dev) ? articleCount : 0 %}
 
                 <section class="row">
                     <div class="col-sm-9 section-header">
-                        <p><a href="{{sections[thisSection].link}}">View All</a></p>
+                        <p><a href="{{sections['horticulture'].link}}">View All</a></p>
                         <div class="hk">
                             <h2>Horticulture</h2>
                             <p></p>
                         </div>
                     </div>
 
-                    {% for i in 0..2 if sections[thisSection].feed.articles[horticultureCount] %}
+                    {% for i in 0..2 if sections['horticulture'].feed.articles[horticultureCount] %}
                         <div class="col-sm-3 col-md-3">
 
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[horticultureCount], 
+                                article: sections['horticulture'].feed.articles[horticultureCount], 
                                 imageSize: {width:300},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}
@@ -432,24 +392,23 @@
 
             <section class="middle" style="margin-bottom:0px;">
 
-            {% set thisSection = (dev) ? 'rural news' : 'videos' %}
-            {% if sections[thisSection].feed.articles|length > 0 %}
+            {% if sections['videos'].feed.articles|length > 0 %}
                 {% set sectionCount = (dev) ? articleCount : 0 %}
 
                 <section class="row ">
                     <div class="col-sm-9 section-header">
-                        <p><a href="{{sections[thisSection].link}}">View All</a></p>
+                        <p><a href="{{sections['videos'].link}}">View All</a></p>
                         <div class="hk">
                             <h2>Videos</h2>
                             <p></p>
                         </div>
                     </div>
 
-                    {% for i in 0..1 if sections[thisSection].feed.articles[sectionCount] %}
+                    {% for i in 0..1 if sections['videos'].feed.articles[sectionCount] %}
                         <div class="col-sm-3 col-md-3">
 
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[sectionCount], 
+                                article: sections['videos'].feed.articles[sectionCount], 
                                 imageSize: {width:300},
                                 containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                             }) | raw}}
