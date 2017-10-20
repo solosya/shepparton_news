@@ -94,12 +94,11 @@
 
             <section class="">
                 <div class="row">
-                    {% set split = ['split', 'split', 'clearfixed'] %}
                     {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:600, height:320},
-                            containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile ' ~ split[i]
+                            containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endfor %}

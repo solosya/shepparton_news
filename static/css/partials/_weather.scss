@@ -41,8 +41,9 @@
         padding-right: 8px;
         position: relative;
         bottom: 3px;
-        // height: 34px !important;
+        height: 34px !important;
         width: 48px !important;
+        background-repeat: no-repeat;
     }
 
     .show-weather {
@@ -109,3 +110,7 @@
     border-left: 1px solid rgba(0,0,0,0.15);
     padding: 22px 0;
 }
+
+
+
+

@@ -192,16 +192,28 @@ div.bloggerImg {
 
 
 
-
-.search-icon{
+@mixin searchIcon {
     display:block;
-    padding:0;
+    padding:5px;
     background-image: url(../icons/search-icon.svg);
     background-repeat: no-repeat;
     background-size:contain;
-    width: 13px;
-    height: 14px;
 }
+
+@mixin closeIcon {
+    display:block;
+    padding:5px;
+    background-image: url(../icons/cross-reverse.svg);
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+.search-icon{
+    @include searchIcon;
+    height: 20px;
+    width: 20px;  
+}
+
 
 
 

@@ -12,19 +12,16 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4 col-md-9" {# style="background:orange;" #}>
+                    <div class="col-xs-9 col-md-2 masthead-logo">
                         <a  class="navbar-brand" 
                             href="{{networkData.defaultBlogUrl}}" 
                             rel="Home" 
                             tabindex="-1" 
                             title="Home"
-                            style="background-image:url({{logo}})">
+                            style="background-image:url({{logo}}); background-position:bottom;height:100%;">
                         </a>
                     </div>
-
-                    <div class="col-sm-5 col-md-9 menu-items" {# style="background:green;" #}>
-
-
+                    <div class="menu-items col-md-7">
 
                        <!--  ************ -->
                         <!--  DESKTOP MENU -->
@@ -34,50 +31,48 @@
                             <a href="#" id="menu-mobile" class="menu-mobile"></a>
 
                             <div class="menuContainer">
+                                <div class="menuFade">
+                                    <ul id="menu-primary-menu" class="menu primary-menu">
+                                        {% set menuItems = blog.blogHeaderMenu %}
+                                        {% for parentItem in menuItems  %}
 
-                                <ul id="menu-primary-menu" class="menu">
-                                    {% set menuItems = blog.blogHeaderMenu %}
-                                    {% for parentItem in menuItems  %}
+                                           {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                           {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                                       {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                       {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                                           <li>
+                                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                                    {% if parentItem.label != "" %}
+                                                        {{parentItem.label}}
+                                                    {% elseif parentItem.blogTitle != "" %}
+                                                        {{parentItem.blogTitle}}
+                                                    {% elseif parentItem.pageTitle != "" %}
+                                                        {{parentItem.pageTitle}}
+                                                    {% endif %}
+                                                    {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                                        <span class="down-arrow"></span>
+                                                    {% endif %}
+                                                </a>
 
-                                       <li>
-                                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                                {% if parentItem.label != "" %}
-                                                    {{parentItem.label}}
-                                                {% elseif parentItem.blogTitle != "" %}
-                                                    {{parentItem.blogTitle}}
-                                                {% elseif parentItem.pageTitle != "" %}
-                                                    {{parentItem.pageTitle}}
+                                                 {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                                     <ul class="sub-menu">
+                                                        {% for childItem in parentItem.children %}
+                                                            {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                            <li>
+                                                                <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                                 {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                                </a>
+                                                            </li>
+                                                       {% endfor %}
+                                                    </ul>
                                                 {% endif %}
-                                                {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                    <span class="down-arrow"></span>
-                                                {% endif %}
-                                            </a>
-
-                                             {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                 <ul class="sub-menu">
-                                                    {% for childItem in parentItem.children %}
-                                                        {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                        <li>
-                                                            <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                            </a>
-                                                        </li>
-                                                   {% endfor %}
-                                                </ul>
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-
-                                    <li id="menu-item-search" class="menu-item menu-item-search">
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <ul class="menu">
+                                    <li id="menu-item-search" class="menu-item-search">
                                         <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
                                     </li>
-
-
-
-
                                 </ul>
                             </div>
 

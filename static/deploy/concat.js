@@ -33316,10 +33316,12 @@ $('document').ready(function() {
 
     $("ul > li.menu-item-search").on("click", function (e) {
         $("#searchPanel").show();
+        $("#menu-primary-menu").hide();
         $("#searchPanel input").focus();
     });
     $("#searchclose").on("click", function (e) {
         $("#searchPanel").hide();
+        $("#menu-primary-menu").show();        
     });
 
 
@@ -33780,7 +33782,7 @@ UserArticlesController.Load = (function ($) {
                             '<p class="location"></p>' + 
                         '</div>' + 
                         '<div style="width: 48px;">' +
-                            '<img class="icon" src="' + window.Acme.templatePath + '/static/icons/weather/' + icon + '.svg">' + 
+                            '<div class="icon weather-' + icon + '"></div>' + 
                         '</div>' + 
                         '<div style="width: 120px;">' +
                             '<div class="temp-desc"></div>' + 
