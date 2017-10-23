@@ -158,32 +158,20 @@
 
 
     ul.menu{
+        height:100%;
         margin: 0;
         padding-left: 0;
 
-        @media screen and (min-width: $mmd-break) {
-            white-space: nowrap;
-            overflow: scroll;
-            padding-right:100px;    
-            ::-webkit-scrollbar {
-                width: 0px;
-                background: transparent;
-            }          
+        @media screen and (max-width: $mmd-break) {
+            height:auto;
+        }
 
-        }
-        &.search {
-            overflow:unset;
-            padding:0;
-            white-space:normal;
-        }
 
         > li{
+            display:inline-block;
             margin:0;
             position:relative;
             height:100%;
-            @media screen and (min-width: $mmd-break) {
-                display:inline-block;
-            }
 
             @media screen and (max-width: $mmd-break) {
                 height:auto;

@@ -29,3 +29,32 @@
         }
     }   
 }
+
+body.page-contact-us {
+    .contact-details {
+        a {
+            color: color(red);
+        }
+    }
+
+    input, textarea {
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,0.3);
+        font-size: rem(15);
+        &:placeholder {
+            color: rgba(0,0,0,0.3);
+        }
+    }
+
+    button {
+        background: color(red);
+        border-radius: 10px;
+        padding: 13px 50px;
+        text-transform: uppercase;
+        color: white;
+        font-size: rem(14);
+        font-weight: bold;
+        border: none;
+    }
+
+}
