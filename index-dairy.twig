@@ -52,7 +52,7 @@
             "link": "",
             "limit" : 10
         },
-        "machinery products": {
+        "machinery--products": {
             "feed": "",
             "link": "",
             "limit" : 10
@@ -424,21 +424,21 @@
 
 
 
-            {% if sections['machinery products'].feed.articles|length > 0 %}
+            {% if sections['machinery--products'].feed.articles|length > 0 %}
                 {% set sectionCount = (dev) ? articleCount : 0 %}
 
                 <section class="row">
                     <div class="col-sm-9 section-header">
-                        <p><a href="{{sections['machinery products'].link}}">View All</a></p>
+                        <p><a href="{{sections['machinery--products'].link}}">View All</a></p>
                         <div class="hk">
-                            <h2>machinery products &amp; products</h2>
+                            <h2>machinery &amp; products</h2>
                             <p></p>
                         </div>
                     </div>
 
-                    {% for i in 0..2 if sections['machinery products'].feed.articles[sectionCount] %}
+                    {% for i in 0..2 if sections['machinery--products'].feed.articles[sectionCount] %}
                         {{this.render('partials/_single-article.twig', {
-                            article: sections['machinery products'].feed.articles[sectionCount], 
+                            article: sections['machinery--products'].feed.articles[sectionCount], 
                             imageSize: {width:300},
                             containerClass: 'col-sm-2 card-sm card-sm-mobile'
                         }) | raw}}
