@@ -69,7 +69,9 @@
     @media screen and (min-width: $mmd-break){
         @include card-search-base();
 
-        height:195px;
+        a.card {
+            height:195px;
+        }
 
         &.divideright {
             &:after {
