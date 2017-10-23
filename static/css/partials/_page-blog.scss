@@ -14,23 +14,65 @@ body.blog {
             }
 
             h2 {
-                margin-top:15px;
                 font-size:rem(28);
                 font-weight: 700;
                 font-family: $font-family-serif;
             }
 
             p.blogowner {
-                margin-top:10px;
                 color:color(red);
-
+                font-size: rem(14);
+                padding-bottom: 15px;
+                padding-top: 5px;
             }
 
-            @media screen and (min-width: $mmd-break){
+            .social-links {
+                display: flex;
+                flex-direction: row;
 
-                p.blogowner {
-                    margin-top:10px;
+                > a {
+                    display: block;
+                    height: 31px;
+                    width: 31px;
+                    border-right: 1px solid color(lightgrey);
+                    background-position:center;
+                    background-repeat:no-repeat;
+                    &.facebook {
+                        background-image: url('../images/facebook.svg');
+                    } 
+                    &.twitter {
+                        background-image: url('../images/twitter.svg');
+                    }
+                    &.instagram {
+                        background-image: url('../images/instagram.svg');
+                    }
+                    &.vimeo {
+                        background-image: url('../images/vimeo.svg');
+                    }
+                    &.youtube {
+                        background-image: url('../images/youtube.svg');
+                    }
+                    &:last-child {
+                        border-right: none;
+                    }                    
                 }
+            }
+
+            .follow {
+                margin-top: 10px;
+                height: 24px;
+                width: 70px;
+                background-color: black;
+                font-size: rem(10);
+                text-transform: uppercase;
+                color: white;
+                font-weight: bold;
+                letter-spacing: 0.3px;
+                padding: 5px;
+                text-align: center;
+            }            
+
+            @media screen and (min-width: $mmd-break){
 
                 .bloggerImg {
                     height:134px;

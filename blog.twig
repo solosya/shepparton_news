@@ -41,8 +41,26 @@
                     </div>
 
                     <div class="">
-                        <h2>Bloggers</h2>
-                        <p class="blogowner">Your local news</p>
+                        <h2>Blog page</h2>
+                        <p class="blogowner">by {{ blogInfo.owner['name'] }}</p>
+                        <div class="social-links">
+                            {% if blogInfo.settings['social']['facebook'] %}
+                                <a href="{{ blogInfo.settings['social']['facebook'] }}" class="facebook"></a>
+                            {% endif %}
+                            {% if blogInfo.settings['social']['twitter'] %}
+                                <a href="{{ blogInfo.settings['social']['twitter'] }}" class="twitter"></a>
+                            {% endif %}
+                            {% if blogInfo.settings['social']['instagram'] %}
+                                <a href="{{ blogInfo.settings['social']['instagram'] }}" class="instagram"></a>
+                            {% endif %}
+                            {% if blogInfo.settings['social']['vimeo'] %}
+                                <a href="{{ blogInfo.settings['social']['vimeo'] }}" class="vimeo"></a>
+                            {% endif %}
+                            {% if blogInfo.settings['social']['youtube'] %}
+                                <a href="{{ blogInfo.settings['social']['youtube'] }}" class="youtube"></a>
+                            {% endif %}
+                        </div>
+                        <div class="follow">Follow</div>
                     </div>
                 </div>
             </div>
