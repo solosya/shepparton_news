@@ -52,69 +52,45 @@
                     
                         <div class="ad-square" style="margin-bottom:30px;position:relative;"></div>
 
-                         {% if articles[articleCount] %}
-                             {{this.render('partials/_single-article.twig', {
-                                 article: articles[articleCount], 
-                                 imageSize: {width:160, height:190},
-                                 position: articleCount + 1,
-                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                             }) | raw}}
+                            <section class="subscribe">
+                                
+                                <h2>Dairynews E-Newsletter</h2>
+                                <label for="header-search" class="assistive-text sr-only">Subscribe</label>
+                                <div class="input-group subscribe-group">
+                                    
+                                <!-- Begin MailChimp Signup Form -->
+                                <div id="mc_embed_signup">
+                                    <form action="//centralnews.us15.list-manage.com/subscribe/post?u=f951467ba4375a98673dddecd&amp;id=effe44468e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll" style="display:flex;">
+                                        
+                                            <input type="email" value="" name="EMAIL" class="field form-control" id="mce-EMAIL" placeholder="Email address*" required>
+                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                                <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">
+                                            </div>
+                                                {# <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"> #}
+                                            <button class="btn btn-default" type="submit" id="mc-embedded-subscribe">
+                                                Subscribe
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+
+                                    <!--End mc_embed_signup-->
+
+                            </section>
 
                             <hr class="divide18 visible-md-block visible-lg-block">
-
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                         {% endif %}
-               
-            
 
                     </div>
                 </div>
 
-                <div class="row row-space">
-
-                    {% set divider = ['divideright', 'divideright', ''] %}
-                    {% for i in 0..2 if articles[articleCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
-                            imageSize: {width:160, height:190},
-                            position: articleCount + 1,
-                            containerClass: 'col-sm-3 feature-side feature-side-tablet feature-side-mobile ' ~ divider[i]
-                        }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        <hr class="divide visible-xs-block">
-                    {% endfor %}
-
-                </div>
             </section>
-
-
-
-
-
-
-            <section class="">
-                <div class="row">
-                    {% for i in 0..2 if articles[articleCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
-                            imageSize: {width:600, height:320},
-                            containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
-                        }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% endfor %}
-
-                </div>
-            </section>
-
-
 
 
         </div>
 
-
-        <div class="ad-container">
-            <section class="advert advert-padding" style="background:gray;height:200px;"></section>
-        </div>
 
         <div class="container">
             <section class="">
@@ -162,7 +138,7 @@
 
 
                     <div class="col-sm-3 split trending">
-                       <h2>Trending stories</h2>
+                       <h2>Most popular</h2>
 
                         {% for i in 0..3 if popularArticles[popCount] %}
                             {{this.render('partials/_single-article.twig', {
