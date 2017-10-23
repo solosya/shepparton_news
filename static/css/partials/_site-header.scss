@@ -44,8 +44,9 @@
 }
 
 .menu-items {
-    float: left;
+    // float: left;
     margin-top: 10px;
+    // width: 100%;
 }
 
 .site-header {
@@ -74,10 +75,16 @@
             padding-top:22px;
             background:black;
 
+
+            @media screen and (max-width: $mmd-break) {
+                height:60px;
+                padding-top:13px;
+            }
+
+
             @media screen and (max-width: $sm-break) {
                 height:60px;
                 padding-top:13px;
-
             }
 
             h1 {
@@ -130,20 +137,29 @@
         }
 
         .masthead-logo {
-            height: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            position:relative;
+            height: 65px;
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: flex-end;
+            @media screen and (max-width: $mmd-break){
+                height:35px;
+            }
+
         }
 
+
         .navbar-brand {
-            display:inline-block;
-            width: 100%;
-            margin-bottom: 10px;
+            position:absolute;
+            bottom:0;
+            display:block;
+            padding:0;
+            width: 250px;
+            height:40px;
             background-repeat:no-repeat;
             background-size:contain;
 
-            @media screen and (max-width: $sm-break){
+            @media screen and (max-width: $mmd-break){
                 margin-top: 0;
                 padding:8px;
                 width: 120px;
