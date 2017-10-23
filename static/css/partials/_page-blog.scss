@@ -26,38 +26,6 @@ body.blog {
                 padding-top: 5px;
             }
 
-            .social-links {
-                display: flex;
-                flex-direction: row;
-
-                > a {
-                    display: block;
-                    height: 31px;
-                    width: 31px;
-                    border-right: 1px solid color(lightgrey);
-                    background-position:center;
-                    background-repeat:no-repeat;
-                    &.facebook {
-                        background-image: url('../images/facebook.svg');
-                    } 
-                    &.twitter {
-                        background-image: url('../images/twitter.svg');
-                    }
-                    &.instagram {
-                        background-image: url('../images/instagram.svg');
-                    }
-                    &.vimeo {
-                        background-image: url('../images/vimeo.svg');
-                    }
-                    &.youtube {
-                        background-image: url('../images/youtube.svg');
-                    }
-                    &:last-child {
-                        border-right: none;
-                    }                    
-                }
-            }
-
             .follow {
                 margin-top: 10px;
                 height: 24px;

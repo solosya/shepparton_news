@@ -215,7 +215,70 @@ div.bloggerImg {
 }
 
 
+.social-links {
+    display: flex;
+    flex-direction: row;
 
+    > a {
+        display: block;
+        height: 31px;
+        width: 31px;
+        border-right: 1px solid color(lightgrey);
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:contain;
+
+        &.facebook {
+            background-image: url('../images/facebook.svg');
+        } 
+        &.twitter {
+            background-image: url('../images/twitter.svg');
+        }
+        &.instagram {
+            background-image: url('../images/instagram.svg');
+        }
+        &.vimeo {
+            background-image: url('../images/vimeo.svg');
+        }
+        &.youtube {
+            background-image: url('../images/youtube.svg');
+        }
+    }
+
+    &.small {
+        > a {
+            height: 18px;
+            width: 32px;
+        }
+    }
+
+    &.white {
+        > a {
+            border-right: 1px solid white;            
+            &.facebook {
+                background-image: url('../images/facebook-white.svg');
+            } 
+            &.twitter {
+                background-image: url('../images/twitter-white.svg');
+            }
+            &.instagram {
+                background-image: url('../images/instagram-white.svg');
+            }
+            &.vimeo {
+                background-image: url('../images/vimeo-white.svg');
+            }
+            &.youtube {
+                background-image: url('../images/youtube-white.svg');
+            }            
+        }
+    }
+
+    > a {
+        &:last-child {
+            border-right: none;
+        }        
+    }
+}
 
 a.fancybox-close {
     z-index:1 !important;

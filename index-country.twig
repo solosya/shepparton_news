@@ -232,9 +232,9 @@
                             <div class="ad-square"></div>
                         </div>
                         
-                        {% for i in 0..1 if sections[thisSection].feed.articles[regionalCount] %}
+                        {% for i in 0..1 if sections['dairy'].feed.articles[regionalCount] %}
                             {{this.render('partials/_single-article.twig', {
-                                article: sections[thisSection].feed.articles[regionalCount], 
+                                article: sections['dairy'].feed.articles[regionalCount], 
                                 imageSize: {width:300},
                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
                             }) | raw}}

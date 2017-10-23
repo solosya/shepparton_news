@@ -1,0 +1,462 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set layout      = blogData.layout %}
+
+
+{{this.registerJs("Acme.CardController();")}}
+
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
+{% set limit = 30 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
+
+
+
+{% set events = _Event.getEvents() %}
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+
+
+{% set sections =  {
+        "videos": {
+            "feed": "",
+            "link": "",
+            "limit" : 10
+        }, 
+        "opinion": {
+            "feed": "",
+            "link": "",
+            "limit" : 10
+        }, 
+        "agribusiness": {
+            "feed": "",
+            "link": "",
+            "limit" : 10
+        },
+        "management": {
+            "feed": "",
+            "link": "",
+            "limit" : 10
+        },
+        "animal": {
+            "feed": "",
+            "link": "",
+            "limit" : 10
+        },
+        "machinery": {
+            "feed": "",
+            "link": "",
+            "limit" : 10
+        }
+    }
+%}
+
+{% for key, value in sections %}
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == key %}
+            {% set sections = sections | merge({
+                (key) : {
+                    'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
+                    'link' : blog.url
+                    }
+                }) %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+    <main id="main" class="site-main" role="main">
+        
+        <div class="container">
+
+            <section class="home-main-stories">
+                <div class="row">
+                    <div class="col-xs-9 col-sm-6">
+
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: articleCount + 1, 
+                                imageSize: {width:900},
+                                containerClass: 'home-feature home-feature-tablet home-feature-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+                        {% endif %}
+                    </div>
+
+
+                    {% if articles[articleCount] %}
+                    <div class="cold-xs-9 col-sm-3">
+
+                        <div id="weather" class="weather"></div>
+                        <div class="visible-md-block visible-lg-block">
+                            <div class="weather-dropdown hidden"></div>
+                        </div>
+
+                        <hr class="divide10 visible-xs-block" style="clear:both">
+
+                        <hr class="divide18 visible-md-block visible-lg-block">
+
+                        <div class="current-issue-card">
+                            <a class="download-current">View the current issue</a>
+                            <div class="social-links small white" style="padding-top:10px;">
+                                <a href="#" class="facebook"></a>
+                                <a href="#" class="twitter"></a>
+                            </div>
+                        </div>
+
+                        <hr class="divide18 visible-md-block visible-lg-block">                        
+
+
+                        <section class="subscribe">
+                            
+                            <h2>Dairynews E-Newsletter</h2>
+                            <label for="header-search" class="assistive-text sr-only">Subscribe</label>
+                            <div class="input-group subscribe-group">
+                                
+                            <!-- Begin MailChimp Signup Form -->
+                            <div id="mc_embed_signup">
+                                <form action="//centralnews.us15.list-manage.com/subscribe/post?u=f951467ba4375a98673dddecd&amp;id=effe44468e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <div id="mc_embed_signup_scroll" style="display:flex;">
+                                    
+                                        <input type="email" value="" name="EMAIL" class="field form-control" id="mce-EMAIL" placeholder="Email address*" required>
+                                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                            <input type="text" name="b_f951467ba4375a98673dddecd_effe44468e" tabindex="-1" value="">
+                                        </div>
+                                            {# <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"> #}
+                                        <button class="btn btn-default" type="submit" id="mc-embedded-subscribe">
+                                            Subscribe
+                                        </button>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                                <!--End mc_embed_signup-->
+
+                        </section>
+
+                        <hr class="divide18 visible-md-block visible-lg-block">
+
+                        {% for i in 0..0 if articles[articleCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: articleCount + 1, 
+                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+                        {% endfor %}
+
+                    </div><!-- .row-->
+                    {% endif %}
+
+                </div>
+            </section><!-- .featured-slider-->
+
+
+
+            <section class="row five-cols top-stories-row">
+                
+                {% for i in 0..4 if articles[articleCount] %}
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: 1, 
+                        imageSize: {width:500},
+                        containerClass: 'col-sm-1 top-stories top-stories-tablet top-stories-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    <hr class="divide10 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+
+                {% endfor %}
+            </section>
+            
+
+        </div>
+
+
+        <div class="ad-container">
+            <section class="advert advert-padding" style="background:gray;height:100px;"></section>
+        </div>
+
+
+        <div class="container">
+
+
+
+            {% if sections['opinion'].feed.articles|length > 0 %}
+                {% set opinionCount = (dev) ? articleCount : 0 %}
+
+                <section class="row">
+                    <div class="col-sm-9 section-header">
+                        <p><a href="{{sections['opinion'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>Opinion</h2>
+                            <p></p>
+                        </div>
+                    </div>
+
+
+                    {% set opinionClass = ["col-sm-2", "col-sm-2", "col-sm-2", "col-sm-3"] %}
+
+                    {% for i in 0..3 if sections['opinion'].feed.articles[opinionCount] %}
+                        {% set finalClass = (i == 3) ? 'final' : '' %}
+                        <div class="{{opinionClass[i]}}">
+
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['opinion'].feed.articles[opinionCount], 
+                                imageSuppress: true,
+                                containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
+                            }) | raw}}
+                            {% set opinionCount = (dev) ? articleCount : opinionCount + 1 %}
+
+                            <hr class="divide visible-xs-block">
+
+                        </div>
+                    {% endfor %}
+
+                </section>
+
+                {% endif %}
+
+
+
+
+
+
+
+            {% if sections['agribusiness'].feed.articles|length > 0 %}
+                {% set regionalCount = (dev) ? articleCount : 0 %}
+
+                <section class="row">
+                    <div class="col-sm-9 section-header">
+                        <p><a href="{{sections['agribusiness'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>agribusiness</h2>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        {% if sections['agribusiness'].feed.articles[regionalCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['agribusiness'].feed.articles[regionalCount], 
+                                imageSize: {width:409, height:530},
+                                containerClass: 'home-feature-xs'
+                            }) | raw}}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
+                        {% endif %}
+
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        {% set cardspace = ['', 'row-space'] %}
+                        {% if sections['agribusiness'].feed.articles[regionalCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['agribusiness'].feed.articles[regionalCount], 
+                                imageSize: {width:300},
+                                containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
+                            }) | raw}}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
+                            <hr class="divide visible-xs-block">
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        
+                        {% for i in 0..1 if sections['agribusiness'].feed.articles[regionalCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['agribusiness'].feed.articles[regionalCount], 
+                                imageSize: {width:300},
+                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                            }) | raw}}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
+                            {% if i == 0 %}
+                                <hr class="divide">
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+                </section>
+            {% endif %}
+
+
+
+        </div>
+
+        <div class="ad-container">
+            <section class="advert advert-padding" style="background:gray;height:100px;"></section>
+        </div>
+
+        <div class="container">   
+
+            {% if sections['management'].feed.articles|length > 0 %}
+                {% set regionalCount = (dev) ? articleCount : 0 %}
+
+                <section class="row">
+                    <div class="col-sm-9 section-header">
+                        <p><a href="{{sections['management'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>management</h2>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        {% if sections['management'].feed.articles[regionalCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['management'].feed.articles[regionalCount], 
+                                imageSize: {width:409, height:530},
+                                containerClass: 'home-feature-thin home-feature-thin-mobile'
+                            }) | raw}}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-2">
+                        {% set cardspace = ['', 'row-space'] %}
+                        {% for i in 0..1 if sections['management'].feed.articles[regionalCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['management'].feed.articles[regionalCount], 
+                                imageSize: {width:300},
+                                containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
+                            }) | raw}}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
+                            <hr class="divide visible-xs-block">
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div style="margin-bottom:30px;position:relative;">
+                            <div class="ad-square"></div>
+                        </div>
+                        
+                        {% for i in 0..1 if sections['management'].feed.articles[regionalCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['management'].feed.articles[regionalCount], 
+                                imageSize: {width:300},
+                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                            }) | raw}}
+                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
+                            {% if i == 0 %}
+                                <hr class="divide">
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+                </section>
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% if sections['animal'].feed.articles|length > 0 %}
+                {% set sectionCount = (dev) ? articleCount : 0 %}
+
+                <section>
+                    <div class="row">
+                        <div class="col-sm-9 section-header">
+                            <p><a href="{{sections['animal'].link}}">View All</a></p>
+                            <div class="hk">
+                                <h2>animal health</h2>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        {% for i in 0..2 if sections['animal'].feed.articles[sectionCount] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['animal'].feed.articles[sectionCount], 
+                                imageSize: {width:160, height:190},
+                                containerClass: 'col-sm-3 feature-side feature-side-tablet feature-side-mobile divideright'
+                            }) | raw}}
+                            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+                            {% if i < 2 %}
+                                <hr class="divide visible-xs-block">
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </section>
+            {% endif %}
+
+
+
+
+
+            {% if sections['machinery'].feed.articles|length > 0 %}
+                {% set machineryCount = (dev) ? articleCount : 0 %}
+
+                <section class="row">
+                    <div class="col-sm-9 section-header">
+                        <p><a href="{{sections['machinery'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>machinery &amp; products</h2>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    {% for i in 0..2 if sections['machinery'].feed.articles[machineryCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: sections['machinery'].feed.articles[machineryCount], 
+                            imageSize: {width:300},
+                            containerClass: 'col-sm-2 card-sm card-sm-mobile'
+                        }) | raw}}
+                        {% set machineryCount = (dev) ? articleCount : machineryCount + 1 %}
+                        <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                    {% endfor %}
+
+                    <div class="col-sm-3">
+                        <div class="ad-square"></div>
+                    </div>
+
+
+
+                </section>
+            {% endif %}
+
+
+        </div>
+
+
+    </main><!-- .site-main -->

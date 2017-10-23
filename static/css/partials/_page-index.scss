@@ -187,4 +187,87 @@ body.special {
             }
         }
     }
+
+    .current-issue-card {
+        display: flex;
+        margin: 20px 0;
+        background: color(red);
+        height: 60px;
+        padding: 12px 0px;
+
+        > a.download-current {
+            color: white;
+            text-transform: uppercase;
+
+            &:hover {
+                cursor: pointer !important;
+                text-decoration: none;
+            }
+
+            &::before {
+                position: relative;
+                top: 6px;
+                margin: 0px 6px;
+                content: ' ';
+                display: inline-block;
+                width: 27px;
+                height: 27px;
+                background-position:center;
+                background-repeat:no-repeat;
+                background-image: url('../images/arrow-in-circle-icon.svg');
+            }
+        }
+    }
+
+    .subscribe {
+        margin-bottom: 0px;
+
+        > h2 {
+            color: color(red);
+            font-weight: normal;
+            font-size: rem(15);
+            letter-spacing: 0.9px;
+            text-transform: uppercase;
+
+            &::after {
+                display: block;
+                content: 'Subscribe to our mailing list';
+                font-family: $font-family-serif;
+                margin: 5px 0px;
+                color: color(grey);
+                font-style: italic;
+                font-size: rem(11);
+                text-transform: none;
+            }
+        }
+
+        > div.subscribe-group {
+            input[type="email"]  {
+                border-radius: 0px;
+                border: 1px solid black;
+                font-size: rem(11);
+                color: black;
+            }
+
+             button[type="submit"] {
+                width: 80px;
+                margin-left: 15px;
+                background: white;
+                border: 1px solid black;
+                font-size: rem(11);
+             }
+
+            &::after {
+                display: block;
+                content: '* indicates required';
+                font-family: $font-family-serif;
+                margin: 5px 0px;
+                color: color(grey);
+                font-style: italic;
+                font-size: rem(11);
+                text-transform: none;
+            }
+        }
+    }
+
 }
