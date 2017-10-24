@@ -61,12 +61,27 @@
 .card.event {
     > article {
         > .content {
-            .author {
+
+            p.date, p.time {
+                color: color(red);
+                font-size: rem(14);
+                font-family: $font-family-sans-serif;
+                font-weight: bold;
+            }
+
+            > .author {
+                width: 100%;
                 p {
+                    position: absolute !important;
+                    bottom: 0px !important;
+                    font-family: $font-family-serif !important;
+                    font-size: rem(11) !important;
                     border: none !important;
+                    color: color(lightgrey) !important;
+                    font-weight: normal !important;
                 }
                 time {
-                    display: none;
+                    display: none !important;
                 }
             }
         }
