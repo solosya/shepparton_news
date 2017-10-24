@@ -141,7 +141,6 @@ hr.divide10 {
 .ad-square {
     height:250px;
     width:300px;
-    background: color(grey);
     &:after {
         content: "Advertisement";
         font-size: rem(10);
@@ -158,7 +157,6 @@ hr.divide10 {
 
 .ad-large-vert {
     height:600px;
-    background: color(grey);
     &:after {
         content: "Advertisement";
         font-size: rem(10);
