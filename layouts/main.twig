@@ -120,7 +120,11 @@
         </script>
         <!-- End Google Analytics -->
     {% endif %}
-        {{ this.render('partials/ads.twig') | raw }}
+
+    {{ this.render('partials/ads.twig', {
+        networkData: networkData,
+        blogData: blogData
+    }) | raw }}
 
 
 
