@@ -27,70 +27,77 @@
                         <!--  DESKTOP MENU -->
                         <!--  ************ -->
 
-                        <nav class="sb-custom-menu">
+                        <nav class="sb-custom-menu menu-desktop">
                             <a href="#" id="menu-mobile" class="menu-mobile"></a>
 
                             <div class="menuContainer">
-                                <div class="menuFade">
-                                    <ul id="menu-primary-menu" class="menu primary-menu">
-                                        {% set menuItems = blog.blogHeaderMenu %}
-                                        {% for parentItem in menuItems  %}
+                                <ul id="menu-primary-menu" class="menu primary-menu">
+                                    {% set menuItems = blog.blogHeaderMenu %}
+                                    {% for parentItem in menuItems  %}
 
-                                           {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                           {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                                       {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                       {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                                           <li>
-                                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                                    {% if parentItem.label != "" %}
-                                                        {{parentItem.label}}
-                                                    {% elseif parentItem.blogTitle != "" %}
-                                                        {{parentItem.blogTitle}}
-                                                    {% elseif parentItem.pageTitle != "" %}
-                                                        {{parentItem.pageTitle}}
-                                                    {% endif %}
-                                                    {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                        <span class="down-arrow"></span>
-                                                    {% endif %}
-                                                </a>
-
-                                                 {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                     <ul class="sub-menu">
-                                                        {% for childItem in parentItem.children %}
-                                                            {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                            <li>
-                                                                <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                                 {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                                </a>
-                                                            </li>
-                                                       {% endfor %}
-                                                    </ul>
+                                       <li>
+                                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                                {% if parentItem.label != "" %}
+                                                    {{parentItem.label}}
+                                                {% elseif parentItem.blogTitle != "" %}
+                                                    {{parentItem.blogTitle}}
+                                                {% elseif parentItem.pageTitle != "" %}
+                                                    {{parentItem.pageTitle}}
                                                 {% endif %}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                                <ul class="menu search">
-                                    <li id="menu-item-search" class="menu-item-search">
-                                        <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                                    </li>
+                                                {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                                    <span class="down-arrow"></span>
+                                                {% endif %}
+                                            </a>
+
+                                             {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                                 <ul class="sub-menu">
+                                                    {% for childItem in parentItem.children %}
+                                                        {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                        <li>
+                                                            <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                            </a>
+                                                        </li>
+                                                   {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
-
-                            <fieldset id="searchPanel" class="searchPanel">
-                                <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                    <label for="header-search" class="assistive-text sr-only">Search</label>
-                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                    <button class="submit" type="submit" id="searchsubmit"></button>
-                                    <button class="close" type="button" id="searchclose"></button>
-                                </form>
-                            </fieldset>
-
-
                         </nav>
                     </div>
                 </div>
             </div><!-- .container-->  
         </div><!-- .header top-->  
+
+
+        <div class="header-search">
+            <nav class="sb-custom-menu menu-desktop">
+                <a href="#" id="menu-mobile" class="menu-mobile"></a>
+
+                <div class="menuContainer">
+                    <ul class="menu search">
+                        <li id="menu-item-search" class="menu-item-search">
+                            <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <fieldset id="searchPanel" class="searchPanel">
+                    <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                        <label for="header-search" class="assistive-text sr-only">Search</label>
+                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                        <button class="submit" type="submit" id="searchsubmit"></button>
+                        <button class="close" type="button" id="searchclose"></button>
+                    </form>
+                </fieldset>
+            </nav>                        
+        </div>
+
 
 
         {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
