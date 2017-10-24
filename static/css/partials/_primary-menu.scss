@@ -1,5 +1,5 @@
 .site-header,
-.menu-mobile,
+.menu-hamburger,
 .show-on-tablet > ul,
 .sb-custom-menu,
 .sb-custom-menu > div > ul > li > ul,
@@ -19,7 +19,7 @@
     }
 }
 
-.sb-custom-menu .menu-mobile{
+.sb-custom-menu .menu-hamburger{
     display: none;
     width: 25px;
     height:20px;
@@ -291,8 +291,24 @@ ul.sub-menu a:focus{
 
 
 .sb-custom-menu {
-    &.menu-desktop {
+    &.menu-bar {
         @media screen and (min-width: $mmd-break) {
+            display: flex;
+        }
+
+        @media screen and (max-width: $mmd-break-down) {
+            position: absolute;
+            right: 5px;
+            top: -5px;
+            bottom: auto;
+            display: flex;
+        }
+    
+        @media screen and (max-width: $sm-break-down) {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            top: auto;
             display: flex;
         }
     }
@@ -319,10 +335,11 @@ ul.sub-menu a:focus{
         margin-top: 5px;
         padding-left: 50px;
     }
-    .menu-mobile {
+    .menu-hamburger {
+        z-index: 999;
         padding: 25px 20px 13px 13px;
     }
-    .open .menu-mobile:after{
+    .open .menu-hamburger:after{
         right: 20px;
     }
 
@@ -436,7 +453,7 @@ ul.sub-menu a:focus{
     .sb-custom-menu{
         right: 35px;
     }
-    .open .menu-mobile:after{
+    .open .menu-hamburger:after{
         top: 50px;
     }
 
