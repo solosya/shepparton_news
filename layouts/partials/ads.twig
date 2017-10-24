@@ -3,8 +3,8 @@
 {% set pageType = (blogData.type | lower) %} #}
 
 {% set blogNetworkName = 'sheppnews' %}
-{% set blogPrefixName = 'news' %}
-{% set pageType = 'home' %}
+{% set blogPrefixName = (blogData.title | lower) %}
+{% set pageType = (blogData.type | lower) %}
 
 <script>
             blogNetwork = '{{blogNetworkName}}';
