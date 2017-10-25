@@ -1,0 +1,30 @@
+{% set sectionCount = (dev) ? articleCount : 0 %}
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>Opinion</h2>
+            <p></p>
+        </div>
+    </div>
+
+    {% set opinionClass = ["col-sm-2", "col-sm-2", "col-sm-2", "col-sm-3"] %}
+
+    {% for i in 0..3 if articles.feed.articles[sectionCount] %}
+        {% set finalClass = (i == 3) ? 'final' : '' %}
+        <div class="{{opinionClass[i]}}">
+
+            {{this.render('../_single-article.twig', {
+                article: articles.feed.articles[sectionCount], 
+                imageSuppress: true,
+                containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
+            }) | raw}}
+            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+
+            <hr class="divide visible-xs-block">
+
+        </div>
+    {% endfor %}
+
+</section>
