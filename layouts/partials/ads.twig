@@ -3,12 +3,10 @@
 {% set pageType = (blogData.type | lower) %} #}
 
 
-{% if (networkData.title | lower) == 'shepparton' %}
-    {% set blogNetworkName = 'sheppnews' %}
-{% elseif (networkData.title | lower) == 'country news' %}
+{% if (networkData.title | lower) == 'country news' %}
     {% set blogNetworkName = 'countrynews' %}
-{% elseif (networkData.title | lower) == 'dairy' %}
-    {% set blogNetworkName = 'dairynews' %}
+{% else %}
+    {% set blogNetworkName = 'sheppnews' %}
 {% endif %}
 
 
