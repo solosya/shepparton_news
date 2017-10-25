@@ -23,7 +23,7 @@
 
 
                 > .content{
-
+                    height: 190px;
                     position:relative;
                     padding: 0;
 
@@ -48,6 +48,7 @@
                     > .author{
                         display:block;
                         margin-top:50px;
+                        width: 100%;
 
                         >p {
                             font-size: rem(14);
