@@ -11,72 +11,68 @@
         <div class="header-top">
 
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-2 masthead-logo">
-                        <a  class="navbar-brand" 
-                            href="{{networkData.defaultBlogUrl}}" 
-                            rel="Home" 
-                            tabindex="-1" 
-                            title="Home"
-                            style="background-image:url({{logo}}); ">
-                        </a>
-                    </div>
-                    <div class="menu-items col-sm-7">
-
-                       <!--  ************ -->
-                        <!--  DESKTOP MENU -->
-                        <!--  ************ -->
-
-                        <nav class="sb-custom-menu menu-bar">
-                            <a href="#" id="menu-mobile" class="menu-hamburger"></a>
-
-                            <div class="menuContainer">
-                                <ul id="menu-primary-menu" class="menu primary-menu">
-                                    {% set menuItems = blog.blogHeaderMenu %}
-                                    {% for parentItem in menuItems  %}
-
-                                       {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                       {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
-
-                                       <li>
-                                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                                {% if parentItem.label != "" %}
-                                                    {{parentItem.label}}
-                                                {% elseif parentItem.blogTitle != "" %}
-                                                    {{parentItem.blogTitle}}
-                                                {% elseif parentItem.pageTitle != "" %}
-                                                    {{parentItem.pageTitle}}
-                                                {% endif %}
-                                                {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                    <span class="down-arrow"></span>
-                                                {% endif %}
-                                            </a>
-
-                                             {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                                 <ul class="sub-menu">
-                                                    {% for childItem in parentItem.children %}
-                                                        {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                        <li>
-                                                            <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                             {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                            </a>
-                                                        </li>
-                                                   {% endfor %}
-                                                </ul>
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
+                <div class="masthead-logo">
+                    <a  class="navbar-brand" 
+                        href="{{networkData.defaultBlogUrl}}" 
+                        rel="Home" 
+                        tabindex="-1" 
+                        title="Home"
+                        style="background-image:url({{logo}}); ">
+                    </a>
                 </div>
+
+                <!--  ************ -->
+                <!--  DESKTOP MENU -->
+                <!--  ************ -->
+
+                <nav class="sb-custom-menu menu-bar">
+                    <a href="#" id="menu-mobile" class="menu-hamburger"></a>
+
+                    <div class="menuContainer">
+                        <ul id="menu-primary-menu" class="menu primary-menu">
+                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% for parentItem in menuItems  %}
+
+                               {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                               {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                               <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        {% if parentItem.label != "" %}
+                                            {{parentItem.label}}
+                                        {% elseif parentItem.blogTitle != "" %}
+                                            {{parentItem.blogTitle}}
+                                        {% elseif parentItem.pageTitle != "" %}
+                                            {{parentItem.pageTitle}}
+                                        {% endif %}
+                                        {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                            <span class="down-arrow"></span>
+                                        {% endif %}
+                                    </a>
+
+                                     {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                         <ul class="sub-menu">
+                                            {% for childItem in parentItem.children %}
+                                                {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                <li>
+                                                    <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                     {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                    </a>
+                                                </li>
+                                           {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </nav>
             </div><!-- .container-->  
         </div><!-- .header top-->  
 
 
         <div class="header-search">
-            <nav class="sb-custom-menu menu-desktop">
+            <nav class="menu-desktop">
                 <div class="menuContainer">
                     <ul class="menu search">
                         <li id="menu-item-search" class="menu-item-search">

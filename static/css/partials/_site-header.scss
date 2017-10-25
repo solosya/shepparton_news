@@ -43,17 +43,17 @@
     }
 }
 
-.menu-items {
-    // float: left;
-    margin-top: 10px;
-    // width: 100%;
+// .menu-items {
+//     // float: left;
+//     margin-top: 10px;
+//     // width: 100%;
 
-    @media screen and (min-width: $mmd-break){
-        position: absolute;
-        bottom: 40px;
-        padding-left: 200px;
-    } 
-}
+//     // @media screen and (min-width: $mmd-break){
+//     //     position: absolute;
+//     //     bottom: 40px;
+//     //     padding-left: 200px;
+//     // } 
+// }
 
 .site-header {
     position:relative;
@@ -92,6 +92,13 @@
                 height:60px;
                 padding-top:13px;
             }
+
+            // >div.container {
+            //    display: flex;
+            //    flex-direction: column;
+            //    justify-content: flex-end;
+ 
+            // }
 
             h1 {
                 position: relative;
@@ -152,12 +159,13 @@
         }
 
         .masthead-logo {
-            position:relative;
+            // position:relative;
             height: 65px;
             z-index: 500;
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: flex-end;
+            float:left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             @media screen and (max-width: $mmd-break){
                 height:35px;
             }
@@ -166,14 +174,15 @@
 
 
         .navbar-brand {
-            position:absolute;
-            bottom:0;
+            // position:absolute;
+            // bottom:0;
             display:block;
             padding:0;
-            width: 250px;
+            width: 160px;
             height:40px;
             background-repeat:no-repeat;
             background-size:contain;
+            vertical-align: bottom;
 
             @media screen and (max-width: $mmd-break){
                 margin-top: 0;

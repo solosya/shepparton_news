@@ -37,13 +37,81 @@
     }
 }
 
+
+.searchPanel {
+    display:none;
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    background: white;
+    width: 230px;
+    height: 32px;
+
+    > form {
+        height:100%;
+        > input {
+            font-size: rem(11);
+            font-family: $font-family-serif;
+            width: 90%;
+            height:100%;
+            border:none;
+            padding-left:20px;
+            color:black;
+            &:focus {
+                outline: none;
+            }
+            &::placeholder {
+                color:color(darkgrey);
+                opacity: 0.7;
+            }
+        }
+        > button {
+            position: absolute;
+            border:none;
+            width: 32px;
+            height: 32px;
+
+            &.submit {
+                @include searchIcon;
+                background-size: 60%;
+                background-position: center;
+                position: absolute;
+                right:32px;
+                top:0px;
+                padding:3px;
+                background-color: color(red);
+            }
+            &.close {
+                @include closeIcon;
+                background-size: 60%;
+                background-position: center;
+                position: absolute;
+                right:0px;
+                top:0px;
+                padding:3px;
+                background-color: black;
+            }
+        }
+    }
+}
+
+
+
+
+
 .sb-custom-menu{
     margin:0;
     list-style: none;
     color: #fff;
+    height: 65px;
+    padding-top: 47px;
+    white-space:nowrap;
     // float:right;
     // margin-top:19px;
-    
+    @media screen and (max-width: $header-break){
+        height:auto;
+        padding-top:0;
+    }
     ul.mobile {
         @media screen and (min-width: $header-break){
             display:none;
@@ -65,68 +133,14 @@
         @media screen and (min-width: $mmd-break) {
             display:flex;
             flex-direction: row;
+            justify-content: flex-end;
         }
         @media screen and (max-width: $mmd-break) {
             height:auto;
         }
     }
 
-    .searchPanel {
-        display:none;
-        position:absolute;
-        top: 0px;
-        right: 0px;
-        background: white;
-        width: 230px;
-        height: 32px;
 
-        > form {
-            height:100%;
-            > input {
-                font-size: rem(11);
-                font-family: $font-family-serif;
-                width: 90%;
-                height:100%;
-                border:none;
-                padding-left:20px;
-                color:black;
-                &:focus {
-                    outline: none;
-                }
-                &::placeholder {
-                    color:color(darkgrey);
-                    opacity: 0.7;
-                }
-            }
-            > button {
-                position: absolute;
-                border:none;
-                width: 32px;
-                height: 32px;
-
-                &.submit {
-                    @include searchIcon;
-                    background-size: 60%;
-                    background-position: center;
-                    position: absolute;
-                    right:32px;
-                    top:0px;
-                    padding:3px;
-                    background-color: color(red);
-                }
-                &.close {
-                    @include closeIcon;
-                    background-size: 60%;
-                    background-position: center;
-                    position: absolute;
-                    right:0px;
-                    top:0px;
-                    padding:3px;
-                    background-color: black;
-                }
-            }
-        }
-    }
 
 
 
@@ -292,25 +306,25 @@ ul.sub-menu a:focus{
 
 .sb-custom-menu {
     &.menu-bar {
-        @media screen and (min-width: $mmd-break) {
-            display: flex;
-        }
+        // @media screen and (min-width: $mmd-break) {
+        //     display: flex;
+        // }
 
-        @media screen and (max-width: $mmd-break-down) {
-            position: absolute;
-            right: 5px;
-            top: -5px;
-            bottom: auto;
-            display: flex;
-        }
+        // @media screen and (max-width: $mmd-break-down) {
+        //     position: absolute;
+        //     right: 5px;
+        //     top: -5px;
+        //     bottom: auto;
+        //     display: flex;
+        // }
     
-        @media screen and (max-width: $sm-break-down) {
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-            top: auto;
-            display: flex;
-        }
+        // @media screen and (max-width: $sm-break-down) {
+        //     position: absolute;
+        //     right: 15px;
+        //     bottom: 15px;
+        //     top: auto;
+        //     display: flex;
+        // }
     }
 }
 
