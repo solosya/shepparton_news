@@ -32,6 +32,12 @@
             }
         }
 
+        &.withImage__content {
+            .content {
+                height: 80px;
+            }
+        }        
+
         &.without__image {
             background:color(offwhite);
             .content {
@@ -56,6 +62,8 @@
                 }
 
                 .author {
+                    bottom: 60px;
+
                     font-family:$font-family-serif;
                     display:block;
                     margin-top:10px;
@@ -144,6 +152,10 @@
                         max-height:65px;
                         margin-bottom:6px;
                     }
+
+                    .category {
+                        padding-bottom: 5px;
+                    }                    
                 }
 
                 &.facebook {
@@ -168,6 +180,11 @@
                 &.instagram{ 
                     &.without__content {
                         @include card-image-top(auto, 209px);
+                        &.withImage__content {
+                            .content {
+                                height: 34px;
+                            }
+                        }                        
                     }
                 }
                 &.without__image {
@@ -179,6 +196,9 @@
                         }
                         >p {
                             max-height:70px;
+                        }
+                        .author {
+                            bottom: 80px;
                         }
                     }
                 }

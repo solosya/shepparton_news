@@ -120,6 +120,9 @@ a.card {
                 vertical-align:top;
                 line-height:1;
                 
+                position: absolute;
+                bottom: 0px;
+
                 img{
                     display:none;
                     height:37px;
@@ -134,8 +137,7 @@ a.card {
                     display:inline-block;
                     padding-right: 5px;
                     border-right: 1px solid color(mediumgrey);
-
-
+                    font-family: $font-family-serif;
                 }
                 > time{
                     display:inline-block;
@@ -144,6 +146,7 @@ a.card {
                     color:color(mediumgrey);
                     font-size: rem(11);
                     font-weight: 300;
+                    font-family: $font-family-serif;
                 }
             }
 

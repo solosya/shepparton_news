@@ -23,7 +23,7 @@
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
 {% set sections =  {
@@ -90,22 +90,12 @@
 
 
 
-
-
-
-
-
-
-
-
     <main id="main" class="site-main" role="main">
         
         <div class="container">
-
             <section class="home-main-stories">
                 <div class="row">
                     <div class="col-xs-9 col-sm-6">
-
                         {% if articles[articleCount] %}                                                                
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
@@ -118,44 +108,38 @@
                         {% endif %}
                     </div>
 
-
                     {% if articles[articleCount] %}
-                    <div class="cold-xs-9 col-sm-3">
+                        <div class="col-xs-9 col-sm-3">
 
-                        <div id="weather" class="weather"></div>
-                        <div class="visible-md-block visible-lg-block">
-                            <div class="weather-dropdown hidden"></div>
+                            <div id="weather" class="weather"></div>
+                            <div class="visible-md-block visible-lg-block">
+                                <div class="weather-dropdown hidden"></div>
+                            </div>
+
+                            <hr class="divide10 visible-xs-block" style="clear:both">
+
+                            {% for i in 0..2 if articles[i] %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: articleCount + 1, 
+                                    containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                                }) | raw}}
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                {% if i < 2 %}
+                                    <hr class="divide15 visible-md-block visible-lg-block">
+                                    <hr class="divide10 visible-xs-block visible-sm-block">
+                                {% endif %}
+
+                            {% endfor %}
+                            <hr class="divide10 visible-xs-block">
+
                         </div>
-
-
-                        <hr class="divide10 visible-xs-block" style="clear:both">
-
-
-                        {% for i in 0..2 if articles[i] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            {% if i < 2 %}
-                                <hr class="divide15 visible-md-block visible-lg-block">
-                                <hr class="divide10 visible-xs-block visible-sm-block">
-                            {% endif %}
-
-                        {% endfor %}
-                        <hr class="divide10 visible-xs-block">
-
-                    </div><!-- .row-->
                     {% endif %}
 
                 </div>
-            </section><!-- .featured-slider-->
-
-
+            </section>
 
             <section class="row five-cols top-stories-row">
-                
                 {% for i in 0..4 if articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
@@ -169,21 +153,17 @@
                 {% endfor %}
             </section>
             
-
-
-
-
             <section class="middle">
                 <div class="row">
                     <div class="col-sm-3 col-md-2 most-popular">
                         <h2>Most popular</h2>
 
                         {% for i in 0..4 if popularArticles[i] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: popularArticles[i], 
-                                    imageSuppress: true, 
-                                    containerClass: 'card-popular'
-                                }) | raw}}
+                            {{this.render('partials/_single-article.twig', {
+                                article: popularArticles[i], 
+                                imageSuppress: true, 
+                                containerClass: 'card-popular'
+                            }) | raw}}
                         {% endfor %}
                     </div>
 
@@ -205,7 +185,6 @@
 
 
                     <div class="col-sm-3 col-md-2">
-
                         {% if articles[articleCount] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: articles[articleCount], 
@@ -258,7 +237,6 @@
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             <hr class="divide visible-xs-block">
-
                         {% endif %}
 
 
@@ -273,7 +251,6 @@
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             
-
                             {% if i == 0 %}
                                 <hr class="divide">
                             {% endif %}
@@ -309,9 +286,6 @@
                             <p></p>
                         </div>
                     </div>
-
-
-
 
                     <div class="col-sm-9">
                         <div class="row">
@@ -363,9 +337,6 @@
 
                         </div>
 
-                        {# <div class="ad-large-vert visible-cs-block visible-sm-block" style="margin-top:30px;"></div> #}
-
-
                         <div class="row row-space">
                             <div class="col-sm-9 col-md-6">
                                 <div class="row">
@@ -381,8 +352,6 @@
 
                                         {% endfor %}
                                     </div>
-
-
 
                                     <div class="col-sm-6">
                                         <div class="row">
@@ -426,10 +395,6 @@
 
                 </section>
             {% endif %}
-
-
-
-
 
 
 
