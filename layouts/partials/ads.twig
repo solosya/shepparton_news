@@ -41,48 +41,53 @@
             rubicontag.cmd.push(function() {
                 rubicontag.addFPV('BLOGPREFIX', '{{blogPrefixName}}');
                 rubicontag.addFPV('page-type', '{{pageType}}');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-1').setPosition('atf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50], [300, 50]], 'div-gpt-ad-leaderboard-2').setPosition('atf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-2').setPosition('btf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-3').setPosition('btf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-4').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600]], 'div-gpt-ad-halfpage-ss').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600]], 'div-gpt-ad-halfpage-ss-2').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setPosition('btf');
                 rubicontag.run(gptrun);
             });
             
             googletag.cmd.push(function() {
-                mapping = googletag.sizeMapping().
-                        addSize([300, 250], [300, 75]).
-                        addSize([300, 250], [300, 75]).
-                        addSize([728, 90]).
-                        addSize([[970, 250], [970,90], [728, 90]]).
-                        build();
+                var mapping1 = googletag.sizeMapping()
+                                .addSize([1000, 200], [[970, 250], [970, 90], [728, 90]])
+                                .addSize([768, 200], [[728, 90]])
+                                .addSize([480, 200], [[320, 50]])
+                                .addSize([360, 200], [[320, 50]])
+                                .addSize([320, 400], [[320, 50]])
+                                .build();
+
+                var mapping2 = googletag.sizeMapping()
+                                .addSize([1000, 200], [[300, 250]])
+                                .addSize([768, 200], [[300, 250]])
+                                .addSize([480, 200], ['fluid', [300, 250]])
+                                .addSize([360, 200], ['fluid', [300, 250]])
+                                .addSize([320, 400], ['fluid', [300, 250]])
+                                .build();
+
+                var mapping3 = googletag.sizeMapping()
+                                .addSize([1000, 200], [[300, 600], [300, 250]])
+                                .addSize([768, 200], [[300, 600], [300, 250]])
+                                .addSize([480, 200], [[300, 250]])
+                                .addSize([360, 200], [[300, 250]])
+                                .addSize([320, 400], [[300, 250]])
+                                .build();
                 
-                mappingMob = googletag.sizeMapping().//sizeMappingMweb gives error
-                        addSize([300, 250]).
-                        addSize([300, 600], [300, 250]).
-                        addSize([728, 90]).
-                        addSize([728, 90]).
-                        build();
-                
-                mappingHalfPageComments = googletag.sizeMapping().//sizeMappingMweb gives error
-                        addSize([300, 600]).
-                        addSize([0, 0], [300, 250]).
-                        build();
-                
-                gptadslots[0] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[1] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [300, 75]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[2] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 75]], 'div-gpt-ad-leaderboard-3').setTargeting('POS', ['3']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[3] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-1').setTargeting('POS', ['1']).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[4] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-2').setTargeting('POS', ['2']).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());   
-                gptadslots[5] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-3').setTargeting('POS', ['3']).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[6] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[7] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600]], 'div-gpt-ad-halfpage-ss').setTargeting('POS', ['1']).defineSizeMapping(mappingHalfPageComments).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[8] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600]], 'div-gpt-ad-halfpage-ss-2').setTargeting('POS', ['2']).defineSizeMapping(mappingHalfPageComments).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
-                gptadslots[9] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[1, 1]], 'div-gpt-ad-teads').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[10] = googletag.defineOutOfPageSlot('/4082264/{{blogNetworkName}}', 'div-gpt-ad-interstitial').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[0] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[1] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[2] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250], 'fluid'], 'div-gpt-ad-mrec-1').setTargeting('POS', ['1']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[3] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250], 'fluid'], 'div-gpt-ad-mrec-2').setTargeting('POS', ['2']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());   
+                gptadslots[4] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250], 'fluid'], 'div-gpt-ad-mrec-3').setTargeting('POS', ['3']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[5] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250], 'fluid'], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[6] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setTargeting('POS', ['1']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[7] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setTargeting('POS', ['2']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
+                gptadslots[8] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[1, 1]], 'div-gpt-ad-teads').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[9] = googletag.defineOutOfPageSlot('/4082264/{{blogNetworkName}}', 'div-gpt-ad-interstitial').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+
                 
                 for (var i=0; i < gptadslots.length; i++) {
                     rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
@@ -90,6 +95,7 @@
                 
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().collapseEmptyDivs();
+                googletag.pubads().setCentering(true);
                 googletag.pubads().setTargeting('page-type', ['{{pageType}}']).setTargeting('tag', []);
                 //googletag.pubads().enableSyncRendering();
                 googletag.enableServices();
