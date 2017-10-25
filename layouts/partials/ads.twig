@@ -2,8 +2,22 @@
 {% set blogPrefixName = (blogData.title | lower) %}
 {% set pageType = (blogData.type | lower) %} #}
 
-{% set blogNetworkName = 'sheppnews' %}
-{% set blogPrefixName = (blogData.title | lower) %}
+
+{% if (networkData.title | lower) == 'shepparton' %}
+    {% set blogNetworkName = 'sheppnews' %}
+{% elseif (networkData.title | lower) == 'country news' %}
+    {% set blogNetworkName = 'countrynews' %}
+{% elseif (networkData.title | lower) == 'dairy' %}
+    {% set blogNetworkName = 'dairynews' %}
+{% endif %}
+
+
+{% if (networkData.title | lower) == (blogData.title | lower) %}
+    {% set blogPrefixName = 'home' %}
+{% else %}
+    {% set blogPrefixName = (blogData.title | lower) %}
+{% endif %}
+
 {% set pageType = (blogData.type | lower) %}
 
 <script>
