@@ -28,7 +28,7 @@
             nav.sb-custom-menu {
                 > a {
                     margin-top:0;
-                    background-image: url(../images/mobile-close.svg);
+                    background-image: url(../icons/mobile-close.svg);
                     background-size:cover;
                     width:20px;
                     height:20px;
@@ -93,12 +93,9 @@
                 padding-top:13px;
             }
 
-            // >div.container {
-            //    display: flex;
-            //    flex-direction: column;
-            //    justify-content: flex-end;
- 
-            // }
+            >div.container {
+                position:relative;
+            }
 
             h1 {
                 position: relative;
@@ -121,11 +118,24 @@
         }
 
         .header-search {
-            height:22px;
-            background:black;
-            position: absolute;
-            right: 5px;
-            bottom: 40px;
+
+            float:right;
+            li.menu-item-search {
+                list-style:none;
+                width:40px;
+                a {
+                    display:block;
+                }
+            }
+
+            .search-container {
+                height:auto;
+
+                ul {
+                    margin:0;
+                }
+            }
+
         }
 
 
@@ -213,12 +223,6 @@
                         font-size: rem(14);
                         color:white;
                         letter-spacing: 2.2px;
-                    }
-                }
-                li.menu-item-search {
-                    width:40px;
-                    a {
-                        display:block;
                     }
                 }
             }

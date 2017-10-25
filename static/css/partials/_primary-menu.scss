@@ -44,7 +44,7 @@
     top: 0px;
     right: 0px;
     background: white;
-    width: 230px;
+    width: 330px;
     height: 32px;
 
     > form {
@@ -130,6 +130,10 @@
 
 
     > div.menuContainer {
+        height:40px;
+        // background:cadetblue;
+        // overflow:hidden;
+
         @media screen and (min-width: $mmd-break) {
             display:flex;
             flex-direction: row;
@@ -137,6 +141,11 @@
         }
         @media screen and (max-width: $mmd-break) {
             height:auto;
+        }
+
+
+        ul {
+            margin:0;
         }
     }
 
@@ -159,7 +168,8 @@
             position:relative;
             height:100%;
 
-            @media screen and (max-width: $mmd-break) {
+            @media screen and (max-width: $header-break) {
+                display:block;
                 height:auto;
             }
 
@@ -167,6 +177,7 @@
                 font-size:rem(12);
                 margin-left:14px;
                 margin-right:8px;
+                height:100%;
                 // padding: 12px 20px 10px 10px;
                 display:block;
                 color: #fff;
@@ -182,49 +193,31 @@
                     text-decoration: none;
                     color: color(red);
                 }
-
-                // &:after {
-                //     @media screen and (max-width: $mmd-break){
-                //         content:'';
-                //         float:right;
-                //         display:inline-block;
-                //         background-image: url('../images/arrow-thin-white.svg');
-                //         background-repeat: no-repeat;
-                //         background-size:cover;
-                //         height:21px;
-                //         width:13px;
-                //     }
-                // }
             }
 
-            // &.menu-item-search {
-            //     float:right;
-            // }
-
             span.list-arrow {
-                position:absolute;
-                display:inline-block;
-                background-image: url('../images/arrow-thin-white.svg');
-                background-repeat: no-repeat;
+                @media screen and (max-width: $mmd-break-down){
+                    position:absolute;
+                    display:inline-block;
+                    background-image: url('../icons/arrow-thin-white.svg');
+                    background-repeat: no-repeat;
 
-                background-size: 13px;
-                background-position: center;
-                height: 50px;
-                width: 50px;
-                right: 0;
-                top: 0;
+                    background-size: 13px;
+                    background-position: center;
+                    height: 50px;
+                    width: 50px;
+                    right: 0;
+                    top: 0;
 
 
-                &.selected {
-                    background-image: url('../images/arrow-thin-down.svg');
-                    background-size: 23px;
-                    // width: 25px;
-                    // top: 20px;
-                    // right: 15px;
-                }
+                    &.selected {
+                        background-image: url('../icons/arrow-thin-down.svg');
+                        background-size: 23px;
+                    }
 
-                &:hover {
-                    cursor: pointer;
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -244,12 +237,10 @@
         min-width:186px;
         padding: 0;
         margin-top: 0;
-        background:black;
-        padding-top: 13px;
+        background:rgba(255,255,255,.8);
         
         > li {
             height:31px;
-            // margin-bottom:2px;
             text-align:left;
             border-top: 1px solid color(darkgrey);
 
@@ -281,8 +272,6 @@
                     color: white;
                 }
             }
-
-
         }
     }
 
@@ -329,7 +318,7 @@ ul.sub-menu a:focus{
 }
 
 
-@media (max-width: $header-break){
+@media screen and (max-width: $header-break){
     .sb-custom-menu > div > ul > li > a:focus:after,
     .sb-custom-menu > div > ul li.current_page_item > a:after,
     .sb-custom-menu > div > ul li.now-active > a:after{
@@ -377,7 +366,10 @@ ul.sub-menu a:focus{
         right: 15px;
         z-index: 100;
         background: rgba(0,0,0,0.9);
-        
+        @media screen and (max-width: $sm-break) {
+            max-width: none;
+        }
+
 
         .secondary-menu{
             display:block;
@@ -444,12 +436,11 @@ ul.sub-menu a:focus{
             display:flex;
             flex: 1;
         }
+
         .btn{
             border:none;
-            background: white;
-            background-image: url(../images/mobile-search.svg);
-            background-repeat: no-repeat;
-            background-position: center;
+            width: 20px;
+            background: url(../icons/mobile-search.svg) center no-repeat #fff;
             margin-right:17px;
         }
         li{

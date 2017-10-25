@@ -11,6 +11,20 @@
         <div class="header-top">
 
             <div class="container">
+
+
+                <fieldset id="searchPanel" class="searchPanel">
+                    <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                        <label for="header-search" class="assistive-text sr-only">Search</label>
+                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                        <button class="submit" type="submit" id="searchsubmit"></button>
+                        <button class="close" type="button" id="searchclose"></button>
+                    </form>
+                </fieldset>
+
+
+
+
                 <div class="masthead-logo">
                     <a  class="navbar-brand" 
                         href="{{networkData.defaultBlogUrl}}" 
@@ -29,6 +43,17 @@
                     <a href="#" id="menu-mobile" class="menu-hamburger"></a>
 
                     <div class="menuContainer">
+                        <div id="menu-search" class="secondary-menu menu-search">
+                            <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
+                                <div>
+                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                </div>
+                                <button class="btn btn-default" type="submit" id="searchsubmit">
+                                    <span class="icon-search icon"></span>
+                                </button>
+                            </form>
+                        </div>
+
                         <ul id="menu-primary-menu" class="menu primary-menu">
                             {% set menuItems = blog.blogHeaderMenu %}
                             {% for parentItem in menuItems  %}
@@ -45,12 +70,11 @@
                                         {% elseif parentItem.pageTitle != "" %}
                                             {{parentItem.pageTitle}}
                                         {% endif %}
-                                        {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                            <span class="down-arrow"></span>
-                                        {% endif %}
                                     </a>
 
                                      {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                        <span class="list-arrow"></span>
+
                                          <ul class="sub-menu">
                                             {% for childItem in parentItem.children %}
                                                 {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
@@ -71,26 +95,6 @@
         </div><!-- .header top-->  
 
 
-        <div class="header-search">
-            <nav class="menu-desktop">
-                <div class="menuContainer">
-                    <ul class="menu search">
-                        <li id="menu-item-search" class="menu-item-search">
-                            <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                        </li>
-                    </ul>
-                </div>
-
-                <fieldset id="searchPanel" class="searchPanel">
-                    <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                        <label for="header-search" class="assistive-text sr-only">Search</label>
-                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                        <button class="submit" type="submit" id="searchsubmit"></button>
-                        <button class="close" type="button" id="searchclose"></button>
-                    </form>
-                </fieldset>
-            </nav>                        
-        </div>
 
 
 
@@ -98,10 +102,29 @@
         {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
 
         <div class="header-bottom">
+
+
             <ul class="auth-links">
                 <li><a href="{{ loginPath }}">LOG IN</a></li>
                 <li><a href="{{ signUpPath }}">SIGN UP</a></li>
             </ul>
+
+
+
+            <div class="header-search">
+                <nav class="menu-desktop">
+                    <div class="search-container">
+                        <ul class="menu search">
+                            <li id="menu-item-search" class="menu-item-search">
+                                <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>                        
+            </div>
+
+
+
         </div><!-- .site-branding-top -->
 
 

@@ -188,10 +188,12 @@ div.bloggerImg {
 }
 
 
-
+.container.nopadding {
+    padding:0;
+}
 
 @mixin searchIcon {
-    display:block;
+    display:inline-block;
     padding:5px;
     background-image: url(../icons/search-icon.svg);
     background-repeat: no-repeat;
@@ -208,7 +210,7 @@ div.bloggerImg {
 
 .search-icon{
     @include searchIcon;
-    height: 20px;
+    height: 19px;
     width: 20px;  
 }
 

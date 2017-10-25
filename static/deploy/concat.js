@@ -33236,7 +33236,6 @@ $('document').ready(function() {
     }
 
     window.Acme.scrollThumbs = function(elem) {
-        console.log($(elem));
         var elem = $(elem);
         var elemWidth = elem.width();
         var container = elem.parent();
@@ -33294,6 +33293,8 @@ $('document').ready(function() {
     // });
 
     $("#menu-mobile").on("click", function (e) {
+        $('body').toggleClass("active");
+
         var thisMenuElem = $( $(this).parent('.sb-custom-menu') );
         $(this).toggleClass("active");
         thisMenuElem
@@ -33316,12 +33317,12 @@ $('document').ready(function() {
 
     $("ul > li.menu-item-search").on("click", function (e) {
         $("#searchPanel").show();
-        $("#menu-primary-menu").hide();
+        // $("#menu-primary-menu").hide();
         $("#searchPanel input").focus();
     });
     $("#searchclose").on("click", function (e) {
         $("#searchPanel").hide();
-        $("#menu-primary-menu").show();        
+        // $("#menu-primary-menu").show();        
     });
 
 
