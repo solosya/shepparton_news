@@ -138,41 +138,35 @@ hr.divide10 {
     opacity: 0;
 }
 
-.ad-square {
-    height:250px;
-    width:300px;
+@mixin adtext {
     &:after {
         content: "Advertisement";
         font-size: rem(10);
         color: color(grey);
         position: relative;
         float: right;
-    }    
-    // @media screen and (max-width: $mmd-break){
-    //     margin: 30px 0;
-    // }
+    }
+}
 
+.ad-square {
+    height:250px;
+    width:300px;
+    @include adtext;
 }
 
 .ad-large-vert {
     height:600px;
-    &:after {
-        content: "Advertisement";
-        font-size: rem(10);
-        color: color(grey);
-        position: relative;
-        float: right;
-    }    
+    @include adtext;
 }
 
 .ad-container {
+    text-align: center;
+    margin: 25px auto;
+    width: $container-desktop;
+    @include adtext;
     &:after {
-        content: "Advertisement";
-        font-size: rem(10);
-        color: color(grey);
-        position: relative;
-        float: right;
-    }    
+        margin-right: $grid-gutter-width / 2;
+    }
 }
 
 ._btn {
