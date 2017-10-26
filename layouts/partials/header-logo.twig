@@ -1,0 +1,19 @@
+{% if (networkData.title | lower) == 'country news' %}
+    {% set logo = 'country-news' %}
+{% elseif (networkData.title | lower) == 'dairy news' %}
+    {% set logo = 'dairy-news' %}
+{% else %}
+    {% set logo = 'shepp-news' %}
+{% endif %}
+
+{% set path = networkData.templatePath~'/static/images/'~logo~'-logo.svg'%}
+
+<div class="masthead-logo">
+    <a  class="navbar-brand" 
+        href="{{networkData.defaultBlogUrl}}" 
+        rel="Home" 
+        tabindex="-1" 
+        title="Home"
+        style="background-image:url({{path}}); ">
+    </a>
+</div>

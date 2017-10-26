@@ -1,8 +1,3 @@
-{% if networkData.logoMedia | length > 0 %}
-    {% set logo = _Media.getMediaUrl(networkData.logoMedia, 180, 0, {'crop': 'fit'} )%}
-{% else %}
-    {% set logo = networkData.templatePath~'/static/images/logo.svg'%}
-{% endif %}
 
 <header id="masthead" class="site-header container-fluid">
 
@@ -22,18 +17,9 @@
                     </form>
                 </fieldset>
 
-
-
-
-                <div class="masthead-logo">
-                    <a  class="navbar-brand" 
-                        href="{{networkData.defaultBlogUrl}}" 
-                        rel="Home" 
-                        tabindex="-1" 
-                        title="Home"
-                        style="background-image:url({{logo}}); ">
-                    </a>
-                </div>
+                {{ this.render('header-logo.twig', {
+                    networkData: networkData,
+                }) | raw }}
 
                 <!--  ************ -->
                 <!--  DESKTOP MENU -->
