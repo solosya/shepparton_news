@@ -4,9 +4,10 @@
 {% if (networkData.title | lower) == 'country news' %}
     {% set logo = 'country-news' %}
     {% set mastOverride = 'height: 70px;' %}
-    {% set imgOverride = 'background-position: 0px 10px;' %}
+    {% set imgOverride = 'background-position: 0px 6px;width: 185px;' %}
 {% elseif (networkData.title | lower) == 'dairy news' %}
     {% set logo = 'dairy-news' %}
+    {% set imgOverride = 'width: 185px;' %}
 {% else %}
     {% set logo = 'shepp-news' %}
 {% endif %}
