@@ -422,11 +422,10 @@ span.leadsentence{
 }
 
 @media (min-width: $sm-break) {
-    .two-cols .col-md-1,
-    .two-cols .col-sm-1,
-    .two-cols .col-lg-1 {
-        width: 50%;
-        *width: 50%;
+    .two-cols {
+        .col-md-1, .col-sm-1, .col-lg-1 {
+            width: 50%;
+        }
     }
 }
 
@@ -434,6 +433,32 @@ span.leadsentence{
     .two-cols .col-md-2,
     .two-cols .col-sm-2,
     .two-cols .col-lg-2  {
+        width: 100%;
+        *width: 100%;
+    }
+}
+
+@media (max-width: $mmd-break-down) {
+    .sm-two-cols {
+        .col-md-1, .col-sm-1, .col-lg-1 {
+            width: 50%;
+        }
+    }
+}
+
+@media (min-width: $sm-break) {
+    .three-cols .col-md-1,
+    .three-cols .col-sm-1,
+    .three-cols .col-lg-1 {
+        width: 33.3333%;
+        *width: 33.3333%;
+    }
+}
+
+@media (min-width: $mmd-break) {
+    .three-cols .col-md-2,
+    .three-cols .col-sm-2,
+    .three-cols .col-lg-2  {
         width: 100%;
         *width: 100%;
     }

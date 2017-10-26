@@ -2,7 +2,7 @@
     position:relative;
     a.card {
         @include card-image-left(37px, 37px);
-        height:52px;
+        height:54px;
 
         > article {
             position:relative;
@@ -65,6 +65,45 @@
     // @media screen and (min-width: $sm-break){
         @include card-event-base();
     // }
+}
+
+
+.card-event-tablet{
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include card-event-base();
+        a.card {
+            @include card-image-left(46px, 46px);            
+            height: 42px;
+            > article {
+                > .content {
+                    time {
+                        margin-left: 0px;
+                        bottom: 27px;
+                        left: 0px;
+                    }
+
+                    h2 {
+                        margin-left: 60px;
+                        position: relative;
+                        top: 5px;
+                    }
+
+                    .event-time {
+                        display: block;
+                        position: absolute;
+                        bottom: 15px;
+                        left: 60px;
+                        p {
+                            color: black;
+                            font-size: rem(12);
+                            font-family: $font-family-sans-serif;
+                            font-weight: regular;
+                        }                        
+                    }
+                }
+            }
+        }
+    }
 }
 
 .card-event-rec {
