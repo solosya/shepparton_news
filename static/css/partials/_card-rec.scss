@@ -1,5 +1,7 @@
 @mixin card-rec-base() {
     a.card {
+        position:relative;
+
         article {
             position:relative;
 

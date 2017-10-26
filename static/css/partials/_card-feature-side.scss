@@ -2,7 +2,7 @@
     // clear:both;
     font-family: $base-font-family;
 
-
+    position: relative;
     a.card {
         height:100%;
 
@@ -147,7 +147,7 @@
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         @include card-feature-side-base();
 
-        height:70px;
+        height:95px;
         &.divideright {
             &:after {
                 content: '';
@@ -168,7 +168,7 @@
 
 
         a.card {
-            @include card-image-left(58px, 69px);
+            @include card-image-left(80px);
 
             article {
                 > .content {
