@@ -145,9 +145,8 @@ hr.divide10 {
         content: "Advertisement";
         font-size: rem(10);
         color: color(grey);
-        position: absolute;
-        bottom:-15px;
-        right: 15px;
+        position: relative;
+        float: right;
     }    
     // @media screen and (max-width: $mmd-break){
     //     margin: 30px 0;
@@ -161,9 +160,18 @@ hr.divide10 {
         content: "Advertisement";
         font-size: rem(10);
         color: color(grey);
-        position: absolute;
-        bottom:-15px;
-        right: 15px;
+        position: relative;
+        float: right;
+    }    
+}
+
+.ad-container {
+    &:after {
+        content: "Advertisement";
+        font-size: rem(10);
+        color: color(grey);
+        position: relative;
+        float: right;
     }    
 }
 
