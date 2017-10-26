@@ -1,5 +1,3 @@
-console.log('checking syncronex...!!');
-
 var g_SESSION_ID_TAG = "syncwall-sessionid";
 var g_AUTHTOKEN = "syncwall-authToken";
 var g_HISTORY = "syncwall-history";
@@ -43,8 +41,6 @@ if (!Array.prototype.indexOf) {
 }
 
 function checkAuthStatus(token) {
-    console.log('getting auth token...');
-
     var options = '&source=web+mobile&username=dummy';
 
     $.ajax({
@@ -52,34 +48,23 @@ function checkAuthStatus(token) {
         contentType: 'application/json',
         type: 'GET',
         success: function(data) {
-            console.log(data);
-            
         },
         error: function(xhr, ajaxOptions, err) {
-            console.log(xhr);
-            console.log(ajaxOptions);
-            console.log(err);
         },
     });
 };
 
 function checkSyncWall() {
-	console.log('checking sync wall!');
-    console.log('...');
     var f = readCookie(g_SESSION_ID_TAG);
-    console.log('?');
     if (!f || f == "null") {
         f = ""
     }
     g_PAGEURL = window.location.toString();
-    console.log("g_PAGEURL: " + g_PAGEURL);
     var g = getAuthToken(g_PAGEURL);
-    console.log(g);
 
     // checkAuthStatus(g);
 
     if (g != "") {
-        console.log('creating cookie...');
         createCookie(g_AUTHTOKEN, g, 36500, "/");
         var h = g_PAGEURL.toString().indexOf("sp-tk");
         g_PAGEURL = g_PAGEURL.toString().substr(0, h);
@@ -93,7 +78,6 @@ function checkSyncWall() {
     }
     var a;
     var c = document.getElementsByName("__sync_contentCategory");
-    console.log(c);
     if (c && c[0]) {
         a = c[0].content;
         log("contentId: " + a)
@@ -101,10 +85,7 @@ function checkSyncWall() {
         return
     }
     var e = referringDomain(document.referrer);
-    log("referrer: " + e);
-    log("encoded referrer:" + document.referrer);
     var b = readCookie("tncms-authtoken") ? readCookie("tncms-screename") : "";
-    log("recentlyVisited: " + recentlyVisited(g_PAGEURL.toString()));
     if (!recentlyVisited(g_PAGEURL.toString())) {
         callServer(f, g, a, b, e, d, "serverCallback")
     } else {
@@ -182,9 +163,7 @@ function replaceOldest(a, e) {
     }
 }
 function getAuthToken(b) {
-    var a = getParameterByName("sp-tk");
-    log("auth-token: " + a);
-    return a
+    return getParameterByName("sp-tk");
 }
 function getParameterByName(a) {
     a = a.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -315,15 +294,12 @@ function createCookie(e, g, b, f) {
         if (/Yarrawongachronicle.com.au/i.test(window.location.hostname)) {
             return ".Yarrawongachronicle.com.au"
         }
-        console.log(window.location.hostname);
         return window.location.hostname
     };
     document.cookie = e + "=" + g + d + "; path=" + f + ";domain=" + c()
 }
 function readCookie(e) {
-    console.log(e);
     var f = e + "=";
-    console.log(document.cookie);
     var b = document.cookie.split(";");
     for (var d = 0; d < b.length; d++) {
         var a = b[d];
@@ -452,7 +428,6 @@ function run() {
         }
     }
 
-    console.log('whoo');
     // console.log(readCookie(g_AUTHTOKEN));
     // console.log(checkAuthStatus(readCookie(g_AUTHTOKEN)));
 }

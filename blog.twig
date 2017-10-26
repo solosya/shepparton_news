@@ -21,12 +21,10 @@
 {% set articleCount = 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
-
-
 {{this.registerJs("HomeController.listing();")}}
 {{this.registerJs("HomeController.blog();")}}
 
-
+{% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
 
 
 <main id="main" class="site-main" role="main">
@@ -60,7 +58,13 @@
                                 <a href="{{ blogInfo.settings['social']['youtube'] }}" class="youtube"></a>
                             {% endif %}
                         </div>
-                        <div class="follow">Follow</div>
+                        {% if _User.isGuest() %}
+                            <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
+                        {% endif %}
+                        {% if not _User.isGuest() and _User.getId() != userDetails.id %}
+                            {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
+                            <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
