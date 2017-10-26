@@ -39,6 +39,14 @@
 
 
     <div class="col-sm-3">
+
+        <div class="ad-square" style="margin-bottom:30px;">
+            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('{{ ad }}'); });
+                </script>
+            </div>
+        </div>
         
         {% for i in 0..1 if articles.feed.articles[sectionCount] %}
             {{this.render('../_single-article.twig', {
@@ -52,15 +60,6 @@
             {% endif %}
 
         {% endfor %}
-
-
-        <div class="ad-square" style="margin-top:30px;">
-            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
-                <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('{{ ad }}'); });
-                </script>
-            </div>
-        </div>
 
     </div>
 </section>

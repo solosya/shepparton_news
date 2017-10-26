@@ -30,10 +30,7 @@
         "videos": {
             "limit" : 10
         }, 
-        "opinion": {
-            "limit" : 10
-        }, 
-        "agribusiness": {
+        "from the experts": {
             "limit" : 10
         },
         "management": {
@@ -44,7 +41,10 @@
         },
         "machinery & products": {
             "limit" : 10
-        }
+        },
+        "markets": {
+            "limit" : 10
+        }        
     }
 %}
 
@@ -157,48 +157,60 @@
         </div>
     </div>
 
-    {% if sections['opinion'].feed.articles|length > 0 %}
+    {% if sections['from the experts'].feed.articles|length > 0 %}
         <div class="container">
-            {{this.render('partials/index/opinion.twig', {
-                articles: sections['opinion'], 
+            {{this.render('partials/index/medium-section.twig', {
+                articles: sections['from the experts'], 
                 articleCount: articleCount,
-                section: 'opinion',
+                section: 'from the experts',
                 dev: dev,
+                ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
 
-    {% if sections['agribusiness'].feed.articles|length > 0 %}
+    {% if sections['management'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/small-section.twig', {
-                articles: sections['agribusiness'], 
+                articles: sections['management'], 
                 articleCount: articleCount,
-                section: 'agribusiness',
+                section: 'management',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
     {% endif %}
 
     <div class="ad-container">
-        <div id='div-gpt-ad-leaderboard-3' class="google_ad google_ad_leaderboard">
+        <div id='div-gpt-ad-leaderboard-2' class="google_ad google_ad_leaderboard">
             <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-2'); });
             </script>
         </div>
-    </div>
+    </div>    
 
-    {% if sections['management'].feed.articles|length > 0 %}
+    {% if sections['machinery & products'].feed.articles|length > 0 %}
         <div class="container">
-            {{this.render('partials/index/medium-section.twig', {
-                articles: sections['management'], 
+            {{this.render('partials/index/row-three.twig', {
+                articles: sections['machinery & products'], 
                 articleCount: articleCount,
-                section: 'management',
+                section: 'machinery & products',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-2',
+                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
             }) | raw}} 
         </div>
-    {% endif %}
+    {% endif %} 
+
+    {% if sections['markets'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/row-three-ad.twig', {
+                articles: sections['markets'], 
+                articleCount: articleCount,
+                section: 'markets',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-3',
+            }) | raw}} 
+        </div>
+    {% endif %}      
 
     {% if sections['animal health'].feed.articles|length > 0 %}
         <div class="container">
@@ -208,18 +220,6 @@
                 section: 'animal health',
                 dev: dev,
                 cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
-            }) | raw}} 
-        </div>
-    {% endif %}  
-
-    {% if sections['machinery & products'].feed.articles|length > 0 %}
-        <div class="container">
-            {{this.render('partials/index/row-three-ad.twig', {
-                articles: sections['machinery & products'], 
-                articleCount: articleCount,
-                section: 'machinery & products',
-                dev: dev,
-                ad: 'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
     {% endif %}    
