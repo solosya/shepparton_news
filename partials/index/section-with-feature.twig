@@ -1,8 +1,8 @@
 {% set sectionCount = (dev) ? articleCount : 0 %}
 
-<section>
+<section style="background-color:#c3ffed">
     <div class="row">
-        <div class="col-sm-9 section-header">
+        <div class="col-md-9 section-header">
             <p><a href="{{articles.link}}">View All</a></p>
             <div class="hk">
                 <h2>{{ section }}</h2>
@@ -12,19 +12,19 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6 col-sm-9">
            {% if articles.feed.articles[sectionCount] %}
                {{this.render('../_single-article.twig', {
                    article: articles.feed.articles[sectionCount], 
                    imageSize: {width:900},
-                   containerClass: 'home-feature-sm home-feature-mobile'
+                   containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
                }) | raw}}
                {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
            {% endif %}
 
 
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3">
         
             <div class="ad-square" style="margin-bottom:30px;">
                 <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>

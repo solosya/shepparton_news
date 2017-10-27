@@ -67,45 +67,6 @@
                 }
             }
         }
-
-        &.social {
-            .content {
-                .icon {
-                    display:none;
-                }
-
-                >p {
-                    height:65px;
-                    margin-bottom:6px;
-                }
-            }
-
-            &.facebook, &.twitter, &.instagram, &.youtube{
-                .content{
-                    >p {
-                        font-size: rem(12);
-                        margin-top:10px;
-                        height:50px;
-                        font-weight:600;
-                        line-height:1.33;
-                    }
-                }
-            }
-            &.instagram{ 
-
-                &.without__content {
-                    .content{
-                        padding-top:34px;
-                        >p {
-                            margin-top:0;
-                        }
-                        >.author{
-                            position:static;
-                        }
-                    }
-                }
-            }
-        }
     }
 
     &.final {
@@ -151,24 +112,22 @@
 .card-opinion-tablet {
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         @include card-opinion-base();
-
+        height: 200px;
 
         a.card {
-
             article {
                 > .content {
-                    h2{
-                        font-size: rem(12);
-                        height: 33px;
-                    }
-                }
-            }
-            &.without__image {
-                .content {
-                    h2 {
-                        height:88px;
+                    time {
+                        top: 15px;
                     }
 
+                    h2 {
+                        top: 40px;
+                    }
+
+                    div.author {
+                        bottom: 65px;
+                    }
                 }
             }
         }

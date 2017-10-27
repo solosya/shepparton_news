@@ -438,7 +438,7 @@ span.leadsentence{
     }
 }
 
-@media (max-width: $mmd-break-down) {
+@media (min-width: $mobile-break) and (max-width: $mmd-break-down) {
     .sm-two-cols {
         .col-md-1, .col-sm-1, .col-lg-1 {
             width: 50%;
