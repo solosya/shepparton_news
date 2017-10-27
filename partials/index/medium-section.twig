@@ -1,7 +1,7 @@
 {% set sectionCount = (dev) ? articleCount : 0 %}
 
 <section class="row">
-    <div class="col-sm-9 section-header">
+    <div class="col-md-9 col-sm-9 section-header">
         <p><a href="{{articles.link}}">View All</a></p>
         <div class="hk">
             <h2>{{ section }}</h2>
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-md-4 col-sm-6">
         {% if articles.feed.articles[sectionCount] %}
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
@@ -22,7 +22,7 @@
 
 
     </div>
-    <div class="col-sm-2">
+    <div class="col-md-2 col-sm-3">
         {% set cardspace = ['', 'row-space'] %}
         {% for i in 0..1 if articles.feed.articles[sectionCount] %}
             {{this.render('../_single-article.twig', {
@@ -38,7 +38,7 @@
     </div>
 
 
-    <div class="col-sm-3">
+    <div class="col-md-3 visible-xs-block visible-md-block visible-lg-block">
 
         <div class="ad-square" style="margin-bottom:30px;">
             <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
@@ -60,6 +60,6 @@
             {% endif %}
 
         {% endfor %}
+    </div>    
 
-    </div>
 </section>
