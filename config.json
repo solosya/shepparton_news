@@ -10,9 +10,9 @@
             "endUserAccess" : [
 
                                 "jobs",     "prop",     "events",
-                    "local",    "616",      "631",      "116",    
+                    "local",    "",         "",         "116",    
                     "Shepp",    "",         "",         "1203",   
-                 "shepptest",   "",         "",         "",   
+                 "shepptest",   "",         "",         "972",   
                       "UAT",    "",         ""
                 
             ],
