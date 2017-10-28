@@ -66,6 +66,8 @@
     //Follow/Unfollow a user or writer
     $.fn.followUser = function (options) {
 
+        console.log('whoo');
+
         var defaults = {
             'onSuccess': function () {},
             'onError': function () {},

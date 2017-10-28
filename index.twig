@@ -3,7 +3,6 @@
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
 
-
 {{this.registerJs("Acme.CardController();")}}
 
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
@@ -13,63 +12,39 @@
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
-
-
 
 {% set events = _Event.getEvents() %}
 
-
-
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
-
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 {% set sections =  {
         "videos": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         }, 
         "local news": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         }, 
         "regional news": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         },
         "opinion": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         },
         "rural news": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         },
         "sport": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         },
         "national": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         },
         "business": {
-            "feed": "",
-            "link": "",
             "limit" : 10
         },
         "bloggers": {
-            "feed": "",
-            "link": "",
             "limit" : 2
         }
     }
@@ -89,739 +64,127 @@
 {% endfor %}
 
 
+<main id="main" class="site-main" role="main">
+    
+    <div class="container">
+        {{this.render('partials/index/default-top.twig', {
+            articles: articles, 
+            articleCount: articleCount,
+            dev: dev,
+            ad: 'div-gpt-ad-mrec-1',
+        }) | raw}}
+    </div>
 
+    <div class="ad-container">
+        <div id='div-gpt-ad-leaderboard-2' class="google_ad google_ad_leaderboard">
+            <script type='text/javascript'>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-2'); });
+            </script>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-    <main id="main" class="site-main" role="main">
-        
+    {% if sections['local news'].feed.articles|length > 0 %}
         <div class="container">
-
-            <section class="home-main-stories">
-                <div class="row">
-                    <div class="col-xs-9 col-sm-6">
-
-                        {% if articles[articleCount] %}                                                                
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                imageSize: {width:900},
-                                containerClass: 'home-feature home-feature-tablet home-feature-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-
-                        {% endif %}
-                    </div>
-
-
-                    {% if articles[articleCount] %}
-                    <div class="cold-xs-9 col-sm-3">
-
-                        <div id="weather" class="weather"></div>
-                        <div class="visible-md-block visible-lg-block">
-                            <div class="weather-dropdown hidden"></div>
-                        </div>
-
-
-                        <hr class="divide10 visible-xs-block" style="clear:both">
-
-
-                        {% for i in 0..2 if articles[i] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            {% if i < 2 %}
-                                <hr class="divide15 visible-md-block visible-lg-block">
-                                <hr class="divide10 visible-xs-block visible-sm-block">
-                            {% endif %}
-
-                        {% endfor %}
-                        <hr class="divide10 visible-xs-block">
-
-                    </div><!-- .row-->
-                    {% endif %}
-
-                </div>
-            </section><!-- .featured-slider-->
-
-
-
-            <section class="row five-cols top-stories-row">
-                
-                {% for i in 0..4 if articles[articleCount] %}
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: 1, 
-                        imageSize: {width:500},
-                        containerClass: 'col-sm-1 top-stories top-stories-tablet top-stories-mobile'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    <hr class="divide10 visible-xs-block" style="margin-left:15px;margin-right:15px;">
-
-                {% endfor %}
-            </section>
-            
-
-
-
-
-            <section class="middle">
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 most-popular">
-                        <h2>Most popular</h2>
-
-                        {% for i in 0..4 if popularArticles[i] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: popularArticles[i], 
-                                    imageSuppress: true, 
-                                    containerClass: 'card-popular'
-                                }) | raw}}
-                        {% endfor %}
-                    </div>
-
-                    <hr class="divide visible-xs-block">
-
-                    <div class="col-sm-3 col-md-2">
-                        {% if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'card-sm card-sm-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            <hr class="divide visible-xs-block">
-
-                        {% endif %}
-                    </div>
-
-
-                    <div class="col-sm-3 col-md-2">
-
-                        {% if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'card-sm card-sm-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-
-                        {% endif %}
-                    </div>
-
-
-                    <div class="col-sm-9 col-md-3 addSpaceMobile">
-                        <div class="ad-square">
-                            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-1'>
-                                <script type='text/javascript'>
-                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-
-                <div class="row row-space">
-                    <div class="col-sm-3">
-                        {% if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'card-sm-wide feature-side-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            
-                            <hr class="divide visible-xs-block">
-
-                        {% endif %}
-                    </div>
-
-
-                    <div class="col-sm-3">
-                        {% if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'card-sm-wide feature-side-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            <hr class="divide visible-xs-block">
-
-                        {% endif %}
-
-
-                    </div>
-                    <div class="col-sm-3">
-                        {% for i in 0..1 if articles[articleCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                position: articleCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                            }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            
-
-                            {% if i == 0 %}
-                                <hr class="divide">
-                            {% endif %}
-                        {% endfor %}
-
-                    </div>
-                </div>
-
-            </section>
-
+            {{this.render('partials/index/large-section.twig', {
+                articles: sections['local news'], 
+                articleCount: articleCount,
+                section: 'local news',
+                events: events,
+                dev: dev,
+                ad: 'div-gpt-ad-halfpage-ss',
+            }) | raw}} 
         </div>
+    {% endif %}
 
-
-        <div class="ad-container">
-            <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
-                <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });
-                </script>
-            </div>
-
-        </div>
-
-
+    {% if sections['bloggers'].feed.articles|length > 0 %}
         <div class="container">
-
-            {% if sections['local news'].feed.articles|length > 0 %}
-                {% set localCount = (dev) ? articleCount : 0 %}
-                <section class="row">
-                    <div class="col-sm-9 section-header">
-                        <p><a href="{{sections['local news'].link}}">View All</a></p>
-                        <div class="hk">
-                            <h2>LOCAL NEWS</h2>
-                            <p></p>
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="col-sm-9">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                {% if sections['local news'].feed.articles[localCount] %}
-                                    {{this.render('partials/_single-article.twig', {
-                                        article: sections['local news'].feed.articles[localCount], 
-                                        position: articleCount + 1, 
-                                        imageSize: {width:900},
-                                        containerClass: 'home-feature-sm home-feature-mobile'
-                                    }) | raw}}
-                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
-                                {% endif %}
-                            </div>
-
-
-                            <div class="col-sm-3">
-                                {% set classdivide = ['', 'visible-xs-block visible-sm-block'] %}
-                                {% for i in 0..1 if sections['local news'].feed.articles[localCount] %}
-                                    {{this.render('partials/_single-article.twig', {
-                                        article: sections['local news'].feed.articles[localCount], 
-                                        imageSuppress: true,
-                                        containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                                    }) | raw}}
-                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
-                                   
-                                    <hr class="divide {{classdivide[i]}}">
-                                {% endfor %}
-                            
-                                {% if sections['local news'].feed.articles[localCount] %}
-                                    {{this.render('partials/_single-article.twig', {
-                                        article: sections['local news'].feed.articles[localCount], 
-                                        imageSuppress: true,
-                                        containerClass: 'feature-side feature-side-tablet feature-side-mobile visible-xs-block visible-sm-block'
-                                    }) | raw}}
-                                    <hr class="divide visible-xs-block">
-                                {% endif %}
-
-
-
-                                <div class="ad-large-vert visible-md-block visible-lg-block" style="margin-top:30px;position:absolute;width:100%">
-                                    <div id='div-gpt-ad-halfpage-ss' class="google_ad">
-                                        <script type='text/javascript'>
-                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage-ss'); });
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        {# <div class="ad-large-vert visible-cs-block visible-sm-block" style="margin-top:30px;"></div> #}
-
-
-                        <div class="row row-space">
-                            <div class="col-sm-9 col-md-6">
-                                <div class="row">
-                                    <div class="col-sm-3 events">
-                                        <h2>Events</h2>
-                                        {% for i in 0..4 if events[i] %}
-                                            {{this.render('partials/_single-event.twig', {
-                                                event: events[i],
-                                                imageSize: {width: 90},
-                                                containerClass: 'card-event'
-                                            }) | raw}}
-                                            <hr class="divide12">
-
-                                        {% endfor %}
-                                    </div>
-
-
-
-                                    <div class="col-sm-6">
-                                        <div class="row">
-                                            <div class="col-sm-9">
-
-                                                {% if sections['local news'].feed.articles[localCount] %}
-                                                    {{this.render('partials/_single-article.twig', {
-                                                        article: sections['local news'].feed.articles[localCount], 
-                                                        imageSize: {width:900},
-                                                        containerClass: 'card-rec-full visible-md-block visible-lg-block'
-                                                    }) | raw}}
-                                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
-                                                    <hr class="divide visible-xs-block">
-                                                {% endif %}
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row two-cols row-space md">
-
-                                            {% for i in 0..1 if sections['local news'].feed.articles[localCount] %}
-                                                <div class="col-sm-1">                                            
-                                                    {{this.render('partials/_single-article.twig', {
-                                                        article: sections['local news'].feed.articles[localCount], 
-                                                        imageSize: {width:188},
-                                                        containerClass: 'card-sm card-sm-mobile'
-                                                    }) | raw}}
-                                                    {% set localCount = (dev) ? articleCount : localCount + 1 %}
-                                                    <hr class="divide visible-xs-block">
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </section>
-            {% endif %}
-
-
-
-
-
-
-
-            {% if sections['bloggers'].feed.articles|length > 0 %}
-
-                <section class="row">
-                    <div class="col-sm-3"> 
-                        <div class="bloggerImg">
-                            <img src="{{networkData.templatePath}}/static/images/megaphone.svg">
-                            <div>
-                                <p class="header">Bloggers</p>
-                                <p class="local">Your local news</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    {% for i in 0..1 if sections['bloggers'].feed.articles[i] %}
-                        <div class="col-sm-3">                                            
-
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['bloggers'].feed.articles[i], 
-                                imageSuppress: true,
-                                containerClass: 'card-blogger card-blogger-mobile'
-                            }) | raw}}
-
-                            {% if i == 0 %}
-                                <hr class="divide visible-xs-block">
-                            {% endif %}
-                        </div>
-                        
-                    {% endfor %}
-
-                </section>
-            {% endif %}
-
-
-
-
-
-
-
-            {% if sections['regional news'].feed.articles|length > 0 %}
-                {% set regionalCount = (dev) ? articleCount : 0 %}
-
-                <section class="row">
-                    <div class="col-sm-9 section-header">
-                        <p><a href="{{sections['regional news'].link}}">View All</a></p>
-                        <div class="hk">
-                            <h2>REGIONAL NEWS</h2>
-                            <p></p>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        {% if sections['regional news'].feed.articles[regionalCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['regional news'].feed.articles[regionalCount], 
-                                imageSize: {width:409, height:530},
-                                containerClass: 'home-feature-thin home-feature-thin-mobile'
-                            }) | raw}}
-                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
-                        {% endif %}
-
-
-
-                    </div>
-                    <div class="col-sm-2">
-                        {% set cardspace = ['', 'row-space'] %}
-                        {% for i in 0..1 if sections['regional news'].feed.articles[regionalCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['regional news'].feed.articles[regionalCount], 
-                                imageSize: {width:300},
-                                containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
-                            }) | raw}}
-                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
-                            <hr class="divide visible-xs-block">
-
-                        {% endfor %}
-
-                    </div>
-
-
-                    <div class="col-sm-3">
-                        
-                        {% for i in 0..1 if sections['regional news'].feed.articles[regionalCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['regional news'].feed.articles[regionalCount], 
-                                imageSize: {width:300},
-                                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                            }) | raw}}
-                            {% set regionalCount = (dev) ? articleCount : regionalCount + 1 %}
-                            {% if i == 0 %}
-                                <hr class="divide">
-                            {% endif %}
-
-                        {% endfor %}
-
-
-                        <div class="ad-square" style="margin-top:30px;">
-                            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-2'>
-                                <script type='text/javascript'>
-                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
-                                </script>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-            {% endif %}
-
-
-
-
-
-
-
-
-
-            {% if sections['opinion'].feed.articles|length > 0 %}
-                {% set opinionCount = (dev) ? articleCount : 0 %}
-
-                <section class="row">
-                    <div class="col-sm-9 section-header">
-                        <p><a href="{{sections['opinion'].link}}">View All</a></p>
-                        <div class="hk">
-                            <h2>Opinion</h2>
-                            <p></p>
-                        </div>
-                    </div>
-
-
-                    {% set opinionClass = ["col-sm-2", "col-sm-2", "col-sm-2", "col-sm-3"] %}
-
-                    {% for i in 0..3 if sections['opinion'].feed.articles[opinionCount] %}
-                        {% set finalClass = (i == 3) ? 'final' : '' %}
-                        <div class="{{opinionClass[i]}}">
-
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['opinion'].feed.articles[opinionCount], 
-                                imageSuppress: true,
-                                containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
-                            }) | raw}}
-                            {% set opinionCount = (dev) ? articleCount : opinionCount + 1 %}
-
-                            <hr class="divide visible-xs-block">
-
-                        </div>
-                    {% endfor %}
-
-                </section>
-
-                {% endif %}
-
-
-
-
-
-
-
-            {% if sections['rural news'].feed.articles|length > 0 %}
-                {% set ruralCount = (dev) ? articleCount : 0 %}
-
-                <section>
-                    <div class="row">
-                        <div class="col-sm-9 section-header">
-                            <p><a href="{{sections['rural news'].link}}">View All</a></p>
-                            <div class="hk">
-                                <h2>RURAL NEWS</h2>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        {% for i in 0..2 if sections['rural news'].feed.articles[ruralCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['rural news'].feed.articles[ruralCount], 
-                                imageSize: {width:300},
-                                containerClass: 'col-sm-3 card-sm-wide feature-side-mobile'
-                            }) | raw}}
-                            {% set ruralCount = (dev) ? articleCount : ruralCount + 1 %}
-                            {% if i < 2 %}
-                                <hr class="divide visible-xs-block">
-                            {% endif %}
-                        {% endfor %}
-
-                    </div>
-                </section>
-            {% endif %}
-
-
-
-
-
-
-
-
-
-
-            {% if sections['national'].feed.articles|length > 0 %}
-                {% set nationalCount = (dev) ? articleCount : 0 %}
-
-                <section class="row">
-                    <div class="col-sm-9 section-header">
-                        <p><a href="{{sections['national'].link}}">View All</a></p>
-                        <div class="hk">
-                            <h2>NATIONAL</h2>
-                            <p></p>
-                        </div>
-                    </div>
-
-                    {% for i in 0..2 if sections['national'].feed.articles[nationalCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: sections['national'].feed.articles[nationalCount], 
-                            imageSize: {width:300},
-                            containerClass: 'col-sm-2 card-sm card-sm-mobile'
-                        }) | raw}}
-                        {% set nationalCount = (dev) ? articleCount : nationalCount + 1 %}
-                        <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
-                    {% endfor %}
-
-                    {% if sections['national'].feed.articles[nationalCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: sections['national'].feed.articles[nationalCount], 
-                            imageSize: {width:300},
-                            containerClass: 'col-sm-3 card-sm-wide feature-side-mobile'
-                        }) | raw}}
-                        {% set nationalCount = (dev) ? articleCount : nationalCount + 1 %}
-
-                    {% endif %}
-                </section>
-            {% endif %}
-
-
-
-
-
-
-
-
-
-
-            {% if sections['sport'].feed.articles|length > 0 %}
-                {% set sportCount = (dev) ? articleCount : 0 %}
-
-                <section>
-                    <div class="row">
-                        <div class="col-sm-9 section-header">
-                            <p><a href="{{sections['sport'].link}}">View All</a></p>
-                            <div class="hk">
-                                <h2>SPORT</h2>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                           {% if sections['sport'].feed.articles[sportCount] %}
-                               {{this.render('partials/_single-article.twig', {
-                                   article: sections['sport'].feed.articles[sportCount], 
-                                   imageSize: {width:900},
-                                   containerClass: 'home-feature-sm home-feature-mobile'
-                               }) | raw}}
-                               {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
-                           {% endif %}
-     
-
-                        </div>
-                        <div class="col-sm-3">
-                        
-                            <div class="ad-square" style="margin-bottom:30px;">
-                                <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-3'>
-                                    <script type='text/javascript'>
-                                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-3'); });
-                                    </script>
-                                </div>
-                            </div>
-
-                             {% if sections['sport'].feed.articles[sportCount] %}
-                                 {{this.render('partials/_single-article.twig', {
-                                     article: sections['sport'].feed.articles[sportCount], 
-                                     imageSize: {width:80, height:95},
-                                     containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                                 }) | raw}}
-
-                                <hr class="divide visible-xs-block">
-
-                                {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
-                             {% endif %}
-                   
-        
-
-                        </div>
-                    </div>
-
-                    <div class="row row-space">
-
-                        {% for i in 0..2 if sections['sport'].feed.articles[sportCount] %}
-                            {{this.render('partials/_single-article.twig', {
-                                article: sections['sport'].feed.articles[sportCount], 
-                                imageSize: {width:160, height:190},
-                                containerClass: 'col-sm-3 feature-side feature-side-tablet feature-side-mobile divideright'
-                            }) | raw}}
-                            {% set sportCount = (dev) ? articleCount : sportCount + 1 %}
-                            {% if i < 2 %}
-                                <hr class="divide visible-xs-block">
-                            {% endif %}
-                        {% endfor %}
-
-                    </div>
-                </section>
-            {% endif %}
-
-
-
-
-
-
-
-            {% if sections['business'].feed.articles|length > 0 %}
-                {% set businessCount = (dev) ? articleCount : 0 %}
-
-                <section class="row">
-                     <div class="col-sm-9 section-header">
-                        <p><a href="{{sections['business'].link}}">View All</a></p>
-                         <div class="hk">
-                             <h2>BUSINESS</h2>
-                             <p></p>
-                         </div>
-                     </div>
-
-                     <div class="col-sm-4">
-                         {% if sections['business'].feed.articles[businessCount] %}
-                             {{this.render('partials/_single-article.twig', {
-                                 article: sections['business'].feed.articles[businessCount], 
-                                 imageSize: {width:900},
-                                 containerClass: 'home-feature-thin home-feature-thin-mobile'
-                             }) | raw}}
-                             {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
-                         {% endif %}
-
-
-
-                     </div>
-                     <div class="col-sm-2">
-                         {% set cardspace = ['', 'row-space'] %}
-
-                         {% for i in 0..1 if sections['business'].feed.articles[businessCount] %}
-                             {{this.render('partials/_single-article.twig', {
-                                 article: sections['business'].feed.articles[businessCount], 
-                                 imageSize: {width:300},
-                                 containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
-                             }) | raw}}
-                             {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
-                             <hr class="divide visible-xs-block">
-
-                         {% endfor %}
-
-
-
-                     </div>
-                     <div class="col-sm-3">
-                         <div class="ad-square" style="margin-bottom:30px;"></div>
-
-                         {% for i in 0..1 if sections['business'].feed.articles[businessCount] %}
-                             {{this.render('partials/_single-article.twig', {
-                                 article: sections['business'].feed.articles[businessCount], 
-                                 imageSize: {width:160, height:190},
-                                 containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                             }) | raw}}
-                             {% set businessCount = (dev) ? articleCount : businessCount + 1 %}
-                             {% if i == 0 %}
-                                 <hr class="divide">
-                             {% endif %}
-
-                         {% endfor %}
-
-
-
-                     </div>
-                </section>
-            {% endif %}
-
-
-
-
-
-
+            {{this.render('partials/index/bloggers.twig', {
+                articles: sections['bloggers'], 
+                articleCount: articleCount,
+                section: 'bloggers',
+                dev: dev,
+                logo: networkData.templatePath ~ '/static/images/megaphone.svg',
+            }) | raw}} 
         </div>
+    {% endif %}
+
+    {% if sections['regional news'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/medium-section.twig', {
+                articles: sections['regional news'], 
+                articleCount: articleCount,
+                section: 'regional news',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-2',
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    <div class="ad-container visible-sm-block">
+        <div id='div-gpt-ad-leaderboard-3' class="google_ad google_ad_leaderboard">
+            <script type='text/javascript'>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
+            </script>
+        </div>
+    </div>      
+
+    {% if sections['opinion'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/opinion.twig', {
+                articles: sections['opinion'], 
+                articleCount: articleCount,
+                section: 'opinion',
+                dev: dev,
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['rural news'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/row-three.twig', {
+                articles: sections['rural news'], 
+                articleCount: articleCount,
+                section: 'rural news',
+                dev: dev,
+                cards: 'card-sm-wide feature-side-mobile',
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['national'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/row-four.twig', {
+                articles: sections['national'], 
+                articleCount: articleCount,
+                section: 'national',
+                dev: dev,
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['sport'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/section-with-feature.twig', {
+                articles: sections['sport'], 
+                articleCount: articleCount,
+                section: 'sport',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-4',
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['business'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/medium-section.twig', {
+                articles: sections['business'], 
+                articleCount: articleCount,
+                section: 'business',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-3',                
+            }) | raw}} 
+        </div>
+    {% endif %}
 
 
-    </main><!-- .site-main -->
+</main><!-- .site-main -->

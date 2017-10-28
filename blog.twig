@@ -21,12 +21,10 @@
 {% set articleCount = 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
-
-
 {{this.registerJs("HomeController.listing();")}}
 {{this.registerJs("HomeController.blog();")}}
 
-
+{% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
 
 
 <main id="main" class="site-main" role="main">
@@ -60,13 +58,19 @@
                                 <a href="{{ blogInfo.settings['social']['youtube'] }}" class="youtube"></a>
                             {% endif %}
                         </div>
-                        <div class="follow">Follow</div>
+                        {% if _User.isGuest() %}
+                            <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
+                        {% endif %}
+                        {% if not _User.isGuest() and _User.getId() != userDetails.id %}
+                            {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
+                            <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-9 col-md-6">
                     
                     {% if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
@@ -95,46 +99,79 @@
 
 
 
-                <div class="col-sm-3">
+                <div class="col-sm-9 col-md-3">
                 
-                    <div class="ad-square addSpaceMobile visible-md-block visible-lg-block" style="margin-bottom:30px;"></div>
+                    <div class="ad-square addSpaceMobile visible-md-block visible-lg-block" style="margin-bottom:30px;">
+                        <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-1'>
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
+                            </script>
+                        </div>
+                    </div>
 
                     <hr class="divide visible-xs-block">
+                    <hr class="divide15 visible-sm-block space-only">
 
-                    {% for i in 0..1 if articles[articleCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
-                            imageSize: {width:160},
-                            position: articleCount + 1,
-                            containerClass: 'feature-side feature-side-tablet feature-side-mobile'
-                        }) | raw}}
-                        <hr class="divide visible-xs-block">
+                    <div class="row two-cols">
+                        {% for i in 0..1 if articles[articleCount] %}
+                            <div class="col-sm-1 col-md-2">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:160},
+                                    position: articleCount + 1,
+                                    containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">
 
-                        <hr class="divide hidden-xs">
+                                <hr class="divide hidden-xs hidden-sm">
+                                <hr class="divide15 visible-sm-block space-only">
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% endfor %}
-
-
-                   <div class="most-popular">
-                       <h2>Most popular</h2>
-
-                       {% for i in 0..4 if articles[articleCount] %}
-                           {{this.render('partials/_single-article.twig', {
-                               article: articles[articleCount], 
-                               position: 1,
-                               imageSuppress: true, 
-                               containerClass: 'card-popular'
-                           }) | raw}}
-                       {% endfor %}
-
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            </div>
+                        {% endfor %}
                     </div>
+
+
+                    <div class="row two-cols">
+                       <div class="most-popular col-sm-1 col-md-2">
+                           <h2>Most popular</h2>
+
+                           {% for i in 0..4 if articles[articleCount] %}
+                               {{this.render('partials/_single-article.twig', {
+                                   article: articles[articleCount], 
+                                   position: 1,
+                                   imageSuppress: true, 
+                                   containerClass: 'card-popular'
+                               }) | raw}}
+                           {% endfor %}
+
+                        </div>
+
+                        <div class="col-sm-1 col-md-2">
+                            <div class="ad-square addSpaceMobile visible-sm-block" style="margin-bottom:30px;">
+                                <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-3'>
+                                    <script type='text/javascript'>
+                                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-3'); });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
 
-        <section class="advert" style="background:gray;height:200px;margin-top:90px;margin-bottom:100px;"></section>
+        <section class="row">
+            <div class="ad-container">
+                <div id='div-gpt-ad-leaderboard-2' class="google_ad google_ad_leaderboard">
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-2'); });
+                    </script>
+                </div>
+            </div>
+        </section>
 
 
         <section>
@@ -187,7 +224,13 @@
 
                 <div class="col-sm-3 addSpaceMobile">
                 
-                    <div class="ad-square" style="margin-bottom:30px;"></div>
+                    <div class="ad-square visible-md-block visible-lg-block" style="margin-bottom:30px;">
+                        <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-2'>
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
+                            </script>
+                        </div>
+                    </div>
 
                 </div>
             </div>

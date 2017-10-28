@@ -39,7 +39,7 @@ fieldset {
 }
 
 div[class*="col-sm"] {
-    @media screen and (min-width: 500px) and (max-width: 767px) {
+    @media screen and (min-width: 500px) and (max-width: $sm-break-down) {
         &.split {
             width:50%;
             float:left;
@@ -138,33 +138,45 @@ hr.divide10 {
     opacity: 0;
 }
 
-.ad-square {
-    height:250px;
-    width:300px;
+@mixin adtext {
     &:after {
         content: "Advertisement";
         font-size: rem(10);
         color: color(grey);
-        position: absolute;
-        bottom:-15px;
-        right: 15px;
-    }    
-    // @media screen and (max-width: $mmd-break){
-    //     margin: 30px 0;
-    // }
+        position: relative;
+        float: right;
+    }
+}
 
+.ad-square {
+    height:250px;
+    width:300px;
+    @include adtext;
 }
 
 .ad-large-vert {
     height:600px;
-    &:after {
-        content: "Advertisement";
-        font-size: rem(10);
-        color: color(grey);
-        position: absolute;
-        bottom:-15px;
-        right: 15px;
+    @include adtext;
+}
+
+.ad-container {
+    text-align: center;
+    margin: 25px auto;
+
+    width: $container-desktop;
+
+    @media screen and (max-width: $mmd-break){
+        width: $container-tablet;
     }    
+
+    @media screen and (max-width: $sm-break){
+        width: 320px;
+    } 
+
+    @include adtext;
+    &:after {
+        margin-right: $grid-gutter-width / 2;
+    }
 }
 
 ._btn {
@@ -392,7 +404,7 @@ span.leadsentence{
 
 
 
-@media (max-width: 767px){
+@media (max-width: $sm-break-down){
     .five-cols .col-md-1,
     .five-cols .col-sm-1,
     .five-cols .col-lg-1  {
@@ -400,7 +412,7 @@ span.leadsentence{
         *width: 100%;
     }
 }
-@media (min-width: 768px) {
+@media (min-width: $sm-break) {
     .five-cols .col-md-1,
     .five-cols .col-sm-1,
     .five-cols .col-lg-1 {
@@ -409,26 +421,15 @@ span.leadsentence{
     }
 }
 
-@media (max-width: 767px){
-    .two-cols .col-md-1,
-    .two-cols .col-sm-1,
-    .two-cols .col-lg-1  {
-        width: 100%;
-        *width: 100%;
+@media (min-width: $sm-break) {
+    .two-cols {
+        .col-md-1, .col-sm-1, .col-lg-1 {
+            width: 50%;
+        }
     }
 }
-@media (min-width: 768px) {
-    // .two-cols {
-    //     margin:0;
-    // }
 
-    .two-cols .col-md-1,
-    .two-cols .col-sm-1,
-    .two-cols .col-lg-1 {
-        width: 50%;
-        *width: 50%;
-    }
-
+@media (min-width: $mmd-break) {
     .two-cols .col-md-2,
     .two-cols .col-sm-2,
     .two-cols .col-lg-2  {
@@ -437,6 +438,31 @@ span.leadsentence{
     }
 }
 
+@media (min-width: $mobile-break) and (max-width: $mmd-break-down) {
+    .sm-two-cols {
+        .col-md-1, .col-sm-1, .col-lg-1 {
+            width: 50%;
+        }
+    }
+}
+
+@media (min-width: $sm-break) {
+    .three-cols .col-md-1,
+    .three-cols .col-sm-1,
+    .three-cols .col-lg-1 {
+        width: 33.3333%;
+        *width: 33.3333%;
+    }
+}
+
+@media (min-width: $mmd-break) {
+    .three-cols .col-md-2,
+    .three-cols .col-sm-2,
+    .three-cols .col-lg-2  {
+        width: 100%;
+        *width: 100%;
+    }
+}
 
 .margin-top-40 {
     margin-top: 40px;
