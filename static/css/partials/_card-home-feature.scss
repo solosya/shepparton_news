@@ -160,20 +160,25 @@
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         @include card-home-feature-base();
 
-        height:295px;
+        height:400px;
         a.card {
+            padding: 36px;
             article {
             
                 > .content {
                     width:100%;
-                    padding: 140px 20px 10px 30px;
+                    height: 100%;
 
                     .category{
                         font-size:rem(10);
+                        position: absolute;
+                        bottom: 110px;
                     }
 
                     h2{
                         font-size: rem(24);
+                        position: absolute;
+                        bottom: 15px;
                     }
                 }
             }
