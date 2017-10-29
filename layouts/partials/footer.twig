@@ -21,7 +21,7 @@
 
                 <ul class="menu">
                     {% set menuItems = blog.blogFooterMenu %}
-                    {% for i in 0..4  %}
+                    {% for i in 0..2  %}
 
                        {% set activeClass = (menuItems[i].link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                        {% set externalClass = (menuItems[i].isExternal) ? 'external-link' : '' %}
@@ -43,7 +43,7 @@
                 </ul>
 
                 <ul id="" class="menu padded">
-                    {% for i in 5..8  %}
+                    {% for i in 3..5  %}
                        <li>
                             <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
                                 {% if menuItems[i].label != "" %}
