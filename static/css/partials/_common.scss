@@ -50,15 +50,15 @@ div[class*="col-sm"] {
     }
 }
 
-// div[class*="col-sm"] {
-//     &.large-split {
-//         width:50%;
-//         float:left;
-//     }
-//     &.clearfixed {
-//         clear:both;
-//     }
-// }
+div[class*="col-sm"] {
+    &.large-split {
+        width:50%;
+        float:left;
+    }
+    &.clearfixed {
+        clear:both;
+    }
+}
 
 @keyframes spinner {
   to {transform: rotate(360deg);}

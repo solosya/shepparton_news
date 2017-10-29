@@ -7,7 +7,15 @@
            "enabled" : true
         },
         "blog" : {            
-            "endUserAccess" : ["616", "631", "116"],
+            "endUserAccess" : [
+
+                                "jobs",     "prop",     "events",
+                    "local",    "",         "",         "116",    
+                    "Shepp",    "",         "",         "1203",   
+                 "shepptest",   "",         "",         "972",   
+                      "UAT",    "",         ""
+                
+            ],
             "extendedAttributes": [
                 {
                     "name": "publishto",
