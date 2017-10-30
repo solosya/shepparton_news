@@ -49,9 +49,17 @@
         color: {{themeColors.headingColor}} !important;
     }
 
+    .foo {
+        content: {{ site }};
+    }
+
+    .bar {
+        content: {{ networkData.title | lower }};
+    }
+
     {% if site == 'dairy' %}
 
-    .trending > h2 {
+    div.trending > h2 {
         color: #f03746 !important;
     }
 
