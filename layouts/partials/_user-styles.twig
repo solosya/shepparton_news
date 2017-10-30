@@ -7,6 +7,10 @@
 {%  set site = 'dairy' %}
 {% endif %}
 
+{% if (networkData.title | lower) == 'country news' %}
+{%  set site = 'country' %}
+{% endif %}
+
 <style type="text/css">
 {% if primaryFont != "" %}
     body, .body, p {
@@ -59,7 +63,8 @@
 
     {% if site == 'dairy' %}
 
-    div.trending > h2 {
+    div.trending > h2,
+    div.most-popular > h2 {
         color: #f03746 !important;
     }
 
@@ -67,7 +72,8 @@
 
     {% if site == 'country' %}
 
-    div.trending > h2 {
+    div.trending > h2,
+    div.most-popular > h2 {
         color: #39393a !important;
     }
 
