@@ -56,7 +56,7 @@
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
-                    'link' : blog.url
+                    'link' : blog.link
                     }
                 }) %}
         {% endif %}
