@@ -30,6 +30,10 @@ ListingForm.constructor = ListingForm;
         "end_date" : function(data, topic) {
             this.data.end_date = data['end_date'];
         },
+        "location" : function(data, topic) {
+            this.data.latitude = data.location['latitude'];
+            this.data.longitude = data.location['longitude'];
+        },
         "after" : function(data, topic) {
             console.log(this.data);
         }
@@ -185,8 +189,6 @@ ListingForm.constructor = ListingForm;
         });
     }
     ListingForm.prototype.validate = function(checkFields) {
-        console.log('validating');
-        console.log(this.data);
         // checkFields is used to validate a single field, 
         // otherwise itereate through all compulsory fields
 
@@ -313,12 +315,10 @@ Acme.EventForm = function(blogId) {
                     });
 
                     //set current marker
-                    if (latitude != '' && longitude != '') {
-                        updateMarker = new google.maps.Marker({
-                            position: new google.maps.LatLng(latitude, longitude),
-                            map: map
-                        });
-                    }
+                    updateMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(latitude, longitude),
+                        map: map
+                    });
                 } 
                 else {
                     //navigator.geolocation.getCurrentPosition(function (position) {});
@@ -337,12 +337,12 @@ Acme.EventForm = function(blogId) {
         };
 
         var pointLocation = function (geocoder, map, marker) {
-            $('#address').on('change', function(e){
-                mapLocation();
+            $('#address1').on('change', function(e){
+                mapLocation($(this));
             });
             
-            function mapLocation() {
-                var address = $('#address').val();
+            function mapLocation(elem) {
+                var address = elem.val();
 
                 geocoder.geocode({address: address}, function (results, status) {
                     
@@ -362,18 +362,61 @@ Acme.EventForm = function(blogId) {
                         // Set Lat and Long
                         var latitude = results[0].geometry.location.lat();
                         var longitude = results[0].geometry.location.lng();
-                        $('#event_latitude').val(latitude);
-                        $('#event_longitude').val(longitude);
+                        var data = {
+                            "location" : {
+                                "latitude": latitude,
+                                "longitude": longitude
+                            }
+                        };
+                        Acme.PubSub.publish("update_state", data);
                     } 
                 });
             } 
         };
 
-        EventPostGoogleMap();
+        // EventPostGoogleMap();
 
     }
 
 
+Acme.GoogleMap = function() {
 
+    this.marker;
+    this.geocoder;
+    this.mapContainer = $('#addressMap');
+    this.latitude = this.mapContainer.data('latitude');
+    this.longitude = this.mapContainer.data('longitude');
+    this.map;
+    this.init();
+};
+Acme.GoogleMap.prototype.init = function()
+{
+    var mapLat;
+    var mapLong;
+    if (this.latitude !== '' && this.longitude !== '') {
+        mapLat = this.latitude;
+        mapLong = this.longitude;
+
+        this.geocoder = new google.maps.Geocoder();
+        this.map = new google.maps.Map(document.getElementById('addressMap'), {
+            zoom: 10,
+            center: {lat: mapLat, lng: mapLong}
+        });
+
+        //set current marker
+        updateMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(this.latitude, this.longitude),
+            map: this.map
+        });
+    } 
+    else {
+        //navigator.geolocation.getCurrentPosition(function (position) {});
+        geocoder = new google.maps.Geocoder();
+        this.map = new google.maps.Map(document.getElementById('addressMap'), {
+            zoom: 1,
+            center: {lat: 43.197167, lng: 56.425781}
+        });   
+    }
+};
 
 }(jQuery));

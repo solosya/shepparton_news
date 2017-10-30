@@ -3,17 +3,21 @@
 {{ set(this, 'title', event.title) }}
 {{this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'})}}
 
+{{this.registerJs("Acme.eventMap = new Acme.GoogleMap();")}}
+{{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}}
+
+
 {% set network = _Network.getNetworkData() %}
 {% set eventImage = false %}
 {% if event.media | length > 0 %}
     {% set eventImage = _Media.getMediaUrl(event.media[0], 1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 {% endif %}
 
-{% set startDate = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j F Y') %}
-{% set endDate = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j F Y') %}
+{% set startDate = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j F Y') %}
+{% set endDate = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'j F Y') %}
 
-{% set startTime = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
-{% set endTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia') %}
+{% set startTime = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
 
 <section class="">
 
@@ -63,6 +67,10 @@
                             <p class="content">
                                 {{ event.content | raw }}
                             </p>
+
+                            {% if event.latitude and event.longitude %}
+                                <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
+                            {% endif %}
                         </div>
 
                         <div class="col-md-1 side-border">

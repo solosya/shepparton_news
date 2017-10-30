@@ -12,7 +12,7 @@
     {% set articleImg = _Media.getMediaUrl(article.media[0],1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 {% endif %}
 
-{% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate, 'F, Y') %}
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate, 'F, Y') %}
 
 {% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleIds : article.id }) %}
 {% set testCount = 0 %}

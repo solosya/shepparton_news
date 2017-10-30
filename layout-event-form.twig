@@ -10,6 +10,8 @@
 {% set user = false %}
 
 {{this.registerJs("Acme.eventForm = new Acme.EventForm(["~jobsBlogId~"]);")}}
+{{this.registerJs("Acme.eventMap = new Acme.GoogleMap();")}}
+
 {{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}}
 
 
@@ -57,14 +59,9 @@
                         <div class="col-sm-3 large-split">
                             <input type="text" class="articleExtendedData  eventEnd" name="end_date" id="end_date" value="" placeholder="End date">
                         </div>
-                    </div>
-                    <input type="hidden" class="articleExtendedData" name="event_latitude" id="event_latitude" value="" placeholder="">
-                    <input type="hidden" class="articleExtendedData" name="event_longitude" id="event_longitude" value="" placeholder="">
-                    
+                    </div>                    
                     
                     <p class="form-section-label">Location</p>
-
-
 
                     <div class="row">
                         <div class="col-sm-6">
