@@ -3,8 +3,8 @@
 {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
 {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
 
-{% if (networkData.title | lower) == 'country news' %}
-{%  set site = 'country' %}
+{% if (networkData.title | lower) == 'dairy news' %}
+{%  set site = 'dairy' %}
 {% endif %}
 
 <style type="text/css">
@@ -49,7 +49,7 @@
         color: {{themeColors.headingColor}} !important;
     }
 
-    {% if site == 'country' %}
+    {% if site == 'dairy' %}
 
     .trending > h2 {
         color: #f03746 !important;
