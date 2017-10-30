@@ -3,6 +3,9 @@
 {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
 {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
 
+{% if (networkData.title | lower) == 'country news' %}
+{%  set site = 'country' %}
+{% endif %}
 
 <style type="text/css">
 {% if primaryFont != "" %}
@@ -45,6 +48,14 @@
      {
         color: {{themeColors.headingColor}} !important;
     }
+
+    {% if site == 'country' %}
+
+    .trending > h2 {
+        color: #f03746 !important;
+    }
+
+    {% endif %}
 
     .sb-custom-menu .searchPanel>form>button.submit,
     .site-main .current-issue-card
