@@ -21,7 +21,7 @@
 
                 <ul class="menu">
                     {% set menuItems = blog.blogFooterMenu %}
-                    {% for i in 0..4  %}
+                    {% for i in 0..2 if menuItems[i] %}
 
                        {% set activeClass = (menuItems[i].link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                        {% set externalClass = (menuItems[i].isExternal) ? 'external-link' : '' %}
@@ -43,7 +43,7 @@
                 </ul>
 
                 <ul id="" class="menu padded">
-                    {% for i in 5..8  %}
+                    {% for i in 3..5 if menuItems[i] %}
                        <li>
                             <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
                                 {% if menuItems[i].label != "" %}
@@ -58,13 +58,44 @@
                    {% endfor %}
                 </ul>
 
+                <ul id="" class="menu padded">
+                    {% for i in 6..8 if menuItems[i] %}
+                       <li>
+                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
+                                {% if menuItems[i].label != "" %}
+                                    {{menuItems[i].label}}
+                                {% elseif menuItems[i].blogTitle != "" %}
+                                    {{menuItems[i].blogTitle}}
+                                {% elseif menuItems[i].pageTitle != "" %}
+                                    {{menuItems[i].pageTitle}}
+                                {% endif %}
+                            </a>
+                        </li>
+                   {% endfor %}
+                </ul>                
+
                 <ul id="" class="menu padded70">
-                    <li><a href="" class="{{activeClass}} {{externalClass}}">CONTACT US</a></li>
-                    <li><a href="" class="{{activeClass}} {{externalClass}}">ABOUT US </a></li>
+
+                    {% for i in 9..9 if menuItems[i] %}
+                       <li>
+                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
+                                {% if menuItems[i].label != "" %}
+                                    {{menuItems[i].label}}
+                                {% elseif menuItems[i].blogTitle != "" %}
+                                    {{menuItems[i].blogTitle}}
+                                {% elseif menuItems[i].pageTitle != "" %}
+                                    {{menuItems[i].pageTitle}}
+                                {% endif %}
+                            </a>
+                        </li>
+                   {% endfor %}
+
+                    <li><a href="/contact-us" class="{{activeClass}} {{externalClass}}">CONTACT US</a></li>
+                    <li><a href="/about-us" class="{{activeClass}} {{externalClass}}">ABOUT US </a></li>
                 </ul>
                 <ul id="" class="menu policy">
-                    <li><a href="" class="{{activeClass}} {{externalClass}}">General use policy</a></li>
-                    <li><a href="" class="{{activeClass}} {{externalClass}}">Privacy policy</a></li>
+                    <li><a href="/general-use" class="{{activeClass}} {{externalClass}}">General use policy</a></li>
+                    <li><a href="/privacy-policy" class="{{activeClass}} {{externalClass}}">Privacy policy</a></li>
                 </ul>
 
 
