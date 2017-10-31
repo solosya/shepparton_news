@@ -148,11 +148,13 @@
     a.card {
         > article {
             > .content {
+                height: 100%;
                 padding-top: 250px !important;
 
                 .event-time {
+                    width: 300px;
                     position: absolute;
-                    bottom: 20px;
+                    bottom: 25px;
                     p {
                         color: color(red);
                         font-size: rem(14);
@@ -162,6 +164,8 @@
                 }
 
                 .author {
+                    width: 300px;
+                    bottom: 10px;
                     > p {
                         color: white !important;
                         font-weight: bold !important;
