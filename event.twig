@@ -69,7 +69,9 @@
                             </p>
 
                             {% if event.latitude and event.longitude %}
-                                <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
+                                <div class="event-map">
+                                    <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
+                                </div>
                             {% endif %}
                         </div>
 
