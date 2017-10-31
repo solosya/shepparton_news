@@ -136,11 +136,8 @@
                return 'adslot' + id;
             }
 
-             // Function to add content to page, mimics real infinite scroll
-             // but keeps it much simpler from a code perspective.
+             
             function loadNextAd() {
-
-               // Generate next slot name
                var adSlot = document.getElementById("newAdSlot");
                var slotName = generateNextSlotName();
                var slotDiv = document.createElement('div');
@@ -148,10 +145,8 @@
                slotDiv.id = slotName;
                slotDiv.setAttribute( 'class', 'google_ad google_ad_leaderboard' );
                adSlot.id = "";
-               adSlot.setAttribute( 'class', 'ad-container' ); // Id must be the same as slotName
+               adSlot.setAttribute( 'class', 'ad-container' );
                
-               // Define the slot itself, call display() to 
-               // register the div and refresh() to fetch ad.
                googletag.cmd.push(function() {
                  var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], slotName).setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                  googletag.display(slotName);
