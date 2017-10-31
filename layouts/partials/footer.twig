@@ -58,7 +58,7 @@
                    {% endfor %}
                 </ul>
 
-                {% if menuItems[6] %} {# only display this column if we have enough items #}
+                {% if menuItems | length > 6 %}
                     <ul id="" class="menu padded">
                         {% for i in 6..8 if menuItems[i] %}
                            <li>
@@ -73,7 +73,8 @@
                                 </a>
                             </li>
                        {% endfor %}
-                    </ul>                
+                    </ul>
+                {% endif %}          
 
                 <ul id="" class="menu padded70">
 
