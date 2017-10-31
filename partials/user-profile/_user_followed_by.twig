@@ -1,4 +1,31 @@
-<div class="daily-ten clear">
+<section>
+    <div class="row">
+        <div class="col-sm-9 section-header">
+            <div class="hk">
+                <h2>Followed By</h2>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-5">
+            <div class="row">
+                <ul class="profile-list">
+                    {% if false %}
+                        {% for blog in userOwnerBlogs %}
+                            <li>
+                                <a href="{{blog.url}}">{{Html.encode(blog.title)}}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class='no-data'>No followers found.</p>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# <div class="daily-ten clear">
     <header class="sub-header">Followed by</header>
     {% if myFollowers | length > 0 %}
     <ul class="tabular-data-list">
@@ -38,5 +65,5 @@
     {% else %}
     <p class="no-data">No follower(s) found.</p>
     {% endif %}
-</div>
+</div> #}
 

@@ -1,4 +1,31 @@
-<div class="daily-ten clearfix">
+<section>
+    <div class="row">
+        <div class="col-sm-9 section-header">
+            <div class="hk">
+                <h2>Following</h2>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-5">
+            <div class="row">
+                <ul class="profile-list">
+                    {% if false %}
+                        {% for blog in userOwnerBlogs %}
+                            <li>
+                                <a href="{{blog.url}}">{{Html.encode(blog.title)}}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class='no-data'>No authors found.</p>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# <div class="daily-ten clearfix">
     <header class="sub-header">Following</header>
     <div class="tabbable tabbable-custom">
         <ul class="nav nav-tabs">
@@ -87,4 +114,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> #}
