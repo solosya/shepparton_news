@@ -7,16 +7,6 @@
 
             <div class="container">
 
-
-                <fieldset id="searchPanel" class="searchPanel">
-                    <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                        <label for="header-search" class="assistive-text sr-only">Search</label>
-                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                        <button class="submit" type="submit" id="searchsubmit"></button>
-                        <button class="close" type="button" id="searchclose"></button>
-                    </form>
-                </fieldset>
-
                 {{ this.render('header-logo.twig', {
                     networkData: networkData,
                 }) | raw }}
@@ -89,27 +79,25 @@
 
         <div class="header-bottom">
 
-
-            <ul class="auth-links">
+            <ul class="auth-links">              
                 <li><a href="{{ loginPath }}">LOG IN</a></li>
                 <li><a href="{{ signUpPath }}">SIGN UP</a></li>
             </ul>
 
+            <ul class="auth-links">
+                <li id="menu-item-search" class="menu-item-search">
+                    <fieldset id="searchPanel" class="searchPanel">
+                        <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                            <label for="header-search" class="assistive-text sr-only">Search</label>
+                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                            <button class="submit" type="submit" id="searchsubmit"></button>
+                            <button class="close" type="button" id="searchclose"></button>
+                        </form>
+                    </fieldset>  
 
-
-            <div class="header-search">
-                <nav class="menu-desktop">
-                    <div class="search-container">
-                        <ul class="menu search">
-                            <li id="menu-item-search" class="menu-item-search">
-                                <a href="#" class="search-icon"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>                        
-            </div>
-
-
+                    <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                </li>  
+            </ul>            
 
         </div><!-- .site-branding-top -->
 

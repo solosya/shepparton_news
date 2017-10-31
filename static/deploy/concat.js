@@ -33334,14 +33334,18 @@ $('document').ready(function() {
     //         return false;
     //     }
     // });
-
-    $("ul > li.menu-item-search").on("click", function (e) {
-        $("#searchPanel").show();
+    $("#searchOpen").on("click", function (e) {
+        $("#searchPanel").css('display', 'inline-block');
+        // $("#menu-primary-menu").hide();
+        $("#searchPanel input").focus();
+    });
+    $("#searchsubmit").on("click", function (e) {
+        $("#searchPanel").css('display', 'inline-block');
         // $("#menu-primary-menu").hide();
         $("#searchPanel input").focus();
     });
     $("#searchclose").on("click", function (e) {
-        $("#searchPanel").hide();
+        $("#searchPanel").css('display', 'none');
         // $("#menu-primary-menu").show();        
     });
 

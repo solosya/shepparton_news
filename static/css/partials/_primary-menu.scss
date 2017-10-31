@@ -40,12 +40,12 @@
 
 .searchPanel {
     display:none;
-    position:absolute;
-    top: 0px;
-    right: 0px;
+    position:relative;
+    top: -5px;
+    right: -32px;
     background: white;
-    width: 330px;
-    height: 32px;
+    width: 200px;
+    height: 21px;
 
     > form {
         height:100%;
@@ -69,7 +69,8 @@
             position: absolute;
             border:none;
             width: 32px;
-            height: 32px;
+            height: 25px;
+            top: -2px;
 
             &.submit {
                 @include searchIcon;
@@ -77,7 +78,6 @@
                 background-position: center;
                 position: absolute;
                 right:32px;
-                top:0px;
                 padding:3px;
                 background-color: color(red);
             }
@@ -87,7 +87,6 @@
                 background-position: center;
                 position: absolute;
                 right:0px;
-                top:0px;
                 padding:3px;
                 background-color: black;
             }
