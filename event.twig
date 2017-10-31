@@ -50,7 +50,6 @@
 
                         <div class="col-md-6">
 
-
                             {% set difference = date(event.endDate).diff(date(event.startDate)) %}
                             {% set leftDays = difference.days %}
                             {% if leftDays > 0 %}
@@ -68,13 +67,22 @@
                                 {{ event.content | raw }}
                             </p>
 
-                            {% if event.latitude and event.longitude %}
-                                <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
-                            {% endif %}
                         </div>
 
                         <div class="col-md-1 side-border">
                         </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        {% if event.latitude and event.longitude %}
+                            <div id="addressMap" 
+                                 data-latitude="{{event.latitude}}" 
+                                 data-longitude="{{event.longitude}}" 
+                                 style="width:100%;min-height:450px;background:rgba(0,0,0,.3);margin-top:40px;"></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

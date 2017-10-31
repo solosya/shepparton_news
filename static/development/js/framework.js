@@ -516,38 +516,40 @@
 
 
 
-        Acme.modal = function(template, parent, layouts) {
+        Acme.modal = function(template, parent, layouts, data) {
             this.parentCont = parent || null;
             this.template = template || null;
             this.layouts = layouts   || null;
+            this.data = data         || {};
             this.dfd = $.Deferred();
         }
-            Acme.modal.prototype.render = function(layout) {
-                var tmp = $('#'+this.template).html();
-                $('body').append(tmp);
+            Acme.modal.prototype.render = function(layout, title) {
+
+                if (title) {
+                    this.data['title'] = title;
+                }
+                var tmp = Handlebars.compile(window.templates[this.template]);
+                var tmp = tmp(this.data);
+                $('body').addClass('active').append(tmp);
                 if (layout) {
-                    console.log(layout);
                     this.renderLayout(layout);
                 }
                 this.events();
                 return this.dfd.promise();
             };
             Acme.modal.prototype.renderLayout = function(layout) {
-                var layout = $(this.layouts[layout]).html();
+                var layout = window.templates[this.layouts[layout]];
                 $(this.parentCont).find('#dialogContent').empty().append(layout); 
             };
             Acme.modal.prototype.events = function() 
             {
-                console.log('running events');
                 var self = this;
                 $(this.parentCont).on("click", function(e) {
-                    console.log('clicked');
                     self.handle(e);
                 });
 
             };
             Acme.modal.prototype.handle = function(e) {
-                console.log('handling from parent');
                 var $elem = $(e.target);
 
                 if (!$elem.is('input')) {
@@ -588,6 +590,7 @@
                 return $elem;
             };
             Acme.modal.prototype.closeWindow = function() {
+                $('body').removeClass('active');
                 $(this.parentCont).remove();
             };
         
