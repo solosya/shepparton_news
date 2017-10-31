@@ -149,12 +149,12 @@
         > article {
             > .content {
                 height: 100%;
-                padding-top: 250px !important;
+                padding-top: 230px !important;
 
                 .event-time {
                     width: 300px;
                     position: absolute;
-                    bottom: 25px;
+                    bottom: 70px;
                     p {
                         color: color(red);
                         font-size: rem(14);
@@ -165,7 +165,7 @@
 
                 .author {
                     width: 300px;
-                    bottom: 10px;
+                    bottom: 30px;
                     > p {
                         color: white !important;
                         font-weight: bold !important;
