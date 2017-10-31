@@ -3,6 +3,13 @@
 {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
 {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
 
+{% if (networkData.title | lower) == 'dairy news' %}
+{%  set site = 'dairy' %}
+{% endif %}
+
+{% if (networkData.title | lower) == 'country news' %}
+{%  set site = 'country' %}
+{% endif %}
 
 <style type="text/css">
 {% if primaryFont != "" %}
@@ -45,6 +52,36 @@
      {
         color: {{themeColors.headingColor}} !important;
     }
+
+    div > a.withImage__content>article>.content>.category {
+        color: white !important;
+    }
+
+    .foo {
+        content: {{ site }};
+    }
+
+    .bar {
+        content: {{ networkData.title | lower }};
+    }
+
+    {% if site == 'dairy' %}
+
+    div.trending > h2,
+    div.most-popular > h2 {
+        color: #f03746 !important;
+    }
+
+    {% endif %}
+
+    {% if site == 'country' %}
+
+    div.trending > h2,
+    div.most-popular > h2 {
+        color: #39393a !important;
+    }
+
+    {% endif %}
 
     .sb-custom-menu .searchPanel>form>button.submit,
     .site-main .current-issue-card
