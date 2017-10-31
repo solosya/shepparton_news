@@ -58,21 +58,23 @@
                    {% endfor %}
                 </ul>
 
-                <ul id="" class="menu padded">
-                    {% for i in 6..8 if menuItems[i] %}
-                       <li>
-                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
-                                {% if menuItems[i].label != "" %}
-                                    {{menuItems[i].label}}
-                                {% elseif menuItems[i].blogTitle != "" %}
-                                    {{menuItems[i].blogTitle}}
-                                {% elseif menuItems[i].pageTitle != "" %}
-                                    {{menuItems[i].pageTitle}}
-                                {% endif %}
-                            </a>
-                        </li>
-                   {% endfor %}
-                </ul>                
+                {% if menuItems | length > 6 %}
+                    <ul id="" class="menu padded">
+                        {% for i in 6..8 if menuItems[i] %}
+                           <li>
+                                <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
+                                    {% if menuItems[i].label != "" %}
+                                        {{menuItems[i].label}}
+                                    {% elseif menuItems[i].blogTitle != "" %}
+                                        {{menuItems[i].blogTitle}}
+                                    {% elseif menuItems[i].pageTitle != "" %}
+                                        {{menuItems[i].pageTitle}}
+                                    {% endif %}
+                                </a>
+                            </li>
+                       {% endfor %}
+                    </ul>
+                {% endif %}          
 
                 <ul id="" class="menu padded70">
 
