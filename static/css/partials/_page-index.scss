@@ -193,6 +193,7 @@ body.special {
         > a.download-current {
             color: white;
             text-transform: uppercase;
+            font-size: rem(15);
 
             &:hover {
                 cursor: pointer !important;
