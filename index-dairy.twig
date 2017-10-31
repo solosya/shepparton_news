@@ -195,23 +195,23 @@
 
     {% if sections['management'].feed.articles|length > 0 %}
         <div class="container">
-            {{this.render('partials/index/small-section.twig', {
+            {{this.render('partials/index/medium-section.twig', {
                 articles: sections['management'], 
                 articleCount: articleCount,
                 section: 'management',
                 dev: dev,
+                ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
 
     {% if sections['from the experts'].feed.articles|length > 0 %}
         <div class="container">
-            {{this.render('partials/index/medium-section.twig', {
+            {{this.render('partials/index/small-section.twig', {
                 articles: sections['from the experts'], 
                 articleCount: articleCount,
                 section: 'from the experts',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
@@ -222,31 +222,31 @@
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
             </script>
         </div>
-    </div>    
+    </div>
 
     {% if sections['markets'].feed.articles|length > 0 %}
         <div class="container">
-            {{this.render('partials/index/row-three-ad.twig', {
+            {{this.render('partials/index/row-three.twig', {
                 articles: sections['markets'], 
                 articleCount: articleCount,
                 section: 'markets',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-3',
+                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
             }) | raw}} 
         </div>
-    {% endif %}    
+    {% endif %} 
 
     {% if sections['machinery & products'].feed.articles|length > 0 %}
         <div class="container">
-            {{this.render('partials/index/row-three.twig', {
+            {{this.render('partials/index/row-three-ad.twig', {
                 articles: sections['machinery & products'], 
                 articleCount: articleCount,
                 section: 'machinery & products',
                 dev: dev,
-                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
+                ad: 'div-gpt-ad-mrec-3',
             }) | raw}} 
         </div>
-    {% endif %}   
+    {% endif %}      
 
     {% if sections['animal health'].feed.articles|length > 0 %}
         <div class="container">

@@ -78,6 +78,7 @@
                     }
 
                     .author {
+                        bottom: 30px;
                         &:after {
                             content:'';
                             position: absolute;
@@ -85,7 +86,7 @@
                             width: 62px;
                             height:1px;
                             background:color(lightgrey);
-                            margin-top:20px;
+                            margin-top:10px;
                         }
                     }
 

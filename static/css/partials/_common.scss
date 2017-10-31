@@ -464,6 +464,25 @@ span.leadsentence{
     }
 }
 
+.col-profile-left, .col-profile-right {
+    position: relative;
+    min-height: 1px;
+}
+
+@media (min-width: 768px) {
+    .col-profile-left, .col-profile-right {
+        float: left;
+    }
+    .col-profile-left {
+        width: 25%;
+        padding-right: 30px;        
+    }
+    .col-profile-right {
+        width: 75%;
+        padding-left: 30px;
+    }
+}
+
 .margin-top-40 {
     margin-top: 40px;
 }

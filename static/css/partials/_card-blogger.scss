@@ -29,17 +29,18 @@
                 }
 
                 > h2{
+                    display: none;
+                }
+
+                > p {
                     font-weight: 600;
                     font-size: rem(20);
                     line-height:1.3;
                     margin-top:12px;
                     margin-bottom:10px;
-                    height:80px;
-                    max-height:80px;
-                }
-
-                > p {
-                    display:none;
+                    height:90px;
+                    max-height:90px;
+                    width: 80%;
                 }
 
 
@@ -129,16 +130,16 @@
                     }
 
                     > h2{
+                        display: none;
+                    }
+
+                    > p {
                         font-weight: 600;
                         font-size: rem(16);
                         line-height:1.25;
                         margin-top:12px;
                         margin-bottom:10px;
-                        max-height:65px;
-                    }
-
-                    > p {
-                        display:none;
+                        height:90px;
                     }
 
 
@@ -227,16 +228,16 @@
                     }
 
                     > h2{
+                        display: none;
+                    }
+
+                    > p {
                         font-weight: 600;
                         font-size: rem(16);
                         line-height:1.25;
                         margin-top:12px;
                         margin-bottom:10px;
-                        max-height:65px;
-                    }
-
-                    > p {
-                        display:none;
+                        height:65px;
                     }
 
 
@@ -325,16 +326,16 @@
                     }
 
                     > h2{
+                        display: none;
+                    }
+
+                    > p {
                         font-weight: 600;
                         font-size: rem(16);
                         line-height:1.25;
                         margin-top:12px;
                         margin-bottom:10px;
                         max-height:65px;
-                    }
-
-                    > p {
-                        display:none;
                     }
 
 

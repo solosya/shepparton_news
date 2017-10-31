@@ -111,6 +111,7 @@
                 googletag.pubads().setTargeting('page-type', ['{{pageType}}']).setTargeting('tag', []);
                 //googletag.pubads().enableSyncRendering();
                 googletag.enableServices();
+                
             });
             
             var gptran = false;
@@ -128,4 +129,29 @@
                 var node = document.getElementsByTagName('script')[0];
                     node.parentNode.insertBefore(gads, node);
             };
+
+            var nextSlotId = 1;
+            function generateNextSlotName() {
+               var id = nextSlotId++;
+               return 'adslot' + id;
+            }
+
+             
+            function loadNextAd() {
+               var adSlot = document.getElementById("newAdSlot");
+               var slotName = generateNextSlotName();
+               var slotDiv = document.createElement('div');
+               adSlot.appendChild(slotDiv);
+               slotDiv.id = slotName;
+               slotDiv.setAttribute( 'class', 'google_ad google_ad_leaderboard' );
+               adSlot.id = "";
+               adSlot.setAttribute( 'class', 'ad-container' );
+               
+               googletag.cmd.push(function() {
+                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], slotName).setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                 googletag.display(slotName);
+                 googletag.pubads().refresh([slot]);
+               });
+            }
 </script>
+

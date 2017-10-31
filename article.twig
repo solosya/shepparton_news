@@ -40,7 +40,7 @@
                             
                             <h1>{{ quotes.smarten(article.title) }}</h1>
                             
-                            <p class="author"><span>By</span> {{ article.createdBy['displayName'] }}</p>
+                            <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}"><span>By</span> {{ article.createdBy['displayName'] }}</a>
 
 {#                             <div class="time_to_read">
                                 {% set readtime = 3 %}
