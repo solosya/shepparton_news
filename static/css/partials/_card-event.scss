@@ -31,6 +31,7 @@
                     line-height:1.33;
                     margin-bottom:0;
                     height:45px;
+                    width: 350px;
                 }
 
                 > p.excerpt {
@@ -154,7 +155,7 @@
                 .event-time {
                     width: 300px;
                     position: absolute;
-                    bottom: 70px;
+                    bottom: 50px;
                     p {
                         color: color(red);
                         font-size: rem(14);
