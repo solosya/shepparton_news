@@ -149,8 +149,8 @@ hr.divide10 {
 }
 
 .ad-square {
-    height:250px;
-    width:300px;
+    // height:250px;
+    // width:300px;
     @include adtext;
 }
 
@@ -171,6 +171,7 @@ hr.divide10 {
 
     @media screen and (max-width: $sm-break){
         width: 320px;
+         margin: 15px auto 25px auto;
     } 
 
     @include adtext;
