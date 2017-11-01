@@ -30,7 +30,7 @@
         console.log(window.Acme.templatePath);
 
         $.ajax({
-            url: 'https://weather.pagemasters.com.au/weather?q=' + location,
+            url: 'https://weather.pagemasters.com.au/weather?d=' + location,
             dataType: "json",
             type: 'GET',
             success: function(res) {
