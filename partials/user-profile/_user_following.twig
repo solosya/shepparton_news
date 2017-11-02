@@ -57,8 +57,9 @@
                                 {% for following in myFollowings %}
                                     <li>
                                         <span>
-                                            <span class="fs16">{{Html.encode(following.writer['name'])}}</span>
-                                            <span class="email-spacer">{{following.writer['url']}}</span>
+                                            <span class="fs16">{{Html.encode(following.following['name'])}}</span>
+                                            {% set followingUserName = following.following['username'] %}
+                                            <a class="email-spacer" href="{{_AppHelper.getUserProfileUrl(article.createdBy[followingUserName])}}">View Profile</a>
                                         </span>
                                     </li>
                                     {% endfor %}
