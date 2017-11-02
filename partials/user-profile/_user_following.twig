@@ -59,7 +59,7 @@
                                         <span>
                                             <span class="fs16">{{Html.encode(following.following['name'])}}</span>
                                             {% set followingUserName = following.following['username'] %}
-                                            <a class="email-spacer" href="{{_AppHelper.getUserProfileUrl(article.createdBy[followingUserName])}}">View Profile</a>
+                                            <a class="email-spacer" href="{{_AppHelper.getUserProfileUrl(followingUserName)}}">View Profile</a>
                                         </span>
                                     </li>
                                     {% endfor %}
