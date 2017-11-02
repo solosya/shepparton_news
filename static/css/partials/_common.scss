@@ -393,7 +393,6 @@ figcaption{
 }
 
 
-
 p.lead{
     font-size: rem(20);
     font-weight: bold;
@@ -401,6 +400,43 @@ p.lead{
 }
 span.leadsentence{
     font-weight: bold;
+}
+
+
+
+.nav-tabs {
+  // overrides bootstrap defaults
+  border-bottom: none;
+  > li {
+    float: right;
+    padding-bottom: 1px;
+
+    > a {
+        text-transform: uppercase;
+    color: color(darkgrey);
+    font-size: rem(10);
+    font-weight: bold;
+      margin-right: 0px;
+      line-height: $line-height-base;
+      border: none;
+      border-radius: 0px;
+      &:hover {
+        border-color: 0px;
+      }
+    }
+
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: color(red);
+        background-color: transparent;
+        border: none;
+        border-bottom-color: transparent;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 
