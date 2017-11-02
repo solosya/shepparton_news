@@ -34,12 +34,16 @@
         padding: 0px 15px;
 
         li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
             padding: 10px 20px;
             margin: 0;
             font-size: rem(16);
             color: color(darkgrey);
             letter-spacing: 0.2px;
-            font-family: $font-family-serif;
+            font-family: $font-family-sans-serif;
 
             &:nth-child(odd) {
                 background-color: rgba(216,216,216,0.5); 
@@ -51,7 +55,20 @@
             &.no-data {
                 text-align: center;
                 font-style: italic;
-            }       
+            }
+
+            >img.thumbnail {
+                width: 64px;
+                height: 64px;
+            }    
+
+            > div.description {
+                p {
+                    font-size: rem(14);
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
         }        
     }
 

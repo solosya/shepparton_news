@@ -44,7 +44,7 @@
                                     </li>
                                     {% endfor %}
                             {% else %}
-                                <li class="no-data">User is not following any blog(s).</li>
+                                <li class="no-data">User is not following any blogs.</li>
                             {% endif %}
                         </ul>
                     </div>
@@ -57,9 +57,8 @@
                                 {% for following in myFollowings %}
                                     <li>
                                         <span>
-                                            <span class="fs16">{{Html.encode(following.following['name'])}}</span>
                                             {% set followingUserName = following.following['username'] %}
-                                            <a class="email-spacer" href="{{_AppHelper.getUserProfileUrl(followingUserName)}}">View Profile</a>
+                                            <a class="email-spacer" href="{{_AppHelper.getUserProfileUrl(followingUserName)}}">{{Html.encode(following.following['name'])}}</a>
                                         </span>
                                     </li>
                                     {% endfor %}
