@@ -6,6 +6,7 @@
 
     {% set myFollowers = _User.getFollowers(userDetails.guid) %}
     {% set myFollowings = _User.getFollowings(userDetails.guid) %}
+    {% set myBlogs = _User.getBlogsFollowedByUser(userDetails.guid) %}
 
     <!-- Begin Container -->
     <section class="container">
