@@ -4,6 +4,9 @@
     {% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
     {{this.registerJs("$('.loginModal').loginModal({});")}}
 
+    {% set myFollowers = _User.getFollowers(userDetails.id) %}
+    {% set myFollowings = _User.getFollowings(userDetails.id) %}
+
     <!-- Begin Container -->
     <section class="container">
         <div class="row">
