@@ -19,7 +19,7 @@
                                 {% endif %}
                                 <div class="img-thumbnail"><img class="img-responsive" src="{{ followerImage}}" alt="{{follower.follower['name']}}" ></div>
                                 <div class="description">
-                                    <h4>{{follower.follower['name'] | truncate(20)}}</h4>
+                                    <p>{{follower.follower['name'] | truncate(20)}}</p>
                                 </div>
                                 <div>
                                     <a href="{{_AppHelper.getUserProfileUrl(follower.follower['username'])}}">View Profile</a>
