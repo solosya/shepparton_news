@@ -31957,7 +31957,8 @@ Acme.Card.prototype.loadMore = function(elem, waypoint)
         'containerClass': container.data('containerclass'),
         'container': container,
         'nonpinned' : container.data('offset'),
-        'blog_guid' : container.data('blogid')
+        'blog_guid' : container.data('blogid'),
+        'ads_on' : container.data('ads')
     };
 
     if ( container.data('loadtype')) {
@@ -31975,7 +31976,11 @@ Acme.Card.prototype.loadMore = function(elem, waypoint)
             container.data('existing-nonpinned-count', data.existingNonPinnedCount);
             var cardClass = container.data('containerclass');
 
-            var html = "<div class='row'>";
+            if (options.ads_on == "yes") {
+                var html = "<div class='row'><div id='newAdSlot'></div><script>loadNextAd()</script>";
+            } else {
+                var html = "<div class='row'>";
+            }
             for (var i in data.articles) {
                 html += self.renderCard(data.articles[i], cardClass);
             }  html += "</div>";

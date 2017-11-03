@@ -241,7 +241,7 @@ Acme.Card.prototype.loadMore = function(elem, waypoint)
         'containerClass': container.data('containerclass'),
         'container': container,
         'nonpinned' : container.data('offset'),
-        'blog_guid' : container.data('blogid')
+        'blog_guid' : container.data('blogid'),
         'ads_on' : container.data('ads')
     };
 
