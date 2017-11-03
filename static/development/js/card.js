@@ -260,11 +260,11 @@ Acme.Card.prototype.loadMore = function(elem, waypoint)
             container.data('existing-nonpinned-count', data.existingNonPinnedCount);
             var cardClass = container.data('containerclass');
 
-            if (options.ads_on == "yes") {
+            // if (options.ads_on == "yes") {
                 var html = "<div class='row'><div id='newAdSlot'></div><script>loadNextAd()</script>";
-            } else {
-                var html = "<div class='row'>";
-            }
+            // } else {
+            //     var html = "<div class='row'>";
+            // }
             for (var i in data.articles) {
                 html += self.renderCard(data.articles[i], cardClass);
             }  html += "</div>";
