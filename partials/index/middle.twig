@@ -63,7 +63,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
-                    containerClass: 'card-sm-wide feature-side-mobile'
+                    containerClass: 'card-sm-wide card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 
@@ -79,7 +79,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
-                    containerClass: 'card-sm-wide feature-side-mobile'
+                    containerClass: 'card-sm-wide card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 <hr class="divide visible-xs-block">
@@ -94,7 +94,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:95},
-                    containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 

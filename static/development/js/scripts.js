@@ -136,12 +136,14 @@ $('document').ready(function() {
     //     menu_bottom_foldaway.toggleClass('hide');
     // });
 
-    $("#menu-mobile").on("click", function (e) {
+    $("#menu-mobile > a").on("click", function (e) {
         $('body').toggleClass("active");
 
         var thisMenuElem = $( $(this).parent('.sb-custom-menu') );
-        $(this).toggleClass("active");
-        thisMenuElem
+
+        var menuButtons = $("#menu-mobile > a");
+
+        menuButtons.toggleClass("active");
         thisMenuElem.find('.menuContainer').toggleClass("show-on-tablet");
         thisMenuElem.toggleClass('open');
         if (pageWindow.width() < 620) {
@@ -151,26 +153,16 @@ $('document').ready(function() {
         e.preventDefault();
     });
 
-
-    // $("li.menu-item-search").bind("mouseenter focus mouseleave",function () {
-    //     if (window.innerWidth > sbCustomMenuBreakPoint) {
-    //         $("input#header-search").focus();
-    //         return false;
-    //     }
-    // });
-    $("#searchOpen").on("click", function (e) {
-        $("#searchPanel").css('display', 'inline-block');
-        // $("#menu-primary-menu").hide();
-        $("#searchPanel input").focus();
+    $(".searchOpen").on("click", function (e) {
+        $(".searchPanel").css('display', 'inline-block');
+        $(".searchPanel input").focus();
     });
-    $("#searchsubmit").on("click", function (e) {
-        $("#searchPanel").css('display', 'inline-block');
-        // $("#menu-primary-menu").hide();
-        $("#searchPanel input").focus();
+    $(".searchsubmit").on("click", function (e) {
+        $(".searchPanel").css('display', 'inline-block');
+        $(".searchPanel input").focus();
     });
-    $("#searchclose").on("click", function (e) {
-        $("#searchPanel").css('display', 'none');
-        // $("#menu-primary-menu").show();        
+    $(".searchclose").on("click", function (e) {
+        $(".searchPanel").css('display', 'none');
     });
 
 

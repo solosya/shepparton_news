@@ -92,8 +92,47 @@
             }
         }
     }
+
+    @media screen and (max-width: $sm-break-down) {
+        top: 0px;
+        right: 0px;
+        height: 48px;
+        width: 100%;
+
+        > form {
+            > input {
+                font-family: $font-family-sans-serif;
+                font-size: rem(14);
+            }
+            > button {
+                position: absolute;
+                border:none;
+                width: 48px;
+                height: 48px;
+                top: 0px;
+
+                &.submit {
+                    @include searchIconMob;
+                    background-size: 50%;
+                    background-position: center;
+                    position: absolute;
+                    right:0px;
+                    background-color: white;
+                }                
+            }
+        }
+    }
 }
 
+
+.mobileSearchIcon {
+    @include searchIcon;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 60px;
+    background-color: black;
+}
 
 
 
@@ -185,7 +224,7 @@
                 position: relative; 
 
                 @media screen and (max-width: $header-break){
-                    padding: 15px 20px;
+                    padding: 15px 0px;
                 }
 
                 &:hover{
@@ -354,7 +393,6 @@ ul.sub-menu a:focus{
         overflow-y: auto;
     }
 
-
     .sb-custom-menu .show-on-tablet {
         display: block;
         width: auto;
@@ -364,7 +402,7 @@ ul.sub-menu a:focus{
         top: 40px;
         right: 15px;
         z-index: 100;
-        background: rgba(0,0,0,0.9);
+        background: rgba(0,0,0,0.7);
         @media screen and (max-width: $sm-break) {
             max-width: none;
         }
@@ -387,7 +425,18 @@ ul.sub-menu a:focus{
         width: 100%;
         float: none;
         display: block;
-        border-bottom: 1px solid rgba(255,255,255,.3);
+        border-bottom: 1px solid rgba(0,0,0,.3);
+        background-color: white;
+        &:hover {
+            background-color: color(red);
+        }
+
+        > a {
+            color: black !important;
+            &:hover {
+                color: white !important;
+            }
+        }
     }
 
     .sb-custom-menu  ul.sub-menu{

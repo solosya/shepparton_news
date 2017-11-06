@@ -139,17 +139,32 @@
 
         height:95px;
 
-        a.card {
+        &.final {
+            height: 230px;
+        }
 
-            article {
-                > .content {
-                    p.excerpt{
-                        font-size: rem(15);
-                        height: 60px;
+        &:not(.final) {
+            a.card {
+                article {
+                    > .content {
+                        p.excerpt{
+                            font-size: rem(15);
+                            height: 60px;
+                        }
+
+                        time {
+                            top: 0px;
+                        }
+                        p.excerpt {
+                            top: 15px;
+                        }
+                        div.author {
+                            bottom: 0px; 
+                        }
                     }
                 }
             }
-        }
+        } 
     }
 }
 

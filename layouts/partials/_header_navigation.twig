@@ -15,22 +15,21 @@
                 <!--  DESKTOP MENU -->
                 <!--  ************ -->
 
-                <nav class="sb-custom-menu menu-bar">
-                    <a href="#" id="menu-mobile" class="menu-hamburger"></a>
+                <nav class="sb-custom-menu menu-bar" id="menu-mobile">
+                    <a href="#" class="mobileSearchIcon visible-xs-block"></a>
+                    <a href="#" class="menu-hamburger"></a>
 
                     <div class="menuContainer">
-                        <div id="menu-search" class="secondary-menu menu-search">
-                            <form method="get" id="searchformmob" action="{{networkData.defaultBlogUrl}}/search">
-                                <div>
-                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                </div>
-                                <button class="btn btn-default" type="submit" id="searchsubmit">
-                                    <span class="icon-search icon"></span>
-                                </button>
-                            </form>
-                        </div>
-
                         <ul id="menu-primary-menu" class="menu primary-menu">
+                            <li class="menu-item-search visible-xs-block">
+                                <fieldset class="searchPanel">
+                                    <form method="get" action="{{networkData.defaultBlogUrl}}/search">
+                                        <label for="header-search" class="assistive-text sr-only">Search</label>
+                                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                        <button class="submit" type="submit" id="mobileSearchButton"></button>
+                                    </form>
+                                </fieldset>  
+                            </li>                             
                             {% set menuItems = blog.blogHeaderMenu %}
                             {% for parentItem in menuItems  %}
 
@@ -86,7 +85,7 @@
 
             <ul class="auth-links">
                 <li id="menu-item-search" class="menu-item-search">
-                    <fieldset id="searchPanel" class="searchPanel">
+                    <fieldset class="searchPanel">
                         <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
                             <label for="header-search" class="assistive-text sr-only">Search</label>
                             <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">

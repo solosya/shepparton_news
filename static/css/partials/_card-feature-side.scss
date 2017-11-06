@@ -195,7 +195,7 @@
     }
 }
 
-.feature-side-mobile {
+.card-sm-mobile {
     @media screen and (max-width: $sm-break-down){
         @include card-feature-side-base();
 

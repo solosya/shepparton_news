@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-3 col-sm-9 sm-two-cols">
 
-            <hr class="divide15 visible-sm-block space-only">
+            <hr class="divide15 visible-xs-block visible-sm-block space-only">
 
             <div class="row">
                 <div class="col-md-9 visible-xs-block visible-md-block visible-lg-block">
@@ -39,18 +39,25 @@
                     </div>
                 </div>
 
+                <div class="col-md-9 visible-xs-block visible-md-block visible-lg-block">
+                    <hr class="divide12">
+                </div>
+
                 <div class="col-md-9 col-sm-1">
                     {% if articles.feed.articles[sectionCount] %}
                         {{this.render('../_single-article.twig', {
                             article: articles.feed.articles[sectionCount], 
                             imageSize: {width:80, height:95},
-                            containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                         }) | raw}}
 
-                        <hr class="divide visible-xs-block">
 
                         {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
                     {% endif %}
+                </div>
+
+                <div class="col-md-9 visible-xs-block">
+                    <hr class="divide">
                 </div>
        
                 <div class="col-md-9 col-sm-1">
@@ -58,10 +65,8 @@
                         {{this.render('../_single-article.twig', {
                             article: articles.feed.articles[sectionCount], 
                             imageSize: {width:80, height:95},
-                            containerClass: 'feature-side feature-side-tablet feature-side-mobile visible-sm-block'
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile visible-sm-block'
                         }) | raw}}
-
-                        <hr class="divide visible-xs-block">
                     {% endif %}
                 </div>
             </div>
@@ -70,14 +75,14 @@
 
     <div class="row row-space sm-two-cols">
 
-        {% set visibleClass = ['visible-xs-block visible-md-block visible-lg-block divideright', '', ''] %}
+        {% set visibleClass = ['visible-xs-block visible-md-block visible-lg-block divideright', 'divideright', 'divideright'] %}
 
         {% for i in 0..2 if articles.feed.articles[sectionCount] %}
             <div class="col-md-3 col-sm-1 {{ visibleClass[i] }} ">
                 {{this.render('../_single-article.twig', {
                     article: articles.feed.articles[sectionCount], 
                     imageSize: {width:160, height:190},
-                    containerClass: 'feature-side feature-side-tablet feature-side-mobile '
+                    containerClass: 'feature-side feature-side-tablet card-sm-mobile ' ~ visibleClass[i]
                 }) | raw}}
                 {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
                 {% if i < 2 %}

@@ -16,6 +16,12 @@
     	color:color(darkgrey);
     	line-height:1.75;
     	letter-spacing: 0.7px;
+        @media screen and (max-width: $sm-break-down) {
+            font-size: rem(18);
+            font-weight: normal;
+            line-height: 2.33;
+            letter-spacing: 0.5px;
+        }    
     }
 
 

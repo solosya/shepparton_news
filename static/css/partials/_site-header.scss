@@ -26,12 +26,16 @@
             }
 
             nav.sb-custom-menu {
-                > a {
+                > a.menu-hamburger {
                     margin-top:0;
                     background-image: url(../icons/mobile-close.svg);
                     background-size:cover;
                     width:20px;
                     height:20px;
+                }
+
+                > a.mobileSearchIcon {
+                    display: none !important;
                 }
             }
         }
@@ -55,6 +59,12 @@
 //     // } 
 // }
 
+.top-ad {
+    @media screen and (max-width: $sm-break-down) {
+        padding-top: 80px;
+    }
+}
+
 .site-header {
     position:relative;
     padding:0;
@@ -69,6 +79,11 @@
         width:100%;
         @media screen and (max-width: $mmd-break){
             height:auto;
+        }
+
+        @media screen and (max-width: $sm-break-down) {
+            position: fixed;
+            top: 0;
         }
         
         // input.field {

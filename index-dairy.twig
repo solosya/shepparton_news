@@ -129,7 +129,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: articleCount + 1, 
-                                    containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             {% endfor %}
@@ -172,7 +172,7 @@
                         article: articles[tabletCount], 
                         position: 1, 
                         imageSize: {width:500},
-                        containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set tabletCount = (dev) ? tabletCount : tabletCount + 1 %}
                     <hr class="divide10 visible-sm-block space-only">
@@ -221,7 +221,7 @@
                 articleCount: articleCount,
                 section: 'markets',
                 dev: dev,
-                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
+                cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
             }) | raw}} 
         </div>
     {% endif %} 
@@ -245,7 +245,7 @@
                 articleCount: articleCount,
                 section: 'animal health',
                 dev: dev,
-                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
+                cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
             }) | raw}} 
         </div>
     {% endif %}    

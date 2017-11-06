@@ -101,11 +101,9 @@ hr.divide {
     margin:28px 0;
     border: 0;
     border-top: 1px solid color(lightgrey);
-}
-
-hr.divide.visible-xs-block {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    @media screen and (max-width: $sm-break-down){
+        margin: 15px 0;
+    }
 }
 
 hr.divide24 {
@@ -209,6 +207,14 @@ div.bloggerImg {
     display:inline-block;
     padding:5px;
     background-image: url(../icons/search-icon.svg);
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+@mixin searchIconMob {
+    display:inline-block;
+    padding:5px;
+    background-image: url(../icons/search-icon-mobile.svg);
     background-repeat: no-repeat;
     background-size:contain;
 }

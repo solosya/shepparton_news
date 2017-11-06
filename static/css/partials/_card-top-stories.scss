@@ -103,13 +103,22 @@
 .top-stories-mobile {
     @media screen and (max-width: $sm-break-down){
         @include top-stories-base();
-
         a.card {
+            height: 85px;
             article {
                 > .content {
                     h2{
                         line-height:1.2;
-                        height:40px;
+                        height:36px;
+                        font-weight: normal;
+                    }
+
+                    > p {
+                        display: none;
+                    }
+
+                    .author {
+                        bottom: 7px;
                     }
                 }
             }
