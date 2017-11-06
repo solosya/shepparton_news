@@ -34,7 +34,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-sm-9">
+                <div class="col-md-6 col-sm-9 col-xs-9">
                    {% if articles[articleCount] %}
                        {{this.render('partials/_single-article.twig', {
                            article: articles[articleCount],
@@ -62,7 +62,7 @@
                         </div>
 
                      {% if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-9">
+                            <div class="col-sm-1 col-md-9 col-xs-9">
                                 <hr class="divide18 visible-md-block visible-lg-block">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
@@ -71,13 +71,13 @@
                                      containerClass: 'feature-side feature-side-tablet card-sm-mobile '
                                  }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                <hr class="divide visible-xs-block">
                             </div>
                      {% endif %}
 
                     <!-- extra story for tablet, mobile -->
                      {% if articles[articleCount] %}
-                            <hr class="divide visible-xs-block">
-                            <div class="col-sm-1 col-md-9 visible-sm-block visible-xs-block">
+                            <div class="col-sm-1 col-md-9 col-xs-9 visible-sm-block visible-xs-block">
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
@@ -95,14 +95,16 @@
 
                 {% set divider = ['visible-lg-block visible-md-block divideright', 'divideright', ''] %}
                 {% for i in 0..2 if articles[articleCount] %}
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[articleCount], 
-                        imageSize: {width:160, height:190},
-                        position: articleCount + 1,
-                        containerClass: 'col-sm-1 col-md-3 feature-side feature-side-tablet card-sm-mobile ' ~ divider[i]
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    <hr class="divide visible-xs-block">
+                    <div class="col-sm-1 col-md-3 col-xs-9">
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            imageSize: {width:160, height:190},
+                            position: articleCount + 1,
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile ' ~ divider[i]
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        <hr class="divide visible-xs-block">
+                    </div>
                 {% endfor %}
 
             </div>
@@ -111,17 +113,19 @@
 
 
         <section class="">
-            <div class="row">
-                {% for i in 0..2 if articles[articleCount] %}
-                    {{this.render('partials/_single-article.twig', {
-                        article: articles[articleCount], 
-                        imageSize: {width:600, height:320},
-                        containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                {% endfor %}
-
-            </div>
+                <div class="row">
+                        {% for i in 0..2 if articles[articleCount] %}
+                            <div class="col-md-3 col-sm-3 col-xs-9 ">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:600, height:320},
+                                    containerClass: 'card-sm-wide card-sm-wide-mobile'
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">                    
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            </div>
+                        {% endfor %}
+                </div>
         </section>
     </div>
 
