@@ -135,9 +135,21 @@
                 > .content {
                     h2{
                         height: 60px;
+                        margin-right: 20px;
                     }
                 }
             }
+
+            padding-left: 100px;
+
+            &.without__image {
+                .content {
+                    padding-left: 0px;
+                    h2 {
+                        margin-right: 0px;
+                    }
+                }
+            }            
         }
     }
 }
