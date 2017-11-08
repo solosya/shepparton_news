@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="container">        
 
-        <div class="col-xs-9">
+        <div class="col-xs-9 col-md-2 col-sm-2">
             {{ this.render('header-logo.twig', {
                 networkData: networkData,
             }) | raw }}
@@ -11,7 +11,7 @@
             <hr class="divide15 space-only">
         </div>
 
-            <div class="col-md-7">
+            <div class="col-xs-9 col-md-7 col-sm-7">
 
                 <ul class="menu">
                     {% set menuItems = blog.blogFooterMenu %}

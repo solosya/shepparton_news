@@ -67,6 +67,9 @@
         
         &.padded {
             padding-right: 50px;
+            @media screen and (min-width: $sm-break) and (max-width: $md-break){
+                padding-right: 30px;
+            }            
         }
         &.padded70 {
             padding-right: 70px;
