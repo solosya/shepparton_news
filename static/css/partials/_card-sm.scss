@@ -162,7 +162,7 @@
 
 
 .card-sm-tablet{
-    @media screen and (min-width: $sm-break){
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         @include card-sm-base();
 
         a.card {
