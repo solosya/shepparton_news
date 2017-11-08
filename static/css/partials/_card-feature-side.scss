@@ -195,27 +195,4 @@
     }
 }
 
-.card-sm-mobile {
-    @media screen and (max-width: $sm-break-down){
-        @include card-feature-side-base();
-
-        height:85px;
-
-        a.card {
-            @include card-image-left(89px, 85px);
-
-
-            article {
-            
-                > .content {
-                    h2{
-                        font-size: rem(15);
-                        height: 60px;
-                    }
-                }
-            }
-        }
-    }
-}
-
 

@@ -1,21 +1,15 @@
-{% if networkData.logoMedia | length > 0 %}
-    {% set logo = _Media.getMediaUrl(networkData.logoMedia, 180, 0, {'crop': 'fit'} )%}
-{% else %}
-    {% set logo = networkData.templatePath~'/static/images/logo.svg'%}
-{% endif %}
-
 <footer class="site-footer">
     <div class="container">        
-        <div class="row">
-            <div class="col-sm-2">
-                <a class="footer-brand" 
-                    href="{{networkData.defaultBlogUrl}}" 
-                    style="background-image:url({{logo}})"
-                    rel="Home" 
-                    tabindex="-1" 
-                    title="Home">
-                </a>
-            </div>
+
+        <div class="col-xs-9">
+            {{ this.render('header-logo.twig', {
+                networkData: networkData,
+            }) | raw }}
+        </div>
+
+        <div class="visible-xs-block col-xs-9">
+            <hr class="divide15 space-only">
+        </div>
 
             <div class="col-md-7">
 

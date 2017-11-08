@@ -226,7 +226,7 @@
 
         a.card {
             @include card-image-top(auto, auto);
-            height:auto;
+            height:100%;
 
             > article {
 

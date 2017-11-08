@@ -191,47 +191,6 @@
             }
         }
 
-        .masthead-logo {
-            // position:relative;
-            height: 65px;
-            z-index: 500;
-            float:left;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            @media screen and (max-width: $mmd-break){
-                height:35px;
-            }
-
-            > a {
-                background-position: bottom; 
-            }
-
-        }
-
-
-        .navbar-brand {
-            // position:absolute;
-            // bottom:0;
-            display:block;
-            padding:0;
-            width: 160px;
-            height:40px;
-            background-repeat:no-repeat;
-            background-size:contain;
-            vertical-align: bottom;
-
-            @media screen and (max-width: $mmd-break){
-                margin-top: 0;
-                padding:8px;
-                width: 120px;
-                height:32px;
-                background-size: 120px;
-                background-repeat:no-repeat;
-            }
-
-
-        }
         .navbar-right {
             margin-top:25px;
             @media screen and (max-width: $mobile-break){
@@ -263,6 +222,44 @@
         @media screen and (max-width: $mobile-break){
             display:none;
         }
+    }
+}
+
+
+// header & footer logo
+.navigation-logo {
+    height: 65px;
+    z-index: 500;
+    float:left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    @media screen and (max-width: $mmd-break){
+        height:35px;
+    }
+
+    > a {
+        background-position: bottom; 
+    }
+}
+
+
+.navbar-brand {
+    display:block;
+    padding:0;
+    width: 160px;
+    height:40px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    vertical-align: bottom;
+
+    @media screen and (max-width: $mmd-break){
+        margin-top: 0;
+        padding:8px;
+        width: 120px;
+        height:32px;
+        background-size: 120px;
+        background-repeat:no-repeat;
     }
 }
 
