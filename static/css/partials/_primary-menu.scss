@@ -204,6 +204,7 @@
             margin:0;
             position:relative;
             height:100%;
+            margin-left: 12px;
 
             @media screen and (max-width: $header-break) {
                 display:block;
