@@ -203,7 +203,7 @@ body.special {
             &::before {
                 position: relative;
                 top: 6px;
-                margin: 0px 6px;
+                margin: 0px 10px;
                 content: ' ';
                 display: inline-block;
                 width: 27px;
@@ -211,6 +211,8 @@ body.special {
                 background-position:center;
                 background-repeat:no-repeat;
                 background-image: url('../images/arrow-in-circle-icon.svg');
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);                
             }
         }
     }
