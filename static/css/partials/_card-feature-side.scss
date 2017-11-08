@@ -130,17 +130,15 @@
             @include card-image-left(80px, 95px);
 
 
-            article {
-            
+            article {            
                 > .content {
+                    padding-left: 80px;
                     h2{
                         height: 60px;
                         margin-right: 20px;
                     }
                 }
             }
-
-            padding-left: 100px;
 
             &.without__image {
                 .content {
