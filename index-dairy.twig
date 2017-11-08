@@ -88,19 +88,17 @@
                 <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols ">
                     <div class="row">
 
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide15 visible-sm-block space-only">
-                            <div id="weather" class="weather"></div>
-                            <div class="visible-md-block visible-lg-block">
-                                <div class="weather-dropdown hidden"></div>
-                            </div>
-                        </div>
-
-                        <hr class="divide10 visible-xs-block" style="clear:both">
-
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide10 visible-md-block visible-lg-block">
-                        </div>
+                        <div class="col-sm-1 col-md-9">                    
+                            {% for i in 0..1 if articles[articleCount] %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: articleCount + 1, 
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                }) | raw}}
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                <hr class="divide12 visible-md-block visible-lg-block">                            
+                            {% endfor %}
+                        </div>                      
 
                         <div class="col-sm-1 col-md-9">
                             <div class="current-issue-card">
@@ -109,28 +107,12 @@
                         </div>
 
                         <div class="col-sm-1 col-md-9">
-                            <hr class="divide10 visible-md-block visible-lg-block">
+                            <hr class="divide12 visible-md-block visible-lg-block">
                         </div>
 
                         <div class="col-sm-1 col-md-9">                    
                             {{ this.render('partials/subscribe.twig') | raw }}
                         </div>
-
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide10 visible-md-block visible-lg-block">
-                        </div>
-
-                        <div class="col-sm-1 col-md-9">                    
-                            {% for i in 0..0 if articles[articleCount] %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount], 
-                                    position: articleCount + 1, 
-                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-                                }) | raw}}
-                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            {% endfor %}
-                        </div>
-
                     </div>
                 </div><!-- .row-->
                 {% endif %}

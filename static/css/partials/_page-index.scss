@@ -185,7 +185,7 @@ body.special {
 
     .current-issue-card {
         display: flex;
-        margin: 15px 0;
+        margin: 0px;
         background: color(red);
         height: 60px;
         padding: 12px 0px;
@@ -194,6 +194,8 @@ body.special {
             color: white;
             text-transform: uppercase;
             font-size: rem(15);
+            position: absolute;
+            top: 10px;
 
             &:hover {
                 cursor: pointer !important;
@@ -202,7 +204,7 @@ body.special {
 
             &::before {
                 position: relative;
-                top: 6px;
+                top: 7px;
                 margin: 0px 10px;
                 content: ' ';
                 display: inline-block;
@@ -247,23 +249,12 @@ body.special {
                 color: black;
             }
 
-             button[type="submit"] {
+            button[type="submit"] {
                 width: 80px;
                 margin-left: 15px;
                 background: white;
                 border: 1px solid black;
                 font-size: rem(11);
-             }
-
-            &::after {
-                display: block;
-                content: '* indicates required';
-                font-family: $font-family-serif;
-                margin: 5px 0px;
-                color: color(grey);
-                font-style: italic;
-                font-size: rem(11);
-                text-transform: none;
             }
         }
     }
