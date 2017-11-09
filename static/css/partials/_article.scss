@@ -55,6 +55,7 @@
 
 
 			.content-block-top {
+				margin-top: 45px;
 				margin-bottom: 10px;
 
 				p.category {
@@ -260,13 +261,9 @@
 
 
 
-
-
-
-	.btn-post{
+	.share-icon {
 		width:43px;
 		height:100%;
-	    background-image: url('../images/facebook.svg');
 	    background-position:center;
 	    background-repeat:no-repeat;
 	    color: #FFF;
@@ -274,7 +271,23 @@
 	    font-size: rem(19);
 	    font-weight: bold;
 	    border: 0;
-	    padding: 0;
+	    padding: 0px 10px;
+	    padding-left: 50px;
+
+        border-right: 1px solid color(lightgrey);	    
+
+		&.facebook-icon {
+		    margin-left: -25px;
+		}
+
+        &:last-child {
+            border-right: none;
+        }		
+	}
+
+
+	.btn-post{
+
 	    // margin-right:2px;
 
 	    &:hover,
@@ -286,7 +299,6 @@
 	.btn-tweet{
 	    width:43px;
 		height:100%;
-	    background-image: url('../images/twitter.svg');
 	    background-position:center;
 	    background-repeat:no-repeat;
 	    color: #FFF;

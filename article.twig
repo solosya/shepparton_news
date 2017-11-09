@@ -31,38 +31,6 @@
                     <div class="col-md-9">
 
 
-
-
-                        <div class="content-block-top">
-
-                            <p class="category">{{article.label}}</p
-                            ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
-                            
-                            <h1>{{ quotes.smarten(article.title) }}</h1>
-                            
-                            <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}"><span>By</span> {{ article.createdBy['displayName'] }}</a>
-
-{#                             <div class="time_to_read">
-                                {% set readtime = 3 %}
-                                {% if article.readingTime > 3 %}
-                                    {% set readtime = 4 %}
-                                {% endif %}
-                                {% if article.readingTime > 4 %}
-                                    {% set readtime = 7 %}
-                                {% endif %}
-                                {% if article.readingTime > 7 %}
-                                    {% set readtime = 10 %}
-                                {% endif %}
-
-                                <img src="{{networkData.templatePath}}/static/images/reading_time/{{readtime}}_min.svg" />
-                                <p>{{article.readingTime}} minute read</p>
-                            </div>
- #}                        </div><!--content-block-top-->
-
-
-
-
-
                         {% if articleImg %} 
                              <figure class="featured">
                                  <img src="{{articleImg}}" class="img-responsive">
@@ -82,9 +50,34 @@
                                  </figcaption>
                              </figure>
                          {% endif %}
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <div class="content-block-top">
+
+                            <p class="category">{{article.label}}</p
+                            ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
+                            
+                            <h1>{{ quotes.smarten(article.title) }}</h1>
+                            
+                            <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}"><span>By</span> {{ article.createdBy['displayName'] }}</a>
+
+                        </div>   
+
+                        <hr class="divide18 visible-md-block visible-lg-block" />                      
 
                     </div>
 
+                </div>
+
+                {# social icons #}
+                <div class="row">
+                    <div class="col-md-9">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="share-icon facebook-icon"></a
+                        ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="share-icon twitter-icon"></a
+                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="share-icon email-icon"></a>
+                    </div>
                 </div>
 
 
