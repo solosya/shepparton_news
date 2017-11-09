@@ -252,6 +252,9 @@ div.bloggerImg {
 
         &.facebook {
             background-image: url('../images/facebook.svg');
+            width: 12px;
+            padding-right: 16px;
+            background-position-x: left;
         } 
         &.twitter {
             background-image: url('../images/twitter.svg');
