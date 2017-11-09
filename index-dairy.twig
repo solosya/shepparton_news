@@ -83,6 +83,9 @@
                     {% endif %}
                 </div>
 
+                <div class="col-xs-9 col-sm-9 visible-sm-block visible-xs-block">
+                    <hr class="divide12 space-only">
+                </div>
 
                 {% if articles[articleCount] %}
                 <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols ">
@@ -97,6 +100,7 @@
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide12 visible-md-block visible-lg-block">                            
+                                <hr class="divide12 visible-xs-block visible-sm-block space-only">
                             {% endfor %}
                         </div>                      
 
@@ -108,6 +112,7 @@
 
                         <div class="col-sm-1 col-md-9">
                             <hr class="divide12 visible-md-block visible-lg-block">
+                                <hr class="divide12 visible-xs-block visible-sm-block space-only">
                         </div>
 
                         <div class="col-sm-1 col-md-9">                    
