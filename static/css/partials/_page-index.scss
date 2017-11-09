@@ -26,13 +26,7 @@ body.special {
     margin-bottom:100px;
 
     section {
-        @media screen and (min-width: $sm-break) {
-            margin-bottom:50px;
-        }
-        @media screen and (max-width: $sm-break-down) {
-            margin-bottom:45px;
-        }
-
+        margin-bottom:40px;
     }
 
 
@@ -233,7 +227,7 @@ body.special {
 
         > h2 {
             color: color(red);
-            font-weight: normal;
+            font-weight: 600;
             font-size: rem(15);
             letter-spacing: 0.9px;
             text-transform: uppercase;
@@ -247,6 +241,7 @@ body.special {
                 font-style: italic;
                 font-size: rem(11);
                 text-transform: none;
+                font-weight: 400;
             }
         }
 
