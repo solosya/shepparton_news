@@ -569,6 +569,13 @@ span.leadsentence{
   padding-left: 0;
 }
 
+.sm-flex {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {    
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
 .flex_col {
     -webkit-flex-direction:column;
     -ms-flex-direction:column;

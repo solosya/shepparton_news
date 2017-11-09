@@ -188,7 +188,7 @@ body.special {
         margin: 0px;
         background: color(red);
         height: 60px;
-        padding: 12px 0px;
+        padding: 12px 0px;   
 
         > a.download-current {
             color: white;
@@ -217,6 +217,15 @@ body.special {
                 transform: rotate(-90deg);                
             }
         }
+
+
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {    
+            height: 74px;
+
+            > a.download-current {
+                top: 17px;
+            }
+        }         
     }
 
     .subscribe {
