@@ -240,12 +240,12 @@ div.bloggerImg {
 
     > a {
         display: block;
-        height: 31px;
-        width: 31px;
+        height: 16px;
+        width: 32px;
         border-right: 1px solid color(lightgrey);
-        background-position:center;
+        background-position:bottom;
         background-repeat:no-repeat;
-        background-size:contain;
+        background-size:auto;
 
         &.facebook {
             background-image: url('../images/facebook.svg');
