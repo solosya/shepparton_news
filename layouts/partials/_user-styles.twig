@@ -95,12 +95,6 @@
         background-color: {{themeColors.headingColor}} !important;
     }
 
-     ul.sub-menu > li:hover,
-    .sb-custom-menu > div > ul > li:hover
-      {
-        /*background-color: {{themeColors.headingColor}} !important;*/
-     }
-
     .sb-custom-menu ul.menu>li>a:hover {
         color: {{themeColors.headingColor}} !important;
     } 
@@ -114,6 +108,21 @@
     {
         color: white !important;
     }
+
+
+    @media screen and (max-width: 992px) {
+        ul.sub-menu > li:hover,
+        .sb-custom-menu > div > ul > li:hover
+        {
+            background-color: {{themeColors.headingColor}} !important;
+        }
+
+        ul.sub-menu > li:hover>a,
+        .sb-custom-menu > div > ul > li:hover>a
+        {
+            color: white !important;
+        }        
+    }    
 
 
     /* overrides */
