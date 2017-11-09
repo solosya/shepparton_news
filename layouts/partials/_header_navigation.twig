@@ -70,18 +70,17 @@
         </div><!-- .header top-->  
 
 
-
-
-
-        {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
-        {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
-
         <div class="header-bottom">
 
-            <ul class="auth-links">              
-                <li><a href="{{ loginPath }}">LOG IN</a></li>
-                <li><a href="{{ signUpPath }}">SIGN UP</a></li>
-            </ul>
+            {% if (networkData.title | lower) != 'dairy news' %}
+                {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
+                {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
+            
+                <ul class="auth-links">              
+                    <li><a href="{{ loginPath }}">LOG IN</a></li>
+                    <li><a href="{{ signUpPath }}">SIGN UP</a></li>
+                </ul>
+            {% endif %}
 
             <ul class="auth-links">
                 <li id="menu-item-search" class="menu-item-search">
