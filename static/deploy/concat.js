@@ -33239,12 +33239,19 @@ $('document').ready(function() {
 
 
     var adScroll = function() {
-        if ( scrollMetric[1] === 'up' && !isScolledPast(200)) {
-            articleAd.removeClass('bottomAd').addClass('fixad');
-        } 
-        else if ( scrollMetric[1] === 'down' && isScolledPast(200)) {
-            articleAd.removeClass('fixad').addClass('bottomAd');
+        if ( scrollMetric[1] === 'up' && !isScolledPast(475)) {
+            articleAd.removeClass('fixad').addClass('lockad');
         }
+        else if ( scrollMetric[1] === 'up' && !isScolledPast(650)) {
+            articleAd.removeClass('bottomAd').addClass('fixad');
+        }
+        else if ( scrollMetric[1] === 'down' && isScolledPast(650)) {
+            articleAd.removeClass('fixad').addClass('bottomAd');
+        } 
+        else if ( scrollMetric[1] === 'down' && isScolledPast(475)) {
+            articleAd.removeClass('lockad').addClass('fixad');
+        }
+        
     }
 
 

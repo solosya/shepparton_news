@@ -1,8 +1,14 @@
 // body.article {
 // 	background:#fff;
 // }
+
+.lockad {
+	position:absolute;
+	top:0;
+}
 .fixad {
 	position:fixed;
+	bottom:0;
 }
 .bottomAd {
 	position:absolute;
