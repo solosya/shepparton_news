@@ -29,11 +29,12 @@ body.channel, body.section, body.page {
     }
     .ad-container{
         margin-top: 50px;
-        .top-ad {
-            margin: 40px auto;
-        }
-        #div-gpt-ad-leaderboard-1{
-            margin-top: 0;
+        
+        #adslot2{
+            margin-top: -30px;
         }
     }
+    .top-ad {
+            margin: 40px auto;
+        }
 }
