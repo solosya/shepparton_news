@@ -24,7 +24,7 @@
                             {% endif %}
                             {% if not _User.isGuest() and _User.getId() != userDetails.id %}
                                 {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                                <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                                <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
                             {% endif %}
 
                             {#
