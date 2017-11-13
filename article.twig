@@ -14,7 +14,9 @@
 
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate, 'F, Y') %}
 
-{% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleIds : article.id }) %}
+{% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id] }) %}
+{% set recentArticles = _Article.getRecentArticles({ blogId: article.blog.id, limit: 5, excludeArticleIds : [article.id] }) %}
+
 {% set testCount = 0 %}
 
 <meta name="__sync_contentCategory" content="Premium">
@@ -110,13 +112,10 @@
                                     <h2 class="sidebar-header">Latest articles</h2>
                                 </div>
 
-
-
-                                {% for i in 0..3 if articles[testCount] %}
+                                {% for i in 0..3 if recentArticles[i] %}
                                     <div class="col-md-9 col-sm-4">
                                         {{this.render('partials/_single-article.twig', {
-                                            article: articles[testCount], 
-                                            position: (articleCount+1),
+                                            article: recentArticles[i], 
                                             imageSuppress: true,
                                             containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                         }) | raw}}
@@ -124,8 +123,6 @@
                                         {% if i < 4 %}
                                             <hr class="divide15">
                                         {% endif %}
-
-                                        {% set articleCount = articleCount + 1 %}
                                     </div>
                                 {% endfor %}
                             </div>
@@ -173,11 +170,10 @@
                 </div>
                 
                 <div class="row">
-                    {% for i in 0..2 if articles[i] %}
+                    {% for i in 0..2 if relatedArticles[i] %}
                         <div class="col-sm-3">
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[i], 
-                                position: (articleCount+1),
+                                article: relatedArticles[i], 
                                 imageSize: {width: 300, height: 180},
                                 containerClass: 'card-sm-wide card-sm-wide-mobile'
                             }) | raw}}
