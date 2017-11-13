@@ -14,9 +14,13 @@
 
 {% if (networkData.title | lower) == (blogData.title | lower) %}
     {% set blogPrefixName = 'home' %}
+{% elseif (blogData.title | lower) == 'australian rules' or (blogData.title | lower) == 'cricket' or (blogData.title | lower) == 'golf' or (blogData.title | lower) == 'netball' or (blogData.title | lower) == 'racing' or (blogData.title | lower) == 'soccer' or (blogData.title | lower) == 'tennis' %}
+    {% set blogPrefixName = 'sport' %}
 {% else %}
     {% set blogPrefixName = (blogData.title | lower) %}
 {% endif %}
+
+
 
 {% set pageType = (blogData.type | lower) %}
 

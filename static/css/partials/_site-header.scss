@@ -65,6 +65,10 @@
     }
 
     margin: 40px auto;
+
+    @media screen and (max-width: $mobile-break){
+                display: none;
+            }
 }
 
 .site-header {
