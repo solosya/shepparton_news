@@ -1,0 +1,25 @@
+{% set mastOverride = '' %}
+{% set imgOverride = '' %}
+
+{% if (networkData.title | lower) == 'country news' %}
+    {% set logo = 'country-news' %}
+    {% set mastOverride = 'height: 70px;' %}
+    {% set imgOverride = 'background-position: 0px 6px;width: 185px;' %}
+{% elseif (networkData.title | lower) == 'dairy news' %}
+    {% set logo = 'dairy-news' %}
+    {% set imgOverride = 'width: 185px;' %}
+{% else %}
+    {% set logo = 'shepp-news' %}
+{% endif %}
+
+{% set path = networkData.templatePath~'/static/images/'~logo~'-logo.svg'%}
+
+<div class="navigation-logo" style="{{ mastOverride }}">
+    <a  class="navbar-brand footer-logo" 
+        href="{{networkData.defaultBlogUrl}}" 
+        rel="Home" 
+        tabindex="-1" 
+        title="Home"
+        style="background-image:url({{path}}); {{ imgOverride }}">
+    </a>
+</div>
