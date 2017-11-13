@@ -162,7 +162,7 @@
                adSlot.setAttribute( 'class', 'ad-container' );
                
                googletag.cmd.push(function() {
-                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], slotName).setTargeting('POS', ['1']).defineSizeMapping(mapping4).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], slotName).setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                  googletag.display(slotName);
                  googletag.pubads().refresh([slot]);
                });
