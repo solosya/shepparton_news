@@ -17,9 +17,6 @@
                 }
 
                 > h2{
-                    display: none;
-                }
-                >p.excerpt {
                     color:black;
                     font-size: rem(18);
                     font-weight:700;
@@ -29,13 +26,26 @@
                     overflow:hidden;
                     line-height:1.22;
                     position: absolute;
-                    top: 60px;
-                    height:96px;
+                    top: 52px;
+                    height:50px;
+                }
+                >p.excerpt {
+                    color:black;
+                    font-size: rem(14);
+                    font-weight:normal;
+                    font-family:$font-family-serif;
+                    font-style:italic; 
+                    margin-top: 4px;
+                    overflow:hidden;
+                    line-height:1.21;
+                    position: absolute;
+                    top: 108px;
+                    height:64px;
                 }
 
                 >div.author {
                     position: absolute;
-                    bottom: 36px;
+                    bottom: 28px;
                     font-family:$font-family-serif;
                     p {
                         font-size:rem(14);
@@ -50,19 +60,11 @@
                 >time {
                     font-family:$font-family-serif;
                     position: absolute;
-                    top: 36px;
+                    top: 28px;
                     display: inline-block;
                     color: rgba(74,74,74,.7);
                     font-size: rem(11);
                     font-weight: 300;                    
-                }
-            }
-        }
-
-        &.without__image {
-            .content {
-                h2 {
-                    height:88px;
                 }
             }
         }
@@ -76,12 +78,12 @@
             > article {
                 > .content {
                     > p.excerpt {
-                        height:72px;
+                        height:40px;
                     }
 
                     >div.author {
                         position: absolute;
-                        bottom: 72px;
+                        bottom: 62px;
                         p {
                             font-size: rem(16);
                             color: white;
