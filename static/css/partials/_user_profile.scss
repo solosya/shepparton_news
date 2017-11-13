@@ -19,6 +19,16 @@
         font-size: rem(14);
         letter-spacing: 0.2px;
         line-height: 1.43;
+        padding: 15px 0px;
+    }
+
+    a.follow {
+        font-size: rem(10);
+        padding: 12px 3px;
+        background-color: black;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
     }
 
     .user-social {
@@ -53,8 +63,10 @@
             }
 
             &.no-data {
+                display: block;
                 text-align: center;
                 font-style: italic;
+                font-size: rem(12);
             }
 
             >img.thumbnail {
@@ -71,6 +83,11 @@
                     font-weight: bold;
                     text-transform: uppercase;
                 }
+            }
+
+            > div.followed_by {
+                font-size: rem(12);
+                font-family: $font-family-sans-serif;
             }
         }        
     }

@@ -20,11 +20,11 @@
                         <div class="inner-descr">
                             <h2 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h2>
                             {% if _User.isGuest() %}
-                                <a href="javascript:void(0)" class="button green button-block forceLoginModal"><i class="fa fa-star"></i>Follow</a>
+                                <a href="javascript:void(0)" class="button follow forceLoginModal">Follow</a>
                             {% endif %}
                             {% if not _User.isGuest() and _User.getId() != userDetails.id %}
                                 {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                                <a href="javascript:void(0)" class="button green button-block FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                                <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
                             {% endif %}
 
                             {#
@@ -35,7 +35,7 @@
 
                             <p class="bio">{{Html.decode(userDetails.bio) | raw}}</p>
                             <div class="user-social">
-                                <a href="mailto:{{userDetails.email}}"><i class="fa fa-envelope"></i></a>
+                                <a href="mailto:{{userDetails.email}}" class="share-icon email-icon"></a>
                             </div>
                         </div>
                     </div>
