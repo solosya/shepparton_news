@@ -62,13 +62,12 @@
 .top-ad {
     @media screen and (max-width: $sm-break-down) {
         padding-top: 80px;
+        display: none;
     }
 
     margin: 40px auto;
 
-    @media screen and (max-width: $mobile-break){
-                display: none;
-            }
+    
 }
 
 .site-header {
@@ -76,6 +75,10 @@
     padding:0;
     max-width:none;
     z-index:140;
+    @media screen and (max-width: $sm-break-down) {
+        padding-bottom: 65px;
+    }
+
 
 
     .site-header-main {
