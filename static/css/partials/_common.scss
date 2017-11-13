@@ -430,15 +430,16 @@ span.leadsentence{
 
     > a {
         text-transform: uppercase;
-    color: color(darkgrey);
-    font-size: rem(10);
-    font-weight: bold;
-      line-height: $line-height-base;
-      border: none;
-      border-radius: 0px;
-      &:hover {
-        border-color: 0px;
-      }
+        color: color(darkgrey);
+        font-size: rem(10);
+        font-weight: bold;
+        line-height: $line-height-base;
+        border: none;
+        border-radius: 0px;
+        &:hover {
+          border-color: 0px;
+          background-color: transparent;
+        }
     }
 
     &.active > a {
@@ -456,10 +457,6 @@ span.leadsentence{
     border-left: 1px solid black;
     &:last-child {
         border-left: none;
-    }
-
-    &:hover {
-        background: transparent;
     }
   }
 }
