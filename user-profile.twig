@@ -44,24 +44,19 @@
             </div>
 
             <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
-                <!-- Begin My Blogs -->
+            {% if (networkData.title | lower) != 'dairy news' %}
+            {# there are no blogs on dairy news #}
                 {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
-                <!-- //End My Blogs -->
+            {% endif %}
 
-                <!-- Begin Recent Articles -->
                 {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles, articleCount: 0 }) | raw }}
-                <!-- //End Recent Articles -->
 
-                <!-- Begin Following -->
+            {% if (networkData.title | lower) != 'dairy news' %}
+            {# there are no users on dairy news #}
                 {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
-                <!-- //End Following -->
-
-                <!-- Begin Followed By -->
                 {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}
-                <!-- //End Followed By -->
-
+            {% endif %}
             </div>
-            <!-- //End User Profile -->
         </div>
     </section>
     <!-- //End Container -->
