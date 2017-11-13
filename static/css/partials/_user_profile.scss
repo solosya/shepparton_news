@@ -81,6 +81,9 @@ div.img-thumbnail {
     width: 36px;
     height: 36px;
     border: none;
+    padding: 0px;
+    border-radius: 36px;
+    
     > img {
         height: 36px;
         border-radius: 36px;
