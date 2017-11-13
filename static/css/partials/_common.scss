@@ -426,13 +426,13 @@ span.leadsentence{
   > li {
     float: right;
     padding-bottom: 1px;
+    margin: 5px 0px;
 
     > a {
         text-transform: uppercase;
     color: color(darkgrey);
     font-size: rem(10);
     font-weight: bold;
-      margin-right: 15px;
       line-height: $line-height-base;
       border: none;
       border-radius: 0px;
@@ -452,7 +452,24 @@ span.leadsentence{
         cursor: pointer;
       }
     }
+
+    border-left: 1px solid black;
+    &:last-child {
+        border-left: none;
+    }
+
+    &:hover {
+        background: transparent;
+    }
   }
+}
+
+.nav {
+    > li {
+        > a {
+            padding: 5px 15px;
+        }
+    }
 }
 
 
