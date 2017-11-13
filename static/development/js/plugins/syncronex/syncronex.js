@@ -427,9 +427,8 @@ function run() {
             window.attachEvent("onload", checkSyncWall)
         }
     }
-
-    // console.log(readCookie(g_AUTHTOKEN));
-    // console.log(checkAuthStatus(readCookie(g_AUTHTOKEN)));
 }
 
-run();
+if (!/dairy/i.test(window.location.hostname)) {
+    run();
+}
