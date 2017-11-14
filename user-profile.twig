@@ -21,19 +21,16 @@
                         <img src="{{profileImage}}" class="img-responsive">
                         <div class="inner-descr">
                             <h2 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h2>
-                            {% if _User.isGuest() %}
-                                <a href="javascript:void(0)" class="button follow forceLoginModal">Follow</a>
+                            
+                            {% if (networkData.title | lower) != 'dairy news' %}
+                                {% if _User.isGuest() %}
+                                    <a href="javascript:void(0)" class="button follow forceLoginModal">Follow</a>
+                                {% endif %}
+                                {% if not _User.isGuest() and _User.getId() != userDetails.id %}
+                                    {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
+                                    <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                                {% endif %}
                             {% endif %}
-                            {% if not _User.isGuest() and _User.getId() != userDetails.id %}
-                                {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                                <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                            {% endif %}
-
-                            {#
-                            {% if not _User.isGuest() and _User.getId() == userDetails.id %}
-                                <a href="{{_AppHelper.getEditProfileUrl()}}" class="button green button-block"><i class="fa fa-cog"></i>Edit Profile</a>
-                            {% endif %}
-                            #}
 
                             <p class="bio">{{Html.decode(userDetails.bio) | raw}}</p>
                             <div class="user-social">
