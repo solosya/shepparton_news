@@ -39,11 +39,6 @@
                 }
             }
         }
-        .navbar-brand {
-
-            // background-size: 40px;
-        }
-
     }
 }
 
@@ -270,10 +265,21 @@
     @media screen and (max-width: $mmd-break){
         margin-top: 0;
         padding:8px;
-        width: 120px;
-        height:32px;
-        background-size: 120px;
-        background-repeat:no-repeat;
+    }
+}
+
+.country-logo {
+    background-position: 0px 6px;
+    width: 185px;    
+    @media screen and (max-width: $mmd-break){
+        width:160px;
+    }
+}
+
+.dairy-logo {
+    width: 227px;
+    @media screen and (max-width: $mmd-break){
+        width:160px;
     }
 }
 
