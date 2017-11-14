@@ -42,11 +42,6 @@
     }
 }
 
-.footer-logo {
-    height: 100% !important;
-    background-position-y: 5px !important;
-}
-
 // .menu-items {
 //     // float: left;
 //     margin-top: 10px;
@@ -249,6 +244,18 @@
 
     > a {
         background-position: bottom; 
+    }
+
+    &.footer {
+        height: 80px;
+        width: 140px;
+        padding-top: 10px;
+
+        > a {
+            background-position: top;
+            height: 100%;
+            width: 100%;
+        }
     }
 }
 
