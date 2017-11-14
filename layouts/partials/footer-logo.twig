@@ -3,23 +3,22 @@
 
 {% if (networkData.title | lower) == 'country news' %}
     {% set logo = 'country-news' %}
-    {% set mastOverride = 'height: 70px;' %}
-    {% set imgOverride = 'background-position: 0px 6px;width: 185px;' %}
+    {% set imgOverride = 'country-logo' %}
 {% elseif (networkData.title | lower) == 'dairy news' %}
     {% set logo = 'dairy-news' %}
-    {% set imgOverride = 'width: 185px;' %}
+    {% set imgOverride = 'dairy-logo' %}
 {% else %}
     {% set logo = 'shepp-news' %}
 {% endif %}
 
 {% set path = networkData.templatePath~'/static/images/'~logo~'-logo.svg'%}
 
-<div class="navigation-logo footer" style="{{ mastOverride }}">
+<div class="navigation-logo footer {{ imgOverride }}">
     <a  class="navbar-brand" 
         href="{{networkData.defaultBlogUrl}}" 
         rel="Home" 
         tabindex="-1" 
         title="Home"
-        style="background-image:url({{path}}); {{ imgOverride }}">
+        style="background-image:url({{path}})">
     </a>
 </div>
