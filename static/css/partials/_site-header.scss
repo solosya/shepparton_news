@@ -269,17 +269,25 @@
 }
 
 .country-logo {
-    background-position: 0px 6px;
-    width: 185px;    
-    @media screen and (max-width: $mmd-break){
-        width:160px;
+    @media screen and (min-width: $mmd-break){    
+        height: 70px;
+    }
+
+    > a {
+        background-position: 0px 6px;
+        width: 185px;    
+        @media screen and (max-width: $mmd-break){
+            width:160px;
+        }
     }
 }
 
 .dairy-logo {
-    width: 227px;
-    @media screen and (max-width: $mmd-break){
-        width:160px;
+    > a {
+        width: 227px;
+        @media screen and (max-width: $mmd-break){
+            width:160px;
+        }        
     }
 }
 

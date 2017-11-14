@@ -3,7 +3,6 @@
 
 {% if (networkData.title | lower) == 'country news' %}
     {% set logo = 'country-news' %}
-    {% set mastOverride = 'height: 70px;' %}
     {% set imgOverride = 'country-logo' %}
 {% elseif (networkData.title | lower) == 'dairy news' %}
     {% set logo = 'dairy-news' %}
@@ -14,8 +13,8 @@
 
 {% set path = networkData.templatePath~'/static/images/'~logo~'-logo.svg'%}
 
-<div class="navigation-logo" style="{{ mastOverride }}">
-    <a  class="navbar-brand {{ imgOverride }}" 
+<div class="navigation-logo" style="{{ imgOverride }}">
+    <a  class="navbar-brand" 
         href="{{networkData.defaultBlogUrl}}" 
         rel="Home" 
         tabindex="-1" 
