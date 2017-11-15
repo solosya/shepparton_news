@@ -49,6 +49,15 @@
 
                     {{page.content | raw}}
 
+                    {% if (networkData.title | lower) == 'dairy news' %}
+
+                        <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20National%20Media%20Kit.pdf">Download Media Kit - National</a></p>
+                        <p>
+                        <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20Regional%20Victoria%20Media%20Kit.pdf">Download Media Kit - Regional Victoria</a></p>
+
+                    {% endif %}
+
+
                 </div>
 
             </section>
