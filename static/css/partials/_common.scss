@@ -333,7 +333,11 @@ div.bloggerImg {
 
 a.fancybox-close {
     z-index: 200 !important;
-    background-image: url('../icons/fancybox_sprite@2x.png') !important;
+    background-image: url('../icons/video-close.svg') !important;
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 div.fancybox-title {
