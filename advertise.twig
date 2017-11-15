@@ -1,4 +1,6 @@
-{{ set(this, 'title', 'Advertising') }}  
+{% set networkData = _Network.getNetworkData() %}
+
+{{ set(this, 'title', page.title | raw) }}
 
     <main id="main" class="site-main eventForm" role="main">
         
@@ -8,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-9 header">
                         <div class="hk">
-                            <h2>Advertising</h2>
+                            <h2>{{ page.title }}</h2>
                             <p></p>
                         </div>
                     </div>
