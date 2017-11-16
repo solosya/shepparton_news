@@ -34,7 +34,7 @@
         border-right:2px solid color(transwhite);
         padding-right: 30px;
         padding-left: 0;
-        margin-right: 20px;
+        margin-right: 30px;
         height: 87px;
 
         @media screen and (min-width: $sm-break) and (max-width: $md-break){
@@ -70,7 +70,7 @@
         }
         
         &.padded {
-            padding-right: 25px;          
+            padding-right: 15px;          
         }
         &.padded70 {
             padding-right: 70px;

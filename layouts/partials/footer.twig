@@ -36,7 +36,7 @@
                     </li>
                 </ul>
 
-                <ul id="" class="menu padded">
+                <ul id="" class="menu padded row">
                     {% for i in 3..5 if menuItems[i] %}
                        <li>
                             <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
@@ -53,7 +53,7 @@
                 </ul>
 
                 {% if menuItems | length > 6 %}
-                    <ul id="" class="menu padded">
+                    <ul id="" class="menu padded row">
                         {% for i in 6..8 if menuItems[i] %}
                            <li>
                                 <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
@@ -71,7 +71,7 @@
                 {% endif %}          
 
                 {% if menuItems | length > 9 %}
-                    <ul id="" class="menu padded">
+                    <ul id="" class="menu padded row">
 
                         {% for i in 9..11 if menuItems[i] %}
                            <li>
@@ -90,7 +90,7 @@
                 {% endif %}
 
                 {% if menuItems | length > 12 %}
-                    <ul id="" class="menu padded">
+                    <ul id="" class="menu padded row">
 
                         {% for i in 12..14 if menuItems[i] %}
                            <li>
