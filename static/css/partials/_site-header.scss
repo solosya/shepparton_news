@@ -39,11 +39,6 @@
                 }
             }
         }
-        .navbar-brand {
-
-            // background-size: 40px;
-        }
-
     }
 }
 
@@ -62,9 +57,12 @@
 .top-ad {
     @media screen and (max-width: $sm-break-down) {
         padding-top: 80px;
+        display: none;
     }
 
     margin: 40px auto;
+
+    
 }
 
 .site-header {
@@ -72,6 +70,10 @@
     padding:0;
     max-width:none;
     z-index:140;
+    @media screen and (max-width: $sm-break-down) {
+        padding-bottom: 65px;
+    }
+
 
 
     .site-header-main {
@@ -243,6 +245,18 @@
     > a {
         background-position: bottom; 
     }
+
+    &.footer {
+        height: 80px;
+        width: 140px;
+        padding-top: 10px;
+
+        > a {
+            background-position: top;
+            height: 100%;
+            width: 100%;
+        }
+    }
 }
 
 
@@ -258,10 +272,29 @@
     @media screen and (max-width: $mmd-break){
         margin-top: 0;
         padding:8px;
-        width: 120px;
-        height:32px;
-        background-size: 120px;
-        background-repeat:no-repeat;
+    }
+}
+
+.country-logo {
+    @media screen and (min-width: $mmd-break){    
+        height: 70px;
+    }
+
+    > a {
+        background-position: 0px 6px;
+        width: 185px;    
+        @media screen and (max-width: $mmd-break){
+            width:160px;
+        }
+    }
+}
+
+.dairy-logo {
+    > a {
+        width: 227px;
+        @media screen and (max-width: $mmd-break){
+            width:160px;
+        }        
     }
 }
 

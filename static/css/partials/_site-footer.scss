@@ -37,6 +37,10 @@
         margin-right: 20px;
         height: 87px;
 
+        @media screen and (min-width: $sm-break) and (max-width: $md-break){
+            height: 62px;
+        }
+
         @media screen and (max-width: $sm-break-down) {
             float:none;
             border-right:none;

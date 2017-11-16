@@ -6,6 +6,8 @@
 {% set limit = 20 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %}
+{# TODO: add interval: 48 back to popularArticles call when in production #}
 
 {% set profileImg = false %}
 {% if blogInfo.owner['media'] is defined and blogInfo.owner['media'] | length > 0 %}
@@ -136,10 +138,9 @@
                        <div class="most-popular col-sm-1 col-md-2">
                            <h2>Most popular</h2>
 
-                           {% for i in 0..4 if articles[articleCount] %}
+                           {% for i in 0..4 if popularArticles[i] %}
                                {{this.render('partials/_single-article.twig', {
-                                   article: articles[articleCount], 
-                                   position: 1,
+                                   article: popularArticles[i], 
                                    imageSuppress: true, 
                                    containerClass: 'card-popular'
                                }) | raw}}

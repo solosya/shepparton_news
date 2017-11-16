@@ -1,4 +1,6 @@
-{{ set(this, 'title', 'Contact Us') }}  
+{% set networkData = _Network.getNetworkData() %}
+
+{{ set(this, 'title', page.title | raw) }}
 
     <main id="main" class="site-main eventForm" role="main">
         
@@ -8,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-9 header">
                         <div class="hk">
-                            <h2>Advertising</h2>
+                            <h2>{{ page.title }}</h2>
                             <p></p>
                         </div>
                     </div>
@@ -48,6 +50,15 @@
                 <div class="col-sm-12 col-md-3 contact-details">
 
                     {{page.content | raw}}
+
+                    {% if (networkData.title | lower) == 'dairy news' %}
+
+                        <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20National%20Media%20Kit.pdf">Download Media Kit - National</a></p>
+                        <p>
+                        <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20Regional%20Victoria%20Media%20Kit.pdf">Download Media Kit - Regional Victoria</a></p>
+
+                    {% endif %}
+
 
                 </div>
 

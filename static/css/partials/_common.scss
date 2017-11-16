@@ -189,6 +189,28 @@ hr.divide10 {
     -webkit-border-radius:10px;
 }
 
+.share-icon {
+    width:43px;
+    height:100%;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: rem(19);
+    font-weight: bold;
+    border: 0;
+    padding: 0px 10px;
+    padding-left: 50px;
+    border-right: 1px solid color(lightgrey);       
+
+    &.facebook-icon {
+        margin-left: -25px;
+    }
+
+    &:last-child {
+        border-right: none;
+    }       
+}
 
 
 div.bloggerImg {
@@ -233,6 +255,9 @@ div.bloggerImg {
     width: 20px;  
 }
 
+.search-icon-mobile {
+    border-radius: 0px;
+}
 
 .social-links {
     display: flex;
@@ -240,15 +265,18 @@ div.bloggerImg {
 
     > a {
         display: block;
-        height: 31px;
-        width: 31px;
+        height: 20px;
+        width: 32px;
         border-right: 1px solid color(lightgrey);
-        background-position:center;
+        background-position:bottom;
         background-repeat:no-repeat;
-        background-size:contain;
+        background-size:auto;
 
         &.facebook {
             background-image: url('../images/facebook.svg');
+            width: 12px;
+            padding-right: 16px;
+            background-position-x: left;
         } 
         &.twitter {
             background-image: url('../images/twitter.svg');
@@ -260,7 +288,11 @@ div.bloggerImg {
             background-image: url('../images/vimeo.svg');
         }
         &.youtube {
-            background-image: url('../images/youtube.svg');
+            background-image: url('../images/youtube-black.svg');
+            margin-left: 4px;
+            height: 18px;
+            margin-top: 2px;
+            background-size: contain;
         }
     }
 
@@ -300,7 +332,12 @@ div.bloggerImg {
 }
 
 a.fancybox-close {
-    z-index:1 !important;
+    z-index: 200 !important;
+    background-image: url('../icons/video-close.svg') !important;
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 div.fancybox-title {
@@ -384,7 +421,7 @@ figcaption{
         font-size: rem(12.5);
         color: #6c6c6c;
         font-style: italic;
-        font-family: $base-font-family;
+        font-family: $font-family-serif;
         float: left;
 
         &.credit{
@@ -416,19 +453,20 @@ span.leadsentence{
   > li {
     float: right;
     padding-bottom: 1px;
+    margin: 5px 0px;
 
     > a {
         text-transform: uppercase;
-    color: color(darkgrey);
-    font-size: rem(10);
-    font-weight: bold;
-      margin-right: 15px;
-      line-height: $line-height-base;
-      border: none;
-      border-radius: 0px;
-      &:hover {
-        border-color: 0px;
-      }
+        color: color(darkgrey);
+        font-size: rem(10);
+        font-weight: bold;
+        line-height: $line-height-base;
+        border: none;
+        border-radius: 0px;
+        &:hover {
+          border-color: 0px;
+          background-color: transparent;
+        }
     }
 
     &.active > a {
@@ -442,7 +480,20 @@ span.leadsentence{
         cursor: pointer;
       }
     }
+
+    border-left: 1px solid black;
+    &:last-child {
+        border-left: none;
+    }
   }
+}
+
+.nav {
+    > li {
+        > a {
+            padding: 5px 15px;
+        }
+    }
 }
 
 

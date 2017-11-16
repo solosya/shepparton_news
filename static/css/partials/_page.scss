@@ -29,7 +29,7 @@
         }
     } 
 
-    p {
-        margin-bottom: 1.2em;
+    p + p {
+        margin-top: 1.2em;
     } 
 }

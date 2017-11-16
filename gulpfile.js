@@ -81,7 +81,7 @@ gulp.task('scripts', function(){
         // './static/development/js/plugins/bootstrap-modalmanager.js',
         // './static/development/js/plugins/bootstrap-modal.js',
         './static/development/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
-        // './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
+        './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
         // './static/development/js/plugins/bootbox.min.js',
 
         // validate used when signing in on login.twig

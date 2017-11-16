@@ -1,8 +1,14 @@
 // body.article {
 // 	background:#fff;
 // }
+
+.lockad {
+	position:absolute;
+	top:0;
+}
 .fixad {
 	position:fixed;
+	bottom:0;
 }
 .bottomAd {
 	position:absolute;
@@ -55,6 +61,7 @@
 
 
 			.content-block-top {
+				margin-top: 45px;
 				margin-bottom: 10px;
 
 				p.category {
@@ -257,24 +264,8 @@
 		position: relative;
 	}
 
-
-
-
-
-
-
 	.btn-post{
-		width:43px;
-		height:100%;
-	    background-image: url('../images/facebook.svg');
-	    background-position:center;
-	    background-repeat:no-repeat;
-	    color: #FFF;
-	    text-transform: uppercase;
-	    font-size: rem(19);
-	    font-weight: bold;
-	    border: 0;
-	    padding: 0;
+
 	    // margin-right:2px;
 
 	    &:hover,
@@ -286,7 +277,6 @@
 	.btn-tweet{
 	    width:43px;
 		height:100%;
-	    background-image: url('../images/twitter.svg');
 	    background-position:center;
 	    background-repeat:no-repeat;
 	    color: #FFF;

@@ -47,7 +47,8 @@
     .search a.card>article>.content .author p,
     div.hk h2,
     .site-main .section-header p>a,
-    .site-main .subscribe > h2
+    .site-main .subscribe > h2,
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover    
      {
         color: {{themeColors.headingColor}} !important;
     }
@@ -91,19 +92,35 @@
     .sb-custom-menu .searchPanel>form>button.submit,
     .site-main .current-issue-card,
     .searchPanel>form>button.submit
-     {
+    {
         background-color: {{themeColors.headingColor}} !important;
     }
 
-     ul.sub-menu > li:hover,
-    .sb-custom-menu > div > ul > li:hover
-      {
-        background-color: {{themeColors.headingColor}} !important;
-     }
-
     .sb-custom-menu ul.menu>li>a:hover {
-        color: white;
-    }     
+        color: {{themeColors.headingColor}} !important;
+    } 
+
+    .sb-custom-menu ul.sub-menu>li:hover
+    {
+        background-color: {{themeColors.headingColor}} !important;
+    }
+
+    .sb-custom-menu ul.sub-menu>li:hover>a
+    {
+        color: white !important;
+    }
+
+
+    @media screen and (max-width: 992px) {
+        .sb-custom-menu ul.menu>li:hover {
+            background-color: {{themeColors.headingColor}} !important;
+        }
+        .sb-custom-menu ul.menu>li:hover>a {
+            background-color: {{themeColors.headingColor}} !important;
+            color: white !important;
+        }
+    }    
+
 
     /* overrides */
     .site-main .section-header div.hk h2 {
@@ -163,8 +180,35 @@ body, body > .section {
 {%  set iconColour = '#F03746' %}
 {% endif %}
 
+.facebook-icon {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="19" viewBox="0 0 9 19">\
+        <path fill="{{ iconColour }}" fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>\
+        </svg>');
+}
+
+.twitter-icon {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16">\
+        <path fill="{{ iconColour }}" fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>\
+        </svg>');
+}
+
+.email-icon {
+    background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?>\
+        <svg width="22px" height="15px" viewBox="0 0 22 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\
+            <!-- Generator: sketchtool 42 (36781) - http://www.bohemiancoding.com/sketch -->\
+            <title>2E49DADF-E0E7-4284-B70B-14834B10F3FD</title>\
+            <desc>Created with sketchtool.</desc>\
+            <defs></defs>\
+            <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
+                <g id="Desktop---Article-page" transform="translate(-548.000000, -1194.000000)" fill="{{ iconColour }}">\
+                    <path d="M548.084,1207.818 L555.182,1200.993 L548.063,1194.903 L548,1195.302 L548,1207.398 C548,1207.482 548.028,1207.622 548.084,1207.818 L548.084,1207.818 Z M556.085,1200.174 L557.03,1200.93 L558.899,1202.463 L560.768,1200.93 L561.713,1200.174 L568.853,1194.063 C568.727,1194.021 568.601,1194 568.475,1194 L549.302,1194 C549.162,1194 549.043,1194.021 548.945,1194.063 L556.085,1200.174 Z M549.302,1208.7 L568.475,1208.7 C568.601,1208.7 568.72,1208.679 568.832,1208.637 L561.671,1201.77 L558.899,1204.017 L556.127,1201.77 L548.966,1208.637 C549.078,1208.679 549.19,1208.7 549.302,1208.7 L549.302,1208.7 Z M569.714,1207.818 C569.756,1207.664 569.777,1207.524 569.777,1207.398 L569.777,1195.302 C569.777,1195.162 569.756,1195.029 569.714,1194.903 L562.616,1200.993 L569.714,1207.818 Z" id="Fill-6"></path>\
+                </g>\
+            </g>\
+        </svg>');
+}
+
 .search-icon-mobile {
-    background: url('<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">\
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">\
         <g fill="none" fill-rule="evenodd" stroke="{{ iconColour }}">\
             <path d="M6.673 12.917c3.133 0 5.673-2.668 5.673-5.958C12.346 3.668 9.806 1 6.673 1S1 3.668 1 6.959c0 3.29 2.54 5.958 5.673 5.958zM10.579 11.5l3.075 3.205"/>\
         </g>\
