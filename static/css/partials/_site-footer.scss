@@ -47,6 +47,7 @@
             border-bottom:1px solid color(transwhite);
             padding-bottom:10px;
             margin-bottom:10px;
+            padding-left: 15px;
         }
 
         > li {
@@ -72,6 +73,7 @@
         &.padded {
             padding-right: 15px;          
         }
+
         &.padded70 {
             padding-right: 70px;
             @media screen and (min-width: $sm-break) and (max-width: $md-break){
