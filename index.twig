@@ -50,7 +50,7 @@
     }
 %}
 
-{# {% for key, value in sections %}
+{% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
             {% set sections = sections | merge({
@@ -63,7 +63,7 @@
     {% endfor %}
 {% endfor %}
 
- #}
+
 <main id="main" class="site-main" role="main">
     
     <div class="container">
