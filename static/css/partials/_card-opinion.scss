@@ -142,6 +142,15 @@
 
         &.final {
             height: 230px;
+            a.card {
+                article {
+                    > .content {
+                        >h2 {
+                            top: 50px;
+                        }
+                    }
+                }
+            }
         }
 
         &:not(.final) {
