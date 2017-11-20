@@ -72,7 +72,8 @@
 
     &.final {
         a.card {
-            background-repeat:no-repeat;
+            clip-path: polygon(30px 0px, 100% 0px, 100% calc(100% - 60px), calc(100% - 30px) calc(100% - 30px), 30px calc(100% - 30px), 0px 100%, 0px 30px);
+
             padding:0px 42px;
 
             > article {
