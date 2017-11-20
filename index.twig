@@ -71,7 +71,7 @@
             articles: articles, 
             articleCount: articleCount,
             dev: dev,
-            ad: 'div-gpt-ad-mrec-1',
+            ad: 'div-gpt-ad-mrec-4',
         }) | raw}}
     </div>
 
@@ -90,7 +90,13 @@
             }) | raw}} 
         </div>
     {% endif %}
-
+    <div class="ad-container hidden-md hidden-lg">
+            <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
+                </script>
+            </div>
+        </div>
     {% if sections['bloggers'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/bloggers.twig', {
@@ -110,7 +116,7 @@
                 articleCount: articleCount,
                 section: 'regional news',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-2',
+                ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
@@ -133,6 +139,7 @@
             }) | raw}} 
         </div>
     {% endif %}
+
 
     {% if sections['rural news'].feed.articles|length > 0 %}
         <div class="container">
@@ -164,7 +171,7 @@
                 articleCount: articleCount,
                 section: 'sport',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-4',
+                ad: 'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
     {% endif %}

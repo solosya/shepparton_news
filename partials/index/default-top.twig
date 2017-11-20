@@ -52,6 +52,14 @@
     </div>
 </section>
 
+        <div class="ad-container hidden-md hidden-lg">
+            <div id='div-gpt-ad-mrec-5' class="card__announcement-image google_ad google_ad_mrec text-center" >
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
+                </script>
+            </div>
+        </div>
+
         <section class="row five-cols top-stories-row visible-xs-block visible-md-block visible-lg-block">
             
             {% set desktopCount = articleCount %}
@@ -68,6 +76,7 @@
             {% endfor %}
         </section>
 
+        
 
         <section class="row sm-two-cols visible-sm-block">
             {% set tabletCount = articleCount %} 
@@ -86,6 +95,9 @@
             {% endfor %}
         </section>
 
+
+        
+
         
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
 
@@ -101,6 +113,14 @@
                     containerClass: 'card-popular'
                 }) | raw}}
             {% endfor %}
+        </div>
+
+        <div class="ad-container hidden-md hidden-lg">
+            <div id='div-gpt-ad-mrec-6' class="card__announcement-image google_ad google_ad_mrec text-center" >
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-6'); });
+                </script>
+            </div>
         </div>
 
         <hr class="divide visible-xs-block">
@@ -135,7 +155,7 @@
 
 
         <div class="col-sm-9 col-md-3 addSpaceMobile">
-            <div class="ad-square">
+            <div class="ad-square hidden-sm hidden-xs">
                 <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
                     <script type='text/javascript'>
                         googletag.cmd.push(function() { googletag.display('{{ ad }}'); });
