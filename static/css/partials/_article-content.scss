@@ -69,8 +69,7 @@
 
 			figcaption {
 				margin:0;
-				float:left;
-				width:190px;
+				width:100%;
 				font-family: $font-family-serif;
 				font-size: rem(15);
 				font-weight: normal;
@@ -98,7 +97,7 @@
 			letter-spacing: normal;
 			color: color(darkgrey);
 			padding-right: 10px;
-			clear: both;
+			clear: none;
 			margin-bottom: 20px;
 			@media screen and (max-width: $sm-break) {
 				// font-size: rem(14);
