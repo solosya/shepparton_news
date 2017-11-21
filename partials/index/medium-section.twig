@@ -25,6 +25,10 @@
     <div class="col-md-2 col-sm-3">
         {% set cardspace = ['', 'row-space'] %}
         {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+            {% if section == 'dairy' %}
+            {%   set cardspace = ['dairy-card', 'row-space'] %}
+            {% endif %}
+
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
