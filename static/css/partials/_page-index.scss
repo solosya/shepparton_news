@@ -94,10 +94,10 @@ body.special {
 
         @media screen and (max-width: $mmd-break-down){
             height:auto;
-            margin-bottom:20px;
+            margin-bottom:0px;
         }
         @media screen and (max-width: $sm-break-down){
-            margin-bottom:0;
+            margin-bottom:0px;
         }
 
 
