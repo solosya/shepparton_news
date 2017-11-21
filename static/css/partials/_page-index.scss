@@ -111,6 +111,30 @@ body.special {
 
     }
 
+    .view-all-sport {
+        font-family: $font-family-serif;
+        font-size: rem(14);
+        font-style: italic;
+        border-top: 1px solid color(grey);
+        border-bottom: 1px solid color(grey);
+        text-align: center;
+        padding-bottom: 12px;
+        line-height: 1;
+        color: color(red);
+        &:after {
+            display: inline-block;
+            content: '';
+            background-image: url('../icons/arrow-icon.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 35px;
+            height: 25px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+    }
+
 
     .most-popular {
         @media screen and (max-width: $sm-break-down){
