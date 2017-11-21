@@ -442,6 +442,8 @@ ul.sub-menu a:focus{
         float:right;
         margin-top: 5px;
         padding-left: 50px;
+        position: absolute;
+        right: 25px;
     }
     .menu-hamburger {
         z-index: 999;
@@ -467,7 +469,7 @@ ul.sub-menu a:focus{
         max-width: 415px;
         position: absolute;
         top: 40px;
-        right: 15px;
+        right: 0px;
         z-index: 100;
         background: rgba(0,0,0,0.7);
         @media screen and (max-width: $sm-break) {

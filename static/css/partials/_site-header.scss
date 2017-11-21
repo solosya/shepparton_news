@@ -164,10 +164,6 @@
             height:25px;
             background:color(red);
 
-            @media screen and (max-width: $sm-break){
-                display:none;
-            }
-
             ul.auth-links {
                 float:right;
                 padding:0;
