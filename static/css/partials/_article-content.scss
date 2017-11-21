@@ -71,12 +71,13 @@
 				margin:0;
 				width:100%;
 				font-family: $font-family-serif;
-				font-size: rem(15);
+				font-size: rem(12);
 				font-weight: normal;
 				font-style: italic;
 				line-height: 1.47;
-				color: color(darkgrey);
+				color: #6c6c6c;
 				clear: both;
+				padding-top: 10px;
 
 				@media screen and (max-width: $sm-break) {
 					font-size: rem(11);
