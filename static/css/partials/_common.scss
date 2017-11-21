@@ -174,10 +174,7 @@ hr.divide10 {
         width: unset;
          margin: 15px auto 25px auto;
     } 
-    @media screen and (max-width: $mobile-break){
-        width: 320px;
-         margin: 15px auto 25px auto;
-    }
+    
     @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
