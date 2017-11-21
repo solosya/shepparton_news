@@ -76,6 +76,7 @@
 				font-style: italic;
 				line-height: 1.47;
 				color: color(darkgrey);
+				clear: both;
 
 				@media screen and (max-width: $sm-break) {
 					font-size: rem(11);
