@@ -143,6 +143,9 @@ hr.divide10 {
         color: color(grey);
         position: relative;
         float: right;
+        @media screen and (max-width: $mmd-break){
+            display:none
+        }   
     }
 }
 
@@ -168,13 +171,17 @@ hr.divide10 {
     }    
 
     @media screen and (max-width: $sm-break){
-        width: 320px;
+        width: unset;
          margin: 15px auto 25px auto;
     } 
-
+    @media screen and (max-width: $mobile-break){
+        width: 320px;
+         margin: 15px auto 25px auto;
+    }
     @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
+        
     }
 }
 
