@@ -63,7 +63,7 @@
 
                      {% if articles[articleCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9">
-                                <hr class="divide18 visible-md-block visible-lg-block">                            
+                                <hr class="divide12 visible-md-block visible-lg-block">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
@@ -76,13 +76,19 @@
                      {% endif %}
 
                     <!-- extra story for tablet, mobile -->
+
+                    {% set dairycard = '' %}
+                    {% if this.title | lower == 'dairy' %}
+                    {%   set dairycard = 'dairy-card' %}
+                    {% endif %}
+
                      {% if articles[articleCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9 visible-sm-block visible-xs-block">
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright'
+                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright ' ~ dairycard
                                  }) | raw}}
                             </div>
                      {% endif %}
