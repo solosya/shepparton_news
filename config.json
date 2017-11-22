@@ -1,4 +1,5 @@
 {
+    "compressHtml" : false,
     "module" : {
         "debug" : {
            "enabled" : true
