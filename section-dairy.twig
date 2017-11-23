@@ -65,20 +65,6 @@
                             <hr class="divide18 visible-md-block visible-lg-block">                            
                             {{ this.render('partials/subscribe.twig') | raw }}
                         </div>
-
-                    <!-- extra story for tablet, mobile -->
-                     {% if articles[articleCount] %}
-                            <hr class="divide visible-xs-block">
-                            <div class="col-sm-1 col-md-9 visible-sm-block visible-xs-block">
-                                 {{this.render('partials/_single-article.twig', {
-                                     article: articles[articleCount], 
-                                     imageSize: {width:160, height:190},
-                                     position: articleCount + 1,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright'
-                                 }) | raw}}
-                            </div>
-                     {% endif %}
-
                     </div>
                 </div>
             </div>
