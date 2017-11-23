@@ -118,8 +118,6 @@
                     }) | raw }}
 
                     <nav class="sb-custom-menu menu-bar" id="menu-mobile">
-                        <a href="#" class="menu-hamburger foldaway-menu"></a>
-
                         <div class="menuContainer">
                             <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
                                    {% for parentItem in blog.blogHeaderMenu  %}
@@ -223,8 +221,8 @@
             </div>            
 
 
-            {% if (networkData.title | lower) != 'dairy news' %}
-                <div class="header-bottom">
+            <div class="header-bottom">
+                {% if (networkData.title | lower) != 'dairy news' %}
 
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
@@ -256,8 +254,8 @@
                         </li>  
                     </ul>   
 
-                </div>
-            {% endif %}            
+                {% endif %}            
+            </div>
         </div> <!-- #foldaway-panel -->
 
 
