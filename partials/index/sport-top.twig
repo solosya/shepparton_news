@@ -12,11 +12,13 @@
                 }) | raw}}
                 {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
 
+                <hr class="divide12 visible-sm-block visible-xs-block space-only">
+
             {% endif %}
         </div>
 
         {% if articles.feed.articles[sectionCount] %}
-            <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols">
+            <div class="col-xs-9 col-sm-9 col-md-3">
                 <div class="row">
 
                     {% for i in 0..2 if articles.feed.articles[i] %}
