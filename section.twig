@@ -18,6 +18,13 @@
 {% set popCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
+{% set dairycard = '' %}
+{% set dairyOverride = '' %}
+
+{% if _Blog.getBlogTitle() | lower == 'dairy' %}
+{%   set dairycard = 'dairy-card' %}
+{%   set dairyOverride = 'dairy-override' %}
+{% endif %}  
 
 <main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     
@@ -59,12 +66,7 @@
                                     googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
                                 </script>
                             </div>
-                        </div>
-
-                    {% set dairycard = '' %}
-                    {% if _Blog.getBlogTitle() | lower == 'dairy' %}
-                    {%   set dairycard = 'dairy-card' %}
-                    {% endif %}                        
+                        </div>                      
 
                      {% if articles[articleCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9">
@@ -165,14 +167,14 @@
 
                 </div>
 
-                <div class="col-md-3 col-sm-4 split trending" style="margin-top:20px;">
+                <div class="col-md-3 col-sm-4 split trending {{ dairyOverride }}" style="margin-top:20px;">
                    <h2>Trending stories</h2>
 
                     {% for i in 0..3 if popularArticles[popCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: popularArticles[popCount], 
                             imageSize: {width:190, height:160},
-                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile '
                         }) | raw}}
 
                         {% set popCount = (dev) ? popCount : popCount + 1 %}
