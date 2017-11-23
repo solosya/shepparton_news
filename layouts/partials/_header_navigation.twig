@@ -64,8 +64,13 @@
             </div><!-- .container-->  
         </div>
 
+        {% set visibility = '' %}
+        <!-- for dairy, only show the header-bottom bar above mobile -->
+        {% if (networkData.title | lower) == 'dairy news' %}
+        {%   set visibility = ' visible-md-block visible-lg-block' %}
+        {% endif %}
 
-        <div class="header-bottom">
+        <div class="header-bottom {{ visibility }}">
 
             {% if (networkData.title | lower) != 'dairy news' %}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
