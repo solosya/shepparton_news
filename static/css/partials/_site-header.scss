@@ -223,7 +223,44 @@
             display:none;
         }
     }
+
+    .site-branding-bottom-foldaway {
+        @include transition(100000s);
+        background:white;
+        position:fixed;
+        top:-150px;
+        right:0;
+        // padding:10px 0 5px 0;
+        margin:0;
+        width:100%;
+        // border-bottom: solid 1px #6c6c6c;
+        z-index:2147483647;
+
+        .sb-custom-menu-foldaway {
+            float:right;
+            .menu-mobile{
+                display: block;
+                width: 95px;
+                background-image: url(../images/mobile-menu.svg);
+                background-size: 45px 30px;
+                background-position: right;
+                background-repeat: no-repeat;
+                padding: 5px 0;
+                color: #f73d30;
+            }
+        }
+
+        &.showMenuPanel {
+            top:0 !important;
+            left:0;
+            right:0;
+        }
+
+    }
+
 }
+
+
 
 
 // header & footer logo

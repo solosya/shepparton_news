@@ -11,17 +11,13 @@
                     networkData: networkData,
                 }) | raw }}
 
-                <!--  ************ -->
-                <!--  DESKTOP MENU -->
-                <!--  ************ -->
-
                 <nav class="sb-custom-menu menu-bar" id="menu-mobile">
                     <a href="#" class="mobileSearchIcon visible-xs-block visible-sm-block"></a>
                     <a href="#" class="menu-hamburger"></a>
 
                     <div class="menuContainer">
                         <ul id="menu-primary-menu" class="menu primary-menu">
-                            <li class="menu-item-search visible-xs-block">
+                            <li class="menu-item-search visible-xs-block visible-sm-block">
                                 <fieldset class="searchPanel">
                                     <form method="get" action="{{networkData.defaultBlogUrl}}/search">
                                         <label for="header-search" class="assistive-text sr-only">Search</label>
@@ -30,8 +26,7 @@
                                     </form>
                                 </fieldset>  
                             </li>                             
-                            {% set menuItems = blog.blogHeaderMenu %}
-                            {% for parentItem in menuItems  %}
+                            {% for parentItem in blog.blogHeaderMenu  %}
 
                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
@@ -50,7 +45,7 @@
                                      {% if parentItem.children is defined and parentItem.children | length > 0 %}
                                         <span class="list-arrow"></span>
 
-                                         <ul class="sub-menu">
+                                        <ul class="sub-menu">
                                             {% for childItem in parentItem.children %}
                                                 {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
                                                 <li>
@@ -67,7 +62,7 @@
                     </div>
                 </nav>
             </div><!-- .container-->  
-        </div><!-- .header top-->  
+        </div>
 
 
         <div class="header-bottom">
@@ -103,44 +98,162 @@
                     <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
                 </li>  
             </ul>            
-
-        </div><!-- .site-branding-top -->
-
-
-
-
-
-
-    {#  _____________________________________________________
-
-                            PROFILE WINDOW
-        _____________________________________________________  #}
-
-
-{#         <div id="header__menu">
-            <div class="profile__menu">
-                 {% if user.profileMedia.id != '' %}
-                        {% set profileImg = _Media.getMediaUrl(user.profileMedia, 80, 80, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
-                    {% else %}
-                        {% set profileImg = networkData.templatePath ~ "/static/images/icons/profile.svg" %}
-                    {% endif %}
-              <div class="profile__menu-image" style="background-image: url({{ profileImg }})"></div>
-              <div class="profile__menu-content">
-                <div class="profile__menu-name">{{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}</div>
-                <div class="profile__menu-email">{{user.email | truncate(23)}}</div>
-                <a href="{{_AppHelper.buildUrl('user/my-news')}}" class="profile__menu-button">My News</a>
-              </div>
-              <ul class="profile__menu-navigation">
-                  {% if _User.isAdminUser() %}
-                      <li><a class="profile__menu-navigation-link" href="https://{{networkData.defaultDomain['domain']}}/admin" target="_blank">Admin</a></li>
-                  {% endif %}
-                  <li><a class="profile__menu-navigation-link" href="{{blogUrl}}/profile/{{user.username}}">View Profile</a></li>
-                  <li><a class="profile__menu-navigation-link" href="https://{{networkData.defaultDomain['domain']}}/user/edit-profile">Settings</a></li>
-                  <li><a class="profile__menu-navigation-link" href="{{_AppHelper.getLogoffUrl()}}">Sign Out</a></li>
-              </ul>
-            </div>
         </div>
- #}
+
+
+
+        <div id="foldaway-panel" class="site-branding-bottom-foldaway row" >
+            {# desktop foldaway #}
+            <div class="header-top visible-md-block visible-lg-block">
+
+                <div class="container">
+
+                    {{ this.render('header-logo.twig', {
+                        networkData: networkData,
+                    }) | raw }}
+
+                    <nav class="sb-custom-menu menu-bar" id="menu-mobile">
+                        <a href="#" class="menu-hamburger foldaway-menu"></a>
+
+                        <div class="menuContainer">
+                            <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
+                                   {% for parentItem in blog.blogHeaderMenu  %}
+
+                                   {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                   {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                                   <li>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                            {% if parentItem.label != "" %}
+                                                {{parentItem.label}}
+                                            {% elseif parentItem.blogTitle != "" %}
+                                                {{parentItem.blogTitle}}
+                                            {% elseif parentItem.pageTitle != "" %}
+                                                {{parentItem.pageTitle}}
+                                            {% endif %}
+                                        </a>
+
+                                         {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                            <span class="list-arrow"></span>
+
+                                            <ul class="sub-menu">
+                                                {% for childItem in parentItem.children %}
+                                                    {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                    <li>
+                                                        <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                         {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                        </a>
+                                                    </li>
+                                               {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </nav>
+                </div><!-- .container-->  
+            </div>
+
+            {# tablet foldaway #}
+            <div class="header-top visible-sm-block">
+
+                <div class="container">
+
+                    {{ this.render('header-logo.twig', {
+                        networkData: networkData,
+                    }) | raw }}
+
+                    <nav class="sb-custom-menu menu-bar" id="menu-mobile">
+                        <a href="#" class="mobileSearchIcon visible-xs-block visible-sm-block"></a>
+                        <a href="#" class="menu-hamburger"></a>
+
+                        <div class="menuContainer">
+                            <ul id="menu-primary-menu" class="menu primary-menu">
+                                <li class="menu-item-search visible-xs-block visible-sm-block">
+                                    <fieldset class="searchPanel">
+                                        <form method="get" action="{{networkData.defaultBlogUrl}}/search">
+                                            <label for="header-search" class="assistive-text sr-only">Search</label>
+                                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                            <button class="submit search-icon-mobile" type="submit" id="mobileSearchButton"></button>
+                                        </form>
+                                    </fieldset>  
+                                </li>                             
+                                {% for parentItem in blog.blogHeaderMenu  %}
+
+                                   {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                   {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                                   <li>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                            {% if parentItem.label != "" %}
+                                                {{parentItem.label}}
+                                            {% elseif parentItem.blogTitle != "" %}
+                                                {{parentItem.blogTitle}}
+                                            {% elseif parentItem.pageTitle != "" %}
+                                                {{parentItem.pageTitle}}
+                                            {% endif %}
+                                        </a>
+
+                                         {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                            <span class="list-arrow"></span>
+
+                                            <ul class="sub-menu">
+                                                {% for childItem in parentItem.children %}
+                                                    {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                    <li>
+                                                        <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                         {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                        </a>
+                                                    </li>
+                                               {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </nav>
+                </div><!-- .container-->  
+            </div>            
+
+
+            <div class="header-bottom">
+
+                {% if (networkData.title | lower) != 'dairy news' %}
+                    {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
+                    {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
+
+                    {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
+                
+                    {% if not _User.isGuest() %}
+                        <ul class="auth-links">
+                            <li><a href="{{ logoutPath }}">LOG OUT</a></li>
+                        </ul>                    
+                    {% else %}
+                        <ul class="auth-links">              
+                            <li><a href="{{ loginPath }}">LOG IN</a></li>
+                            <li><a href="{{ signUpPath }}">SIGN UP</a></li>
+                        </ul>
+                    {% endif %}
+                {% endif %}
+
+                <ul class="auth-links visible-md-block visible-lg-block">
+                    <li id="menu-item-search" class="menu-item-search">
+                        <fieldset class="searchPanel">
+                            <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                                <label for="header-search" class="assistive-text sr-only">Search</label>
+                                <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                <button class="submit" type="submit" id="searchsubmit"></button>
+                            </form>
+                        </fieldset>  
+
+                        <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                    </li>  
+                </ul>            
+            </div>
+        </div> <!-- #foldaway-panel -->
+
 
     </div><!-- .site-header-main -->
 </header>
