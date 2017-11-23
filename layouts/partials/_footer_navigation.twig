@@ -1,11 +1,12 @@
-{% set policyClass = '' %}
-{% if 'policy' in item.label | lower %}
-{%   set policyClass = 'policy' %}
-{% endif %}
-
 <ul id="" class="{{ class }}">
     {% for item in items %}
-       <li>
+
+        {% set policyClass = '' %}
+        {% if 'policy' in item.label | lower %}
+        {%   set policyClass = 'policy' %}
+        {% endif %}
+
+        <li>
             <a href="{{item.link |raw}}" class="{{activeClass}} {{externalClass}} {{ policyClass }}" {% if item.target != "" %} target="{{item.target}}"{% endif %}>
                 {% if item.label != "" %}
                     {{item.label}}
