@@ -22,7 +22,7 @@
                 <div class="row">
 
                     {% for i in 0..2 if articles.feed.articles[i] %}
-                        <div class="col-sm-1 col-md-9">
+                        <div class="col-sm-3 col-md-9">
                             {{this.render('../_single-article.twig', {
                                 article: articles.feed.articles[sectionCount], 
                                 position: sectionCount + 1, 
