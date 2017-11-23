@@ -5,7 +5,7 @@
 {{this.registerJs("Acme.cardController = Acme.CardController();")}}
 {{this.registerJs("Acme.SectionController();")}}
 
-{% set limit = 17 %}
+{% set limit = 10 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}

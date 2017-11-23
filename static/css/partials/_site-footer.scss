@@ -39,6 +39,9 @@
 
         @media screen and (min-width: $sm-break) and (max-width: $md-break){
             height: 62px;
+            padding-right: 30px;
+            padding-left: 5px;
+            margin-right: 20px;        
         }
 
         @media screen and (max-width: $sm-break-down) {
@@ -75,7 +78,10 @@
         }
         
         &.padded {
-            padding-right: 15px;          
+            padding-right: 15px;     
+            @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+                padding-right: 10px;
+            }    
         }
 
         &.padded70 {
