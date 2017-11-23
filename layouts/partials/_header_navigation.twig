@@ -218,9 +218,9 @@
             </div>            
 
 
-            <div class="header-bottom">
+            {% if (networkData.title | lower) != 'dairy news' %}
+                <div class="header-bottom">
 
-                {% if (networkData.title | lower) != 'dairy news' %}
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
 
@@ -236,22 +236,23 @@
                             <li><a href="{{ signUpPath }}">SIGN UP</a></li>
                         </ul>
                     {% endif %}
-                {% endif %}
 
-                <ul class="auth-links visible-md-block visible-lg-block">
-                    <li id="menu-item-search" class="menu-item-search">
-                        <fieldset class="searchPanel">
-                            <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                <label for="header-search" class="assistive-text sr-only">Search</label>
-                                <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                <button class="submit" type="submit" id="searchsubmit"></button>
-                            </form>
-                        </fieldset>  
+                    <ul class="auth-links visible-md-block visible-lg-block">
+                        <li id="menu-item-search" class="menu-item-search">
+                            <fieldset class="searchPanel">
+                                <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                                    <label for="header-search" class="assistive-text sr-only">Search</label>
+                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                    <button class="submit" type="submit" id="searchsubmit"></button>
+                                </form>
+                            </fieldset>  
 
-                        <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                    </li>  
-                </ul>            
-            </div>
+                            <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                        </li>  
+                    </ul>   
+
+                </div>
+            {% endif %}            
         </div> <!-- #foldaway-panel -->
 
 
