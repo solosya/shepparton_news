@@ -250,6 +250,11 @@
             }
         }
 
+        > .header-top {
+            height: 90px !important;
+            padding-top: 0px !important;
+        }
+
         &.showMenuPanel {
             top:0 !important;
             left:0;
