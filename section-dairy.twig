@@ -97,23 +97,24 @@
         <section>
             <div class="row">
                 <div class="col-md-6 col-sm-5" style="margin-top:35px;">
-                    {% for i in 0..8 if articles[articleCount] %}
+                    <div class="row">
+                        {% for i in 0..8 if articles[articleCount] %}
 
-                        <div class="col-md-3 col-sm-9">
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                imageSize: {width:190, height:160},
-                                containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
-                            }) | raw}}
-                            <hr class="divide visible-xs-block">
-                            <hr class="divide18 visible-md-block visible-lg-block space-only">
-                            <hr class="divide18 visible-sm-block">
+                            <div class="col-md-3 col-sm-9">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:190, height:160},
+                                    containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide18 visible-md-block visible-lg-block space-only">
+                                <hr class="divide18 visible-sm-block">
 
-                        </div>
+                            </div>
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% endfor %}
-
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% endfor %}
+                    </div>
                 </div>
 
                 <div class="col-md-3 col-sm-4 split trending dairy-override" style="margin-top:20px;">
