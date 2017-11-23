@@ -153,6 +153,12 @@ body.special {
             line-height:1;
             padding-bottom: 10px;
         }
+
+        &.dairy-override {
+            > h2 {
+                color: color(red);
+            }
+        }
     }
 
     .advert-padding {
