@@ -76,9 +76,6 @@
         }) | raw}}
     </div>
 
-    <div id="newAdSlot"></div>
-    <script>loadNextAd()</script>
-
     {% if sections['local news'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/large-section.twig', {
