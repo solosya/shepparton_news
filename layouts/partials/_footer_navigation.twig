@@ -2,7 +2,7 @@
     {% for item in items %}
 
         {% set policyClass = '' %}
-        {% if 'policy' in item.label | lower %}
+        {% if 'policy' in item.link | lower %}
         {%   set policyClass = 'policy' %}
         {% endif %}
 
