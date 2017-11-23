@@ -26,7 +26,7 @@
                             {{this.render('../_single-article.twig', {
                                 article: articles.feed.articles[sectionCount], 
                                 position: sectionCount + 1, 
-                                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                containerClass: 'feature-side card-sm-tablet card-sm-mobile'
                             }) | raw}}
                             {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
                             {% if i < 2 %}
