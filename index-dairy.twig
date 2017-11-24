@@ -28,22 +28,22 @@
 
 {% set sections =  {
         "videos": {
-            "limit" : 10
+            "limit" : 5
         }, 
         "from the experts": {
-            "limit" : 10
+            "limit" : 5
         },
         "management": {
-            "limit" : 10
+            "limit" : 5
         },
         "animal health": {
-            "limit" : 10
+            "limit" : 3
         },
         "machinery & products": {
-            "limit" : 10
+            "limit" : 3
         },
         "markets": {
-            "limit" : 10
+            "limit" : 3
         }        
     }
 %}
@@ -83,61 +83,52 @@
                     {% endif %}
                 </div>
 
+                <div class="col-xs-9 col-sm-9 visible-sm-block visible-xs-block">
+                    <hr class="divide10 space-only">
+                </div>
 
-                {% if articles[articleCount] %}
                 <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols ">
-                    <div class="row">
+                    <div class="row sm-flex">
 
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide15 visible-sm-block space-only">
-                            <div id="weather" class="weather"></div>
-                            <div class="visible-md-block visible-lg-block">
-                                <div class="weather-dropdown hidden"></div>
-                            </div>
-                        </div>
-
-                        <hr class="divide10 visible-xs-block" style="clear:both">
-
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide10 visible-md-block visible-lg-block">
-                        </div>
-
-                        <div class="col-sm-1 col-md-9">
-                            <div class="current-issue-card">
-                                <a class="download-current">View the current issue</a>
-                                <div class="social-links small white" style="padding-top:10px;">
-                                    <a href="#" class="facebook"></a>
-                                    <a href="#" class="twitter"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide10 visible-md-block visible-lg-block">
-                        </div>
-
-                        <div class="col-sm-1 col-md-9">                    
-                            {{ this.render('partials/subscribe.twig') | raw }}
-                        </div>
-
-                        <div class="col-sm-1 col-md-9">
-                            <hr class="divide10 visible-md-block visible-lg-block">
-                        </div>
-
-                        <div class="col-sm-1 col-md-9">                    
-                            {% for i in 0..0 if articles[articleCount] %}
+                        <div class="col-sm-1 col-md-9"  style="order: 2;">                    
+                            {% if articles[articleCount] %}
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: articleCount + 1, 
-                                    containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            {% endfor %}
+                                <hr class="divide12">
+                            {% endif %}
                         </div>
 
+                        <div class="col-sm-1 col-md-9"  style="order: 3;">                    
+                            {% if articles[articleCount] %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    position: articleCount + 1, 
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                }) | raw}}
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                <hr class="divide12">
+                            {% endif %}
+                        </div> 
+
+                        <div class="col-sm-1 col-md-9"  style="order: 1;">
+                            <div class="current-issue-card">
+                                <a class="download-current" href="https://issuu.com/dairynewsaustralia">View the current publication</a>
+                            </div>
+
+                            <hr class="divide12 visible-md-block visible-lg-block">
+                            <hr class="divide10 visible-xs-block visible-sm-block space-only">
+                        </div>
+
+                        <div class="col-sm-1 col-md-9" style="order: 0;">                    
+                            {{ this.render('partials/subscribe.twig') | raw }}
+                            <hr class="divide10 visible-xs-block visible-sm-block space-only">                            
+                        </div>
                     </div>
-                </div><!-- .row-->
-                {% endif %}
+                </div>
 
             </div>
         </section><!-- .featured-slider-->
@@ -172,10 +163,10 @@
                         article: articles[tabletCount], 
                         position: 1, 
                         imageSize: {width:500},
-                        containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set tabletCount = (dev) ? tabletCount : tabletCount + 1 %}
-                    <hr class="divide10 visible-sm-block space-only">
+                    <hr class="divide12 visible-sm-block">
 
                 </div>
             {% endfor %}
@@ -185,13 +176,8 @@
     </div>
 
 
-    <div class="ad-container">
-        <div id='div-gpt-ad-leaderboard-2' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-2'); });
-            </script>
-        </div>
-    </div>
+    <div id="newAdSlot"></div>
+    <script>loadNextAd()</script>
 
     {% if sections['management'].feed.articles|length > 0 %}
         <div class="container">
@@ -216,13 +202,8 @@
         </div>
     {% endif %}
 
-    <div class="ad-container">
-        <div id='div-gpt-ad-leaderboard-3' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
-            </script>
-        </div>
-    </div>
+    <div id="newAdSlot"></div>
+    <script>loadNextAd()</script>
 
     {% if sections['markets'].feed.articles|length > 0 %}
         <div class="container">
@@ -231,7 +212,7 @@
                 articleCount: articleCount,
                 section: 'markets',
                 dev: dev,
-                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
+                cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
             }) | raw}} 
         </div>
     {% endif %} 
@@ -255,7 +236,7 @@
                 articleCount: articleCount,
                 section: 'animal health',
                 dev: dev,
-                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
+                cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
             }) | raw}} 
         </div>
     {% endif %}    

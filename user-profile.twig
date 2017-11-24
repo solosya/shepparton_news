@@ -1,8 +1,14 @@
+{% set networkData = _Network.getNetworkData() %}
+
 <main class="site-main">
     {{ set(this, 'title', 'User Profile') }}
 
     {% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
     {{this.registerJs("$('.loginModal').loginModal({});")}}
+
+    {% set myFollowers = _User.getFollowers(userDetails.guid) %}
+    {% set myFollowings = _User.getFollowings(userDetails.guid) %}
+    {% set myBlogs = _User.getBlogsFollowedByUser(userDetails.guid) %}
 
     <!-- Begin Container -->
     <section class="container">
@@ -15,23 +21,20 @@
                         <img src="{{profileImage}}" class="img-responsive">
                         <div class="inner-descr">
                             <h2 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h2>
-                            {% if _User.isGuest() %}
-                                <a href="javascript:void(0)" class="button green button-block forceLoginModal"><i class="fa fa-star"></i>Follow</a>
+                            
+                            {% if (networkData.title | lower) != 'dairy news' %}
+                                {% if _User.isGuest() %}
+                                    <a href="javascript:void(0)" class="button follow forceLoginModal">Follow</a>
+                                {% endif %}
+                                {% if not _User.isGuest() and _User.getId() != userDetails.id %}
+                                    {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
+                                    <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                                {% endif %}
                             {% endif %}
-                            {% if not _User.isGuest() and _User.getId() != userDetails.id %}
-                                {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                                <a href="javascript:void(0)" class="button green button-block FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                            {% endif %}
-
-                            {#
-                            {% if not _User.isGuest() and _User.getId() == userDetails.id %}
-                                <a href="{{_AppHelper.getEditProfileUrl()}}" class="button green button-block"><i class="fa fa-cog"></i>Edit Profile</a>
-                            {% endif %}
-                            #}
 
                             <p class="bio">{{Html.decode(userDetails.bio) | raw}}</p>
                             <div class="user-social">
-                                <a href="mailto:{{userDetails.email}}"><i class="fa fa-envelope"></i></a>
+                                <a href="mailto:{{userDetails.email}}" class="share-icon email-icon" style="padding-left: 12px;"></a>
                             </div>
                         </div>
                     </div>
@@ -40,24 +43,19 @@
             </div>
 
             <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
-                <!-- Begin My Blogs -->
+            {% if (networkData.title | lower) != 'dairy news' %}
+            {# there are no blogs on dairy news #}
                 {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
-                <!-- //End My Blogs -->
+            {% endif %}
 
-                <!-- Begin Recent Articles -->
                 {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles, articleCount: 0 }) | raw }}
-                <!-- //End Recent Articles -->
 
-                <!-- Begin Following -->
+            {% if (networkData.title | lower) != 'dairy news' %}
+            {# there are no users on dairy news #}
                 {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
-                <!-- //End Following -->
-
-                <!-- Begin Followed By -->
                 {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}
-                <!-- //End Followed By -->
-
+            {% endif %}
             </div>
-            <!-- //End User Profile -->
         </div>
     </section>
     <!-- //End Container -->

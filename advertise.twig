@@ -1,4 +1,6 @@
-{{ set(this, 'title', 'Contact Us') }}  
+{% set networkData = _Network.getNetworkData() %}
+
+{{ set(this, 'title', page.title | raw) }}
 
     <main id="main" class="site-main eventForm" role="main">
         
@@ -8,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-9 header">
                         <div class="hk">
-                            <h2>Advertising</h2>
+                            <h2>{{ page.title }}</h2>
                             <p></p>
                         </div>
                     </div>
@@ -47,18 +49,16 @@
 
                 <div class="col-sm-12 col-md-3 contact-details">
 
-                    <b>Print &amp; Digital</b><br/>
-                    Office: 7940 Goulburn Valley Hwy,<br/>
-                     Shepparton, VIC, 3631<br/>
-                    Phone: (03) 5831 2312<br/>
-                    Contact: Aaron Brown,<br/>
-                     Advertising Manager<br/>
-                    Direct: (03) 58 203 187<br/>
-                    Email: <a href="mailto:aaron.brown@sheppnews.com.au">aaron.brown@sheppnews.com.au</a><br/>
-<br/>
-                    <b>Classifieds</b><br/>
-                    Phone: 1300 660 886<br/>
-                    Email: <a href="advertise@localclassies.com.au">advertise@localclassies.com.au</a>
+                    {{page.content | raw}}
+
+                    {% if (networkData.title | lower) == 'dairy news' %}
+
+                        <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20National%20Media%20Kit.pdf">Download Media Kit - National</a></p>
+                        <p>
+                        <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20Regional%20Victoria%20Media%20Kit.pdf">Download Media Kit - Regional Victoria</a></p>
+
+                    {% endif %}
+
 
                 </div>
 

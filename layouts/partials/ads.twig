@@ -5,6 +5,8 @@
 
 {% if (networkData.title | lower) == 'country news' %}
     {% set blogNetworkName = 'countrynews' %}
+{% elseif (networkData.title | lower) == 'dairy news' %}
+    {% set blogNetworkName = 'dairy_news' %}
 {% else %}
     {% set blogNetworkName = 'sheppnews' %}
 {% endif %}
@@ -12,9 +14,13 @@
 
 {% if (networkData.title | lower) == (blogData.title | lower) %}
     {% set blogPrefixName = 'home' %}
+{% elseif (blogData.title | lower) == 'australian rules' or (blogData.title | lower) == 'cricket' or (blogData.title | lower) == 'golf' or (blogData.title | lower) == 'netball' or (blogData.title | lower) == 'racing' or (blogData.title | lower) == 'soccer' or (blogData.title | lower) == 'tennis' %}
+    {% set blogPrefixName = 'sport' %}
 {% else %}
     {% set blogPrefixName = (blogData.title | lower) %}
 {% endif %}
+
+
 
 {% set pageType = (blogData.type | lower) %}
 
@@ -53,7 +59,7 @@
             rubicontag.cmd.push(function() {
                 rubicontag.addFPV('BLOGPREFIX', '{{blogPrefixName}}');
                 rubicontag.addFPV('page-type', '{{pageType}}');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-1').setPosition('atf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50], [300, 50]], 'div-gpt-ad-leaderboard-2').setPosition('atf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-2').setPosition('btf');
@@ -61,6 +67,11 @@
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-4').setPosition('btf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setPosition('btf');
                 rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-5').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-6').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-7').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setPosition('btf');
+                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setPosition('btf');
                 rubicontag.run(gptrun);
             });
             
@@ -68,9 +79,9 @@
                 var mapping1 = googletag.sizeMapping()
                                 .addSize([1000, 200], [[970, 250], [970, 90], [728, 90]])
                                 .addSize([768, 200], [[728, 90]])
-                                .addSize([480, 200], [[320, 50]])
-                                .addSize([360, 200], [[320, 50]])
-                                .addSize([320, 400], [[320, 50]])
+                                .addSize([480, 200], [])
+                                .addSize([360, 200], [])
+                                .addSize([320, 400], [])
                                 .build();
 
                 var mapping2 = googletag.sizeMapping()
@@ -82,25 +93,43 @@
                                 .build();
 
                 var mapping3 = googletag.sizeMapping()
-                                .addSize([1000, 200], [[300, 600], [300, 250]])
-                                .addSize([768, 200], [[300, 600], [300, 250]])
+                                .addSize([1000, 200], [[300, 600]])
+                                .addSize([768, 200], [[300, 600]])
                                 .addSize([480, 200], [[300, 250]])
                                 .addSize([360, 200], [[300, 250]])
                                 .addSize([320, 400], [[300, 250]])
                                 .build();
+
+                var mapping4 = googletag.sizeMapping()
+                                .addSize([1000, 200], [[970, 250], [970, 90], [728, 90]])
+                                .addSize([768, 200], [[728, 90]])
+                                .addSize([480, 200], [[320, 50]])
+                                .addSize([360, 200], [[320, 50]])
+                                .addSize([320, 400], [[320, 50]])
+                                .build();
+
+                var mapping5 = [[[1000, 200],[]],[[768, 200],[]],[[0,0],['fluid', [300, 250]]]]
+                var mapping6 = [[[1000, 200],['fluid', [300, 250]]],[[768, 200],['fluid', [300, 250]]],[[0,0],[]]]
+                var mapping7 = [[[992, 200],[300, 600]],[[768, 200],[]],[[0,0],[]]]
+                var mapping8 = [[[992, 200],[]],[[768, 200],[300, 600]],[[0,0],[]]]
+
                 
-                gptadslots[0] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[1] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[0] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping1).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[1] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping4).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                 gptadslots[2] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-1').setTargeting('POS', ['1']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                 gptadslots[3] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-2').setTargeting('POS', ['2']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());   
                 gptadslots[4] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-3').setTargeting('POS', ['3']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[5] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[5] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).defineSizeMapping(mapping6).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                 gptadslots[6] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setTargeting('POS', ['1']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                 gptadslots[7] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setTargeting('POS', ['2']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
                 gptadslots[8] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[1, 1]], 'div-gpt-ad-teads').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                 gptadslots[9] = googletag.defineOutOfPageSlot('/4082264/{{blogNetworkName}}', 'div-gpt-ad-interstitial').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[10] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-5').setTargeting('POS', ['5']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[11] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-6').setTargeting('POS', ['6']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[12] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-7').setTargeting('POS', ['7']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[13] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setTargeting('POS', ['3']).defineSizeMapping(mapping7).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[14] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setTargeting('POS', ['4']).defineSizeMapping(mapping8).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
 
-                
                 for (var i=0; i < gptadslots.length; i++) {
                     rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
                 };
@@ -148,7 +177,7 @@
                adSlot.setAttribute( 'class', 'ad-container' );
                
                googletag.cmd.push(function() {
-                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], slotName).setTargeting('POS', ['1']).defineSizeMapping(mapping).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).setTargeting('POS', ['1']).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                  googletag.display(slotName);
                  googletag.pubads().refresh([slot]);
                });

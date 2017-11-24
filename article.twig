@@ -14,7 +14,14 @@
 
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate, 'F, Y') %}
 
-{% set articles = _Article.getPopularArticles({ limit: 5, excludeArticleIds : article.id }) %}
+{% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id] }) %}
+{% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
+
+{% set dairyOverride = '' %}
+{% if _Blog.getBlogTitle() | lower == 'dairy' %}
+{%   set dairyOverride = 'dairy-override' %}
+{% endif %}  
+
 {% set testCount = 0 %}
 
 <meta name="__sync_contentCategory" content="Premium">
@@ -29,38 +36,6 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-9">
-
-
-
-
-                        <div class="content-block-top">
-
-                            <p class="category">{{article.label}}</p
-                            ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
-                            
-                            <h1>{{ quotes.smarten(article.title) }}</h1>
-                            
-                            <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}"><span>By</span> {{ article.createdBy['displayName'] }}</a>
-
-{#                             <div class="time_to_read">
-                                {% set readtime = 3 %}
-                                {% if article.readingTime > 3 %}
-                                    {% set readtime = 4 %}
-                                {% endif %}
-                                {% if article.readingTime > 4 %}
-                                    {% set readtime = 7 %}
-                                {% endif %}
-                                {% if article.readingTime > 7 %}
-                                    {% set readtime = 10 %}
-                                {% endif %}
-
-                                <img src="{{networkData.templatePath}}/static/images/reading_time/{{readtime}}_min.svg" />
-                                <p>{{article.readingTime}} minute read</p>
-                            </div>
- #}                        </div><!--content-block-top-->
-
-
-
 
 
                         {% if articleImg %} 
@@ -82,9 +57,34 @@
                                  </figcaption>
                              </figure>
                          {% endif %}
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <div class="content-block-top">
+
+                            <p class="category">{{article.label}}</p
+                            ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
+                            
+                            <h1>{{ quotes.smarten(article.title) }}</h1>
+                            
+                            <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}"><span>By</span> {{ article.createdBy['displayName'] }}</a>
+
+                        </div>   
+
+                        <hr class="divide18 visible-md-block visible-lg-block" />                      
 
                     </div>
 
+                </div>
+
+                {# social icons #}
+                <div class="row">
+                    <div class="col-md-9">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="share-icon facebook-icon"></a
+                        ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="share-icon twitter-icon"></a
+                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="share-icon email-icon"></a>
+                    </div>
                 </div>
 
 
@@ -92,7 +92,7 @@
                     <div class="col-md-6">
 
                         <div class="article_content">
-                            {{ article.content | _resizeImages({'width': 400}) | raw }}
+                            {{ article.content | _resizeImages({'width': 600}) | raw }}
                         </div><!-- .content-->
 
                     </div>
@@ -104,8 +104,8 @@
                             <div class="row">
 
                                 <div class="col-sm-9">
-                                    <div class="ad-side-container" style="height:450px;position:relative;">
-                                        <div id="articleAdScroll" class="ad-square fixad" style="width:300px;">
+                                    <div class="ad-side-container" style="height:250px;position:relative;">
+                                        <div class="ad-square lockad" style="width:300px;">
                                             <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-1'>
                                                 <script type='text/javascript'>
                                                     googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
@@ -114,25 +114,20 @@
                                         </div>
                                     </div>
 
-                                    <h2 class="sidebar-header">Latest articles</h2>
+                                    <h2 class="sidebar-header {{ dairyOverride }}">Latest articles</h2>
                                 </div>
 
-
-
-                                {% for i in 0..3 if articles[testCount] %}
+                                {% for i in 0..3 if recentArticles[i] %}
                                     <div class="col-md-9 col-sm-4">
                                         {{this.render('partials/_single-article.twig', {
-                                            article: articles[testCount], 
-                                            position: (articleCount+1),
+                                            article: recentArticles[i], 
                                             imageSuppress: true,
-                                            containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                         }) | raw}}
                                         
                                         {% if i < 4 %}
                                             <hr class="divide15">
                                         {% endif %}
-
-                                        {% set articleCount = articleCount + 1 %}
                                     </div>
                                 {% endfor %}
                             </div>
@@ -180,11 +175,10 @@
                 </div>
                 
                 <div class="row">
-                    {% for i in 0..2 if articles[i] %}
+                    {% for i in 0..2 if relatedArticles[i] %}
                         <div class="col-sm-3">
                             {{this.render('partials/_single-article.twig', {
-                                article: articles[i], 
-                                position: (articleCount+1),
+                                article: relatedArticles[i], 
                                 imageSize: {width: 300, height: 180},
                                 containerClass: 'card-sm-wide card-sm-wide-mobile'
                             }) | raw}}

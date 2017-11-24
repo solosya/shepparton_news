@@ -1,7 +1,7 @@
 @mixin top-stories-base() {
     a.card {
         @include card-image-none;
-        height: 100px;
+        height: 75px;
 
         > article {
             > figure{
@@ -13,17 +13,15 @@
                 }
                 > h2{
                     font-size: rem(14);
-                    line-height:1.18;
+                    line-height:1.2;
                     margin-top: 5px;
                     margin-bottom: 5px;
                     overflow:hidden;
-                    font-weight: bold;
-                    height: 20px;
+                    font-weight: normal;
+                    height: 40px;
                 }
                 > p {
-                    height: 32px;
-                    font-size: rem(13);
-                    line-height: 1.23;
+                    display: none;
                 }
             }
         }
@@ -103,13 +101,22 @@
 .top-stories-mobile {
     @media screen and (max-width: $sm-break-down){
         @include top-stories-base();
-
         a.card {
+            height: 85px;
             article {
                 > .content {
                     h2{
                         line-height:1.2;
-                        height:40px;
+                        height:36px;
+                        font-weight: normal;
+                    }
+
+                    > p {
+                        display: none;
+                    }
+
+                    .author {
+                        bottom: 7px;
                     }
                 }
             }

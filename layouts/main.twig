@@ -63,11 +63,11 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=2e43028d" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=c75c2564" type="text/css" media="all">
 
     {% else %}
-{#             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" />
-        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/animate.css?ver=1" />
+        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" />
+{#        <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/animate.css?ver=1" />
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/mediaelementplayer.css?ver=1" /> #}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -136,7 +136,7 @@
 
 <body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}">
 
-<div class="ad-container">
+<div class="ad-container top-ad">
     <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
         <script type='text/javascript'>
             googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });

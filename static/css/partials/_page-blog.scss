@@ -24,10 +24,18 @@ body.blog {
                 font-size: rem(14);
                 padding-bottom: 15px;
                 padding-top: 5px;
+
+                &.country {
+                    color:color(darkcountry);
+                }
+                &.dairy {
+                    color:color(dairy);
+                }                
             }
 
             .follow {
-                margin-top: 10px;
+                position: absolute;
+                bottom: 0px;
                 height: 24px;
                 width: 70px;
                 background-color: black;
@@ -39,6 +47,10 @@ body.blog {
                 padding: 5px;
                 text-align: center;
             }            
+
+            .bloggerInfo {
+                height: 134px;
+            }
 
             @media screen and (min-width: $mmd-break){
 

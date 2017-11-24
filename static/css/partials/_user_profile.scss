@@ -10,6 +10,7 @@
         font-weight: bold;
         font-size: rem(20);
         padding: 20px 0px;
+        hyphens: auto;
     }
 
     p.bio {
@@ -19,6 +20,16 @@
         font-size: rem(14);
         letter-spacing: 0.2px;
         line-height: 1.43;
+        padding: 25px 0px;
+    }
+
+    a.follow {
+        font-size: rem(10);
+        padding: 3px 12px;
+        background-color: black;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
     }
 
     .user-social {
@@ -34,6 +45,10 @@
         padding: 0px 15px;
 
         li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
             padding: 10px 20px;
             margin: 0;
             font-size: rem(16);
@@ -49,12 +64,48 @@
             }
 
             &.no-data {
+                display: block;
                 text-align: center;
                 font-style: italic;
-            }       
+                font-size: rem(12);
+            }
+
+            >img.thumbnail {
+                width: 64px;
+                height: 64px;
+            }    
+
+            > div.description {
+                flex: 1;
+                padding: 0px 20px;
+                p {
+                    font-family: $font-family-sans-serif;                    
+                    font-size: rem(14);
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            > div.followed_by {
+                font-size: rem(12);
+                font-family: $font-family-sans-serif;
+            }
         }        
     }
 
+}
+
+div.img-thumbnail {
+    width: 36px;
+    height: 36px;
+    border: none;
+    padding: 0px;
+    border-radius: 36px;
+    
+    > img {
+        height: 36px;
+        border-radius: 36px;
+    }
 }
 
 

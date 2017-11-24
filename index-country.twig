@@ -24,22 +24,22 @@
         "dairy": {
             "feed": "",
             "link": "",
-            "limit" : 10
+            "limit" : 5
         }, 
         "water": {
             "feed": "",
             "link": "",
-            "limit" : 10
+            "limit" : 4
         },
         "horticulture": {
             "feed": "",
             "link": "",
-            "limit" : 10
+            "limit" : 3
         },
         "videos": {
             "feed": "",
             "link": "",
-            "limit" : 10
+            "limit" : 2
         },
         "bloggers": {
             "feed": "",
@@ -100,7 +100,7 @@
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             position: articleCount + 1, 
-                            containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% if i < 2 %}
@@ -180,13 +180,8 @@
         </section>
     </div>
 
-    <div class="ad-container">
-        <div id='div-gpt-ad-leaderboard-2' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-2'); });
-            </script>
-        </div>
-    </div>
+    <div id="newAdSlot"></div>
+    <script>loadNextAd()</script>
 
 
     {% if sections['dairy'].feed.articles|length > 0 %}
@@ -201,13 +196,8 @@
         </div>
     {% endif %}
 
-    <div class="ad-container">
-        <div id='div-gpt-ad-leaderboard-3' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
-            </script>
-        </div>
-    </div>            
+    <div id="newAdSlot"></div>
+    <script>loadNextAd()</script>        
 
     {% if sections['bloggers'].feed.articles|length > 0 %}
         <div class="container">
@@ -241,7 +231,7 @@
                 articleCount: articleCount,
                 section: 'horticulture',
                 dev: dev,
-                cards: 'feature-side feature-side-tablet feature-side-mobile divideright',
+                cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
             }) | raw}} 
         </div>
     {% endif %} 

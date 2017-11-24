@@ -14,17 +14,21 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:409, height:530},
-                containerClass: 'home-feature-thin home-feature-thin-mobile'
+                containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
         {% endif %}
-
+        <hr class="divide visible-xs-block space-only">        
 
 
     </div>
     <div class="col-md-2 col-sm-3">
         {% set cardspace = ['', 'row-space'] %}
         {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+            {% if section == 'dairy' %}
+            {%   set cardspace = ['dairy-card', 'row-space'] %}
+            {% endif %}
+
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
@@ -52,7 +56,7 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
-                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
             {% if i == 0 %}

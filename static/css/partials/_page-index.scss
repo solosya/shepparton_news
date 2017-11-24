@@ -20,26 +20,19 @@ body.special {
 .site-main {
     margin-top:50px;
     @media screen and (max-width: $sm-break-down) {
-        margin-top:10px;
+        margin-top:40px;
     }
 
     margin-bottom:100px;
 
     section {
-        @media screen and (min-width: $sm-break) {
-            margin-bottom:65px;
-        }
-        @media screen and (max-width: $sm-break-down) {
-            margin-bottom:45px;
-        }
-
+        margin-bottom:40px;
     }
 
 
     .bloggerImg {
 
         width:100%;
-        max-width:300px;
         height:190px;
         @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
             height:139px;
@@ -48,8 +41,7 @@ body.special {
             margin-bottom:20px;
         }
 
-
-        >div {
+        >div.content {
             position:absolute;
             top:20px;
             left:40px;
@@ -101,10 +93,10 @@ body.special {
 
         @media screen and (max-width: $mmd-break-down){
             height:auto;
-            margin-bottom:20px;
+            margin-bottom:0px;
         }
         @media screen and (max-width: $sm-break-down){
-            margin-bottom:0;
+            margin-bottom:0px;
         }
 
 
@@ -116,6 +108,30 @@ body.special {
         // }
 
 
+    }
+
+    .view-all-sport {
+        font-family: $font-family-serif;
+        font-size: rem(14);
+        font-style: italic;
+        border-top: 1px solid color(grey);
+        border-bottom: 1px solid color(grey);
+        text-align: center;
+        padding-bottom: 12px;
+        line-height: 1;
+        color: color(red);
+        &:after {
+            display: inline-block;
+            content: '';
+            background-image: url('../icons/arrow-icon.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 35px;
+            height: 25px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
     }
 
 
@@ -135,6 +151,12 @@ body.special {
             margin-bottom:13px;
             line-height:1;
             padding-bottom: 10px;
+        }
+
+        &.dairy-override {
+            > h2 {
+                color: color(red);
+            }
         }
     }
 
@@ -185,14 +207,17 @@ body.special {
 
     .current-issue-card {
         display: flex;
-        margin: 15px 0;
+        margin: 0px;
         background: color(red);
         height: 60px;
-        padding: 12px 0px;
+        padding: 12px 0px;   
 
         > a.download-current {
             color: white;
             text-transform: uppercase;
+            font-size: rem(15);
+            position: absolute;
+            top: 10px;
 
             &:hover {
                 cursor: pointer !important;
@@ -201,8 +226,8 @@ body.special {
 
             &::before {
                 position: relative;
-                top: 6px;
-                margin: 0px 6px;
+                top: 7px;
+                margin: 0px 10px;
                 content: ' ';
                 display: inline-block;
                 width: 27px;
@@ -210,8 +235,19 @@ body.special {
                 background-position:center;
                 background-repeat:no-repeat;
                 background-image: url('../images/arrow-in-circle-icon.svg');
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);                
             }
         }
+
+
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {    
+            height: 74px;
+
+            > a.download-current {
+                top: 17px;
+            }
+        }         
     }
 
     .subscribe {
@@ -219,7 +255,7 @@ body.special {
 
         > h2 {
             color: color(red);
-            font-weight: normal;
+            font-weight: 600;
             font-size: rem(15);
             letter-spacing: 0.9px;
             text-transform: uppercase;
@@ -233,6 +269,7 @@ body.special {
                 font-style: italic;
                 font-size: rem(11);
                 text-transform: none;
+                font-weight: 400;
             }
         }
 
@@ -244,23 +281,12 @@ body.special {
                 color: black;
             }
 
-             button[type="submit"] {
+            button[type="submit"] {
                 width: 80px;
                 margin-left: 15px;
                 background: white;
                 border: 1px solid black;
                 font-size: rem(11);
-             }
-
-            &::after {
-                display: block;
-                content: '* indicates required';
-                font-family: $font-family-serif;
-                margin: 5px 0px;
-                color: color(grey);
-                font-style: italic;
-                font-size: rem(11);
-                text-transform: none;
             }
         }
     }

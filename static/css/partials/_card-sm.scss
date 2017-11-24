@@ -158,11 +158,54 @@
 
         }
     }
+
+
+    &.dairy-card {
+        a.card {
+            > article {
+                > figure {
+                    margin-bottom: 3px;
+                }
+
+                > .content {
+                    background-color: #7bc127;
+                    padding: 20px;
+                    height: 87px;
+ 
+                    > .category {
+                        display: none;
+                    }
+
+                    h2 {
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        color: white;
+                        height: 24px;
+                        margin-bottom: 0px;
+                    }
+
+                    > p {
+                        display: block;
+                        font-size: rem(14);
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: white;
+                        height: 24px;
+                    }
+
+                    > .author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
 .card-sm-tablet{
-    @media screen and (min-width: $sm-break){
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         @include card-sm-base();
 
         a.card {
@@ -280,43 +323,29 @@
 }
 
 
-
-.card-sm-mobile{
-    @media screen and (max-width: $sm-break-down) {
+.card-sm-mobile {
+    @media screen and (max-width: $sm-break-down){
         @include card-sm-base();
+
+        height:85px;
 
         a.card {
             @include card-image-left(89px, 85px);
-            height: 90px;
 
-            > article {
-
-
-                > figure{
-                    margin-right:8px;
-                    &.video {
-                        &:before{
-                            @include videoIconMiddle();
-                        }
+            article {
+                > .content {
+                    margin-left: 100px;
+                    h2{
+                        font-size: rem(14);
+                        height: 60px;
                     }
                 }
             }
 
-
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
-                    }
-                    >p {
-                        height:44px;
-                    }
-                }
-                &.instagram{ 
-                    &.without__content {
-                        .content {
-                            padding-top:25px;
-                        }
+            &.without__image {
+                article {
+                    > .content {
+                        margin-left: 0;
                     }
                 }
             }

@@ -14,12 +14,12 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:409, height:530},
-                containerClass: 'home-feature-xs'
+                containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
         {% endif %}
 
-
+        <hr class="divide visible-xs-block space-only">
 
     </div>
     <div class="col-sm-2">
@@ -44,7 +44,7 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
-                containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
             {% if i == 0 %}

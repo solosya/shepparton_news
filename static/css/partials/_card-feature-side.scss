@@ -95,6 +95,47 @@
             }
         }
     }
+
+    &.dairy-card {
+        a.card {
+            > article {
+                > figure {
+                    z-index: 99;
+                }
+                > .content {
+                    background-color: #7bc127;
+                    padding: 10px;
+                    margin-left: 85px;
+
+                    > .category {
+                        display: none;
+                    }
+
+                    h2 {
+                        font-size: rem(22);
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        color: white;
+                        height: 26px;
+                        margin-bottom: 0px;
+                    }
+
+                    > p {
+                        display: block;
+                        font-size: rem(14);
+                        text-transform: uppercase;
+                        color: white;
+                        height: 24px;
+                        padding-top: 5px;
+                    }
+
+                    > .author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -130,14 +171,24 @@
             @include card-image-left(80px, 95px);
 
 
-            article {
-            
+            article {            
                 > .content {
+                    padding-left: 80px;
                     h2{
                         height: 60px;
+                        margin-right: 20px;
                     }
                 }
             }
+
+            &.without__image {
+                .content {
+                    padding-left: 0px;
+                    h2 {
+                        margin-right: 0px;
+                    }
+                }
+            }            
         }
     }
 }
@@ -173,8 +224,9 @@
             article {
                 > .content {
                     h2{
-                        font-size: rem(12);
-                        height: 33px;
+                        font-size: rem(16);
+                        height: 40px;
+                        line-height: 1.2;
                     }
                     p.excerpt {
                         display:none;
@@ -188,29 +240,6 @@
                     }
                     p.excerpt {
                         display:none;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.feature-side-mobile {
-    @media screen and (max-width: $sm-break-down){
-        @include card-feature-side-base();
-
-        height:85px;
-
-        a.card {
-            @include card-image-left(89px, 85px);
-
-
-            article {
-            
-                > .content {
-                    h2{
-                        font-size: rem(15);
-                        height: 60px;
                     }
                 }
             }

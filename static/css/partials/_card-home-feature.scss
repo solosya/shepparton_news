@@ -32,7 +32,6 @@
                     overflow:hidden;
                     margin-bottom:6px;
                     height: 85px;
-                    max-width:530px;
                     line-height: 1.18;
 
                 }
@@ -148,6 +147,7 @@
 
                     h2{
                         font-size: rem(34);
+                        width:450px;                        
                     }
                 }
             }
@@ -179,6 +179,7 @@
                         font-size: rem(24);
                         position: absolute;
                         bottom: 15px;
+                        width:350px;
                     }
                 }
             }
@@ -188,43 +189,37 @@
 
 
 
-
-
-
 .home-feature-mobile {
     @media screen and (max-width: $sm-break-down){
         @include card-home-feature-base();
 
-        margin-bottom:20px;
-        // height:210px;
-        height:60vw;
+        height:210px;
 
         a.card {
+            padding: 16px;
             article {
         
                 > .content {
-                    padding: 0 20px 15px 10px;
-                    position:absolute;
-                    bottom:0;
+                    width: 100%;
+                    height: 100%;
 
                     .category{
-                        margin-bottom:5px;
+                        position: absolute;
+                        bottom: 85px;
                     }
 
                     h2{
                         font-size: rem(26);
-                        margin-bottom: 5px;
                         height: 60px;
                         line-height: 1.15;
+                        position: absolute;
+                        bottom: 15px;
                     }
                 }
             }
 
             &.social {
                 .content {
-
-                    padding: 16px 20px 5px 10px;
-
                     .icon {
                         margin-bottom:45px;
                     }

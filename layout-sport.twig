@@ -1,0 +1,188 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set layout      = blogData.layout %}
+
+{{this.registerJs("Acme.CardController();")}}
+
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
+{% set limit = 30 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+{% set events = _Event.getEvents() %}
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+
+{% set sections =  {
+        "local sport": {
+            "limit" : 10
+        }, 
+        "australian rules": {
+            "limit" : 5
+        },
+        "rural news": {
+            "limit" : 5
+        },
+        "cricket": {
+            "limit" : 5
+        },
+        "golf": {
+            "limit" : 4
+        },
+        "netball": {
+            "limit" : 4
+        },
+        "racing": {
+            "limit" : 3
+        },
+        "soccer": {
+            "limit" : 3
+        },
+        "tennis": {
+            "limit" : 3
+        }
+    }
+%}
+
+{% for key, value in sections %}
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == key %}
+            {% set sections = sections | merge({
+                (key) : {
+                    'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
+                    'link' : blog.link
+                    }
+                }) %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+<main id="main" class="site-main" role="main">
+    
+    <div class="container">
+        {{this.render('partials/index/sport-top.twig', {
+            articles: sections['local sport'], 
+            articleCount: articleCount,
+            section: 'local sport',
+            dev: dev,
+            ad: 'div-gpt-ad-mrec-1',
+        }) | raw}}
+    </div>
+
+
+
+    {% if sections['local news'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/large-section.twig', {
+                articles: sections['local news'], 
+                articleCount: articleCount,
+                section: 'local news',
+                events: events,
+                dev: dev,
+                ad: 'div-gpt-ad-halfpage-ss',
+            }) | raw}} 
+        </div>
+    {% endif %}
+    
+        <div id="newAdSlot"></div>
+    <script>
+    generateNextSlotName()
+    loadNextAd();
+    </script>
+
+    {% if sections['australian rules'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/medium-section.twig', {
+                articles: sections['australian rules'], 
+                articleCount: articleCount,
+                section: 'australian rules',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-2',
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+
+    {% if sections['cricket'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/section-with-feature.twig', {
+                articles: sections['cricket'], 
+                articleCount: articleCount,
+                section: 'cricket',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-3',
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+
+    {% if sections['golf'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/small-section.twig', {
+                articles: sections['golf'], 
+                articleCount: articleCount,
+                section: 'golf',
+                dev: dev,
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['netball'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/small-section.twig', {
+                articles: sections['netball'], 
+                articleCount: articleCount,
+                section: 'netball',
+                dev: dev,
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['racing'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/row-three-ad.twig', {
+                articles: sections['racing'], 
+                articleCount: articleCount,
+                section: 'racing',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-4',                
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+        <div id="newAdSlot"></div>
+    <script>loadNextAd()</script>
+
+    {% if sections['soccer'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/row-three.twig', {
+                articles: sections['soccer'], 
+                articleCount: articleCount,
+                section: 'soccer',
+                dev: dev,
+                cards: 'feature-side feature-side-tablet card-sm-mobile divideright',                
+            }) | raw}} 
+        </div>
+    {% endif %}    
+
+    {% if sections['tennis'].feed.articles|length > 0 %}
+        <div class="container">
+            {{this.render('partials/index/row-three-ad.twig', {
+                articles: sections['tennis'], 
+                articleCount: articleCount,
+                section: 'tennis',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-5',                
+            }) | raw}} 
+        </div>
+    {% endif %}    
+
+
+</main><!-- .site-main -->

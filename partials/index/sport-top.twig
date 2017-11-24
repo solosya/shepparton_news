@@ -1,0 +1,200 @@
+{% set sectionCount = (dev) ? articleCount : 0 %}
+
+<section class="home-main-stories">
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-6">
+            {% if articles.feed.articles[sectionCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[sectionCount], 
+                    position: sectionCount + 1, 
+                    imageSize: {width:900},
+                    containerClass: 'home-feature home-feature-tablet home-feature-mobile'
+                }) | raw}}
+                {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+
+                <hr class="divide15 visible-sm-block visible-xs-block space-only">
+
+            {% endif %}
+        </div>
+
+        {% if articles.feed.articles[sectionCount] %}
+            <div class="col-xs-9 col-sm-9 col-md-3">
+                <div class="row">
+
+                    {% for i in 0..2 if articles.feed.articles[i] %}
+                        <div class="col-sm-3 col-md-9">
+                            {{this.render('../_single-article.twig', {
+                                article: articles.feed.articles[sectionCount], 
+                                position: sectionCount + 1, 
+                                containerClass: 'feature-side card-sm-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+                            {% if i < 2 %}
+                                <hr class="divide12 visible-md-block visible-lg-block">
+                                <hr class="divide10 visible-xs-block">
+                                <hr class="divide10 visible-sm-block space-only">                               
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="col-sm-1 col-md-9">
+                        <hr class="divide12 space-only">
+                        <a href="{{articles.link}}">
+                            <div class="visible-md-block visible-lg-block view-all-sport">
+                                View all local sport
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+        <div class="ad-container hidden-md hidden-lg">
+            <div id='div-gpt-ad-mrec-5' class="card__announcement-image google_ad google_ad_mrec text-center" >
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
+                </script>
+            </div>
+        </div>
+     
+
+        <section class="row sm-two-cols visible-sm-block">
+            {% set tabletCount = sectionCount %} 
+            {% for i in 0..5 if articles[tabletCount] %}
+                <div class="col-sm-1">
+                    {{this.render('../_single-article.twig', {
+                        article: articles[tabletCount], 
+                        position: 1, 
+                        imageSize: {width:500},
+                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                    }) | raw}}
+                    {% set tabletCount = (dev) ? tabletCount : tabletCount + 1 %}
+                    <hr class="divide10 visible-sm-block space-only">
+
+                </div>
+            {% endfor %}
+        </section>
+
+
+        
+
+        
+{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
+
+<section>
+    <div class="row">
+        <div class="col-sm-3 col-md-2 most-popular">
+            <h2>Most popular</h2>
+
+            {% for i in 0..4 if popularArticles[i] %}
+                {{this.render('../_single-article.twig', {
+                    article: popularArticles[i], 
+                    imageSuppress: true, 
+                    containerClass: 'card-popular'
+                }) | raw}}
+            {% endfor %}
+        </div>
+
+        <div class="ad-container hidden-md hidden-lg">
+            <div id='div-gpt-ad-mrec-6' class="card__announcement-image google_ad google_ad_mrec text-center" >
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-6'); });
+                </script>
+            </div>
+        </div>
+
+        <hr class="divide visible-xs-block">
+
+        <div class="col-sm-3 col-md-2">
+            {% if articles.feed.articles[sectionCount] %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[sectionCount], 
+                    position: sectionCount + 1, 
+                    imageSize: {width:300},
+                    containerClass: 'card-sm card-sm-mobile'
+                }) | raw}}
+                {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+                <hr class="divide visible-xs-block">
+
+            {% endif %}
+        </div>
+
+
+        <div class="col-sm-3 col-md-2">
+            {% if articles.feed.articles[sectionCount] %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[sectionCount], 
+                    position: sectionCount + 1, 
+                    imageSize: {width:300},
+                    containerClass: 'card-sm card-sm-mobile'
+                }) | raw}}
+                {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+
+            {% endif %}
+        </div>
+
+
+        <div class="col-sm-9 col-md-3 addSpaceMobile">
+            <div class="ad-square hidden-sm hidden-xs">
+                <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function() { googletag.display('{{ ad }}'); });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="row row-space">
+        <div class="col-sm-3">
+            {% if articles.feed.articles[sectionCount] %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[sectionCount], 
+                    position: sectionCount + 1, 
+                    imageSize: {width:300},
+                    containerClass: 'card-sm-wide card-sm-mobile'
+                }) | raw}}
+                {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+                
+                <hr class="divide visible-xs-block">
+
+            {% endif %}
+        </div>
+
+
+        <div class="col-sm-3">
+            {% if articles.feed.articles[sectionCount] %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[sectionCount], 
+                    position: sectionCount + 1, 
+                    imageSize: {width:300},
+                    containerClass: 'card-sm-wide card-sm-mobile'
+                }) | raw}}
+                {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+                <hr class="divide visible-xs-block">
+            {% endif %}
+
+
+        </div>
+        <div class="col-sm-3">
+            {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[sectionCount], 
+                    position: sectionCount + 1, 
+                    imageSize: {width:300},
+                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                }) | raw}}
+                {% set sectionCount = (dev) ? sectionCount : sectionCount + 1 %}
+                
+                {% if i == 0 %}
+                    <hr class="divide">
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

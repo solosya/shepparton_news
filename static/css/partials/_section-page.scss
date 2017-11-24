@@ -1,4 +1,7 @@
 body.channel, body.section, body.page {
+    .site-main {
+        margin-bottom: 0px;        
+    }
 
     .header {
         div.hk {
@@ -6,7 +9,7 @@ body.channel, body.section, body.page {
             h2 {
                 flex-grow: 0;
                 font-family: $font-family-sans-serif;
-                font-size: rem(36);
+                font-size: rem(30);
                 font-weight:300;
                 margin-bottom:25px;
                 color:color(red);
@@ -27,4 +30,23 @@ body.channel, body.section, body.page {
         }
   
     }
+    .ad-container{
+        margin-top: 30px;
+        margin-bottom: 15px;
+
+        @media screen and (max-width: $sm-break){
+         margin-top: 50px;
+         #div-gpt-ad-mrec-7{
+            margin-top: -65px;
+            margin-bottom: -25px;
+         }
+    }
+        
+        #adslot1{
+            margin-top: -90px;
+        }
+    }
+    .top-ad {
+            margin: 40px auto;
+        }
 }

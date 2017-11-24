@@ -223,11 +223,10 @@
         margin-bottom:7vw;
 
         height: 250px;
-        width: 320px;
 
         a.card {
             @include card-image-top(auto, auto);
-            height:auto;
+            height:100%;
 
             > article {
 

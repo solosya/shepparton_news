@@ -26,20 +26,19 @@
             }
 
             nav.sb-custom-menu {
-                > a {
+                > a.menu-hamburger {
                     margin-top:0;
                     background-image: url(../icons/mobile-close.svg);
                     background-size:cover;
                     width:20px;
                     height:20px;
                 }
+
+                > a.mobileSearchIcon {
+                    display: none !important;
+                }
             }
         }
-        .navbar-brand {
-
-            // background-size: 40px;
-        }
-
     }
 }
 
@@ -55,11 +54,26 @@
 //     // } 
 // }
 
+.top-ad {
+    @media screen and (max-width: $sm-break-down) {
+        padding-top: 80px;
+        display: none;
+    }
+
+    margin: 40px auto;
+
+    
+}
+
 .site-header {
     position:relative;
     padding:0;
     max-width:none;
     z-index:140;
+    @media screen and (max-width: $sm-break-down) {
+        padding-bottom: 65px;
+    }
+
 
 
     .site-header-main {
@@ -69,6 +83,11 @@
         width:100%;
         @media screen and (max-width: $mmd-break){
             height:auto;
+        }
+
+        @media screen and (max-width: $sm-break-down) {
+            position: fixed;
+            top: 0;
         }
         
         // input.field {
@@ -145,10 +164,6 @@
             height:25px;
             background:color(red);
 
-            @media screen and (max-width: $sm-break){
-                display:none;
-            }
-
             ul.auth-links {
                 float:right;
                 padding:0;
@@ -176,47 +191,6 @@
             }
         }
 
-        .masthead-logo {
-            // position:relative;
-            height: 65px;
-            z-index: 500;
-            float:left;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            @media screen and (max-width: $mmd-break){
-                height:35px;
-            }
-
-            > a {
-                background-position: bottom; 
-            }
-
-        }
-
-
-        .navbar-brand {
-            // position:absolute;
-            // bottom:0;
-            display:block;
-            padding:0;
-            width: 160px;
-            height:40px;
-            background-repeat:no-repeat;
-            background-size:contain;
-            vertical-align: bottom;
-
-            @media screen and (max-width: $mmd-break){
-                margin-top: 0;
-                padding:8px;
-                width: 120px;
-                height:32px;
-                background-size: 120px;
-                background-repeat:no-repeat;
-            }
-
-
-        }
         .navbar-right {
             margin-top:25px;
             @media screen and (max-width: $mobile-break){
@@ -248,6 +222,118 @@
         @media screen and (max-width: $mobile-break){
             display:none;
         }
+    }
+
+    .site-branding-bottom-foldaway {
+        @include transition(100000s);
+        background:white;
+        position:fixed;
+        top:-150px;
+        right:0;
+        // padding:10px 0 5px 0;
+        margin:0;
+        width:100%;
+        // border-bottom: solid 1px #6c6c6c;
+        z-index:2147483647;
+
+        .sb-custom-menu-foldaway {
+            float:right;
+            .menu-mobile{
+                display: block;
+                width: 95px;
+                background-image: url(../images/mobile-menu.svg);
+                background-size: 45px 30px;
+                background-position: right;
+                background-repeat: no-repeat;
+                padding: 5px 0;
+                color: #f73d30;
+            }
+        }
+
+        > .header-top {
+            height: 80px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+
+        &.showMenuPanel {
+            top:0 !important;
+            left:0;
+            right:0;
+        }
+
+    }
+
+}
+
+
+
+
+// header & footer logo
+.navigation-logo {
+    height: 65px;
+    z-index: 500;
+    float:left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    @media screen and (max-width: $mmd-break){
+        height:35px;
+    }
+
+    > a {
+        background-position: bottom; 
+    }
+
+    &.footer {
+        height: 80px;
+        width: 140px;
+        padding-top: 10px;
+
+        > a {
+            background-position: top;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+
+.navbar-brand {
+    display:block;
+    padding:0;
+    width: 160px;
+    height:40px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    vertical-align: bottom;
+
+    @media screen and (max-width: $mmd-break){
+        margin-top: 0;
+        padding:8px;
+    }
+}
+
+.country-logo {
+    @media screen and (min-width: $mmd-break){    
+        height: 70px;
+    }
+
+    > a {
+        background-position: 0px 6px;
+        width: 185px;    
+        @media screen and (max-width: $mmd-break){
+            width:160px;
+        }
+    }
+}
+
+.dairy-logo {
+    > a {
+        width: 264px;
+        @media screen and (max-width: $mmd-break){
+            width:160px;
+        }        
     }
 }
 

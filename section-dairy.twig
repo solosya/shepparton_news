@@ -5,7 +5,7 @@
 {{this.registerJs("Acme.cardController = Acme.CardController();")}}
 {{this.registerJs("Acme.SectionController();")}}
 
-{% set limit = 17 %}
+{% set limit = 10 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -48,7 +48,7 @@
 
                 </div>
 
-                <hr class="divide18 visible-sm-block visible-xs-block space-only col-sm-9">
+                <hr class="divide12 visible-sm-block visible-xs-block space-only col-sm-9">
 
                 <div class="col-md-3 sm-two-cols">
                     <div class="row">
@@ -65,68 +65,52 @@
                             <hr class="divide18 visible-md-block visible-lg-block">                            
                             {{ this.render('partials/subscribe.twig') | raw }}
                         </div>
-
-                    <!-- extra story for tablet, mobile -->
-                     {% if articles[articleCount] %}
-                            <hr class="divide visible-xs-block">
-                            <div class="col-sm-1 col-md-9 visible-sm-block visible-xs-block">
-                                 {{this.render('partials/_single-article.twig', {
-                                     article: articles[articleCount], 
-                                     imageSize: {width:160, height:190},
-                                     position: articleCount + 1,
-                                     containerClass: 'feature-side feature-side-tablet feature-side-mobile divideright'
-                                 }) | raw}}
-                            </div>
-                     {% endif %}
-
                     </div>
                 </div>
             </div>
         </section>
     </div>
-
-
-    <div class="ad-container">
-        <section class="advert advert-padding">
-            <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
+    
+    <div class="ad-container hidden-md hidden-lg" style="margin-bottom:50px">
+            <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
                 <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
                 </script>
             </div>
-        </section>
-    </div>
+        </div>
 
     <div class="container">
         <section>
             <div class="row">
-                <div class="col-md-6 col-sm-5 row" style="margin-top:35px;">
-                    {% for i in 0..8 if articles[articleCount] %}
+                <div class="col-md-6 col-sm-5">
+                    <div class="row">
+                        {% for i in 0..8 if articles[articleCount] %}
 
-                        <div class="col-md-3 col-sm-9">
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                imageSize: {width:190, height:160},
-                                containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
-                            }) | raw}}
-                            <hr class="divide visible-xs-block">
-                            <hr class="divide18 visible-md-block visible-lg-block space-only">
-                            <hr class="divide18 visible-sm-block">
+                            <div class="col-md-3 col-sm-9">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:190, height:160},
+                                    containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide18 visible-md-block visible-lg-block space-only">
+                                <hr class="divide18 visible-sm-block">
 
-                        </div>
+                            </div>
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% endfor %}
-
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% endfor %}
+                    </div>
                 </div>
 
-                <div class="col-md-3 col-sm-4 split trending" style="margin-top:20px;">
+                <div class="col-md-3 col-sm-4 split trending dairy-override">
                    <h2>Trending stories</h2>
 
                     {% for i in 0..3 if popularArticles[popCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: popularArticles[popCount], 
                             imageSize: {width:190, height:160},
-                            containerClass: 'feature-side feature-side-tablet feature-side-mobile'
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                         }) | raw}}
 
                         {% set popCount = (dev) ? popCount : popCount + 1 %}
@@ -148,9 +132,9 @@
 
                 <div class="col-md-3 visible-xs-block visible-md-block visible-lg-block">
                     <div class="ad-square clearfixed">
-                        <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-2'>
+                        <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-4'>
                             <script type='text/javascript'>
-                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
+                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-4'); });
                             </script>
                         </div>
                     </div>
@@ -159,7 +143,7 @@
         </section>
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-top:15px;">
         <section>
             <div class="row">
                 <div class="col-sm-9 col-md-9 col-xs-9">
