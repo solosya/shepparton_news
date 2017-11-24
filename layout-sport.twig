@@ -76,8 +76,7 @@
         }) | raw}}
     </div>
 
-    <div id="newAdSlot"></div>
-    <script>loadNextAd()</script>
+
 
     {% if sections['local news'].feed.articles|length > 0 %}
         <div class="container">
@@ -91,14 +90,12 @@
             }) | raw}} 
         </div>
     {% endif %}
-    <div class="ad-container hidden-md hidden-lg">
-            <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
-                <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
-                </script>
-            </div>
-        </div>
-
+    
+        <div id="newAdSlot"></div>
+    <script>
+    generateNextSlotName()
+    loadNextAd();
+    </script>
 
     {% if sections['australian rules'].feed.articles|length > 0 %}
         <div class="container">
@@ -159,6 +156,9 @@
             }) | raw}} 
         </div>
     {% endif %}
+
+        <div id="newAdSlot"></div>
+    <script>loadNextAd()</script>
 
     {% if sections['soccer'].feed.articles|length > 0 %}
         <div class="container">

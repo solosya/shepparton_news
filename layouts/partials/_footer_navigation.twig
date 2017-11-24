@@ -1,0 +1,21 @@
+<ul id="" class="{{ class }}">
+    {% for item in items %}
+
+        {% set policyClass = '' %}
+        {% if 'policy' in item.link | lower %}
+        {%   set policyClass = 'policy' %}
+        {% endif %}
+
+        <li>
+            <a href="{{item.link |raw}}" class="{{activeClass}} {{externalClass}} {{ policyClass }}" {% if item.target != "" %} target="{{item.target}}"{% endif %}>
+                {% if item.label != "" %}
+                    {{item.label}}
+                {% elseif item.blogTitle != "" %}
+                    {{item.blogTitle}}
+                {% elseif item.pageTitle != "" %}
+                    {{item.pageTitle}}
+                {% endif %}
+            </a>
+        </li>
+   {% endfor %}
+</ul>

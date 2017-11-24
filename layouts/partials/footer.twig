@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="container">        
 
-        <div class="col-xs-9 col-md-2 col-sm-2">
+        <div class="col-xs-9 col-md-2 col-sm-2 row">
             {{ this.render('footer-logo.twig', {
                 networkData: networkData,
             }) | raw }}
@@ -13,100 +13,42 @@
 
             <div class="col-xs-9 col-md-7 col-sm-7">
 
-                <ul class="menu row">
-                    {% set menuItems = blog.blogFooterMenu %}
-                    {% for i in 0..2 if menuItems[i] %}
+                {% set menuItems = blog.blogFooterMenu %}                
 
-                       {% set activeClass = (menuItems[i].link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                       {% set externalClass = (menuItems[i].isExternal) ? 'external-link' : '' %}
+                {% if menuItems | length > 0 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(0, 3),
+                        class: 'menu padded',
+                    }) | raw}}
+                {% endif %}
 
-                       <li>
-                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
-                                {% if menuItems[i].label != "" %}
-                                    {{menuItems[i].label}}
-                                {% elseif menuItems[i].blogTitle != "" %}
-                                    {{menuItems[i].blogTitle}}
-                                {% elseif menuItems[i].pageTitle != "" %}
-                                    {{menuItems[i].pageTitle}}
-                                {% endif %}
-                            </a>
-                        </li>
-                    {% endfor %}
-
-                    </li>
-                </ul>
-
-                <ul id="" class="menu padded row">
-                    {% for i in 3..5 if menuItems[i] %}
-                       <li>
-                            <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
-                                {% if menuItems[i].label != "" %}
-                                    {{menuItems[i].label}}
-                                {% elseif menuItems[i].blogTitle != "" %}
-                                    {{menuItems[i].blogTitle}}
-                                {% elseif menuItems[i].pageTitle != "" %}
-                                    {{menuItems[i].pageTitle}}
-                                {% endif %}
-                            </a>
-                        </li>
-                   {% endfor %}
-                </ul>
+                {% if menuItems | length > 3 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(3, 3),
+                        class: 'menu padded row',
+                    }) | raw}}
+                {% endif %}
 
                 {% if menuItems | length > 6 %}
-                    <ul id="" class="menu padded row">
-                        {% for i in 6..8 if menuItems[i] %}
-                           <li>
-                                <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
-                                    {% if menuItems[i].label != "" %}
-                                        {{menuItems[i].label}}
-                                    {% elseif menuItems[i].blogTitle != "" %}
-                                        {{menuItems[i].blogTitle}}
-                                    {% elseif menuItems[i].pageTitle != "" %}
-                                        {{menuItems[i].pageTitle}}
-                                    {% endif %}
-                                </a>
-                            </li>
-                       {% endfor %}
-                    </ul>
-                {% endif %}          
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(6, 3),
+                        class: 'menu padded row',
+                    }) | raw}}
+                {% endif %}
 
                 {% if menuItems | length > 9 %}
-                    <ul id="" class="menu padded row">
-
-                        {% for i in 9..11 if menuItems[i] %}
-                           <li>
-                                <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
-                                    {% if menuItems[i].label != "" %}
-                                        {{menuItems[i].label}}
-                                    {% elseif menuItems[i].blogTitle != "" %}
-                                        {{menuItems[i].blogTitle}}
-                                    {% elseif menuItems[i].pageTitle != "" %}
-                                        {{menuItems[i].pageTitle}}
-                                    {% endif %}
-                                </a>
-                            </li>
-                       {% endfor %}
-                    </ul>
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(9, 3),
+                        class: 'menu padded row',
+                   }) | raw}}
                 {% endif %}
 
                 {% if menuItems | length > 12 %}
-                    <ul id="" class="menu padded row">
-
-                        {% for i in 12..14 if menuItems[i] %}
-                           <li>
-                                <a href="{{menuItems[i].link |raw}}" class="{{activeClass}} {{externalClass}}" {% if menuItems[i].target != "" %}target="{{menuItems[i].target}}"{% endif %}>
-                                    {% if menuItems[i].label != "" %}
-                                        {{menuItems[i].label}}
-                                    {% elseif menuItems[i].blogTitle != "" %}
-                                        {{menuItems[i].blogTitle}}
-                                    {% elseif menuItems[i].pageTitle != "" %}
-                                        {{menuItems[i].pageTitle}}
-                                    {% endif %}
-                                </a>
-                            </li>
-                       {% endfor %}
-                    </ul>
-                {% endif %}                
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(12, 3),
+                        class: 'menu padded row',
+                    }) | raw}}
+                {% endif %}
 
 
             </div>
@@ -117,9 +59,9 @@
             </div>
 
 
-        </div><!--row-->
+        </div>
 
-    </div><!-- .container-->
+    </div>
 
     
 </footer>

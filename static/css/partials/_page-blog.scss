@@ -24,6 +24,13 @@ body.blog {
                 font-size: rem(14);
                 padding-bottom: 15px;
                 padding-top: 5px;
+
+                &.country {
+                    color:color(darkcountry);
+                }
+                &.dairy {
+                    color:color(dairy);
+                }                
             }
 
             .follow {

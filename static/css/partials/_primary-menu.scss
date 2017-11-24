@@ -35,6 +35,16 @@
     @media screen and (max-width: $header-break){
         display: block;
     }
+
+    &.active {
+        background-image: url(../icons/cross-reverse.svg);        
+    }
+
+    &.foldaway-menu {
+        display: block;
+        float: right;
+        margin-top: -5px;
+    }
 }
 
 
@@ -154,7 +164,6 @@
             display:none;
         }
     }
-
 
     a{
         font-size:  rem(14);
@@ -422,6 +431,16 @@ ul.sub-menu a:focus{
     }
 }
 
+@media screen and (min-width: $header-break){
+    .show-on-tablet {
+        > .foldaway-menu {
+            display: block !important;
+            position: relative;
+            right: 30px;
+            top: -6px;
+        }
+    }
+}
 
 @media screen and (max-width: $header-break){
     .sb-custom-menu > div > ul > li > a:focus:after,
@@ -568,6 +587,25 @@ ul.sub-menu a:focus{
             flex: 1;
         }
     }
+
+    .menu-item-search {
+        padding: 10px;
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+            > fieldset {
+                top: 0px !important;
+                right: 0px !important;
+                width: 100% !important;
+                > form {
+                    > button.submit {
+                        right: -10px !important;
+                        width: 42px !important;
+                        height: 42px !important;
+                        top: -10px !important;
+                    }
+                }
+            }
+        }
+    }
 }
  
 
@@ -593,9 +631,6 @@ ul.sub-menu a:focus{
         padding-bottom: 100px;
     }
 }
-
-
-
 
 
 

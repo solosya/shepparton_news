@@ -39,6 +39,9 @@
 
         @media screen and (min-width: $sm-break) and (max-width: $md-break){
             height: 62px;
+            padding-right: 30px;
+            padding-left: 5px;
+            margin-right: 20px;        
         }
 
         @media screen and (max-width: $sm-break-down) {
@@ -58,7 +61,7 @@
             }
             > a {
                 font-size: rem(12.5);
-                font-weight:normal;
+                font-weight:bold;
                 letter-spacing: 0.4px;
                 color:white;
                 text-transform:uppercase;
@@ -66,12 +69,19 @@
                 @media screen and (min-width: $sm-break) and (max-width: $md-break){
                     font-size: rem(10);
                 }
+                &.policy {
+                    font-weight: normal;
+                    text-transform: initial;
+                }
 
             }
         }
         
         &.padded {
-            padding-right: 15px;          
+            padding-right: 15px;     
+            @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+                padding-right: 10px;
+            }    
         }
 
         &.padded70 {
@@ -94,6 +104,7 @@
 
     .publish {
         margin-top:35px;
+        padding-right: 0px;
 
         p {
             font-size: rem(10);

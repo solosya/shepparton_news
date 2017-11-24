@@ -6,7 +6,10 @@ $('document').ready(function() {
     var desktopView = 1119;
     var pageWindow = $(window);
     var scrollMetric = [pageWindow.scrollTop()];
+    var foldawayPanel = $("#foldaway-panel");
     var menuContainer = $("#mainHeader");
+    var menu_top_foldaway = $("#menu-top-foldaway");
+    var menu_bottom_foldaway = $("#menu-bottom-foldaway");
     var masthead = $('#masthead');
     var articleAd = $('#articleAdScroll');
 
@@ -18,19 +21,19 @@ $('document').ready(function() {
 
 
 
-    // var isMobile = function(){
-    //     if (window.innerWidth < mobileView) {
-    //         return true;
-    //     }
-    //     return false;
-    // };
+    var isMobile = function(){
+        if (window.innerWidth < mobileView) {
+            return true;
+        }
+        return false;
+    };
 
-    // var isDesktop = function(){
-    //     if (window.innerWidth > desktopView) {
-    //         return true;
-    //     }
-    //     return false;
-    // };
+    var isDesktop = function(){
+        if (window.innerWidth > desktopView) {
+            return true;
+        }
+        return false;
+    };
 
 
     var isScolledPast = function(position){
@@ -41,20 +44,37 @@ $('document').ready(function() {
     };
 
 
-    // var scrollUpMenu = function() {
-    //     if ( scrollMetric[1] === 'up' && isScolledPast(70)){
-    //         menuContainer.addClass('showOnScroll');
-    //     } 
-    //     else if ( scrollMetric[1] === 'down' && isScolledPast(70)) {
-    //         menuContainer.addClass('fixHeader');
-    //         menuContainer.removeClass('showOnScroll');
+    var scrollUpMenu = function() {
+        if ( scrollMetric[1] === 'up' && isScolledPast(400) ){
+            foldawayPanel.addClass('showMenuPanel');
+            menuContainer.show();
+        } else {
+            menu_top_foldaway.addClass('hide');
+            menu_bottom_foldaway.addClass('hide');
+            foldawayPanel.removeClass('showMenuPanel');
+            menuContainer.show();
+        }
+    }
 
-    //     }
-    //     else {
-    //         menuContainer.removeClass('fixHeader');
-    //         menuContainer.removeClass('showOnScroll');
-    //     }
-    // }
+
+    //Onload and resize events
+    $(window).on("resize", function () {
+        scrollUpMenu();
+    }).resize();
+
+    //On Scroll
+    $(window).scroll(function() {
+        console.log('ffffff');
+        var direction = 'down';
+        var scroll = $(window).scrollTop();
+        if (scroll < scrollMetric[0]) {
+            direction = 'up';
+        }
+        scrollMetric = [scroll, direction];
+        scrollUpMenu();
+    });
+
+
 
 
     var adScroll = function() {
@@ -138,10 +158,10 @@ $('document').ready(function() {
 
 
 
-    // $("#menu-foldaway").on("click", function (e) {
-    //     menu_top_foldaway.toggleClass('hide');
-    //     menu_bottom_foldaway.toggleClass('hide');
-    // });
+    $("#menu-foldaway").on("click", function (e) {
+        menu_top_foldaway.toggleClass('hide');
+        menu_bottom_foldaway.toggleClass('hide');
+    });
 
     $("#menu-mobile > a").on("click", function (e) {
         $('body').toggleClass("active");

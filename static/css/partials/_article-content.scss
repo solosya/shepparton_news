@@ -47,8 +47,8 @@
 		}
 
 		figure {
-			margin-top: 40px;
 			margin-bottom: 40px;
+			padding-right: 20px;
 
 			&:after {
 				content: "";
@@ -58,8 +58,7 @@
 
 			img {
 				float:left;
-				width:400px;
-				max-width: 100%;
+				width:100%;
 				margin-right: 17px;
 				object-fit: cover;
 				@media screen and (max-width: $sm-break) {

@@ -17,6 +17,11 @@
 {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id] }) %}
 {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
 
+{% set dairyOverride = '' %}
+{% if _Blog.getBlogTitle() | lower == 'dairy' %}
+{%   set dairyOverride = 'dairy-override' %}
+{% endif %}  
+
 {% set testCount = 0 %}
 
 <meta name="__sync_contentCategory" content="Premium">
@@ -87,7 +92,7 @@
                     <div class="col-md-6">
 
                         <div class="article_content">
-                            {{ article.content | _resizeImages({'width': 400}) | raw }}
+                            {{ article.content | _resizeImages({'width': 600}) | raw }}
                         </div><!-- .content-->
 
                     </div>
@@ -109,7 +114,7 @@
                                         </div>
                                     </div>
 
-                                    <h2 class="sidebar-header">Latest articles</h2>
+                                    <h2 class="sidebar-header {{ dairyOverride }}">Latest articles</h2>
                                 </div>
 
                                 {% for i in 0..3 if recentArticles[i] %}
