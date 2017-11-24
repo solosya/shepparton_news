@@ -9,15 +9,10 @@
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %}
 {# TODO: add interval: 48 back to popularArticles call when in production #}
 
-{% set profileImg = networkData.templatePath ~ "/static/images/megaphone.svg" %}
-{% if blogInfo.owner['media'] is defined and blogInfo.owner['media'] | length > 0 %}
-    {% set profileImg = _Media.getMediaUrl(blogInfo.owner['media'], 100, 100, {radius:'max', crop: 'thumb', gravity: 'face'}) %}
-{% endif %}
-
 {% set override = '' %}
-{% set blogImage = false %}
-{% if blogInfo.media['cover']['path'] is not empty %}
-    {% set blogImage = blogInfo.media['cover']['path'] %}
+{% set blogImage = networkData.templatePath ~ "/static/images/megaphone.svg" %}
+{% if blogInfo.media['thumb']['path'] is not empty %}
+    {% set blogImage = blogInfo.media['thumb']['path'] %}
     {% set override = override ~ ' override' %}    
 {% endif %}    
 
@@ -44,7 +39,7 @@
                 <div class="col-sm-9">
                     <div class="bloggerImg">
                         <div class="logo {{ override }}">
-                            <img src="{{ profileImg['path'] }}">
+                            <img src="{{ blogImage }}">
                         </div>                        
                     </div>
 
