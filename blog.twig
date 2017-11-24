@@ -10,6 +10,8 @@
 {# TODO: add interval: 48 back to popularArticles call when in production #}
 
 {% set override = '' %}
+{% set site = '' %}
+
 {% set blogImage = networkData.templatePath ~ "/static/images/megaphone.svg" %}
 {% if blogInfo.media['thumb']['path'] is not empty %}
     {% set blogImage = blogInfo.media['thumb']['path'] %}
@@ -18,6 +20,11 @@
 
 {% if (networkData.title | lower) == 'country news' %}
 {%   set override = override ~ ' country' %}
+{%   set site = 'country' %}
+
+{% else if (networkData.title | lower) == 'dairy news' %}
+{%   set site = 'dairy' %}
+
 {% endif %}  
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -45,7 +52,7 @@
 
                     <div class="">
                         <h2>{{this.title}}</h2>
-                        <p class="blogowner">by {{ blogInfo.owner['name'] }}</p>
+                        <p class="blogowner {{ site }}">by {{ blogInfo.owner['name'] }}</p>
                         <div class="social-links">
                             {% if blogInfo.settings['social']['facebook'] %}
                                 <a href="{{ blogInfo.settings['social']['facebook'] }}" class="facebook"></a>
