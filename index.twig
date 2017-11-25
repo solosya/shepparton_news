@@ -20,9 +20,6 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 {% set sections =  {
-        "videos": {
-            "limit" : 10
-        }, 
         "local news": {
             "limit" : 6
         }, 
@@ -50,7 +47,7 @@
     }
 %}
 
-{% for key, value in sections %}
+{# {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
             {% set sections = sections | merge({
@@ -62,7 +59,7 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
-
+ #}
 
 <main id="main" class="site-main" role="main">
     
