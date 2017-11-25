@@ -10,7 +10,7 @@
 
 {% set limit = 30 %}
 
-{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
 {% set events = _Event.getEvents() %}
