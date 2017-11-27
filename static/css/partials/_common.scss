@@ -150,9 +150,13 @@ hr.divide10 {
 }
 
 .ad-square {
-    // height:250px;
-    // width:300px;
     @include adtext;
+
+    > .dairy {
+        @media screen and (max-width: $sm-break){        
+            margin-top: 55px;
+        }
+    }
 }
 
 .ad-large-vert {
