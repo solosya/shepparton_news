@@ -33089,9 +33089,11 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                         scope = scope[scopeSplit[k]];
                         if (scope == undefined) return;
                     }
-
+                    console.log(scope);
+                    console.log(scopeSplit[scopeSplit.length - 1]);
+                    console.log( subscribers[i].func );
+                    console.log(scope[scopeSplit[scopeSplit.length - 1]]);
                     scope[scopeSplit[scopeSplit.length - 1]][subscribers[i].func]( topic, data );
-                    // console.log(scope);
 
                 }
                 dfd.resolve();
@@ -33298,11 +33300,15 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             this.data = data         || {};
             this.dfd = $.Deferred();
         }
+            Acme.modal.prototype = new Acme.listen();
+
             Acme.modal.prototype.render = function(layout, title) {
 
                 if (title) {
                     this.data['title'] = title;
                 }
+                console.log(this.template);
+                console.log(window.templates);
                 var tmp = Handlebars.compile(window.templates[this.template]);
                 var tmp = tmp(this.data);
                 $('body').addClass('active').append(tmp);
@@ -33333,33 +33339,33 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
 
                 if ( $elem.is('button') ) {
                     if ($elem.text() === "Cancel") {
-                        Acme.dialog.closeWindow();
+                        this.closeWindow();
                     } else if ($elem.text() === "Okay") {
-                        Acme.dialog.closeWindow();
+                        this.closeWindow();
 
                         // State can be provided by client external to 'show' call
-                        if (data === undefined && that.state) {
-                            data = that.state;
-                        // If data is also provided we merge the two
-                        } else if (that.state) {
-                            var keys = Object.keys(that.state)
-                            for (var k=0; k<keys.length;k++) {
-                                data[keys[k]] = that.state[keys[k]];
-                            }
-                        }
+                        // if (data === undefined && that.state) {
+                        //     data = that.state;
+                        // // If data is also provided we merge the two
+                        // } else if (that.state) {
+                        //     var keys = Object.keys(that.state)
+                        //     for (var k=0; k<keys.length;k++) {
+                        //         data[keys[k]] = that.state[keys[k]];
+                        //     }
+                        // }
 
-                        if (self != undefined) {
-                            if (data != undefined) {
-                                var result = callback.call(self, data);
-                                this.dfd.resolve(result);
-                            } else {
-                                var result = callback.call(self);
-                                this.dfd.resolve(result);
-                            }
-                        } else {
-                            var result = callback();
-                            this.dfd.resolve(result);
-                        }
+                        // if (self != undefined) {
+                        //     if (data != undefined) {
+                        //         var result = callback.call(self, data);
+                        //         this.dfd.resolve(result);
+                        //     } else {
+                        //         var result = callback.call(self);
+                        //         this.dfd.resolve(result);
+                        //     }
+                        // } else {
+                        //     var result = callback();
+                        //     this.dfd.resolve(result);
+                        // }
                     }
                 }
                 return $elem;
@@ -33444,6 +33450,10 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
 /**
  * Handlebar Article templates for listing
  */
+
+window.templates = {};
+
+
 var screenArticles_1 = 
 '<div class="row half-height top-row">\
     {¡{content:1-2}¡}\
@@ -33497,7 +33507,31 @@ var systemCardTemplate =
         "{{/if}}"+
     '</a>'+
 '</div></div>';
-                                                
+
+window.templates.modal = 
+'<div id="signin" class="flex_col"> \
+    <div id="dialog"> \
+        <div> \
+            <div class="head"> \
+                <h2>{{title}}</h2> \
+                <a class="close" href="#"></a> \
+            </div> \
+            <div id="dialogContent"></div> \
+        </div> \
+    </div> \
+</div>';
+
+window.templates.pulldown = 
+'<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
+    <p class="Acme-pulldown__selected-item"></p> \
+    <span class="Acme-pulldown__span"></span> \
+    <ul class="Acme-pulldown__list" data-key="{{ key }}" class="articleExtendedData"></ul> \
+</div>';
+
+
+window.templates.listingSavedTmpl =  '<p>Following approval it will be posted to the events page within 24 hours.</p><div><form><button class="btn _btn dialogButton">Okay</button></form></div>';
+
+                                        
 var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                 '<a href="{{social.url}}"\
                                     target="_blank"\
@@ -34521,9 +34555,10 @@ ListingForm.constructor = ListingForm;
             }
 
             self.data.theme_layout_name = self.layout;
-            console.log('article.create!!!', self.data);
+
             Acme.server.create('/api/article/create', self.data).done(function(r) {
                 $('#listingFormClear').click();
+                Acme.PubSub.publish('update_state', {'confirm': r});
                 Acme.PubSub.publish('update_state', {'userArticles': ''});
             }).fail(function(r) {
                 console.log(r);
@@ -34588,30 +34623,35 @@ ListingForm.constructor = ListingForm;
 
 
 
-Acme.EventForm = function(blogId) {
-        this.subscriptions = Acme.PubSub.subscribe({
-            'Acme.eventForm.listener' : ['state_changed', 'update_state']
-        });
+Acme.EventForm = function(blogId) 
+{
+    this.subscriptions = Acme.PubSub.subscribe({
+        'Acme.eventForm.listener' : ['state_changed', 'update_state']
+    });
 
-        this.errorFields = [];
+    this.errorFields = [];
 
-        this.compulsoryFields = [
-            "title", 
-            "content" 
-        ];
+    this.compulsoryFields = [
+        "title", 
+        "content",
+        "start_date",
+        "end_date",
+        "contact_name",
+        "address1"
+    ];
 
-        this.blogId = blogId;
+    this.blogId = blogId;
 
-        this.data = {
-            'id': 0,
-            'blogs': this.blogId,
-            'media_ids': '',
-            'type': 'event'
-        };
+    this.data = {
+        'id': 0,
+        'blogs': this.blogId,
+        'media_ids': '',
+        'type': 'event'
+    };
 
-        this.events();
-        this.events2();
-    }
+    this.events();
+    this.events2();
+};
     Acme.EventForm.prototype = new ListingForm();
     Acme.EventForm.prototype.constructor=Acme.EventForm;
     Acme.EventForm.prototype.events2 = function() {
@@ -34681,6 +34721,7 @@ Acme.EventForm = function(blogId) {
         var pointLocation = function (geocoder, map, marker) {
             $('#address1').on('change', function(e){
                 mapLocation($(this));
+
             });
             
             function mapLocation(elem) {
@@ -34716,7 +34757,7 @@ Acme.EventForm = function(blogId) {
             } 
         };
 
-        // EventPostGoogleMap();
+        EventPostGoogleMap();
 
     }
 
@@ -34760,6 +34801,73 @@ Acme.GoogleMap.prototype.init = function()
         });   
     }
 };
+
+
+
+Acme.Confirm = function(template, parent, layouts) {
+
+    this.template = template;
+    this.parentCont = parent;
+    this.layouts = layouts;
+    this.parent = Acme.modal.prototype;
+    this.data = {};
+};
+    Acme.Confirm.prototype = new Acme.modal();
+    Acme.Confirm.constructor = Acme.Confirm;
+    Acme.Confirm.prototype.errorMsg = function(msg) {
+        $('.message').toggleClass('hide');
+    };
+    Acme.Confirm.prototype.handle = function(e) {
+        var self = this;
+        var $elem = this.parent.handle.call(this, e);
+        if ( $elem.is('a') ) {
+            if ($elem.hasClass('close')) {
+                $('body').removeClass("active");
+                this.closeWindow();
+            }
+        }
+        if ($elem.is('button')) {
+            if ($elem.hasClass('signin')) {
+                e.preventDefault();
+                var formData = {};
+                $.each($('#loginForm').serializeArray(), function () {
+                    formData[this.name] = this.value;
+                });
+                Acme.server.create('/api/auth/login', formData).done(function(r) {
+                    console.log(r);
+                    if (r.success === 1) {
+                        window.location.href = location.origin;
+                    } else {
+                        self.errorMsg();
+                    }
+                }).fail(function(r) { console.log(r);});
+            }
+
+        }
+        if ($elem.hasClass('layout')) {
+            var layout = $elem.data('layout');
+            this.renderLayout(layout);
+        }
+    };
+
+var layouts = {
+    "listing"   : 'listingSavedTmpl',
+};
+
+Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
+    Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
+        'Acme.confirmView.listener' : ['update_state']
+    });
+
+    Acme.confirmView.listeners = 
+    {
+        "confirm" : function(data, topic) {
+            this.render("listing", "Thank you for submitting your event.");
+        }
+    };
+
+console.log(Acme.confirmView);
+
 
 }(jQuery));
 var HomeController = (function ($) {
@@ -35268,7 +35376,6 @@ $('document').ready(function() {
 
     //On Scroll
     $(window).scroll(function() {
-        console.log('ffffff');
         var direction = 'down';
         var scroll = $(window).scrollTop();
         if (scroll < scrollMetric[0]) {
