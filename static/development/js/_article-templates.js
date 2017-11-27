@@ -1,6 +1,10 @@
 /**
  * Handlebar Article templates for listing
  */
+
+window.templates = {};
+
+
 var screenArticles_1 = 
 '<div class="row half-height top-row">\
     {¡{content:1-2}¡}\
@@ -54,7 +58,31 @@ var systemCardTemplate =
         "{{/if}}"+
     '</a>'+
 '</div></div>';
-                                                
+
+window.templates.modal = 
+'<div id="signin" class="flex_col"> \
+    <div id="dialog"> \
+        <div> \
+            <div class="head"> \
+                <h2>{{title}}</h2> \
+                <a class="close" href="#"></a> \
+            </div> \
+            <div id="dialogContent"></div> \
+        </div> \
+    </div> \
+</div>';
+
+window.templates.pulldown = 
+'<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
+    <p class="Acme-pulldown__selected-item"></p> \
+    <span class="Acme-pulldown__span"></span> \
+    <ul class="Acme-pulldown__list" data-key="{{ key }}" class="articleExtendedData"></ul> \
+</div>';
+
+
+window.templates.listingSavedTmpl =  '<p>Following approval it will be posted to the events page within 24 hours.</p><div><form><button class="btn _btn dialogButton">Okay</button></form></div>';
+
+                                        
 var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                 '<a href="{{social.url}}"\
                                     target="_blank"\

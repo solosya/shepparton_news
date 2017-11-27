@@ -64,7 +64,6 @@ $('document').ready(function() {
 
     //On Scroll
     $(window).scroll(function() {
-        console.log('ffffff');
         var direction = 'down';
         var scroll = $(window).scrollTop();
         if (scroll < scrollMetric[0]) {

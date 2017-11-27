@@ -179,9 +179,10 @@ ListingForm.constructor = ListingForm;
             }
 
             self.data.theme_layout_name = self.layout;
-            console.log('article.create!!!', self.data);
+
             Acme.server.create('/api/article/create', self.data).done(function(r) {
                 $('#listingFormClear').click();
+                Acme.PubSub.publish('update_state', {'confirm': r});
                 Acme.PubSub.publish('update_state', {'userArticles': ''});
             }).fail(function(r) {
                 console.log(r);
@@ -246,30 +247,35 @@ ListingForm.constructor = ListingForm;
 
 
 
-Acme.EventForm = function(blogId) {
-        this.subscriptions = Acme.PubSub.subscribe({
-            'Acme.eventForm.listener' : ['state_changed', 'update_state']
-        });
+Acme.EventForm = function(blogId) 
+{
+    this.subscriptions = Acme.PubSub.subscribe({
+        'Acme.eventForm.listener' : ['state_changed', 'update_state']
+    });
 
-        this.errorFields = [];
+    this.errorFields = [];
 
-        this.compulsoryFields = [
-            "title", 
-            "content" 
-        ];
+    this.compulsoryFields = [
+        "title", 
+        "content",
+        "start_date",
+        "end_date",
+        "contact_name",
+        "address1"
+    ];
 
-        this.blogId = blogId;
+    this.blogId = blogId;
 
-        this.data = {
-            'id': 0,
-            'blogs': this.blogId,
-            'media_ids': '',
-            'type': 'event'
-        };
+    this.data = {
+        'id': 0,
+        'blogs': this.blogId,
+        'media_ids': '',
+        'type': 'event'
+    };
 
-        this.events();
-        this.events2();
-    }
+    this.events();
+    this.events2();
+};
     Acme.EventForm.prototype = new ListingForm();
     Acme.EventForm.prototype.constructor=Acme.EventForm;
     Acme.EventForm.prototype.events2 = function() {
@@ -339,6 +345,7 @@ Acme.EventForm = function(blogId) {
         var pointLocation = function (geocoder, map, marker) {
             $('#address1').on('change', function(e){
                 mapLocation($(this));
+
             });
             
             function mapLocation(elem) {
@@ -374,7 +381,7 @@ Acme.EventForm = function(blogId) {
             } 
         };
 
-        // EventPostGoogleMap();
+        EventPostGoogleMap();
 
     }
 
@@ -418,5 +425,72 @@ Acme.GoogleMap.prototype.init = function()
         });   
     }
 };
+
+
+
+Acme.Confirm = function(template, parent, layouts) {
+
+    this.template = template;
+    this.parentCont = parent;
+    this.layouts = layouts;
+    this.parent = Acme.modal.prototype;
+    this.data = {};
+};
+    Acme.Confirm.prototype = new Acme.modal();
+    Acme.Confirm.constructor = Acme.Confirm;
+    Acme.Confirm.prototype.errorMsg = function(msg) {
+        $('.message').toggleClass('hide');
+    };
+    Acme.Confirm.prototype.handle = function(e) {
+        var self = this;
+        var $elem = this.parent.handle.call(this, e);
+        if ( $elem.is('a') ) {
+            if ($elem.hasClass('close')) {
+                $('body').removeClass("active");
+                this.closeWindow();
+            }
+        }
+        if ($elem.is('button')) {
+            if ($elem.hasClass('signin')) {
+                e.preventDefault();
+                var formData = {};
+                $.each($('#loginForm').serializeArray(), function () {
+                    formData[this.name] = this.value;
+                });
+                Acme.server.create('/api/auth/login', formData).done(function(r) {
+                    console.log(r);
+                    if (r.success === 1) {
+                        window.location.href = location.origin;
+                    } else {
+                        self.errorMsg();
+                    }
+                }).fail(function(r) { console.log(r);});
+            }
+
+        }
+        if ($elem.hasClass('layout')) {
+            var layout = $elem.data('layout');
+            this.renderLayout(layout);
+        }
+    };
+
+var layouts = {
+    "listing"   : 'listingSavedTmpl',
+};
+
+Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
+    Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
+        'Acme.confirmView.listener' : ['update_state']
+    });
+
+    Acme.confirmView.listeners = 
+    {
+        "confirm" : function(data, topic) {
+            this.render("listing", "Thank you for submitting your event.");
+        }
+    };
+
+console.log(Acme.confirmView);
+
 
 }(jQuery));

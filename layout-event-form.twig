@@ -10,7 +10,7 @@
 {% set user = false %}
 
 {{this.registerJs("Acme.eventForm = new Acme.EventForm(["~jobsBlogId~"]);")}}
-{{this.registerJs("Acme.eventMap = new Acme.GoogleMap();")}}
+{# {{this.registerJs("Acme.eventMap = new Acme.GoogleMap();")}} #}
 
 {{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}}
 
@@ -47,27 +47,30 @@
 
             <div class="col-sm-7 col-md-6">
 
-                <div id="formerror" class="error-message">All fields have not been filled. Please review and <b>submit</b>.</div>
+                <div id="formerror" class="error-message">Please fill in all required fields</div>
 
                 <form class="" method="post" action="#" id="listingForm">
-                    <input type="text" class="articleExtendedData" name="title" id="title" value="" placeholder="Event name">
-                    <input type="text" class="articleExtendedData" name="venue" id="venue" value="" placeholder="Host name">
+                    <input type="text" class="articleExtendedData" name="title" id="title" value="" placeholder="Event title*">
                     
                     <div class="row">
                         <div class="col-sm-3 large-split">
-                            <input type="text" class="articleExtendedData  eventStart" name="start_date" id="start_date" value="" placeholder="Start date">
+                            <input type="text" class="articleExtendedData  eventStart" name="start_date" id="start_date" value="" placeholder="Start date*">
                         </div>
                         <div class="col-sm-3 large-split">
                             <input type="text" class="articleExtendedData  eventEnd" name="end_date" id="end_date" value="" placeholder="End date">
                         </div>
                     </div>                    
-                    
+                    <input type="text" class="articleExtendedData" name="contact_name" id="contact_name" value="" placeholder="Contact name*">
+                    <input type="text" class="articleExtendedData" name="contact_number" id="contact_number" value="" placeholder="Contact number/email*">
+                    <input type="text" class="articleExtendedData" name="website_url" id="website_url" value="" placeholder="Website">
+
                     <p class="form-section-label">Location</p>
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="text" class="articleExtendedData" name="address1" id="address1" value="" placeholder="Address">
-                            <textarea name="content" id="content"></textarea>
+                            <input type="text" class="articleExtendedData" name="address1" id="address1" value="" placeholder="Event Address*">
+                            <input type="text" class="articleExtendedData" name="venue" id="venue" value="" placeholder="Venue Name">
+                            <textarea name="content" id="content" placeholder="Event Description*"></textarea>
                         </div>
 
 

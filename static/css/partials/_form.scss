@@ -20,6 +20,7 @@ main.eventForm {
         color:white;
         font-size:rem(15);
         margin-bottom:41px;
+        font-style:italic;
         &.active {
             display:block;
         }
@@ -62,6 +63,7 @@ main.eventForm {
             color:color(red);
             margin-bottom:12px;
             font-weight:700;
+            margin-top:45px;
         }
 
         hr {
@@ -159,7 +161,8 @@ main.eventForm {
             border-radius:6px;
             float:left;
             margin-right:12px;
-
+            padding:10px;
+            height: 330px;
             &::placeholder {
                 font-size: rem(14);
                 color:color(lightgrey);

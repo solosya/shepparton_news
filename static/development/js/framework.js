@@ -314,9 +314,11 @@
                         scope = scope[scopeSplit[k]];
                         if (scope == undefined) return;
                     }
-
+                    console.log(scope);
+                    console.log(scopeSplit[scopeSplit.length - 1]);
+                    console.log( subscribers[i].func );
+                    console.log(scope[scopeSplit[scopeSplit.length - 1]]);
                     scope[scopeSplit[scopeSplit.length - 1]][subscribers[i].func]( topic, data );
-                    // console.log(scope);
 
                 }
                 dfd.resolve();
@@ -523,11 +525,15 @@
             this.data = data         || {};
             this.dfd = $.Deferred();
         }
+            Acme.modal.prototype = new Acme.listen();
+
             Acme.modal.prototype.render = function(layout, title) {
 
                 if (title) {
                     this.data['title'] = title;
                 }
+                console.log(this.template);
+                console.log(window.templates);
                 var tmp = Handlebars.compile(window.templates[this.template]);
                 var tmp = tmp(this.data);
                 $('body').addClass('active').append(tmp);
@@ -558,33 +564,33 @@
 
                 if ( $elem.is('button') ) {
                     if ($elem.text() === "Cancel") {
-                        Acme.dialog.closeWindow();
+                        this.closeWindow();
                     } else if ($elem.text() === "Okay") {
-                        Acme.dialog.closeWindow();
+                        this.closeWindow();
 
                         // State can be provided by client external to 'show' call
-                        if (data === undefined && that.state) {
-                            data = that.state;
-                        // If data is also provided we merge the two
-                        } else if (that.state) {
-                            var keys = Object.keys(that.state)
-                            for (var k=0; k<keys.length;k++) {
-                                data[keys[k]] = that.state[keys[k]];
-                            }
-                        }
+                        // if (data === undefined && that.state) {
+                        //     data = that.state;
+                        // // If data is also provided we merge the two
+                        // } else if (that.state) {
+                        //     var keys = Object.keys(that.state)
+                        //     for (var k=0; k<keys.length;k++) {
+                        //         data[keys[k]] = that.state[keys[k]];
+                        //     }
+                        // }
 
-                        if (self != undefined) {
-                            if (data != undefined) {
-                                var result = callback.call(self, data);
-                                this.dfd.resolve(result);
-                            } else {
-                                var result = callback.call(self);
-                                this.dfd.resolve(result);
-                            }
-                        } else {
-                            var result = callback();
-                            this.dfd.resolve(result);
-                        }
+                        // if (self != undefined) {
+                        //     if (data != undefined) {
+                        //         var result = callback.call(self, data);
+                        //         this.dfd.resolve(result);
+                        //     } else {
+                        //         var result = callback.call(self);
+                        //         this.dfd.resolve(result);
+                        //     }
+                        // } else {
+                        //     var result = callback();
+                        //     this.dfd.resolve(result);
+                        // }
                     }
                 }
                 return $elem;
