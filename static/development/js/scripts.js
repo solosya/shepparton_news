@@ -272,7 +272,7 @@ $('document').ready(function() {
     var cardHolder = '';
     clearTimeout(cardHolder);
     cardHolder = setTimeout((function() {
-        $('.card .content > p, .card h2').dotdotdot({
+        $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
             watch: true
         });
     }), 750);

@@ -279,7 +279,7 @@ Acme.Card.prototype.loadMore = function(elem, waypoint)
                 }
             }
 
-            $(".card .content > p, .card h2").dotdotdot();
+            $(".card .content > p, .card h2, a.card > article > .content > .author").dotdotdot();
             
             self.bindSocialShareArticle();
             
@@ -397,7 +397,7 @@ Acme.Card.prototype.initDroppable = function()
                         $.fn.General_ShowNotification({message: "Articles swapped successfully"});
                     }
                     
-                    $(".card p, .card h2").dotdotdot();
+                    $(".card .content > p, .card h2, a.card > article > .content > .author").dotdotdot();
                     self.events();
                 },
             });
