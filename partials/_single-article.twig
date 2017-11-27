@@ -189,9 +189,9 @@
                     <div class="author">
                         <img src="{{social.user.media.path}}" class="img-circle">
                         <p class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
-                        <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'F, Y')}}</time>
+                        <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
                     </div><!-- .author-->
-                    <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'F, Y')}}</time>
+                    <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
 
                 </div>
             </article>

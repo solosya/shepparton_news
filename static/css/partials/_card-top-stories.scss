@@ -23,6 +23,13 @@
                 > p {
                     display: none;
                 }
+                > .author {
+                    height: 16px;
+
+                    > time {
+                        display: inline;
+                    }
+                }
             }
         }
         &.social {
@@ -32,6 +39,7 @@
                 }
 
                 > p {
+                    display: block;
                     font-size: rem(14);
                     line-height:1.2;
                     margin-top: 5px;
