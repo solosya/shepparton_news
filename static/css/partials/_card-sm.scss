@@ -350,6 +350,44 @@
                     }
                 }
             }
+
+            &.social {
+                .content {
+                    .icon {
+                        display:none;
+                    }
+
+                    >p {
+                        height:65px;
+                        margin-bottom:6px;
+                    }
+                }
+
+                &.facebook {
+                    .content{
+
+                    }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                        .author {
+                            display:block;
+                        }
+                    }
+                }
+
+            }            
         }
     }
 }
