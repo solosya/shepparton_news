@@ -7,63 +7,55 @@
             }) | raw }}
         </div>
 
-        <div class="visible-xs-block col-xs-9">
-            <hr class="divide15 space-only">
+        <div class="col-xs-9 col-md-7 col-sm-7">
+
+            {% set menuItems = blog.blogFooterMenu %}                
+
+            {% if menuItems | length > 0 %}
+                {{this.render('_footer_navigation.twig', {
+                    items: menuItems | slice(0, 3),
+                    class: 'menu padded row',
+                }) | raw}}
+            {% endif %}
+
+            {% if menuItems | length > 3 %}
+                {{this.render('_footer_navigation.twig', {
+                    items: menuItems | slice(3, 3),
+                    class: 'menu padded row',
+                }) | raw}}
+            {% endif %}
+
+            {% if menuItems | length > 6 %}
+                {{this.render('_footer_navigation.twig', {
+                    items: menuItems | slice(6, 3),
+                    class: 'menu padded row',
+                }) | raw}}
+            {% endif %}
+
+            {% if menuItems | length > 9 %}
+                {{this.render('_footer_navigation.twig', {
+                    items: menuItems | slice(9, 3),
+                    class: 'menu padded row',
+               }) | raw}}
+            {% endif %}
+
+            {% if menuItems | length > 12 %}
+                {{this.render('_footer_navigation.twig', {
+                    items: menuItems | slice(12, 3),
+                    class: 'menu padded row',
+                }) | raw}}
+            {% endif %}
+
+
         </div>
 
-            <div class="col-xs-9 col-md-7 col-sm-7">
-
-                {% set menuItems = blog.blogFooterMenu %}                
-
-                {% if menuItems | length > 0 %}
-                    {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(0, 3),
-                        class: 'menu padded row',
-                    }) | raw}}
-                {% endif %}
-
-                {% if menuItems | length > 3 %}
-                    {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(3, 3),
-                        class: 'menu padded row',
-                    }) | raw}}
-                {% endif %}
-
-                {% if menuItems | length > 6 %}
-                    {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(6, 3),
-                        class: 'menu padded row',
-                    }) | raw}}
-                {% endif %}
-
-                {% if menuItems | length > 9 %}
-                    {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(9, 3),
-                        class: 'menu padded row',
-                   }) | raw}}
-                {% endif %}
-
-                {% if menuItems | length > 12 %}
-                    {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(12, 3),
-                        class: 'menu padded row',
-                    }) | raw}}
-                {% endif %}
-
-
-            </div>
-
-            <div class="col-xs-9 publish">
-                <a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a>1
-                <p>&#169; McPherson Media Group 2017</p>
-            </div>
-
-
+        <div class="col-xs-9 publish">
+            <a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a>1
+            <p>&#169; McPherson Media Group 2017</p>
         </div>
 
     </div>
 
-    
 </footer>
 
 <div class="ad-sticky hidden-md hidden-lg" style="bottom: 0;left: 0;position: fixed;z-index: 99;width: 100%;background: #eee;">    
@@ -74,5 +66,4 @@
             </script>
         </div>
     </div>
-
 </div>
