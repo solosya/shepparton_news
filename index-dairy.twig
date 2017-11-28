@@ -195,6 +195,9 @@
     {% endif %}
 
     {% if sections['from the experts'].feed.articles|length > 0 %}
+        <div class="col-xs-9 visible-xs-block">
+            <hr class="divide15 space-only">
+        </div>    
         <div class="container">
             {{this.render('partials/index/small-section.twig', {
                 articles: sections['from the experts'], 
@@ -223,6 +226,9 @@
     {% endif %} 
 
     {% if sections['machinery & products'].feed.articles|length > 0 %}
+        <div class="col-xs-9 visible-xs-block">
+            <hr class="divide15 space-only">
+        </div>    
         <div class="container">
             {{this.render('partials/index/row-three-ad.twig', {
                 articles: sections['machinery & products'], 
@@ -236,6 +242,9 @@
     {% endif %}      
 
     {% if sections['animal health'].feed.articles|length > 0 %}
+        <div class="col-xs-9 visible-xs-block">
+            <hr class="divide15 space-only">
+        </div>      
         <div class="container">
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['animal health'], 

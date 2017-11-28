@@ -154,7 +154,7 @@ hr.divide10 {
 
     > .dairy {
         @media screen and (max-width: $sm-break){        
-            margin-top: 55px;
+            margin: 30px auto 30px auto;
         }
     }
 }
@@ -176,7 +176,7 @@ hr.divide10 {
 
     @media screen and (max-width: $sm-break){
         width: unset;
-         margin: 15px auto 25px auto;
+        margin: 30px auto 30px auto;
     } 
     
     @include adtext;
