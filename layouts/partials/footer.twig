@@ -18,7 +18,7 @@
                 {% if menuItems | length > 0 %}
                     {{this.render('_footer_navigation.twig', {
                         items: menuItems | slice(0, 3),
-                        class: 'menu padded',
+                        class: 'menu padded row',
                     }) | raw}}
                 {% endif %}
 
