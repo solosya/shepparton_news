@@ -31,7 +31,8 @@
                     {% for i in 0..2 if articles[i] %}
                         <div class="col-sm-1 col-md-9">
                             {{this.render('../_single-article.twig', {
-                                article: articles[articleCount], 
+                                article: articles[articleCount],
+                                imageSize: {width:95},
                                 position: articleCount + 1, 
                                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                             }) | raw}}

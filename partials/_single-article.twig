@@ -20,7 +20,7 @@
 {% set imgHeight = 0 %}
 {% if imageSize is defined %}
     {% set imgWidth = (imageSize.width is defined) ? imageSize.width : 0 %}
-    {% set imgHeight = (imageSize.height is defined) ? imageSize.height : 0 %}
+    {% set imgHeight = (imageSize.height is defined) ? imageSize.height : imgWidth %}
 {% endif %}
 
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
