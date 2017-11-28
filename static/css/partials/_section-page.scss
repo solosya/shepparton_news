@@ -32,10 +32,10 @@ body.channel, body.section, body.page {
     }
     .ad-container{
         margin-top: 30px;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
 
         @media screen and (max-width: $sm-break){
-         margin-top: 50px;
+         padding-top: 50px;
          #div-gpt-ad-mrec-7{
             margin-top: -65px;
             margin-bottom: -25px;

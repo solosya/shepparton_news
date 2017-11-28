@@ -203,6 +203,10 @@
 
 
 		.article-sidebar {
+			@media screen and (max-width: $sm-break-down) {
+				margin-top: 30px;
+			}
+
 			h2.sidebar-header {
 				margin-top:40px;
 				font-weight:700;
