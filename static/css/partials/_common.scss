@@ -166,23 +166,24 @@ hr.divide10 {
 
 .ad-container {
     text-align: center;
-    margin: 0px auto 40px auto !important;
 
-    width: $container-desktop;
+    @media screen and (min-width: $mmd-break) {
+        width: $container-desktop;
+        margin: 0px auto 40px auto !important;        
+    }
 
-    @media screen and (max-width: $mmd-break){
+    @media screen and (max-width: $mmd-break-down){
         width: $container-tablet;
+        margin: 0px auto 40px auto !important;
     }    
 
-    @media screen and (max-width: $sm-break){
-        width: unset;
+    @media screen and (max-width: $sm-break-down){
         margin: 30px auto 30px auto;
     } 
     
     @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
-        
     }
 }
 
