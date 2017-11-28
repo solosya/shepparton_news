@@ -172,7 +172,7 @@ hr.divide10 {
         margin: 0px auto 40px auto !important;        
     }
 
-    @media screen and (max-width: $mmd-break-down){
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
         width: $container-tablet;
         margin: 0px auto 40px auto !important;
     }    
