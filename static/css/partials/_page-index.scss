@@ -18,9 +18,9 @@ body.special {
 }
 
 .site-main {
-    margin-top:50px;
+    margin-top:25px;
     @media screen and (max-width: $sm-break-down) {
-        margin-top:40px;
+        margin-top:20px;
     }
 
     margin-bottom:100px;
@@ -28,7 +28,7 @@ body.special {
     section {
         margin-bottom:40px;
         @media screen and (max-width: $sm-break-down) {
-            margin-bottom: 0px;
+            margin-bottom: 20px;
         }
     }
 
