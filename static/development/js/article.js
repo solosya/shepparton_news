@@ -7,7 +7,7 @@ Acme.article = function() {
 
 Acme.article.prototype.InsertInterstitial = function() {
     if ($('.article_content > p').length >= 9) {
-        $("<div class='teads-inread' ></div>").insertAfter( $('.article_content > p')[5] );        
+        // $("<div class='teads-inread' ></div>").insertAfter( $('.article_content > p')[5] );        
     	googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });       
     }
     if ($('.article_content > p').length >= 4) {
