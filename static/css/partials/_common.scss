@@ -212,12 +212,11 @@ hr.divide10 {
     font-size: rem(19);
     font-weight: bold;
     border: 0;
-    padding: 0px 10px;
-    padding-left: 50px;
     border-right: 1px solid color(lightgrey);       
+    margin-left: 15px;
 
     &.facebook-icon {
-        margin-left: -25px;
+        margin-left: 0px;
     }
 
     &:last-child {
@@ -312,6 +311,26 @@ div.bloggerImg {
     border-radius: 0px;
 }
 
+.svg-icons {
+  height: 20px;
+  width: 32px;
+  position:relative;
+  align-items: center;
+  fill: black;
+
+  &.dairy {
+    fill: color(dairy);
+  }
+
+  &.country {
+    fill: color(country);
+  }
+
+  &.shepparton {
+    fill: color(red);
+  }
+}
+
 .social-links {
     display: flex;
     flex-direction: row;
@@ -326,20 +345,9 @@ div.bloggerImg {
         background-size:auto;
 
         &.facebook {
-            background-image: url('../images/facebook.svg');
-            width: 12px;
             padding-right: 16px;
             background-position-x: left;
         } 
-        &.twitter {
-            background-image: url('../images/twitter.svg');
-        }
-        &.instagram {
-            background-image: url('../images/instagram.svg');
-        }
-        &.vimeo {
-            background-image: url('../images/vimeo.svg');
-        }
         &.youtube {
             background-image: url('../images/youtube-black.svg');
             margin-left: 4px;

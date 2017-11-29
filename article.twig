@@ -20,6 +20,19 @@
 {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id] }) %}
 {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
 
+{% set site = '' %}
+{% if (networkData.title | lower) == 'dairy news' %}
+{%  set site = 'dairy' %}
+{% endif %}
+
+{% if (networkData.title | lower) == 'country news' %}
+{%  set site = 'country' %}
+{% endif %}
+
+{% if (networkData.title | lower) == 'shepparton news' %}
+{%  set site = 'shepparton' %}
+{% endif %}
+
 {% set dairyOverride = '' %}
 {% if _Blog.getBlogTitle() | lower == 'dairy' %}
 {%   set dairyOverride = 'dairy-override' %}
@@ -84,9 +97,15 @@
                 {# social icons #}
                 <div class="row">
                     <div class="col-md-9">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="share-icon facebook-icon"></a
-                        ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="share-icon twitter-icon"></a
-                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="share-icon email-icon"></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="share-icon facebook-icon">
+                            <svg class="svg-icons {{ site }}"><use xlink:href="{{networkData.templatePath}}/static/images/icons.svg#facebook"></use></svg>                            
+                        </a
+                        ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="share-icon twitter-icon">
+                            <svg class="svg-icons {{ site }}"><use xlink:href="{{networkData.templatePath}}/static/images/icons.svg#twitter"></use></svg>                            
+                        </a
+                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="share-icon email-icon">
+                            <svg class="svg-icons {{ site }}"><use xlink:href="{{networkData.templatePath}}/static/images/icons.svg#email"></use></svg>                            
+                        </a>
                     </div>
                 </div>
 
