@@ -90,6 +90,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
+                                    position: articleCount + 1,                                     
                                     containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
