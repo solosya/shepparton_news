@@ -20,8 +20,6 @@
     {% set blogPrefixName = (blogData.title | lower) %}
 {% endif %}
 
-{% set blogPrefixName = 'www' %}
-
 {% set pageType = (blogData.type | lower) %}
 
 <script>
@@ -177,7 +175,7 @@
                adSlot.setAttribute( 'class', 'ad-container' );
                
                googletag.cmd.push(function() {
-                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).setTargeting('POS', ['1']).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                  googletag.display(slotName);
                  googletag.pubads().refresh([slot]);
                });
