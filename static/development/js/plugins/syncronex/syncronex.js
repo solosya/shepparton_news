@@ -393,7 +393,7 @@ function GetWindowSize() {
 function log(a) {
     if (g_DEBUG) {
         if (window.console && window.console.log) {
-            console.log(a)
+            // console.log(a)
         }
     }
 }

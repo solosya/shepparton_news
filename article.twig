@@ -2,6 +2,9 @@
 {{ set(this, 'title', article.title) }}
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
+{{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
+{{this.registerJs("Acme.articleController.InsertInterstitial();")}}
+
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
 
