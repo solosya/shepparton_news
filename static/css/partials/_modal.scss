@@ -68,6 +68,12 @@
 	padding: 20px;
 	border-radius:6px;
 	max-width:666px;
+
+    @media screen and (max-width: $sm-break-down){
+		position: fixed;
+		max-height: calc(100vh-80px);
+		top: 70px;
+	}
 }
 
 
