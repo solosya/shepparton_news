@@ -105,8 +105,38 @@
         }
     }
 
+    .footer-social {
+        height: 35px;
+        display: flex;
+        justify-content: right;
+        padding: 0px;
+
+        > .social-icon {
+            width: 20px;
+            height: 24px;
+            margin-left: 15px;
+            border-right: none;
+
+            &.facebook-icon {
+                position: relative;
+                bottom: 1px;
+            }
+
+            &:first-child {
+                &:after {
+                    content: '';
+                    display: block;
+                    height: 16px;
+                    border-right: 1px solid white;
+                    position: relative;
+                    bottom: 24px;
+                    right: -2px;
+                }
+            }            
+        }
+    }
+
     .publish {
-        margin-top:35px;
         padding-right: 0px;
 
         p {
