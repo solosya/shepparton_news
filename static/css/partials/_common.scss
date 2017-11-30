@@ -192,7 +192,14 @@ hr.divide10 {
     margin-top: 40px !important;
     @media screen and (min-width: $sm-break) {
         margin-bottom:15px !important;
-    }    
+    }
+    @media screen and (max-width: $sm-break) {
+        margin-top: 0 !important;
+        padding-top: 0;
+        #adslot1{
+            margin-top: -25px !important;
+        }
+    }
 
 }
 
