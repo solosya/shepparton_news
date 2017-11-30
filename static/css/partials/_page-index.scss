@@ -8,14 +8,6 @@
             height:auto;
             background:rgba(185,185,185,.2);
         }
-        #adslot2{
-            @media screen  and (max-width: $mmd-break-down) {
-                display:none;
-            }
-            @media screen  and (min-width: $header-break) {
-                 display:none;
-            }
-        }
     }
 }
 
