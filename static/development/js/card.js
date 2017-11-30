@@ -172,10 +172,10 @@ Acme.Card.prototype.bindSocialPostPopup = function()
                         var watch = data.media.videoUrl.split("=");
                         data.media.videoUrl = "https://www.youtube.com/embed/" + watch[1];
                     }
-                    
+
                     data.templatePath = _appJsConfig.templatePath;
 
-                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
+                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate(data.source));
                     var article = articleTemplate(data);
                     $('.modal').html(article);
                     //$('body').modalmanager('loading');

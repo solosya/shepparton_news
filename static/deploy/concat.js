@@ -33576,54 +33576,56 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                             </div>';
 
 
-var socialPostPopupTemplate = 
-'<div class="modal-content">'+
-'<button type="button" class="close close__lg-modal" data-dismiss="modal" aria-label="Close">'+
-        '<span aria-hidden="true">'+
-            '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">'+
-                    '<title>Close</title>'+
-                    '<g stroke-width="3" fill-rule="evenodd" stroke-linecap="round">'+
-                            '<path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/>'+
-                    '</g>'+
-            '</svg>'+
-            '<div class="close__text">esc</div>'+
-        '</span>'+
-    '</button>'+
-    '<button type="button" class="close close__sm-modal" data-dismiss="modal" aria-label="Close">'+
-        '<span aria-hidden="true">'+
-                '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Close</title><g stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/></g></svg>'+
-        '</span>'+
-    '</button>'+
+var socialPostPopupTemplate = function(channel) {
+    return '<div class="modal-content">'+
+    '<button type="button" class="close close__lg-modal" data-dismiss="modal" aria-label="Close">'+
+            '<span aria-hidden="true">'+
+                '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">'+
+                        '<title>Close</title>'+
+                        '<g stroke-width="3" fill-rule="evenodd" stroke-linecap="round">'+
+                                '<path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/>'+
+                        '</g>'+
+                '</svg>'+
+                '<div class="close__text">esc</div>'+
+            '</span>'+
+        '</button>'+
+        '<button type="button" class="close close__sm-modal" data-dismiss="modal" aria-label="Close">'+
+            '<span aria-hidden="true">'+
+                    '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Close</title><g stroke="#000" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/></g></svg>'+
+            '</span>'+
+        '</button>'+
 
-    '<div class="social-modal__content {{blog.title}} {{#unless hasMedia}} no_image {{/unless}}">'+
-                    '<div class="social-modal__channel social-modal__channel--technology ">{{blog.title}}</div>'+
-                    '<div class="social-modal__overflow">'+
+        '<div class="social-modal__content {{blog.title}} {{#unless hasMedia}} no_image {{/unless}}">'+
+                        '<div class="social-modal__channel social-modal__channel--technology ">' + channel + '</div>'+
+                        '<div class="social-modal__overflow">'+
 
-    '{{#if hasMedia}}'+
-                        '<div class="social-modal__image_container">'+
-                                '<div class="social-modal__image_wrap">'+
-                                        '{{#if hasMediaVideo}}'+
-                                                '<div class="social-modal__video-wrap">'+
-                                                        '<iframe style="min-height:360px;width:100%;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
-                                                '</div>'+
-                                        '{{else}}'+
-                                                '<div class="social-modal__image" style="background-image: url(\'{{media.path}}\');" >'+
-                                                        '<img class="social-modal__image_image" src="{{media.path}}" alt="" />'+
-                                                '</div>'+
-                                        '{{/if}}'+
-                                '</div>'+
+        '{{#if hasMedia}}'+
+                            '<div class="social-modal__image_container">'+
+                                    '<div class="social-modal__image_wrap">'+
+                                            '{{#if hasMediaVideo}}'+
+                                                    '<div class="social-modal__video-wrap">'+
+                                                            '<iframe style="min-height:360px;width:100%;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
+                                                    '</div>'+
+                                            '{{else}}'+
+                                                    '<div class="social-modal__image" style="background-image: url(\'{{media.path}}\');" >'+
+                                                            '<img class="social-modal__image_image" src="{{media.path}}" alt="" />'+
+                                                    '</div>'+
+                                            '{{/if}}'+
+                                    '</div>'+
+                            '</div>'+
+        '{{/if}}'+
+
+                        '<a href="{{url}}" target="_blank"><div class="social-modal__text"><br>{{{content}}}</div></a>'+
                         '</div>'+
-    '{{/if}}'+
-
-                    '<a href="{{url}}" target="_blank"><div class="social-modal__text"><br>{{{content}}}</div></a>'+
-                    '</div>'+
-                    '<div class="social-user">'+
-                        '<div class="social-user__author-wrap">'+
-                            '<span class="social-user__author">@{{user.name}}</span>'+
+                        '<div class="social-user">'+
+                            '<div class="social-user__author-wrap">'+
+                                '<span class="social-user__author">@{{user.name}}</span>'+
+                            '</div>'+
                         '</div>'+
-                    '</div>'+
-    '</div>'+
- '</div>'   ;   
+        '</div>'+
+     '</div>'   ;   
+}
+
 Acme.ArticleController = function() {
     return new Acme.article();
 }
@@ -33929,10 +33931,10 @@ Acme.Card.prototype.bindSocialPostPopup = function()
                         var watch = data.media.videoUrl.split("=");
                         data.media.videoUrl = "https://www.youtube.com/embed/" + watch[1];
                     }
-                    
+
                     data.templatePath = _appJsConfig.templatePath;
 
-                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
+                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate(data.source));
                     var article = articleTemplate(data);
                     $('.modal').html(article);
                     //$('body').modalmanager('loading');
