@@ -97,6 +97,8 @@ Acme.Card.prototype.bindSocialUpdatePost = function ()
     });
 };
 
+
+
 Acme.Card.prototype.bindSocialShareArticle = function () 
 {
     $('.shareIcons').SocialShare({
@@ -129,7 +131,7 @@ Acme.Card.prototype.renderReadingTime = function (time)
 Acme.Card.prototype.bindSocialPostPopup = function()
 {
     var isRequestSent = false;
-    $(document).on('click', 'article.lightbox', function (e) {
+    $(document).on('click', 'a.social', function (e) {
         e.preventDefault();
         // e.stopPropogation();
 
@@ -137,15 +139,15 @@ Acme.Card.prototype.bindSocialPostPopup = function()
 
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
 
-        var isSocial = $(this).parent().data('social');
+        var isSocial = $(this).data('social');
         if (isSocial) {
             var url = '/api/social/get-social-post';
-            var blogGuid = $(this).parent().data('blog-guid');
-            var postGuid = $(this).parent().data('guid');
+            var blogGuid = $(this).data('blog-guid');
+            var postGuid = $(this).data('guid');
             var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
         } else {
             var url = '/api/article/get-article';
-            var articleId = $(this).parent().data('id');
+            var articleId = $(this).data('id');
             var payload = {articleId: articleId, _csrf: csrfToken}
         }
 
@@ -170,10 +172,10 @@ Acme.Card.prototype.bindSocialPostPopup = function()
                         var watch = data.media.videoUrl.split("=");
                         data.media.videoUrl = "https://www.youtube.com/embed/" + watch[1];
                     }
-                    
+
                     data.templatePath = _appJsConfig.templatePath;
 
-                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
+                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate(data.source));
                     var article = articleTemplate(data);
                     $('.modal').html(article);
                     //$('body').modalmanager('loading');
@@ -426,6 +428,10 @@ Acme.Card.prototype.events = function()
         
         //Bind update social article
         self.bindSocialUpdatePost();
+
+        //Bind social lightbox handler
+        self.bindSocialPostPopup();
+
         
         //Following will called on page load and also on load more articles
         $(".articleMenu, .socialMenu").delay(2000).fadeIn(500);
