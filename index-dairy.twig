@@ -239,7 +239,10 @@
                 site: 'dairy',                
             }) | raw}} 
         </div>
-    {% endif %}      
+    {% endif %}
+
+    <div id="newAdSlot" class="hidden-xs hidden-md hidden-lg"></div>
+    <script>loadNextAd()</script>
 
     {% if sections['animal health'].feed.articles|length > 0 %}
             <div class="container">

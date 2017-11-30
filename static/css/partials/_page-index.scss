@@ -1,4 +1,4 @@
-body.special {
+.dairy.special {
     .site-main {
         margin-top:0;
 
@@ -7,6 +7,14 @@ body.special {
             padding-bottom:31px;
             height:auto;
             background:rgba(185,185,185,.2);
+        }
+        #adslot2{
+            @media screen  and (max-width: $mmd-break-down) {
+                display:none;
+            }
+            @media screen  and (min-width: $header-break) {
+                 display:none;
+            }
         }
     }
 }
