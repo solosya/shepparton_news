@@ -108,7 +108,8 @@
     .footer-social {
         height: 35px;
         display: flex;
-        justify-content: right;
+        display: -webkit-flex;
+        justify-content: flex-end;
         padding: 0px;
 
         > .social-icon {
