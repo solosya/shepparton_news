@@ -174,8 +174,9 @@
     position: absolute;
     top: 0;
 	display:inline;
-	background-color:#000;
+	background: transparent;
 	border:none;
+	padding: 15px;
 
 }
 
@@ -265,9 +266,9 @@
 
 .social-modal__text {
 	font-family: $font-family-sans-serif;
-    font-size: 30px;
+    font-size: rem(17);
     font-weight: normal;
-    line-height: 1.33;
+    line-height: 1.53;
     letter-spacing: 0.4px;
     color: #000;
     margin: 30px auto;
@@ -303,7 +304,10 @@
 }
 
 .social-user__author {
-	font-size: 20px;
+	font-size: rem(11);
+	font-family: $font-family-serif;
+	color: color(darkgrey);
+
 }
 
 .social-modal__video-wrap {
