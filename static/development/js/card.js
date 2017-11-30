@@ -97,6 +97,8 @@ Acme.Card.prototype.bindSocialUpdatePost = function ()
     });
 };
 
+
+
 Acme.Card.prototype.bindSocialShareArticle = function () 
 {
     $('.shareIcons').SocialShare({
@@ -129,7 +131,7 @@ Acme.Card.prototype.renderReadingTime = function (time)
 Acme.Card.prototype.bindSocialPostPopup = function()
 {
     var isRequestSent = false;
-    $(document).on('click', 'article.lightbox', function (e) {
+    $(document).on('click', 'a.social', function (e) {
         e.preventDefault();
         // e.stopPropogation();
 
@@ -137,7 +139,7 @@ Acme.Card.prototype.bindSocialPostPopup = function()
 
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
 
-        var isSocial = $(this).parent().data('social');
+        var isSocial = $(this).data('social');
         if (isSocial) {
             var url = '/api/social/get-social-post';
             var blogGuid = $(this).parent().data('blog-guid');
@@ -426,6 +428,10 @@ Acme.Card.prototype.events = function()
         
         //Bind update social article
         self.bindSocialUpdatePost();
+
+        //Bind social lightbox handler
+        self.bindSocialPostPopup();
+
         
         //Following will called on page load and also on load more articles
         $(".articleMenu, .socialMenu").delay(2000).fadeIn(500);
