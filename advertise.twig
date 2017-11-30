@@ -18,7 +18,6 @@
 
 
                 <div class="col-sm-12 col-md-5">
-                    {{this.render('layouts/partials/messages.twig') | raw }}
                     <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
                         <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
                         <div class="controls-full">
