@@ -191,17 +191,6 @@ var socialPostPopupTemplate =
                                             '</g>'+
                                         '</g>'+
                                     '</svg>'+
-                                    ' Share'+
-                                    '<div class="share-popup" style="right: -166px;">'+
-                                        '<input type="text" name="share-link" value="{{url}}" readonly class="share-popup__share-link share-link">'+
-                                        '<div class="share-popup__social-wrap">'+
-                                            '<div class="social-icon_wrap--colored">'+
-                                                '<a href="https://plus.google.com/share?url={{url}}" target="_blank"><i class="fa fa-google-plus"></i></a>'+
-                                                '<a href="http://www.facebook.com/sharer/sharer.php?u={{url}}" target="_blank" ><i class="fa fa-facebook"></i></a>'+
-                                                '<a href="http://twitter.com/intent/tweet?status={{url}}" target="_blank"><i class="fa fa-twitter"></i></a>'+
-                                            '</div>'+
-                                        '</div>'+
-                                    '</div>'+
                                 '</div>'+
                             '</div>'+
                         '</div>'+
