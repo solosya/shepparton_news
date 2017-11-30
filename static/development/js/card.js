@@ -142,12 +142,12 @@ Acme.Card.prototype.bindSocialPostPopup = function()
         var isSocial = $(this).data('social');
         if (isSocial) {
             var url = '/api/social/get-social-post';
-            var blogGuid = $(this).parent().data('blog-guid');
-            var postGuid = $(this).parent().data('guid');
+            var blogGuid = $(this).data('blog-guid');
+            var postGuid = $(this).data('guid');
             var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
         } else {
             var url = '/api/article/get-article';
-            var articleId = $(this).parent().data('id');
+            var articleId = $(this).data('id');
             var payload = {articleId: articleId, _csrf: csrfToken}
         }
 
