@@ -89,6 +89,8 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     class="card swap social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
                                     data-id="{{socialId}}"\
                                     data-position="{{position}}"\
+                                    data-blog-guid="{{social.blog[\'guid\']}}"\
+                                    data-guid="{{social.guid}}"\
                                     data-social="1"\
                                     data-article-image="{{{social.media.path}}}"\
                                     data-article-text="{{social.content}}">\
@@ -105,6 +107,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                             <time datetime="2016-11-16"></time>\
                                             <div class="author">\
                                                 <p class="">{{ social.user.name }}</p>\
+                                                <time datetime="{{publishDate}}">{{publishDate}}</time>\
                                             </div>\
                                         </div>'+
 
