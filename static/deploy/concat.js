@@ -33464,7 +33464,7 @@ var screenArticles_1 =
 ';
 
 var systemCardTemplate = 
-'<div class="col-sm-3"><div class="{{containerClass}}"> \
+'<div class="{{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{{hasArticleMediaClass}}}" \
@@ -33506,7 +33506,7 @@ var systemCardTemplate =
             '</div>'+
         "{{/if}}"+
     '</a>'+
-'</div></div>';
+'</div>';
 
 window.templates.modal = 
 '<div id="signin" class="flex_col"> \
