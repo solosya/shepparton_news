@@ -34,14 +34,26 @@
 {% endif %}
 
 {{this.registerJs('$.fn.Disqus({params:'~ disqusJsParams|json_encode|raw ~'})')}}
-<div class="DisqusCommentArea">
-    <div class="container">
-        <div class="article-content-section">
-            <div class="content-area">
-                <div class="medium-insert-embeds">
-                    <div id="disqus_thread" class="DisqusPlaceholder"></div>
+
+<div class="row">
+    <div class="DisqusCommentArea col-sm-6 col-md-6">
+        <div class="container">
+            <div class="article-content-section">
+                <div class="content-area">
+                    <div class="medium-insert-embeds">
+                        <div id="disqus_thread" class="DisqusPlaceholder"></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="ad-large-vert visible-sm-block" style="position:absolute;">
+            <div id='div-gpt-ad-halfpage-ss' class="google_ad">
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage-ss'); });
+                </script>
+            </div>
+        </div>        
     </div>
 </div>
