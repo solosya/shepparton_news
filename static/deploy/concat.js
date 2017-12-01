@@ -33538,7 +33538,6 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     class="card swap social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
                                     data-id="{{socialId}}"\
                                     data-position="{{position}}"\
-                                    data-blog-guid="{{social.blog[\'guid\']}}"\
                                     data-guid="{{social.guid}}"\
                                     data-social="1"\
                                     data-article-image="{{{social.media.path}}}"\
@@ -33904,9 +33903,8 @@ Acme.Card.prototype.bindSocialPostPopup = function()
         var isSocial = $(this).data('social');
         if (isSocial) {
             var url = '/api/social/get-social-post';
-            var blogGuid = $(this).data('blog-guid');
             var postGuid = $(this).data('guid');
-            var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
+            var payload = {blog_guid: false, guid: postGuid, _csrf: csrfToken}
         } else {
             var url = '/api/article/get-article';
             var articleId = $(this).data('id');

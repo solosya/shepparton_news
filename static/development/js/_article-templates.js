@@ -89,7 +89,6 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     class="card swap social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
                                     data-id="{{socialId}}"\
                                     data-position="{{position}}"\
-                                    data-blog-guid="{{social.blog[\'guid\']}}"\
                                     data-guid="{{social.guid}}"\
                                     data-social="1"\
                                     data-article-image="{{{social.media.path}}}"\
