@@ -3,7 +3,7 @@
 {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
 {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
 
-{% if (networkData.title | lower) == 'dairy news' %}
+{% if 'dairy' in (networkData.title | lower) %}
 {%  set site = 'dairy' %}
 {% endif %}
 

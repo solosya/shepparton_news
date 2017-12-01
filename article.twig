@@ -21,7 +21,7 @@
 {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
 
 {% set site = '' %}
-{% if (networkData.title | lower) == 'dairy news' %}
+{% if 'dairy' in (networkData.title | lower) %}
 {%  set site = 'dairy' %}
 {% endif %}
 

@@ -5,7 +5,7 @@
 
 {% if (networkData.title | lower) == 'country news' %}
     {% set blogNetworkName = 'countrynews' %}
-{% elseif (networkData.title | lower) == 'dairy news' %}
+{% elseif 'dairy' in (networkData.title | lower) %}
     {% set blogNetworkName = 'dairy_news' %}
 {% else %}
     {% set blogNetworkName = 'sheppnews' %}

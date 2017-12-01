@@ -4,7 +4,7 @@
 {% if (networkData.title | lower) == 'country news' %}
     {% set logo = 'country-news' %}
     {% set imgOverride = 'country-logo' %}
-{% elseif (networkData.title | lower) == 'dairy news' %}
+{% elseif 'dairy' in (networkData.title | lower) %}
     {% set logo = 'dairy-news' %}
     {% set imgOverride = 'dairy-logo' %}
 {% else %}
