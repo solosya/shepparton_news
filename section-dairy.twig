@@ -102,7 +102,7 @@
                             </div>
                         </div>
 
-                        {% for i in 3..8 if articles[articleCount] %} #}
+                        {% for i in 3..8 if articles[articleCount] %} 
 
                             <div class="col-md-3 col-sm-9">
                                 {{this.render('partials/_single-article.twig', {
@@ -117,7 +117,7 @@
 
                             </div>
 
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %} #}
                         {% endfor %}
                     </div>
                 </div>
