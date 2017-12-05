@@ -1,6 +1,9 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
-{% set layout      = blogData.layout %}
 
-{{ blogData|json_encode(constant('JSON_PRETTY_PRINT')) }}
+{% set menudata.blogHeaderMenu    = blogData.blogHeaderMenu %}
+{% set menudata.blogFooterMenu    = blogData.blogFooterMenu %}
+
+
+{{ menudata|json_encode(constant('JSON_PRETTY_PRINT')) }}
