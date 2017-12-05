@@ -12658,7 +12658,7 @@ function checkSyncWall() {
     if (!f || f == "null") {
         f = ""
     }
-    g_PAGEURL = window.location.toString();
+    g_PAGEURL = window.location.toString().replace('?', '').replace('&', '');
     var g = getAuthToken(g_PAGEURL);
 
     // checkAuthStatus(g);
