@@ -2,8 +2,8 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 
-{% set menudata.blogHeaderMenu    = blogData.blogHeaderMenu %}
-{% set menudata.blogFooterMenu    = blogData.blogFooterMenu %}
-
-
-{{ menudata|json_encode(constant('JSON_PRETTY_PRINT')) }}
+{ "blogHeaderMenu": 
+{{ blogData.blogHeaderMenu|json_encode(constant('JSON_PRETTY_PRINT')) }}
+{ "blogFooterMenu": 
+{{ blogData.blogFooterMenu|json_encode(constant('JSON_PRETTY_PRINT')) }}
+}
