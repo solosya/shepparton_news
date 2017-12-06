@@ -15,73 +15,45 @@
 
     <main id="main" class="site-main" role="main">
         <div class="container">
-
-            <section>
-                <div class="row">
-                    <div class="col-md-9 header events-heading">
-                        <div class="hk">
-                            <h2>{{this.title}}</h2>
-                            <p></p>
-                            <a href="{{networkData.defaultBlogUrl}}/@event-form">Submit an event</a>
+            <div class="col-lg-1 visible-lg-block"></div>
+            <div class="col-lg-7 col-md-9 col-sm-9">
+                <section>
+                    <div class="row">
+                        <div class="col-md-9 header events-heading">
+                            <div class="hk">
+                                <h2>{{this.title}}</h2>
+                                <p></p>
+                                <a href="{{networkData.defaultBlogUrl}}/@event-form">Submit an event</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="row">
-                    <div class="col-md-6">
-                       {% if events[eventCount] %}
-                           {{this.render('partials/_single-event.twig', {
-                               event: events[eventCount],
-                               position: eventCount + 1,
-                               imageSize: {width:630},
-                               containerClass: 'home-feature-sm home-feature-mobile card-event-feature'
-                           }) | raw}}
-                           {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
-                       {% endif %}
+                {% set monthDivider = '' %}
+
+                <section class="middle">
+                    <div class="row row-space maincards">
+                        <div class="col-sm-9">
+                            {% for i in 0..6 if events[eventCount] %}
+
+                                {% set eventMonth = _AppHelper.getDateTimeBasedOnTimezone(events[eventCount].startDate, 'F') %}
+                                {% if true or monthDivider != eventMonth %}
+                                    <p class="month-divider">{{ eventMonth }}</p>
+                                    {% set monthDivider = eventMonth %}
+                                {% endif %}
+
+                                {{this.render('partials/_single-event.twig', {
+                                    event: events[eventCount], 
+                                    position: eventCount + 1, 
+                                    imageSize: {width:300},
+                                    containerClass: 'card-event-rec card-event-tablet'
+                                }) | raw}}
+                                {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <section class="advert">
-                            <div class="ad-square">
-                                <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-1'>
-                                    <script type='text/javascript'>
-                                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
-                                    </script>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <section class="middle">
-
-
-                <div class="row row-space maincards">
-                    <div class="col-sm-6">
-                        {% for i in 0..6 if events[eventCount] %}
-
-                            {{this.render('partials/_single-event.twig', {
-                                event: events[eventCount], 
-                                position: eventCount + 1, 
-                                imageSize: {width:300},
-                                containerClass: 'card-rec card-rec-tablet card-rec-mobile card-event-rec'
-                            }) | raw}}
-                            {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
-                            
-                             {% if i != 6 %}
-                                <hr class="divide18 visible-md-block visible-lg-block">
-                                <hr class="divide10 visible-xs-block visible-sm-block">
-                            {% endif %}
-                        {% endfor %}
-
-
-                    </div>
-
-
+                </section>
+            </div>
+            <div class="col-lg-1 visible-lg-block"></div>            
         </div>
-
-
     </main><!-- .site-main -->

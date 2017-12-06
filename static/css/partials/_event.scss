@@ -39,6 +39,20 @@
         }	
 	}
 
+.month-divider {
+	font-size: rem(22);
+	font-family: $font-family-sans-serif;
+	color: black;
+	letter-spacing: 1px;
+	line-height: 1.18;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-bottom: 10px;
+
+	&:not(:first-child) {
+		margin-top: 60px;
+	}
+}
 
 .event {
 	h2 {
