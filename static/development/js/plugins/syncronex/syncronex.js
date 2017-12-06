@@ -59,7 +59,7 @@ function checkSyncWall() {
     if (!f || f == "null") {
         f = ""
     }
-    g_PAGEURL = window.location.toString();
+    g_PAGEURL = window.location.toString().replace('?', '').replace('&', '');
     var g = getAuthToken(g_PAGEURL);
 
     // checkAuthStatus(g);
@@ -68,7 +68,7 @@ function checkSyncWall() {
         createCookie(g_AUTHTOKEN, g, 36500, "/");
         var h = g_PAGEURL.toString().indexOf("sp-tk");
         g_PAGEURL = g_PAGEURL.toString().substr(0, h);
-        window.location.replace(_appJsConfig.appHostName + '/admin/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL + '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn');
+        window.location.replace(_appJsConfig.appHostName + '/admin/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL + '&errorurl=' + g_PAGEURL + '/error&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn');
     }
     var d = g_PAGEURL;
     g_PAGEURL = g_PAGEURL.replace(/#.*$/, "");

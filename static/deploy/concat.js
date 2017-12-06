@@ -12658,7 +12658,7 @@ function checkSyncWall() {
     if (!f || f == "null") {
         f = ""
     }
-    g_PAGEURL = window.location.toString();
+    g_PAGEURL = window.location.toString().replace('?', '').replace('&', '');
     var g = getAuthToken(g_PAGEURL);
 
     // checkAuthStatus(g);
@@ -12667,7 +12667,7 @@ function checkSyncWall() {
         createCookie(g_AUTHTOKEN, g, 36500, "/");
         var h = g_PAGEURL.toString().indexOf("sp-tk");
         g_PAGEURL = g_PAGEURL.toString().substr(0, h);
-        window.location.replace(_appJsConfig.appHostName + '/admin/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL + '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn');
+        window.location.replace(_appJsConfig.appHostName + '/admin/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL + '&errorurl=' + g_PAGEURL + '/error&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn');
     }
     var d = g_PAGEURL;
     g_PAGEURL = g_PAGEURL.replace(/#.*$/, "");
@@ -33464,7 +33464,7 @@ var screenArticles_1 =
 ';
 
 var systemCardTemplate = 
-'<div class="col-sm-3"><div class="{{containerClass}}"> \
+'<div class="{{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{{hasArticleMediaClass}}}" \
@@ -33506,7 +33506,7 @@ var systemCardTemplate =
             '</div>'+
         "{{/if}}"+
     '</a>'+
-'</div></div>';
+'</div>';
 
 window.templates.modal = 
 '<div id="signin" class="flex_col"> \
@@ -33538,6 +33538,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     class="card swap social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
                                     data-id="{{socialId}}"\
                                     data-position="{{position}}"\
+                                    data-guid="{{social.guid}}"\
                                     data-social="1"\
                                     data-article-image="{{{social.media.path}}}"\
                                     data-article-text="{{social.content}}">\
@@ -33554,6 +33555,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                             <time datetime="2016-11-16"></time>\
                                             <div class="author">\
                                                 <p class="">{{ social.user.name }}</p>\
+                                                <time datetime="{{publishDate}}">{{publishDate}}</time>\
                                             </div>\
                                         </div>'+
 
@@ -33901,9 +33903,8 @@ Acme.Card.prototype.bindSocialPostPopup = function()
         var isSocial = $(this).data('social');
         if (isSocial) {
             var url = '/api/social/get-social-post';
-            var blogGuid = $(this).data('blog-guid');
             var postGuid = $(this).data('guid');
-            var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
+            var payload = {blog_guid: false, guid: postGuid, _csrf: csrfToken}
         } else {
             var url = '/api/article/get-article';
             var articleId = $(this).data('id');

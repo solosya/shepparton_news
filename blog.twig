@@ -22,7 +22,7 @@
 {%   set override = override ~ ' country' %}
 {%   set site = 'country' %}
 
-{% elseif (networkData.title | lower) == 'dairy news' %}
+{% elseif 'dairy' in (networkData.title | lower) %}
 {%   set site = 'dairy' %}
 
 {% endif %}  

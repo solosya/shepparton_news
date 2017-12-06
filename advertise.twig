@@ -50,7 +50,7 @@
 
                     {{page.content | raw}}
 
-                    {% if (networkData.title | lower) == 'dairy news' %}
+                    {% if 'dairy' in (networkData.title | lower) %}
 
                         <p><a href="{{networkData.templatePath}}/static/assets/Dairy%20News%20National%20Media%20Kit.pdf">Download Media Kit - National</a></p>
                         <p>

@@ -22,7 +22,7 @@
                         <div class="inner-descr">
                             <h2 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h2>
                             
-                            {% if (networkData.title | lower) != 'dairy news' %}
+                            {% if 'dairy' not in (networkData.title | lower) %}
                                 {% if _User.isGuest() %}
                                     <a href="javascript:void(0)" class="button follow forceLoginModal">Follow</a>
                                 {% endif %}
@@ -43,14 +43,14 @@
             </div>
 
             <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
-            {% if (networkData.title | lower) != 'dairy news' %}
+            {% if 'dairy' not in (networkData.title | lower) %}
             {# there are no blogs on dairy news #}
                 {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
             {% endif %}
 
                 {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles, articleCount: 0 }) | raw }}
 
-            {% if (networkData.title | lower) != 'dairy news' %}
+            {% if 'dairy' not in (networkData.title | lower) %}
             {# there are no users on dairy news #}
                 {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
                 {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}

@@ -15,7 +15,7 @@ var screenArticles_1 =
 ';
 
 var systemCardTemplate = 
-'<div class="col-sm-3"><div class="{{containerClass}}"> \
+'<div class="{{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{{hasArticleMediaClass}}}" \
@@ -57,7 +57,7 @@ var systemCardTemplate =
             '</div>'+
         "{{/if}}"+
     '</a>'+
-'</div></div>';
+'</div>';
 
 window.templates.modal = 
 '<div id="signin" class="flex_col"> \
@@ -89,6 +89,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     class="card swap social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
                                     data-id="{{socialId}}"\
                                     data-position="{{position}}"\
+                                    data-guid="{{social.guid}}"\
                                     data-social="1"\
                                     data-article-image="{{{social.media.path}}}"\
                                     data-article-text="{{social.content}}">\
@@ -105,6 +106,7 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                             <time datetime="2016-11-16"></time>\
                                             <div class="author">\
                                                 <p class="">{{ social.user.name }}</p>\
+                                                <time datetime="{{publishDate}}">{{publishDate}}</time>\
                                             </div>\
                                         </div>'+
 

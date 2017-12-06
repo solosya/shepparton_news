@@ -66,13 +66,13 @@
 
         {% set visibility = '' %}
         <!-- for dairy, only show the header-bottom bar above mobile -->
-        {% if (networkData.title | lower) == 'dairy news' %}
+        {% if 'dairy' in (networkData.title | lower) %}
         {%   set visibility = ' visible-md-block visible-lg-block' %}
         {% endif %}
 
         <div class="header-bottom {{ visibility }}">
 
-            {% if (networkData.title | lower) != 'dairy news' %}
+            {% if 'dairy' not in (networkData.title | lower) %}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                 {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
 
@@ -222,7 +222,7 @@
 
 
             <div class="header-bottom {{ visibility }}">
-                {% if (networkData.title | lower) != 'dairy news' %}
+                {% if 'dairy' not in (networkData.title | lower) %}
 
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
