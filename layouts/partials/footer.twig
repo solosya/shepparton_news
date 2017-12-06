@@ -1,3 +1,15 @@
+{% if (networkData.title | lower) == 'country news' %}
+    {% set twitterHandle = 'CountryNews_mmg' %}
+    {% set facebookPage = 'countrynews' %}
+{% elseif 'dairy' in (networkData.title | lower) %}
+    {% set twitterHandle = 'DairyNewsOz' %}
+    {% set facebookPage = 'DairyNewsAustralia' %}
+{% else %}
+    {% set twitterHandle = 'SheppartonNews' %}
+    {% set facebookPage = 'sheppartonnews' %}
+{% endif %}
+
+
 <footer class="site-footer">
     <div class="container">        
 
@@ -52,12 +64,12 @@
 
         <div class="col-xs-9 footer-social">
         {% if 'dairy' in (networkData.title | lower) or true %}
-            <a href="https://www.facebook.com/DairyNewsAustralia/" class="facebook-icon social-icon">
+            <a href="https://www.facebook.com/{{ facebookPage }}/" class="facebook-icon social-icon">
                 <svg class="svg-icons">
                     <path fill="white" fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
                 </svg>
             </a>
-            <a href="https://twitter.com/DairyNewsOz" class="twitter social-icon">
+            <a href="https://twitter.com/{{ twitterHandle }}" class="twitter social-icon">
                 <svg class="svg-icons">
                     <path fill="white" fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
                 </svg>  
