@@ -15,6 +15,7 @@
 
 {% set pageURL = _AppHelper.getCurrentUrl(true) %} {# get current URL with parameters #}
 
+{#
 {% if pageURL matches '{sp-tk}' %}
     {% set token = pageURL|split('=') %}
     {% _Page.setHttpRedirects(
@@ -23,9 +24,7 @@
         }, true)
     %}
 {% endif %}
-
-{% set redir = 
-%}
+#}
 
 
 {{ this.beginPage() }}
