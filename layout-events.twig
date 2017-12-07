@@ -49,7 +49,7 @@
                             {% for i in 0..6 if events[eventCount] %}
 
                                 {% set eventMonth = _AppHelper.getDateTimeBasedOnTimezone(events[eventCount].startDate, 'F') %}
-                                {% if true or monthDivider != eventMonth %}
+                                {% if monthDivider != eventMonth %}
                                     <p class="month-divider">{{ eventMonth }}</p>
                                     {% set monthDivider = eventMonth %}
                                 {% endif %}
