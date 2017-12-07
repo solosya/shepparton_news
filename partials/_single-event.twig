@@ -13,20 +13,6 @@
     {% endif %}
 {% endif %}
 
-{% set site = '' %}
-{% if 'dairy' in (networkData.title | lower) %}
-{%  set site = 'dairy' %}
-{% endif %}
-
-{% if 'country' in (networkData.title | lower) %}
-{%  set site = 'country' %}
-{% endif %}
-
-{% if 'shepp' in (networkData.title | lower) %}
-{%  set site = 'shepparton' %}
-{% endif %}
-
-
 {% set imgWidth = 0 %}
 {% set imgHeight = 0 %}
 {% if imageSize is defined %}

@@ -1,10 +1,22 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 
+{% set site = '' %}
+{% if 'dairy' in (networkData.title | lower) %}
+{%  set site = 'dairy' %}
+{% endif %}
+
+{% if 'country' in (networkData.title | lower) %}
+{%  set site = 'country' %}
+{% endif %}
+
+{% if 'shepp' in (networkData.title | lower) %}
+{%  set site = 'shepparton' %}
+{% endif %}
 
 {{this.registerJs("Acme.CardController();")}}
 
-{% set limit = 30 %}
+{% set limit = 99 %}
 
 {% set events = _Event.getEvents() %}
 
@@ -46,7 +58,8 @@
                                     event: events[eventCount], 
                                     position: eventCount + 1, 
                                     imageSize: {width:300},
-                                    containerClass: 'card-event-rec card-event-tablet'
+                                    containerClass: 'card-event-rec card-event-tablet',
+                                    site: site,
                                 }) | raw}}
                                 {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
                             {% endfor %}
