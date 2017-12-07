@@ -194,6 +194,7 @@
                     letter-spacing: 1.4px;
                     color: color(red);
                     line-height: 1;
+                    width: 140px;
                 }
 
                 > .event-date--month {
@@ -205,6 +206,7 @@
                     font-weight: bold;
                     font-size: rem(17);
                     color: color(lightgrey);
+                    width: 140px;
                 }
             }
         }
@@ -213,7 +215,7 @@
     .event-sharing-panel {
         display: block;
         position: absolute;
-        bottom: 5px;
+        bottom: 0px;
         right: 0px;
     }
 }
