@@ -9,9 +9,23 @@
 {% set layout        = blogData.layout %}
 
 
- {% if blogName == 'menu map' %}
+{% if blogName == 'menu map' %}
  {{ content | raw }}
 {% else %}
+
+{% set pageURL = _AppHelper.getCurrentUrl(true) %} {# get current URL with parameters #}
+
+{% if pageURL matches '{sp-tk}' %}
+    {% set token = pageURL|split('=') %}
+    {% _Page.setHttpRedirects(
+        {
+            '|^sp-tk.*|' : _AppHelper.getBaseUrl() ~ '/admin/syncronex/login-paywall?sp-tk=' ~ token[1] ~ '&returnurl=' ~ _AppHelper.getCurrentUrl(false) ~ '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn',
+        }, true)
+    %}
+{% endif %}
+
+{% set redir = 
+%}
 
 
 {{ this.beginPage() }}
@@ -70,7 +84,7 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a5c2115337" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a5c21157" type="text/css" media="all">
 
     {% else %}
         <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" />

@@ -13018,16 +13018,6 @@ function run() {
         g_REFRESHTIMELIMIT = 1
     }
 
-    g_PAGEURL = window.location.toString().replace('?', '').replace('&', '');
-    var g = getAuthToken(g_PAGEURL);
-
-    if (g != "") {
-        createCookie(g_AUTHTOKEN, g, 36500, "/");
-        var h = g_PAGEURL.toString().indexOf("sp-tk");
-        g_PAGEURL = g_PAGEURL.toString().substr(0, h);
-        window.location.replace(_appJsConfig.appHostName + '/admin/syncronex/login-paywall?sp-tk=' + g + '&returnurl=' + g_PAGEURL + '&errorurl=' + g_PAGEURL + '/error&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn');
-    }
-
     if (window.addEventListener) {
         window.addEventListener("load", checkSyncWall, false)
     } else {
