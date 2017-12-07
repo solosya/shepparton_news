@@ -17,15 +17,13 @@
 
 {% if pageURL matches '{sp-tk}' %}
     {% set token = pageURL|split('=') %}
-    {% _Page.setHttpRedirects(
+    {% set redir = _Page.setHttpRedirects(
         {
             '|^sp-tk.*|' : _AppHelper.getBaseUrl() ~ '/admin/syncronex/login-paywall?sp-tk=' ~ token[1] ~ '&returnurl=' ~ _AppHelper.getCurrentUrl(false) ~ '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn',
         }, true)
     %}
 {% endif %}
 
-{% set redir = 
-%}
 
 
 {{ this.beginPage() }}
