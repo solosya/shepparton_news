@@ -48,15 +48,8 @@
 
     .show-weather {
        	position: absolute;
-    	top: 30px;
-        display: flex;
-
-        height: 20px;
-        width: 100%;
-
-        > img {
-            margin: 0 auto;
-        }
+    	top: 10px;
+        left: 150px; 
 
     	&:hover {
     		cursor: pointer;
