@@ -18,6 +18,9 @@
                         '<div style="width: 180px;">' +
                             '<p class="date">' + data.date + '</p>' + 
                             '<p class="location">'+data.location.split('/')[1]+'</p>' + 
+                            '<div class="show-weather">' +
+                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
+                            '</div>' +
                         '</div>' + 
                         '<div style="width: 48px;">' +
                             '<div class="icon">' + icon + '</div>' + 
@@ -28,6 +31,69 @@
                         '</div>' + 
                     '</div>';
             }
+
+        var weatherPanel = function(location, showArrow) {
+            return function(data) {
+                var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
+
+                var icon = weatherIcons(data.icon);
+
+                var arrow = '';
+                var description = data.description;
+
+                if (showArrow) {
+                    arrow = '<div class="show-weather">' +
+                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
+                            '</div>';
+                } else {
+                    // if we're not showing the arrow, this must be a future forecast
+                    description = weatherStatus(data.icon);
+                };
+
+                return '<div class="panel">' +
+                            '<div style="width: 180px;">' +
+                                '<p class="date">' + data.date + '</p>' + 
+                                '<p class="location">' + location + '</p>' + arrow +
+                            '</div>' + 
+                            '<div style="width: 48px;">' +
+                                '<div class="icon">' + icon + '</div>' + 
+                            '</div>' + 
+                            '<div style="width: 120px;">' +
+                                '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + description + '</div>' + 
+                                '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
+                            '</div>' + 
+                        '</div>';
+            }
+        }
+
+        var weatherStatus = function(icon) {
+            // we need to use the icon to generate the description for future forecasts, as they have a longer 'description' field
+            switch(icon) {
+            case 'clear-day':
+            case 'clear-night':
+                return 'Clear';
+            case 'cloudy':
+                return 'Cloudy';
+            case 'fog':
+                return 'Foggy';
+            case 'partly-cloudy-day':
+            case 'partly-cloudy-night':
+                return 'Partly cloudy';
+            case 'rain':
+                return 'Rain';
+            case 'sleet':
+                return 'Sleet';
+            case 'snow':
+                return 'Snow';
+            case 'stormy':
+                return 'Stormy';
+            case 'wind':
+                return 'Windy';
+            default:
+                return icon;
+            }
+        }
+
 
         var weatherIcons = function(icon) {
             switch(icon) {
@@ -153,36 +219,16 @@
                 var local = res.data[0];
                 var name = local.location.split('/')[1];
 
-                var weatherPanels = weatherPanel(local);
+                $('#weather').html(weatherPanel(name, true)(local));
 
-                $('#weather').html(weatherPanels);
+                var days = local.daily.slice(1,7).map(weatherPanel(name, false)).join('');
+
+                $('#weather-dropdown').html(days);
 
                 $('.show-weather').on("click", function () {
                     $('.show-weather').toggleClass('flip');
-
-                    $.ajax({
-                        url: 'https://weather.pagemasters.com.au/weather?q=' + location,
-                        dataType: "json",
-                        type: 'GET',
-                        success: function(res) {
-
-                            $('.weather-dropdown').toggleClass('hidden');
-                            $('.weather-dropdown').html(dropdown('Thursday, 28th September'));
-
-                            res.data.forEach(function(l) {
-                                var name = l.location.split('/')[1];
-
-                                $('#weather-panels').append(weatherPanel(name, l.icon));
-
-                                $('#' + name + '-weather > .location').text(name);
-                                $('#' + name + '-weather > .description').text(l.description);
-                                $('#' + name + '-weather > div > p.temp').html(Math.round(l.temperature) + '&#176;');
-                            })
-                        }
-                    })
-                })
-
-
+                    $('#weather-dropdown').toggleClass('hidden');
+                });
             }
         })
     })
