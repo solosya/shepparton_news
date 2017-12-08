@@ -251,7 +251,11 @@
                             font-size: rem(12);
                             font-family: $font-family-sans-serif;
                             font-weight: regular;
-                        }                        
+
+                        }
+                        .date{
+                                display:none;
+                            }                        
                     }
                 }
             }

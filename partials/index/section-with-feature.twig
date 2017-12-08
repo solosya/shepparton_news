@@ -29,7 +29,7 @@
             <hr class="divide15 visible-xs-block visible-sm-block space-only">
 
             <div class="row">
-                <div class="col-md-9 visible-xs-block visible-md-block visible-lg-block">
+                <div class="col-sm-4">
                     <div class="ad-square" style="margin-bottom:30px;">
                         <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
                             <script type='text/javascript'>
@@ -38,6 +38,8 @@
                         </div>
                     </div>
                 </div>
+
+            <div class="col-sm-1 visible-sm-block"></div>
 
                 <div class="col-md-9 visible-xs-block visible-md-block visible-lg-block">
                     <hr class="divide12">
@@ -60,7 +62,7 @@
                     <hr class="divide">
                 </div>
        
-                <div class="col-md-9 col-sm-1">
+                <div class="col-md-9 col-sm-4" style="width:50%;">
                     {% if articles.feed.articles[sectionCount] %}
                         {{this.render('../_single-article.twig', {
                             article: articles.feed.articles[sectionCount], 
