@@ -47,10 +47,10 @@
     }
 
     .show-weather {
-       	position: relative;
-    	float: left;
-    	right: 15px;
-    	top: 5px;
+       	position: absolute;
+    	top: 10px;
+        left: 150px; 
+
     	&:hover {
     		cursor: pointer;
     	}
@@ -62,6 +62,7 @@
 
 .weather {
     @include weather-panel;
+    height: 100%;
 }
 
 .weather-date {
@@ -93,12 +94,22 @@
 }
 
 .weather-dropdown {
+    position: absolute;
+    width: 300px;
+    z-index: 999;
+    background: white;
+
 	display: flex;
-    flex-direction: row;
-    height: 156px;
-    padding: 18px 0;
+    flex-direction: column;
+    height: 360px;
+    padding-top: 10px;
     justify-content: space-between;
-    margin-top: 20px;
+
+    > .panel {
+        height: 40px;
+        border-bottom: 1px solid color(lightgrey);
+        margin-bottom: 15px;
+    }
 }
 
 .hidden {

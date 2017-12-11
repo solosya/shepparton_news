@@ -124,11 +124,22 @@
                     }
 
                     p.excerpt {
-                        top: 40px;
+                        // top: 40px;
                     }
 
                     div.author {
                         bottom: 20px;
+                    }
+                }
+            }
+        }
+        &.final {
+            a.card {
+                > article {
+                    > .content {
+                        > p.excerpt {
+                            display:none;
+                        }
                     }
                 }
             }

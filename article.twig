@@ -25,11 +25,11 @@
 {%  set site = 'dairy' %}
 {% endif %}
 
-{% if (networkData.title | lower) == 'country news' %}
+{% if 'country' in (networkData.title | lower) %}
 {%  set site = 'country' %}
 {% endif %}
 
-{% if (networkData.title | lower) == 'shepparton news' %}
+{% if 'shepparton' in (networkData.title | lower) %}
 {%  set site = 'shepparton' %}
 {% endif %}
 

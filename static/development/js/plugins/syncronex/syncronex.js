@@ -62,8 +62,6 @@ function checkSyncWall() {
     g_PAGEURL = window.location.toString().replace('?', '').replace('&', '');
     var g = getAuthToken(g_PAGEURL);
 
-    // checkAuthStatus(g);
-
     if (g != "") {
         createCookie(g_AUTHTOKEN, g, 36500, "/");
         var h = g_PAGEURL.toString().indexOf("sp-tk");
@@ -420,6 +418,7 @@ function run() {
         g_REFRESHLIMIT = 1;
         g_REFRESHTIMELIMIT = 1
     }
+
     if (window.addEventListener) {
         window.addEventListener("load", checkSyncWall, false)
     } else {
