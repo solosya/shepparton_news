@@ -86,29 +86,33 @@
 
                 {% if articles[articleCount] %}
                 <div class="cold-xs-9 col-sm-3">
+                    <div class="row">
+                        <hr class="divide15 visible-xs-block visible-sm-block space-only">
 
-                    <div id="weather" class="weather"></div>
-                    <div id="weather-dropdown" class="weather-dropdown hidden"></div>
+                        <div class="col-sm-1 col-md-9">
+                            <div id="weather" class="weather"></div>
+                            <div id="weather-dropdown" class="weather-dropdown hidden"></div>
+                        </div>
 
-                    <hr class="divide10 visible-xs-block" style="clear:both">
+                        <hr class="divide10 visible-xs-block" style="clear:both">
 
 
-                    {% for i in 0..2 if articles[i] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
-                            position: articleCount + 1, 
-                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-                        }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% if i < 2 %}
-                            <hr class="divide15 visible-md-block visible-lg-block">
-                            <hr class="divide10 visible-xs-block visible-sm-block">
-                        {% endif %}
+                        {% for i in 0..2 if articles[i] %}
+                            {{this.render('partials/_single-article.twig', {
+                                article: articles[articleCount], 
+                                position: articleCount + 1, 
+                                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% if i < 2 %}
+                                <hr class="divide15 visible-md-block visible-lg-block">
+                                <hr class="divide10 visible-xs-block visible-sm-block">
+                            {% endif %}
 
-                    {% endfor %}
-                    <hr class="divide10 visible-xs-block">
-
-                </div><!-- .row-->
+                        {% endfor %}
+                        <hr class="divide10 visible-xs-block">
+                    </div><!-- .row-->
+                </div>
                 {% endif %}
 
             </div>
