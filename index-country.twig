@@ -238,57 +238,61 @@
 
 </main><!-- .site-main -->
 
-<main class="site-main site-videos">
-    <div class="container">
 
-        <section class="middle" style="margin-bottom:0px;">
+{% if sections['videos'].feed.articles|length > 0 %}
+    {% set sectionCount = (dev) ? articleCount : 0 %}
 
-        {% if sections['videos'].feed.articles|length > 0 %}
-            {% set sectionCount = (dev) ? articleCount : 0 %}
+    <section class="site-main site-videos">
+        <div class="container">
 
-            <section class="row ">
-                <div class="col-sm-9 section-header">
-                    <p><a href="{{sections['videos'].link}}">View All</a></p>
-                    <div class="hk">
-                        <h2>Videos</h2>
-                        <p></p>
-                    </div>
-                </div>
+            <section class="middle" style="margin-bottom:0px;">
 
-                {% for i in 0..1 if sections['videos'].feed.articles[sectionCount] %}
-                    <div class="col-sm-3 col-md-3">
 
-                        {{this.render('partials/_single-article.twig', {
-                            article: sections['videos'].feed.articles[sectionCount], 
-                            imageSize: {width:300},
-                            containerClass: 'card-sm card-sm-tablet card-sm-mobile'
-                        }) | raw}}
-                        {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
-
-                        <hr class="divide visible-xs-block">
-
-                    </div>
-                {% endfor %}
-
-                    <div class="col-sm-3 col-md-3">
-                        <div style="margin-bottom:30px;position:relative;">
-                            <div class="ad-square" style="margin-top:30px;">
-                                <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-3'>
-                                    <script type='text/javascript'>
-                                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-3'); });
-                                    </script>
-                                </div>
-                            </div>
+                <section class="row ">
+                    <div class="col-sm-9 section-header">
+                        <p><a href="{{sections['videos'].link}}">View All</a></p>
+                        <div class="hk">
+                            <h2>Videos</h2>
+                            <p></p>
                         </div>
                     </div>
 
+                    {% for i in 0..1 if sections['videos'].feed.articles[sectionCount] %}
+                        <div class="col-sm-3 col-md-3">
+
+                            {{this.render('partials/_single-article.twig', {
+                                article: sections['videos'].feed.articles[sectionCount], 
+                                imageSize: {width:300},
+                                containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+
+                            <hr class="divide visible-xs-block">
+
+                        </div>
+                    {% endfor %}
+
+                        <div class="col-sm-3 col-md-3">
+                            <div style="margin-bottom:30px;position:relative;">
+                                <div class="ad-square" style="margin-top:30px;">
+                                    <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-3'>
+                                        <script type='text/javascript'>
+                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-3'); });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </section>
+
+
             </section>
+        </div>
+    </section>
+{% endif %}
 
-            {% endif %}
 
-        </section>
-    </div>
-</main>
 <div id='div-gpt-ad-interstitial' class="hidden-xs">
     <script type='text/javascript'>
         googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial'); });
