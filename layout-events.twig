@@ -54,11 +54,11 @@
                                     {% set monthDivider = eventMonth %}
                                 {% endif %}
 
-                                {{this.render('partials/_single-event.twig', {
+                                {{this.render('partials/_single-event-list.twig', {
                                     event: events[eventCount], 
                                     position: eventCount + 1, 
                                     imageSize: {width:300},
-                                    containerClass: 'card-event-rec card-event-tablet',
+                                    containerClass: 'card-event-list-rec card-event-list-tablet',
                                     site: site,
                                 }) | raw}}
                                 {% set eventCount = (dev) ? eventCount : eventCount + 1 %}
