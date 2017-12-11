@@ -4,7 +4,7 @@
 {% set layout      = blogData.layout %}
 
 
-{{this.registerJs("CardController();")}}
+{{this.registerJs("Acme.CardController();")}}
 
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
