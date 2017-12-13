@@ -11,7 +11,7 @@
             font-weight:300 !important;
             margin-bottom:25px !important;
             margin-top:0px !important;
-            color:color(red) !important;
+            color:color(red);
             text-transform:uppercase;
         }
         p {
@@ -36,6 +36,9 @@
 			font-size: rem(14);
 			font-style: italic;
         }
+    }
+    .country-events {
+    	color:#0d522e !important;
     }	
 }
 
