@@ -319,7 +319,7 @@
 
 .country-logo {
     @media screen and (min-width: $mmd-break){    
-        height: 65px;
+        height: 80px;
     }
 
     > a {
@@ -327,7 +327,7 @@
         width: 25px;    
         @media screen and (min-width: $mmd-break){ 
             width: 250px;
-            height: 46px;
+            height: 52px;
         }
         @media screen and (max-width: $mmd-break){
             width:160px;
