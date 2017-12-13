@@ -8,7 +8,6 @@
 // [7] = imgOverride
 // [8] = dairycard
 
-
 var getBlogSettings = function(blog,num) {
     if ((blog.match('sheppnews'/gi).length) < 0) {
         if (num == 0) {return 'shepparton'}
@@ -51,4 +50,18 @@ var getBlogSettings = function(blog,num) {
         if (num == 7) {return ''}
         if (num == 8) {return ''}
     }
+}
+
+var blogSettingsStyles = function(blog,url) {
+    console.log(blog);
+    var siteStyles = document.getElementsByClassName(" siteclass");
+    var blogSite = getBlogSettings(blog,0);
+    for (var i = 0; i < siteStyles.length; i++) {
+        siteStyles[i].removeClass("siteclass");
+        siteStyles[i].addClass(blogSite);
+    }
+    var blogLogo = $('#sitelogo');
+    blogLogoLink = url + getBlogSettings(blog,2) + "-logo.svg";
+    blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");
+
 }
