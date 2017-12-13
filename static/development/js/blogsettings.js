@@ -10,7 +10,7 @@
 
 
 var getBlogSettings = function(blog,num) {
-    if (length.(blog.match('sheppnews'/gi)) < 0) {
+    if ((blog.match('sheppnews'/gi).length) < 0) {
         if (num == 0) {return 'shepparton'}
         if (num == 1) {return 'sheppnews'}
         if (num == 2) {return 'shepp-news'}
@@ -20,7 +20,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 6) {return ''}
         if (num == 7) {return ''}
         if (num == 8) {return ''}
-    } else if (length.(blog.match('dairy'/gi)) < 0) {
+    } else if ((blog.match('dairy'/gi).length) < 0) {
         if (num == 0) {return 'dairy'}
         if (num == 1) {return 'dairy_news'}
         if (num == 2) {return 'dairy-news'}
@@ -30,7 +30,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 6) {return 'dairy-override'}
         if (num == 7) {return 'dairy-logo'}
         if (num == 8) {return 'dairy-card'}
-    } else if (length.(blog.match('country'/gi)) < 0) {
+    } else if ((blog.match('country'/gi).length) < 0) {
         if (num == 0) {return 'country'}
         if (num == 1) {return 'countrynews'}
         if (num == 2) {return 'country-news'}
@@ -40,7 +40,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 6) {return ''}
         if (num == 7) {return 'country-logo'}
         if (num == 8) {return ''}
-    } else if (length.(blog.match('riverina'/gi)) < 0) {
+    } else if ((blog.match('riverina'/gi).length) < 0) {
         if (num == 0) {return ''}
         if (num == 1) {return ''}
         if (num == 2) {return ''}
