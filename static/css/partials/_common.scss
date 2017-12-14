@@ -204,6 +204,14 @@ hr.divide10 {
         margin-top: -65px !important;
         margin-bottom: -15px !important;
     }
+    .mobad5 {
+        margin-top: 5px !important;
+        margin-bottom: 15px !important;
+    }
+    .mobadregen {
+        margin-top: -58px!important;
+        margin-bottom: 15px!important;
+    }
 }
 
 #mainAjaxArticles .row .ad-container {
@@ -212,10 +220,10 @@ hr.divide10 {
         margin-bottom:15px !important;
     }
     @media screen and (max-width: $sm-break) {
-        margin-top: 0 !important;
+        margin-top: 15px !important;
         padding-top: 0;
         #adslot1{
-            margin-top: -25px !important;
+            margin-top: -70px !important;
         }
     }
 
