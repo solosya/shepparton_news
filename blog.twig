@@ -18,15 +18,6 @@
     {% set override = override ~ ' override' %}    
 {% endif %}    
 
-{% if (networkData.title | lower) == 'country news' %}
-{%   set override = override ~ ' country' %}
-{%   set site = 'country' %}
-
-{% elseif 'dairy' in (networkData.title | lower) %}
-{%   set site = 'dairy' %}
-
-{% endif %}  
-
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
@@ -44,7 +35,7 @@
         <section>
             <div class="row header">
                 <div class="col-sm-9">
-                    <div class="bloggerImg blog{{site}}">
+                    <div class="bloggerImg blogsite">
                         <div class="logo {{ override }}">
                             <img src="{{ blogImage }}">
                         </div>                        
@@ -52,39 +43,39 @@
 
                     <div class="">
                         <h2>{{this.title}}</h2>
-                        <p class="blogowner {{ site }}">by {{ blogInfo.owner['name'] }}</p>
+                        <p class="blogowner siteclass">by {{ blogInfo.owner['name'] }}</p>
                         <div class="social-links">
                             {% if blogInfo.settings['social']['facebook'] %}
                                 <a href="{{ blogInfo.settings['social']['facebook'] }}" class="facebook-icon social-icon">
-                                    <svg class="svg-icons {{ site }}">
+                                    <svg class="svg-icons siteclass">
                                         <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
                                     </svg>
                                 </a>
                             {% endif %}
                             {% if blogInfo.settings['social']['twitter'] %}
                                 <a href="{{ blogInfo.settings['social']['twitter'] }}" class="twitter social-icon">
-                                    <svg class="svg-icons {{ site }}">
+                                    <svg class="svg-icons siteclass">
                                         <path fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
                                     </svg>  
                                 </a>
                             {% endif %}
                             {% if blogInfo.settings['social']['instagram'] %}
                                 <a href="{{ blogInfo.settings['social']['instagram'] }}" class="instagram social-icon">
-                                    <svg class="svg-icons {{ site }}" viewBox="0 0 50 28">
+                                    <svg class="svg-icons siteclass" viewBox="0 0 50 28">
                                         <path fill-rule="evenodd" d="M19.245 19.245c-1.613 1.613-3.537 2.418-5.777 2.418-2.239 0-4.155-.805-5.744-2.418-1.592-1.611-2.387-3.527-2.387-5.745 0-.377.042-.9.126-1.57H0v10.8c0 1.173.408 2.176 1.224 3.015C2.04 26.58 3.034 27 4.206 27h18.586c1.172 0 2.166-.42 2.983-1.255.817-.839 1.225-1.842 1.225-3.015v-10.8h-5.526c.126.502.189 1.026.189 1.57 0 2.218-.807 4.134-2.418 5.745zM4.206 0C3.035 0 2.04.408 1.224 1.224.408 2.04 0 3.034 0 4.206V8.79h6.844c1.548-2.303 3.767-3.453 6.656-3.453 2.803 0 5.023 1.15 6.656 3.453H27V4.206c0-1.171-.408-2.166-1.225-2.982C24.959.408 23.964 0 22.792 0H4.206zm19.842 5.965h-2.26a.68.68 0 0 1-.533-.251c-.147-.167-.22-.335-.22-.503v-2.26c0-.503.25-.754.753-.754h2.26c.503 0 .755.251.755.753v2.261c0 .503-.253.754-.755.754zm-7 3.956c-.985-.963-2.166-1.444-3.548-1.444-1.382 0-2.565.481-3.547 1.444-.985.963-1.476 2.145-1.476 3.547 0 1.403.491 2.595 1.476 3.58.982.984 2.165 1.476 3.547 1.476 1.382 0 2.563-.492 3.547-1.477.985-.984 1.476-2.165 1.476-3.547 0-1.423-.491-2.616-1.476-3.579z"/>                                        
                                     </svg>
                                 </a>
                             {% endif %}
                             {% if blogInfo.settings['social']['vimeo'] %}
                                 <a href="{{ blogInfo.settings['social']['vimeo'] }}" class="vimeo social-icon">
-                                    <svg class="svg-icons {{ site }}">
+                                    <svg class="svg-icons siteclass">
                                         <path fill-rule="evenodd" d="M16.623.421c-1.044-.61-2.252-.557-3.626.16-1.559.823-2.483 2.071-2.774 3.745 1.004-.61 1.744-.598 2.22.04.474.637.435 1.46-.12 2.47-1.136 2.203-1.968 3.306-2.496 3.306-.132 0-.251-.073-.357-.22-.105-.146-.224-.405-.356-.776-.133-.372-.245-.73-.337-1.076L8.36 6.476c-.079-.318-.164-.763-.256-1.334l-.238-1.494c-.067-.425-.166-.89-.298-1.394-.132-.505-.284-.903-.456-1.195A1.895 1.895 0 0 0 6.4.362c-.304-.173-.653-.22-1.05-.14C4.662.355 3.843.8 2.892 1.557c-.95.756-1.611 1.348-1.98 1.772L0 4.365l.713.996.397-.279a3.76 3.76 0 0 1 .871-.418c.29-.093.541-.06.753.1.158.212.647 1.693 1.466 4.441.819 2.75 1.334 4.343 1.546 4.781.211.438.495.837.852 1.195.356.359.792.61 1.307.757.515.146 1.05.033 1.605-.339 1.4-.955 3.018-2.529 4.854-4.72 1.835-2.192 2.965-4.522 3.388-6.991.29-1.7-.086-2.856-1.13-3.467"/>
                                     </svg>
                                 </a>
                             {% endif %}
                             {% if blogInfo.settings['social']['youtube'] %}
                                 <a href="{{ blogInfo.settings['social']['youtube'] }}" class="youtube social-icon">                                 
-                                    <svg class="svg-icons {{ site }}">
+                                    <svg class="svg-icons siteclass">
                                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <g id="Style-1---YouTube" transform="translate(-13.000000, -156.000000)">
                                                 <g id="Card-2">

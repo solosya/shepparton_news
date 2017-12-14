@@ -1,15 +1,3 @@
-{% if (networkData.title | lower) == 'country news' %}
-    {% set twitterHandle = 'CountryNews_mmg' %}
-    {% set facebookPage = 'countrynews' %}
-{% elseif 'dairy' in (networkData.title | lower) %}
-    {% set twitterHandle = 'DairyNewsOz' %}
-    {% set facebookPage = 'DairyNewsAustralia' %}
-{% else %}
-    {% set twitterHandle = 'SheppartonNews' %}
-    {% set facebookPage = 'sheppartonnews' %}
-{% endif %}
-
-
 <footer class="site-footer">
     <div class="container">        
 

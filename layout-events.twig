@@ -1,19 +1,6 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 
-{% set site = '' %}
-{% if 'dairy' in (networkData.title | lower) %}
-{%  set site = 'dairy' %}
-{% endif %}
-
-{% if 'country' in (networkData.title | lower) %}
-{%  set site = 'country' %}
-{% endif %}
-
-{% if 'shepp' in (networkData.title | lower) %}
-{%  set site = 'shepparton' %}
-{% endif %}
-
 {{this.registerJs("Acme.CardController();")}}
 
 {% set limit = 99 %}
@@ -32,7 +19,7 @@
                 <section>
                     <div class="row">
                         <div class="col-md-9 header events-heading">
-                            <div class="hk {{site}}-events">
+                            <div class="hk site-events">
                                 <h2>{{this.title}}</h2>
                                 <p></p>
                                 <a href="{{networkData.defaultBlogUrl}}/@event-form">Submit an event</a>
