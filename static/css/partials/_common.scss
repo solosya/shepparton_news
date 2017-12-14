@@ -187,13 +187,23 @@ hr.divide10 {
         margin-right: $grid-gutter-width / 2;
     }
 }
-.countryad1 {
-    margin-top: -35px;
-    margin-bottom: 15px;
-}
-.countryad2 {
-    margin-top: -25px;
-    margin-bottom: -10px;
+@media screen and (max-width: $sm-break-down){
+    .mobad1 {
+        margin-top: -35px !important;
+        margin-bottom: 15px !important;
+    }
+    .mobad2 {
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+    }
+    .mobad3 {
+        margin-top: -10px !important;
+        margin-bottom: 15px !important;
+    }
+    .mobad4 {
+        margin-top: -65px !important;
+        margin-bottom: -15px !important;
+    }
 }
 
 #mainAjaxArticles .row .ad-container {

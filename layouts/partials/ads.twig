@@ -172,7 +172,7 @@
                slotDiv.id = slotName;
                slotDiv.setAttribute( 'class', 'google_ad google_ad_leaderboard' );
                adSlot.id = "";
-               adSlot.setAttribute( 'class', 'ad-container' );
+               adSlot.setAttribute( 'class', 'ad-container mobad1' );
                
                googletag.cmd.push(function() {
                  var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
