@@ -13,13 +13,12 @@
 
 {% set path = networkData.templatePath~'/static/images/'~logo~'-logo.svg'%}
 
-<div class="navigation-logo siteclass">
-    <a  id="sitelogo" 
-        class="navbar-brand" 
+<div class="navigation-logo {{ imgOverride }}">
+    <a  class="navbar-brand" 
         href="{{networkData.defaultBlogUrl}}" 
         rel="Home" 
         tabindex="-1" 
         title="Home"
-        {# style="background-image: url({{path}})" #};>
+        style="background-image:url({{path}})">
     </a>
 </div>
