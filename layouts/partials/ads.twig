@@ -3,13 +3,13 @@
 {% set pageType = (blogData.type | lower) %} #}
 
 
-{% if (networkData.title | lower) == 'country news' %}
+{# {% if (networkData.title | lower) == 'country news' %}
     {% set blogNetworkName = 'countrynews' %}
 {% elseif 'dairy' in (networkData.title | lower) %}
     {% set blogNetworkName = 'dairy_news' %}
 {% else %}
     {% set blogNetworkName = 'sheppnews' %}
-{% endif %}
+{% endif %} #}
 
 
 {% if (networkData.title | lower) == (blogData.title | lower) %}
@@ -23,7 +23,8 @@
 {% set pageType = (blogData.type | lower) %}
 
 <script>
-            blogNetwork = '{{blogNetworkName}}';
+
+            var blogNetwork = getBlogSettings('{{networkData.title | lower}}',1);
             blogPrefix = '{{blogPrefixName}}';
             var mapping, mappingMob, mappingHalfPageComments;
             var setSite = function(uri) {
@@ -57,19 +58,19 @@
             rubicontag.cmd.push(function() {
                 rubicontag.addFPV('BLOGPREFIX', '{{blogPrefixName}}');
                 rubicontag.addFPV('page-type', '{{pageType}}');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-1').setPosition('atf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50], [300, 50]], 'div-gpt-ad-leaderboard-2').setPosition('atf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-2').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-3').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-4').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-5').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-6').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 250]], 'div-gpt-ad-mrec-7').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setPosition('btf');
-                rubicontag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-1').setPosition('atf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90], [320, 50], [300, 50]], 'div-gpt-ad-leaderboard-2').setPosition('atf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-2').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-3').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-4').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-5').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-6').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-7').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setPosition('btf');
+                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setPosition('btf');
                 rubicontag.run(gptrun);
             });
             
@@ -112,21 +113,21 @@
                 var mapping8 = [[[992, 200],[]],[[768, 200],[300, 600]],[[0,0],[]]]
 
                 
-                gptadslots[0] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping1).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[1] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping4).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[2] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-1').setTargeting('POS', ['1']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[3] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-2').setTargeting('POS', ['2']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());   
-                gptadslots[4] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-3').setTargeting('POS', ['3']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[5] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).defineSizeMapping(mapping6).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[6] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setTargeting('POS', ['1']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[7] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setTargeting('POS', ['2']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
-                gptadslots[8] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[1, 1]], 'div-gpt-ad-teads').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[9] = googletag.defineOutOfPageSlot('/4082264/{{blogNetworkName}}', 'div-gpt-ad-interstitial').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[10] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-5').setTargeting('POS', ['5']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[11] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-6').setTargeting('POS', ['6']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[12] = googletag.defineSlot('/4082264/{{blogNetworkName}}', ['fluid', [300, 250]], 'div-gpt-ad-mrec-7').setTargeting('POS', ['7']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[13] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setTargeting('POS', ['3']).defineSizeMapping(mapping7).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[14] = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setTargeting('POS', ['4']).defineSizeMapping(mapping8).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
+                gptadslots[0] = googletag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping1).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[1] = googletag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping4).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[2] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-1').setTargeting('POS', ['1']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[3] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-2').setTargeting('POS', ['2']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());   
+                gptadslots[4] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-3').setTargeting('POS', ['3']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[5] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).defineSizeMapping(mapping6).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[6] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setTargeting('POS', ['1']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[7] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setTargeting('POS', ['2']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
+                gptadslots[8] = googletag.defineSlot('/4082264/'+blogNetwork, [[1, 1]], 'div-gpt-ad-teads').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[9] = googletag.defineOutOfPageSlot('/4082264/'+blogNetwork, 'div-gpt-ad-interstitial').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[10] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-5').setTargeting('POS', ['5']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[11] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-6').setTargeting('POS', ['6']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[12] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-7').setTargeting('POS', ['7']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[13] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setTargeting('POS', ['3']).defineSizeMapping(mapping7).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                gptadslots[14] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setTargeting('POS', ['4']).defineSizeMapping(mapping8).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
 
                 for (var i=0; i < gptadslots.length; i++) {
                     rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
@@ -175,7 +176,7 @@
                adSlot.setAttribute( 'class', 'ad-container mobad5' );
                
                googletag.cmd.push(function() {
-                 var slot = googletag.defineSlot('/4082264/{{blogNetworkName}}', [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
+                 var slot = googletag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
                  googletag.display(slotName);
                  googletag.pubads().refresh([slot]);
                });

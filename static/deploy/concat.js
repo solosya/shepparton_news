@@ -33767,64 +33767,66 @@ AuthController.ResetPassword = (function ($) {
 // [6] = dairyOverride
 // [7] = imgOverride
 // [8] = dairycard
-
-var getBlogSettings = function(blog,num) {
-    if ((blog.match('sheppnews'/gi).length) < 0) {
-        if (num == 0) {return 'shepparton'}
-        if (num == 1) {return 'sheppnews'}
-        if (num == 2) {return 'shepp-news'}
-        if (num == 3) {return 'SheppartonNews'}
-        if (num == 4) {return 'sheppartonnews'}
-        if (num == 5) {return ''}
-        if (num == 6) {return ''}
-        if (num == 7) {return ''}
-        if (num == 8) {return ''}
-    } else if ((blog.match('dairy'/gi).length) < 0) {
-        if (num == 0) {return 'dairy'}
-        if (num == 1) {return 'dairy_news'}
-        if (num == 2) {return 'dairy-news'}
-        if (num == 3) {return 'DairyNewsOz'}
-        if (num == 4) {return 'DairyNewsAustralia'}
-        if (num == 5) {return ' visible-md-block visible-lg-block'}
-        if (num == 6) {return 'dairy-override'}
-        if (num == 7) {return 'dairy-logo'}
-        if (num == 8) {return 'dairy-card'}
-    } else if ((blog.match('country'/gi).length) < 0) {
-        if (num == 0) {return 'country'}
-        if (num == 1) {return 'countrynews'}
-        if (num == 2) {return 'country-news'}
-        if (num == 3) {return 'CountryNews_mmg'}
-        if (num == 4) {return 'countrynews'}
-        if (num == 5) {return ''}
-        if (num == 6) {return ''}
-        if (num == 7) {return 'country-logo'}
-        if (num == 8) {return ''}
-    } else if ((blog.match('riverina'/gi).length) < 0) {
-        if (num == 0) {return ''}
-        if (num == 1) {return ''}
-        if (num == 2) {return ''}
-        if (num == 3) {return ''}
-        if (num == 4) {return ''}
-        if (num == 5) {return ''}
-        if (num == 6) {return ''}
-        if (num == 7) {return ''}
-        if (num == 8) {return ''}
+    var getBlogSettings = function(blog,num) {
+        if ((blog.match(/shepp/g).length) > 0) {
+            if (num == 0) {return 'shepparton'}
+            if (num == 1) {return 'sheppnews'}
+            if (num == 2) {return 'shepp-news'}
+            if (num == 3) {return 'SheppartonNews'}
+            if (num == 4) {return 'sheppartonnews'}
+            if (num == 5) {return ''}
+            if (num == 6) {return ''}
+            if (num == 7) {return ''}
+            if (num == 8) {return ''}
+        } else if ((blog.match(/dairy/g).length) > 0) {
+            if (num == 0) {return 'dairy'}
+            if (num == 1) {return 'dairy_news'}
+            if (num == 2) {return 'dairy-news'}
+            if (num == 3) {return 'DairyNewsOz'}
+            if (num == 4) {return 'DairyNewsAustralia'}
+            if (num == 5) {return ' visible-md-block visible-lg-block'}
+            if (num == 6) {return 'dairy-override'}
+            if (num == 7) {return 'dairy-logo'}
+            if (num == 8) {return 'dairy-card'}
+        } else if ((blog.match(/country/g).length) > 0) {
+            if (num == 0) {return 'country'}
+            if (num == 1) {return 'countrynews'}
+            if (num == 2) {return 'country-news'}
+            if (num == 3) {return 'CountryNews_mmg'}
+            if (num == 4) {return 'countrynews'}
+            if (num == 5) {return ''}
+            if (num == 6) {return ''}
+            if (num == 7) {return 'country-logo'}
+            if (num == 8) {return ''}
+        } else if ((blog.match(/riverina/g).length) > 0) {
+            if (num == 0) {return ''}
+            if (num == 1) {return ''}
+            if (num == 2) {return ''}
+            if (num == 3) {return ''}
+            if (num == 4) {return ''}
+            if (num == 5) {return ''}
+            if (num == 6) {return ''}
+            if (num == 7) {return ''}
+            if (num == 8) {return ''}
+        } else {
+            return '';
+        }
     }
-}
 
-var blogSettingsStyles = function(blog,url) {
-    console.log(blog);
-    var siteStyles = document.getElementsByClassName(" siteclass");
-    var blogSite = getBlogSettings(blog,0);
-    for (var i = 0; i < siteStyles.length; i++) {
-        siteStyles[i].removeClass("siteclass");
-        siteStyles[i].addClass(blogSite);
+    var blogSettingsStyles = function(blog,url) {
+        console.log(blog);
+        var siteStyles = document.getElementsByClassName(" siteclass");
+        var blogSite = getBlogSettings(blog,0);
+        // for (var i = 0; i < siteStyles.length; i++) {
+        //     siteStyles[i].removeClass("siteclass");
+        //     siteStyles[i].addClass(blogSite);
+        // }
+        var blogLogo = document.getElementById("sitelogo");
+        blogLogoLink = url + getBlogSettings(blog,2) + "-logo.svg";
+        blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");
+
     }
-    var blogLogo = $('#sitelogo');
-    blogLogoLink = url + getBlogSettings(blog,2) + "-logo.svg";
-    blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");
 
-}
 Acme.CardController = function() {
     return new Acme.Card();
 }
