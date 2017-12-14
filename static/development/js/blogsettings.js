@@ -61,7 +61,7 @@
             siteStyles[i].classList.add(blogSite);
             siteStyles[i].classList.remove('siteclass');
         }
-        url = '/themes/shepparton_news/'
+        // url = '/themes/shepparton_news/'
         var blogLogo = document.getElementById("sitelogo");
         blogLogoLink = url + 'static/images/' + getBlogSettings(blog,2) + "-logo.svg";
         blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");

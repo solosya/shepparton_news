@@ -33817,13 +33817,22 @@ AuthController.ResetPassword = (function ($) {
         console.log(blog);
         var siteStyles = document.getElementsByClassName(" siteclass");
         var blogSite = getBlogSettings(blog,0);
-        // for (var i = 0; i < siteStyles.length; i++) {
-        //     siteStyles[i].removeClass("siteclass");
-        //     siteStyles[i].addClass(blogSite);
-        // }
+        for (var i = 0; i < siteStyles.length; i++) {
+            siteStyles[i].classList.add(blogSite);
+            siteStyles[i].classList.remove('siteclass');
+        }
+        // url = '/themes/shepparton_news/'
         var blogLogo = document.getElementById("sitelogo");
-        blogLogoLink = url + getBlogSettings(blog,2) + "-logo.svg";
+        blogLogoLink = url + 'static/images/' + getBlogSettings(blog,2) + "-logo.svg";
         blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");
+
+        var blogSocFac = document.getElementById("fb-icon");
+        var blogFB = getBlogSettings(blog,4);
+        blogSocFac.setAttribute("href","https://www.facebook.com/"+blogFB+"/");
+        var blogSocTwi = document.getElementById("tw-icon");
+        var blogTW = getBlogSettings(blog,3);
+        blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
+
 
     }
 
