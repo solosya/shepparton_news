@@ -63,7 +63,7 @@
         }
         // url = '/themes/shepparton_news/'
         var blogLogo = document.getElementById("sitelogo");
-        blogLogoLink = url + 'static/images/' + getBlogSettings(blog,2) + "-logo.svg";
+        blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
         blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");
 
         var blogSocFac = document.getElementById("fb-icon");
