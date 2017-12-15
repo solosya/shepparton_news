@@ -72,12 +72,12 @@
             evStyles[i].classList.add(evSite);
             evStyles[i].classList.remove('site-events');
         }
-        var blogsStyles = document.getElementsByClassName(" blogsite");
-        var blogsSite = getBlogSettings(blog,6);
-        for (var i = 0; i < blogsStyles.length; i++) {
-            blogsStyles[i].classList.add(blogsSite);
-            blogsStyles[i].classList.remove('blogsite');
-        }
+        // var blogsStyles = document.getElementsByClassName(" blogsite");
+        // var blogsSite = getBlogSettings(blog,6);
+        // for (var i = 0; i < blogsStyles.length; i++) {
+        //     blogsStyles[i].classList.add(blogsSite);
+        //     blogsStyles[i].classList.remove('blogsite');
+        // }
         // url = '/themes/shepparton_news/'
         var blogLogo = document.getElementById("sitelogo");
         blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
