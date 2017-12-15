@@ -9,7 +9,7 @@
 // [8] = dairycard
 // [9] = blogspage
 var getBlogSettings = function(blog,num) {
-    if ((blog.match(/dairy/g).length) != null) {
+    if (blog.match(/dairy/g) != null) {
         if (num == 0) {return 'dairy'}
         if (num == 1) {return 'dairy_news'}
         if (num == 2) {return 'dairy-news'}
@@ -20,7 +20,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 7) {return 'dairy-logo'}
         if (num == 8) {return 'dairy-card'}
         if (num == 9) {return 'blogdairy'}
-    } else if ((blog.match(/shepp/g).length) != null) {
+    } else if (blog.match(/shepp/g) != null) {
         if (num == 0) {return 'shepparton'}
         if (num == 1) {return 'sheppnews'}
         if (num == 2) {return 'shepp-news'}
@@ -31,7 +31,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 7) {return ''}
         if (num == 8) {return ''}
         if (num == 9) {return 'blogshepp'}     
-    } else if ((blog.match(/country/g).length) > 0) {
+    } else if (blog.match(/country/g) != null) {
         if (num == 0) {return 'country'}
         if (num == 1) {return 'countrynews'}
         if (num == 2) {return 'country-news'}
@@ -42,7 +42,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 7) {return 'country-logo'}
         if (num == 8) {return ''}
         if (num == 9) {return 'blogcountry'}
-    } else if ((blog.match(/riverina/g).length) > 0) {
+    } else if (blog.match(/riverina/g) != null) {
         if (num == 0) {return ''}
         if (num == 1) {return ''}
         if (num == 2) {return ''}
@@ -71,6 +71,12 @@ var blogSettingsStyles = function(blog,url) {
     for (var i = 0; i < evStyles.length; i++) {
         evStyles[i].classList.add(evSite);
         evStyles[i].classList.remove('site-events');
+    }
+    var siteLogo = document.getElementsByClassName(" site-logo");
+    var clossImgOver = getBlogSettings(blog,7);
+    for (var i = 0; i < siteLogo.length; i++) {
+        siteLogo[i].classList.add(siteLogo);
+        siteLogo[i].classList.remove('site-logo');
     }
     // var blogsStyles = document.getElementsByClassName(" blogsite");
     // var blogsSite = getBlogSettings(blog,6);
