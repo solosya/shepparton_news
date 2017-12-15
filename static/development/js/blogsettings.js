@@ -75,7 +75,7 @@ var blogSettingsStyles = function(blog,url) {
     var siteLogo = document.getElementsByClassName(" site-logo");
     var clossImgOver = getBlogSettings(blog,7);
     for (var i = 0; i < siteLogo.length; i++) {
-        siteLogo[i].classList.add(siteLogo);
+        siteLogo[i].classList.add(clossImgOver);
         siteLogo[i].classList.remove('site-logo');
     }
     // var blogsStyles = document.getElementsByClassName(" blogsite");
