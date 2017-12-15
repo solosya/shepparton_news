@@ -9,18 +9,7 @@
 // [8] = dairycard
 // [9] = blogspage
 var getBlogSettings = function(blog,num) {
-    if ((blog.match(/shepp/g).length) > 0) {
-        if (num == 0) {return 'shepparton'}
-        if (num == 1) {return 'sheppnews'}
-        if (num == 2) {return 'shepp-news'}
-        if (num == 3) {return 'SheppartonNews'}
-        if (num == 4) {return 'sheppartonnews'}
-        if (num == 5) {return ''}
-        if (num == 6) {return 'shepp-events'}
-        if (num == 7) {return ''}
-        if (num == 8) {return ''}
-        if (num == 9) {return 'blogshepp'}    
-    } else if ((blog.match(/dairy/g).length) > 0) {
+    if ((blog.match(/dairy/g).length) != null) {
         if (num == 0) {return 'dairy'}
         if (num == 1) {return 'dairy_news'}
         if (num == 2) {return 'dairy-news'}
@@ -31,6 +20,17 @@ var getBlogSettings = function(blog,num) {
         if (num == 7) {return 'dairy-logo'}
         if (num == 8) {return 'dairy-card'}
         if (num == 9) {return 'blogdairy'}
+    } else if ((blog.match(/shepp/g).length) != null) {
+        if (num == 0) {return 'shepparton'}
+        if (num == 1) {return 'sheppnews'}
+        if (num == 2) {return 'shepp-news'}
+        if (num == 3) {return 'SheppartonNews'}
+        if (num == 4) {return 'sheppartonnews'}
+        if (num == 5) {return ''}
+        if (num == 6) {return 'shepp-events'}
+        if (num == 7) {return ''}
+        if (num == 8) {return ''}
+        if (num == 9) {return 'blogshepp'}     
     } else if ((blog.match(/country/g).length) > 0) {
         if (num == 0) {return 'country'}
         if (num == 1) {return 'countrynews'}
