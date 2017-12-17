@@ -30,7 +30,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 6) {return 'shepp-events'}
         if (num == 7) {return 'shepp-logo'}
         if (num == 8) {return 'shepp-card'}
-        if (num == 9) {return 'blogcountry'}     
+        if (num == 9) {return 'blogshepp'}     
     } else if (blog.match(/country/g) != null) {
         if (num == 0) {return 'country'}
         if (num == 1) {return 'countrynews'}
