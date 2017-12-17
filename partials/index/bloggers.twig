@@ -1,14 +1,6 @@
-{% if (networkData.title | lower) == 'country news' %}
-{%   set site = 'country' %}
-
-{% else %}
-{%   set site = 'default' %}
-
-{% endif %}
-
 <section class="row">
     <div class="col-sm-3"> 
-        <div class="bloggerImg blog{{site}}">
+        <div class="bloggerImg blogsite">
             <div class="logo">
                 <img src="{{ logo }}">
             </div>
@@ -35,5 +27,7 @@
         </div>
         
     {% endfor %}
+
+    <script>setMyBlogStyles('{{networkData.title | lower}}')</script>
 
 </section>

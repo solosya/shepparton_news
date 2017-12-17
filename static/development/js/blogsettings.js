@@ -78,12 +78,7 @@ var blogSettingsStyles = function(blog,url) {
         siteLogo[i].classList.add(clossImgOver);
         siteLogo[i].classList.remove('site-logo');
     }
-    // var blogsStyles = document.getElementsByClassName(" blogsite");
-    // var blogsSite = getBlogSettings(blog,6);
-    // for (var i = 0; i < blogsStyles.length; i++) {
-    //     blogsStyles[i].classList.add(blogsSite);
-    //     blogsStyles[i].classList.remove('blogsite');
-    // }
+    
     // url = '/themes/shepparton_news/'
     var blogLogo = document.getElementById("sitelogo");
     blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
@@ -95,4 +90,14 @@ var blogSettingsStyles = function(blog,url) {
     var blogSocTwi = document.getElementById("tw-icon");
     var blogTW = getBlogSettings(blog,3);
     blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
+}
+
+var setMyBlogStyles = function(blog){
+
+    var blogsStyles = document.getElementsByClassName(" blogsite");
+    var blogsSite = getBlogSettings(blog,6);
+    for (var i = 0; i < blogsStyles.length; i++) {
+        blogsStyles[i].classList.add(blogsSite);
+        blogsStyles[i].classList.remove('blogsite');
+    }
 }
