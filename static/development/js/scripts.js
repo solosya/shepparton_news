@@ -45,7 +45,8 @@ $('document').ready(function() {
 
 
     var scrollUpMenu = function() {
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) ){
+        var isMob = isMobile();
+        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isMob === false ){
             foldawayPanel.addClass('showMenuPanel');
             menuContainer.show();
         } else {
