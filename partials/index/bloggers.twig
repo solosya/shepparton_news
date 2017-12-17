@@ -18,9 +18,9 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[i], 
                 imageSuppress: true,
-                containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile'
+                containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile blogsite'
             }) | raw}}
-
+            <script>setMyBlogStyles('{{networkData.title | lower}}')</script>
             {% if i == 0 %}
                 <hr class="divide visible-xs-block">
             {% endif %}

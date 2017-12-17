@@ -30,7 +30,7 @@ var getBlogSettings = function(blog,num) {
         if (num == 6) {return 'shepp-events'}
         if (num == 7) {return 'shepp-logo'}
         if (num == 8) {return 'shepp-card'}
-        if (num == 9) {return 'blogshepp'}     
+        if (num == 9) {return 'blogcountry'}     
     } else if (blog.match(/country/g) != null) {
         if (num == 0) {return 'country'}
         if (num == 1) {return 'countrynews'}
@@ -93,9 +93,10 @@ var blogSettingsStyles = function(blog,url) {
 }
 
 var setMyBlogStyles = function(blog){
-
+    console.log(blog);
     var blogsStyles = document.getElementsByClassName(" blogsite");
-    var blogsSite = getBlogSettings(blog,6);
+    var blogsSite = getBlogSettings(blog,9);
+    
     for (var i = 0; i < blogsStyles.length; i++) {
         blogsStyles[i].classList.add(blogsSite);
         blogsStyles[i].classList.remove('blogsite');

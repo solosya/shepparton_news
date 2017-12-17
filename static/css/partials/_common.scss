@@ -271,7 +271,9 @@ div.bloggerImg {
     background: color(red); /* fallback */
     -webkit-clip-path: polygon(40px 0px, 100% 0px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0px 100%, 0px 40px);
     clip-path: polygon(40px 0px, 100% 0px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0px 100%, 0px 40px);
-
+    &.blogcountry {
+        background-color: #8bc833; 
+    }
     .logo {
         position: absolute;
         bottom: 0px;
@@ -310,9 +312,9 @@ div.bloggerImg {
                 }        
             }
         }
-    }
-    
+    } 
 }
+
 
 
 .container.nopadding {

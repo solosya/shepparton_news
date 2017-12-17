@@ -186,6 +186,19 @@
             //     }
             // }   
         }
+    }  
+    &.blogcountry {
+        a.card {
+            > article {
+                > .content{
+                    > .author {
+                        p {
+                            color: #0d522e !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
