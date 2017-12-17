@@ -41,7 +41,7 @@
             "link": "",
             "limit" : 2
         },
-        "bloggers": {
+        "working dogs": {
             "feed": "",
             "link": "",
             "limit" : 2
@@ -200,12 +200,12 @@
         <script>loadNextAd()</script> 
     </div>       
 
-    {% if sections['bloggers'].feed.articles|length > 0 %}
+    {% if sections['working dogs'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/bloggers.twig', {
-                articles: sections['bloggers'], 
+                articles: sections['working dogs'], 
                 articleCount: articleCount,
-                section: 'bloggers',
+                section: 'working dogs',
                 dev: dev,
                 logo: networkData.templatePath ~ '/static/images/megaphone.svg',
             }) | raw}} 
