@@ -60,14 +60,14 @@ var getBlogSettings = function(blog,num) {
 
 var blogSettingsStyles = function(blog,url) {
     // console.log(blog);
-    var siteStyles = document.getElementsByClassName("siteclass");
-    console.log(siteStyles);
-    var blogSite = getBlogSettings(blog,0);
-    for (var i = 0; i < siteStyles.length; i++) {
-        // console.log(siteStyles[i]);
-        siteStyles[i].classList.add(blogSite);
-        siteStyles[i].classList.remove('siteclass');
-    }
+    // var siteStyles = document.getElementsByClassName("siteclass");
+    // console.log(siteStyles);
+    // var blogSite = getBlogSettings(blog,0);
+    // for (var i = 0; i < siteStyles.length; i++) {
+    //     // console.log(siteStyles[i]);
+    //     siteStyles[i].classList.add(blogSite);
+    //     siteStyles[i].classList.remove('siteclass');
+    // }
     var evStyles = document.getElementsByClassName("site-events");
     var evSite = getBlogSettings(blog,6);
     for (var i = 0; i < evStyles.length; i++) {
