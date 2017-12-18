@@ -60,7 +60,7 @@ var getBlogSettings = function(blog,num) {
 
 var blogSettingsStyles = function(blog,url) {
     // console.log(blog);
-    var siteStyles = document.getElementsByClassName(" siteclass");
+    var siteStyles = document.getElementsByClassName("siteclass");
     console.log(siteStyles);
     var blogSite = getBlogSettings(blog,0);
     for (var i = 0; i <= siteStyles.length; i++) {
