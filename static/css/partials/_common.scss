@@ -401,6 +401,9 @@ div.bloggerImg {
             height: 18px;
             margin-top: 2px;
             background-size: contain;
+            &.blog-social {
+                border-right: none;
+            }
         }
     }
 

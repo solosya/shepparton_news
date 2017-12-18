@@ -47,6 +47,11 @@ body.blog {
                 letter-spacing: 0.3px;
                 padding: 5px;
                 text-align: center;
+                @media screen and (max-width: $sm-break-down) {
+                    position: inherit;
+                    margin-left: 10px;
+                    margin-top: -2px;
+                }
             }            
 
             .bloggerInfo {
