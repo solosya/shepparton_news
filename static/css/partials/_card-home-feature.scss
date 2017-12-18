@@ -194,7 +194,12 @@
         @include card-home-feature-base();
 
         height:210px;
-
+        &.blog-feature{
+            margin-bottom:20px;
+        }
+        &.index-feature{
+            margin-top:20px;
+        }
         a.card {
             padding: 16px;
             article {
