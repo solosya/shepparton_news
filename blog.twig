@@ -4,7 +4,7 @@
 {{ set(this, 'title', blogInfo.title) }}
 
 
-{% set limit = 20 %}
+{% set limit = 11 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %}
@@ -92,15 +92,14 @@
                                         </svg>
                                     </a>
                                 {% endif %}
+                                {% if _User.isGuest() %}
+                                    <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
+                                {% endif %}
+                                {% if not _User.isGuest() and _User.getId() != userDetails.id %}
+                                    {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
+                                    <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                                {% endif %}
                             </div>
-
-                        {% if _User.isGuest() %}
-                            <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
-                        {% endif %}
-                        {% if not _User.isGuest() and _User.getId() != userDetails.id %}
-                            {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                            <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                        {% endif %}
                         </span>
                     </div>
                 </div>
