@@ -91,11 +91,11 @@
                             {% endif %}
                         </div>
                         {% if _User.isGuest() %}
-                            <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
+                            <a href="{{ loginPath }}" class="follow forceLoginModal hidden-xs">Follow</a>
                         {% endif %}
                         {% if not _User.isGuest() and _User.getId() != userDetails.id %}
                             {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                            <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
+                            <a href="javascript:void(0)" class="follow FollowProfileUser hidden-xs" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -270,25 +270,24 @@
 
 
         <div class="col-sm-12">
-             <section class="" style="">
-                <div class="row">
-                    <div class="ajaxArticles index clearfix"
-                         data-offset="{{limit}}"
-                         data-articlecount="10"
-                         data-containerclass="col-sm-4 card-sm"
-                         data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                     </div>
-                    <a class="loadMoreArticles" href="#">More</a>
+             <section>
+            <div class="row">
+                <div class="col-md-9" style="margin-top:35px;">
+                    <div class="row">
+                        {{ this.render('partials/ajaxarticles.twig', {
+                            offset: limit,
+                            limit: 12,
+                            non_pinned: articlesArr.existingNonPinnedCount, 
+                            articles: articles,
+                            card_style: "col-md-3 col-sm-9 card-sm card-sm-mobile row-space40",
+                            container:"mainAjaxArticles",
+                            buttonClass: "infinite",
+                            border: "visible"
+                        }) | raw }}
+                    </div>
                 </div>
-
-                {% set noDataCls = 'hide' %}
-                {% if articles|length == 0 %}
-                    {% set noDataCls = '' %}
-                 {% endif %}
-                <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                    <p class="no-data text-center">No articles found.</p>  
-                </div>
-            </section>
+            </div>
+        </section>
         </div>
 
 
