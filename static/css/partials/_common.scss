@@ -271,6 +271,9 @@ div.bloggerImg {
     background: color(red); /* fallback */
     -webkit-clip-path: polygon(40px 0px, 100% 0px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0px 100%, 0px 40px);
     clip-path: polygon(40px 0px, 100% 0px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0px 100%, 0px 40px);
+    @media screen and (max-width: $sm-break) {
+        clip-path: polygon(20px 0px, 100% 0px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0px 100%, 0px 20px);
+    }
     &.blogcountry {
         background-color: #8bc833; 
     }
