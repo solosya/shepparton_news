@@ -268,7 +268,7 @@ Acme.Card.prototype.loadMore = function(elem, waypoint)
             // }
             for (var i in data.articles) {
                 html += self.renderCard(data.articles[i], cardClass);
-            }  html += "</div>";
+            }  html += "</div><hr class='divide visible-xs-block'>";
 
             container.append(html);
 
