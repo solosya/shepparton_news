@@ -59,12 +59,9 @@ var getBlogSettings = function(blog,num) {
 }
 
 var blogSettingsStyles = function(blog,url) {
-    // console.log(blog);
     // var siteStyles = document.getElementsByClassName("siteclass");
-    // console.log(siteStyles);
     // var blogSite = getBlogSettings(blog,0);
     // for (var i = 0; i < siteStyles.length; i++) {
-    //     // console.log(siteStyles[i]);
     //     siteStyles[i].classList.add(blogSite);
     //     siteStyles[i].classList.remove('siteclass');
     // }
@@ -106,10 +103,9 @@ var setMyBlogStyles = function(blog){
 }
 
 var setMySiteStyles = function(blog){
-    var siteStyles = document.getElementsByClassName(" siteclass");
-    // console.log(siteStyles);
+    var siteStyles = document.getElementsByClassName("siteclass");
     var blogSite = getBlogSettings(blog,0);
-    for (var i = 0; i <= siteStyles.length; i++) {
+    for (var i = 0; i < siteStyles.length; i++) {
        
         siteStyles[i].classList.add(blogSite);
         siteStyles[i].classList.remove('siteclass');
