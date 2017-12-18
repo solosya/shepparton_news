@@ -59,10 +59,12 @@ var getBlogSettings = function(blog,num) {
 }
 
 var blogSettingsStyles = function(blog,url) {
-    console.log(blog);
-    var siteStyles = document.getElementsByClassName("siteclass");
+    // console.log(blog);
+    var siteStyles = document.getElementsByClassName(" siteclass");
+    console.log(siteStyles);
     var blogSite = getBlogSettings(blog,0);
-    for (var i = 0; i < siteStyles.length; i++) {
+    for (var i = 0; i <= siteStyles.length; i++) {
+        // console.log(siteStyles[i]);
         siteStyles[i].classList.add(blogSite);
         siteStyles[i].classList.remove('siteclass');
     }
@@ -93,12 +95,23 @@ var blogSettingsStyles = function(blog,url) {
 }
 
 var setMyBlogStyles = function(blog){
-    console.log(blog);
+    
     var blogsStyles = document.getElementsByClassName(" blogsite");
     var blogsSite = getBlogSettings(blog,9);
     
     for (var i = 0; i < blogsStyles.length; i++) {
         blogsStyles[i].classList.add(blogsSite);
         blogsStyles[i].classList.remove('blogsite');
+    }
+}
+
+var setMySiteStyles = function(blog){
+    var siteStyles = document.getElementsByClassName(" siteclass");
+    // console.log(siteStyles);
+    var blogSite = getBlogSettings(blog,0);
+    for (var i = 0; i <= siteStyles.length; i++) {
+       
+        siteStyles[i].classList.add(blogSite);
+        siteStyles[i].classList.remove('siteclass');
     }
 }
