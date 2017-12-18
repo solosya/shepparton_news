@@ -63,7 +63,7 @@ var blogSettingsStyles = function(blog,url) {
     var siteStyles = document.getElementsByClassName("siteclass");
     console.log(siteStyles);
     var blogSite = getBlogSettings(blog,0);
-    for (var i = 0; i <= siteStyles.length; i++) {
+    for (var i = 0; i < siteStyles.length; i++) {
         // console.log(siteStyles[i]);
         siteStyles[i].classList.add(blogSite);
         siteStyles[i].classList.remove('siteclass');
