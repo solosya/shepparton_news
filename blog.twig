@@ -2,6 +2,9 @@
 {% set networkData = _Network.getNetworkData() %}
 
 {{ set(this, 'title', blogInfo.title) }}
+{{this.registerJs("Acme.cardController = Acme.CardController();")}}
+{{this.registerJs("Acme.SectionController();")}}
+
 
 {% set limit = 20 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
@@ -255,10 +258,10 @@
 
                 <div class="col-sm-3 addSpaceMobile">
                 
-                    <div class="ad-square visible-md-block visible-lg-block" style="margin-bottom:30px;">
-                        <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-2'>
+                    <div class="ad-square" style="margin-bottom:30px;">
+                        <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-halfpage-ss'>
                             <script type='text/javascript'>
-                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
+                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage-ss'); });
                             </script>
                         </div>
                     </div>
