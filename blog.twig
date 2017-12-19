@@ -42,11 +42,12 @@
                             <img src="{{ blogImage }}" style="max-width: 150%;">
                         </div>                        
                     </div>
-
-                    <div class="">
-                        <h2>{{this.title}}</h2>
-                        <p class="blogowner siteclass">by {{ blogInfo.owner['name'] }}</p>
-                        <span>
+                    <div class="bloghead-content">
+                        <div class="">
+                            <h2>{{this.title}}</h2>
+                            <p class="blogowner siteclass">by {{ blogInfo.owner['name'] }}</p>
+                        </div>
+                        <div class="">
                             <div class="social-links">
                                 {% if blogInfo.settings['social']['facebook'] %}
                                     <a href="{{ blogInfo.settings['social']['facebook'] }}" class="facebook-icon social-icon">
@@ -100,7 +101,7 @@
                                     <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
                                 {% endif %}
                             </div>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>
