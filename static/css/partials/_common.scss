@@ -381,7 +381,9 @@ div.bloggerImg {
 .social-links {
     display: flex;
     flex-direction: row;
-
+    &.social-links-mobile {
+        display: flex !important;
+    }
     > a {
         display: block;
         height: 20px;
