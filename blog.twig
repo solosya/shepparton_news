@@ -22,8 +22,8 @@
 {# {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %} #}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
-{{this.registerJs("HomeController.listing();")}}
-{{this.registerJs("HomeController.blog();")}}
+{# {{this.registerJs("HomeController.listing();")}}
+{{this.registerJs("HomeController.blog();")}} #}
 {{this.registerJs("Acme.cardController = Acme.CardController();")}}
 {{this.registerJs("Acme.SectionController();")}}
 
@@ -279,7 +279,7 @@
                     <div class="row">
                         {{ this.render('partials/ajaxarticles.twig', {
                             offset: limit,
-                            limit: 6,
+                            limit: 12,
                             non_pinned: articlesArr.existingNonPinnedCount, 
                             articles: articles,
                             card_style: "col-md-3 col-sm-9 card-sm card-sm-mobile row-space40",
