@@ -110,4 +110,13 @@ var setMySiteStyles = function(blog){
         siteStyles[i].classList.add(blogSite);
         siteStyles[i].classList.remove('siteclass');
     }
+    siteStyles = document.getElementsByClassName("siteclass");
+    if (siteStyles != null) {
+        var siteStyles = document.getElementsByClassName("siteclass");
+        var blogSite = getBlogSettings(blog,0);
+        for (var i = 0; i < siteStyles.length; i++) {
+            siteStyles[i].classList.add(blogSite);
+            siteStyles[i].classList.remove('siteclass');
+        }
+    }
 }
