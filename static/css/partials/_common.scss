@@ -317,6 +317,18 @@ div.bloggerImg {
         }
     } 
 }
+div.bloghead-content{
+    @media screen and (max-width: $sm-break){
+        float: right;
+        width: 60%;
+        h2{
+            font-size: rem(22);
+        }
+        p {
+            font-size: rem(12);
+        }
+    }
+}
 
 
 
@@ -382,7 +394,10 @@ div.bloggerImg {
     display: flex;
     flex-direction: row;
     &.social-links-mobile {
-        display: flex !important;
+        display: none;
+        @media screen and (max-width: $sm-break){
+            display: flex !important;
+        }
     }
     > a {
         display: block;
