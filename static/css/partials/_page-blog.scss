@@ -19,7 +19,18 @@ body.blog {
                 font-weight: 700;
                 font-family: $font-family-serif;
             }
-
+            .bloghead-content{
+                @media screen and (max-width: $sm-break){
+                    float: right;
+                    width: 60%;
+                    h2{
+                        font-size: rem(22);
+                    }
+                    p {
+                        font-size: rem(12);
+                    }
+                }
+            }
             p.blogowner {
                 color:color(red);
                 font-size: rem(14);
@@ -115,18 +126,5 @@ body.blog {
         }
 
 
-    }
-}
-
-.bloghead-content{
-    @media screen and (max-width: $sm-break){
-        float: right;
-        width: 60%;
-        h2{
-            font-size: rem(22);
-        }
-        p {
-            font-size: rem(12);
-        }
     }
 }
