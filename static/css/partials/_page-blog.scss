@@ -24,10 +24,10 @@ body.blog {
                     float: right;
                     width: 60%;
                     h2{
-                        font-size: rem(22);
+                        font-size: rem(22) !important;
                     }
                     p {
-                        font-size: rem(12);
+                        font-size: rem(12) !important;
                     }
                 }
             }
