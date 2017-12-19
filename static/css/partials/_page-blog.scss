@@ -83,9 +83,9 @@ body.blog {
             }
             @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
 
-                // p.blogowner {
-                //     margin-top:10px;
-                // }
+                p.blogowner {
+                    margin-top:10px;
+                }
 
                 
                 .bloggerImg {
@@ -105,9 +105,9 @@ body.blog {
                     margin-top:0;
                 }
 
-                p.blogowner {
-                    margin-top:10px;
-                }
+                // p.blogowner {
+                //     margin-top:10px;
+                // }
 
                 .bloggerImg {
                     height:68px;

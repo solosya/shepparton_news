@@ -33870,6 +33870,15 @@ var setMySiteStyles = function(blog){
         siteStyles[i].classList.add(blogSite);
         siteStyles[i].classList.remove('siteclass');
     }
+    siteStyles = document.getElementsByClassName("siteclass");
+    if (siteStyles != null) {
+        var siteStyles = document.getElementsByClassName("siteclass");
+        var blogSite = getBlogSettings(blog,0);
+        for (var i = 0; i < siteStyles.length; i++) {
+            siteStyles[i].classList.add(blogSite);
+            siteStyles[i].classList.remove('siteclass');
+        }
+    }
 }
 
 Acme.CardController = function() {
@@ -35816,9 +35825,12 @@ Acme.section = function() {
 
 Acme.section.prototype.events = function() 
 {
+    console.log('')
+
     var totalPosts = parseInt($('main').data('article-count'));
     var limit = parseInt($('main').data('article-limit'));
-
+    console.log('moo');
+    console.log(totalPosts);
     if (totalPosts >= limit) {
         var waypoint = new Waypoint({
             element: $('.loadMoreArticles'),
