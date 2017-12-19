@@ -30,7 +30,7 @@
 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
 
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     
     <div class="container">
 

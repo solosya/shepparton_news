@@ -7,8 +7,6 @@ Acme.section = function() {
 
 Acme.section.prototype.events = function() 
 {
-    console.log('')
-
     var totalPosts = parseInt($('main').data('article-count'));
     var limit = parseInt($('main').data('article-limit'));
     console.log('moo');
