@@ -58,21 +58,7 @@ var getBlogSettings = function(blog,num) {
     }
 }
 
-var blogSettingsStyles = function(blog,url) {
-    var siteLogo = document.getElementsByClassName("site-logo");
-    var clossImgOver = getBlogSettings(blog,7);
-    for (var i = 0; i < siteLogo.length; i++) {
-        siteLogo[i].classList.add(clossImgOver);
-        siteLogo[i].classList.remove('site-logo');
-    }
-    
-    var blogLogo = document.getElementsById("sitelogo");
-    console.log('new shirt madness!');
-    console.log(blogLogo);
-    blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
-    for (var i = 0; i < blogLogo.length; i++) {
-        blogLogo[i].setAttribute("style","background-image:url("+blogLogoLink+")");
-    }
+var blogSettingsStyles = function(blog) {
 
     var blogSocFac = document.getElementById("fb-icon");
     var blogFB = getBlogSettings(blog,4);
@@ -80,6 +66,20 @@ var blogSettingsStyles = function(blog,url) {
     var blogSocTwi = document.getElementById("tw-icon");
     var blogTW = getBlogSettings(blog,3);
     blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
+}
+var setMyBlogLogo = function(blog,url) {
+    var siteLogo = document.getElementsByClassName("site-logo");
+    var clossImgOver = getBlogSettings(blog,7);
+    for (var i = 0; i < siteLogo.length; i++) {
+        siteLogo[i].classList.add(clossImgOver);
+        siteLogo[i].classList.remove('site-logo');
+    }
+    
+    var blogLogo = document.getElementsByClassName("sitelogo");
+    blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
+    for (var i = 0; i < blogLogo.length; i++) {
+        blogLogo[i].setAttribute("style","background-image:url("+blogLogoLink+")");
+    }
 }
 
 var setMyBlogStyles = function(blog){

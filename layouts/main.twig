@@ -209,7 +209,10 @@
         </div>
     </div>
 
-<script>blogSettingsStyles('{{ networkData.title | lower}}','{{networkData.templatePath}}')</script>
+<script>
+blogSettingsStyles('{{ networkData.title | lower}}');
+setMyBlogLogo('{{ networkData.title | lower}}','{{networkData.templatePath}}');
+</script>
 
     {{ this.endBody() }}
 
