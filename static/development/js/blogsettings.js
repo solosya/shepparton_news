@@ -67,6 +67,7 @@ var blogSettingsStyles = function(blog,url) {
     }
     
     var blogLogo = document.getElementsById("sitelogo");
+    console.log('new shirt madness!');
     console.log(blogLogo);
     blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
     for (var i = 0; i < blogLogo.length; i++) {
