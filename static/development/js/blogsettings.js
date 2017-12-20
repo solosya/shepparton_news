@@ -59,18 +59,6 @@ var getBlogSettings = function(blog,num) {
 }
 
 var blogSettingsStyles = function(blog,url) {
-    // var siteStyles = document.getElementsByClassName("siteclass");
-    // var blogSite = getBlogSettings(blog,0);
-    // for (var i = 0; i < siteStyles.length; i++) {
-    //     siteStyles[i].classList.add(blogSite);
-    //     siteStyles[i].classList.remove('siteclass');
-    // }
-    var evStyles = document.getElementsByClassName("site-events");
-    var evSite = getBlogSettings(blog,6);
-    for (var i = 0; i < evStyles.length; i++) {
-        evStyles[i].classList.add(evSite);
-        evStyles[i].classList.remove('site-events');
-    }
     var siteLogo = document.getElementsByClassName("site-logo");
     var clossImgOver = getBlogSettings(blog,7);
     for (var i = 0; i < siteLogo.length; i++) {
@@ -78,10 +66,11 @@ var blogSettingsStyles = function(blog,url) {
         siteLogo[i].classList.remove('site-logo');
     }
     
-    // url = '/themes/shepparton_news/'
-    var blogLogo = document.getElementById("sitelogo");
+    var blogLogo = document.getElementsById("sitelogo");
     blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
-    blogLogo.setAttribute("style","background-image:url("+blogLogoLink+")");
+    for (var i = 0; i < blogLogo.length; i++) {
+        blogLogo[i].setAttribute("style","background-image:url("+blogLogoLink+")");
+    }
 
     var blogSocFac = document.getElementById("fb-icon");
     var blogFB = getBlogSettings(blog,4);
@@ -118,5 +107,15 @@ var setMySiteStyles = function(blog){
             siteStyles[i].classList.add(blogSite);
             siteStyles[i].classList.remove('siteclass');
         }
+    }
+}
+
+var setMyEventStyles = function(blog) {
+
+var evStyles = document.getElementsByClassName("site-events");
+    var evSite = getBlogSettings(blog,6);
+    for (var i = 0; i < evStyles.length; i++) {
+        evStyles[i].classList.add(evSite);
+        evStyles[i].classList.remove('site-events');
     }
 }

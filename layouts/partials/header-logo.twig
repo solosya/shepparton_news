@@ -1,17 +1,4 @@
-{% set mastOverride = '' %}
-{% set imgOverride = '' %}
 
-{% if (networkData.title | lower) == 'country news' %}
-    {% set logo = 'country-news' %}
-    {% set imgOverride = 'country-logo' %}
-{% elseif 'dairy' in (networkData.title | lower) %}
-    {% set logo = 'dairy-news' %}
-    {% set imgOverride = 'dairy-logo' %}
-{% else %}
-    {% set logo = 'shepp-news' %}
-{% endif %}
-
-{% set path = networkData.templatePath~'/static/images/'~logo~'-logo.svg'%}
 
 <div class="navigation-logo site-logo">
     <a  id="sitelogo" 
