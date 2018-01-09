@@ -33805,14 +33805,75 @@ var getBlogSettings = function(blog,num) {
     } else if (blog.match(/riverine/g) != null) {
         if (num == 0) {return 'riverine'}
         if (num == 1) {return 'riverineherald'}
-        if (num == 2) {return 'riverine'}
-        if (num == 3) {return 'default'}
-        if (num == 4) {return 'default'}
-        if (num == 5) {return 'default'}
-        if (num == 6) {return 'default'}
-        if (num == 7) {return 'default'}
-        if (num == 8) {return 'default'}
-        if (num == 9) {return 'default'}     
+        if (num == 2) {return 'riverineherald'}
+        if (num == 7) {return 'riverine-logo'}
+        else {return 'default'}
+    } else if (blog.match(/benalla/g) != null) {
+        if (num == 0) {return 'benalla'}
+        if (num == 1) {return 'benallaensign'}
+        if (num == 2) {return 'benallaensign'}
+        if (num == 7) {return 'benalla-logo'}
+        else {return 'default'}
+    } else if (blog.match(/campaspe/g) != null) {
+        if (num == 0) {return 'campaspe'}
+        if (num == 1) {return 'campaspenews'}
+        if (num == 2) {return 'campaspenews'}
+        if (num == 7) {return 'campaspe-logo'}
+        else {return 'default'}
+    } else if (blog.match(/cobram/g) != null) {
+        if (num == 0) {return 'cobram'}
+        if (num == 1) {return 'cobramcourier'}
+        if (num == 2) {return 'cobramcourier'}
+        if (num == 7) {return 'cobram-logo'}
+        else {return 'default'}
+    } else if (blog.match(/corowa/g) != null) {
+        if (num == 0) {return 'corowa'}
+        if (num == 1) {return 'corowafreepress'}
+        if (num == 2) {return 'corowafreepress'}
+        if (num == 7) {return 'corowa-logo'}
+        else {return 'default'}
+    } else if (blog.match(/deniliquin/g) != null) {
+        if (num == 0) {return 'deniliquin'}
+        if (num == 1) {return 'deniliquinpastoraltimes'}
+        if (num == 2) {return 'deniliquinpastoraltimes'}
+        if (num == 7) {return 'deniliquin-logo'}
+        else {return 'default'}
+    } else if (blog.match(/kyabram/g) != null) {
+        if (num == 0) {return 'kyabram'}
+        if (num == 1) {return 'kyabramfreepress'}
+        if (num == 2) {return 'kyabramfreepress'}
+        if (num == 7) {return 'kyabram-logo'}
+        else {return 'default'}
+    } else if (blog.match(/mcivor/g) != null) {
+        if (num == 0) {return 'mcivor'}
+        if (num == 1) {return 'mcivortimes'}
+        if (num == 2) {return 'mcivortimes'}
+        if (num == 7) {return 'mcivor-logo'}
+        else {return 'default'}
+    } else if (blog.match(/seymour/g) != null) {
+        if (num == 0) {return 'seymour'}
+        if (num == 1) {return 'seymourtelegraph'}
+        if (num == 2) {return 'seymourtelegraph'}
+        if (num == 7) {return 'seymour-logo'}
+        else {return 'default'}
+    } else if (blog.match(/tatura/g) != null) {
+        if (num == 0) {return 'tatura'}
+        if (num == 1) {return 'taturaguardian'}
+        if (num == 2) {return 'taturaguardian'}
+        if (num == 7) {return 'tatura-logo'}
+        else {return 'default'}
+    } else if (blog.match(/yarrawonga/g) != null) {
+        if (num == 0) {return 'yarrawonga'}
+        if (num == 1) {return 'yarrawongachronicle'}
+        if (num == 2) {return 'yarrawongachronicle'}
+        if (num == 7) {return 'yarrawonga-logo'}
+        else {return 'default'}
+    } else if (blog.match(/riverina/g) != null) {
+        if (num == 0) {return 'riverina'}
+        if (num == 1) {return 'southernriverinanews'}
+        if (num == 2) {return 'southernriverinanews'}
+        if (num == 7) {return 'riverina-logo'}
+        else {return 'default'}
     } else {
         return 'default';
     }
@@ -33839,6 +33900,7 @@ var setMyBlogLogo = function(blog,url) {
     blogLogoLink = url + '/static/images/' + getBlogSettings(blog,2) + "-logo.svg";
     for (var i = 0; i < blogLogo.length; i++) {
         blogLogo[i].setAttribute("style","background-image:url("+blogLogoLink+")");
+        blogLogo[i].classList.add(clossImgOver);
     }
 }
 
