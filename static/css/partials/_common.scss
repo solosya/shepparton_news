@@ -473,19 +473,23 @@ div.fancybox-title {
        height: 0; 
        clear: both;
     }
-    .row{
-        hr {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    }
 }
 
 .ajaxArticles{
     @media screen and (max-width: $sm-break){
-            padding-left: 15px;
-            padding-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        .col-sm-9 {
+            .row {
+                .col-sm-9 {
+                    hr.divide{
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+                }
+            }
         }
+    }
 }
 
 .loadMoreArticles {
