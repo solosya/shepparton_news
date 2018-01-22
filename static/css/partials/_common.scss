@@ -473,9 +473,11 @@ div.fancybox-title {
        height: 0; 
        clear: both;
     }
-    hr {
-        padding-left: 15px;
-        padding-right: 15px;
+    .row{
+        hr {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
 }
 
