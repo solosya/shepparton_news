@@ -251,6 +251,11 @@
                 > figure {
                     margin-right:0;
                     margin-bottom:10px;
+                    > picture{
+                        > img {
+                            max-height: 160px;
+                        }
+                    }
                 }
 
                 > .content {
