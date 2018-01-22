@@ -17,13 +17,14 @@
                 > .category{
                 }
                 > h2{
-                    font-family:$font-family-serif;
+                    font-family:$font-family-sans-serif;
                     font-weight:600;
                     margin-top: 12px;
                     line-height: 1.3;
                 }
                 >p.excerpt {
                     display:none;
+                    font-family:$font-family-sans-serif;
                 }
                 .author{
                     position:absolute;
@@ -34,6 +35,7 @@
                         font-weight:700;
                         color:#0d522e;
                         border:none;
+                        font-family:$font-family-sans-serif;
                     }
                     time{
                         display:block;
@@ -167,10 +169,16 @@
             article {
 
                 > .content {
-
+                    >p.excerpt {
+                        font-size: rem(15);
+                        display: inherit;
+                        height: 50px;
+                        margin-top: 10px;
+                    }
 
                     h2{
                         font-size: rem(20);
+                        height:55px;
                     }
 
                     .author{
@@ -243,6 +251,11 @@
                 > figure {
                     margin-right:0;
                     margin-bottom:10px;
+                    > picture{
+                        > img {
+                            max-height: 160px;
+                        }
+                    }
                 }
 
                 > .content {

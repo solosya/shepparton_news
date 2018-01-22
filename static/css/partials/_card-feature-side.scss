@@ -34,7 +34,7 @@
 
                 }
                 >p.excerpt {
-                    display:none;
+                    
                 }
                 .author{
                     position:absolute;
@@ -176,8 +176,12 @@
                 > .content {
                     padding-left: 80px;
                     h2{
-                        height: 60px;
+                        height: 40px;
                         margin-right: 20px;
+                    }
+                    >p.excerpt {
+                        height: 25px;
+                        font-size: 13px;
                     }
                 }
             }

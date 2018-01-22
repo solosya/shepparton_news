@@ -475,6 +475,25 @@ div.fancybox-title {
     }
 }
 
+.ajaxArticles{
+    @media screen and (max-width: $sm-break){
+        padding-left: 15px;
+        padding-right: 15px;
+        .col-sm-9 {
+            .row {
+                .col-sm-9 {
+                    .row {
+                        hr.divide{
+                            margin-left: 15px;
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .loadMoreArticles {
     text-decoration: none;
     display: block;
