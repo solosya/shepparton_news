@@ -482,9 +482,11 @@ div.fancybox-title {
         .col-sm-9 {
             .row {
                 .col-sm-9 {
-                    hr.divide{
-                        padding-left: 15px;
-                        padding-right: 15px;
+                    .row {
+                        hr.divide{
+                            padding-left: 15px;
+                            padding-right: 15px;
+                        }
                     }
                 }
             }
