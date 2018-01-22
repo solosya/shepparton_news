@@ -34,7 +34,7 @@
 
                 }
                 >p.excerpt {
-                    display:none;
+                    // display:none;
                 }
                 .author{
                     position:absolute;
@@ -178,6 +178,9 @@
                     h2{
                         height: 60px;
                         margin-right: 20px;
+                    }
+                    >p.excerpt {
+                        height: 20px;
                     }
                 }
             }
