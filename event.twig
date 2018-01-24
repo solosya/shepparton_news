@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-9 event-details row">
 
-                        <div class="col-md-6">
+                        <div>
                             <p class="content">
                                 {{ event.content | raw }}
                             </p>
@@ -126,7 +126,7 @@
                         {{this.render('partials/_single-event.twig', {
                             event: events[i],
                             imageSize: {width: 90},
-                            containerClass: 'card-event card-event-tablet'
+                            containerClass: 'card-event-list-article'
                         }) | raw}}
 
                         {% if i < 3 %}

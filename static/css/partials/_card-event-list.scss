@@ -346,3 +346,35 @@
         }
     }   
 }
+
+.card-event-list-article {
+    @include card-event-list-base();
+    a.card {
+        > article {
+            > figure {
+                display: none;
+            }
+            > .content {
+                margin-left: 0;
+                >h2{
+                    margin-left: 85px;
+                }
+                .event-time {
+                    
+                    .date{
+                        left: 0;
+                        position: absolute;
+                        margin-top: -45px;
+                        width: 50px;
+                        color: #4a4a4a;
+                        text-transform: uppercase;
+                        font-size: rem(13);
+                    }
+                }
+                > time {
+                    display: none;
+                }
+            }
+        }
+    }   
+}
