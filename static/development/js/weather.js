@@ -209,13 +209,12 @@
 
         var location = 'Australia/Shepparton';
 
-        console.log(window.Acme.templatePath);
-
         $.ajax({
-            url: 'https://weather.pagemasters.com.au/weather?d=' + location,
+            url: 'https://weather.pagemasters.com.au/weather?q=' + location,
             dataType: "json",
             type: 'GET',
             success: function(res) {
+                console.log(res);
                 var local = res.data[0];
                 var name = local.location.split('/')[1];
 
