@@ -82,7 +82,7 @@
 		margin-top:40px;
 		margin-bottom:96px;
 		
-		.event-content, .event-details {
+		.event-content {
 
 			p {
 				font-size: rem(16);
@@ -232,6 +232,61 @@
 			}
 
 
+		}
+		.event-sidebar {
+			margin: 65px 0 100px 0;
+			height: 800px;
+			border-left: solid 1px #b9b9b9;
+
+
+			.event-details{
+				div.event-detail {
+					margin:10px 0 10px 0;
+					> img {
+						&.date{
+							height:	23px;
+						}
+						&.time{
+							height:	23px;
+						}
+						&.address{
+							height:	28px;
+						}
+						&.website{
+							height:	27px;
+						}
+						&.contact{
+							height:	19px;
+						}
+					}
+					> p {
+						font-family:$font-family-serif;
+						font-size: rem(17);
+						font-weight: bold;
+						font-style: italic;
+						line-height: 25px;
+
+					}
+					.time {
+						margin-top: 20px;
+					}
+					p.contact{
+						margin-top: -3px;
+					}
+				}
+
+			}
+			.event-sidebar__events {
+				margin-top: 30px;
+				padding-top: 15px;
+				border-top: solid 1px #b9b9b9;
+				>h2 {
+					font-size: 16px;
+					font-weight: bold;
+					color: #f03746;
+					margin-bottom: 25px;
+				}
+			}
 		}
 
 		.event-map {

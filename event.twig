@@ -7,7 +7,8 @@
 {{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}}
 
 
-{% set network = _Network.getNetworkData() %}
+{% set networkData = _Network.getNetworkData() %}
+
 {% set eventImage = false %}
 {% if event.media | length > 0 %}
     {% set eventImage = _Media.getMediaUrl(event.media[0], 1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
@@ -18,6 +19,8 @@
 
 {% set startTime = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
 {% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
+
+{% set events = _Event.getEvents() %}
 
 <section class="">
 
@@ -34,6 +37,14 @@
                      </figure>
                  {% endif %}                
 
+                </div>
+            </div>
+
+
+            {# social icons #}
+
+            <div class="col-md-6 event-content">
+                <div class="row">
                     <div class="content-block-top">
 
                         <p class="category">Events</p
@@ -44,52 +55,88 @@
                         <p class="author"><span>By</span> {{ event.createdBy['name'] }}</p>
                     </div>
 
+                    <div class="col-md-9">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{event.url}}&title={{ event.title|url_encode }}" class="share-icon facebook-icon"></a
+                        ><a href="https://twitter.com/share?text={{ event.title|url_encode }}&url={{event.url}}" class="share-icon twitter-icon"></a
+                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{event.url}}" class="share-icon email-icon"></a>
+                    </div>
+                </div>                
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-9 event-details row">
+
+                        <div class="col-md-6">
+                            <p class="content">
+                                {{ event.content | raw }}
+                            </p>
+
+                            {% if event.latitude and event.longitude %}
+                                <div class="event-map">
+                                    <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-1 side-border">
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-            {# social icons #}
-            <div class="row">
-                <div class="col-md-9">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{event.url}}&title={{ event.title|url_encode }}" class="share-icon facebook-icon"></a
-                    ><a href="https://twitter.com/share?text={{ event.title|url_encode }}&url={{event.url}}" class="share-icon twitter-icon"></a
-                    ><a href="mailto:?subject=Check%20out%20this%20article&body={{event.url}}" class="share-icon email-icon"></a>
-                </div>
-            </div>                
-
-            <div class="row">
-                <div class="col-sm-12 col-md-9 event-details row">
-
-                    <div class="col-md-6">
-
-
-                        {% set difference = date(event.endDate).diff(date(event.startDate)) %}
-                        {% set leftDays = difference.days %}
+            <div class="col-md-3 event-sidebar">
+                <div class="event-details">
+                    {% set difference = date(event.endDate).diff(date(event.startDate)) %}
+                    {% set leftDays = difference.days %}
+                    <div class="col-sm-9 event-detail">    
                         {% if leftDays > 0 %}
-                            <p class="date">{{ startDate }} - {{ endDate }}</p>
+                            <img class="col-sm-2 date" src="{{networkData.templatePath}}/static/images/event/calendar.svg"><p class="date col-sm-7">{{ startDate }} - {{ endDate }}</p>
                         {% else %}
-                            <p class="date">{{ startDate }}</p>
-                            <p class="time">{{ startTime }} - {{ endTime }} </p>
+                            <img class="col-sm-2 date" src="{{networkData.templatePath}}/static/images/event/calendar.svg"><p class="date col-sm-7">{{ startDate }}</p><br>
+                            <img class="col-sm-2 time" src="{{networkData.templatePath}}/static/images/event/clock.svg"><p class="time col-sm-7">{{ startTime }} - {{ endTime }} </p>
                         {% endif %}
+                    </div>
 
-                        <p class="address">
+                    <div class="col-sm-9 event-detail">
+                        <img class="col-sm-2 address" src="{{networkData.templatePath}}/static/images/event/location.svg"><p class="address col-sm-7">
                             {{ event.address.address1 }},<br/>
                             {{ event.address.suburb }} {{ event.address.state  }}
                         </p>
-                        <p class="content">
-                            {{ event.content | raw }}
-                        </p>
+                    </div>
 
-                        {% if event.latitude and event.longitude %}
-                            <div class="event-map">
-                                <div id="addressMap" data-latitude="{{event.latitude}}" data-longitude="{{event.longitude}}" style="width:100%;min-height:350px;background:rgba(0,0,0,.3)"></div>
-                            </div>
+                    {% if event.websiteUrl != "" %}
+                        <div class="col-sm-9 event-detail">
+                            <img class="col-sm-2 website" src="{{networkData.templatePath}}/static/images/event/bookmark.svg"><p class="website col-sm-7">{{ event.websiteUrl }}</p>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-sm-9 event-detail">
+                        <img class="col-sm-2 contact" src="{{networkData.templatePath}}/static/images/event/envelope.svg"><p class="contact col-sm-7">
+                        {% if event.createdBy.name != "" %}
+                            {{ event.createdBy.name }}
                         {% endif %}
+                        {% if event.createdBy.email != "" %}
+                            {{ event.createdBy.email }}
+                        {% endif %}
+                        </p>
                     </div>
+                </div>   
 
-                    <div class="col-md-1 side-border">
-                    </div>
+                <div class="col-sm-9 event-sidebar__events">
+                    <h2>UPCOMING EVENTS</h2>
+                    {% for i in 0..3 if events[i] %}
+                        {{this.render('partials/_single-event.twig', {
+                            event: events[i],
+                            imageSize: {width: 90},
+                            containerClass: 'card-event card-event-tablet'
+                        }) | raw}}
+
+                        {% if i < 3 %}
+                            <hr class="divide12">
+                        {% endif %}
+
+                    {% endfor %}
                 </div>
+
+
             </div>
         </div>
     </div>
