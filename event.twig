@@ -104,15 +104,15 @@
                     {% set leftDays = difference.days %}
                     <div class="col-sm-9 event-detail">    
                         {% if leftDays > 0 %}
-                            <img class="col-sm-2 date" src="{{networkData.templatePath}}/static/images/event/calendar.svg"><p class="date col-sm-7">{{ startDate }} - {{ endDate }}</p>
+                            <div class="col-sm-2 date siteclass"></div><p class="date col-sm-7">{{ startDate }} - {{ endDate }}</p>
                         {% else %}
-                            <img class="col-sm-2 date" src="{{networkData.templatePath}}/static/images/event/calendar.svg"><p class="date col-sm-7">{{ startDate }}</p><br>
-                            <img class="col-sm-2 time" src="{{networkData.templatePath}}/static/images/event/clock.svg"><p class="time col-sm-7">{{ startTime }} - {{ endTime }} </p>
+                            <div class="col-sm-2 date siteclass"></div><p class="date col-sm-7">{{ startDate }}</p><br>
+                            <div class="col-sm-2 time siteclass"></div><p class="time col-sm-7">{{ startTime }} - {{ endTime }} </p>
                         {% endif %}
                     </div>
 
                     <div class="col-sm-9 event-detail">
-                        <img class="col-sm-2 address" src="{{networkData.templatePath}}/static/images/event/location.svg"><p class="address col-sm-7">
+                        <div class="col-sm-2 address siteclass"></div><p class="address col-sm-7">
                             {{ event.address.address1 }},<br/>
                             {{ event.address.suburb }} {{ event.address.state  }}
                         </p>
@@ -120,12 +120,12 @@
 
                     {% if event.websiteUrl != "" %}
                         <div class="col-sm-9 event-detail">
-                            <img class="col-sm-2 website" src="{{networkData.templatePath}}/static/images/event/bookmark.svg"><p class="website col-sm-7">{{ event.websiteUrl }}</p>
+                            <div class="col-sm-2 website siteclass"></div><p class="website col-sm-7">{{ event.websiteUrl }}</p>
                         </div>
                     {% endif %}
 
                     <div class="col-sm-9 event-detail">
-                        <img class="col-sm-2 contact" src="{{networkData.templatePath}}/static/images/event/envelope.svg"><p class="contact col-sm-7">
+                        <div class="col-sm-2 contact siteclass" src="{{networkData.templatePath}}/static/images/event/envelope.svg"></div><p class="contact col-sm-7">
                         {% if event.createdBy.name != "" %}
                             {{ event.createdBy.name }}
                         {% endif %}
@@ -137,7 +137,7 @@
                 </div>   
 
                 <div class="col-sm-9 event-sidebar__events">
-                    <h2>UPCOMING EVENTS</h2>
+                    <h2 class="siteclass">UPCOMING EVENTS</h2>
                     {% for i in 0..3 if events[i] %}
                         {{this.render('partials/_single-event.twig', {
                             event: events[i],
@@ -157,5 +157,8 @@
         </div>
     </div>
 
- <script>setMyEventStyles('{{ networkData.title | lower}}');</script>   
+ <script>
+ setMySiteStyles('{{ networkData.title | lower}}');
+ setMySiteStyles('{{ networkData.title | lower}}');
+ </script>   
 </section><!-- .home-page-content-->

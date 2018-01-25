@@ -242,21 +242,46 @@
 			.event-details{
 				div.event-detail {
 					margin:10px 0 10px 0;
-					> img {
+					> div {
 						&.date{
 							height:	23px;
+							background-image: url(../images/event/calendar.svg);
+							background-repeat: no-repeat;
+							&.country {
+								background-image: url(../images/event/country/calendar.svg);											
+							}
 						}
 						&.time{
 							height:	23px;
+							background-image: url(../images/event/clock.svg);
+							background-repeat: no-repeat;
+							&.country {
+								background-image: url(../images/event/country/clock.svg);											
+							}
 						}
 						&.address{
 							height:	28px;
+							background-image: url(../images/event/location.svg);
+							background-repeat: no-repeat;
+							&.country {
+								background-image: url(../images/event/country/location.svg);											
+							}
 						}
 						&.website{
 							height:	27px;
+							background-image: url(../images/event/bookmark.svg);
+							background-repeat: no-repeat;
+							&.country {
+								background-image: url(../images/event/country/bookmark.svg);											
+							}
 						}
 						&.contact{
 							height:	19px;
+							background-image: url(../images/event/envelope.svg);
+							background-repeat: no-repeat;
+							&.country {
+								background-image: url(../images/event/country/envelope.svg);											
+							}
 						}
 					}
 					> p {
@@ -285,6 +310,9 @@
 					font-weight: bold;
 					color: #f03746;
 					margin-bottom: 25px;
+					&.country {
+						color: #0d522f;
+					}
 				}
 			}
 		}
