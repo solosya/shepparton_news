@@ -337,10 +337,10 @@ div.bloggerImg {
         border-bottom: solid 1px rgba(74,74,74,.3);
         margin-bottom: 10px;
         padding-bottom: 10px;
-        .country {
+        &.country {
             color: #0d522e;
         }
-        .shepparton {
+        &.shepparton {
             color: #f03746;
         }
     }
@@ -351,10 +351,10 @@ div.bloggerImg {
         font-family: $font-family-serif;
         font-style: italic;
         font-size: rem(14);    
-        .country {
+        &.country {
             color: #0d522e;
         }
-        .shepparton {
+        &.shepparton {
             color: #f03746;
         }
     }
