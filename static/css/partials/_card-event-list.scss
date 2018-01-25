@@ -48,6 +48,9 @@
                     left: -60px;
                     text-align: center;
                     width: 40px;
+                    &.country {
+                        color:  #0d522f;
+                    }
                 }
 
             }
@@ -196,6 +199,9 @@
                         &.event-end{
                             top: 30px;
                         }
+                        &.country {
+                            color:  #0d522f;
+                        }
                     }
 
                     .event-date--month {
@@ -305,6 +311,9 @@
                         &.event-end{
                             top: 20px;
                         }
+                        &.country {
+                            color:  #0d522f;
+                        }   
                     }
 
                     .event-date--month {
