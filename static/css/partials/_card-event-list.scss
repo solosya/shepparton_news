@@ -199,9 +199,7 @@
                         &.event-end{
                             top: 30px;
                         }
-                        &.country {
-                            color:  #0d522f;
-                        }
+                        
                     }
 
                     .event-date--month {
@@ -223,6 +221,9 @@
                             left: 35px;
                         }
                     }
+                    .country {
+                            color:  #0d522f;
+                        }
                 }
             }
         }
@@ -335,6 +336,9 @@
                             left: 25px;
                         }
                     }
+                    .country {
+                            color:  #0d522f;
+                        }
                 }
                 > .content {
                     left: 70px;

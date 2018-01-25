@@ -35,6 +35,9 @@
 			font-family: $font-family-serif;
 			font-size: rem(14);
 			font-style: italic;
+			&.country {
+			    color:  #0d522f;
+			}
         }
     }
     .country-events {
