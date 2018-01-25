@@ -223,7 +223,7 @@ hr.divide10 {
     @media screen and (min-width: $sm-break) {
         margin-bottom:15px !important;
     }
-    @media screen and (max-width: $sm-break) {
+    @media screen and (max-width: $sm-break-down) {
         margin-top: 15px !important;
         padding-top: 0;
         #adslot1{
@@ -325,11 +325,14 @@ div.bloggerImg {
 }
 
 .mini-events {
-    background-color: white;
-    margin-top: -62px;
-    padding-left: 35px;
-    margin-left: -15px;
-    width: 22%;
+    margin-top: 25px;
+    @media screen and (min-width: $sm-break) {
+        background-color: white;
+        margin-top: -62px;
+        padding-left: 35px;
+        margin-left: -15px;
+        width: 22%;
+    }
     > h2 {
         font-size: rem(22);
         font-family:$font-family-sans-serif;
