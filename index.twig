@@ -163,7 +163,7 @@
         </div>
     {% endif %}
 
-    {% if sections['sport'].feed.articles|length > 0 %}
+    {# {% if sections['sport'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/section-with-feature.twig', {
                 articles: sections['sport'], 
@@ -173,7 +173,24 @@
                 ad: 'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
+    {% endif %} #}
+
+    {% if sections['sport'].feed.articles|length > 0 %}
+        <div class="col-xs-9 visible-xs-block">
+            <hr class="divide15 space-only">
+        </div>    
+        <div class="container">
+            {{this.render('partials/index/small-section-events.twig', {
+                articles: sections['sport'], 
+                articleCount: articleCount,
+                section: 'sport',
+                events: events,
+                dev: dev,
+                site: 'shepp',                
+            }) | raw}} 
+        </div>
     {% endif %}
+
 
     {% if sections['business'].feed.articles|length > 0 %}
         <div class="container">
@@ -186,6 +203,8 @@
             }) | raw}} 
         </div>
     {% endif %}
+
+
 
    
 
