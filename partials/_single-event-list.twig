@@ -46,8 +46,8 @@
 {% set fullStartDate = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j F') %}
 {% set endDate = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j M') %}
 
-{% set startDay = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j') %}
-{% set endDay = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j') %}
+{% set startDay = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'd') %}
+{% set endDay = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'd') %}
 
 {% set startTime = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
 {% set endTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia') %}
@@ -56,6 +56,10 @@
 {% set fullEndTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia M j') %}
 
 {% set eventMonth = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'F') %}
+
+{% set startMonth = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'M') %}
+{% set endMonth = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'M') %}
+
 
 
 <div class="{{containerClass}}" data-title="{{ eventTitle | raw }}">
@@ -83,7 +87,7 @@
                 </figure>
             {% endif %}
 
-            <div class="event-date">
+            {# <div class="event-date">
                 {% set difference = date(event.endDate).diff(date(event.startDate)) %}
                 {% set leftDays = difference.days %}
                 {% if leftDays > 0 %}                
@@ -92,6 +96,22 @@
                     <div class="event-date--dates">{{ startDay }}</div>
                 {% endif %}
                 <div class="event-date--month">{{ eventMonth }}</div>                
+            </div> #}
+
+            <div class="event-date">
+                {% if startMonth != endMonth %}                                   
+                    <span><p class="event-date--dates event-start siteclass">{{ startDay }}</p> <p class="event-date--month event-start">{{ startMonth }}&ndash;</p></span>  
+                    <span><p class="event-date--dates event-end siteclass">{{ endDay }}</p> <p class="event-date--month event-end">{{ endMonth }}</p></span>
+                {% else %}
+                    {% if startDay != endDay %}                
+                        <div class="event-date--dates siteclass">{{ startDay }}&ndash;{{ endDay }}</div>
+                    {% else %}
+                        <div class="event-date--dates siteclass">{{ startDay }}</div>
+                    {% endif %} 
+                    <div class="event-date--month hidden-xs">{{ eventMonth }}</div>
+                    <div class="event-date--month visible-xs">{{ startMonth }}</div>
+                {% endif %}
+                               
             </div>
 
 
