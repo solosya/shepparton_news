@@ -49,6 +49,7 @@
     </div>
 
     <div class="col-sm-2">
+        <h2>EVENTS</h2>
         {% for i in 0..2 if events[i] %}
             {{this.render('../_single-event.twig', {
                 event: events[i],
