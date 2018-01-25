@@ -48,19 +48,16 @@
 
     </div>
 
-    <div class="col-sm-2">
-        <h2>EVENTS</h2>
+    <div class="col-sm-2 mini-events">
+        <h2 class="siteclass">EVENTS</h2>
         {% for i in 0..2 if events[i] %}
             {{this.render('../_single-event.twig', {
                 event: events[i],
                 imageSize: {width: 90},
                 containerClass: 'card-event card-event-tablet'
             }) | raw}}
-
-            {% if i < 2 %}
                 <hr class="divide12">
-            {% endif %}
-
         {% endfor %}
+        <a href="{{networkData.defaultBlogUrl}}/@events">View All</a>
     </div>
 </section>
