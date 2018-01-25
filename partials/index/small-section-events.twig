@@ -1,0 +1,65 @@
+{% set sectionCount = (dev) ? articleCount : 0 %}
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ section }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        {% if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+                article: articles.feed.articles[sectionCount], 
+                imageSize: {width:409, height:530},
+                containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
+            }) | raw}}
+            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% endif %}
+
+        <hr class="divide visible-xs-block space-only">
+
+    </div>
+
+    <div class="ad-container hidden-md hidden-lg mobad2">
+        <div id='div-gpt-ad-mrec-5' class="card__announcement-image google_ad google_ad_mrec text-center" >
+            <script type='text/javascript'>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
+            </script>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        
+        {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+                article: articles.feed.articles[sectionCount], 
+                imageSize: {width:300},
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+            }) | raw}}
+            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% if i == 0 %}
+                <hr class="divide">
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="col-sm-2">
+        {% for i in 0..2 if events[i] %}
+            {{this.render('../_single-event.twig', {
+                event: events[i],
+                imageSize: {width: 90},
+                containerClass: 'card-event card-event-tablet'
+            }) | raw}}
+
+            {% if i < 2 %}
+                <hr class="divide12">
+            {% endif %}
+
+        {% endfor %}
+    </div>
+</section>

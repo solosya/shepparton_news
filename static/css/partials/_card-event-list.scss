@@ -266,7 +266,8 @@
 
 .card-event-list-mobile {
     @media screen and (max-width: $sm-break-down) {
-        @include card-event-list-base();  
+        @include card-event-list-base();
+
         a.card {
             > article {
                 > figure {
@@ -389,6 +390,7 @@
 .card-event-list-article {
     @include card-event-list-base();
     a.card {
+        height: 65px;
         > article {
             > figure {
                 display: none;
