@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-sm-2 mini-events">
-        <h2 class="siteclass">EVENTS</h2>
+        <h2 class=" siteclass">Events</h2>
         {% for i in 0..2 if events[i] %}
             {{this.render('../_single-event.twig', {
                 event: events[i],
@@ -58,6 +58,10 @@
             }) | raw}}
                 <hr class="divide12">
         {% endfor %}
-        <a href="{{networkData.defaultBlogUrl}}/@events">View All</a>
+        <a class=" siteclass" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
     </div>
 </section>
+
+<script>
+blogSettingsStyles('{{ networkData.title | lower}}');
+</script>
