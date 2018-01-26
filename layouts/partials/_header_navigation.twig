@@ -79,8 +79,17 @@
                 {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
             
                 {% if not _User.isGuest() %}
+                    {% set user = _User.getUser() %}
+
+
+
+
                     <ul class="auth-links">
                         <li><a href="{{ logoutPath }}">LOG OUT</a></li>
+                        <li><a href="javscript:void(0)" class="user__login" id="profile">
+                          {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
+                        </a></li>
+
                     </ul>                    
                 {% else %}
                     <ul class="auth-links">              
