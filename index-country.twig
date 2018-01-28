@@ -58,6 +58,11 @@
             "link": "",
             "limit" : 2
         }
+        "viticulture": {
+            "feed": "",
+            "link": "",
+            "limit" : 3
+        },
     }
 %}
 
@@ -239,7 +244,7 @@
                 articleCount: articleCount,
                 section: 'water',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-2',
+                ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
@@ -260,6 +265,22 @@
                 section: 'horticulture',
                 dev: dev,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
+            }) | raw}} 
+        </div>
+    {% endif %}
+
+    {% if sections['viticulture'].feed.articles|length > 0 %}
+        <div class="col-xs-9 visible-xs-block">
+            <hr class="divide15 space-only">
+        </div>    
+        <div class="container">
+            {{this.render('partials/index/row-three-ad.twig', {
+                articles: sections['viticulture'], 
+                articleCount: articleCount,
+                section: 'viticulture',
+                dev: dev,
+                ad: 'div-gpt-ad-mrec-2',
+                site: 'country',                
             }) | raw}} 
         </div>
     {% endif %} 
