@@ -56,14 +56,16 @@
                                     </figcaption>
                                 </figure>
                             {% endfor %}
-                        </div>
-                        <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1">
-                            {% for image in article.media %}
-                                {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
-                                <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
-                            {% endfor %}
 
+                            <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1">
+                                {% for image in article.media %}
+                                    {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
+                                    <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
+                                {% endfor %}
+
+                            </div>
                         </div>
+                        
 
                         <div class="content-block-top">
 
