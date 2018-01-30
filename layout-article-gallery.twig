@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-9">
 
-                        <div id="owl-thumbnails" class="owl-carousel owl-shep-theme" data-slider-id="1">
+                        <div id="owl-thumbnails" class="owl-carousel owl-shep-theme siteclass" data-slider-id="1">
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
@@ -99,5 +99,8 @@
         </div><!-- .page-content--> #}
 
     </article>
+    
 </main><!--site-main-->
+
+
 
