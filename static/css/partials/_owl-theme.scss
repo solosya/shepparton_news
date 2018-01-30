@@ -21,10 +21,10 @@
   }
 
   
-  .shepparton .owl-nav .owl-next [class*='owl-']:hover {
+  .shepparton .owl-nav .owl-next :hover {
         background-image: url('../icons/gallery-arrow-right-red.svg');
       }
-  .shepparton .owl-nav .owl-prev [class*='owl-']:hover {
+  .shepparton .owl-nav .owl-prev :hover {
         background-image: url('../icons/gallery-arrow-left-red.svg');
       }  
      
