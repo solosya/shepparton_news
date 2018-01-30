@@ -37,6 +37,10 @@ body.blog {
                 padding-bottom: 15px;
                 padding-top: 5px;
 
+                &.shepparton {
+                   color:color(red);
+                }
+
                 &.country {
                     color:color(darkcountry);
                 }
