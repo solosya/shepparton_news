@@ -236,13 +236,13 @@ $('document').ready(function() {
 
 
 
-    $('#profile').on('click', function(e) {
-        e.preventDefault();
-        console.log('clicked profile');
-        $('#header__menu').toggleClass('Profile_Open');
-        $('body').toggleClass('no_profile');
-        e.preventDefault();
-    });
+    // $('#profile').on('click', function(e) {
+    //     e.preventDefault();
+    //     console.log('clicked profile');
+    //     $('#header__menu').toggleClass('Profile_Open');
+    //     $('body').toggleClass('no_profile');
+    //     e.preventDefault();
+    // });
 
 
 
