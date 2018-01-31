@@ -61,7 +61,11 @@
 
 
 			.content-block-top {
-				margin-top: 45px;
+				margin-top: 10px;
+				@media screen and (max-width: $sm-break) {
+					margin-top: 0;
+				}
+
 				margin-bottom: 10px;
 
 				p.category {
