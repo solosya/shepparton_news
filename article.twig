@@ -43,11 +43,13 @@
 
 
                         {% if articleImg %} 
-                            <div id="owl-thumbnails" class="owl-carousel owl-shep-theme siteclass" data-slider-id="1">
+
+
+                            <div id="owl-thumbnails" class="owl-carousel owl-shep-theme" data-slider-id="1">
                                 {% for image in article.media %}
                                     {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-                                    <figure class="featured" data-hash="{{loop.index}}">
+                                    <figure class="propertyImages" data-hash="{{loop.index}}">
                                         <img src="{{articleImg}}" class="img-responsive">
                                         {% if image.type == 'video' %} 
                                             {% set mediaUrl = "" %}
@@ -69,14 +71,20 @@
                                                 </div>
                                             </a>
                                         {% endif %}
-                                        <figcaption style="float:unset;">
+                                        <figcaption>
                                             <p>{{image.caption}}</p>
-                                            <p class="count">{{loop.index}} of {{loop.revindex + loop.index0}}</p>
                                         </figcaption>
                                     </figure>
                                 {% endfor %}
                             </div>
                          {% endif %}
+                    </div>
+                    <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1">
+                        {% for image in article.media %}
+                            {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
+                            <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
+                        {% endfor %}
+
                     </div>
 
                     <div class="col-md-9">
