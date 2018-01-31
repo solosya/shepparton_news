@@ -89,7 +89,9 @@ div[class*="col-sm"] {
 }
 
 .section-page__main {
-    margin-top: 40px;
+     @media screen and (max-width: $sm-break-down){
+        margin-top: 40px !important;
+    }
 }
 
 
