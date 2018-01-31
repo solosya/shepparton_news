@@ -3,14 +3,31 @@
     top: 230px;
     margin-left: -50px;
     width: 111%;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  @media screen and (max-width: $sm-break-down) {
+    top: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+
+  } 
+}
   .owl-shep-theme .owl-nav .owl-next {
     background-image: url('../icons/gallery-arrow-right.svg');
     float:right;
   }
   .owl-shep-theme .owl-nav .owl-prev {
-    background-image: url('../icons/gallery-arrow-left.svg');
+    background-image: url('../icons/gallery-arrow-left2.svg');
   }
+
+  
+  // .shepparton .owl-nav .owl-next :hover {
+  //       background-image: url('../icons/gallery-arrow-right-red.svg');
+  //     }
+  // .shepparton .owl-nav .owl-prev :hover {
+  //       background-image: url('../icons/gallery-arrow-left-red.svg');
+  //     }  
+     
 
   .owl-shep-theme .owl-item img {
     max-height:500px;
@@ -41,10 +58,12 @@
     display: inline-block;
     cursor: pointer; }
 
-    .owl-shep-theme .owl-nav [class*='owl-']:hover {
-      background: #869791;
-      color: #FFF;
-      text-decoration: none; }
+    // .owl-shep-theme .owl-nav [class*='owl-']:hover {
+    //   // background: #869791;
+    //   color: #FFF;
+    //   text-decoration: none;
+
+    // }
   .owl-shep-theme .owl-nav .disabled {
     opacity: 0.5;
     cursor: default; }

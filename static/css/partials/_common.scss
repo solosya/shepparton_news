@@ -272,7 +272,7 @@ hr.divide10 {
 
 div.bloggerImg {
     position:relative;
-    background: color(red); /* fallback */
+    /* fallback */
     -webkit-clip-path: polygon(40px 0px, 100% 0px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0px 100%, 0px 40px);
     clip-path: polygon(40px 0px, 100% 0px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0px 100%, 0px 40px);
     @media screen and (max-width: $sm-break) {
@@ -281,7 +281,10 @@ div.bloggerImg {
 
     }
     &.blogcountry {
-        background-color: #8bc833; 
+        background: #8bc833; 
+    }
+    &.blogshepp {
+        background: color(red); 
     }
     .logo {
         position: absolute;
@@ -969,5 +972,15 @@ span.leadsentence{
                 }
             }
         }
+    }
+}
+
+.gallery-title {
+    font-size: rem(41);
+    color: #FFF;
+    margin-bottom: 25px;
+    @media screen and (max-width: $sm-break-down) {
+        font-size: rem(30);
+        margin-bottom: 15px;
     }
 }
