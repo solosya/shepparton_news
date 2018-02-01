@@ -174,31 +174,9 @@ ListingForm.constructor = ListingForm;
         });
 
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
-            console.log('trying to delete...')
-            console.log(e);
             var elem = $(e.target);
-            var id = elem.data('id');
-            console.log(elem);
-            console.log(elem.data);
-            elem.parent().remove();
-
-            mediaids = this.data.media_ids.split(',');
-
-            var index = mediaids.indexOf(id.toString());
-            if (index > -1) {
-                mediaids.splice(index, 1);
-            }
-            
-            if (mediaids.length > 0) {
-                this.data.media_id = mediaids[0];
-                this.data.media_ids = mediaids.join(',');
-            } else {
-                this.data.media_id = '';
-                this.data.media_ids = '-1';
-            }
-
-            // console.log(this.data.media_ids, this.data.media_id);
-            // Acme.PubSub.publish('update_state', {'closeConfirm': ''});
+            var mediaId = elem.data('id');
+            Acme.PubSub.publish('update_state', {'confirmDeleteImage': {elem:elem, id:mediaId}});
         });
 
         $('#listingFormClear').on('click', function(e) {
@@ -512,19 +490,6 @@ Acme.Confirm = function(template, parent, layouts) {
         if ($elem.hasClass('layout')) {
             var layout = $elem.data('layout');
             this.renderLayout(layout);
-        }
-        if ($elem.data('role') === 'delete') {
-            $elem.addClass("spinner");
-            Acme.PubSub.publish("update_state", {'delete listing': "" });
-        }
-
-        if ($elem.data('role') === 'deleteImage') {
-            console.log('you want to delete an image???');
-            // console.log(self.data);
-            Acme.PubSub.publish("update_state", {'delete image': self.data });
-
-            // $elem.addClass("spinner");
-            // Acme.PubSub.publish("update_state", {'delete listing': "" });
         }
     };
 
