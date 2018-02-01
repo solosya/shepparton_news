@@ -41,32 +41,6 @@ ListingForm.constructor = ListingForm;
             console.log(this.data);
         }
     };
-    ListingForm.prototype.deleteImage = function(data) 
-    {
-        // var info = data['delete image'].confirmDeleteImage;
-        var elem = data.elem;
-        var id = data.id;
-        elem.parent().remove();
-
-        mediaids = this.data.media_ids.split(',');
-
-        var index = mediaids.indexOf(id.toString());
-        if (index > -1) {
-            mediaids.splice(index, 1);
-        }
-        
-        if (mediaids.length > 0) {
-            this.data.media_id = mediaids[0];
-            this.data.media_ids = mediaids.join(',');
-        } else {
-            this.data.media_id = '';
-            this.data.media_ids = '-1';
-        }
-
-        console.log(this.data.media_ids, this.data.media_id);
-        // Acme.PubSub.publish('update_state', {'closeConfirm': ''});
-
-    };
     ListingForm.prototype.render = function() 
     {
         var form = this.container.main;
@@ -197,9 +171,12 @@ ListingForm.constructor = ListingForm;
         });
 
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
+            console.log('trying to delete...')
+            console.log(e);
             var elem = $(e.target);
-            
             var id = elem.data('id');
+            console.log(elem);
+            console.log(id);
             elem.parent().remove();
 
             mediaids = this.data.media_ids.split(',');
@@ -217,7 +194,7 @@ ListingForm.constructor = ListingForm;
                 this.data.media_ids = '-1';
             }
 
-            console.log(this.data.media_ids, this.data.media_id);
+            // console.log(this.data.media_ids, this.data.media_id);
             // Acme.PubSub.publish('update_state', {'closeConfirm': ''});
         });
 
@@ -246,7 +223,7 @@ ListingForm.constructor = ListingForm;
                 Acme.PubSub.publish('update_state', {'confirm': r});
                 Acme.PubSub.publish('update_state', {'userArticles': ''});
             }).fail(function(r) {
-                console.log(r);
+                // console.log(r);
             });
         });
     }
@@ -519,7 +496,7 @@ Acme.Confirm = function(template, parent, layouts) {
                     formData[this.name] = this.value;
                 });
                 Acme.server.create('/api/auth/login', formData).done(function(r) {
-                    console.log(r);
+                    // console.log(r);
                     if (r.success === 1) {
                         window.location.href = location.origin;
                     } else {
@@ -540,7 +517,7 @@ Acme.Confirm = function(template, parent, layouts) {
 
         if ($elem.data('role') === 'deleteImage') {
             console.log('you want to delete an image???');
-            console.log(self.data);
+            // console.log(self.data);
             Acme.PubSub.publish("update_state", {'delete image': self.data });
 
             // $elem.addClass("spinner");
