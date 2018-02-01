@@ -72,6 +72,11 @@ window.templates.modal =
     </div> \
 </div>';
 
+window.templates.carousel_item = 
+'<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
+    <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
+</div>';
+
 window.templates.pulldown = 
 '<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
     <p class="Acme-pulldown__selected-item"></p> \

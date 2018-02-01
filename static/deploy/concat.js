@@ -33520,6 +33520,11 @@ window.templates.modal =
     </div> \
 </div>';
 
+window.templates.carousel_item = 
+'<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
+    <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
+</div>';
+
 window.templates.pulldown = 
 '<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
     <p class="Acme-pulldown__selected-item"></p> \
@@ -34632,9 +34637,11 @@ ListingForm.constructor = ListingForm;
     {
         var imageArray = $('#imageArray');
         var html = "";
+        var temp = Handlebars.compile(window.templates.carousel_item); 
+
         for (var i=0;i<images.length;i++) {
             var imagePath = images[i].url || images[i].path;
-            html += '<div class="formimage" style="background-image:url(' + imagePath + ')"></div>';
+            html += temp({"imagePath": imagePath, 'imageid' : images[i].media_id});
         }
         imageArray.append(html);
     },
@@ -34717,9 +34724,19 @@ ListingForm.constructor = ListingForm;
                 }
         });
 
+        $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
+            var elem = $(e.target);
+            var mediaId = elem.data('id');
+            Acme.PubSub.publish('update_state', {'confirmDeleteImage': {elem:elem, id:mediaId}});
+        });
+
         $('#listingFormClear').on('click', function(e) {
             $('#listingFormSubmit').text('SUBMIT');
             self.clear();
+        });
+
+        $('#listingFormDelete').on('click', function(e) {
+            Acme.PubSub.publish('update_state', {'confirmDelete': ""});
         });
 
         $('#listingForm').submit(function(e) {
