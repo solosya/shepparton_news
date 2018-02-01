@@ -78,6 +78,20 @@ ListingForm.constructor = ListingForm;
             $('#'+this.errorFields[field]).addClass('formError');
         }
     }
+    ListingForm.prototype.saveImage = function(r, data)
+    {
+        var newImageId = r.media.media_id;
+        var mediaids = [];
+        if (this.data.media_ids != "") {
+            mediaids = this.data.media_ids.split(',');
+        }
+        mediaids.push(newImageId);
+        this.data.media_ids = mediaids.join(',');
+        this.data.media_id = mediaids[0];
+
+        this.renderImageThumbs([data]);
+        return true;
+    }
     ListingForm.prototype.renderImageThumbs = function(images) 
     {
         var imageArray = $('#imageArray');
@@ -148,22 +162,11 @@ ListingForm.constructor = ListingForm;
                     inner.hide();
 
                     Acme.server.create('/api/article/save-image', postdata).done(function(r) {
-
-                        var newImageId = r.media.media_id;
-                        var arrayid = $(obj).data('id');
-                        var mediaids = [];
-                        if (self.data.media_ids != "") {
-                            mediaids = self.data.media_ids.split(',');
+                        console.log(r);
+                        if (self.saveImage(r, data) ) {
+                            outer.removeClass("spinner");
+                            inner.show();
                         }
-                        mediaids.push(newImageId);
-                        self.data.media_ids = mediaids.join(',');
-                        self.data.media_id = mediaids[0];
-
-                        self.renderImageThumbs([data]);
-                        $().General_ShowNotification({message: 'Image added successfully' });
-                        outer.removeClass("spinner");
-                        inner.show();
-
                     }).fail(function(r) {
                         console.log(r);
                     });
@@ -176,7 +179,7 @@ ListingForm.constructor = ListingForm;
             var elem = $(e.target);
             var id = elem.data('id');
             console.log(elem);
-            console.log(id);
+            console.log(elem.data);
             elem.parent().remove();
 
             mediaids = this.data.media_ids.split(',');
