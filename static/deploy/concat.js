@@ -33524,6 +33524,15 @@ window.templates.carousel_item =
 '<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
     <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
 </div>';
+window.templates.listingDeleteTmpl =  
+    '<p>{{msg}}</p> \
+    <div> \
+        <form> \
+            <button class="_btn _btn--red" data-role="{{role}}">DELETE</button> \
+            <button class="_btn _btn--gray">CANCEL</button> \
+        </form> \
+    </div>';
+    
 
 window.templates.pulldown = 
 '<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
@@ -35046,6 +35055,7 @@ Acme.Confirm = function(template, parent, layouts) {
 
 var layouts = {
     "listing"   : 'listingSavedTmpl',
+    "delete"   : 'listingDeleteTmpl',
 };
 
 Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
@@ -35057,6 +35067,20 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
     {
         "confirm" : function(data, topic) {
             this.render("listing", "Thank you for submitting your event.");
+        },
+        "confirmDeleteImage" : function(data, topic) {
+            console.log(data, topic);
+            this.data = data;
+            console.log(this.data);
+            this.render("delete", "Warning", 
+                {
+                     msg: "Are you sure you want to permanently delete this image?", 
+                     role:"deleteImage"
+                 }
+            );
+        },
+        "closeConfirm" : function(data, topic) {
+            this.closeWindow();
         }
     };
 
