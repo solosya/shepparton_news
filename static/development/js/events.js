@@ -484,6 +484,19 @@ Acme.Confirm = function(template, parent, layouts) {
             var layout = $elem.data('layout');
             this.renderLayout(layout);
         }
+        if ($elem.data('role') === 'delete') {
+            $elem.addClass("spinner");
+            Acme.PubSub.publish("update_state", {'delete listing': "" });
+        }
+
+        if ($elem.data('role') === 'deleteImage') {
+            console.log('you want to delete an image???');
+            console.log(self.data);
+            Acme.PubSub.publish("update_state", {'delete image': self.data });
+
+            // $elem.addClass("spinner");
+            // Acme.PubSub.publish("update_state", {'delete listing': "" });
+        }
     };
 
 var layouts = {
@@ -491,7 +504,7 @@ var layouts = {
     "delete"   : 'listingDeleteTmpl',
 };
 
-Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
+Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
         'Acme.confirmView.listener' : ['update_state']
     });
@@ -500,6 +513,9 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
     {
         "confirm" : function(data, topic) {
             this.render("listing", "Thank you for submitting your event.");
+        },
+        "confirmDelete" : function(data, topic) {
+            this.render("delete", "Warning", { msg: "Are you sure you want to permanently delete this listing?", role:"delete"});
         },
         "confirmDeleteImage" : function(data, topic) {
             console.log(data, topic);
