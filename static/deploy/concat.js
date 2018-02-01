@@ -34765,8 +34765,27 @@ ListingForm.constructor = ListingForm;
 
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
             var elem = $(e.target);
-            var mediaId = elem.data('id');
-             Acme.PubSub.publish("update_state", {'delete image': self.data });
+            
+            var id = elem.data('id');
+            elem.parent().remove();
+
+            mediaids = this.data.media_ids.split(',');
+
+            var index = mediaids.indexOf(id.toString());
+            if (index > -1) {
+                mediaids.splice(index, 1);
+            }
+            
+            if (mediaids.length > 0) {
+                this.data.media_id = mediaids[0];
+                this.data.media_ids = mediaids.join(',');
+            } else {
+                this.data.media_id = '';
+                this.data.media_ids = '-1';
+            }
+
+            console.log(this.data.media_ids, this.data.media_id);
+            // Acme.PubSub.publish('update_state', {'closeConfirm': ''});
         });
 
         $('#listingFormClear').on('click', function(e) {
