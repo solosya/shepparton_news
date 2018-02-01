@@ -35071,7 +35071,7 @@ var layouts = {
     "delete"   : 'listingDeleteTmpl',
 };
 
-Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
+Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
     Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
         'Acme.confirmView.listener' : ['update_state']
     });
