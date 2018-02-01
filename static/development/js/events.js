@@ -38,6 +38,32 @@ ListingForm.constructor = ListingForm;
             console.log(this.data);
         }
     };
+    ListingForm.prototype.deleteImage = function(data) 
+    {
+        // var info = data['delete image'].confirmDeleteImage;
+        var elem = data.elem;
+        var id = data.id;
+        elem.parent().remove();
+
+        mediaids = this.data.media_ids.split(',');
+
+        var index = mediaids.indexOf(id.toString());
+        if (index > -1) {
+            mediaids.splice(index, 1);
+        }
+        
+        if (mediaids.length > 0) {
+            this.data.media_id = mediaids[0];
+            this.data.media_ids = mediaids.join(',');
+        } else {
+            this.data.media_id = '';
+            this.data.media_ids = '-1';
+        }
+
+        console.log(this.data.media_ids, this.data.media_id);
+        // Acme.PubSub.publish('update_state', {'closeConfirm': ''});
+
+    };
     ListingForm.prototype.render = function() 
     {
         var form = this.container.main;
@@ -103,6 +129,7 @@ ListingForm.constructor = ListingForm;
             'media_ids': ''
         };
     },
+
     ListingForm.prototype.events = function() 
     {
         var self = this;
@@ -169,7 +196,7 @@ ListingForm.constructor = ListingForm;
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
             var elem = $(e.target);
             var mediaId = elem.data('id');
-            Acme.PubSub.publish('update_state', {'confirmDeleteImage': {elem:elem, id:mediaId}});
+            return this.deleteImage(elem.data);
         });
 
         $('#listingFormClear').on('click', function(e) {
