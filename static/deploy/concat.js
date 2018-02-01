@@ -34601,6 +34601,9 @@ ListingForm.constructor = ListingForm;
             this.data.latitude = data.location['latitude'];
             this.data.longitude = data.location['longitude'];
         },
+        "delete image" : function(data, topic) {
+            return this.deleteImage(data);
+        },
         "after" : function(data, topic) {
             console.log(this.data);
         }
@@ -34763,7 +34766,7 @@ ListingForm.constructor = ListingForm;
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
             var elem = $(e.target);
             var mediaId = elem.data('id');
-            return this.deleteImage(elem.data);
+             Acme.PubSub.publish("update_state", {'delete image': self.data });
         });
 
         $('#listingFormClear').on('click', function(e) {
