@@ -94,6 +94,35 @@ div[class*="col-sm"] {
     }
 }
 
+.carousel-tray {
+    clear:both;
+    margin:20px 0;
+    overflow:auto;
+}
+.carousel-tray__item {
+    float:left;
+    margin-right:15px;
+    height:150px;
+    width:150px;
+    background-size:cover;
+}
+.carousel-tray__delete {
+    display:block;
+    width:20px;
+    height:20px;
+    background-image: url('../icons/cross-reverse.svg');
+    background-repeat: no-repeat;
+    // background-size:contain;
+    background-color: rgba(255,255,255,.5);
+    margin-top: 5px;
+    margin-left: 5px;
+    background-position: center;
+    &:hover {
+        cursor:pointer;
+    }
+}
+
+
 
 div.space40 {
     margin-top:40px;
