@@ -14,14 +14,21 @@
 
     {% for i in 0..1 if articles.feed.articles[i] %}
         <div class="col-sm-3">                                            
-
-            {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[i], 
-                imageSuppress: true,
-                containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile blogsite'
-            }) | raw}}
-            <script>setMyBlogStyles('{{networkData.title | lower}}')</script>
             {% if i == 0 %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[i], 
+                    imageSuppress: true,
+                    containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile blogsite'
+                }) | raw}}
+                <script>setMyBlogStyles('{{networkData.title | lower}}')</script>
+                <hr class="divide visible-xs-block">
+            {% else %}
+                {{this.render('../_single-article.twig', {
+                    article: articles.feed.articles[i], 
+                    imageSuppress: true,
+                    containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile blogsite border__left'
+                }) | raw}}
+                <script>setMyBlogStyles('{{networkData.title | lower}}')</script>
                 <hr class="divide visible-xs-block">
             {% endif %}
         </div>
