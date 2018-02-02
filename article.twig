@@ -49,7 +49,7 @@
                                 {% for image in article.media %}
                                     {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-                                    <figure class="propertyImages" data-hash="{{loop.index}}">
+                                    <figure class="featured" data-hash="{{loop.index}}">
                                         <img src="{{articleImg}}" class="img-responsive">
                                         {% if image.type == 'video' %} 
                                             {% set mediaUrl = "" %}
