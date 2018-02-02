@@ -70,9 +70,18 @@
 }
 
 .card-event{
-    // @media screen and (min-width: $sm-break){
-        @include card-event-base();
-    // }
+    @media screen and (min-width: $mmd-break) {
+    @include card-event-base();
+        a.card {
+            > article {
+                > .content {
+                    > time {
+                        font-size:rem(10);
+                    }
+                }
+            }
+        }
+    }
 }
 
 
