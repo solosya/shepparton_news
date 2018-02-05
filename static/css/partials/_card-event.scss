@@ -27,7 +27,7 @@
                 }
                 > h2{
                     font-weight: 600;
-                    font-size: rem(12);
+                    font-size: rem(14);
                     line-height:1.33;
                     margin-bottom:0;
                     height:45px;
@@ -129,6 +129,9 @@
         a.card {
             > article {
                 > .content {
+                    > h2{
+                        width:75%;
+                    }
                     > time {
                         font-size:rem(10);
                     }
