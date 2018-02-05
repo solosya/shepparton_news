@@ -2,7 +2,7 @@
     position:relative;
     a.card {
         @include card-image-left(37px, 37px);
-        height:54px;
+        height:49px;
 
         > article {
             position:relative;
@@ -77,6 +77,9 @@
                 > .content {
                     > time {
                         font-size:rem(10);
+                        top: 0;
+                        position: absolute;
+                        margin-left: 57px;
                     }
                 }
             }
@@ -134,6 +137,9 @@
                     }
                     > time {
                         font-size:rem(10);
+                        top: 0;
+                        position: absolute;
+                        margin-left: 57px;
                     }
                 }
             }

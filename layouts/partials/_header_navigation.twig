@@ -83,15 +83,15 @@
 
                     <ul class="auth-links">
                         <li><a href="{{ logoutPath }}">LOG OUT</a></li>
-                        <li><a href="#" class="user__login" id="profile">
+                        <li><p href="#" class="user__login" id="profile">
                           {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
-                        </a></li>
+                        </p></li>
                     </ul> 
                     
                 {% else %}
                     <ul class="auth-links">              
                         <li><a href="{{ loginPath }}">LOG IN</a></li>
-                        <li><a href="{{ signUpPath }}">SIGN UP</a></li>
+                        {# <li><a href="{{ signUpPath }}">SIGN UP</a></li> #}
                     </ul>
                 {% endif %}
             {% endif %}
@@ -242,7 +242,7 @@
                     {% else %}
                         <ul class="auth-links">              
                             <li><a href="{{ loginPath }}">LOG IN</a></li>
-                            <li><a href="{{ signUpPath }}">SIGN UP</a></li>
+                            {# <li><a href="{{ signUpPath }}">SIGN UP</a></li> #}
 
                         </ul>
                     {% endif %}
