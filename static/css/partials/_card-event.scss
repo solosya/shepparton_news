@@ -1,5 +1,6 @@
 @mixin card-event-base() {
     position:relative;
+    margin: 10px 0 -5px 0;
     a.card {
         @include card-image-left(37px, 37px);
         height:49px;
@@ -31,7 +32,7 @@
                     line-height:1.33;
                     margin-bottom:0;
                     height:45px;
-                    padding-top: 15px;
+                    padding-top: 12px;
                 }
 
                 > p.excerpt {
@@ -78,7 +79,7 @@
                 > .content {
                     > time {
                         font-size:rem(10);
-                        top: 0;
+                        top: -3px;
                         position: absolute;
                         margin-left: 57px;
                     }
@@ -138,7 +139,7 @@
                     }
                     > time {
                         font-size:rem(10);
-                        top: 0;
+                        top: -3px;
                         position: absolute;
                         margin-left: 57px;
                     }
