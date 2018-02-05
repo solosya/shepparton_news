@@ -91,7 +91,7 @@
 			@media screen and (min-width: $sm-break) {	
 				border-right: solid 1px #b9b9b9;
 			}
-			margin-top: 40px;
+			margin: 40px 0;
 		}
 
 
@@ -173,6 +173,7 @@
 				margin-bottom: 0;
 				color:	#1c2a38;
 				font-family: $font-family-sans-serif;
+				width: 90%;
 				
 				@media screen and (max-width: $sm-break) {
 					margin-top: 40px;
