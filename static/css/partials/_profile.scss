@@ -17,7 +17,12 @@ a.user__login {
     padding-bottom: 0;
 }
 
-
+p.user__login {
+    color: #c6c7c9;
+    display: block;
+    padding-top: 4px;
+    padding-bottom: 0;
+}
 .profile {
     &__container {
         @extend .container;
