@@ -86,6 +86,8 @@
 		margin-bottom:96px;
 		
 		.event-content {
+			border-right: solid 1px #b9b9b9;
+
 
 			p {
 				font-size: rem(16);
@@ -238,9 +240,8 @@
 		}
 		.event-sidebar {
 			margin: 65px 0 100px 0;
-			height: 800px;
-			border-left: solid 1px #b9b9b9;
-
+			height: 100%;
+			
 
 			.event-details{
 				div.event-detail {
@@ -321,7 +322,7 @@
 		}
 
 		.event-map {
-			margin-top: 90px;
+			margin: 90px 0;
 		}
 
 		.sidebar {
