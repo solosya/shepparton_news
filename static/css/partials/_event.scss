@@ -86,7 +86,9 @@
 		margin-bottom:96px;
 		
 		.event-content {
+		@media screen and (min-width: $sm-break) {	
 			border-right: solid 1px #b9b9b9;
+		}
 
 
 			p {
