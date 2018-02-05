@@ -123,6 +123,21 @@
     }
 }
 
+.card-event-mobile{
+    @media screen and (min-width: $sm-break-down) {
+    @include card-event-base();
+        a.card {
+            > article {
+                > .content {
+                    > time {
+                        font-size:rem(10);
+                    }
+                }
+            }
+        }
+    }
+}
+
 .card-event-rec {
     a.card {
         > article {
