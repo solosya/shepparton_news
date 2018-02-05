@@ -124,7 +124,7 @@
 }
 
 .card-event-mobile{
-    @media screen and (min-width: $sm-break-down) {
+    @media screen and (max-width: $sm-break-down) {
     @include card-event-base();
         a.card {
             > article {
