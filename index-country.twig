@@ -218,11 +218,12 @@
                             containerClass: 'card-sm card-sm-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        <hr class="divide visible-xs-block">
                     {% endif %}
                 </div>
 
 
-                <div class="col-sm-9 col-md-3 addSpaceMobile hidden-sm">
+                <div class="col-sm-9 col-md-3 hidden-sm">
                     {% if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
