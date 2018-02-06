@@ -224,6 +224,9 @@
 		.related-articles {
 		    margin-top: 105px;
 		    margin-bottom: 78px;
+		    @media screen and (max-width: $sm-break down) {
+		    	    margin-top: -60px;
+		    }
 		    
 
 			h1 {
@@ -232,8 +235,10 @@
 				text-transform: uppercase;
 				text-align: center;
 				margin-bottom: 30px;
+				@media screen and (max-width: $sm-break down) {
+		    	   margin-bottom: 15px;
+			   	}
 			}
-		
 		}
 	}
 
