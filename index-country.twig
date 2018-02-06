@@ -256,7 +256,7 @@
         </div>
     {% endif %}
 
-    <div>
+    <div class="mobad3">
         <div id="newAdSlot"></div>
         <script>loadNextAd()</script> 
     </div>       
@@ -286,7 +286,7 @@
         </div>
     {% endif %}
 
-    <div class="ad-container hidden-md hidden-lg mobad2">
+    <div class="ad-container hidden-md hidden-lg mobad7">
         <div id='div-gpt-ad-mrec-6' class="card__announcement-image google_ad google_ad_mrec text-center" >
             <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
@@ -323,9 +323,9 @@
     {% endif %} 
 
     {% if sections['livestock'].feed.articles|length > 0 %}
-        <div class="col-xs-9 visible-xs-block">
+        {# <div class="col-xs-9 visible-xs-block">
             <hr class="divide15 space-only">
-        </div>    
+        </div>  #}   
         <div class="container">
             {{this.render('partials/index/small-section-events.twig', {
                 articles: sections['livestock'], 

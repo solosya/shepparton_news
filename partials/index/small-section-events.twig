@@ -50,7 +50,9 @@
 
     <div class="col-sm-2 mini-events">
         <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
-        <a href="{{networkData.defaultBlogUrl}}/@events"><h2 class="">Events</h2></a>
+        <div class="hk">
+            <a href="{{networkData.defaultBlogUrl}}/@events"><h2 class="">Events</h2></a><p></p>
+        </div>
         {% for i in 0..3 if events[i] %}
             {{this.render('../_single-event.twig', {
                 event: events[i],
