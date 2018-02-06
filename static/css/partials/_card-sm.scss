@@ -40,6 +40,47 @@
         }
 
     }
+    &.dairy-card {
+        a.card {
+            > article {
+                > figure {
+                    margin-bottom: 3px;
+                }
+
+                > .content {
+                    background-color: #7bc127;
+                    padding: 20px;
+                    height: 87px;
+ 
+                    > .category {
+                        display: none;
+                    }
+
+                    h2 {
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        color: white;
+                        height: 24px;
+                        margin-bottom: 0px;
+                    }
+
+                    > p {
+                        display: block;
+                        font-size: rem(14);
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: white;
+                        height: 24px;
+                    }
+
+                    > .author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -159,49 +200,6 @@
             }
 
 
-        }
-    }
-
-
-    &.dairy-card {
-        a.card {
-            > article {
-                > figure {
-                    margin-bottom: 3px;
-                }
-
-                > .content {
-                    background-color: #7bc127;
-                    padding: 20px;
-                    height: 87px;
- 
-                    > .category {
-                        display: none;
-                    }
-
-                    h2 {
-                        text-align: center;
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        color: white;
-                        height: 24px;
-                        margin-bottom: 0px;
-                    }
-
-                    > p {
-                        display: block;
-                        font-size: rem(14);
-                        text-align: center;
-                        text-transform: uppercase;
-                        color: white;
-                        height: 24px;
-                    }
-
-                    > .author {
-                        display: none;
-                    }
-                }
-            }
         }
     }
 }
@@ -390,49 +388,10 @@
                 }
 
             }
-            &.dairy-card {
-                a.card {
-                    > article {
-                        > figure {
-                            margin-bottom: 3px;
-                        }
 
-                        > .content {
-                            background-color: #7bc127;
-                            padding: 20px;
-                            height: 87px;
-         
-                            > .category {
-                                display: none;
-                            }
-
-                            h2 {
-                                text-align: center;
-                                text-transform: uppercase;
-                                font-weight: bold;
-                                color: white;
-                                height: 24px;
-                                margin-bottom: 0px;
-                            }
-
-                            > p {
-                                display: block;
-                                font-size: rem(14);
-                                text-align: center;
-                                text-transform: uppercase;
-                                color: white;
-                                height: 24px;
-                            }
-
-                            > .author {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-            }            
         }
     }
+
 }
 
 
