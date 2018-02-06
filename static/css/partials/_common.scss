@@ -198,6 +198,12 @@ hr.divide10 {
             margin: 30px auto 30px auto;
         }
     }
+    &.ad-square__left {
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
+            left: 15px;
+            position: absolute;
+        }
+    }
 }
 
 .ad-large-vert {

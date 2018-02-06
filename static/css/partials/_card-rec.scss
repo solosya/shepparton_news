@@ -227,9 +227,15 @@
                         font-size: rem(16);
                     }
 
+                    .excerpt {
+                        margin: 8px 0 15px 0;
+                        height: 40px;
+                        font-size: rem(13)
+                    }
+
                     .author{
                         p {
-                            font-size: rem(10);
+                            font-size: rem(14);
                         }
                     }
                 }
