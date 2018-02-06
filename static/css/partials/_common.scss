@@ -385,7 +385,7 @@ div.bloggerImg {
         }
     }
     
-    a h2 {
+    div a h2 {
         font-size: rem(22);
         font-family:$font-family-sans-serif;
         font-weight: 600;
@@ -399,7 +399,7 @@ div.bloggerImg {
         //     color: #f03746;
         // }
     }
-    > a {
+    div a {
         
         margin-right: 15px;
         font-family: $font-family-serif;
@@ -414,6 +414,22 @@ div.bloggerImg {
     }
     hr {
         margin: 7px 0;
+    }
+
+    .hk{
+        p {
+            flex-grow: 1;
+
+            &:after {
+                content: '';
+                display:block;
+                height:1px;
+                background:color(lightgrey);
+                width:99%;
+                margin-top: 18px;
+                margin-left: 7px;
+            }
+        }
     }
 }
 
