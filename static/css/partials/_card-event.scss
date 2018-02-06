@@ -98,16 +98,21 @@
             @include card-image-left(46px, 46px);            
             height: 50px;
             > article {
+                > figure {
+                    display:none;
+                }
                 > .content {
+                    margin-left: 0;
                     time {
                         margin-left: 0;
                         top: -50px;
-                        left: -5px;
+                        left: 0;
+                        text-align: left;
                     }
 
                     h2 {
                         position: relative;
-                        top: 5px;
+                        top: -2px;
                         margin-left: 0;
                     }
 
