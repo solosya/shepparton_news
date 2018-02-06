@@ -92,7 +92,7 @@
 
 
 .card-sm-wide{
-    @media screen and (min-width: $md-break){
+    @media screen and (min-width: $mmd-break){
         @include card-sm-wide-base();
 
         a.card {
