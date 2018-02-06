@@ -375,7 +375,12 @@ div.bloggerImg {
         padding-left: 35px;
         margin-left: -15px;
         width: 22%;
+        @media screen and (max-width: $mmd-break-down) {
+            margin-left: -35px;
+            width: 26%;
+        }
     }
+    
     a h2 {
         font-size: rem(22);
         font-family:$font-family-sans-serif;

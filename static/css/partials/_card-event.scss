@@ -96,23 +96,23 @@
         @include card-event-base();
         a.card {
             @include card-image-left(46px, 46px);            
-            height: 42px;
+            height: 50px;
             > article {
                 > .content {
                     time {
-                        margin-left: 0px;
-                        bottom: 27px;
-                        left: 0px;
+                        margin-left: 0;
+                        top: -50px;
+                        left: -5px;
                     }
 
                     h2 {
-                        margin-left: 60px;
                         position: relative;
                         top: 5px;
+                        margin-left: 0;
                     }
 
                     .event-time {
-                        display: block;
+                        display: none;
                         position: absolute;
                         bottom: 15px;
                         left: 60px;
