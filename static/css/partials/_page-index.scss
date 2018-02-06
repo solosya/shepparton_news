@@ -140,7 +140,13 @@
 
     .most-popular {
         @media screen and (max-width: $sm-break-down){
-            margin:40px 0;
+           margin: 40px 0; 
+            
+        }
+        &.country {
+            @media screen and (max-width: $sm-break-down){        
+                margin: 0 0 -10px 0;
+            }
         }
 
     }

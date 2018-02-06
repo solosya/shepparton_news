@@ -169,7 +169,7 @@
         </section><!-- .featured-slider-->
     </div>
 
-    <div class="ad-container hidden-md hidden-lg mobad2">
+    <div class="ad-container hidden-md hidden-lg mobad5">
         <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
             <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
@@ -180,7 +180,7 @@
     <div class="container">
         <section>
             <div class="row">
-                <div class="col-sm-3 col-md-2 most-popular">
+                <div class="col-sm-3 col-md-2 most-popular siteclass">
                     <h2>Most popular</h2>
 
                     {% for i in 0..4 if popularArticles[i] %}
@@ -286,13 +286,13 @@
         </div>
     {% endif %}
 
-    {# <div class="ad-container hidden-md hidden-lg mobad2">
+    <div class="ad-container hidden-md hidden-lg mobad2">
         <div id='div-gpt-ad-mrec-6' class="card__announcement-image google_ad google_ad_mrec text-center" >
             <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-6'); });
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
             </script>
         </div>
-    </div> #}
+    </div>
 
     {% if sections['horticulture'].feed.articles|length > 0 %}
         <div class="container">
@@ -307,9 +307,9 @@
     {% endif %}
 
     {% if sections['viticulture'].feed.articles|length > 0 %}
-        <div class="col-xs-9 visible-xs-block">
+        {# <div class="col-xs-9 visible-xs-block">
             <hr class="divide15 space-only">
-        </div>    
+        </div> #}    
         <div class="container">
             {{this.render('partials/index/row-three-ad.twig', {
                 articles: sections['viticulture'], 
