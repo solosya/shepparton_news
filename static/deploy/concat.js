@@ -33902,6 +33902,14 @@ var blogSettingsStyles = function(blog) {
     var blogTW = getBlogSettings(blog,3);
     blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
 }
+var setMyAppleIcons = function(blog,url) {
+    var blogAppleIconSm = document.getElementById("apple-icon-sm");
+    blogAppleIconSm.setAttribute("href", url + '/static/icons/apple/' + getBlogSettings(blog,0) + "-mobile-homescreen-57px.png");
+    var blogAppleIconMd = document.getElementById("apple-icon-md");
+    blogAppleIconMd.setAttribute("href", url + '/static/icons/apple/' + getBlogSettings(blog,0) + "-mobile-homescreen-72px.png");
+    var blogAppleIconLg = document.getElementById("apple-icon-lg");
+    blogAppleIconLg.setAttribute("href", url + '/static/icons/apple/' + getBlogSettings(blog,0) + "-mobile-homescreen-144px.png");
+}
 var setMyBlogLogo = function(blog,url) {
     var siteLogo = document.getElementsByClassName("site-logo");
     var clossImgOver = getBlogSettings(blog,7);
