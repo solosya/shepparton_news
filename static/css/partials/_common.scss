@@ -382,6 +382,12 @@ div.bloggerImg {
                 }        
             }
         }
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+            right: 30px;
+            > img {
+                height: 70px;
+            }
+        }
     } 
 }
 

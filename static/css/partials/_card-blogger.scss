@@ -212,7 +212,7 @@
 
         a.card {
             @include card-image-top(auto, 160px);
-            height: 190px;            
+            height: 140px;            
 
             > article {
                 position:relative;
