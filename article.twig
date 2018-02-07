@@ -216,7 +216,7 @@
                     <h1>RELATED ARTICLES</h1>
                 </div>
                 
-                <div class="row" style="margin:0;">
+                <div>
                     {% for i in 0..2 if relatedArticles[i] %}
                         <div class="col-sm-3">
                             {{this.render('partials/_single-article.twig', {
