@@ -76,7 +76,7 @@ gulp.task('scripts', function(){
 		'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 		
         // './static/development/js/plugins/slick.js',
-        './static/development/js/plugins/syncronex/syncronex.js',
+        // './static/development/js/plugins/syncronex/syncronex.js',
         './static/development/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
         // './static/development/js/plugins/bootstrap-modalmanager.js',
         // './static/development/js/plugins/bootstrap-modal.js',
