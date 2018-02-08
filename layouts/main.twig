@@ -13,19 +13,19 @@
  {{ content | raw }}
 {% else %}
 
-{#
+
 {% set pageURL = _AppHelper.getCurrentUrl(true) %}
 
-{#
 {% if pageURL matches '{sp-tk}' %}
+
     {% set token = pageURL|split('=') %}
     {% set redir = _Page.setHttpRedirects(
         {
-            '|^sp-tk.*|' : _AppHelper.getBaseUrl() ~ '/admin/syncronex/login-paywall?sp-tk=' ~ token[1] ~ '&returnurl=' ~ _AppHelper.getCurrentUrl(false) ~ '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn',
+            '|sp-tk.*|' : _AppHelper.getBaseUrl() ~ '/admin/syncronex/login-paywall?sp-tk=' ~ token[1] ~ '&returnurl=' ~ _AppHelper.getCurrentUrl(false) ~ '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn',
         }, false)
     %}
 {% endif %}
-#}
+
 
 
 {{ this.beginPage() }}
