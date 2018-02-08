@@ -4,8 +4,8 @@
 {{this.registerJs("Acme.CardController();")}}
 
 {% set limit = 99 %}
-
-{% set events = _Event.getEvents() %}
+{% set date = date() %}
+{% set events = _Event.getEvents({"start_date": date.date | split(" ")[0]}) %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set eventCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
