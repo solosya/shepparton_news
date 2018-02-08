@@ -215,12 +215,12 @@ hr.divide10 {
     text-align: center;
 
     @media screen and (min-width: $mmd-break) {
-        width: $container-desktop;
+        width: 970px;
         margin: 0px auto 40px auto !important;        
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
-        width: $container-tablet;
+        width: 728px;
         margin: 0px auto 40px auto !important;
     }    
 
