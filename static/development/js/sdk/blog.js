@@ -25,7 +25,7 @@
             var container = $('#'+opts.containerClass);
         }
         var offset = parseInt(options.offset);
-        console.log(offset);
+
         if(isNaN(offset) || offset < 0) {
             offset = opts.limit;
         }
@@ -43,7 +43,7 @@
         
         var dateFormat = 'SHORT';
 
-        console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
+        // console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
         var requestData = { 
             offset: offset, 
             limit: opts.limit, 
@@ -55,7 +55,9 @@
             requestData['blog_guid'] = options.blogid;
         }
 
-        console.log(_appJsConfig.baseHttpPath);
+        // console.log(_appJsConfig.baseHttpPath);
+        // console.log(requestData);
+        // console.log(_appJsConfig.baseHttpPath + '/'+loadtype+'/load-articles');
 
         return $.ajax({
             type: 'post',

@@ -3,13 +3,14 @@
 
 {{this.registerJs("Acme.CardController();")}}
 
-{% set limit = 99 %}
+{% set limit = 20 %}
 {% set date = date() %}
-{% set events = _Event.getEvents({"start_date": date.date | split(" ")[0]}) %}
+
+{% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set eventCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 
     <main id="main" class="site-main" role="main">
@@ -33,7 +34,7 @@
                 <section class="middle">
                     <div class="row row-space maincards">
                         <div class="col-sm-9">
-                            {% for i in 0..6 if events[eventCount] %}
+                            {% for i in 0..19 if events[eventCount] %}
 
                                 {% set eventMonth = _AppHelper.getDateTimeBasedOnTimezone(events[eventCount].startDate, 'F') %}
                                 {% if monthDivider != eventMonth %}
@@ -53,6 +54,27 @@
                         </div>
                     </div>
                 </section>
+
+
+{#                 <section>
+                    <div class="row">
+                        <div class="col-md-9" style="margin-top:35px;">
+                            <div class="row">
+                                {{ this.render('partials/ajaxarticles.twig', {
+                                    offset: limit,
+                                    limit: limit,
+                                    articles: events,
+                                    card_style: "card-event-list-rec card-event-list-tablet card-event-list-mobile",
+                                    container:"ajaxArticles",
+                                    border: "visible",
+                                    loadtype: "events",
+                                }) | raw }}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+ #}
+
             </div>
             <div class="col-lg-1 visible-lg-block"></div>            
         </div>
