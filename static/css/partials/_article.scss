@@ -40,7 +40,7 @@
 	
 
 	article.article-main {
-		margin-bottom:	96px;
+		margin-bottom:	-60px;
 		// margin-left: -15px;
 		// margin-right: -15px;
 
@@ -61,7 +61,7 @@
 
 
 			.content-block-top {
-				margin-top: 10px;
+				margin-top: 40px;
 				@media screen and (max-width: $sm-break) {
 					margin-top: 0;
 				}
@@ -106,10 +106,6 @@
 					font-family: $font-family-sans-serif;
 					
 					@media screen and (max-width: $sm-break) {
-						margin-top: 40px;
-
-					}
-					@media screen and (max-width: $sm-break) {
 						font-size: rem(26);
 					}
 				}
@@ -142,7 +138,7 @@
 						text-transform:lowercase;
 					}
 					@media screen and (max-width: $mobile-break) {
-						font-size: rem(11);
+						font-size: rem(12);
 					}
 
 				}
@@ -228,6 +224,9 @@
 		.related-articles {
 		    margin-top: 105px;
 		    margin-bottom: 78px;
+		    @media screen and (max-width: $sm-break-down) {
+		    	    margin-top: -60px;
+		    }
 		    
 
 			h1 {
@@ -236,8 +235,10 @@
 				text-transform: uppercase;
 				text-align: center;
 				margin-bottom: 30px;
+				@media screen and (max-width: $sm-break-down) {
+		    	   margin-bottom: 15px;
+			   	}
 			}
-		
 		}
 	}
 

@@ -220,7 +220,7 @@
 
 
                     <div class="row two-cols">
-                       <div class="most-popular col-sm-1 col-md-2">
+                       <div class="most-popular col-sm-1 col-md-2" style="margin:0;">
                            <h2>Most popular</h2>
 
                            {% for i in 0..4 if popularArticles[i] %}
@@ -234,7 +234,7 @@
                         </div>
 
                         <div class="col-sm-1 col-md-2">
-                            <div class="ad-square addSpaceMobile visible-sm-block" style="margin-bottom:30px;">
+                            <div class="ad-square addSpaceMobile visible-sm-block ad-square__left" style="margin-bottom:30px;">
                                 <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-3'>
                                     <script type='text/javascript'>
                                         googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-3'); });
@@ -249,15 +249,10 @@
         </section>
 
 
-        <section class="row">
-            <div class="ad-container">
-                <div id='div-gpt-ad-leaderboard-2' class="google_ad google_ad_leaderboard">
-                    <script type='text/javascript'>
-                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-2'); });
-                    </script>
-                </div>
-            </div>
-        </section>
+        <div class="mobad1">
+            <div id="newAdSlot"></div>
+            <script>loadNextAd()</script> 
+        </div>       
 
 
         <section>
@@ -269,7 +264,7 @@
                         article: articles[articleCount], 
                         imageSize: {width:300, height:160},
                         position: articleCount + 1,
-                        containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
+                        containerClass: 'col-sm-3 card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 2 %}
@@ -283,10 +278,10 @@
 
 
 
-        <section>
+        <section style="margin-bottom: -50px;">
 
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-9 col-md-6">
 
                     {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
@@ -326,14 +321,14 @@
 
         <section>
             <div class="row">
-                <div class="col-md-9" style="margin-top:35px;">
+                <div class="col-md-9">
                     <div class="row">
                         {{ this.render('partials/ajaxarticles.twig', {
                             offset: limit,
                             limit: 12,
                             non_pinned: articlesArr.existingNonPinnedCount, 
                             articles: articles,
-                            card_style: "col-md-3 col-sm-9 card-sm card-sm-mobile row-space40",
+                            card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
                             container:"mainAjaxArticles",
                             buttonClass: "infinite",
                             border: "visible"
@@ -349,5 +344,6 @@
 <script>
 setMySiteStyles('{{networkData.title | lower}}');
 setMyBlogStyles('{{networkData.title | lower}}');
+setMySiteStyles('{{networkData.title | lower}}');
 </script>
 </main><!-- .site-main -->

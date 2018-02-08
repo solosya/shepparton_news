@@ -33086,6 +33086,20 @@ window.templates.modal =
     </div> \
 </div>';
 
+window.templates.carousel_item = 
+'<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
+    <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
+</div>';
+window.templates.listingDeleteTmpl =  
+    '<p>{{msg}}</p> \
+    <div> \
+        <form> \
+            <button class="_btn _btn--red" data-role="{{role}}">DELETE</button> \
+            <button class="_btn _btn--gray">CANCEL</button> \
+        </form> \
+    </div>';
+    
+
 window.templates.pulldown = 
 '<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
     <p class="Acme-pulldown__selected-item"></p> \
@@ -33206,8 +33220,8 @@ Acme.article.prototype.InsertInterstitial = function() {
     	googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });       
     }
     if ($('.article_content > p').length >= 4) {
-        $("<div class='ad-container hidden-md hidden-lg'><div id='div-gpt-ad-mrec-7' class='card__announcement-image google_ad google_ad_mrec text-center' ></div></div>").insertAfter( $('.article_content > p')[2] );        
-    	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
+        $("<div class='ad-container hidden-md hidden-lg' style='height:250px;position:relative;width:300px;margin: 0 auto;'><div id='div-gpt-ad-mrec-2' class='card__announcement-image google_ad google_ad_mrec text-center' ></div></div>").insertAfter( $('.article_content > p')[2] );        
+    	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
 	}
 }
 var AuthController = (function ($) {
@@ -33453,6 +33467,14 @@ var blogSettingsStyles = function(blog) {
     var blogSocTwi = document.getElementById("tw-icon");
     var blogTW = getBlogSettings(blog,3);
     blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
+}
+var setMyAppleIcons = function(blog,url) {
+    var blogAppleIconSm = document.getElementById("apple-icon-sm");
+    blogAppleIconSm.setAttribute("href", url + '/static/icons/apple/' + getBlogSettings(blog,0) + "-mobile-homescreen-57px.png");
+    var blogAppleIconMd = document.getElementById("apple-icon-md");
+    blogAppleIconMd.setAttribute("href", url + '/static/icons/apple/' + getBlogSettings(blog,0) + "-mobile-homescreen-72px.png");
+    var blogAppleIconLg = document.getElementById("apple-icon-lg");
+    blogAppleIconLg.setAttribute("href", url + '/static/icons/apple/' + getBlogSettings(blog,0) + "-mobile-homescreen-144px.png");
 }
 var setMyBlogLogo = function(blog,url) {
     var siteLogo = document.getElementsByClassName("site-logo");
@@ -34153,6 +34175,9 @@ ListingForm.constructor = ListingForm;
             this.data.latitude = data.location['latitude'];
             this.data.longitude = data.location['longitude'];
         },
+        "delete image" : function(data, topic) {
+            return this.deleteImage(data);
+        },
         "after" : function(data, topic) {
             console.log(this.data);
         }
@@ -34194,13 +34219,29 @@ ListingForm.constructor = ListingForm;
             $('#'+this.errorFields[field]).addClass('formError');
         }
     }
+    ListingForm.prototype.saveImage = function(r, data)
+    {
+        var newImageId = r.media.media_id;
+        var mediaids = [];
+        if (this.data.media_ids != "") {
+            mediaids = this.data.media_ids.split(',');
+        }
+        mediaids.push(newImageId);
+        this.data.media_ids = mediaids.join(',');
+        this.data.media_id = mediaids[0];
+
+        this.renderImageThumbs([data]);
+        return true;
+    }
     ListingForm.prototype.renderImageThumbs = function(images) 
     {
         var imageArray = $('#imageArray');
         var html = "";
+        var temp = Handlebars.compile(window.templates.carousel_item); 
+
         for (var i=0;i<images.length;i++) {
             var imagePath = images[i].url || images[i].path;
-            html += '<div class="formimage" style="background-image:url(' + imagePath + ')"></div>';
+            html += temp({"imagePath": imagePath, 'imageid' : images[i].media_id});
         }
         imageArray.append(html);
     },
@@ -34220,6 +34261,7 @@ ListingForm.constructor = ListingForm;
             'media_ids': ''
         };
     },
+
     ListingForm.prototype.events = function() 
     {
         var self = this;
@@ -34261,31 +34303,30 @@ ListingForm.constructor = ListingForm;
                     inner.hide();
 
                     Acme.server.create('/api/article/save-image', postdata).done(function(r) {
-
-                        var newImageId = r.media.media_id;
-                        var arrayid = $(obj).data('id');
-                        var mediaids = [];
-                        if (self.data.media_ids != "") {
-                            mediaids = self.data.media_ids.split(',');
+                        console.log(r);
+                        if (self.saveImage(r, data) ) {
+                            outer.removeClass("spinner");
+                            inner.show();
                         }
-                        mediaids.push(newImageId);
-                        self.data.media_ids = mediaids.join(',');
-                        self.data.media_id = mediaids[0];
-
-                        self.renderImageThumbs([data]);
-                        $().General_ShowNotification({message: 'Image added successfully' });
-                        outer.removeClass("spinner");
-                        inner.show();
-
                     }).fail(function(r) {
                         console.log(r);
                     });
                 }
         });
 
+        $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
+            var elem = $(e.target);
+            var mediaId = elem.data('id');
+            Acme.PubSub.publish('update_state', {'confirmDeleteImage': {elem:elem, id:mediaId}});
+        });
+
         $('#listingFormClear').on('click', function(e) {
             $('#listingFormSubmit').text('SUBMIT');
             self.clear();
+        });
+
+        $('#listingFormDelete').on('click', function(e) {
+            Acme.PubSub.publish('update_state', {'confirmDelete': ""});
         });
 
         $('#listingForm').submit(function(e) {
@@ -34304,7 +34345,7 @@ ListingForm.constructor = ListingForm;
                 Acme.PubSub.publish('update_state', {'confirm': r});
                 Acme.PubSub.publish('update_state', {'userArticles': ''});
             }).fail(function(r) {
-                console.log(r);
+                // console.log(r);
             });
         });
     }
@@ -34577,7 +34618,7 @@ Acme.Confirm = function(template, parent, layouts) {
                     formData[this.name] = this.value;
                 });
                 Acme.server.create('/api/auth/login', formData).done(function(r) {
-                    console.log(r);
+                    // console.log(r);
                     if (r.success === 1) {
                         window.location.href = location.origin;
                     } else {
@@ -34595,6 +34636,7 @@ Acme.Confirm = function(template, parent, layouts) {
 
 var layouts = {
     "listing"   : 'listingSavedTmpl',
+    "delete"   : 'listingDeleteTmpl',
 };
 
 Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
@@ -34606,6 +34648,23 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
     {
         "confirm" : function(data, topic) {
             this.render("listing", "Thank you for submitting your event.");
+        },
+        "confirmDelete" : function(data, topic) {
+            this.render("delete", "Warning", { msg: "Are you sure you want to permanently delete this listing?", role:"delete"});
+        },
+        "confirmDeleteImage" : function(data, topic) {
+            console.log(data, topic);
+            this.data = data;
+            console.log(this.data);
+            this.render("delete", "Warning", 
+                {
+                     msg: "Are you sure you want to permanently delete this image?", 
+                     role:"deleteImage"
+                 }
+            );
+        },
+        "closeConfirm" : function(data, topic) {
+            this.closeWindow();
         }
     };
 

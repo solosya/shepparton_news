@@ -81,12 +81,52 @@ div[class*="col-sm"] {
   animation: spinner .6s linear infinite;
 }
 
+.border__left{
+    border-left: 1px solid rgba(74, 74, 74, 0.3);
+    padding-left: 50px;
+    margin-left: -50px;
+}
 
 .addSpaceMobile {
     @media screen and (max-width: $sm-break-down){
         margin:40px 0;
     }
 }
+
+.section-page__main {
+     @media screen and (max-width: $sm-break-down){
+        margin-top: 40px !important;
+    }
+}
+
+.carousel-tray {
+    clear:both;
+    margin:20px 0;
+    overflow:auto;
+}
+.carousel-tray__item {
+    float:left;
+    margin-right:15px;
+    height:150px;
+    width:150px;
+    background-size:cover;
+}
+.carousel-tray__delete {
+    display:block;
+    width:20px;
+    height:20px;
+    background-image: url('../icons/cross-reverse.svg');
+    background-repeat: no-repeat;
+    // background-size:contain;
+    background-color: rgba(255,255,255,.5);
+    margin-top: 5px;
+    margin-left: 5px;
+    background-position: center;
+    &:hover {
+        cursor:pointer;
+    }
+}
+
 
 
 div.space40 {
@@ -158,6 +198,12 @@ hr.divide10 {
             margin: 30px auto 30px auto;
         }
     }
+    &.ad-square__left {
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
+            left: 15px;
+            position: absolute;
+        }
+    }
 }
 
 .ad-large-vert {
@@ -169,12 +215,12 @@ hr.divide10 {
     text-align: center;
 
     @media screen and (min-width: $mmd-break) {
-        width: $container-desktop;
+        width: 970px;
         margin: 0px auto 40px auto !important;        
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
-        width: $container-tablet;
+        width: 728px;
         margin: 0px auto 40px auto !important;
     }    
 
@@ -211,6 +257,18 @@ hr.divide10 {
     .mobad6 {
         margin-top: 0px !important;
         margin-bottom: -15px !important;
+    }
+    .mobad7 {
+        margin-top: -5px !important;
+        margin-bottom: 15px !important;
+    }
+    .mobad8 {
+        margin-top: -50px!important;
+        margin-bottom: 15px!important;
+    }
+    .mobad9 {
+        margin-top: -15px!important;
+        margin-bottom: 15px!important;
     }
     .mobadregen {
         margin-top: -58px!important;
@@ -324,6 +382,12 @@ div.bloggerImg {
                 }        
             }
         }
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+            right: 30px;
+            > img {
+                height: 70px;
+            }
+        }
     } 
 }
 
@@ -331,28 +395,32 @@ div.bloggerImg {
     margin-top: 25px;
     @media screen and (min-width: $sm-break) {
         background-color: white;
-        margin-top: -62px;
+        margin-top: -69px;
         padding-left: 35px;
         margin-left: -15px;
         width: 22%;
+        @media screen and (max-width: $mmd-break-down) {
+            margin-left: -35px;
+            width: 26%;
+        }
     }
-    > h2 {
+    
+    a h2 {
         font-size: rem(22);
         font-family:$font-family-sans-serif;
         font-weight: 600;
-        border-bottom: solid 1px rgba(74,74,74,.3);
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-        &.country {
-            color: #0d522e;
-        }
-        &.shepparton {
-            color: #f03746;
-        }
+        // border-bottom: solid 1px rgba(74,74,74,.3);
+        color: #000;
+        font-style: normal;
+        // &.country {
+        //     color: #0d522e;
+        // }
+        // &.shepparton {
+        //     color: #f03746;
+        // }
     }
     > a {
-        right: 0;
-        position: absolute;
+        
         margin-right: 15px;
         font-family: $font-family-serif;
         font-style: italic;
@@ -363,6 +431,9 @@ div.bloggerImg {
         &.shepparton {
             color: #f03746;
         }
+    }
+    hr {
+        margin: 7px 0;
     }
 }
 

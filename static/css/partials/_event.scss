@@ -87,6 +87,14 @@
 		
 		.event-content {
 
+		&.event-content__body {	
+			@media screen and (min-width: $sm-break) {	
+				border-right: solid 1px #b9b9b9;
+			}
+			margin: 40px 0;
+		}
+
+
 			p {
 				font-size: rem(16);
 				font-weight: 300;
@@ -121,8 +129,7 @@
 
 
 			.content-block-top {
-				margin-bottom: 10px;
-				margin-top:40px;			
+				margin-bottom: 10px;			
 			}
 
 			p.category {
@@ -166,6 +173,7 @@
 				margin-bottom: 0;
 				color:	#1c2a38;
 				font-family: $font-family-sans-serif;
+				width: 90%;
 				
 				@media screen and (max-width: $sm-break) {
 					margin-top: 40px;
@@ -238,9 +246,8 @@
 		}
 		.event-sidebar {
 			margin: 65px 0 100px 0;
-			height: 800px;
-			border-left: solid 1px #b9b9b9;
-
+			height: 100%;
+			
 
 			.event-details{
 				div.event-detail {
@@ -321,7 +328,7 @@
 		}
 
 		.event-map {
-			margin-top: 90px;
+			margin: 90px 0;
 		}
 
 		.sidebar {

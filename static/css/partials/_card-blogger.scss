@@ -134,7 +134,7 @@
                         line-height:1.13;
                         margin-top:12px;
                         margin-bottom:10px;
-                        height:37px;
+                        height:55px;
                         width: 80%;
                     }
 
@@ -212,7 +212,7 @@
 
         a.card {
             @include card-image-top(auto, 160px);
-            height: 190px;            
+            height: 140px;            
 
             > article {
                 position:relative;
@@ -233,6 +233,7 @@
                     height: 140px;
                     position:relative;
                     padding: 0;
+                    width: 80%;
 
                     > .category{
                     }

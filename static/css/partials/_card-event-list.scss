@@ -359,7 +359,8 @@
                             font-size: rem(14);
                             font-style: italic;
                             height: 18px;
-                            word-wrap: break-word;
+                            word-wrap: break-word; 
+                            overflow: hidden;
                         }
                     }
 

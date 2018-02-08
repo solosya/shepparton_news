@@ -34,6 +34,9 @@ ListingForm.constructor = ListingForm;
             this.data.latitude = data.location['latitude'];
             this.data.longitude = data.location['longitude'];
         },
+        "delete image" : function(data, topic) {
+            return this.deleteImage(data);
+        },
         "after" : function(data, topic) {
             console.log(this.data);
         }
@@ -75,13 +78,29 @@ ListingForm.constructor = ListingForm;
             $('#'+this.errorFields[field]).addClass('formError');
         }
     }
+    ListingForm.prototype.saveImage = function(r, data)
+    {
+        var newImageId = r.media.media_id;
+        var mediaids = [];
+        if (this.data.media_ids != "") {
+            mediaids = this.data.media_ids.split(',');
+        }
+        mediaids.push(newImageId);
+        this.data.media_ids = mediaids.join(',');
+        this.data.media_id = mediaids[0];
+
+        this.renderImageThumbs([data]);
+        return true;
+    }
     ListingForm.prototype.renderImageThumbs = function(images) 
     {
         var imageArray = $('#imageArray');
         var html = "";
+        var temp = Handlebars.compile(window.templates.carousel_item); 
+
         for (var i=0;i<images.length;i++) {
             var imagePath = images[i].url || images[i].path;
-            html += '<div class="formimage" style="background-image:url(' + imagePath + ')"></div>';
+            html += temp({"imagePath": imagePath, 'imageid' : images[i].media_id});
         }
         imageArray.append(html);
     },
@@ -101,6 +120,7 @@ ListingForm.constructor = ListingForm;
             'media_ids': ''
         };
     },
+
     ListingForm.prototype.events = function() 
     {
         var self = this;
@@ -142,31 +162,30 @@ ListingForm.constructor = ListingForm;
                     inner.hide();
 
                     Acme.server.create('/api/article/save-image', postdata).done(function(r) {
-
-                        var newImageId = r.media.media_id;
-                        var arrayid = $(obj).data('id');
-                        var mediaids = [];
-                        if (self.data.media_ids != "") {
-                            mediaids = self.data.media_ids.split(',');
+                        console.log(r);
+                        if (self.saveImage(r, data) ) {
+                            outer.removeClass("spinner");
+                            inner.show();
                         }
-                        mediaids.push(newImageId);
-                        self.data.media_ids = mediaids.join(',');
-                        self.data.media_id = mediaids[0];
-
-                        self.renderImageThumbs([data]);
-                        $().General_ShowNotification({message: 'Image added successfully' });
-                        outer.removeClass("spinner");
-                        inner.show();
-
                     }).fail(function(r) {
                         console.log(r);
                     });
                 }
         });
 
+        $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
+            var elem = $(e.target);
+            var mediaId = elem.data('id');
+            Acme.PubSub.publish('update_state', {'confirmDeleteImage': {elem:elem, id:mediaId}});
+        });
+
         $('#listingFormClear').on('click', function(e) {
             $('#listingFormSubmit').text('SUBMIT');
             self.clear();
+        });
+
+        $('#listingFormDelete').on('click', function(e) {
+            Acme.PubSub.publish('update_state', {'confirmDelete': ""});
         });
 
         $('#listingForm').submit(function(e) {
@@ -185,7 +204,7 @@ ListingForm.constructor = ListingForm;
                 Acme.PubSub.publish('update_state', {'confirm': r});
                 Acme.PubSub.publish('update_state', {'userArticles': ''});
             }).fail(function(r) {
-                console.log(r);
+                // console.log(r);
             });
         });
     }
@@ -458,7 +477,7 @@ Acme.Confirm = function(template, parent, layouts) {
                     formData[this.name] = this.value;
                 });
                 Acme.server.create('/api/auth/login', formData).done(function(r) {
-                    console.log(r);
+                    // console.log(r);
                     if (r.success === 1) {
                         window.location.href = location.origin;
                     } else {
@@ -476,6 +495,7 @@ Acme.Confirm = function(template, parent, layouts) {
 
 var layouts = {
     "listing"   : 'listingSavedTmpl',
+    "delete"   : 'listingDeleteTmpl',
 };
 
 Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
@@ -487,6 +507,23 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
     {
         "confirm" : function(data, topic) {
             this.render("listing", "Thank you for submitting your event.");
+        },
+        "confirmDelete" : function(data, topic) {
+            this.render("delete", "Warning", { msg: "Are you sure you want to permanently delete this listing?", role:"delete"});
+        },
+        "confirmDeleteImage" : function(data, topic) {
+            console.log(data, topic);
+            this.data = data;
+            console.log(this.data);
+            this.render("delete", "Warning", 
+                {
+                     msg: "Are you sure you want to permanently delete this image?", 
+                     role:"deleteImage"
+                 }
+            );
+        },
+        "closeConfirm" : function(data, topic) {
+            this.closeWindow();
         }
     };
 

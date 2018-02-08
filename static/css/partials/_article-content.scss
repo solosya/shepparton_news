@@ -18,17 +18,17 @@
 		}
 
 
-		> {
-			& span, u, p, ul, li, strong, b, h1, h2, h3, h4, h5, h6, figure, figcaption, img, blockquote {
-				&[style] {
-				font-size: inherit!important;
-				font-weight: inherit!important;
-		    	line-height: inherit!important;
-				font-family: inherit!important;
-				letter-spacing: inherit!important;
-				}
-			}
-		}
+		// > {
+		// 	& span, u, p, ul, li, strong, b, h1, h2, h3, h4, h5, h6, figure, figcaption, img, blockquote {
+		// 		&[style] {
+		// 		font-size: inherit!important;
+		// 		font-weight: inherit!important;
+		//     	line-height: inherit!important;
+		// 		font-family: inherit!important;
+		// 		letter-spacing: inherit!important;
+		// 		}
+		// 	}
+		// }
 		.pdf-link {
 				color:#8a8b93;
 				font-family: $font-family-sans-serif;

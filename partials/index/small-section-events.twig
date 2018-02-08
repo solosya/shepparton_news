@@ -23,13 +23,7 @@
 
     </div>
 
-    <div class="ad-container hidden-md hidden-lg mobad2">
-        <div id='div-gpt-ad-mrec-5' class="card__announcement-image google_ad google_ad_mrec text-center" >
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
-            </script>
-        </div>
-    </div>
+   
 
     <div class="col-sm-3">
         
@@ -41,7 +35,8 @@
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
             {% if i == 0 %}
-                <hr class="divide">
+                <hr class="divide hidden-xs" style="margin: 32px 0;">
+                <hr class="divide visible-xs-block">
             {% endif %}
 
         {% endfor %}
@@ -49,16 +44,17 @@
     </div>
 
     <div class="col-sm-2 mini-events">
-        <h2 class=" {{ site }}">Events</h2>
-        {% for i in 0..2 if events[i] %}
+        <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
+            <a href="{{networkData.defaultBlogUrl}}/@events"><h2 class="">Events</h2></a>
+        {% for i in 0..3 if events[i] %}
             {{this.render('../_single-event.twig', {
                 event: events[i],
                 imageSize: {width: 90},
-                containerClass: 'card-event card-event-tablet'
+                containerClass: 'card-event card-event-tablet card-event-mobile'
             }) | raw}}
                 <hr class="divide12">
         {% endfor %}
-        <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
+        
     </div>
 </section>
 

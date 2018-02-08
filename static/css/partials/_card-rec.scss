@@ -33,9 +33,16 @@
                     p{
                         display:block;
                         font-weight:700;
-                        color:#0d522e;
+                        color: color(red);
                         border:none;
                         font-family:$font-family-sans-serif;
+
+                        &.country {
+                            color:#0d522e;
+                        }
+                        &.dairy {
+                            color: #118ce0;
+                        }
                     }
                     time{
                         display:block;
@@ -220,9 +227,16 @@
                         font-size: rem(16);
                     }
 
+                    p.excerpt {
+                        display: block;
+                        margin: 8px 0 15px 0;
+                        height: 40px;
+                        font-size: rem(13)
+                    }
+
                     .author{
                         p {
-                            font-size: rem(10);
+                            font-size: rem(14);
                         }
                     }
                 }
