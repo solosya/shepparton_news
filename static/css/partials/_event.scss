@@ -1,6 +1,10 @@
 .events-heading {
 
 	margin-bottom: 0 !important;
+	@media screen and (max-width: $sm-break-down) {
+		margin-top: 25px;
+	}
+	
 
     div.hk {
         display:flex;
@@ -62,6 +66,9 @@
 
 	&:not(:first-child) {
 		margin-top: 60px;
+		@media screen and (max-width: $sm-break-down) {
+			margin-top: 30px;
+		}
 	}
 }
 

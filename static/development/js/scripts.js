@@ -261,6 +261,14 @@ $('document').ready(function() {
         });
     }), 750);
 
+    var cardHolderTwo = '';
+    clearTimeout(cardHolderTwo);
+    cardHolderTwo = setTimeout((function() {
+        $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
+            watch: true
+        });
+    }), 750);
+
 
     $("#owl-thumbnails").owlCarousel({
         items: 1,
