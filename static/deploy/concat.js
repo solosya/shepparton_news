@@ -30705,7 +30705,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             var container = $('#'+opts.containerClass);
         }
         var offset = parseInt(options.offset);
-        console.log(offset);
+
         if(isNaN(offset) || offset < 0) {
             offset = opts.limit;
         }
@@ -30723,7 +30723,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         
         var dateFormat = 'SHORT';
 
-        console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
+        // console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
         var requestData = { 
             offset: offset, 
             limit: opts.limit, 
@@ -30735,7 +30735,9 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             requestData['blog_guid'] = options.blogid;
         }
 
-        console.log(_appJsConfig.baseHttpPath);
+        // console.log(_appJsConfig.baseHttpPath);
+        // console.log(requestData);
+        // console.log(_appJsConfig.baseHttpPath + '/'+loadtype+'/load-articles');
 
         return $.ajax({
             type: 'post',
@@ -32240,6 +32242,7 @@ jQuery(document).ready(function () {
         return this.each(function () {
             var elem = $(this);
             $(elem).click(function (e) {
+
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -32272,9 +32275,14 @@ jQuery(document).ready(function () {
     };
 
     $.loadScript = function (url, callback) {
+        if ( $('#fileuploadscript').length ) {
+            callback();
+            return;
+        }
 
         var script = document.createElement("script")
         script.type = "text/javascript";
+        script.id = "fileuploadscript";
 
         if (script.readyState) {  //IE
             script.onreadystatechange = function () {
@@ -32343,9 +32351,11 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme.View         = {};
     Acme.Model        = {};
     Acme.Collection   = {};
+    Acme.Controller   = {};
+    Acme.State        = {};
 
     $('html').on('click', function(e) {
-        $('.pulldown ul').hide();
+        $('.Acme-pulldown ul').hide();
     });
 
     Acme.server = {
@@ -32362,12 +32372,11 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             type = (typeof type !== 'undefined') ? type : 'get';
 
             queryParams = (typeof queryParams !== 'undefined') ? queryParams : {};
-
-            // console.log(type + ': ' + window.location.origin + '/api/' + uri);
-            // if (Object.keys(queryParams).length > 0 ) console.log(queryParams);
-            console.log(_appJsConfig.appHostName + uri, queryParams);
+            
+            var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
+            console.log(url);
             return $.ajax({
-                url: _appJsConfig.appHostName + uri,
+                url: url,
                 data: queryParams,
                 dataType: datatype || "json",
                 type: type
@@ -32391,14 +32400,11 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     }
 
     Acme.listen = function() {};
-
     Acme.listen.prototype.listener = function(topic, data)
     {
         var keys = Object.keys(data);
-
         for (var i = 0; i<keys.length; i++) {
             for (var listener in this.listeners) {
-
                 if ( listener === keys[i] ) {
                     this.listeners[listener].call(this, data, topic);
                     if (this.listeners.after) {
@@ -32456,6 +32462,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
     Acme._View = function() {};
         Acme._View.prototype = new Acme.listen();
         Acme._View.prototype.updateData = function(data) {
+
             var key = Object.keys(data)[0];
             var keySplit = key.split('.');
             var scope = this.data;
@@ -32654,12 +32661,14 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                         scope = scope[scopeSplit[k]];
                         if (scope == undefined) return;
                     }
-                    console.log(scope);
-                    console.log(scopeSplit[scopeSplit.length - 1]);
-                    console.log( subscribers[i].func );
-                    console.log(scope[scopeSplit[scopeSplit.length - 1]]);
-                    scope[scopeSplit[scopeSplit.length - 1]][subscribers[i].func]( topic, data );
 
+                    var caller = scope[scopeSplit[scopeSplit.length - 1]];
+                    var func   = subscribers[i].func;
+                    // console.log(topic, data);
+                    // console.log(caller, func);
+                    if (caller) {
+                        caller[func]( topic, data );
+                    }
                 }
                 dfd.resolve();
             };
@@ -32742,12 +32751,15 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
 
     Acme.listMenu = function(config)
     {
-        this.defaultTemp      = Handlebars.compile('<div id="{{ name }}" class="pulldown"><p></p><span></span><ul data-key="{{ key }}" class="articleExtendedData"></ul></div>');
-        this.defaultItemTemp  = Handlebars.compile('<li data-value="{{value}}">{{label}}</li>');
+        this.defaultTemp      = Handlebars.compile(window.templates.pulldown);
+        this.defaultItemTemp  = Handlebars.compile('<li data-clear="{{clear}}" data-value="{{value}}" style="text-align:left">{{label}}</li>');
+        this.divider          = "<hr>";
         this.menuParent       = config.parent        || {};
+        this.class            = config.class         || "";
         this.template         = config.template      || this.defaultTemp;
         this.itemTemp         = config.itemTemp      || this.defaultItemTemp;
         this.list             = config.list          || [];
+        this.allowClear       = config.allowClear    || null;
         this.defaultSelection = config.defaultSelect || null;
         this.name             = config.name          || null;
         this.key              = config.key           || null;
@@ -32758,7 +32770,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         Acme.listMenu.prototype.init = function(prepend)
         {
             var prepend = prepend || 'append';
-            this.menuParent[prepend]( this.template({"name": this.name, "key":this.key}) );
+            this.menuParent[prepend]( this.template({"name": this.name, "key":this.key, "class":this.class}) );
             this.defaultItem   = $('#' + this.name+' p');
             this.listContainer = $('#' + this.name+' ul');
             this.events();
@@ -32789,6 +32801,13 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         {
             var itemTemp = this.itemTemp;
             var html = '';
+            if (this.allowClear) {
+                html = itemTemp({
+                    'label'   :  'Any',
+                    'value'   :  '',
+                    'clear'   : true
+                });      
+            }
 
             for (var i=0; i<this.list.length; i++) {
                 if (typeof this.list[i] === 'string') {
@@ -32813,11 +32832,20 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
                 });
                 var elem = $(e.target);
                 var value = elem.data('value');
+                var clear = elem.data('clear');
                 elem.attr('checked', true);
                 var data = {};
                 data[self.key || self.name] = value;
+
                 Acme.PubSub.publish('update_state', data);
-                self.defaultItem.text(elem.text());
+                
+                if (clear) {
+                    self.reset();
+                } else {
+                    self.defaultItem.text(elem.text())
+                                    .addClass('Acme-pulldown__selected-item--is-active');
+                }
+
                 $(self.listContainer).hide(100);
             });
         };
@@ -32829,117 +32857,126 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
         };
         Acme.listMenu.prototype.reset = function()
         {
-            var menuid = '#' + this.name + ' > p';
-            $(menuid).text(this.defaultSelection.label);
+
+            // var menuid = $('#' + this.name + ' > p');
+            this.defaultItem.text(this.defaultSelection.label)
+                  .removeClass('Acme-pulldown__selected-item--is-active');
             return this;
         };
         Acme.listMenu.prototype.remove = function()
         {
             $('#' + this.name).remove();
             return this;
-        }
+        };
         Acme.listMenu.prototype.clear = function()
         {
             $('#' + this.name).html('');
             return this;
-        }
+        };
         Acme.listMenu.prototype.empty = function()
         {
             this.listContainer.empty();
             return this;
-        }
+        };
         Acme.listMenu.prototype.update = function(list)
         {
             this.list = list;
             this.empty();
             this.render();
             return this;
-        }
+        };
 
 
 
-        Acme.modal = function(template, parent, layouts, data) {
-            this.parentCont = parent || null;
-            this.template = template || null;
-            this.layouts = layouts   || null;
-            this.data = data         || {};
-            this.dfd = $.Deferred();
-        }
-            Acme.modal.prototype = new Acme.listen();
+    Acme.modal = function(template, name, layouts, data) {
+        this.parentCont = name || null;
+        this.template = template || null;
+        this.layouts = layouts   || null;
+        this.data = data         || {};
+        this.dfd = $.Deferred();
+    }
+        Acme.modal.prototype = new Acme.listen();
 
-            Acme.modal.prototype.render = function(layout, title) {
+        Acme.modal.prototype.render = function(layout, title, data) {
+            if (title) {
+                this.data['title'] = title;
+            }
+            this.data['name'] = this.parentCont;
+            var tmp = Handlebars.compile(window.templates[this.template]);
+            var tmp = tmp(this.data);
+            $('body').addClass('active').append(tmp);
+            if (layout) {
+                this.renderLayout(layout, data);
+            }
+            this.events();
+            return this.dfd.promise();
+        };
+        Acme.modal.prototype.renderLayout = function(layout, data) {
+            var data = data || {};
+            console.log(data);
+            var tmp = Handlebars.compile(window.templates[this.layouts[layout]]);
+            var layout = tmp(data);
+            // var layout = window.templates[this.layouts[layout]];
 
-                if (title) {
-                    this.data['title'] = title;
+            $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
+        };
+        Acme.modal.prototype.events = function() 
+        {
+            var self = this;
+            $('#'+this.parentCont).on("click", function(e) {
+                self.handle(e);
+            });
+
+        };
+        Acme.modal.prototype.handle = function(e) {
+            var $elem = $(e.target);
+
+            if (!$elem.is('input')) {
+                e.preventDefault();
+            }
+
+            if ( $elem.is('button') ) {
+                if ($elem.text().toLowerCase() === "cancel" || $elem.data('role') == 'cancel') {
+                    this.dfd.fail();
+                    this.closeWindow();
+
+                } else if ($elem.text().toLowerCase() === "okay" || $elem.data('role') == 'okay') {
+                    this.dfd.resolve();
+                    this.closeWindow();
+
+
+                    // State can be provided by client external to 'show' call
+                    // if (data === undefined && that.state) {
+                    //     data = that.state;
+                    // // If data is also provided we merge the two
+                    // } else if (that.state) {
+                    //     var keys = Object.keys(that.state)
+                    //     for (var k=0; k<keys.length;k++) {
+                    //         data[keys[k]] = that.state[keys[k]];
+                    //     }
+                    // }
+
+                    // if (self != undefined) {
+                    //     if (data != undefined) {
+                    //         var result = callback.call(self, data);
+                    //         this.dfd.resolve(result);
+                    //     } else {
+                    //         var result = callback.call(self);
+                    //         this.dfd.resolve(result);
+                    //     }
+                    // } else {
+                    //     var result = callback();
+                    //     this.dfd.resolve(result);
+                    // }
                 }
-                console.log(this.template);
-                console.log(window.templates);
-                var tmp = Handlebars.compile(window.templates[this.template]);
-                var tmp = tmp(this.data);
-                $('body').addClass('active').append(tmp);
-                if (layout) {
-                    this.renderLayout(layout);
-                }
-                this.events();
-                return this.dfd.promise();
-            };
-            Acme.modal.prototype.renderLayout = function(layout) {
-                var layout = window.templates[this.layouts[layout]];
-                $(this.parentCont).find('#dialogContent').empty().append(layout); 
-            };
-            Acme.modal.prototype.events = function() 
-            {
-                var self = this;
-                $(this.parentCont).on("click", function(e) {
-                    self.handle(e);
-                });
-
-            };
-            Acme.modal.prototype.handle = function(e) {
-                var $elem = $(e.target);
-
-                if (!$elem.is('input')) {
-                    e.preventDefault();
-                }
-
-                if ( $elem.is('button') ) {
-                    if ($elem.text() === "Cancel") {
-                        this.closeWindow();
-                    } else if ($elem.text() === "Okay") {
-                        this.closeWindow();
-
-                        // State can be provided by client external to 'show' call
-                        // if (data === undefined && that.state) {
-                        //     data = that.state;
-                        // // If data is also provided we merge the two
-                        // } else if (that.state) {
-                        //     var keys = Object.keys(that.state)
-                        //     for (var k=0; k<keys.length;k++) {
-                        //         data[keys[k]] = that.state[keys[k]];
-                        //     }
-                        // }
-
-                        // if (self != undefined) {
-                        //     if (data != undefined) {
-                        //         var result = callback.call(self, data);
-                        //         this.dfd.resolve(result);
-                        //     } else {
-                        //         var result = callback.call(self);
-                        //         this.dfd.resolve(result);
-                        //     }
-                        // } else {
-                        //     var result = callback();
-                        //     this.dfd.resolve(result);
-                        // }
-                    }
-                }
-                return $elem;
-            };
-            Acme.modal.prototype.closeWindow = function() {
-                $('body').removeClass('active');
-                $(this.parentCont).remove();
-            };
-        
+            }
+            return $elem;
+        };
+        Acme.modal.prototype.closeWindow = function() {
+            $('body').removeClass('active');
+            $('#'+this.parentCont).remove();
+        };
+    
 
 
 
@@ -33001,10 +33038,7 @@ function(a){"use strict";void 0===a.en&&(a.en={"mejs.plural-form":1,"mejs.downlo
             $('#dialog').closest('#wrapper').remove();
         }
     };
-
-
-
-
+    
 }(jQuery));
 
 
@@ -34209,7 +34243,7 @@ ListingForm.constructor = ListingForm;
             var fieldname = this.compulsoryFields[field].split('.').reverse()[0];
             $('#'+fieldname).removeClass('formError');
         }
-    }
+    };
     ListingForm.prototype.addErrorHightlights = function()
     {
         if (this.errorFields.length > 0) {
@@ -34218,10 +34252,11 @@ ListingForm.constructor = ListingForm;
         for (var field in this.errorFields) {
             $('#'+this.errorFields[field]).addClass('formError');
         }
-    }
+    };
     ListingForm.prototype.saveImage = function(r, data)
     {
         var newImageId = r.media.media_id;
+        data.media_id = newImageId;
         var mediaids = [];
         if (this.data.media_ids != "") {
             mediaids = this.data.media_ids.split(',');
@@ -34232,7 +34267,30 @@ ListingForm.constructor = ListingForm;
 
         this.renderImageThumbs([data]);
         return true;
-    }
+    };
+    ListingForm.prototype.deleteImage = function(data) 
+    {
+        var info = data['delete image'].confirmDeleteImage;
+        var elem = info.elem;
+        var id = info.id;
+        elem.parent().remove();
+
+        mediaids = this.data.media_ids.split(',');
+        var index = mediaids.indexOf(id.toString());
+        if (index > -1) {
+            mediaids.splice(index, 1);
+        }
+        
+        if (mediaids.length > 0) {
+            this.data.media_id = mediaids[0];
+            this.data.media_ids = mediaids.join(',');
+        } else {
+            this.data.media_id = '';
+            this.data.media_ids = '-1';
+        }
+
+        Acme.PubSub.publish('update_state', {'closeConfirm': ''});
+    };
     ListingForm.prototype.renderImageThumbs = function(images) 
     {
         var imageArray = $('#imageArray');
@@ -34244,7 +34302,7 @@ ListingForm.constructor = ListingForm;
             html += temp({"imagePath": imagePath, 'imageid' : images[i].media_id});
         }
         imageArray.append(html);
-    },
+    };
     ListingForm.prototype.clear = function(images) 
     {
         if (this.menus) {
@@ -34260,8 +34318,26 @@ ListingForm.constructor = ListingForm;
             'blogs': this.blogId,
             'media_ids': ''
         };
-    },
+    };
+    ListingForm.prototype.submit = function()
+    {
+        var validated = this.validate();
+        if (!validated) {
+            this.render();
+            return;
+        }
 
+        this.data.theme_layout_name = this.layout;
+
+        Acme.server.create('/api/article/create', this.data).done(function(r) {
+            $('#listingFormClear').click();
+            Acme.PubSub.publish('update_state', {'confirm': r});
+            Acme.PubSub.publish('update_state', {'userArticles': ''});
+        }).fail(function(r) {
+            Acme.PubSub.publish('update_state', {'confirm': r});
+            console.log(r);
+        });
+    };
     ListingForm.prototype.events = function() 
     {
         var self = this;
@@ -34288,30 +34364,31 @@ ListingForm.constructor = ListingForm;
 
 
         $('.uploadFileBtn').uploadFile({
-               onSuccess: function(data, obj){
+           onSuccess: function(data, obj){
 
-                    var resultJsonStr = JSON.stringify(data);
+                var resultJsonStr = JSON.stringify(data);
 
-                    var postdata = {
-                        'blogs' : self.blogId,
-                        'imgData' : resultJsonStr
-                    };
+                var postdata = {
+                    'blogs' : self.blogId,
+                    'imgData' : resultJsonStr
+                };
 
-                    var outer = $("#uploadFileBtn");
-                    var inner = $("#InnerUploadFileBtn");
-                    outer.addClass("spinner");
-                    inner.hide();
+                var outer = $("#uploadFileBtn");
+                var inner = $("#InnerUploadFileBtn");
+                outer.addClass("spinner");
+                inner.hide();
 
-                    Acme.server.create('/api/article/save-image', postdata).done(function(r) {
-                        console.log(r);
-                        if (self.saveImage(r, data) ) {
-                            outer.removeClass("spinner");
-                            inner.show();
-                        }
-                    }).fail(function(r) {
-                        console.log(r);
-                    });
-                }
+                Acme.server.create('/api/article/save-image', postdata).done(function(r) {
+                    // console.log(r);
+                    // console.log(data);
+                    if (self.saveImage(r, data) ) {
+                        outer.removeClass("spinner");
+                        inner.show();
+                    }
+                }).fail(function(r) {
+                    // console.log(r);
+                });
+            }
         });
 
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
@@ -34331,24 +34408,9 @@ ListingForm.constructor = ListingForm;
 
         $('#listingForm').submit(function(e) {
             e.preventDefault();
-
-            var validated = self.validate();
-            if (!validated) {
-                self.render();
-                return;
-            }
-
-            self.data.theme_layout_name = self.layout;
-
-            Acme.server.create('/api/article/create', self.data).done(function(r) {
-                $('#listingFormClear').click();
-                Acme.PubSub.publish('update_state', {'confirm': r});
-                Acme.PubSub.publish('update_state', {'userArticles': ''});
-            }).fail(function(r) {
-                // console.log(r);
-            });
+            self.submit();
         });
-    }
+    };
     ListingForm.prototype.validate = function(checkFields) {
         // checkFields is used to validate a single field, 
         // otherwise itereate through all compulsory fields
@@ -34542,7 +34604,6 @@ Acme.EventForm = function(blogId)
         };
 
         EventPostGoogleMap();
-
     }
 
 
@@ -34632,6 +34693,11 @@ Acme.Confirm = function(template, parent, layouts) {
             var layout = $elem.data('layout');
             this.renderLayout(layout);
         }
+
+        if ($elem.data('role') === 'deleteImage') {
+            Acme.PubSub.publish("update_state", {'delete image': self.data });
+        }
+
     };
 
 var layouts = {
@@ -34639,7 +34705,7 @@ var layouts = {
     "delete"   : 'listingDeleteTmpl',
 };
 
-Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
+Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
         'Acme.confirmView.listener' : ['update_state']
     });
@@ -34653,12 +34719,10 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
             this.render("delete", "Warning", { msg: "Are you sure you want to permanently delete this listing?", role:"delete"});
         },
         "confirmDeleteImage" : function(data, topic) {
-            console.log(data, topic);
             this.data = data;
-            console.log(this.data);
             this.render("delete", "Warning", 
                 {
-                     msg: "Are you sure you want to permanently delete this image?", 
+                     msg: "Are you sure you want to delete this image?", 
                      role:"deleteImage"
                  }
             );
@@ -34668,7 +34732,7 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
         }
     };
 
-console.log(Acme.confirmView);
+
 
 
 }(jQuery));
