@@ -277,6 +277,13 @@ hr.divide10 {
         margin-bottom: 15px!important;
     }
 }
+@media screen and (min-width: $mmd-break) {
+    .margin-top-30-desk{
+        margin-top: 30px;
+    }
+    
+}
+
 
 #mainAjaxArticles .row .ad-container {
     margin-top: 40px !important;
