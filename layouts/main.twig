@@ -7,6 +7,7 @@
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
 {% set layout        = blogData.layout %}
+{% set url           = _AppHelper.getParsedUrl %}
 
 
 {% if blogName == 'menu map' %}
@@ -191,9 +192,8 @@
     }) | raw }}
 
 
-
     {# Don't show this add on blog pages.  Index is a blog so only allow there #}
-    {% if pageClass | split(" ")[0] == "home" or pageTypeClass != blog %}
+    {% if pageTypeClass != "blog" or url.path == '/'%}
     <div class="ad-container top-ad">
         <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
             <script type='text/javascript'>
