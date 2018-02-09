@@ -204,7 +204,7 @@
         @include card-feature-side-base();
 
         height:95px;
-        &.divideright {
+        &.divideright, &.divideright-tablet {
             &:after {
                 content: '';
                 display: block;
