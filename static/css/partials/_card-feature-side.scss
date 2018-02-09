@@ -232,7 +232,7 @@
                         font-size: rem(16);
                         height: 40px;
                         line-height: 1.2;
-                        width: 238px;
+                        max-width: 238px;
                     }
                     p.excerpt {
                         display:none;
@@ -245,6 +245,8 @@
                         height: 40px;
                         top: 20px;
                         position: absolute;
+                        max-width: 360px;
+                        width: 360px;
                     }
                     p.excerpt {
                         display: none;
