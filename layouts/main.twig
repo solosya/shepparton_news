@@ -17,7 +17,6 @@
 
 {% set pageURL = _AppHelper.getCurrentUrl(true) %}
 
-
 {% if pageURL matches '{sp-tk}' %}
     {% set token = pageURL|split('=') %}
     {% if _User.isGuest() %}

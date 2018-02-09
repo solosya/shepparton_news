@@ -13,6 +13,7 @@
         return this.each(function () {
             var elem = $(this);
             $(elem).click(function (e) {
+
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -45,9 +46,14 @@
     };
 
     $.loadScript = function (url, callback) {
+        if ( $('#fileuploadscript').length ) {
+            callback();
+            return;
+        }
 
         var script = document.createElement("script")
         script.type = "text/javascript";
+        script.id = "fileuploadscript";
 
         if (script.readyState) {  //IE
             script.onreadystatechange = function () {

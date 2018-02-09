@@ -68,7 +68,7 @@ ListingForm.constructor = ListingForm;
             var fieldname = this.compulsoryFields[field].split('.').reverse()[0];
             $('#'+fieldname).removeClass('formError');
         }
-    }
+    };
     ListingForm.prototype.addErrorHightlights = function()
     {
         if (this.errorFields.length > 0) {
@@ -77,10 +77,11 @@ ListingForm.constructor = ListingForm;
         for (var field in this.errorFields) {
             $('#'+this.errorFields[field]).addClass('formError');
         }
-    }
+    };
     ListingForm.prototype.saveImage = function(r, data)
     {
         var newImageId = r.media.media_id;
+        data.media_id = newImageId;
         var mediaids = [];
         if (this.data.media_ids != "") {
             mediaids = this.data.media_ids.split(',');
@@ -91,7 +92,30 @@ ListingForm.constructor = ListingForm;
 
         this.renderImageThumbs([data]);
         return true;
-    }
+    };
+    ListingForm.prototype.deleteImage = function(data) 
+    {
+        var info = data['delete image'].confirmDeleteImage;
+        var elem = info.elem;
+        var id = info.id;
+        elem.parent().remove();
+
+        mediaids = this.data.media_ids.split(',');
+        var index = mediaids.indexOf(id.toString());
+        if (index > -1) {
+            mediaids.splice(index, 1);
+        }
+        
+        if (mediaids.length > 0) {
+            this.data.media_id = mediaids[0];
+            this.data.media_ids = mediaids.join(',');
+        } else {
+            this.data.media_id = '';
+            this.data.media_ids = '-1';
+        }
+
+        Acme.PubSub.publish('update_state', {'closeConfirm': ''});
+    };
     ListingForm.prototype.renderImageThumbs = function(images) 
     {
         var imageArray = $('#imageArray');
@@ -103,7 +127,7 @@ ListingForm.constructor = ListingForm;
             html += temp({"imagePath": imagePath, 'imageid' : images[i].media_id});
         }
         imageArray.append(html);
-    },
+    };
     ListingForm.prototype.clear = function(images) 
     {
         if (this.menus) {
@@ -119,8 +143,26 @@ ListingForm.constructor = ListingForm;
             'blogs': this.blogId,
             'media_ids': ''
         };
-    },
+    };
+    ListingForm.prototype.submit = function()
+    {
+        var validated = this.validate();
+        if (!validated) {
+            this.render();
+            return;
+        }
 
+        this.data.theme_layout_name = this.layout;
+
+        Acme.server.create('/api/article/create', this.data).done(function(r) {
+            $('#listingFormClear').click();
+            Acme.PubSub.publish('update_state', {'confirm': r});
+            Acme.PubSub.publish('update_state', {'userArticles': ''});
+        }).fail(function(r) {
+            Acme.PubSub.publish('update_state', {'confirm': r});
+            console.log(r);
+        });
+    };
     ListingForm.prototype.events = function() 
     {
         var self = this;
@@ -147,30 +189,31 @@ ListingForm.constructor = ListingForm;
 
 
         $('.uploadFileBtn').uploadFile({
-               onSuccess: function(data, obj){
+           onSuccess: function(data, obj){
 
-                    var resultJsonStr = JSON.stringify(data);
+                var resultJsonStr = JSON.stringify(data);
 
-                    var postdata = {
-                        'blogs' : self.blogId,
-                        'imgData' : resultJsonStr
-                    };
+                var postdata = {
+                    'blogs' : self.blogId,
+                    'imgData' : resultJsonStr
+                };
 
-                    var outer = $("#uploadFileBtn");
-                    var inner = $("#InnerUploadFileBtn");
-                    outer.addClass("spinner");
-                    inner.hide();
+                var outer = $("#uploadFileBtn");
+                var inner = $("#InnerUploadFileBtn");
+                outer.addClass("spinner");
+                inner.hide();
 
-                    Acme.server.create('/api/article/save-image', postdata).done(function(r) {
-                        console.log(r);
-                        if (self.saveImage(r, data) ) {
-                            outer.removeClass("spinner");
-                            inner.show();
-                        }
-                    }).fail(function(r) {
-                        console.log(r);
-                    });
-                }
+                Acme.server.create('/api/article/save-image', postdata).done(function(r) {
+                    // console.log(r);
+                    // console.log(data);
+                    if (self.saveImage(r, data) ) {
+                        outer.removeClass("spinner");
+                        inner.show();
+                    }
+                }).fail(function(r) {
+                    // console.log(r);
+                });
+            }
         });
 
         $('#imageArray').on('click', '.carousel-tray__delete', function(e) {
@@ -190,24 +233,9 @@ ListingForm.constructor = ListingForm;
 
         $('#listingForm').submit(function(e) {
             e.preventDefault();
-
-            var validated = self.validate();
-            if (!validated) {
-                self.render();
-                return;
-            }
-
-            self.data.theme_layout_name = self.layout;
-
-            Acme.server.create('/api/article/create', self.data).done(function(r) {
-                $('#listingFormClear').click();
-                Acme.PubSub.publish('update_state', {'confirm': r});
-                Acme.PubSub.publish('update_state', {'userArticles': ''});
-            }).fail(function(r) {
-                // console.log(r);
-            });
+            self.submit();
         });
-    }
+    };
     ListingForm.prototype.validate = function(checkFields) {
         // checkFields is used to validate a single field, 
         // otherwise itereate through all compulsory fields
@@ -401,7 +429,6 @@ Acme.EventForm = function(blogId)
         };
 
         EventPostGoogleMap();
-
     }
 
 
@@ -491,6 +518,11 @@ Acme.Confirm = function(template, parent, layouts) {
             var layout = $elem.data('layout');
             this.renderLayout(layout);
         }
+
+        if ($elem.data('role') === 'deleteImage') {
+            Acme.PubSub.publish("update_state", {'delete image': self.data });
+        }
+
     };
 
 var layouts = {
@@ -498,7 +530,7 @@ var layouts = {
     "delete"   : 'listingDeleteTmpl',
 };
 
-Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
+Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
     Acme.confirmView.subscriptions = Acme.PubSub.subscribe({
         'Acme.confirmView.listener' : ['update_state']
     });
@@ -512,12 +544,10 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
             this.render("delete", "Warning", { msg: "Are you sure you want to permanently delete this listing?", role:"delete"});
         },
         "confirmDeleteImage" : function(data, topic) {
-            console.log(data, topic);
             this.data = data;
-            console.log(this.data);
             this.render("delete", "Warning", 
                 {
-                     msg: "Are you sure you want to permanently delete this image?", 
+                     msg: "Are you sure you want to delete this image?", 
                      role:"deleteImage"
                  }
             );
@@ -527,7 +557,7 @@ Acme.confirmView = new Acme.Confirm('modal', '#signin', layouts);
         }
     };
 
-console.log(Acme.confirmView);
+
 
 
 }(jQuery));
