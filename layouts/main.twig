@@ -7,6 +7,7 @@
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
 {% set layout        = blogData.layout %}
+{% set url           = _AppHelper.getParsedUrl %}
 
 
 {% if blogName == 'menu map' %}
@@ -17,13 +18,14 @@
 {% set pageURL = _AppHelper.getCurrentUrl(true) %}
 
 {% if pageURL matches '{sp-tk}' %}
-
     {% set token = pageURL|split('=') %}
-    {% set redir = _Page.setHttpRedirects(
-        {
-            '|sp-tk.*|' : _AppHelper.getBaseUrl() ~ '/admin/syncronex/login-paywall?sp-tk=' ~ token[1] ~ '&returnurl=' ~ _AppHelper.getCurrentUrl(false) ~ '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn',
-        }, false)
-    %}
+    {% if _User.isGuest() %}
+        {% set redir = _Page.setHttpRedirects(
+            {
+                '|sp-tk=[0-9A-F]+|' : _AppHelper.getBaseUrl() ~ '/admin/syncronex/login-paywall?sp-tk=' ~ token[1] ~ '&returnurl=' ~ _AppHelper.getCurrentUrl(false) ~ '&paymeter=syncaccess-mmg-sn.syncronex.com/mmg/sn',
+            }, false)
+        %}
+    {% endif %}
 {% endif %}
 
 
@@ -83,7 +85,7 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=90c9477f" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a9dbcb0b" type="text/css" media="all">
 
     {% else %}
         {# <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" /> #}
@@ -189,6 +191,8 @@
     }) | raw }}
 
 
+    {# Don't show this add on blog pages.  Index is a blog so only allow there #}
+    {% if pageTypeClass != "blog" or url.path == '/'%}
     <div class="ad-container top-ad">
         <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
             <script type='text/javascript'>
@@ -196,7 +200,8 @@
             </script>
         </div>
     </div>
-    
+    {% endif %}
+
 
     {{ content | raw }}
 

@@ -16,9 +16,7 @@
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
 
 
-
-{% set events = _Event.getEvents() %}
-
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -60,8 +58,6 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
-
-
 
 <main id="main" class="site-main" role="main">
     

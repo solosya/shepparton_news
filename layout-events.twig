@@ -3,7 +3,7 @@
 
 {{this.registerJs("Acme.CardController();")}}
 
-{% set limit = 20 %}
+{% set limit = 50 %}
 {% set date = date() %}
 
 {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
@@ -36,7 +36,7 @@
                 <section class="middle">
                     <div class="row row-space maincards">
                         <div class="col-sm-9">
-                            {% for i in 0..19 if events[eventCount] %}
+                            {% for i in 0..49 if events[eventCount] %}
 
                                 {% set eventMonth = _AppHelper.getDateTimeBasedOnTimezone(events[eventCount].startDate, 'F') %}
                                 {% if monthDivider != eventMonth %}

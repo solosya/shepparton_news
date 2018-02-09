@@ -13,7 +13,7 @@
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
-{% set events = _Event.getEvents() %}
+{# {% set events = _Event.getEvents() %} #}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
@@ -84,7 +84,6 @@
                 articles: sections['local news'], 
                 articleCount: articleCount,
                 section: 'local news',
-                events: events,
                 dev: dev,
                 ad: 'div-gpt-ad-halfpage-ss',
             }) | raw}} 

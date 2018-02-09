@@ -26,6 +26,7 @@
 {%   set dairyOverride = 'dairy-override' %}
 {% endif %}  
 
+
 <main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     
     <div class="container">
@@ -75,7 +76,7 @@
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile ' ~ dairycard
+                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright'
                                  }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block">
@@ -90,7 +91,7 @@
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright '
+                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright'
                                  }) | raw}}
                             </div>
                      {% endif %}
@@ -208,23 +209,17 @@
             </div>
         </section>
 
-        <section>
-            <div class="row">
-                <div class="col-md-9" style="margin-top:35px;">
-                    <div class="row">
-                        {{ this.render('partials/ajaxarticles.twig', {
-                            offset: limit,
-                            limit: 12,
-                            non_pinned: articlesArr.existingNonPinnedCount, 
-                            articles: articles,
-                            card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
-                            container:"mainAjaxArticles",
-                            buttonClass: "infinite",
-                            border: "visible"
-                        }) | raw }}
-                    </div>
-                </div>
-            </div>
+        <section style="margin-top:35px;padding:0;margin:0;">
+                {{ this.render('partials/ajaxarticles.twig', {
+                    offset: limit,
+                    limit: 12,
+                    non_pinned: articlesArr.existingNonPinnedCount, 
+                    articles: articles,
+                    card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
+                    container:"mainAjaxArticles",
+                    buttonClass: "infinite",
+                    border: "visible"
+                }) | raw }}
         </section>
 
     </div>
