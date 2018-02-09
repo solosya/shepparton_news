@@ -26,7 +26,7 @@
             queryParams = (typeof queryParams !== 'undefined') ? queryParams : {};
             
             var url = (uri.indexOf("http") === 0) ? uri : _appJsConfig.appHostName + uri;
-
+            console.log(url);
             return $.ajax({
                 url: url,
                 data: queryParams,
