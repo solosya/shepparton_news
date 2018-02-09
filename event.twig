@@ -20,15 +20,8 @@
 {% set startTime = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
 {% set endTime = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
 
-{% set events = _Event.getEvents() %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
-<div class="ad-container top-ad">
-    <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
-        <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });
-        </script>
-    </div>
-</div>
 
 <section class="">
 

@@ -189,7 +189,20 @@
         networkData: networkData, 
         pageClass: blogName,
     }) | raw }}
-    
+
+
+
+    {# Don't show this add on blog pages.  Index is a blog so only allow there #}
+    {% if pageClass | split(" ")[0]) == "home" or pageTypeClass != blog %}
+    <div class="ad-container top-ad">
+        <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
+            <script type='text/javascript'>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });
+            </script>
+        </div>
+    </div>
+    {% endif %}
+
 
     {{ content | raw }}
 
