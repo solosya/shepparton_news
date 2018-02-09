@@ -157,7 +157,7 @@
                 width: 1px;
                 position: absolute;
                 top: 0;
-                right: 5px;
+                right: -13px;
             }
             &:last-child {
                 &:after {
@@ -213,7 +213,7 @@
                 width: 1px;
                 position: absolute;
                 top: 0;
-                right: -9px;
+                right: -13px;
             }
             &:last-child {
                 &:after {
@@ -235,7 +235,8 @@
                         max-width: 238px;
                     }
                     p.excerpt {
-                        display:none;
+                        height: 25px;
+                        font-size: 13px;
                     }
                 }
             }
