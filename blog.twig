@@ -90,13 +90,13 @@
                                     </svg>
                                 </a>
                             {% endif %}
-                            {% if _User.isGuest() %}
+                            {# {% if _User.isGuest() %}
                                 <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
                             {% endif %}
                             {% if not _User.isGuest() and _User.getId() != userDetails.id %}
                                 {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
                                 <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                            {% endif %}
+                            {% endif %} #}
                         </div>
                     </div>{# <-- bloghead end --> #}
                     <div class="social-links social-links-mobile">
@@ -144,13 +144,13 @@
                                 </svg>
                             </a>
                         {% endif %}
-                        {% if _User.isGuest() %}
+                        {# {% if _User.isGuest() %}
                             <a href="{{ loginPath }}" class="follow forceLoginModal">Follow</a>
                         {% endif %}
                         {% if not _User.isGuest() and _User.getId() != userDetails.id %}
                             {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
                             <a href="javascript:void(0)" class="follow FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                        {% endif %}
+                        {% endif %} #}
                     
                     </div>
                 </div>
