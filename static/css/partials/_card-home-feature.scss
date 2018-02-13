@@ -88,6 +88,7 @@
                 padding-top:31px;
                 .icon {
                     margin-bottom:200px;
+                    display: block!important;
                 }
 
                 > p {
@@ -148,6 +149,13 @@
                     h2{
                         font-size: rem(34);
                         width:450px;                        
+                    }
+                }
+            }
+            &.social{
+                &.twitter {
+                    svg {
+
                     }
                 }
             }

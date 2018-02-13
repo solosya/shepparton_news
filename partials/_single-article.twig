@@ -171,6 +171,12 @@
                         {# <div class="image-wrapper lazyload" data-original="{{social.media['path']}}" {% if social.media['path'] is not empty %} style="background-image:url('{{placeholder}}');"{%endif%}></div> #}
                         {% if social.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
                             <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
+                        {# {% elseif social.media['type'] == 'instagram' %}
+                            <div class="instagram_icon" data-source="{{social.source}}" data-poster="{{social.media['path']}}"></div>
+                        {% elseif social.media['type'] == 'facebook' %}
+                            <div class="facebook_icon" data-source="{{social.source}}" data-poster="{{social.media['path']}}"></div>
+                        {% elseif social.media['type'] == 'twitter' %}
+                            <div class="twiter_icon" data-source="{{social.source}}" data-poster="{{social.media['path']}}"></div> #}
                         {% endif %}
                     </figure>
                 {% endif %}

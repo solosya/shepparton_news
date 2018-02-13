@@ -167,7 +167,9 @@ a.card {
 
     &.social {
         .content {
-
+            .icon {
+                display: none;
+            }
         }
 
         &.facebook{
@@ -176,9 +178,20 @@ a.card {
                 .icon {
                     width:13px;
                     height:27px;
-                    background-image: url("../icons/facebook.svg");
+                    
                     // background-size:cover;
                     background-repeat: no-repeat;
+                    &.dairy {
+                        background-image: url("../icons/facebook.svg");
+                    }
+
+                    &.country {
+                        background-image: url("../icons/facebook.svg");
+                    }
+
+                    &.shepparton {
+                        background-image: url("../icons/facebook.svg");
+                    }
                 }
             }
         }
@@ -189,9 +202,20 @@ a.card {
                 .icon {
                     width:31px;
                     height:31px;
-                    background-image: url("../icons/twitter.svg");
+                    
                     // background-size:cover;
                     background-repeat: no-repeat;
+                    &.dairy {
+                        background-image: url("../icons/twitter.svg");
+                    }
+
+                    &.country {
+                        background-image: url("../icons/twitter.svg");
+                    }
+
+                    &.shepparton {
+                        background-image: url("../icons/twitter.svg");
+                    }
                 }
             }
         }
@@ -202,9 +226,20 @@ a.card {
                 .icon {
                     width:27px;
                     height:27px;
-                    background-image: url("../icons/instagram.svg");
+                    
                     // background-size:cover;
                     background-repeat: no-repeat;
+                    &.dairy {
+                        background-image: url("../icons/instagram.svg");
+                    }
+
+                    &.country {
+                        background-image: url("../icons/instagram.svg");
+                    }
+
+                    &.shepparton {
+                        background-image: url("../icons/instagram.svg");
+                    }
                 }
             }
         }
