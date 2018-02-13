@@ -1,8 +1,15 @@
-{{ set(this, 'title', 'Contact Us') }}  
+{{ set(this, 'title', 'Contact Us') }} 
+{% set networkData = _Network.getNetworkData() %}
+
+{% set flash = _AppHelper.getFlashMessages() %}
+{% set messages = "" %}
+{% for m in flash %}
+    {% set messages = messages ~ m %}
+{% endfor %}
 
     <main id="main" class="site-main eventForm" role="main">
         
-        <div class="container">
+        <div class="container contact-us">
 
             <section>
                 <div class="row">
@@ -15,40 +22,74 @@
                 </div>
 
 
-                <div class="col-sm-12 col-md-5 ">
-                    <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
-                        <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
-                        <div class="controls-full">
-                            <div class="form-group field-contactform-name required">
-                                <input type="text" id="contactform-name" class="form-control" name="name" placeholder="Name">
+                {% if messages != "" %}
+
+
+                    <h1 class="contact-us__message">{{messages}}</h1>
+                    <a class="contact-us__link" href="{{networkData.defaultBlogUrl}}">Home</a>
+
+
+                {% else %}
+
+
+                    <div class="col-sm-12 col-md-5 ">
+                        <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
+                            <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
+                            <input type="hidden" id="contactform-returnto" class="form-control" name="returnto" value="/contact">
+
+                            <div class="controls-full">
+                                <div class="form-group field-contactform-name required">
+                                    <input type="text" id="contactform-name" class="form-control" name="name" placeholder="Name">
+                                </div>
                             </div>
-                        </div>
-                        <div class="controls-full">
-                            <div class="form-group field-contactform-email required">
-                                <input type="text" id="contactform-email" class="form-control" name="email" placeholder="Email address">
+                            <div class="controls-full">
+                                <div class="form-group field-contactform-email required">
+                                    <input type="text" id="contactform-email" class="form-control" name="email" placeholder="Email address">
+                                </div>
                             </div>
-                        </div>
-                        <div class="controls-full">
-                            <div class="form-group field-contactform-message required">
-                                <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                            <div class="controls-full">
+                                <div class="form-group field-contactform-message required">
+                                    <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="controls-full">
-                            <div class="form-group">
-                                <button type="submit" id="btnContact" class="_btn submit" style="margin-top:20px;" name="contact-button">SEND</button>
+
+
+                            {% if _Network.getCaptchaSiteKey() is defined and _Network.getCaptchaSiteKey() is not empty %}
+                                <div class="g-recaptcha" data-sitekey="{{_Network.getCaptchaSiteKey()}}" style="padding-bottom:30px;"></div>
+                                <div class="captchaContainer">
+                                    <div class="captchaMessage"></div>
+                                </div>
+                            {% else %}           
+                                <div class="account-modal__content_container">
+                                    <div class="account-modal__content_item-container">
+                                        <div class="account-modal__input-container">
+                                            <div class="account-modal__input_content captcha">
+                                                {{_AppForm.captcha({class: 'account-modal__input account-modal__input--captcha', placeholder: 'Enter the text shown above'}) | raw }}
+                                            </div>
+                                        </div>
+                                    </div>                        
+                                </div>
+                            {% endif %}
+
+
+
+                            <div class="controls-full">
+                                <div class="form-group">
+                                    <button type="submit" id="btnContact" class="_btn submit" style="margin-top:20px;" name="contact-button">SEND</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
 
-                <div class="col-sm-12 col-md-1 visible-md-block visible-lg-block"></div>
+                    <div class="col-sm-12 col-md-1 visible-md-block visible-lg-block"></div>
 
-                <div class="col-sm-12 col-md-3 contact-details">
+                    <div class="col-sm-12 col-md-3 contact-details">
 
-                    {{page.content | raw}}
+                        {{page.content | raw}}
 
-                </div>
+                    </div>
+                {% endif %}
 
             </section>
         </div>
