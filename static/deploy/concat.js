@@ -33494,13 +33494,20 @@ var getBlogSettings = function(blog,num) {
 }
 
 var blogSettingsStyles = function(blog) {
-
-    var blogSocFac = document.getElementById("fb-icon");
     var blogFB = getBlogSettings(blog,4);
+    var blogSocFac = document.getElementById("fb-icon");
     blogSocFac.setAttribute("href","https://www.facebook.com/"+blogFB+"/");
-    var blogSocTwi = document.getElementById("tw-icon");
+    blogSocFac.setAttribute("id","");
+    var blogSocFac = document.getElementById("fb-icon");
+    blogSocFac.setAttribute("href","https://www.facebook.com/"+blogFB+"/");
+    blogSocFac.setAttribute("id","");
     var blogTW = getBlogSettings(blog,3);
+    var blogSocTwi = document.getElementById("tw-icon");
     blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
+    blogSocTwi.setAttribute("id","");
+    var blogSocTwi = document.getElementById("tw-icon");
+    blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
+    blogSocTwi.setAttribute("id","");
 }
 var setMyAppleIcons = function(blog,url) {
     var blogAppleIconSm = document.getElementById("apple-icon-sm");
