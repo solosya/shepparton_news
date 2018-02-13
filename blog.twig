@@ -321,19 +321,17 @@
 
         <section>
             <div class="row">
-                <div class="col-md-9">
-                    <div class="row">
-                        {{ this.render('partials/ajaxarticles.twig', {
-                            offset: limit,
-                            limit: 12,
-                            non_pinned: articlesArr.existingNonPinnedCount, 
-                            articles: articles,
-                            card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
-                            container:"mainAjaxArticles",
-                            buttonClass: "infinite",
-                            border: "visible"
-                        }) | raw }}
-                    </div>
+                <div class="col-md-9">                    
+                    {{ this.render('partials/ajaxarticles.twig', {
+                        offset: limit,
+                        limit: 12,
+                        non_pinned: articlesArr.existingNonPinnedCount, 
+                        articles: articles,
+                        card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
+                        container:"mainAjaxArticles",
+                        buttonClass: "infinite",
+                        border: "visible"
+                    }) | raw }}
                 </div>
             </div>
         </section>
