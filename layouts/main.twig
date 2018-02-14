@@ -8,6 +8,7 @@
 {% set blogName      = blogData.title %}
 {% set layout        = blogData.layout %}
 {% set url           = _AppHelper.getParsedUrl %}
+{% set site          = networkData.title | lower %}
 
 
 {% if blogName == 'menu map' %}
@@ -179,7 +180,7 @@
 </head>
 
 
-<body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}">
+<body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-site="{{site}}">
 
 {{ this.beginBody() }}
       

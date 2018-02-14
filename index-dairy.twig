@@ -2,6 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower %}
 
 
 {{this.registerJs("Acme.CardController();")}}
@@ -72,6 +73,7 @@
                             article: articles[articleCount], 
                             position: articleCount + 1, 
                             imageSize: {width:900},
+                            site: site,
                             containerClass: 'home-feature home-feature-tablet home-feature-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -91,6 +93,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: articleCount + 1, 
+                                    site: site,
                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -103,6 +106,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: articleCount + 1, 
+                                    site: site,
                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -143,7 +147,7 @@
                     position: 1, 
                     imageSize: {width:500},
                     containerClass: 'col-sm-1 top-stories top-stories-tablet top-stories-mobile',
-                    site: 'dairy',
+                    site: site,
                 }) | raw}}
                 {% set desktopCount = (dev) ? desktopCount : desktopCount + 1 %}
                 <hr class="divide10 visible-xs-block" style="margin-left:15px;margin-right:15px;">
@@ -161,7 +165,7 @@
                         position: 1, 
                         imageSize: {width:500},
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile',
-                        site: 'dairy',                        
+                        site: site,
                     }) | raw}}
                     {% set tabletCount = (dev) ? tabletCount : tabletCount + 1 %}
                     <hr class="divide12 visible-sm-block">
@@ -185,7 +189,7 @@
                 section: 'management',
                 dev: dev,
                 ad: 'div-gpt-ad-mrec-1',
-                site: 'dairy',                
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
@@ -200,7 +204,7 @@
                 articleCount: articleCount,
                 section: 'from the experts',
                 dev: dev,
-                site: 'dairy',                
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
@@ -216,7 +220,7 @@
                 section: 'markets',
                 dev: dev,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
-                site: 'dairy',                
+                site: site,
             }) | raw}} 
         </div>
     {% endif %} 
@@ -232,7 +236,7 @@
                 section: 'machinery & products',
                 dev: dev,
                 ad: 'div-gpt-ad-mrec-3',
-                site: 'dairy',                
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
@@ -248,7 +252,7 @@
                 section: 'animal health',
                 dev: dev,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright',
-                site: 'dairy',
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}    

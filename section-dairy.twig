@@ -1,5 +1,6 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower %}
 
 
 {{this.registerJs("Acme.cardController = Acme.CardController();")}}
@@ -41,6 +42,7 @@
                            article: articles[articleCount],
                            position: articleCount + 1,
                            imageSize: {width:900},
+                           site: site,
                            containerClass: 'home-feature-sm home-feature-mobile'
                        }) | raw}}
                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -83,7 +85,8 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
-                                    position: articleCount + 1,                                     
+                                    position: articleCount + 1,  
+                                    site: site,                                   
                                     containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
@@ -109,7 +112,8 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
-                                    position: articleCount + 1,                                     
+                                    position: articleCount + 1,    
+                                    site: site,                                 
                                     containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
@@ -130,6 +134,7 @@
                         {{this.render('partials/_single-article.twig', {
                             article: popularArticles[popCount], 
                             imageSize: {width:190, height:160},
+                            site: site,
                             containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                         }) | raw}}
 
@@ -172,6 +177,7 @@
                         limit: 12,
                         non_pinned: articlesArr.existingNonPinnedCount, 
                         articles: articles,
+                        site: site,
                         card_style: "col-sm-3 card-sm feature-side-tablet card-sm-wide-mobile row-space40",
                         container:"mainAjaxArticles",
                         buttonClass: "infinite",

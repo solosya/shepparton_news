@@ -1,5 +1,6 @@
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower %}
 
 {{ set(this, 'title', blogInfo.title) }}
 
@@ -164,6 +165,7 @@
                             article: articles[articleCount],
                             position: articleCount + 1,
                             imageSize: {width:900},
+                            site: site,
                             containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile blog-feature'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -175,6 +177,7 @@
                             article: articles[articleCount],
                             position: articleCount + 1,
                             imageSize: {width:900},
+                            site: site,
                             containerClass: 'card-rec card-rec-tablet card-rec-mobile row-space'
                         }) | raw}}
 
@@ -206,6 +209,7 @@
                                     article: articles[articleCount], 
                                     imageSize: {width:160},
                                     position: articleCount + 1,
+                                    site: site,
                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
@@ -264,6 +268,7 @@
                         article: articles[articleCount], 
                         imageSize: {width:300, height:160},
                         position: articleCount + 1,
+                        site: site,
                         containerClass: 'col-sm-3 card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -288,6 +293,7 @@
                             article: articles[articleCount],
                             position: articleCount + 1,
                             imageSize: {width:300},
+                            site: site,
                             containerClass: 'card-rec card-rec-tablet card-rec-mobile row-space'
                         }) | raw}}
 
@@ -327,6 +333,7 @@
                         limit: 12,
                         non_pinned: articlesArr.existingNonPinnedCount, 
                         articles: articles,
+                        site: site,
                         card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
                         container:"mainAjaxArticles",
                         buttonClass: "infinite",
