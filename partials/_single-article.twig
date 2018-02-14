@@ -144,11 +144,14 @@
     {% set videoClass = (social.media['type'] == 'video') ? 'video' : '' %}
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
+    {% set socialSource = social.source %}
+    {# {% set socialSource = 'facebook' %} #}
+
 
     <div class="{{containerClass}}">
         <a  href="{{social.url}}"
             target="_blank"
-            class="{{swap}} card social {{ social.source }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
+            class="{{swap}} card social {{ socialSource }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
             data-id="{{article.socialId}}" 
             data-position="{{position}}"
             data-blog-guid="{{social.blog['guid']}}" 
@@ -157,7 +160,7 @@
             data-article-image="{{social.media['path']}}" 
             data-article-text="{{Helper.htmlToText(social.content, -1) | raw | escape('html')}}">
 
-            <article class="socialarticle {{ social.source }}">
+            <article class="socialarticle {{ socialSource }}">
                 {% if social.hasMedia == 'TRUE' and imageSuppress == 'false' %}  
                     <figure class="{{videoClass}}">
 
@@ -170,13 +173,13 @@
 
                         {# <div class="image-wrapper lazyload" data-original="{{social.media['path']}}" {% if social.media['path'] is not empty %} style="background-image:url('{{placeholder}}');"{%endif%}></div> #}
                         {% if social.media['type'] == 'video' and social.media['videoUrl'] is not empty %}
-                            <div class="play_icon video-player" data-source="{{social.source}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
+                            <div class="play_icon video-player" data-source="{{socialSource}}" data-url="{{social.media['videoUrl']}}" data-poster="{{social.media['path']}}"></div>
                         {# {% elseif social.media['type'] == 'instagram' %}
-                            <div class="instagram_icon" data-source="{{social.source}}" data-poster="{{social.media['path']}}"></div>
+                            <div class="instagram_icon" data-source="{{socialSource}}" data-poster="{{social.media['path']}}"></div>
                         {% elseif social.media['type'] == 'facebook' %}
-                            <div class="facebook_icon" data-source="{{social.source}}" data-poster="{{social.media['path']}}"></div>
+                            <div class="facebook_icon" data-source="{{socialSource}}" data-poster="{{social.media['path']}}"></div>
                         {% elseif social.media['type'] == 'twitter' %}
-                            <div class="twiter_icon" data-source="{{social.source}}" data-poster="{{social.media['path']}}"></div> #}
+                            <div class="twiter_icon" data-source="{{socialSource}}" data-poster="{{social.media['path']}}"></div> #}
                         {% endif %}
                     </figure>
                 {% endif %}
@@ -185,7 +188,7 @@
                 <div class="content">
                     <div class="icon"></div>
 
-                    <div class="category {{social.source}}">{{social.source}}</div>
+                    <div class="category {{socialSource}}">{{socialSource}}</div>
                     
                     <p id="updateSocial{{article.socialId}}" data-update="0">
                              {{ quotes.smarten(social.content  | raw) }}
@@ -194,7 +197,7 @@
                     
                     <div class="author">
                         <img src="{{social.user.media.path}}" class="img-circle">
-                        <p class="">{{ (social.source == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
+                        <p class="">{{ (socialSource == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
                         <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
                     </div><!-- .author-->
                     <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
