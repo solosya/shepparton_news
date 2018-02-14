@@ -3,7 +3,7 @@
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
 {% set networkData = _Network.getNetworkData() %}
-{% set site        = networkData.title | lower %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
 
 
 {% set articleImg = false %}

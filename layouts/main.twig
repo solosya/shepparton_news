@@ -8,7 +8,7 @@
 {% set blogName      = blogData.title %}
 {% set layout        = blogData.layout %}
 {% set url           = _AppHelper.getParsedUrl %}
-{% set site          = networkData.title | lower %}
+{% set site          = networkData.title | lower | split(" ")[0]%}
 {# {% set site          = "dairy" %} #}
 
 

@@ -8,7 +8,7 @@
 
 
 {% set networkData = _Network.getNetworkData() %}
-{% set site        = networkData.title | lower %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
 
 
 {% set eventImage = false %}
