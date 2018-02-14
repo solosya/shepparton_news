@@ -184,7 +184,7 @@
     <div class="container">
         <section>
             <div class="row">
-                <div class="col-sm-3 col-md-2 most-popular siteclass">
+                <div class="col-sm-3 col-md-2 most-popular {{site}}">
                     <h2>Most popular</h2>
 
                     {% for i in 0..4 if popularArticles[i] %}
@@ -440,7 +440,3 @@
     </script>
 </div>
 
-<script>
-    setMySiteStyles('{{ networkData.title | lower}}');
-    setMySiteStyles('{{ networkData.title | lower}}');
-</script>

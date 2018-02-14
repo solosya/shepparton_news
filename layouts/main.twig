@@ -54,9 +54,9 @@
     <link rel="shortcut icon" href="{{favicon}}" />
     <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
 
-    <link rel="apple-touch-icon" sizes="57x57" id="apple-icon-sm" />
-    <link rel="apple-touch-icon" sizes="72x72" id="apple-icon-md" />
-    <link rel="apple-touch-icon" sizes="144x144" id="apple-icon-lg" />
+    <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-57px.png" sizes="57x57" id="apple-icon-sm" />
+    <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-72px.png" sizes="72x72" id="apple-icon-md" />
+    <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-144px.png" sizes="144x144" id="apple-icon-lg" />
 
 
     <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/blogsettings.js?ver=28"></script>
@@ -65,9 +65,6 @@
     <script src="//gauge.lrcontent.com/v1/anonymousAuth.min.js"></script>
     <script src="//hosted-pages.lrcontent.com/mcmedia/LoginRadiusSDK.2.0.1.min.js"></script>
 
-    <script>
-        setMyAppleIcons('{{ networkData.title | lower}}','{{networkData.templatePath}}');
-    </script>
     
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
     {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
@@ -239,12 +236,8 @@
 
 <script>
 blogSettingsStyles('{{ networkData.title | lower}}');
-setMyBlogLogo('{{ networkData.title | lower}}','{{networkData.templatePath}}');
 </script>
 
-<script>
-    setMySiteStyles('{{ networkData.title | lower}}');
-</script>
 
     {{ this.endBody() }}
 

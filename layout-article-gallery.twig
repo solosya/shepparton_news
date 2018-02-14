@@ -2,6 +2,9 @@
 {{ set(this, 'title', article.title) }}
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
+{% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower %}
+
 
 {% set articleImg = false %}
 {% if article.media|length > 0 %}
@@ -26,7 +29,7 @@
 
                         <h1 class="gallery-title">{{ quotes.smarten(article.title) }}</h1>
 
-                        <div id="owl-thumbnails" class="owl-carousel owl-shep-theme siteclass" data-slider-id="1">
+                        <div id="owl-thumbnails" class="owl-carousel owl-shep-theme" data-slider-id="1">
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 

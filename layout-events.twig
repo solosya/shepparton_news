@@ -1,5 +1,6 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower %}
 
 {{this.registerJs("Acme.CardController();")}}
 
@@ -20,11 +21,11 @@
                 <section>
                     <div class="row">
                         <div class="col-md-9 header events-heading">
-                            <div class="hk site-events">
+                            <div class="hk {{site}}">
                                 <h2>{{this.title}}</h2>
                                 <p></p>
                                 {% if not _User.isGuest() %}
-                                    <a class="siteclass" href="{{networkData.defaultBlogUrl}}/@event-form">Submit an event</a>
+                                    <a class="{{site}}" href="{{networkData.defaultBlogUrl}}/@event-form">Submit an event</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -80,9 +81,5 @@
             </div>
             <div class="col-lg-1 visible-lg-block"></div>            
         </div>
-        <script>
-            setMySiteStyles('{{ networkData.title | lower}}');
-            setMySiteStyles('{{ networkData.title | lower}}');
-        </script>
     </main><!-- .site-main -->
 
