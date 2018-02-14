@@ -18,6 +18,7 @@
                     {{this.render('partials/_single-article.twig', {
                         article: sections['videos'].feed.articles[videoCount], 
                         imageSize: {width:95},
+                        site: site,
                         containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
                     }) | raw}}
                     {% set videoCount = (dev) ? videoCount : videoCount + 1 %}

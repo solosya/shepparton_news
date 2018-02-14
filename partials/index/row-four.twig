@@ -13,6 +13,7 @@
         {{this.render('../_single-article.twig', {
             article: articles.feed.articles[sectionCount], 
             imageSize: {width:300},
+            site: site,
             containerClass: 'col-sm-2 card-sm card-sm-mobile'
         }) | raw}}
         {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
@@ -23,6 +24,7 @@
         {{this.render('../_single-article.twig', {
             article: articles.feed.articles[sectionCount], 
             imageSize: {width:300},
+            site: site,
             containerClass: 'col-sm-3 card-sm-wide card-sm-wide-tablet card-sm-mobile'
         }) | raw}}
         {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}

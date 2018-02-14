@@ -145,7 +145,7 @@
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
     {% set socialSource = social.source %}
-    {# {% set socialSource = 'facebook' %} #}
+    {# {% set socialSource = 'youtube' %} #}
 
 
     <div class="{{containerClass}}">
@@ -186,7 +186,7 @@
 
 
                 <div class="content">
-                    <div class="icon"></div>
+                    <div class="icon {{site}}"></div>
 
                     <div class="category {{socialSource}}">{{socialSource}}</div>
                     

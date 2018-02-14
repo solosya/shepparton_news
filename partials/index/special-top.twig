@@ -21,6 +21,7 @@
                         article: articles[articleCount], 
                         position: articleCount + 1, 
                         imageSize: {width:630, height:400},
+                        site: site,
                         containerClass: 'home-special home-special-tablet home-special-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -37,6 +38,7 @@
                         article: articles[articleCount], 
                         position: articleCount + 1, 
                         containerClass: 'card-sm card-sm-mobile'
+                        site: site,
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 0 %}
@@ -59,6 +61,7 @@
                             article: articles[articleCount], 
                             position: articleCount + 1, 
                             containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                            site: site,
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     </div>

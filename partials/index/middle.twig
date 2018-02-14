@@ -7,6 +7,7 @@
                     {{this.render('partials/_single-article.twig', {
                         article: popularArticles[i], 
                         imageSuppress: true, 
+                        site: site,
                         containerClass: 'card-popular'
                     }) | raw}}
             {% endfor %}
@@ -20,6 +21,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:190},
+                    site: site,
                     containerClass: 'card-sm card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -36,6 +38,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:190},
+                    site: site,
                     containerClass: 'card-sm card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -63,6 +66,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
+                    site: site,
                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -79,6 +83,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
+                    site: site,
                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -94,6 +99,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:95},
+                    site: site,
                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}

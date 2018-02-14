@@ -2,6 +2,8 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower %}
+{# {% set site        = "dairy" %} #}
 
 {{this.registerJs("Acme.CardController();")}}
 
@@ -50,9 +52,15 @@
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
+            
+            {% set feed = dev 
+                    ? articlesArr 
+                    : _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
+            %}
+
             {% set sections = sections | merge({
                 (key) : {
-                    'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
+                    'feed': feed,
                     'link' : blog.link
                     }
                 }) %}
@@ -68,6 +76,7 @@
             articles: articles, 
             articleCount: articleCount,
             dev: dev,
+            site: site,
             ad: 'div-gpt-ad-mrec-4',
         }) | raw}}
     </div>
@@ -83,6 +92,7 @@
                 section: 'local news',
                 events: events,
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-halfpage-ss',
                 site: (networkData.title | lower),
             }) | raw}} 
@@ -103,6 +113,7 @@
                 articleCount: articleCount,
                 section: 'bloggers',
                 dev: dev,
+                site: site,
                 logo: networkData.templatePath ~ '/static/images/megaphone.svg',
                 networkData: networkData
             }) | raw}} 
@@ -116,6 +127,7 @@
                 articleCount: articleCount,
                 section: 'regional news',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
@@ -136,6 +148,7 @@
                 articleCount: articleCount,
                 section: 'opinion',
                 dev: dev,
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
@@ -148,6 +161,7 @@
                 articleCount: articleCount,
                 section: 'rural news',
                 dev: dev,
+                site: site,
                 cards: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
             }) | raw}} 
         </div>
@@ -160,9 +174,12 @@
                 articleCount: articleCount,
                 section: 'national',
                 dev: dev,
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
+
+
 
     {% if sections['sport'].feed.articles|length > 0 %}
         <div class="container">
@@ -171,6 +188,7 @@
                 articleCount: articleCount,
                 section: 'sport',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
@@ -200,6 +218,7 @@
                 articleCount: articleCount,
                 section: 'business',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-3',                
             }) | raw}} 
         </div>

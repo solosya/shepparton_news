@@ -14,6 +14,7 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:409, height:530},
+                site: site,
                 containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
@@ -29,6 +30,7 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
+                site: site,
                 containerClass: 'card-sm card-sm-mobile ' ~ cardspace[i]
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
@@ -45,6 +47,7 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
+                site: site,
                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
