@@ -9,7 +9,7 @@
 {% set layout        = blogData.layout %}
 {% set url           = _AppHelper.getParsedUrl %}
 {% set site          = networkData.title | lower %}
-{% set site          = "country" %}
+{# {% set site          = "dairy" %} #}
 
 
 {% if blogName == 'menu map' %}
@@ -84,7 +84,7 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=dbd1d0c8" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=04c295ec" type="text/css" media="all">
 
     {% else %}
         {# <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" /> #}
@@ -217,6 +217,7 @@
 
     {{ this.render('partials/footer.twig', {
         blog : blogData, 
+        site:site,
         networkData: networkData, 
         pageClass: blogName,
     }) | raw }}

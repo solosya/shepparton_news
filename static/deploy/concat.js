@@ -33387,8 +33387,6 @@ var getBlogSettings = function(blog,num) {
         if (num == 0) {return 'dairy'}
         if (num == 1) {return 'dairy_news'}
         if (num == 2) {return 'dairy'}
-        if (num == 3) {return 'DairyNewsOz'}
-        if (num == 4) {return 'DairyNewsAustralia'}
         if (num == 5) {return ' visible-md-block visible-lg-block'}
         if (num == 6) {return 'dairy'}
         if (num == 7) {return 'dairy'}
@@ -33409,8 +33407,6 @@ var getBlogSettings = function(blog,num) {
         if (num == 0) {return 'country'}
         if (num == 1) {return 'countrynews'}
         if (num == 2) {return 'country'}
-        if (num == 3) {return 'CountryNews_mmg'}
-        if (num == 4) {return 'countrynews'}
         if (num == 5) {return ' visible-md-block visible-lg-block'}
         if (num == 6) {return 'country'}
         if (num == 7) {return 'country'}
@@ -33491,24 +33487,6 @@ var getBlogSettings = function(blog,num) {
     } else {
         return 'default';
     }
-}
-
-var blogSettingsStyles = function(blog) {
-    var blogFB = getBlogSettings(blog,4);
-    var blogSocFac = document.getElementById("fb-icon");
-    blogSocFac.setAttribute("href","https://www.facebook.com/"+blogFB+"/");
-    blogSocFac.setAttribute("id","");
-    var blogSocFac = document.getElementById("fb-icon");
-    blogSocFac.setAttribute("href","https://www.facebook.com/"+blogFB+"/");
-    blogSocFac.setAttribute("id","");
-
-    var blogTW = getBlogSettings(blog,3);
-    var blogSocTwi = document.getElementById("tw-icon");
-    blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
-    blogSocTwi.setAttribute("id","");
-    var blogSocTwi = document.getElementById("tw-icon");
-    blogSocTwi.setAttribute("href","https://twitter.com/"+blogTW);
-    blogSocTwi.setAttribute("id","");
 }
 
 Acme.CardController = function() {
