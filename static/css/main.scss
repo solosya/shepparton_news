@@ -20,6 +20,10 @@
 @import "placeholder";
 @import "site-footer";
 
+@import "component.blog-symbol";
+@import "component.blog-social-icons";
+
+
 //Header
 @import "primary-menu";
 @import "site-header";
@@ -48,6 +52,12 @@
 // layouts
 @import "article-gallery";
 @import "form";
+
+
+//trumps
+@import "trumps.utilities";
+
+
 
 
 //Cards

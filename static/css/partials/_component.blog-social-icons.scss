@@ -1,0 +1,23 @@
+.blog-social-icons {
+
+}
+
+.blog-social-icons__icon {
+	display:block;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:contain;
+	width:29px;
+	height:29px;
+	float:left;
+	margin-right:11px;
+
+}
+
+.blog-social-icons__icon--facebook {
+	background-image: url('../icons/social/blogsocial/facebook.svg');
+
+}
+.blog-social-icons__icon--twitter {
+	background-image: url('../icons/social/blogsocial/twitter.svg');
+}

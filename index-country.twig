@@ -2,6 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
 
 
 {{this.registerJs("Acme.CardController();")}}
@@ -94,6 +95,7 @@
                             article: articles[articleCount], 
                             position: articleCount + 1, 
                             imageSize: {width:900},
+                            site: site,
                             containerClass: 'home-feature home-feature-tablet home-feature-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -149,6 +151,7 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     position: articleCount + 1, 
+                                    site: site,
                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -181,13 +184,14 @@
     <div class="container">
         <section>
             <div class="row">
-                <div class="col-sm-3 col-md-2 most-popular siteclass">
+                <div class="col-sm-3 col-md-2 most-popular {{site}}">
                     <h2>Most popular</h2>
 
                     {% for i in 0..4 if popularArticles[i] %}
                             {{this.render('partials/_single-article.twig', {
                                 article: popularArticles[i], 
                                 imageSuppress: true, 
+                                site: site,
                                 containerClass: 'card-popular'
                             }) | raw}}
                     {% endfor %}
@@ -201,6 +205,7 @@
                             article: articles[articleCount], 
                             position: articleCount + 1, 
                             imageSize: {width:300},
+                            site: site,
                             containerClass: 'card-sm card-sm-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -216,6 +221,7 @@
                             article: articles[articleCount], 
                             position: articleCount + 1, 
                             imageSize: {width:300},
+                            site: site,
                             containerClass: 'card-sm card-sm-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -230,6 +236,7 @@
                             article: articles[articleCount], 
                             position: articleCount + 1, 
                             imageSize: {width:600},
+                            site: site,
                             containerClass: 'card-sm card-sm-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -253,6 +260,7 @@
                 articleCount: articleCount,
                 section: 'dairy',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-4',
             }) | raw}} 
         </div>
@@ -270,6 +278,7 @@
                 articleCount: articleCount,
                 section: 'working dogs',
                 dev: dev,
+                site: site,
                 logo: networkData.templatePath ~ '/static/images/megaphone.svg',
                 networkData: networkData
             }) | raw}} 
@@ -283,6 +292,7 @@
                 articleCount: articleCount,
                 section: 'water',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
@@ -303,6 +313,7 @@
                 articleCount: articleCount,
                 section: 'horticulture',
                 dev: dev,
+                site: site,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright-main',
             }) | raw}} 
         </div>
@@ -318,6 +329,7 @@
                 articleCount: articleCount,
                 section: 'viticulture',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-2',
                 site: 'country',                
             }) | raw}} 
@@ -335,6 +347,7 @@
                 section: 'livestock',
                 events: events,
                 dev: dev,
+                site: site,
                 site: 'country',                
             }) | raw}} 
         </div>
@@ -357,6 +370,7 @@
                 articleCount: articleCount,
                 section: 'cropping',
                 dev: dev,
+                site: site,
                 cards: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
             }) | raw}} 
         </div>
@@ -389,6 +403,7 @@
                             {{this.render('partials/_single-article.twig', {
                                 article: sections['videos'].feed.articles[sectionCount], 
                                 imageSize: {width:300},
+                                site: site,
                                 containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                             }) | raw}}
                             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
@@ -425,7 +440,3 @@
     </script>
 </div>
 
-<script>
-    setMySiteStyles('{{ networkData.title | lower}}');
-    setMySiteStyles('{{ networkData.title | lower}}');
-</script>
