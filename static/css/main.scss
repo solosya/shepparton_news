@@ -18,10 +18,14 @@
 //Partials
 @import "common";
 @import "placeholder";
-@import "site-footer";
 
 @import "component.blog-symbol";
 @import "component.blog-social-icons";
+
+@import "component.site-footer";
+@import "component.site-footer-links";
+@import "component.site-footer-publish";
+@import "component.site-footer-social-icons";
 
 
 //Header

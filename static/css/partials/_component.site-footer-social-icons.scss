@@ -1,0 +1,39 @@
+.footer-social {
+    height: 35px;
+    // display: flex;
+    float:left;
+    // display: -webkit-flex;
+    // justify-content: flex-end;
+    padding: 0px;
+    margin-top: 16px;
+    @media screen and (max-width: $sm-break-down) {
+        margin-top:0;
+        float:none;
+        clear:both;
+    }
+}
+
+.footer-social__icon {
+    width: 20px;
+    height: 24px;
+    margin-left: 15px;
+    border-right: none;
+    
+}
+
+.footer-social__icon--facebook {
+    position: relative;
+    bottom: 1px;
+
+    &:first-child {
+        &:after {
+            content: '';
+            display: block;
+            height: 16px;
+            border-right: 1px solid white;
+            position: relative;
+            bottom: 24px;
+            right: -2px;
+        }
+    }            
+}
