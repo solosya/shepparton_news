@@ -3,108 +3,94 @@
 <footer class="site-footer">
     <div class="container">        
 
-        <div class="col-xs-9 col-md-2 col-sm-2 row">
+        <div class="row">
+            <div class="col-xs-9">
 
-            <div class="navigation-logo footer {{site}}">
-                <a  class="navbar-brand {{site}}" 
-                    href="{{networkData.defaultBlogUrl}}" 
-                    rel="Home" 
-                    tabindex="-1" 
-                    title="Home"
-                    style="background-image:url({{networkData.templatePath}}/static/images/{{site}}-logo.svg)">>
-                </a>
-            </div>        
+                <div class="navigation-logo footer {{site}} u-float-left">
+                    <a  class="navbar-brand {{site}}" 
+                        href="{{networkData.defaultBlogUrl}}" 
+                        rel="Home" 
+                        tabindex="-1" 
+                        title="Home"
+                        style="background-image:url({{networkData.templatePath}}/static/images/{{site}}-logo.svg)">>
+                    </a>
+                </div> 
 
+                <div class="footer-social u-float-left">
+
+                    {% if link.social['facebook'] is not empty %}
+                        <a id="fb-icon" href="{{link.social['facebook']}}"  target="_blank" class="footer-social__icon footer-social__icon--facebook u-float-left">
+                            <svg class="svg-icons">
+                                <path fill="white" fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
+                            </svg>
+                        </a>
+                    {% endif %}
+
+                    {% if link.social['twitter'] is not empty %}
+                        <a  id="tw-icon" href="{{link.social['twitter']}}" target="_blank" class="footer-social__icon u-float-left">
+                            <svg class="svg-icons">
+                                <path fill="white" fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
+                            </svg>  
+                        </a>
+                    {% endif %}
+                </div>
+
+
+            </div>
         </div>
 
 
 
-        <div class="col-xs-9 footer-social hidden-sm hidden-md hidden-lg" style="justify-content:unset;">
-        
-            {% if link.social['facebook'] is not empty %}
-                <a id="fb-icon" href="{{link.social['facebook']}}"  target="_blank" class="facebook-icon social-icon">
-                    <svg class="svg-icons">
-                        <path fill="white" fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
-                    </svg>
-                </a>
-            {% endif %}
+        <div class="row site-footer-links">
+            <div class="col-xs-9">
 
-            {% if link.social['twitter'] is not empty %}
-                <a  id="tw-icon" href="{{link.social['twitter']}}" target="_blank" class="twitter social-icon">
-                    <svg class="svg-icons">
-                        <path fill="white" fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
-                    </svg>  
-                </a>
-            {% endif %}
+                {% set menuItems = blog.blogFooterMenu %}                
+
+                {% if menuItems | length > 0 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(0, 3),
+                        class: 'site-footer-links__menu site-footer-links__menu--padded',
+                    }) | raw}}
+                {% endif %}
+
+                {% if menuItems | length > 3 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(3, 3),
+                        class: 'site-footer-links__menu site-footer-links__menu--padded',
+                    }) | raw}}
+                {% endif %}
+
+                {% if menuItems | length > 6 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(6, 3),
+                        class: 'site-footer-links__menu site-footer-links__menu--padded',
+                    }) | raw}}
+                {% endif %}
+
+                {% if menuItems | length > 9 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(9, 3),
+                        class: 'site-footer-links__menu site-footer-links__menu--padded',
+                   }) | raw}}
+                {% endif %}
+
+                {% if menuItems | length > 12 %}
+                    {{this.render('_footer_navigation.twig', {
+                        items: menuItems | slice(12, 3),
+                        class: 'site-footer-links__menu site-footer-links__menu--padded',
+                    }) | raw}}
+                {% endif %}
+
+
+            </div>
         </div>
 
-        <div class="col-xs-9 col-md-7 col-sm-7">
-
-            {% set menuItems = blog.blogFooterMenu %}                
-
-            {% if menuItems | length > 0 %}
-                {{this.render('_footer_navigation.twig', {
-                    items: menuItems | slice(0, 3),
-                    class: 'menu padded row',
-                }) | raw}}
-            {% endif %}
-
-            {% if menuItems | length > 3 %}
-                {{this.render('_footer_navigation.twig', {
-                    items: menuItems | slice(3, 3),
-                    class: 'menu padded row',
-                }) | raw}}
-            {% endif %}
-
-            {% if menuItems | length > 6 %}
-                {{this.render('_footer_navigation.twig', {
-                    items: menuItems | slice(6, 3),
-                    class: 'menu padded row',
-                }) | raw}}
-            {% endif %}
-
-            {% if menuItems | length > 9 %}
-                {{this.render('_footer_navigation.twig', {
-                    items: menuItems | slice(9, 3),
-                    class: 'menu padded row',
-               }) | raw}}
-            {% endif %}
-
-            {% if menuItems | length > 12 %}
-                {{this.render('_footer_navigation.twig', {
-                    items: menuItems | slice(12, 3),
-                    class: 'menu padded row',
-                }) | raw}}
-            {% endif %}
-
-
+        <div class="row publish">
+            <div class="col-xs-9">
+                <a class="publish__link" href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a>
+                <p class="publish__p">&#169; McPherson Media Group 2017</p>
+            </div>
         </div>
-
-
-        <div class="col-xs-9 footer-social hidden-xs">
-
-            {% if link.social['facebook'] is not empty %}
-                <a id="fb-icon" href="{{link.social['facebook']}}"  target="_blank" class="facebook-icon social-icon">
-                    <svg class="svg-icons">
-                        <path fill="white" fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
-                    </svg>
-                </a>
-            {% endif %}
-
-            {% if link.social['twitter'] is not empty %}
-                <a  id="tw-icon" href="{{link.social['twitter']}}" target="_blank" class="twitter social-icon">
-                    <svg class="svg-icons">
-                        <path fill="white" fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
-                    </svg>  
-                </a>
-            {% endif %}
-        </div>
-
-        <div class="col-xs-9 publish">
-            <a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a>
-            <p>&#169; McPherson Media Group 2017</p>
-        </div>
-
     </div>
 
 </footer>

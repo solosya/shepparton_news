@@ -3,11 +3,11 @@
 
         {% set policyClass = '' %}
         {% if 'policy' in item.link | lower or 'general-use' in item.link | lower %}
-        {%   set policyClass = 'policy' %}
+        {%   set policyClass = 'site-footer-links__link--policy' %}
         {% endif %}
 
-        <li>
-            <a href="{{item.link |raw}}" class="{{activeClass}} {{externalClass}} {{ policyClass }}" {% if item.target != "" %} target="{{item.target}}"{% endif %}>
+        <li class="site-footer-links__menu-item">
+            <a href="{{item.link |raw}}" class="site-footer-links__link {{activeClass}} {{externalClass}} {{ policyClass }}" {% if item.target != "" %} target="{{item.target}}"{% endif %}>
                 {% if item.label != "" %}
                     {{item.label}}
                 {% elseif item.blogTitle != "" %}

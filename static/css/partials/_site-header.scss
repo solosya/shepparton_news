@@ -297,6 +297,7 @@
     &.footer {
         height: 80px;
         width: 168px;
+        margin-right:30px;
         @media screen and (max-width: $mmd-break-down){
            width: 120px; 
         }
