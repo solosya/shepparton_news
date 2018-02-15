@@ -23,8 +23,9 @@
 {% set pageType = (blogData.type | lower) %}
 
 <script>
-
+            
             var blogNetwork = getBlogSettings('{{networkData.title | lower}}',1);
+            console.log("ad ", blogNetwork);
             blogPrefix = '{{blogPrefixName}}';
             var mapping, mappingMob, mappingHalfPageComments;
             var setSite = function(uri) {
