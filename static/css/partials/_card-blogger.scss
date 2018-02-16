@@ -43,6 +43,10 @@
                         display:block;
                         border: none;
                         font-family:$font-family-sans-serif;
+
+                        &.country {
+                            color:color(country);
+                        }
                     }
                     >img {
                         margin-right:14px;
