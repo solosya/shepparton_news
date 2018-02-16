@@ -16,7 +16,7 @@
 {% set articles = articlesArr.articles %}
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
 
-
+{% set date = date() %}
 {% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
 

@@ -6,7 +6,6 @@
 
 {% set limit = 50 %}
 {% set date = date() %}
-
 {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
 
 <!-- used to index each article as we loop over throughout the template -->
