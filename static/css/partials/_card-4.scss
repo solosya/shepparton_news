@@ -140,7 +140,10 @@
             &.social {
                 .content {
                     .icon {
-                        // display:none;
+                        display:block;
+                        position: absolute;
+                        top: -150px;
+                        left: 10px;
                     }
 
                     >p {
