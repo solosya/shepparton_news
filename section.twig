@@ -2,14 +2,21 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
+{{this.registerJs("Acme.cards = CardController();")}}
 
-{{this.registerJs("Acme.cardController = Acme.CardController();")}}
-{{this.registerJs("Acme.SectionController();")}}
+
 
 {% set limit = 17 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'blog' }) %}
 
@@ -211,10 +218,30 @@
             </div>
         </section>
 
+
+
+
         <section style="margin-top:55px;">
             <div class="row">
                 <div class="col-md-9">
-                    {{ this.render('partials/ajaxarticles.twig', {
+
+
+                    {% if articles|length >= limit %}
+                        {{ this.render('partials/ajaxarticles_new.twig', {
+                            offset          : limit,
+                            limit           : limit,
+                            name            : "section-load",
+                            non_pinned      : articlesArr.existingNonPinnedCount, 
+                            card_class      : "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
+                            container       : "mainAjaxArticles",
+                            ads             : "no",
+                            buttonClass     : "infinite"
+                        }) | raw }}
+                    {% endif %}
+
+
+
+{#                     {{ this.render('partials/ajaxarticles.twig', {
                         offset: limit,
                         limit: 12,
                         non_pinned: articlesArr.existingNonPinnedCount, 
@@ -225,7 +252,7 @@
                         buttonClass: "infinite",
                         border: "visible"
                     }) | raw }}
-                </div>
+ #}                </div>
             </div>
         </section>
 
