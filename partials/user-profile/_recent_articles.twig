@@ -10,7 +10,17 @@
         <div class="col-sm-9 section-header">
             <p></p>
             <div class="hk">
-                <h2>Recent Articles</h2>
+                <h2>Recent Articles
+
+                    <span class='hidden-xs'> 
+                        {% if myArticles is defined and myArticles | length > 0 %}
+                            (<a href='{{ _AppHelper.buildUrl('profile/user-posts',{name :  Html.encode(myArticles[0].createdBy['username'])})}}' 
+                                class='view-more'>View all articles
+                            </a>)
+                        {% endif %}
+                    </span>
+
+                </h2>
                 <p></p>
             </div>
         </div>
