@@ -171,7 +171,6 @@ a.card {
                 display: none;
             }
         }
-
         &.facebook{
             .content{
 
@@ -184,7 +183,6 @@ a.card {
                     &.dairy {
                         background-image: url("../icons/social/green/facebook.svg");
                     }
-
                     &.country {
                         background-image: url("../icons/social/green/facebook.svg");
                     }
@@ -243,6 +241,31 @@ a.card {
                 }
             }
         }
+        &.withImage__content {
+            &.facebook{
+                .content{
+                    .icon {
+                        background-image: url("../icons/social/white/facebook.svg");
+                    }
+                }
+            }
+            &.twitter{
+                .content{
+                    .icon {
+                        background-image: url("../icons/social/white/twitter.svg");
+                    }
+                }
+            }
+            &.instagram{
+                .content{
+                    .icon {
+                        background-image: url("../icons/social/white/instagram.svg");
+                    }
+                }
+            }
+
+        }
+
 
     }
 }
