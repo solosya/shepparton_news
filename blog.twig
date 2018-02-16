@@ -48,7 +48,7 @@
                         <h2>{{this.title}}</h2>
                         <p class="blogowner {{site}}">by {{blogInfo.settings.contact.name}}</p>
 
-                        <div class="blog-social-icons hidden-xs">
+                        <div class="blog-social-icons">
                             {% if blogInfo.settings['social']['facebook'] %}
                                 <a  href="{{ blogInfo.settings['social']['facebook'] }}" 
                                     class="blog-social-icons__icon blog-social-icons__icon--facebook">  
@@ -64,7 +64,7 @@
 
                     </div>{# <-- bloghead end --> #}
 
-                    <div class="blog-social-icons u-clear-both hidden-sm hidden-md hidden-lg">
+{#                     <div class="blog-social-icons u-clear-both hidden-sm hidden-md hidden-lg">
                         {% if blogInfo.settings['social']['facebook'] %}
                             <a  href="{{ blogInfo.settings['social']['facebook'] }}" 
                                 class="blog-social-icons__icon blog-social-icons__icon--facebook">  
@@ -77,7 +77,7 @@
                             </a>
                         {% endif %}
 
-                    </div>
+                    </div> #}
 
                 </div>
             </div>
