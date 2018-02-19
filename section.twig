@@ -219,9 +219,7 @@
                 </div>
             </div>
         </section>
-        <section style="margin-top:55px;">
-
-            <div class="row">
+        <section style="margin-top:-55px;">
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
@@ -231,11 +229,10 @@
                         card_class      : "col-sm-3 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40",
                         container       : "mainAjaxArticlescardClass",
                         buttonClass     : "infinite",
-                        ads             : "yes"
+                        ads             : "yes",
+                        after           : '<hr class="divide18 visible-xs-block">'
                     }) | raw }}
                 {% endif %}
-
-            </div>
                
         </section>
 

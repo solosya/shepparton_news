@@ -255,7 +255,6 @@
 
 
         <section>
-            <div class="row">
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
@@ -267,11 +266,9 @@
                         buttonClass     : "infinite",
                         ads             : "yes",
                         before          : '<div class="col-sm-3 col-xs-12">',
-                        after           : '</div>'
+                        after           : '<hr class="divide18 visible-xs-block"></div>'
                     }) | raw }}
                 {% endif %}
-        </section>
-
 
     </div>
 
