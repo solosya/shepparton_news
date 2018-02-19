@@ -5,7 +5,9 @@
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
 
-{{this.registerJs("Acme.CardController();")}}
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{# {{this.registerJs("Acme.CardController();")}} #}
 
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}

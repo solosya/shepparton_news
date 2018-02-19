@@ -1,5 +1,6 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
-{{this.registerJs("window.Acme.cards = Acme.CardController();")}}
+{# {{this.registerJs("window.Acme.cards = Acme.CardController();")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
 
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}

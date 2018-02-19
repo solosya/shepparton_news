@@ -5,7 +5,8 @@
 {% set site        = networkData.title | lower | split(" ")[0]%}
 {# {% set site        = "dairy" %} #}
 
-{{this.registerJs("Acme.CardController();")}}
+{# {{this.registerJs("Acme.CardController();")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
 
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}

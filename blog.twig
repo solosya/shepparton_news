@@ -26,8 +26,6 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
-{# {{this.registerJs("Acme.cardController = Acme.CardController();")}} #}
-{# {{this.registerJs("Acme.SectionController();")}} #}
 {{this.registerJs("Acme.cards = CardController();")}}
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
