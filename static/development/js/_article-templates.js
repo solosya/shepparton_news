@@ -60,7 +60,7 @@ Acme.systemCardTemplate =
 '</div>';
 
 window.templates.ads_infinite = 
-    "<div class='row'><div id='newAdSlot'></div><script>loadNextAd()</script>";
+    "<div id='newAdSlot'></div><script>loadNextAd()</script>";
 
 
 
