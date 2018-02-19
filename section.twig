@@ -6,7 +6,7 @@
 
 
 
-{% set limit = 12 %}
+{% set limit = 17 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -224,7 +224,7 @@
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
-                        limit           : limit,
+                        limit           : 12,
                         name            : "section-load",
                         non_pinned      : articlesArr.existingNonPinnedCount, 
                         card_class      : "col-sm-3 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40",
