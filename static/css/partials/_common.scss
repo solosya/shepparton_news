@@ -285,14 +285,12 @@ hr.divide10 {
     
 }
 
-#mainAjaxArticles {
-    .ad-container {
-        .google_ad{
-            margin-top: 40px;
-        }
-        #adslot1 {
-            margin-top: -40px;
-        }
+#mainAjaxArticlescardClass .ad-container {  
+    .google_ad{
+        margin-top: 40px;
+    }
+    #adslot1 {
+        margin-top: 0;
     }
 }
 
