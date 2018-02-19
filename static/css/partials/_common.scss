@@ -288,9 +288,18 @@ hr.divide10 {
 #mainAjaxArticlescardClass .ad-container {  
     .google_ad div iframe{
         margin-top: 40px;
+        @media screen and (max-width: $sm-break-down) {
+            margin-top: 0px;
+        }
     }
     #adslot1 div iframe{
         margin-top: 0;
+    }
+}
+
+.loadmore__section {
+    @media screen and (max-width: $sm-break-down) {
+        margin-top: -40px;
     }
 }
 
