@@ -5,7 +5,7 @@
 {{ set(this, 'title', blogInfo.title) }}
 
 
-{% set limit = 11 %}
+{% set limit = 12 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
