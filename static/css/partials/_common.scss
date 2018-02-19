@@ -285,16 +285,13 @@ hr.divide10 {
     
 }
 
-#mainAjaxArticles .row .ad-container {
-    margin-top: 40px !important;
-    @media screen and (min-width: $sm-break) {
-        margin-bottom:15px !important;
+#mainAjaxArticles {
+    .ad-container {
+        margin-top: 40px;
+        #adslot1 {
+            margin-top: -40px;
+        }
     }
-    @media screen and (max-width: $sm-break-down) {
-        margin-top: 15px !important;
-        padding-top: 0;
-    }
-
 }
 
 ._btn {
