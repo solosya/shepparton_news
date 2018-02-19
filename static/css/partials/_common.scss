@@ -287,7 +287,9 @@ hr.divide10 {
 
 #mainAjaxArticles {
     .ad-container {
-        margin-top: 40px;
+        .google_ad{
+            margin-top: 40px;
+        }
         #adslot1 {
             margin-top: -40px;
         }
