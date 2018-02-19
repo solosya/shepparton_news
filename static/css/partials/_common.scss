@@ -285,16 +285,23 @@ hr.divide10 {
     
 }
 
-#mainAjaxArticles .row .ad-container {
-    margin-top: 40px !important;
-    @media screen and (min-width: $sm-break) {
-        margin-bottom:15px !important;
+#mainAjaxArticlescardClass, #mainAjaxArticles {
+    .ad-container {  
+        .google_ad div iframe{
+            margin-top: 40px;
+            @media screen and (max-width: $sm-break-down) {
+                margin-top: 0px;
+            }
+        }
+        #adslot1 div iframe{
+            margin-top: 0;
+        }
     }
+}
+.loadmore__section {
     @media screen and (max-width: $sm-break-down) {
-        margin-top: 15px !important;
-        padding-top: 0;
+        margin-top: -25px;
     }
-
 }
 
 ._btn {
