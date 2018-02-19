@@ -327,17 +327,24 @@ Acme.EventForm = function(blogId)
     Acme.EventForm.prototype.constructor=Acme.EventForm;
     Acme.EventForm.prototype.events2 = function() {
 
-        $('#start_date, #end_date').datetimepicker({
+        var picker = $('#start_date, #end_date').datetimepicker({
+            keepOpen: false,
             format: "DD-MM-YYYY h:mm A",
             useCurrent: false,
+            showClose: true,
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",
                 up: "fa fa-angle-up",
-                down: "fa fa-angle-down"
+                down: "fa fa-angle-down",
+                close: "fa fa-close"
             },
             tooltips: {selectTime: ''}
         }).on('dp.change', function (e) {
+            $(this).datepicker('hide');
+            // picker.toggle();
+            // console.log(e);
+            // e.hide();
             var data = {};
             data[e.target.id] = e.date.format('YYYY-MM-DD HH:mm');
             if(data['start_date'] || data['end_date']) {

@@ -86,7 +86,7 @@
 
 
 .card-sm{
-    @media screen and (min-width: $sm-break){
+    @media screen and (min-width: $mmd-break){
         @include card-sm-base();
 
         a.card {

@@ -32,6 +32,7 @@ Acme.View.articleFeed.prototype.fetch = function()
         'after'             :   self.elem.data('after')  || null,
         'before'            :   self.elem.data('before')  || null,
     };
+
     if (self.options.search != null) {
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
     }
@@ -114,6 +115,7 @@ Acme.View.articleFeed.prototype.events = function()
         e.preventDefault();
         self.fetch();
     });
+
 
     if (this.infinite && this.offset >= this.limit) {
         self.waypoint = new Waypoint({
