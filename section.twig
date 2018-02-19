@@ -219,9 +219,7 @@
                 </div>
             </div>
         </section>
-        <section style="margin-top:55px;">
-
-            <div class="row">
+        <section style="margin-top:-55px;">
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
@@ -235,8 +233,6 @@
                         after           : '<hr class="divide18 visible-xs-block">'
                     }) | raw }}
                 {% endif %}
-
-            </div>
                
         </section>
 

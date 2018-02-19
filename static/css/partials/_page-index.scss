@@ -80,6 +80,9 @@
     }
 
     .row-space40 {
+        @media screen and (max-width: $sm-break-down){
+            padding: 0;
+        }
         @media screen and (min-width: $sm-break){
             margin-top:35px;
         }
