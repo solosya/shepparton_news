@@ -227,7 +227,7 @@
 
             <div class="row">
                 {% if articles|length >= limit %}
-                    {{ this.render('partials/ajaxarticles_new.twig', {
+                    {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
                         limit           : limit,
                         name            : "section-load",
@@ -239,19 +239,7 @@
                 {% endif %}
 
             </div>
-
-{#                     {{ this.render('partials/ajaxarticles.twig', {
-                        offset: limit,
-                        limit: 12,
-                        non_pinned: articlesArr.existingNonPinnedCount, 
-                        articles: articles,
-                        site: site,
-                        card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
-                        container:"mainAjaxArticlescardClass",
-                        buttonClass: "infinite",
-                        border: "visible"
-                    }) | raw }}
- #}                
+               
         </section>
 
     </div>

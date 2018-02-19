@@ -5,6 +5,20 @@
 
 {% set limit = 20 %}
 
+{% set firstCount = userArticles | length %}
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
+
+
+
+
+
 {% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
 {{this.registerJs("$('.loginModal').loginModal({});")}}
 
@@ -68,31 +82,20 @@
                 <section style="margin-top:55px;">
                     <div class="row">
                         <div class="col-md-9">
-
-                            {% if articles|length >= limit %}
-                                {{ this.render('partials/ajaxarticles_new.twig', {
+                            {% if userArticles|length >= limit %}
+                                {{ this.render('partials/ajaxarticles.twig', {
                                     offset          : limit,
-                                    limit           : limit,
+                                    limit           : 12,
                                     name            : "user-load",
                                     loadtype        : 'user',
                                     card_class      : "card-sm feature-side-tablet card-sm-wide-mobile",
                                     container       : "mainAjaxArticlescardClass",
-                                    buttonClass     : "infinite"
+                                    buttonClass     : "infinite",
+                                    before          : '<div class="col-md-3 col-sm-9">',
+                                    after           : '<hr class="divide18 visible-md-block visible-lg-block space-only"></div>'
                                 }) | raw }}
                             {% endif %}
-
-
-{#                             {{ this.render('partials/ajaxarticles.twig', {
-                                offset: limit,
-                                limit: 12,
-                                articles: userArticles,
-                                site: site,
-                                card_style: "card-sm feature-side-tablet card-sm-wide-mobile",
-                                container:"mainAjaxArticles",
-                                buttonClass: "infinite",
-                                border: "visible"
-                            }) | raw }}
- #}                        </div>
+                      </div>
                     </div>
                 </section>
             </div>

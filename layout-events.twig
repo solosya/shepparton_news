@@ -2,11 +2,25 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
-{{this.registerJs("Acme.CardController();")}}
+{# {{this.registerJs("Acme.CardController();")}} #}
 
 {% set limit = 50 %}
 {% set date = date() %}
 {% set events = _Event.getEvents({"limit": limit, "start_date": date.date | split(" ")[0]}) %}
+
+
+{% set firstCount = events | length %}
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
+
+
+
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set eventCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
@@ -62,15 +76,19 @@
                     <div class="row">
                         <div class="col-md-9" style="margin-top:35px;">
                             <div class="row">
-                                {{ this.render('partials/ajaxarticles.twig', {
-                                    offset: limit,
-                                    limit: limit,
-                                    articles: events,
-                                    card_style: "card-event-list-rec card-event-list-tablet card-event-list-mobile",
-                                    container:"ajaxArticles",
-                                    border: "visible",
-                                    loadtype: "events",
-                                }) | raw }}
+
+                                {% if userArticles|length >= limit %}
+                                    {{ this.render('partials/ajaxarticles.twig', {
+                                        offset          : limit,
+                                        limit           : limit,
+                                        name            : "events-load",
+                                        loadtype        : 'events',
+                                        card_class      : "card-event-list-rec card-event-list-tablet card-event-list-mobile",
+                                        container       : "mainAjaxArticles",
+                                        buttonClass     : "infinite"
+                                    }) | raw }}
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>

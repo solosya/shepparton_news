@@ -3,15 +3,27 @@
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
 
-{{this.registerJs("Acme.cardController = Acme.CardController();")}}
+{# {{this.registerJs("Acme.cardController = Acme.CardController();")}}
 {{this.registerJs("Acme.SectionController();")}}
-
+ #}
 {% set limit = 10 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'blog' }) %}
+
+
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -171,19 +183,18 @@
     <div class="container" style="margin-top:15px;">
         <section>
             <div class="row">
-                <div class="col-sm-9 col-md-9 col-xs-9" style="padding:0;">
+                {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
-                        offset: limit,
-                        limit: 12,
-                        non_pinned: articlesArr.existingNonPinnedCount, 
-                        articles: articles,
-                        site: site,
-                        card_style: "col-sm-3 card-sm feature-side-tablet card-sm-wide-mobile row-space40",
-                        container:"mainAjaxArticles",
-                        buttonClass: "infinite",
-                        border: "visible"
+                        offset          : limit,
+                        limit           : limit,
+                        name            : "section-load",
+                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                        card_class      : "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
+                        container       : "mainAjaxArticlescardClass",
+                        buttonClass     : "infinite"
                     }) | raw }}
-                </div>
+                {% endif %}
+
             </div>
         </section>
     </div>

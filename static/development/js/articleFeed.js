@@ -8,12 +8,10 @@ Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText) {
     this.elem      = $('.loadMoreArticles');
     this.failText  = failText || null;
     this.events();
-    console.log('articlefeed');
 };
 
 Acme.View.articleFeed.prototype.fetch = function()
 {
-    console.log('fetching');
     var self = this;
     self.elem.html("Please wait...");
 
@@ -31,6 +29,8 @@ Acme.View.articleFeed.prototype.fetch = function()
         'blogid'            :   self.elem.data('blogguid'),
         'loadtype'          :   self.elem.data('loadtype')      || "home",
         'search'            :   self.elem.data('searchterm')    || null,
+        'after'             :   self.elem.data('after')  || null,
+        'before'            :   self.elem.data('before')  || null,
     };
     if (self.options.search != null) {
         self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
@@ -75,7 +75,15 @@ Acme.View.articleFeed.prototype.render = function(data)
         html = ["<p>" + self.failText + "</p>"];
     } else {
         for (var i in data.articles) {
+            if (self.options.before) {
+                html.push( self.options.before );
+            }
+
             html.push( self.cardModel.renderCard(data.articles[i], cardClass, template) );
+
+            if (self.options.after) {
+                html.push( self.options.after );
+            }
         }
     }
 
@@ -107,14 +115,12 @@ Acme.View.articleFeed.prototype.events = function()
         self.fetch();
     });
 
-
     if (this.infinite && this.offset >= this.limit) {
         self.waypoint = new Waypoint({
             element: self.elem,
             offset: '80%',
             handler: function (direction) {
                 if (direction == 'down') {
-                    console.log('self dot fetching');
                     self.fetch();
                 }
             }

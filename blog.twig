@@ -8,6 +8,8 @@
 {% set limit = 11 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %}
 {# TODO: add interval: 48 back to popularArticles call when in production #}
 
@@ -24,10 +26,15 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
-{{this.registerJs("Acme.cardController = Acme.CardController();")}}
-{{this.registerJs("Acme.SectionController();")}}
+{# {{this.registerJs("Acme.cardController = Acme.CardController();")}} #}
+{# {{this.registerJs("Acme.SectionController();")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
 
-{% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+{# {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %} #}
 
 
 <main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
@@ -207,7 +214,7 @@
 
 
 
-        <section style="margin-bottom: -50px;">
+        <section>
 
             <div class="row">
                 <div class="col-sm-9 col-md-6">
@@ -251,20 +258,19 @@
 
         <section>
             <div class="row">
-                <div class="col-md-9">                    
+                {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
-                        offset: limit,
-                        limit: 12,
-                        non_pinned: articlesArr.existingNonPinnedCount, 
-                        articles: articles,
-                        site: site,
-                        card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
-                        container:"mainAjaxArticles",
-                        buttonClass: "infinite",
-                        border: "visible"
+                        offset          : limit,
+                        limit           : limit,
+                        name            : "section-load",
+                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                        card_class      : "card-sm card-sm-mobile row-space40",
+                        container       : "mainAjaxArticles",
+                        buttonClass     : "infinite",
+                        before          : '<div class="col-sm-3 col-xs-12">',
+                        after           : '</div>'
                     }) | raw }}
-                </div>
-            </div>
+                {% endif %}
         </section>
 
 
