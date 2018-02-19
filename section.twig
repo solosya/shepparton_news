@@ -66,9 +66,9 @@
                     <div class="row">
                 
                         <div class="ad-square visible-md-block visible-lg-block col-sm-1 col-md-9" style="margin-bottom:15px;position:relative;">
-                            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-1'>
+                            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-9'>
                                 <script type='text/javascript'>
-                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
+                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-9'); });
                                 </script>
                             </div>
                         </div>                      
@@ -220,7 +220,7 @@
             </div>
         </section>
         <section class="loadmore__section">
-            <div class="">
+            <div class="row">
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
