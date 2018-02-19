@@ -68,7 +68,21 @@
                 <section style="margin-top:55px;">
                     <div class="row">
                         <div class="col-md-9">
-                            {{ this.render('partials/ajaxarticles.twig', {
+
+                            {% if articles|length >= limit %}
+                                {{ this.render('partials/ajaxarticles_new.twig', {
+                                    offset          : limit,
+                                    limit           : limit,
+                                    name            : "user-load",
+                                    loadtype        : 'user',
+                                    card_class      : "card-sm feature-side-tablet card-sm-wide-mobile",
+                                    container       : "mainAjaxArticlescardClass",
+                                    buttonClass     : "infinite"
+                                }) | raw }}
+                            {% endif %}
+
+
+{#                             {{ this.render('partials/ajaxarticles.twig', {
                                 offset: limit,
                                 limit: 12,
                                 articles: userArticles,
@@ -78,7 +92,7 @@
                                 buttonClass: "infinite",
                                 border: "visible"
                             }) | raw }}
-                        </div>
+ #}                        </div>
                     </div>
                 </section>
             </div>

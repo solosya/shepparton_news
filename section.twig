@@ -157,26 +157,27 @@
     <div class="container" style="margin-top:-25px;">
         <section>
             <div class="row">
-                <div class="col-md-6 col-sm-5" style="padding:0;">
-                    {% for i in 0..8 if articles[articleCount] %}
+                <div class="col-md-6 col-sm-5">
+                    <div class="row">
+                        {% for i in 0..8 if articles[articleCount] %}
 
-                        <div class="col-md-3 col-sm-9">
-                            {{this.render('partials/_single-article.twig', {
-                                article: articles[articleCount], 
-                                imageSize: {width:190, height:160},
-                                position: articleCount + 1,
-                                site: site,                               
-                                containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
-                            }) | raw}}
-                            <hr class="divide visible-xs-block">
-                            <hr class="divide18 visible-md-block visible-lg-block space-only">
-                            <hr class="divide18 visible-sm-block">
+                            <div class="col-md-3 col-sm-9">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:190, height:160},
+                                    position: articleCount + 1,
+                                    site: site,                               
+                                    containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide18 visible-md-block visible-lg-block space-only">
+                                <hr class="divide18 visible-sm-block">
 
-                        </div>
+                            </div>
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% endfor %}
-
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% endfor %}
+                    </div>
                 </div>
 
                 <div class="col-md-3 col-sm-4 split trending {{ site }}" style="">
@@ -223,24 +224,21 @@
 
 
         <section style="margin-top:55px;">
+
             <div class="row">
-                <div class="col-md-9">
+                {% if articles|length >= limit %}
+                    {{ this.render('partials/ajaxarticles_new.twig', {
+                        offset          : limit,
+                        limit           : limit,
+                        name            : "section-load",
+                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                        card_class      : "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
+                        container       : "mainAjaxArticlescardClass",
+                        buttonClass     : "infinite"
+                    }) | raw }}
+                {% endif %}
 
-
-                    {% if articles|length >= limit %}
-                        {{ this.render('partials/ajaxarticles_new.twig', {
-                            offset          : limit,
-                            limit           : limit,
-                            name            : "section-load",
-                            non_pinned      : articlesArr.existingNonPinnedCount, 
-                            card_class      : "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
-                            container       : "mainAjaxArticles",
-                            ads             : "no",
-                            buttonClass     : "infinite"
-                        }) | raw }}
-                    {% endif %}
-
-
+            </div>
 
 {#                     {{ this.render('partials/ajaxarticles.twig', {
                         offset: limit,
@@ -249,12 +247,11 @@
                         articles: articles,
                         site: site,
                         card_style: "col-sm-3 col-xs-12 card-sm card-sm-mobile row-space40",
-                        container:"mainAjaxArticles",
+                        container:"mainAjaxArticlescardClass",
                         buttonClass: "infinite",
                         border: "visible"
                     }) | raw }}
- #}                </div>
-            </div>
+ #}                
         </section>
 
     </div>

@@ -14,8 +14,8 @@ var screenArticles_1 =
 </div>\
 ';
 
-var systemCardTemplate = 
-'<div class="{{containerClass}}"> \
+Acme.systemCardTemplate = 
+'<div class="{{cardClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{{hasArticleMediaClass}}}" \
