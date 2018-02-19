@@ -10,6 +10,7 @@
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
 
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
