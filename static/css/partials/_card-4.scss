@@ -245,6 +245,8 @@
                     }
 
                     .author {
+                        bottom: 40px;
+
                         &:after {
                             content:'';
                             position: absolute;
