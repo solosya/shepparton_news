@@ -59,6 +59,11 @@ Acme.systemCardTemplate =
     '</a>'+
 '</div>';
 
+window.templates.ads_infinite = 
+    "<div class='row'><div id='newAdSlot'></div><script>loadNextAd()</script>";
+
+
+
 window.templates.modal = 
 '<div id="signin" class="flex_col"> \
     <div id="dialog"> \
