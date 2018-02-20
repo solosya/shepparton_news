@@ -180,15 +180,17 @@ hr.divide10 {
 }
 
 @mixin adtext {
-    &:after {
-        content: "Advertisement";
-        font-size: rem(10);
-        color: color(grey);
-        position: relative;
-        float: right;
-        @media screen and (max-width: $mmd-break){
-            display:none
-        }   
+    .google_ad {
+        &:after {
+            content: "Advertisement";
+            font-size: rem(10);
+            color: color(grey);
+            position: relative;
+            float: right;
+            @media screen and (max-width: $mmd-break){
+                display:none
+            }   
+        }
     }
 }
 
