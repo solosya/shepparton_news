@@ -34179,7 +34179,6 @@ Acme.View.articleFeed.prototype.render = function(data)
             }
         }
     }
-    console.log(html.join(''));
     (rendertype === "write")
         ? self.options.container.empty().append( html.join('') )
         : self.options.container.append( html.join('') );
