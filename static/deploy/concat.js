@@ -34211,7 +34211,7 @@ Acme.View.articleFeed.prototype.events = function()
     if (this.infinite && this.offset >= this.limit) {
         self.waypoint = new Waypoint({
             element: self.elem,
-            offset: '80%',
+            offset: '100%',
             handler: function (direction) {
                 if (direction == 'down') {
                     self.fetch();
