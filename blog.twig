@@ -30,7 +30,7 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", false);")}}
 
 {# {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %} #}
 
@@ -264,7 +264,7 @@
                         non_pinned      : articlesArr.existingNonPinnedCount, 
                         card_class      : "card-sm card-sm-tablet card-sm-mobile row-space40",
                         container       : "mainAjaxArticles",
-                        buttonClass     : "infinite",
+                        label           :'load more',
                         ads             : "yes",
                         before          : '<div class="col-sm-3 col-xs-12">',
                         after           : '<hr class="divide18 visible-xs-block"></div>'
