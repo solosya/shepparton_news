@@ -135,25 +135,20 @@ Acme.Card.prototype.bindSocialPostPopup = function()
         e.preventDefault();
         // e.stopPropogation();
 
-        // console.log('lightbox clicked');
-
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
 
         var isSocial = $(this).data('social');
         if (isSocial) {
             var url = '/api/social/get-social-post';
             var postGuid = $(this).data('guid');
-            var payload = {blog_guid: false, guid: postGuid, _csrf: csrfToken}
+            var blogGuid = $(this).parent().data('blog-guid');
+            var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
         } else {
             var url = '/api/article/get-article';
             var articleId = $(this).data('id');
             var payload = {articleId: articleId, _csrf: csrfToken}
         }
 
-        // console.log(_appJsConfig.appHostName);
-        // http://www.aapp.io/admin
-
-        // var url = "/admin/article/save";
         if (!isRequestSent) {
 
             $.ajax({
@@ -177,7 +172,7 @@ Acme.Card.prototype.bindSocialPostPopup = function()
                     var articleTemplate = Handlebars.compile(socialPostPopupTemplate(data.source));
                     var article = articleTemplate(data);
                     $('.modal').html(article);
-                    //$('body').modalmanager('loading');
+
                     setTimeout(function () {
                         $('.modal').modal('show');
                     }, 500);

@@ -160,7 +160,7 @@
             data-article-image="{{social.media['path']}}" 
             data-article-text="{{Helper.htmlToText(social.content, -1) | raw | escape('html')}}">
 
-            <article class="socialarticle {{ socialSource }}">
+            <article class="socialarticle {{ socialSource }} lightbox">
                 {% if social.hasMedia == 'TRUE' and imageSuppress == 'false' %}  
                     <figure class="{{videoClass}}">
 
