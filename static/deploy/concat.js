@@ -36071,7 +36071,7 @@ UserArticlesController.Load = (function ($) {
         if (totalPosts > _appJsConfig.articleOffset) {
             var waypoint = new Waypoint({
                 element: $('#LoadMoreArticles'),
-                offset: '80%',
+                offset: '70%',
                 handler: function (direction) {
                     if (direction == 'down') {
                         $.fn.Ajax_LoadMoreUserArticles({
