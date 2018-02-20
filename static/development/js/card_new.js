@@ -164,13 +164,14 @@ Card.prototype.bindSocialPostPopup = function()
                     
                     data.templatePath = _appJsConfig.templatePath;
 
-                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
+                    var articleTemplate = Handlebars.compile(socialPostPopupTemplate(data.source));
                     var article = articleTemplate(data);
                     $('.modal').html(article);
-
-                    setTimeout(function () {
-                        $('.modal').modal('show');
-                    }, 500);
+                    console.log($('.modal'));
+                    $('.modal').modal('show');
+                    // setTimeout(function () {
+                    //     $('.modal').modal('show');
+                    // }, 500);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     isRequestSent = false;
