@@ -167,18 +167,29 @@ a.card {
 
     &.social {
         .content {
-
+            .icon {
+                display: none;
+            }
         }
-
         &.facebook{
             .content{
 
                 .icon {
                     width:13px;
                     height:27px;
-                    background-image: url("../icons/facebook.svg");
+                    
                     // background-size:cover;
                     background-repeat: no-repeat;
+                    &.dairy {
+                        background-image: url("../icons/social/green/facebook.svg");
+                    }
+                    &.country {
+                        background-image: url("../icons/social/green/facebook.svg");
+                    }
+
+                    &.shepparton {
+                        background-image: url("../icons/social/red/facebook.svg");
+                    }
                 }
             }
         }
@@ -189,9 +200,20 @@ a.card {
                 .icon {
                     width:31px;
                     height:31px;
-                    background-image: url("../icons/twitter.svg");
+                    
                     // background-size:cover;
                     background-repeat: no-repeat;
+                    &.dairy {
+                        background-image: url("../icons/social/green/twitter.svg");
+                    }
+
+                    &.country {
+                        background-image: url("../icons/social/green/twitter.svg");
+                    }
+
+                    &.shepparton {
+                        background-image: url("../icons/social/red/twitter.svg");
+                    }
                 }
             }
         }
@@ -202,12 +224,48 @@ a.card {
                 .icon {
                     width:27px;
                     height:27px;
-                    background-image: url("../icons/instagram.svg");
+                    
                     // background-size:cover;
                     background-repeat: no-repeat;
+                    &.dairy {
+                        background-image: url("../icons/social/green/instagram.svg");
+                    }
+
+                    &.country {
+                        background-image: url("../icons/social/green/instagram.svg");
+                    }
+
+                    &.shepparton {
+                        background-image: url("../icons/social/red/instagram.svg");
+                    }
                 }
             }
         }
+        &.withImage__content {
+            &.facebook{
+                .content{
+                    .icon {
+                        background-image: url("../icons/social/white/facebook.svg");
+                    }
+                }
+            }
+            &.twitter{
+                .content{
+                    .icon {
+                        background-image: url("../icons/social/white/twitter.svg");
+                    }
+                }
+            }
+            &.instagram{
+                .content{
+                    .icon {
+                        background-image: url("../icons/social/white/instagram.svg");
+                    }
+                }
+            }
+
+        }
+
 
     }
 }

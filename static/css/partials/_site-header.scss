@@ -297,6 +297,7 @@
     &.footer {
         height: 80px;
         width: 168px;
+        margin-right:30px;
         @media screen and (max-width: $mmd-break-down){
            width: 120px; 
         }
@@ -316,6 +317,14 @@
         height: 95px;
         padding-bottom:15px;
     }
+
+    &.country {
+        @media screen and (min-width: $mmd-break){    
+            height: 80px;
+        }
+    }
+
+
 }
 
 
@@ -332,77 +341,7 @@
         margin-top: 0;
         padding:8px;
     }
-    &.riverine-logo{
-        background-size: 135px;
-        background-position: center;
-    }
-    &.benalla-logo{
-        background-size: 185px;
-        background-position: center;
-        width: 300px;
-        height: 75px;
-    }
-    &.campaspe-logo{
-        background-size: 135px;
-        background-position: center;
-    }
-    &.cobram-logo{
-        background-size: 185px;
-        background-position: center;
-        width: 250px;
-    }
-    &.corowa-logo{
-        background-size: 185px;
-        background-position: center;
-        width: 400px;
-        height: 150px;
-    }
-    &.deniliquin-logo{
-        background-size: 165px;
-        background-position: center;
-        width: 300px;
-        height: 95px;
-    }
-    &.kyabram-logo{
-        background-size: 135px;
-        background-position: center;
-        height: 65px;
-    }
-    &.mcivor-logo{
-        background-size: 185px;
-        background-position: center;
-        height: 65px;
-        width: 190px;
-    }
-    &.seymour-logo{
-        background-size: 185px;
-        background-position: center;
-        height: 50px;
-        width: 180px;
-    }
-    &.tatura-logo{
-        background-size: 185px;
-        background-position: center;
-        height: 50px;
-        width: 220px;
-    }
-    &.yarrawonga-logo{
-        background-size: 165px;
-        background-position: center;
-        height: 50px;
-    }
-    &.riverina-logo{
-        background-size: 135px;
-        background-position: center;
-    }
-}
-
-.country-logo {
-    @media screen and (min-width: $mmd-break){    
-        height: 80px;
-    }
-
-    > a {
+    &.country {
         background-position: 0px 6px;
         width: 25px;    
         @media screen and (min-width: $mmd-break){ 
@@ -413,16 +352,79 @@
             width:160px;
         }
     }
-}
-
-.dairy-logo {
-    > a {
+    &.dairy {
         width: 264px;
         @media screen and (max-width: $mmd-break){
             width:160px;
         }        
     }
+
+    &.riverine{
+        background-size: 135px;
+        background-position: center;
+    }
+    &.benalla{
+        background-size: 185px;
+        background-position: center;
+        width: 300px;
+        height: 75px;
+    }
+    &.campaspe{
+        background-size: 135px;
+        background-position: center;
+    }
+    &.cobram{
+        background-size: 185px;
+        background-position: center;
+        width: 250px;
+    }
+    &.corowa{
+        background-size: 185px;
+        background-position: center;
+        width: 400px;
+        height: 150px;
+    }
+    &.deniliquin{
+        background-size: 165px;
+        background-position: center;
+        width: 300px;
+        height: 95px;
+    }
+    &.kyabram{
+        background-size: 135px;
+        background-position: center;
+        height: 65px;
+    }
+    &.mcivor{
+        background-size: 185px;
+        background-position: center;
+        height: 65px;
+        width: 190px;
+    }
+    &.seymour{
+        background-size: 185px;
+        background-position: center;
+        height: 50px;
+        width: 180px;
+    }
+    &.tatura{
+        background-size: 185px;
+        background-position: center;
+        height: 50px;
+        width: 220px;
+    }
+    &.yarrawonga{
+        background-size: 165px;
+        background-position: center;
+        height: 50px;
+    }
+    &.riverina{
+        background-size: 135px;
+        background-position: center;
+    }
 }
+
+
 
 
 /* Search box */

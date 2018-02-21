@@ -1,0 +1,12 @@
+.site-footer{
+    width: 100%;
+    margin-top: 0;
+    padding-top:24px;
+    background: rgba(0,0,0,.85);
+    height:295px;
+    @media screen and (max-width: $sm-break-down) {
+        height:auto;
+        padding-top:20px;
+        padding-bottom: 80px;
+    }
+}

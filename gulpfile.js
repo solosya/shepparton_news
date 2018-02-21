@@ -76,10 +76,12 @@ gulp.task('scripts', function(){
 		'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 		
         // './static/development/js/plugins/slick.js',
-        // './static/development/js/plugins/syncronex/syncronex.js',
         './static/development/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',
-        // './static/development/js/plugins/bootstrap-modalmanager.js',
-        // './static/development/js/plugins/bootstrap-modal.js',
+
+        // only used for social pop ups
+        './static/development/js/plugins/bootstrap-modalmanager.js',
+        './static/development/js/plugins/bootstrap-modal.js',
+
         './static/development/js/plugins/jquery.noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js',
         './static/development/js/plugins/jquery.fancybox/source/jquery.fancybox.js',
         // './static/development/js/plugins/bootbox.min.js',

@@ -1,4 +1,5 @@
 {% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
 
 <main class="site-main">
     {{ set(this, 'title', 'User Profile') }}
@@ -22,15 +23,6 @@
                         <div class="inner-descr">
                             <h2 class="user-name">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h2>
                             
-                            {% if 'dairy' not in (networkData.title | lower) %}
-                                {% if _User.isGuest() %}
-                                    <a href="javascript:void(0)" class="button follow forceLoginModal">Follow</a>
-                                {% endif %}
-                                {% if not _User.isGuest() and _User.getId() != userDetails.id %}
-                                    {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
-                                    <a href="javascript:void(0)" class="button follow" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}">{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
-                                {% endif %}
-                            {% endif %}
 
                             <p class="bio">{{Html.decode(userDetails.bio) | raw}}</p>
                             <div class="user-social">
@@ -42,19 +34,19 @@
                 <!-- //End User Profile Sidebar -->
             </div>
 
+
             <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
-            {% if 'dairy' not in (networkData.title | lower) %}
-            {# there are no blogs on dairy news #}
-                {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
-            {% endif %}
+            
+                {# there are no blogs on dairy news #}
+                {% if 'dairy' not in (networkData.title | lower) %}
+                    {{this.render('partials/user-profile/_user_blogs.twig', {userOwnerBlogs : userOwnerBlogs}) | raw }} 
+                {% endif %}
 
-                {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles, articleCount: 0 }) | raw }}
+                {{this.render('partials/user-profile/_recent_articles.twig', {
+                    myArticles : myArticles, 
+                    site:site,
+                    articleCount: 0 }) | raw }}
 
-            {% if 'dairy' not in (networkData.title | lower) %}
-            {# there are no users on dairy news #}
-                {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
-                {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}
-            {% endif %}
             </div>
         </div>
     </section>

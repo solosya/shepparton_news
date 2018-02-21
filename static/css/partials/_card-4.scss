@@ -1,24 +1,31 @@
-@mixin card-sm-wide-base() {
+@mixin card-sm-base() {
     position:relative;
     a.card {
-        height:250px;
-
         > article {
             position:relative;
-            > figure{
+            > figure {
             }
-            > .content{
+
+            > .content {
                 position:relative;
-                padding:0;
+                padding: 0;
+
                 > .category{
                 }
                 > h2{
-                    // background:orange;
+                    font-weight: normal;
+                    font-size: rem(17);
+                    line-height:1.29;
+                    margin-top:5px;
+                    margin-bottom:10px;
+                    height:45px;
                 }
                 > p.excerpt {
-                    // background:pink;
+                    display:none;
                 }
                 .author {
+                    height: 18px;
+                    width: 100%;
                     img {
                     }
                     p {
@@ -26,369 +33,126 @@
                     > time {
                     }
                 }
-                    
-                > time{
-                }
-            }
-        }
-
-        &.withImage__content {
-            .content {
-                height: 80px;
-            }
-        }        
-
-        &.without__image {
-            background:color(offwhite);
-            .content {
-                padding:43px 20px 5px 20px;
-
-                height:100%;
-
-                h2 {
-                    font-size: rem(17);
-                    font-weight:700;
-                    line-height: 1.29;
-                    max-height:45px;
-                }
-
-                >p.excerpt {
-                    display:block;
-                    font-size: rem(15);
-                    height:60px;
-                    max-height:60px;
-                    line-height: 1.33;
-                    margin-top: 7px;
-                }
-
-                .author {
-                    bottom: 60px;
-
-                    font-family:$font-family-serif;
-                    display:block;
-                    margin-top:10px;
-                    &:after {
-                        content:'';
-                        position: absolute;
-                        display:block;
-                        width: 62px;
-                        height:1px;
-                        background:color(lightgrey);
-                        margin-top:20px;
-                    }
-                }
-
-            }
-        }  
-    }
-}
-
-
-
-
-
-
-
-
-
-.card-sm-wide{
-    @media screen and (min-width: $mmd-break){
-        @include card-sm-wide-base();
-
-        a.card {
-            @include card-image-top(auto, 160px);
-            
-            > article {
-
-                > figure{
-                    margin-bottom:6px;
-                }
-
-                > .content{
-
-                    > h2{
-                        font-weight: 600;
-                        font-size: rem(17);
-                        line-height:1.29;
-                        margin-top:5px;
-                        height:24px;
-                    }
-
-                    > p.excerpt {
-                        font-size: rem(15);
-                        height:17px;
-                        line-height: 1;
-                        margin-top: 2px;
-                    }
-
-                    > .author{
-                        margin-top:13px;
-
-                        >p {
-                            margin: 0;
-                            padding: 0;
-                            padding-right:5px;
-                        }
-                    }
-                }
-            }
-
-
-            &.without__image {
-                .content {
-                    h2 {
-                        max-height:70px;
-                    }
-                }
-            }  
-
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
-                    }
-
-                    >p {
-                        max-height:65px;
-                        margin-bottom:6px;
-                    }
-
-                    .category {
-                        padding-bottom: 5px;
-                    }                    
-                }
-
-                &.facebook {
-                    .content{
-                        .icon {
-                            width:10px;
-                            height:20px;
-                            background-size:contain;
-                        }
-                    }
-                }
-                &.twitter {
-                    .content{
-                        .icon {
-                            width:22px;
-                            height:18px;
-                            background-size:contain;
-                        }
-                    }
-                }
-
-                &.instagram{ 
-                    &.without__content {
-                        @include card-image-top(auto, 209px);
-                        &.withImage__content {
-                            .content {
-                                height: 34px;
-                            }
-                        }                        
-                    }
-                }
-                &.without__image {
-                    .content {
-                        .icon {
-                            display:block;
-                            position:absolute;
-                            bottom:20px;
-                        }
-                        >p {
-                            max-height:70px;
-                        }
-                        .author {
-                            bottom: 80px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-
-.card-sm-wide-tablet{
-    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
-        @include card-sm-wide-base();
-
-        a.card {
-            @include card-image-top(auto, 160px);
-            
-            > article {
-
-                > figure{
-                    margin-bottom:6px;
-                }
-
-                > .content{
-
-                    > h2{
-                        font-weight: 600;
-                        font-size: rem(17);
-                        line-height:1.29;
-                        margin-top:5px;
-                        height:24px;
-                    }
-
-                    > p.excerpt {
-                        font-size: rem(15);
-                        height:17px;
-                        line-height: 1;
-                        margin-top: 2px;
-                    }
-
-                    > .author{
-                        margin-top:13px;
-
-                        >p {
-                            margin: 0;
-                            padding: 0;
-                            padding-right:5px;
-                        }
-                    }
-                }
-            }
-
-
-            &.without__image {
-                .content {
-                    h2 {
-                        max-height:70px;
-                    }
-                }
-            }  
-
-            &.social {
-                .content {
-                    .icon {
-                        display:none;
-                    }
-
-                    >p {
-                        max-height:65px;
-                        margin-bottom:6px;
-                    }
-
-                    .category {
-                        padding-bottom: 5px;
-                    }                    
-                }
-
-                &.facebook {
-                    .content{
-                        .icon {
-                            width:10px;
-                            height:20px;
-                            background-size:contain;
-                        }
-                    }
-                }
-                &.twitter {
-                    .content{
-                        .icon {
-                            width:22px;
-                            height:18px;
-                            background-size:contain;
-                        }
-                    }
-                }
-
-                &.instagram{ 
-                    &.without__content {
-                        @include card-image-top(auto, 209px);
-                        &.withImage__content {
-                            .content {
-                                height: 34px;
-                            }
-                        }                        
-                    }
-                }
-                &.without__image {
-                    .content {
-                        .icon {
-                            display:block;
-                            position:absolute;
-                            bottom:20px;
-                        }
-                        >p {
-                            max-height:70px;
-                        }
-                        .author {
-                            bottom: 80px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-
-
-
-
-.card-sm-wide-mobile{
-
-    @media screen and (max-width: $sm-break-down){
-        @include card-sm-wide-base();
-        margin-bottom:7vw;
-
-        height: 250px;
-
-        a.card {
-            @include card-image-top(auto, auto);
-            height:100%;
-
-            > article {
-
-                > figure{
-                    height: 160px;
-                    margin-bottom:6px;
-                    > picture{
-                        > img {
-                            max-height: 160px;
-                        }
-                    }
-                }
-
-                > .content{
-                    height: 90px;
                 
-                    > h2{
-                        font-weight: 600;
-                        font-size: rem(17);
-                        line-height:1.29;
-                        margin-top:5px;
-                        height:44px;
+                > time {
+                }
+            }
+        }
+
+    }
+    &.dairy-card {
+        a.card {
+            > article {
+                > figure {
+                    margin-bottom: 3px;
+                }
+
+                > .content {
+                    background-color: #7bc127;
+                    padding: 20px;
+                    height: 87px;
+ 
+                    > .category {
+                        display: none;
                     }
 
-                    > p.excerpt {
-                        display:none;
+                    h2 {
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        color: white;
+                        height: 24px;
+                        margin-bottom: 0px;
                     }
+
+                    > p {
+                        display: block;
+                        font-size: rem(14);
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: white;
+                        height: 24px;
+                    }
+
+                    > .author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.card-sm{
+    @media screen and (min-width: $mmd-break){
+        @include card-sm-base();
+
+        a.card {
+            @include card-image-top(auto, 160px);
+            height:250px;
+
+            > article {
+
+                > figure{
+                    margin-bottom:6px;
+                }
+            }
+
+            &.withImage__content {
+                .content {
+                    height: 80px;
                 }
             }
 
 
             &.without__image {
+                background:color(offwhite);
                 .content {
+                    padding:63px 20px 5px 20px;
+
+                    height:100%;
+
                     h2 {
-                        max-height:45px;
+                        font-size: rem(17);
+                        font-weight:normal;
+                        line-height: 1.29;
+                        height:70px;
                     }
+
+                    .author {
+                        bottom: 30px;
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:10px;
+                        }
+                    }
+
                 }
             }  
 
             &.social {
                 .content {
                     .icon {
-                        display:none;
+                        display:block;
+                        position: absolute;
+                        top: -150px;
+                        left: 10px;
                     }
 
                     >p {
-                        max-height:65px;
+                        height:65px;
                         margin-bottom:6px;
+                    }
+
+                    .category {
+                        padding-bottom: 5px;
                     }
                 }
 
@@ -414,29 +178,225 @@
                 &.instagram{ 
                     &.without__content {
                         @include card-image-top(auto, 209px);
-                        .author {
-                            display:block;
+                        &.withImage__content {
+                            .content {
+                                height: 34px;
+                            }
                         }
                     }
                 }
                 &.without__image {
-
                     .content {
-                        padding-top:31px;
-                        .category {
-                            margin-bottom:10px;
-                        }
-                        >p {
-                            max-height:90px;
-                        }
                         .icon {
                             display:block;
                             position:absolute;
                             bottom:20px;
                         }
+                        >p {
+                            max-height:70px;
+                        }
+                        .author {
+                            bottom: 80px;
+                        }
                     }
                 }
             }
+
+
         }
     }
 }
+
+
+.card-sm-tablet{
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include card-sm-base();
+
+        a.card {
+            @include card-image-top(auto, 160px);
+            height:250px;
+
+            > article {
+
+                > figure{
+                    margin-bottom:6px;
+                }
+            }
+
+            &.withImage__content {
+                .content {
+                    height: 80px;
+                }
+            }
+
+
+            &.without__image {
+                background:color(offwhite);
+                .content {
+                    padding:63px 20px 5px 20px;
+
+                    height:100%;
+
+                    h2 {
+                        font-size: rem(17);
+                        font-weight:normal;
+                        line-height: 1.29;
+                        height:70px;
+                    }
+
+                    .author {
+                        bottom: 40px;
+
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:20px;
+                        }
+                    }
+
+                }
+            }  
+
+            &.social {
+                .content {
+                    .icon {
+                        // display:none;
+                    }
+
+                    >p {
+                        height:65px;
+                        margin-bottom:6px;
+                    }
+
+                    .category {
+                        padding-bottom: 5px;
+                    }
+                }
+
+                &.facebook {
+                    .content{
+                        .icon {
+                            width:10px;
+                            height:20px;
+                            background-size:contain;
+                        }
+                    }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                        &.withImage__content {
+                            .content {
+                                height: 34px;
+                            }
+                        }
+                    }
+                }
+                &.without__image {
+                    .content {
+                        .icon {
+                            display:block;
+                            position:absolute;
+                            bottom:20px;
+                        }
+                        >p {
+                            max-height:70px;
+                        }
+                        .author {
+                            bottom: 80px;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+
+.card-sm-mobile {
+    @media screen and (max-width: $sm-break-down){
+        @include card-sm-base();
+
+        height:85px;
+
+        a.card {
+            @include card-image-left(89px, 85px);
+
+            article {
+                > .content {
+                    margin-left: 100px;
+                    h2{
+                        font-size: rem(14);
+                        height: 60px;
+                    }
+                }
+            }
+
+            &.without__image {
+                article {
+                    > .content {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            &.social {
+                .content {
+                    .icon {
+                        // display:none;
+                    }
+
+                    >p {
+                        height:65px;
+                        margin-bottom:6px;
+                    }
+                }
+
+                &.facebook {
+                    .content{
+
+                    }
+                }
+                &.twitter {
+                    .content{
+                        .icon {
+                            width:22px;
+                            height:18px;
+                            background-size:contain;
+                        }
+                    }
+                }
+
+                &.instagram{ 
+                    &.without__content {
+                        @include card-image-top(auto, 209px);
+                        .author {
+                            display:block;
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+
+}
+
+

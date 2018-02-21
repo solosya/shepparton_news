@@ -1,16 +1,29 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
 
 
-{{this.registerJs("Acme.cardController = Acme.CardController();")}}
+{# {{this.registerJs("Acme.cardController = Acme.CardController();")}}
 {{this.registerJs("Acme.SectionController();")}}
-
+ #}
 {% set limit = 10 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+
+
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'blog' }) %}
+
+
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -41,6 +54,7 @@
                            article: articles[articleCount],
                            position: articleCount + 1,
                            imageSize: {width:900},
+                           site: site,
                            containerClass: 'home-feature-sm home-feature-mobile'
                        }) | raw}}
                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -83,7 +97,8 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
-                                    position: articleCount + 1,                                     
+                                    position: articleCount + 1,  
+                                    site: site,                                   
                                     containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
@@ -109,7 +124,8 @@
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
-                                    position: articleCount + 1,                                     
+                                    position: articleCount + 1,    
+                                    site: site,                                 
                                     containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
@@ -130,6 +146,7 @@
                         {{this.render('partials/_single-article.twig', {
                             article: popularArticles[popCount], 
                             imageSize: {width:190, height:160},
+                            site: site,
                             containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                         }) | raw}}
 
@@ -166,18 +183,21 @@
     <div class="container" style="margin-top:15px;">
         <section>
             <div class="row">
-                <div class="col-sm-9 col-md-9 col-xs-9" style="padding:0;">
+                {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
-                        offset: limit,
-                        limit: 12,
-                        non_pinned: articlesArr.existingNonPinnedCount, 
-                        articles: articles,
-                        card_style: "col-sm-3 card-sm feature-side-tablet card-sm-wide-mobile row-space40",
-                        container:"mainAjaxArticles",
-                        buttonClass: "infinite",
-                        border: "visible"
+                        offset          : limit,
+                        limit           : limit,
+                        name            : "section-load",
+                        non_pinned      : articlesArr.existingNonPinnedCount, 
+                        ads             : "yes",
+                        card_class      : "card-sm card-sm-tablet card-sm-mobile row-space40",
+                        container       : "mainAjaxArticlescardClass",
+                        buttonClass     : "infinite",
+                        before          : '<div class="col-sm-3 col-xs-12">',
+                        after           : '</div>'
                     }) | raw }}
-                </div>
+                {% endif %}
+
             </div>
         </section>
     </div>

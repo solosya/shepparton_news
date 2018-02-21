@@ -2,8 +2,11 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+{# {% set site        = "dairy" %} #}
 
-{{this.registerJs("Acme.CardController();")}}
+{# {{this.registerJs("Acme.CardController();")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
 
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
@@ -13,10 +16,11 @@
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
+{% set date = date() %}
 {% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
 <!-- used to index each article as we loop over throughout the template -->
-{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 7 : 0 %}
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 {% set sections =  {
@@ -50,9 +54,15 @@
 {% for key, value in sections %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
+            
+            {% set feed = dev 
+                    ? articlesArr 
+                    : _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
+            %}
+
             {% set sections = sections | merge({
                 (key) : {
-                    'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
+                    'feed': feed,
                     'link' : blog.link
                     }
                 }) %}
@@ -68,6 +78,7 @@
             articles: articles, 
             articleCount: articleCount,
             dev: dev,
+            site: site,
             ad: 'div-gpt-ad-mrec-4',
         }) | raw}}
     </div>
@@ -83,8 +94,9 @@
                 section: 'local news',
                 events: events,
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-halfpage-ss',
-                site: (networkData.title | lower),
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
@@ -103,6 +115,7 @@
                 articleCount: articleCount,
                 section: 'bloggers',
                 dev: dev,
+                site: site,
                 logo: networkData.templatePath ~ '/static/images/megaphone.svg',
                 networkData: networkData
             }) | raw}} 
@@ -116,6 +129,7 @@
                 articleCount: articleCount,
                 section: 'regional news',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
@@ -136,6 +150,7 @@
                 articleCount: articleCount,
                 section: 'opinion',
                 dev: dev,
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
@@ -148,6 +163,7 @@
                 articleCount: articleCount,
                 section: 'rural news',
                 dev: dev,
+                site: site,
                 cards: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
             }) | raw}} 
         </div>
@@ -160,9 +176,12 @@
                 articleCount: articleCount,
                 section: 'national',
                 dev: dev,
+                site: site,
             }) | raw}} 
         </div>
     {% endif %}
+
+
 
     {% if sections['sport'].feed.articles|length > 0 %}
         <div class="container">
@@ -171,6 +190,7 @@
                 articleCount: articleCount,
                 section: 'sport',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
@@ -200,6 +220,7 @@
                 articleCount: articleCount,
                 section: 'business',
                 dev: dev,
+                site: site,
                 ad: 'div-gpt-ad-mrec-3',                
             }) | raw}} 
         </div>

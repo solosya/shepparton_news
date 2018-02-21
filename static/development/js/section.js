@@ -9,8 +9,8 @@ Acme.section.prototype.events = function()
 {
     var totalPosts = parseInt($('main').data('article-count'));
     var limit = parseInt($('main').data('article-limit'));
-    console.log('moo');
-    console.log(totalPosts);
+    // console.log('moo');
+    // console.log(totalPosts);
     if (totalPosts >= limit) {
         var waypoint = new Waypoint({
             element: $('.loadMoreArticles'),

@@ -1,0 +1,24 @@
+.publish {
+    // padding-right: 0px;
+    margin-top:40px;
+}
+
+.publish__p {
+    font-size: rem(10);
+    color: white;
+    float: left;
+    color:color(grey);
+    @media screen and (max-width: $sm-break-down) {
+        float:none;
+    }
+}
+
+.publish__link {
+    font-size: rem(10);
+    letter-spacing: 0.3px;
+    color:white;
+    float:right;
+    @media screen and (max-width: $sm-break-down) {
+        float:none;
+    }
+}

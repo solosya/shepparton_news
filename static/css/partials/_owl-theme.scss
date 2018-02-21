@@ -15,9 +15,11 @@
 
 .owl-carousel__base .owl-nav {
     position:absolute;
+    height:0px;
     top: 200px;
     margin-left: 5px;
     width: 99%;
+    height:0px;
   -webkit-tap-highlight-color: transparent;
   @media screen and (max-width: $sm-break-down) {
     top: 25%;

@@ -16,6 +16,7 @@
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
                 imageSize: {width:300},
+                site: site,
                 containerClass: 'col-sm-3 ' ~ cards
             }) | raw}}
             {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}

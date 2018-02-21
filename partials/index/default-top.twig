@@ -6,6 +6,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:900},
+                    site: site,
                     containerClass: 'home-feature home-feature-tablet home-feature-mobile index-feature'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -32,6 +33,7 @@
                                 article: articles[articleCount],
                                 imageSize: {width:95},
                                 position: articleCount + 1, 
+                                site: site,
                                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -67,6 +69,7 @@
                     article: articles[desktopCount], 
                     position: 1, 
                     imageSize: {width:500},
+                    site: site,
                     containerClass: 'col-sm-1 top-stories top-stories-tablet top-stories-mobile'
                 }) | raw}}
                 {% set desktopCount = (dev) ? desktopCount : desktopCount + 1 %}
@@ -85,6 +88,7 @@
                         article: articles[tabletCount], 
                         position: 1, 
                         imageSize: {width:500},
+                        site: site,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set tabletCount = (dev) ? tabletCount : tabletCount + 1 %}
@@ -130,7 +134,8 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
-                    containerClass: 'card-sm card-sm-mobile'
+                    site: site,
+                    containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 <hr class="divide visible-xs-block">
@@ -145,7 +150,8 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
-                    containerClass: 'card-sm card-sm-mobile'
+                    site: site,
+                    containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
@@ -171,6 +177,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
+                    site: site,
                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -187,6 +194,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
+                    site: site,
                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -201,6 +209,7 @@
                     article: articles[articleCount], 
                     position: articleCount + 1, 
                     imageSize: {width:300},
+                    site: site,
                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}

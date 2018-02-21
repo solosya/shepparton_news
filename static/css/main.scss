@@ -23,7 +23,15 @@
 //Partials
 @import "common";
 @import "placeholder";
-@import "site-footer";
+
+@import "component.blog-symbol";
+@import "component.blog-social-icons";
+
+@import "component.site-footer";
+@import "component.site-footer-links";
+@import "component.site-footer-publish";
+@import "component.site-footer-social-icons";
+
 
 //Header
 @import "primary-menu";
@@ -55,21 +63,30 @@
 @import "form";
 
 
+//trumps
+@import "trumps.utilities";
+
+
+
+
 //Cards
 @import "card";
-@import "card-sm";
-@import "card-rec";
+@import "card-1";
+@import "card-2";
+@import "card-3";
+@import "card-4";
+@import "card-5";
+
+@import "card-7";
+
+@import "card-9";
+@import "card-10";
+
 @import "card-event";
 @import "card-event-list";
 @import "card-blogger";
-@import "card-sm-wide";
 @import "card-opinion";
 @import "card-popular";
 @import "card-search";
-@import "card-rec-full";
-@import "card-top-stories";
 @import "card-home-special";
-@import "card-home-feature";
-@import "card-feature-side";
 @import "card-home-feature-sm";
-@import "card-home-feature-thin";

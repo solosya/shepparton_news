@@ -14,8 +14,8 @@ var screenArticles_1 =
 </div>\
 ';
 
-var systemCardTemplate = 
-'<div class="{{containerClass}}"> \
+Acme.systemCardTemplate = 
+'<div class="{{cardClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{{hasArticleMediaClass}}}" \
@@ -58,6 +58,11 @@ var systemCardTemplate =
         "{{/if}}"+
     '</a>'+
 '</div>';
+
+window.templates.ads_infinite = 
+    "<div id='newAdSlot' class='infinite-ad'></div><script>loadNextAd()</script>";
+
+
 
 window.templates.modal = 
 '<div id="signin" class="flex_col"> \
