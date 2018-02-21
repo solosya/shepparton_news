@@ -31586,6 +31586,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             var url = _appJsConfig.appHostName + '/'+options.loadtype;
             var requestType = 'get';
         }
+        // console.log(url, requestData);
 
         return $.ajax({
             type: requestType,

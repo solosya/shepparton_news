@@ -3,8 +3,13 @@
 
 {% set limit = 20 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search, 'sortBy': 'published'}) %}
+{% set firstCount = articles | length %}
 
 {% set networkData = _Network.getNetworkData() %}
+
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -43,6 +48,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-9 col-md-6">
+                        {% if articles|length >= limit %}
+                        {{ this.render('partials/ajaxarticles.twig', {
+                            offset      : limit,
+                            limit       : 2, 
+                            label       : "Show more",
+                            card_class  : "search search-tablet search-mobile",
+                            container   : "mainAjaxArticles",
+                            loadtype    : "api/search",
+                            searchTerm  : search
+                        }) | raw }}
+                        {% endif %}
+                    </div>
+
+
+
+
                 </div><!-- .row-->
             </div><!-- .container-->
         </section><!-- .top-stories-->
