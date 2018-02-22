@@ -164,6 +164,11 @@
                     display:none;
                 }
             }
+            &.dairy {
+                &:after {
+                    right: 0;
+                }
+            }
         }
         &.divideright-main {
             &:after {
@@ -235,6 +240,11 @@
             &:last-child {
                 &:after {
                     display:none;
+                }
+            }
+            &.dairy {
+                &:after {
+                    right: 0;
                 }
             }
         }
