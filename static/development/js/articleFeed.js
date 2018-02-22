@@ -103,6 +103,9 @@ Acme.View.articleFeed.prototype.render = function(data)
         effect: "fadeIn"
     });
 
+    this.cardModel.events();
+
+
     self.elem.data('rendertype', '');
 };
 

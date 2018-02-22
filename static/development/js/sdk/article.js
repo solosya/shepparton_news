@@ -14,6 +14,7 @@
             var elem  = $(this);
             $(elem).off('click');
             $(elem).on('click', function(e){
+                e.stopPropagation();
                 e.preventDefault();
 
                 var articleId = parseInt($(elem).data('id'));
@@ -109,7 +110,8 @@
             $(elem).off('click');
             $(elem).on('click', function(e){
                 e.preventDefault();
-             
+                e.stopPropagation();
+
                 var isSocial = $(elem).data('social');
                 var msgStr = (isSocial == 1) ? "Do you really want to delete this article?" : "Do you really want to hide this article?";
                 var articleGuid = $(elem).data('guid');

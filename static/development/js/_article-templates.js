@@ -5,6 +5,35 @@
 window.templates = {};
 
 
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+
+
 var screenArticles_1 = 
 '<div class="row half-height top-row">\
     {¡{content:1-2}¡}\
@@ -149,7 +178,10 @@ var socialCardTemplate =
                     <span class="hide">Edit</span>\
                     </button>\
                     \
-                    <button data-position="{{position}}" data-social="1" data-id="{{socialId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn" type="button" data-status="{{isPinned}}">\
+                    <button data-position="{{position}}" data-social="1" data-id="{{socialId}}" title="{{pinTitle}}" \
+                            class="btnhide social-tooltip PinArticleBtn {{# ifCond isPinned "==" 1 }}selected{{/ifCond}}" \
+                            type="button" \
+                            data-status="{{isPinned}}">\
                         <i class="fa fa-thumb-tack"></i>\
                         <span class="hide">{{pinText}}</span>\
                     </button>\

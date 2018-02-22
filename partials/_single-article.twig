@@ -209,11 +209,18 @@
             {% if article.userHasBlogAccess == '1' and swap != '' %}
             <div class="btn_overlay articleMenu">
                 <button title="Hide" data-guid="{{social.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">
-                    <i class="fa fa-eye-slash"></i><span class="hide">Hide</span>
+                    <i class="fa fa-eye-slash"></i>
+                    <span class="hide">Hide</span>
                 </button>
-                    <button title="Edit" class="btnhide social-tooltip editSocialPost" type="button" data-url="/admin/social-funnel/update-social?guid={{social.blog['guid']}}&socialguid={{social.guid}}">
-                    <i class="fa fa-edit"></i><span class="hide">Edit</span>
-                    </button>
+
+                <button title="Edit" 
+                        class="btnhide social-tooltip editSocialPost" 
+                        type="button" 
+                        data-url="/admin/social-funnel/update-social?guid={{social.blog['guid']}}&socialguid={{social.guid}}">
+                    <i class="fa fa-edit"></i>
+                    <span class="hide">Edit</span>
+                </button>
+
                  {% set pinTitle = 'Pin Article' %}
                  {% set pinTxt = 'Pin' %}
                  {% set pinClass = '' %}
