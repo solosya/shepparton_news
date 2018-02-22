@@ -164,6 +164,11 @@
                     display:none;
                 }
             }
+            &.dairy {
+                &:after {
+                    right: 0;
+                }
+            }
         }
         &.divideright-main {
             &:after {
