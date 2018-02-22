@@ -33948,23 +33948,34 @@ Acme.systemCardTemplate =
                         <time datetime="{{publishDate}}">{{publishDate}}</time>\
                     </div>\
             </div>\
-        </article>'+
-        
-        '{{#if userHasBlogAccess}}'+
-            '<div class="btn_overlay articleMenu">'+
-                '<button title="Hide" data-guid="{{guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="0">'+
-                    '<i class="fa fa-eye-slash"></i><span class="hide">Hide</span>'+
-                '</button>'+
-                '<button onclick="window.location=\'{{{editUrl}}}\'; return false;" title="Edit" class="btnhide social-tooltip" type="button">'+
-                    '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
-                '</button>'+
-                '<button data-position="{{position}}" data-social="0" data-id="{{articleId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn" type="button" data-status="{{isPinned}}">'+
-                    '<i class="fa fa-thumb-tack"></i><span class="hide">{{pinText}}</span>'+
-                '</button>'+
-            '</div>'+
-        "{{/if}}"+
-    '</a>'+
-'</div>';
+        </article>\
+        \
+        {{#if userHasBlogAccess}} \
+            <div class="btn_overlay articleMenu"> \
+                <button title="Hide" data-guid="{{guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="0"> \
+                    <i class="fa fa-eye-slash">\
+                    </i><span class="hide">Hide</span> \
+                </button> \
+                \
+                <button onclick="window.location=\'{{{editUrl}}}\'; return false;" title="Edit" class="btnhide social-tooltip" type="button"> \
+                    <i class="fa fa-edit"></i>\
+                    <span class="hide">Edit</span> \
+                </button> \
+                \
+                <button data-position="{{position}}" \
+                        data-social="0" \
+                        data-id="{{articleId}}" \
+                        title="{{pinTitle}}" \
+                        class="btnhide social-tooltip PinArticleBtn {{# ifCond isPinned "==" 1 }}selected{{/ifCond}}" \
+                        type="button" \
+                        data-status="{{isPinned}}"> \
+                    <i class="fa fa-thumb-tack"></i>\
+                    <span class="hide">{{pinText}}</span> \
+                </button> \
+            </div> \
+         {{/if}}\
+    </a>\
+</div>';
 
 window.templates.ads_infinite = 
     "<div id='newAdSlot' class='infinite-ad'></div><script>loadNextAd()</script>";
