@@ -103,7 +103,7 @@ window.templates.listingSavedTmpl =  '<p>Following approval it will be posted to
 
                                         
 var socialCardTemplate =  
-'<div class="{{containerClass}}"> \
+'<div class="{{cardClass}}"> \
     <a  href="{{social.url}}"\
         target="_blank"\
         class="swap card social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
@@ -114,7 +114,7 @@ var socialCardTemplate =
         data-article-image="{{{social.media.path}}}"\
         data-article-text="{{social.content}}">\
         \
-        <article class="socialarticle {{social.source}}">\
+        <article class="socialarticle {{social.source}} lightbox">\
             {{#if social.hasMedia}}\
                 <figure class="{{videoClass}}">\
                     <img class="img-responsive" src="{{social.media.path}}" style="background-image:url(placeholder">\
