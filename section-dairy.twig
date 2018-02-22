@@ -186,7 +186,7 @@
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {
                         offset          : limit,
-                        limit           : limit,
+                        limit           : 12,
                         name            : "section-load",
                         non_pinned      : articlesArr.existingNonPinnedCount, 
                         ads             : "yes",
