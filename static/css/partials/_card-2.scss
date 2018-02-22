@@ -242,6 +242,11 @@
                     display:none;
                 }
             }
+            &.dairy {
+                &:after {
+                    right: 0;
+                }
+            }
         }
 
 
