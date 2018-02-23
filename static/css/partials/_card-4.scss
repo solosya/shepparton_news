@@ -138,53 +138,57 @@
             }  
 
             &.social {
-                .content {
-                    .icon {
-                        display:block;
-                        position: absolute;
-                        top: -150px;
-                        left: 10px;
-                    }
-
-                    >p {
-                        height:65px;
-                        margin-bottom:6px;
-                    }
-
-                    .category {
-                        padding-bottom: 5px;
-                    }
-                }
-
-                &.facebook {
-                    .content{
+                &.withImage__content {
+                    .content {
                         .icon {
-                            width:10px;
-                            height:20px;
-                            background-size:contain;
+                            display:block;
+                            position: absolute;
+                            top: -150px;
+                            left: 10px;
+                        }
+
+                        >p {
+                            height:65px;
+                            margin-bottom:6px;
+                        }
+
+                        .category {
+                            padding-bottom: 5px;
                         }
                     }
-                }
-                &.twitter {
-                    .content{
-                        .icon {
-                            width:22px;
-                            height:18px;
-                            background-size:contain;
+
+                    &.facebook {
+                        .content{
+                            .icon {
+                                width:10px;
+                                height:20px;
+                                background-size:contain;
+                            }
                         }
                     }
-                }
+                    &.twitter {
+                        .content{
+                            .icon {
+                                width:22px;
+                                height:18px;
+                                background-size:contain;
+                            }
+                        }
+                    }
 
-                &.instagram{ 
-                    &.without__content {
-                        @include card-image-top(auto, 209px);
-                        &.withImage__content {
-                            .content {
-                                height: 34px;
+                    &.instagram{ 
+                        &.without__content {
+                            @include card-image-top(auto, 209px);
+                            &.withImage__content {
+                                .content {
+                                    height: 34px;
+                                }
                             }
                         }
                     }
                 }
+
+                
                 &.without__image {
                     .content {
                         .icon {
