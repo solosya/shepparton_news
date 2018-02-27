@@ -213,6 +213,10 @@ hr.divide10 {
 .ad-large-vert {
     height:600px;
     @include adtext;
+    &.bottom {
+        position:absolute;
+        bottom:15px;
+    }
 }
 
 .ad-container {

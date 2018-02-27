@@ -7,7 +7,7 @@
                 {{this.render('../_single-article.twig', {
                     article: articles.feed.articles[sectionCount], 
                     position: sectionCount + 1, 
-                    imageSize: {width:900},
+                    imageSize: {width:640, height:400},
                     site: site,
                     containerClass: 'home-feature home-feature-tablet home-feature-mobile'
                 }) | raw}}

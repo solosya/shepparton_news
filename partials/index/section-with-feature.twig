@@ -16,7 +16,7 @@
            {% if articles.feed.articles[sectionCount] %}
                {{this.render('../_single-article.twig', {
                    article: articles.feed.articles[sectionCount], 
-                   imageSize: {width:900},
+                   imageSize: {width:640, height:400},
                    site: site,
                    containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
                }) | raw}}
