@@ -58,12 +58,18 @@
     <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-72px.png" sizes="72x72" id="apple-icon-md" />
     <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-144px.png" sizes="144x144" id="apple-icon-lg" />
 
-
+    {# Want to remove the below script when possible  #}
+    {# Currently only being used for ads i think  #}
     <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/blogsettings.js?ver=28"></script>
-    <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
-    <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
-    <script src="//gauge.lrcontent.com/v1/anonymousAuth.min.js"></script>
-    <script src="//hosted-pages.lrcontent.com/mcmedia/LoginRadiusSDK.2.0.1.min.js"></script>
+    
+
+    {% if site != 'dairy' and _AppHelper.getApplicationEnv() == 'PROD' %}
+        <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
+        <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
+        <script src="//gauge.lrcontent.com/v1/anonymousAuth.min.js"></script>
+        <script src="//hosted-pages.lrcontent.com/mcmedia/LoginRadiusSDK.2.0.1.min.js"></script>
+    {% endif %}
+
 
     
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
