@@ -345,9 +345,11 @@
             article {
                 > .content {
                     margin-left: 100px;
+                    height: 89px;
                     h2{
                         font-size: rem(14);
                         height: 60px;
+                        line-height: 1.28;
                     }
                 }
             }
