@@ -143,24 +143,26 @@
             }  
 
             &.social {
-                .content {
-                    .icon {
-                        display:block;
-                        position: absolute;
-                        top: -150px;
-                        left: 10px;
-                    }
+                &.withImage__content {
 
-                    >p {
-                        max-height:65px;
-                        margin-bottom:6px;
-                    }
+                    .content {
+                        .icon {
+                            display:block;
+                            position: absolute;
+                            top: -150px;
+                            left: 10px;
+                        }
 
-                    .category {
-                        padding-bottom: 5px;
-                    }                    
+                        >p {
+                            max-height:65px;
+                            margin-bottom:6px;
+                        }
+
+                        .category {
+                            padding-bottom: 5px;
+                        }                    
+                    }
                 }
-
                 &.facebook {
                     .content{
                         .icon {
