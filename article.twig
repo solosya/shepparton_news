@@ -106,6 +106,9 @@
                             <h1>{{ quotes.smarten(article.title) }}</h1>
                             
                             <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
+                            {% if not _User.isGuest() %}
+                                <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
+                            {% endif %}
 
                         </div>   
 
