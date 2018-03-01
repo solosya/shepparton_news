@@ -1,4 +1,7 @@
 .gallery-toggle {
+	position:absolute;
+	z-index:20;
+	background:black;
 
 }
 .gallery-toggle__list {
@@ -6,16 +9,32 @@
 	margin:0;
 }
 .gallery-toggle__item {
-	background:gray;
+	position:relative;
 	display:inline-block;
-	padding:5px;
-	color:black;
-	border: 1px solid red;
+	padding:0 8px;
+	font-weight:200;
+	font-size:rem(12);
+	color:rgba(255,255,255,.8);
+	text-transform: uppercase;
 	&:hover {
 		cursor:pointer;
+	}
+
+	&:first-child {
+
+		&:after {
+			content: "";
+			height: 12px;
+			width: 1px;
+			position: absolute;
+			background: white;
+			right: -0px;
+			top: 4px;
+		}
 	}
 }
 
 .gallery-toggle__item--selected {
-	background:beige;
+	color:white;
+	font-weight:600;
 }
