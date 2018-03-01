@@ -34148,6 +34148,38 @@ Acme.article.prototype.InsertInterstitial = function() {
     	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
 	}
 }
+
+Acme.GalleryToggle = function() {
+    console.log('running gallery events');
+    this.events();
+};
+Acme.GalleryToggle.prototype.events = function() {
+    $('#gallery-toggle').on('click', function(e) {
+        var option = $(e.target);
+
+        if (option.hasClass('gallery-toggle__item')) {
+            console.log(option);
+            var types = ['image', 'video'];
+            // var component = $(this);
+            // var list = component.children('ul');
+            var items = $('.gallery-toggle__item').removeClass('gallery-toggle__item--selected');
+            option.addClass('gallery-toggle__item--selected');
+            var type = types.indexOf( option.data('type') );
+
+            // var z_index = type ? '3' : '1';
+            // $( $('.owl-carousel')[1] ).css('z-index', z_index);
+            // console.log($( $('.owl-carousel')[0])) ;
+            var show = $('.owl-gallery-' + types[type]);
+            var hide = $('.owl-gallery-' + types[!type | 0]);
+            hide.removeClass('default');
+            show.addClass('default');
+
+        }
+
+
+        console.log(option);
+    });
+};
 Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText) {
     this.cardModel = cardModel;
     this.offset    = offset || 0;
@@ -36572,6 +36604,9 @@ $('document').ready(function() {
     }
 
     window.Acme.scrollThumbs = function(elem) {
+        if (elem.length === 0) {
+            return;
+        }
         var elem = $(elem);
         var elemWidth = elem.width();
         var container = elem.parent();
@@ -36735,13 +36770,35 @@ $('document').ready(function() {
     }), 750);
 
 
-    $("#owl-thumbnails").owlCarousel({
+    // this is used for the gallery template
+    // $("#owl-thumbnails").owlCarousel({
+    //     items: 1,
+    //     thumbs: true,
+    //     thumbsPrerendered: true,
+    //     URLhashListener:true,
+    //     startPosition: 'URLHash',
+    //     pagination: true,
+    //     dots: false,
+    //     nav: true,
+    //     navText: [
+    //         "",
+    //         ""
+    //     ]
+    // });   
+
+    // this is used for the article template that may contain
+    // more than one gallery. one for images, one for videos
+    $("#owl-gallery-image").owlCarousel({
         items: 1,
-        thumbs: true,
-        thumbsPrerendered: true,
-        URLhashListener:true,
-        startPosition: 'URLHash',
-        pagination: true,
+        dots: false,
+        nav: true,
+        navText: [
+            "",
+            ""
+        ]
+    });   
+    $("#owl-gallery-video").owlCarousel({
+        items: 1,
         dots: false,
         nav: true,
         navText: [
