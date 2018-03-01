@@ -13,7 +13,7 @@
         {% if articles.feed.articles[sectionCount] %}
             {{this.render('../_single-article.twig', {
                 article: articles.feed.articles[sectionCount], 
-                imageSize: {width:409, height:530},
+                imageSize: {width:414, height:255},
                 site: site,
                 containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
             }) | raw}}
