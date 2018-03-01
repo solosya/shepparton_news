@@ -208,6 +208,14 @@ div[class*="col-sm"] {
   display: -ms-flexbox;
   display:         flex;
 }
+.row-eq-height-desk {
+    @media screen and (min-width: $sm-break) {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+    }
+}
 
 .flex_col {
     -webkit-flex-direction:column;

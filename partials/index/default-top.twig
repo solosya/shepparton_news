@@ -154,12 +154,12 @@
                     containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-
+                <hr class="divide visible-xs-block">
             {% endif %}
         </div>
 
 
-        <div class="col-sm-9 col-md-3 addSpaceMobile">
+        <div class="col-sm-9 col-md-3">
             <div class="ad-square hidden-sm hidden-xs">
                 <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
                     <script type='text/javascript'>
