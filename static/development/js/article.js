@@ -15,3 +15,35 @@ Acme.article.prototype.InsertInterstitial = function() {
     	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
 	}
 }
+
+Acme.GalleryToggle = function() {
+    console.log('running gallery events');
+    this.events();
+};
+Acme.GalleryToggle.prototype.events = function() {
+    $('#gallery-toggle').on('click', function(e) {
+        var option = $(e.target);
+
+        if (option.hasClass('gallery-toggle__item')) {
+            console.log(option);
+            var types = ['image', 'video'];
+            // var component = $(this);
+            // var list = component.children('ul');
+            var items = $('.gallery-toggle__item').removeClass('gallery-toggle__item--selected');
+            option.addClass('gallery-toggle__item--selected');
+            var type = types.indexOf( option.data('type') );
+
+            // var z_index = type ? '3' : '1';
+            // $( $('.owl-carousel')[1] ).css('z-index', z_index);
+            // console.log($( $('.owl-carousel')[0])) ;
+            var show = $('.owl-gallery-' + types[type]);
+            var hide = $('.owl-gallery-' + types[!type | 0]);
+            hide.removeClass('default');
+            show.addClass('default');
+
+        }
+
+
+        console.log(option);
+    });
+};

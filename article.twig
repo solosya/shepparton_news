@@ -4,6 +4,9 @@
 
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
+{{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
+
+
 
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
@@ -12,9 +15,31 @@
 
 
 {% set articleImg = false %}
+{% set imageToggle = false %}
+
+{% set videos = [] %}
+{% set images = [] %}
+
 {% if article.media|length > 0 %}
     {% set articleImg = _Media.getMediaUrl(article.media[0],1094, 515, {'crop': 'fill', 'gravity': 'faces'} ) %}
+
+    {# seperate videos and images into seperate arrays #}
+    {% for image in article.media %}
+        {% if image.type == 'image' %}
+            {% set images = images|merge([image]) %}
+        {% endif %}
+        {% if image.type == 'video' %}
+            {% set videos = videos|merge([image]) %}
+        {% endif %}
+
+    {% endfor %}
 {% endif %}
+
+{# Only need the image/video toggle if both exist #}
+{% if images|length > 0 and videos|length > 0 %}
+    {% set imageToggle = true %}
+{% endif %}
+
 
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate, 'F, Y') %}
 
@@ -36,51 +61,40 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-9">
-
-
+                        
                         {% if articleImg %} 
+                            {% if imageToggle %}
+                                <div id="gallery-toggle" class="gallery-toggle">
+                                    <ul class="gallery-toggle__list">
+                                        <li data-type="image" class="gallery-toggle__item gallery-toggle__item--selected">Image</li>
+                                        <li data-type="video" class="gallery-toggle__item">Video</li>
+                                    </ul>
+                                </div>
+                            {% endif %}
 
 
-                            <div id="owl-thumbnails" class="owl-carousel owl-shep-theme owl-carousel__base" data-slider-id="1">
-                                {% for image in article.media %}
-                                    {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-                                    <figure class="featured" data-hash="{{loop.index}}">
-                                        <img src="{{articleImg}}" class="img-responsive">
-                                        {% if image.type == 'video' %} 
-                                            {% set mediaUrl = "" %}
-                                            {% if image.media.isSystemVideo == 'TRUE'%}
-                                                {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
-                                            {% endif %}
+                            <div class="gallery-container relative">
 
-                                            <a  href="javascript:void(0)" 
-                                                itemprop="video" 
-                                                class="video-overlay video-player" 
-                                                data-source="{{image.source}}" 
-                                                data-video-id="{{image.videoId}}" 
-                                                data-url="{{mediaUrl}}" 
-                                                data-poster="{{image.path}}" 
-                                                data-caption="{{article.title | raw}}">
-                                                
-                                                <div class="icons">
-                                                   <div class="icon"><i class="fa fa-play"></i></div>
-                                                </div>
-                                            </a>
-                                        {% endif %}
-                                        <figcaption>
-                                            <p>{{image.caption}}</p>
-                                        </figcaption>
-                                    </figure>
-                                {% endfor %}
+                                {% if images|length > 0 %}
+                                    {{this.render('partials/gallery.twig', {
+                                        media: images,
+                                        default: true
+                                    }) | raw}}
+                                {% endif %}
+
+                                {% if videos|length > 0 %}
+                                    {{this.render('partials/gallery.twig', {
+                                        media: videos,
+                                        type : 'video'
+                                    }) | raw}}
+                                {% endif %}
+
                             </div>
-                         {% endif %}
+                        {% endif %}
+
                     </div>
-                    <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1" style="display:none">
-                        {% for image in article.media %}
-                            {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
-                            <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
-                        {% endfor %}
-                    </div>
+
 
                     <div class="col-md-9">
 
@@ -223,6 +237,10 @@
                     {% endfor %}
                 </div>
             </div>
+
+
+            {# <iframe allowfullscreen="" mozallowfullscreen="" src="//players.brightcove.net/5370537724001/HkEx1WOvW_default/index.html?videoId=5741664695001" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;" webkitallowfullscreen=""></iframe> #}
+
 
 
     </article>

@@ -1,0 +1,41 @@
+{% set type = type is defined ? type : "image" %}
+
+{% set owl = "owl-gallery-" ~ type %}
+{% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+
+{% set defaultClass = default is defined and default == true ? "default" : "" %}
+
+
+
+<div id="{{owl}}" class="owl-gallery-{{type}} {{owlClass}} {{defaultClass}}">
+    {% for image in media %}
+        {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
+
+        <figure class="featured">
+            <img src="{{articleImg}}" class="img-responsive">
+            {% if image.type == 'video' %} 
+                {% set mediaUrl = "" %}
+                {% if image.media.isSystemVideo == 'TRUE'%}
+                    {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
+                {% endif %}
+
+                <a  href="javascript:void(0)" 
+                    itemprop="video" 
+                    class="video-overlay video-player" 
+                    data-source="{{image.source}}" 
+                    data-video-id="{{image.videoId}}" 
+                    data-url="{{mediaUrl}}" 
+                    data-poster="{{image.path}}" 
+                    data-caption="{{article.title | raw}}">
+                    
+                    <div class="icons">
+                       <div class="icon"><i class="fa fa-play"></i></div>
+                    </div>
+                </a>
+            {% endif %}
+            <figcaption>
+                <p>{{image.caption}}</p>
+            </figcaption>
+        </figure>
+    {% endfor %}
+</div>

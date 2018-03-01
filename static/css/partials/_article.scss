@@ -14,7 +14,25 @@
 	position:absolute;
 	bottom:0;
 }
+
+
+.owl-carousel.default {
+	z-index:2
+}
+.owl-carousel:not(.default) {
+	position:absolute;
+	top:0;
+	z-index:1;
+
+	figcaption {
+		display:none;
+	}
+}
+
+
 .article {
+
+
 
 
 	// div.social-share {

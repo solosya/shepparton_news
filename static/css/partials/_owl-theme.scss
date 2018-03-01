@@ -55,12 +55,11 @@
      
 
   .owl-shep-theme .owl-item img {
-    max-height:500px;
+    // max-height:500px;
   }
 
   .owl-thumbs {
     overflow:hidden;
-    // overflow-y:hidden;
     white-space:nowrap;
     .owl-thumb-item {
       &.active {
@@ -74,10 +73,8 @@
     font-size: 14px;
     margin: 5px;
     padding: 4px 7px;
-    // background:green;
     background-repeat: no-repeat;
     background-size: contain;
-    // background: red;
     height:27px;
     width:14px;
     display: inline-block;
