@@ -1,7 +1,8 @@
 .gallery-toggle {
-	position:absolute;
-	z-index:20;
-	background:black;
+	// position:absolute;
+	// z-index:20;
+	// background:black;
+	// width: 117px;
 
 }
 .gallery-toggle__list {
@@ -11,7 +12,9 @@
 .gallery-toggle__item {
 	position:relative;
 	display:inline-block;
-	padding:0 8px;
+	background:black;
+
+	padding:4px 8px;
 	font-weight:200;
 	font-size:rem(12);
 	color:rgba(255,255,255,.8);
@@ -29,7 +32,7 @@
 			position: absolute;
 			background: white;
 			right: -0px;
-			top: 4px;
+			top: 8px;
 		}
 	}
 }

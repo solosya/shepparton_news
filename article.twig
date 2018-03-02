@@ -16,12 +16,14 @@
 
 {% set articleImg = false %}
 {% set imageToggle = false %}
-
+{% set featured = false %}
 {% set videos = [] %}
 {% set images = [] %}
 
 {% if article.media|length > 0 %}
     {% set articleImg = _Media.getMediaUrl(article.media[0],1094, 515, {'crop': 'fill', 'gravity': 'faces'} ) %}
+
+    {% set featured = article.media[0].type %}
 
     {# seperate videos and images into seperate arrays #}
     {% for image in article.media %}
@@ -64,29 +66,34 @@
                         
                         {% if articleImg %} 
 
+                            {% if imageToggle %}
+                                <div id="gallery-toggle" class="gallery-toggle">
+                                    <ul class="gallery-toggle__list">
+                                        <li data-type="image" class="gallery-toggle__item {% if featured == 'image' %} gallery-toggle__item--selected {% endif %}">Image</li
+                                       ><li data-type="video" class="gallery-toggle__item {% if featured == 'video' %} gallery-toggle__item--selected {% endif %}">Video</li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+
 
                             <div class="gallery-container relative">
-                                {% if imageToggle %}
-                                    <div id="gallery-toggle" class="gallery-toggle">
-                                        <ul class="gallery-toggle__list">
-                                            <li data-type="image" class="gallery-toggle__item gallery-toggle__item--selected">Image</li
-                                            ><li data-type="video" class="gallery-toggle__item">Video</li>
-                                        </ul>
-                                    </div>
-                                {% endif %}
-
 
                                 {% if images|length > 0 %}
+                                    {% set imageFeature = featured == 'image' ? true : false %}
                                     {{this.render('partials/gallery.twig', {
                                         media: images,
-                                        default: true
+                                        default: imageFeature
                                     }) | raw}}
                                 {% endif %}
 
                                 {% if videos|length > 0 %}
+                                    {% set videoFeature = featured == 'video' ? true : false %}
+
                                     {{this.render('partials/gallery.twig', {
                                         media: videos,
-                                        type : 'video'
+                                        type : 'video',
+                                        default: videoFeature
+
                                     }) | raw}}
                                 {% endif %}
 
