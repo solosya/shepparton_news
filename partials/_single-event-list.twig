@@ -24,9 +24,9 @@
 {% set placeholder   = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'' %}
 {% set promotedClass = (event.isPromoted) ? 'ad_icon' : '' %}
 {% set hasMedia      = (event.media | length > 0) ? 'withImage__content': 'without__image' %}
-{% set startDay      = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'd') %}
-{% set startMonth    = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'M') %}
-{% set startTime     = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
+{% set startDay      = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'd') %}
+{% set startMonth    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'M') %}
+{% set startTime     = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
 {% set eventTitle    = quotes.smarten(titleTruncateLength is defined ? event.title | truncate(titleTruncateLength) : event.title)  %}
 {% set figureClass   = event.media['type'] == 'video' ? 'video' : '' %}
 
@@ -42,23 +42,23 @@
 {% endif %}
 
 
-{% set startDate        = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j M') %}
-{% set fullStartDate    = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j F') %}
-{% set endDate          = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j M') %}
+{% set startDate        = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j M') %}
+{% set fullStartDate    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j F') %}
+{% set endDate          = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'j M') %}
 
-{% set startDay         = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'd') %}
-{% set endDay           = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'd') %}
+{% set startDay         = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'd') %}
+{% set endDay           = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'd') %}
 
-{% set startTime        = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
-{% set endTime          = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia') %}
+{% set startTime        = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set endTime          = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
 
-{% set fullStartTime    = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia M j') %}
-{% set fullEndTime      = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia M j') %}
+{% set fullStartTime    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia M j') %}
+{% set fullEndTime      = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia M j') %}
 
-{% set eventMonth       = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'F') %}
+{% set eventMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'F') %}
 
-{% set startMonth       = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'M') %}
-{% set endMonth         = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'M') %}
+{% set startMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'M') %}
+{% set endMonth         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'M') %}
 
 
 
