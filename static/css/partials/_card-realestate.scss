@@ -11,6 +11,12 @@
                 padding: 0;
                 position:relative;
 
+                p.property__attribute--contract {
+                    text-transform:uppercase;
+                    color: color(red);
+                    font-size: rem(10.5);
+                }
+
                 h1 {
                     font-family: $font-family-serif;
                     color:color(darkblue);
@@ -20,73 +26,42 @@
                 }
                 h2 {
                     margin:0;
-                    color:color(red);
+                    color: color(darkgrey60pc);
                     font-weight:normal;
-                    line-height: 1.33;
+                    line-height: 1.29;
                 }
 
-
-                .region {
-                    display:none;
-                }
-
-                .region__below {
-                    font-size: rem(10);
-                    color:color(lightgrey);
-                    float: right;
-                    margin-top: 3px;
-                    text-transform: uppercase;
-                    
-                }
-
-                .listing-type {
-                    position:relative;
-                    height: 16px;
-                    width: 100%;
-
-                    .listing-type__img {
-                        float:left;
-                        position: relative;
-                        top: -5px;
-
-                    }
-                   
-                    .listing-type__attribute {
-                        margin:0;
-                        margin-right:10px;
-                        font-size:rem(12);
-                        font-style:italic;
-                        color:color(darkblue);
-                        line-height:1;
-                        position: relative;
-                        top: 4px;
-                        float:left;
-                        
-                        &--contract {
-                            border-left:1px solid color(darkblue);
-                            padding-left:10px;
-                        }
-
-                    }
-                }
                 .excerpt {
                     font-size: rem(13);
                     line-height:1.54;
                     overflow:hidden;
                 }
 
+                .property__spaces {
+                    padding:0;
+                    margin:0;
+                    overflow:auto;
+                    margin-bottom:12px;
+                }
+
+                .property__spaces-item {
+                    list-style:none;
+                    float:left;
+                    margin-right:10px;
+                }
+
                 .cat-time {
                     line-height: 0;
                     padding-bottom: 8px;
+
+                    time {
+                        font-family: $font-family-serif;
+                        font-size: rem(11);
+                        color: color(darkgrey60pc);
+                    }
                 }
             }
         }
-        // &.article.without__image {
-        //     .content {
-                // background:pink;
-
-            // }
-        // }   
 
     }
 }
@@ -113,15 +88,16 @@
                 > .content{
 
                     h1{
-                        font-size: rem(25);
+                        font-size: rem(26);
                         font-weight:600;
-                        line-height:1.2;
+                        line-height:.85;
                         margin-top:0px;
-                        margin-bottom:6px;
+                        margin-bottom:18px;
                     }
                     h2{
                         font-size: rem(14);
-                        margin-bottom:8px;
+
+
                     }
                     p.excerpt {
                         max-height:40px;

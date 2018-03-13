@@ -13,7 +13,7 @@
 
 <div class="content">
 
-    <p class="property__attribute property__attribute--contract">{{ info.contracttype }}</p>
+    <p class="property__attribute property__attribute--contract">{{ info.listing_type }}</p>
 
     <h1 class="price">${{ info.pricerange | preg_replace("/\\$/", '')}}</h1>
     
@@ -21,20 +21,20 @@
 
     <ul class="property__spaces">
         {% if info.bedroom_count %}
-            <li>
-                <img src="{{networkData.templatePath}}/static/icons/bedrooms.svg" alt="bedroom count">
+            <li class="property__spaces-item">
+                <img src="{{networkData.templatePath}}/static/icons/property-bed.svg" alt="bedroom count">
                 <span class="property__bedroom">{{info.bedroom_count}}</span>
             </li>
         {% endif %}
         {% if info.bathroom_count %}
-            <li>
-                <img src="{{networkData.templatePath}}/static/icons/bathroom.svg" alt="bathroom count">
+            <li class="property__spaces-item">
+                <img src="{{networkData.templatePath}}/static/icons/property-bath.svg" alt="bathroom count">
                 <span class="property__bathroom">{{info.bathroom_count}}</span>
             </li>
         {% endif %}
         {% if info.car_count %}
-            <li>
-                <img src="{{networkData.templatePath}}/static/icons/car.svg" alt="car count">
+            <li class="property__spaces-item">
+                <img src="{{networkData.templatePath}}/static/icons/property-car.svg" alt="car count">
                 <span class="property__car">{{info.car_count}}</span>
             </li>
         {% endif %}
