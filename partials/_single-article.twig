@@ -1,6 +1,7 @@
 {% import "quotes.twig" as quotes %}
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == true ? 'true' : 'false'  %}
+{% set template = (template is defined and template != '') ? template : 'main'  %}
 {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
 {% set inline = inline is defined and inline != '' ? inline : ''  %}
 
@@ -51,9 +52,18 @@
     {% endif %}
 
 
+    {% set params = {
+        placeholder:     'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'',
+        figureClass:     article.featuredMedia['type'] == 'video' ? 'video' : '',
+        articleImgSmall: _Media.getMediaUrl(article.featuredMedia,500, 500, {'crop': 'fill', 'gravity': 'faces'} ),
+        articleImg:      _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
+        publishDate:     publishDate,
+        articleTitle:    articleTitle,
+        profileImg:      _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}),
+        imageSuppress:   imageSuppress
+    } %}
 
     
-    {# {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %} #}
 
 
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
@@ -73,33 +83,9 @@
             data-article-text="{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}">
 
             <article class="{{lightbox}}">
-                {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress == 'false' %}
-                    <figure class="{{figureClass}}">
-                        <picture>
-                            <source media="(max-width: 620px)" srcset="{{articleImgSmall}}">
-                            <img class="img-responsive" src="{{articleImg}}" data-original="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
-                        </picture>
-                    </figure>
-                {% endif %}
-
-
-                <div class="content">
-                    <div class="category">{{article.label}}</div>
-                    
-                    <h2 class="{{figureClass}}">{{ articleTitle }}</h2>
-                    
-                    <p class="excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
-                   
-                    <div class="author">
-                        <img src="{{profileImg}}" class="img-circle">
-                        <p class="{{site}}">{{ article.createdBy['displayName'] }}</p>
-                        <time datetime="{{publishDate}}">{{publishDate}}</time>
-                    </div>
-
-                    <time datetime="{{publishDate}}">{{publishDate}}</time>
-
-                </div>
+                {{ this.render('_article-'~template~'.twig', {article: article, params:params, networkData: networkData} ) | raw }}
             </article>
+
 
             {% if article.userHasBlogAccess == '1' and swap != '' %}
             <div class="btn_overlay articleMenu">

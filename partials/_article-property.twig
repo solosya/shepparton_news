@@ -1,0 +1,48 @@
+{% import "quotes.twig" as quotes %}
+
+{% set info = article.additionalInfo %}
+
+{% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == 'false' %}
+    <figure class="{{params.figureClass}}">
+        <picture>
+            <source media="(max-width: 620px)" srcset="{{params.articleImgSmall}}">
+            <img class="img-responsive" src="{{params.articleImg}}" data-original="{{params.articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{params.placeholder}}');" {%endif%}>
+        </picture>
+    </figure>
+{% endif %}
+
+<div class="content">
+
+    <p class="property__attribute property__attribute--contract">{{ info.contracttype }}</p>
+
+    <h1 class="price">${{ info.pricerange | preg_replace("/\\$/", '')}}</h1>
+    
+    <h2>{{ params.articleTitle }}</h2>
+
+    <ul class="property__spaces">
+        {% if info.bedroom_count %}
+            <li>
+                <img src="{{networkData.templatePath}}/static/icons/bedrooms.svg" alt="bedroom count">
+                <span class="property__bedroom">{{info.bedroom_count}}</span>
+            </li>
+        {% endif %}
+        {% if info.bathroom_count %}
+            <li>
+                <img src="{{networkData.templatePath}}/static/icons/bathroom.svg" alt="bathroom count">
+                <span class="property__bathroom">{{info.bathroom_count}}</span>
+            </li>
+        {% endif %}
+        {% if info.car_count %}
+            <li>
+                <img src="{{networkData.templatePath}}/static/icons/car.svg" alt="car count">
+                <span class="property__car">{{info.car_count}}</span>
+            </li>
+        {% endif %}
+
+    </ul>
+
+    <div class="cat-time">
+        <time datetime="{{params.publishDate}}">{{params.publishDate}}</time>
+    </div>
+
+</div>

@@ -1,0 +1,113 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+{# {{this.registerJs("Acme.searchCollection = new Acme.searchCollectionClass(["~blogData['id']~"]);")}} #}
+{# {{this.registerJs("Acme.jobRegionFilter = new Acme.regionSearchView();")}} #}
+{# {{this.registerJs("Acme.propertyTypeFilter = new Acme.propertyTypeSearchView();")}} #}
+{# {{this.registerJs("Acme.saleTypeFilter = new Acme.saleTypeSearchView();")}} #}
+{# {{this.registerJs("Acme.propertySearchResults = new Acme.propertySearchResultsClass('property-listings', 'propertyListingCardTemplate');")}} #}
+
+
+{% set limit = 4 %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
+                                                     {#            ↑             ↑                 ↑            ↑            #}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true,  'No listings found');")}}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+
+
+    <main id="main" class="container-fluid site-main" role="main">
+        
+
+
+
+        <section class="row section">
+
+            <div class="col-md-offset-1 col-sm-10 section-header">
+                <h2 class="section-header__title">{{this.title}}</h2>
+            </div>
+            <div class="col-md-offset-1 col-sm-7 subsection-header" >
+                <p class="section-header__description">
+                    {{blogData.shortDescription}}
+                </p>
+            </div>
+            
+        </section>
+
+
+
+        <section class="row">
+            <div class="col-sm-3">
+                {% if articles[articleCount] %}
+                    {{this.render('partials/_single-article.twig', {
+                        article: articles[articleCount], 
+                        position: (articleCount+1),
+                        template: 'property',
+                        networkData: networkData,
+                        imageSize: {width: 200, height: 140},
+                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% endif %}
+            </div>
+        </section>
+
+        <section class="row">
+
+                    {% for i in 0..4 if articles[articleCount] %}
+                        <div class="col-sm-3">
+
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: (articleCount+1),
+                            template: 'property',
+                            networkData: networkData,
+                            imageSize: {width: 200, height: 140},
+                            containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+                        </div>
+                    {% endfor %}
+
+                {{ this.render('partials/ajaxarticles.twig', {
+                    limit           : limit,
+                    name            : "article-load",
+                    label           : "Show more",
+                    non_pinned      : articlesArr.existingNonPinnedCount, 
+                    cardTemplate    : "propertyListingCardTemplate",  
+                    card_class      : "card-realestate card-realestate-tablet card-realestate-mobile",
+                    container       : "property-listings",
+                    blogid          : blogData['guid'],
+                    buttonClass     : "infinite"
+                }) | raw }}
+
+            </div>
+
+
+
+
+            <div class="col-sm-offset-1 col-sm-3">
+
+                <div id='articleTopAdScroll' class="advert lockad">
+                    <div id='hPage1'></div>
+                    <script>loadNextAd(invSpace,'hPage1','hpage',hPageSize,hPageMap)</script>
+                </div>
+
+            </div>
+        </section>
+
+
+
+    </main><!-- .site-main -->

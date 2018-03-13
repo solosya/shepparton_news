@@ -1,0 +1,172 @@
+{% import "partials/quotes.twig" as quotes %}
+{{ set(this, 'title', article.title) }}
+
+{{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
+
+{% set blogInfo = _Blog.getBlog() %}
+{% set networkData = _Network.getNetworkData() %}
+
+
+{% set articleImg = false %}
+{% if article.media|length > 0 %}
+    {% set articleImg = _Media.getMediaUrl(article.media[0],1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
+{% endif %}
+
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime, 'j M Y') %}
+
+{% set articles = _Article.getPopularArticles({ limit: 10, excludeArticleIds : article.id }) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', blogId: article.blog.id, type: 'article' }) %}
+{% set suggestedArticles = _Article.getPopularArticles({ limit: 6, sortBy: 'VIEWS', scope: 'network' }) %}
+
+{% set articleCount = 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+
+
+
+
+<main id="main" class="container-fluid site-main" role="main">
+
+
+    <section class="row section">
+
+        <div class="col-sm-10 section-header">
+            <h2 class="section-header__title">{{blogInfo.title}}</h2>
+
+            <p  class="section-header__description">
+                {{blogInfo.shortDescription}}
+            </p>
+        </div>
+        
+    </section>
+
+
+    <div class="backlink">
+        <a href="{{networkData.defaultBlogUrl}}/@property-listings">Back to results</a>
+    </div>
+
+
+    <article class="job-listings-main">
+
+        <div class="row page-content">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if articleImg %} 
+
+
+                            <div id="owl-thumbnails" class="owl-carousel owl-shep-theme" data-slider-id="1">
+                                {% for image in article.media %}
+                                    {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
+
+                                    <figure class="propertyImages" data-hash="{{loop.index}}">
+                                        <img src="{{articleImg}}" class="img-responsive">
+                                        {% if image.type == 'video' %} 
+                                            {% set mediaUrl = "" %}
+                                            {% if image.media.isSystemVideo == 'TRUE'%}
+                                                {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
+                                            {% endif %}
+
+                                            <a  href="javascript:void(0)" 
+                                                itemprop="video" 
+                                                class="video-overlay video-player" 
+                                                data-source="{{image.source}}" 
+                                                data-video-id="{{image.videoId}}" 
+                                                data-url="{{mediaUrl}}" 
+                                                data-poster="{{image.path}}" 
+                                                data-caption="{{article.title | raw}}">
+                                                
+                                                <div class="icons">
+                                                   <div class="icon"><i class="fa fa-play"></i></div>
+                                                </div>
+                                            </a>
+                                        {% endif %}
+                                        <figcaption>
+                                            <p>{{image.caption}}</p>
+                                        </figcaption>
+                                    </figure>
+                                {% endfor %}
+                            </div>
+                         {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">        
+
+                    <div class="col-md-8">
+
+                        <div class="content-wrapper">
+
+                            <div class="content-block-top">
+                                
+                                <time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
+                                <p class="pricerange">${{ article.additionalInfo.pricerange | preg_replace("/\\$/", '')}}</p>
+
+                                <h1>{{ quotes.smarten(article.title) }}</h1>
+                                
+                                <p class="contracttype">{{ article.additionalInfo.contracttype }}</p>
+                                {# <p class="type">Salary ${{ article.additionalInfo.type }}</p> #}
+
+                            </div><!--content-block-top-->
+
+                            <div class="article_content">
+                                {{ article.content | _resizeImages({'width': 500}) | raw }}
+                            </div><!-- .content-->
+                        </div><!-- .content-->
+
+                    </div>
+
+
+
+
+                    <div class="col-md-4 details-padding">
+                        <div class="job-details">
+                            <table>
+                                {% if article.additionalInfo.floorarea %}
+                                    <tr>
+                                        <td class="label">Property type</td>
+                                        <td class="value">{{article.additionalInfo.type}}</td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <td class="label">Available</td>
+                                    <td class="value">{{article.additionalInfo.availability}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Land area m&sup2;</td>
+                                    <td class="value">{{article.additionalInfo.landarea}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Floor area m&sup2;</td>
+                                    <td class="value">{{article.additionalInfo.floorarea}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="property-contact">
+                            <p class="contact-details">For more information, please contact</p>
+                            <p class="contact-name">{{article.additionalInfo.contactname}}</p>
+                            <p class="contact-role">{{article.additionalInfo.company}}</p>
+                            <p class="contact-email">{{article.additionalInfo.contactphone}}</p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="advert">
+                    <div id='blockAd1'></div>
+                    <script>loadNextAd(invSpace,'blockAd1','mRec',mRecSize,mRecMap)</script>
+                </div>
+            </div>
+
+
+        </div><!-- .page-content-->
+
+
+    </article>
+</main><!--site-main-->
+
