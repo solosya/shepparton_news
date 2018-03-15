@@ -71,8 +71,8 @@
     				"label": "Listing Type",
     				"type": "dropdown",
     				"options": {
-    					"rent": "Bye",
-    					"buy": "Rent"
+    					"rent": "Rent",
+    					"buy": "Buy"
     				}
     			},
     			{

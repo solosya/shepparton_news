@@ -23,19 +23,19 @@
         {% if info.bedroom_count %}
             <li class="property__spaces-item">
                 <img src="{{networkData.templatePath}}/static/icons/property-bed.svg" alt="bedroom count">
-                <span class="property__bedroom">{{info.bedroom_count}}</span>
+                <span class="property__spaces-count property__spaces-count--bedroom">{{info.bedroom_count}}</span>
             </li>
         {% endif %}
         {% if info.bathroom_count %}
             <li class="property__spaces-item">
                 <img src="{{networkData.templatePath}}/static/icons/property-bath.svg" alt="bathroom count">
-                <span class="property__bathroom">{{info.bathroom_count}}</span>
+                <span class="property__spaces-count property__spaces-count--bathroom">{{info.bathroom_count}}</span>
             </li>
         {% endif %}
         {% if info.car_count %}
             <li class="property__spaces-item">
                 <img src="{{networkData.templatePath}}/static/icons/property-car.svg" alt="car count">
-                <span class="property__car">{{info.car_count}}</span>
+                <span class="property__spaces-count property__spaces-count--car">{{info.car_count}}</span>
             </li>
         {% endif %}
 

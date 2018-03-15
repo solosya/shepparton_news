@@ -1,0 +1,176 @@
+.layout-article-property {
+
+
+    .property__spaces {
+        padding:0;
+        margin:0;
+        overflow:auto;
+        margin-bottom:12px;
+        margin-top:5px;
+    }
+
+    .property__spaces-item {
+        list-style:none;
+        float:left;
+        margin-right:20px;
+    }
+    .property__spaces-count {
+        font-weight:300;
+        position: relative;
+        top: 2px;
+    }
+
+    .cat-time {
+        line-height: 0;
+        padding-bottom: 8px;
+        margin-top: 15px;
+        time {
+            font-family: $font-family-serif;
+            font-size: rem(11);
+            color: color(darkgrey60pc);
+        }
+    }
+
+
+
+
+    article {
+
+        .article_content {
+            margin-top:20px;
+            p {
+                letter-spacing:normal;
+                &:first-of-type {
+                    font-weight: normal;
+                }
+            }
+        }
+
+        figure.propertyImages {
+            margin-bottom:31px;
+            height:480px;
+            img {
+                width:100%;
+                height:100%;
+                object-fit: cover;
+            }
+
+        }
+
+        .page-content {
+            time {
+                color:color(lightgrey);
+                font-size: rem(10);
+                text-transform: uppercase;
+                font-family: $base-font-family;
+            }
+            h1 {
+                color: color(red);
+                font-size: rem(14);
+                font-weight: normal;
+                font-family: $base-font-family;
+                text-transform: uppercase;
+                
+                // @media screen and (max-width: $sm-break) {
+                //     font-size: rem(24);
+                //     margin-bottom: 15px;
+                // }
+            }
+
+            p.pricerange {
+                margin:0;
+                margin:4px 0;
+                font-family: $font-family-serif;
+                color: color(darkblue);
+                font-size: rem(25);
+                font-weight:600;
+            }
+
+
+            div.job-details {
+                padding: 0 15px;
+                background:color(marketgrey);
+
+                table {
+                        border-collapse:separate; 
+                        border-spacing: 0 1em;
+                    tr {
+                        height:20px;
+                        border-bottom:1px solid color(border);
+                    }
+                    td {
+                        vertical-align:top;
+                        font-size:rem(13);
+                        border-bottom: 1px solid #979797;
+                        &.label {
+                            width:100px;
+                            vertical-align:top;
+                            color:color(darkblue);
+                            font-weight:600;
+
+                        }
+                        &.value {
+                        }
+                    }
+                }
+            }
+
+            p.contracttype {
+                margin-top: 10px;
+            }
+            div.property-contact {
+                margin:0;
+                padding:0;
+                margin-top:15px;
+                padding-bottom:15px;
+                // background:color(marketgrey);
+                border-bottom: 1px solid color(border);
+
+
+                h3 {
+                    margin:0;
+                    color:color(red);
+                    font-size:rem(13);
+                    margin-bottom:12px;
+                }
+                p{
+                    margin:0;
+                }
+                p.contact-details {
+                    color:black;
+                    font-weight:600;
+                    margin-bottom:7px;
+                }
+
+                p.contact-name {
+                    font-weight:600;
+                    color:color(darkblue);
+                    margin-bottom:5px;
+
+                }
+                p.contact-role {
+                    color:color(lightgrey);
+                    // font-style:italic;
+                }
+
+                p.contact-email {
+                    margin-top:10px;
+                    // font-style:italic;
+                }
+
+            }
+
+
+            .article-vert {
+                background:color(marketgrey);
+                height:400px;
+            }
+
+
+        }
+
+
+
+    }
+  
+}

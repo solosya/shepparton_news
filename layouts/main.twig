@@ -6,7 +6,7 @@
 {% set layout        = _Page.getLayoutName() %}
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
-{% set layout        = blogData.layout %}
+{# {% set layout        = blogData.layout %} #}
 {% set url           = _AppHelper.getParsedUrl %}
 {% set site          = networkData.title | lower | split(" ")[0]%}
 {# {% set site          = "dairy" %} #}
@@ -90,7 +90,7 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=bc2f4bba" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=672cf64d" type="text/css" media="all">
 
     {% else %}
         {# <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/css/jquery.fancybox.css?ver=2" /> #}

@@ -17,13 +17,6 @@
 
 //components
 @import "component-contact-us";
-
-
-
-//Partials
-@import "common";
-@import "placeholder";
-
 @import "component.blog-symbol";
 @import "component.blog-social-icons";
 
@@ -32,6 +25,13 @@
 @import "component.site-footer-publish";
 @import "component.site-footer-social-icons";
 @import "component.gallery-toggle";
+
+
+
+//Partials
+@import "common";
+@import "placeholder";
+
 
 
 //Header
@@ -47,7 +47,8 @@
 
 //Article page
 @import "article";
-@import "_article-content";
+@import "article-content";
+@import "layout-article-property";
 
 //Section page
 @import "section-page";
