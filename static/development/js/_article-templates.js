@@ -122,7 +122,7 @@ Acme.systemCardTemplate =
 
 
 
-Acme.property-card = 
+Acme.property_card = 
     cardTemplateTop +  
         '{{#if hasMedia}} \
             <figure class="{{figureClass}}"> \
@@ -191,6 +191,7 @@ window.templates.carousel_item =
 '<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
     <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
 </div>';
+
 window.templates.listingDeleteTmpl =  
     '<p>{{msg}}</p> \
     <div> \

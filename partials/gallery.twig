@@ -1,9 +1,15 @@
 {% set type = type is defined ? type : "image" %}
 
-{% set galleryStyle = galleryStyle is defined ? galleryStyle ~ '-gallery' : "article-gallery" %}
+{% set galleryStyle = galleryStyle is defined ? galleryStyle : "article" %}
 
-{% set owl = "owl-gallery-" ~ type %}
-{% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+
+{% set owl = '' %}
+{% set owlClass = '' %}
+
+{% if  media | length > 1 %}
+    {% set owl = "owl-gallery-" ~ type %}
+    {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+{% endif %}
 
 {% set defaultClass = default is defined and default == true ? "default" : "" %}
 
@@ -13,8 +19,8 @@
     {% for image in media %}
         {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-        <figure class="featured {{galleryStyle}}">
-            <img src="{{articleImg}}" class="img-responsive {{galleryStyle}}__image">
+        <figure class="{{galleryStyle}}-featured-image">
+            <img src="{{articleImg}}" class="{{galleryStyle}}-featured-image_img">
             {% if image.type == 'video' %} 
                 {% set mediaUrl = "" %}
                 {% if image.media.isSystemVideo == 'TRUE'%}
@@ -36,7 +42,7 @@
                 </a>
             {% endif %}
             <figcaption>
-                <p>{{image.caption}}</p>
+                <p class="{{galleryStyle}}-featured-image__caption>{{image.caption}}</p>
             </figcaption>
         </figure>
     {% endfor %}
