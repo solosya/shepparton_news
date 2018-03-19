@@ -119,7 +119,6 @@
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount],
                             position: articleCount + 1,
-                            imageSize: {width:300},
                             site: site,
                             containerClass: 'card-rec card-rec-tablet card-rec-mobile row-space'
                         }) | raw}}
@@ -232,24 +231,30 @@
             <div class="row">
                 <div class="col-sm-9 col-md-6">
 
+                    <div class="row">
+                        {% for i in 0..5 if articles[articleCount] %}
+                            {% if i < 2 %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount],
+                                    position: articleCount + 1,
+                                    imageSize: {width:300},
+                                    site: site,
+                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3'
+                                }) | raw}}
+                            {% else %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount],
+                                    position: articleCount + 1,
+                                    imageSize: {width:300},
+                                    site: site,
+                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3 u-margin-top-15'
+                                }) | raw}}
+                            {% endif %}
+                            
 
-                    {% for i in 0..5 if articles[articleCount] %}
-                        {% if i == 0 or i == 3 %}
-                            <div class="" style="margin-top:30px;"></div>
-                        {% endif %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount],
-                            position: articleCount + 1,
-                            imageSize: {width:300},
-                            site: site,
-                            containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3'
-                        }) | raw}}
-
-                        
-
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% endfor %}
-
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% endfor %}
+                    </div>
                 </div>
 
 
