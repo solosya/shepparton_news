@@ -241,6 +241,16 @@
                                     site: site,
                                     containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3'
                                 }) | raw}}
+                                <hr class="divide18 visible-xs-block">
+                            {% elseif i = 8 %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount],
+                                    position: articleCount + 1,
+                                    imageSize: {width:300},
+                                    site: site,
+                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3 u-margin-top-15'
+                                }) | raw}}
+                                <hr class="divide18 visible-xs-block">
                             {% else %}
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount],
