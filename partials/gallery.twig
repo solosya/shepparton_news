@@ -1,12 +1,11 @@
 {% set type = type is defined ? type : "image" %}
 
-{% set galleryStyle = galleryStyle is defined ? galleryStyle : "article" %}
-
+{% set galleryStyle = galleryStyle is defined ? galleryStyle  : "article" %}
 
 {% set owl = '' %}
 {% set owlClass = '' %}
 
-{% if  media | length > 1 %}
+{% if ( media | length > 1 ) %}
     {% set owl = "owl-gallery-" ~ type %}
     {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
 {% endif %}
