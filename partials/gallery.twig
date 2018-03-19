@@ -1,9 +1,14 @@
 {% set type = type is defined ? type : "image" %}
 
-{% set galleryStyle = galleryStyle is defined ? galleryStyle ~ '-gallery' : "article-gallery" %}
+{% set galleryStyle = galleryStyle is defined ? galleryStyle  : "article" %}
 
-{% set owl = "owl-gallery-" ~ type %}
-{% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+{% set owl = '' %}
+{% set owlClass = '' %}
+
+{% if ( media | length > 1 ) %}
+    {% set owl = "owl-gallery-" ~ type %}
+    {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
+{% endif %}
 
 {% set defaultClass = default is defined and default == true ? "default" : "" %}
 
