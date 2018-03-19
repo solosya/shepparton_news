@@ -163,12 +163,12 @@
     @media screen and (min-width: $mmd-break){
         @include card-rec-base();
 
-        height:192px;
+        height:122px;
         
 
 
         a.card {
-            @include card-image-left(300px, 192px);
+            @include card-image-left(190px, 122px);
             
 
             height:100%;
@@ -189,8 +189,16 @@
                     }
 
                     .author{
+                        bottom: 0;
+                        height: 0;
                         p{
+                            display:inline-block;
                             font-size: rem(14);
+                            padding-right: 7px;
+                            border-right: 1px solid rgba(74,74,74,.7);
+                        }
+                        time{
+                            display:inline-block;
                         }
                     }
                 }
