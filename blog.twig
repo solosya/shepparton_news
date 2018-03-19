@@ -5,7 +5,7 @@
 {{ set(this, 'title', blogInfo.title) }}
 
 
-{% set limit = 11 %}
+{% set limit = 15 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
@@ -115,7 +115,7 @@
                     {% endif %}
 
 
-                    {% for i in 0..1 if articles[articleCount] %}
+                    {% for i in 0..2 if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount],
                             position: articleCount + 1,
@@ -146,7 +146,7 @@
                     <hr class="divide15 visible-sm-block space-only">
 
                     <div class="row two-cols">
-                        {% for i in 0..2 if articles[articleCount] %}
+                        {% for i in 0..1 if articles[articleCount] %}
                             <div class="col-sm-1 col-md-2">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
