@@ -122,7 +122,7 @@ Acme.systemCardTemplate =
 
 
 
-Acme.property = 
+Acme.property-card = 
     cardTemplateTop +  
         '{{#if hasMedia}} \
             <figure class="{{figureClass}}"> \

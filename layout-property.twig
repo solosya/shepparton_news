@@ -96,7 +96,7 @@
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             position: (articleCount+1),
-                            template: 'property',
+                            template: 'property-card',
                             networkData: networkData,
                             imageSize: {width: 300, height: 195},
                             containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
@@ -138,7 +138,7 @@
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
-                        template: 'property',
+                        template: 'property-card',
                         networkData: networkData,
                         imageSize: {width: 300, height: 195},
                         containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
@@ -173,7 +173,7 @@
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
-                        template: 'property',
+                        template: 'property-card',
                         networkData: networkData,
                         imageSize: {width: 300, height: 195},
                         containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
@@ -198,7 +198,7 @@
             name            : "property-load",
             label           : "Show more",
             non_pinned      : 2, 
-            cardTemplate    : "property",  
+            cardTemplate    : "property-card",  
             card_class      : "card-realestate card-realestate-tablet card-realestate-mobile",
             container       : "property-listings",
             blogid          : blogData['guid'],

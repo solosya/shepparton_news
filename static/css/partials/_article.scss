@@ -204,6 +204,8 @@
 			figure.featured {
 				>img {
 					width:100%;
+					height:100%;
+					object-fit: cover;
 				}
 
 				figcaption {
@@ -290,6 +292,10 @@
 
 	.featured {
 		position: relative;
+		@media screen and (min-width: $mmd-break) {
+			height:440px;
+		}
+
 	}
 
 	.btn-post{

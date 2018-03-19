@@ -1,5 +1,7 @@
 {% set type = type is defined ? type : "image" %}
 
+{% set galleryStyle = galleryStyle is defined ? galleryStyle ~ '-gallery' : "article-gallery" %}
+
 {% set owl = "owl-gallery-" ~ type %}
 {% set owlClass = 'owl-carousel owl-shep-theme owl-carousel__base'%}
 
@@ -11,8 +13,8 @@
     {% for image in media %}
         {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-        <figure class="featured">
-            <img src="{{articleImg}}" class="img-responsive">
+        <figure class="featured {{galleryStyle}}">
+            <img src="{{articleImg}}" class="img-responsive {{galleryStyle}}__image">
             {% if image.type == 'video' %} 
                 {% set mediaUrl = "" %}
                 {% if image.media.isSystemVideo == 'TRUE'%}

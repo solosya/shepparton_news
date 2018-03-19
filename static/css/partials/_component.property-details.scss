@@ -1,11 +1,23 @@
+.property-page-details {
+    padding-right:50px;
+}
 
-.property-page__attribute--contract {
+
+
+.property-page-attributes {
+    // margin-top: 30px;
+    margin-bottom:27px;
+}
+
+.property-page-attributes__contract {
     text-transform:uppercase;
     color: color(red);
     font-size: rem(14);
 }
 
-.property-page__address {
+
+
+.property-page-attributes__address {
     margin:0;
     color: color(darkgrey60pc);
     font-weight:600;
@@ -13,7 +25,7 @@
     font-size: rem(14);
 
 }
-.property-page__price {
+.property-page-attributes__price {
     font-family: $font-family-serif;
     color:color(darkblue);
     height: 30px;
@@ -21,24 +33,24 @@
     font-size: rem(26);
     font-weight:600;
     line-height:.85;
-    margin-top:10px;
-    margin-bottom:7px;
+    margin-top:12px;
+    margin-bottom:2px;
 }
 
-.property-page__spaces {
+.property-page-attributes__spaces {
     padding:0;
     margin:0;
     overflow:auto;
-    margin-bottom:12px;
-    margin-top:5px;
+    margin-bottom:0;
+    margin-top:15px;
 }
 
-.property-page__spaces-item {
+.property-page-attributes__spaces-item {
     list-style:none;
     float:left;
     margin-right:20px;
 }
-.property-page__spaces-count {
+.property-page-attributes__spaces-count {
     font-weight:300;
     position: relative;
     top: 2px;

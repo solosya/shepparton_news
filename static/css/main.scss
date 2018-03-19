@@ -16,7 +16,7 @@
 
 
 //components
-@import "component-contact-us";
+@import "component.contact-us";
 @import "component.blog-symbol";
 @import "component.blog-social-icons";
 
@@ -25,6 +25,11 @@
 @import "component.site-footer-publish";
 @import "component.site-footer-social-icons";
 @import "component.gallery-toggle";
+
+// poperty article template
+@import "component.property-details";
+@import "component.property-contact";
+@import "component.property-inspections";
 
 
 
@@ -48,7 +53,6 @@
 //Article page
 @import "article";
 @import "article-content";
-@import "layout-article-property";
 
 //Section page
 @import "section-page";

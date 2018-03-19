@@ -15,9 +15,9 @@
 
     <p class="property__attribute property__attribute--contract">{{ info.listing_type }}</p>
 
-    <h1 class="price">${{ info.pricerange | preg_replace("/\\$/", '')}}</h1>
+    <h1 class="property__price">${{ info.pricerange | preg_replace("/\\$/", '')}}</h1>
     
-    <h2>{{ params.articleTitle }}</h2>
+    <h2 class="property__address">{{ params.articleTitle }}</h2>
 
     <ul class="property__spaces">
         {% if info.bedroom_count %}
