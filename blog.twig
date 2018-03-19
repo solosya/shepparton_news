@@ -233,32 +233,38 @@
 
                     <div class="row">
                         {% for i in 0..8 if articles[articleCount] %}
-                            {% if i <= 2 %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount],
-                                    position: articleCount + 1,
-                                    imageSize: {width:300},
-                                    site: site,
-                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3'
-                                }) | raw}}
-                                <hr class="divide18 visible-xs-block">
-                            {% elseif i == 8 %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount],
-                                    position: articleCount + 1,
-                                    imageSize: {width:300},
-                                    site: site,
-                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3 u-margin-top-15'
-                                }) | raw}}
-                                <hr class="divide18 visible-xs-block">
+                            {% if i < 3 %}
+                                <div class="col-sm-3">
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: articles[articleCount],
+                                        position: articleCount + 1,
+                                        imageSize: {width:300},
+                                        site: site,
+                                        containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                                    }) | raw}}
+                                    <hr class="divide18 visible-xs-block">
+                                </div>
+                            {% elseif i < 8 %}
+                                <div class="col-sm-3">
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: articles[articleCount],
+                                        position: articleCount + 1,
+                                        imageSize: {width:300},
+                                        site: site,
+                                        containerClass: 'card-sm card-sm-tablet card-sm-mobile u-margin-top-15'
+                                    }) | raw}}
+                                    <hr class="divide18 visible-xs-block">
+                                </div>
                             {% else %}
-                                {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount],
-                                    position: articleCount + 1,
-                                    imageSize: {width:300},
-                                    site: site,
-                                    containerClass: 'card-sm card-sm-tablet card-sm-mobile col-sm-3 u-margin-top-15'
-                                }) | raw}}
+                                <div class="col-sm-3">
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: articles[articleCount],
+                                        position: articleCount + 1,
+                                        imageSize: {width:300},
+                                        site: site,
+                                        containerClass: 'card-sm card-sm-tablet card-sm-mobile u-margin-top-15'
+                                    }) | raw}}
+                                </div>
                             {% endif %}
                             
 
