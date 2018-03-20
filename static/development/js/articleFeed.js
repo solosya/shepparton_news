@@ -12,6 +12,7 @@ Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText) {
 
 Acme.View.articleFeed.prototype.fetch = function()
 {
+    console.log('fetching');
     var self = this;
     self.elem.html("Please wait...");
 
@@ -103,7 +104,7 @@ Acme.View.articleFeed.prototype.render = function(data)
         effect: "fadeIn"
     });
 
-    this.cardModel.events();
+    this.cardModel.events_refresh();
 
 
     self.elem.data('rendertype', '');
@@ -118,8 +119,8 @@ Acme.View.articleFeed.prototype.events = function()
         self.fetch();
     });
 
-
     if (this.infinite && this.offset >= this.limit) {
+        console.log('setting infinite');
         self.waypoint = new Waypoint({
             element: self.elem,
             offset: '100%',

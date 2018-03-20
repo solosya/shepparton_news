@@ -1,0 +1,212 @@
+@mixin card-realestate-base() {
+    position:relative;
+    a.card {
+
+        > article {
+            position:relative;
+            > figure{
+            }
+            > .content{
+                height: 100%;
+                padding: 0;
+                position:relative;
+
+                p.property__attribute--contract {
+                    text-transform:uppercase;
+                    color: color(red);
+                    font-size: rem(10.5);
+                }
+
+                h1 {
+                    font-family: $font-family-serif;
+                    color:color(darkblue);
+                    height: 30px;
+                    max-height:33px;
+                    overflow:hidden;
+                }
+                h2 {
+                    margin:0;
+                    color: color(darkgrey60pc);
+                    font-weight:600;
+                    line-height: 1.29;
+                }
+
+                .excerpt {
+                    font-size: rem(13);
+                    line-height:1.54;
+                    overflow:hidden;
+                }
+
+                .property__spaces {
+                    padding:0;
+                    margin:0;
+                    overflow:auto;
+                    margin-bottom:12px;
+                    margin-top:5px;
+                }
+
+                .property__spaces-item {
+                    list-style:none;
+                    float:left;
+                    margin-right:20px;
+                }
+                .property__spaces-count {
+                    font-weight:300;
+                    position: relative;
+                    top: 2px;
+                }
+
+                .cat-time {
+                    line-height: 0;
+                    padding-bottom: 8px;
+                    margin-top: 15px;
+                    time {
+                        font-family: $font-family-serif;
+                        font-size: rem(11);
+                        color: color(darkgrey60pc);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+.card-realestate{
+    @media screen and (min-width: $mmd-break){
+        @include card-realestate-base();
+
+        margin-bottom: 32px;
+
+        a.card {
+            @include card-image-top(300px, 195px);
+            // height:173px;
+
+            > article {
+
+                > figure{
+                    margin-right:18px;
+                    margin-bottom:10px;
+                }
+
+                > .content{
+                    p.property__attribute--contract {
+                        margin-top:17px;
+                    }
+
+                h1 {
+                        font-size: rem(26);
+                        font-weight:600;
+                        line-height:.85;
+                        margin-top:10px;
+                        margin-bottom:7px;
+                    }
+                    h2{
+                        font-size: rem(14);
+
+
+                    }
+                    p.excerpt {
+                        max-height:40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.card-realestate-tablet{
+    @media #{$media-iPad} {
+        @include card-realestate-base();
+
+        margin-bottom: 32px;
+
+        a.card {
+            // @include card-image-left(200px, 143px);
+            height:auto;
+            padding-bottom:20px;
+            > article {
+
+                > figure{
+                    // display:none;
+                }
+
+                > .content{
+
+                    h1{
+                        font-size: rem(25);
+                        font-weight:600;
+                        line-height:1.2;
+                        margin-top:0px;
+                        margin-bottom:6px;
+                    }
+                    h2{
+                        font-size: rem(14);
+                        margin-bottom:8px;
+                    }
+                    p.excerpt {
+                        max-height:40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+.card-realestate-mobile{
+    @media #{$media-mobile} {
+        @include card-realestate-base();
+
+        margin-bottom: 32px;
+
+        a.card {
+            @include card-image-top(100%);
+            // height:173px;
+
+            > article {
+
+                > figure{
+                    height:50vw;
+                    margin-right:18px;
+                    margin-bottom:10px;
+                }
+
+                > .content{
+                    p.property__attribute--contract {
+                        margin-top:17px;
+                    }
+
+                h1 {
+                        font-size: rem(26);
+                        font-weight:600;
+                        line-height:.85;
+                        margin-top:10px;
+                        margin-bottom:7px;
+                    }
+                    h2{
+                        font-size: rem(14);
+
+
+                    }
+                    p.excerpt {
+                        max-height:40px;
+                    }
+                }
+            }
+        }
+    }
+}
+

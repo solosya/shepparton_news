@@ -1,0 +1,19 @@
+.article-social {
+    float:right;
+}
+
+.article-social\@sm {
+    margin-top:26px;
+    margin-bottom:21px;
+    @media #{$media-up-to-desktop} {
+        float:none;
+	}
+}
+
+.article-social__icons {
+	position:relative;
+	top:5px;
+}
+
+
+

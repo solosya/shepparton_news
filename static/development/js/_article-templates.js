@@ -4,6 +4,11 @@
 
 window.templates = {};
 
+Handlebars.registerHelper('fixPrice', function(text) {
+    if (!text) return "";
+    return text.replace(/\$/g, "");
+});
+
 
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
@@ -40,37 +45,25 @@ var screenArticles_1 =
 </div>\
 <div class="row half-height bottom-row">\
     {¡{content:3-5}¡}\
-</div>\
-';
+</div>';
 
-Acme.systemCardTemplate = 
-'<div class="{{cardClass}}"> \
+
+var cardTemplateTop = 
+'<div class="{{cardClass}} "> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap {{{hasArticleMediaClass}}}" \
+        class="card swap {{articleStatus}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="">\
-            {{#if hasMedia}}\
-                <figure>\
-                    <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
-                </figure>\
-            {{/if}} \
-        \
-            <div class="content">\
-                    <div class="category">{{label}}</div>\
-                    <h2>{{{ title }}}</h2>\
-                    <div class="author">\
-                        <img src="{{profileImg}}" class="img-circle">\
-                        <p>{{ createdBy.displayName }}</p>\
-                        <time datetime="{{publishDate}}">{{publishDate}}</time>\
-                    </div>\
-            </div>\
-        </article>\
+        <article class="">';
+
+
+var cardTemplateBottom = 
+        '</article>\
         \
         {{#if userHasBlogAccess}} \
             <div class="btn_overlay articleMenu"> \
@@ -99,6 +92,83 @@ Acme.systemCardTemplate =
     </a>\
 </div>';
 
+
+
+
+
+
+
+Acme.systemCardTemplate = 
+    cardTemplateTop + 
+        '{{#if hasMedia}}\
+            <figure>\
+                <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
+            </figure>\
+        {{/if}} \
+        \
+        <div class="content">\
+                <div class="category">{{label}}</div>\
+                <h2>{{{ title }}}</h2>\
+                <div class="author">\
+                    <img src="{{profileImg}}" class="img-circle">\
+                    <p>{{ createdBy.displayName }}</p>\
+                    <time datetime="{{publishDate}}">{{publishDate}}</time>\
+                </div>\
+        </div>'+ 
+    cardTemplateBottom;
+
+
+
+
+
+
+Acme.property_card = 
+    cardTemplateTop +  
+        '{{#if hasMedia}} \
+            <figure class="{{figureClass}}"> \
+                <picture> \
+                    <source media="(max-width: 620px)" srcset="{{imageUrl}}"> \
+                    <img class="img-responsive" src="{{imageUrl}}" data-original="{{imageUrl}}"> \
+                </picture> \
+            </figure> \
+        {{/if}} \
+        \
+        <div class="content"> \
+            <p class="property__attribute property__attribute--contract">{{ additionalInfo.listing_type }}</p> \
+            <h1 class="price">${{ fixPrice additionalInfo.pricerange }}</h1>\
+            <h2>{{ params.articleTitle }}</h2> \
+            \
+            <ul class="property__spaces"> \
+                {{#if additionalInfo.bedroom_count }} \
+                    <li class="property__spaces-item"> \
+                        <img src="'+_appJsConfig.templatePath +'/static/icons/property-bed.svg" alt="bedroom count"> \
+                        <span class="property__spaces-count property__spaces-count--bedroom">{{additionalInfo.bedroom_count}}</span> \
+                    </li> \
+                {{/if}} \
+                {{#if additionalInfo.bathroom_count }} \
+                    <li class="property__spaces-item"> \
+                        <img src="'+_appJsConfig.templatePath +'/static/icons/property-bath.svg" alt="bathroom count"> \
+                        <span class="property__spaces-count property__spaces-count--bathroom">{{additionalInfo.bathroom_count}}</span> \
+                    </li> \
+                {{/if}} \
+                {{#if additionalInfo.car_count }} \
+                    <li class="property__spaces-item"> \
+                        <img src="'+_appJsConfig.templatePath +'/static/icons/property-car.svg" alt="car count"> \
+                        <span class="property__spaces-count property__spaces-count--car">{{additionalInfo.car_count}}</span> \
+                    </li> \
+                {{/if}} \
+            </ul> \
+            \
+            <div class="cat-time"> \
+                <time datetime="{{params.publishDate}}">{{params.publishDate}}</time> \
+            </div> \
+        </div>' +
+    cardTemplateBottom;
+
+
+
+
+
 window.templates.ads_infinite = 
     "<div id='newAdSlot' class='infinite-ad'></div><script>loadNextAd()</script>";
 
@@ -121,6 +191,7 @@ window.templates.carousel_item =
 '<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \
     <span data-id="{{imageid}}" class="carousel-tray__delete"></span> \
 </div>';
+
 window.templates.listingDeleteTmpl =  
     '<p>{{msg}}</p> \
     <div> \
@@ -132,7 +203,7 @@ window.templates.listingDeleteTmpl =
     
 
 window.templates.pulldown = 
-'<div id="{{ name }}" class="Acme-pulldown {{class}}"> \
+'<div id="{{ name }}" class="Window.templates-pulldown {{class}}"> \
     <p class="Acme-pulldown__selected-item"></p> \
     <span class="Acme-pulldown__span"></span> \
     <ul class="Acme-pulldown__list" data-key="{{ key }}" class="articleExtendedData"></ul> \

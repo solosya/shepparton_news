@@ -45,7 +45,8 @@ gulp.task('concat', function () {
         './static/development/js/plugins/jquery.noty-2.3.8/demo/animate.css',
         './static/development/js/sdk/media-player/mediaelementplayer.css',
         './static/development/js/plugins/owl.carousel.min.css',
-        './static/development/js/plugins/owl.theme.default.css'
+        './static/development/js/plugins/owl.theme.default.css',
+        './static/development/js/plugins/view-1.1.3.css'
 
     ]) // path to your file
     .pipe(concat('concat.css'))
@@ -99,6 +100,7 @@ gulp.task('scripts', function(){
         './static/development/js/plugins/owl.carousel2.thumbs.js',
         './static/development/js/plugins/moment.js',
         './static/development/js/plugins/bootstrap-datetimepicker.js',
+        './static/development/js/plugins/view-1.1.3.js',
 
 
 
