@@ -3,7 +3,8 @@
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == 'false' %}
     <figure class="{{params.figureClass}}">
         <picture>
-            <source media="(max-width: 620px)" srcset="{{params.articleImgSmall}}">
+            <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.articleImgMedium}}">
+            <source media="(max-width: 500px)" srcset="{{params.articleImgSmall}}">
             <img class="img-responsive" src="{{params.articleImg}}" data-original="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
         </picture>
     </figure>
