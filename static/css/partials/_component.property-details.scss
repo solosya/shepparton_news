@@ -2,6 +2,12 @@
     padding-right:50px;
 }
 
+.property-page-details\@sm {
+    @media #{$media-up-to-desktop} {
+        padding-right:0;
+    }
+}
+
 
 
 .property-page-attributes {

@@ -1,19 +1,27 @@
 //Bootstrap
-@import "variables";
+@import "_settings.variables";
 @import "bootstrap";
 @import "datetimepicker";
-
-@import "functions";
 @import "font-awesome-4.7.0/scss/font-awesome";
-@import "mixins";
-@import "login";
-@import "profile";
-@import "user_profile";
+
+
+@import "tools.functions";
+@import "tools.mixins";
+
+
+
+
+// @import "login";
+// @import "profile";
+// @import "user_profile";
 @import "user_posts";
 // @import "profile-admin";
 @import "modal";
 @import "owl-theme";
 
+
+
+@import "elements.all";
 
 //components
 @import "component.contact-us";
@@ -25,6 +33,10 @@
 @import "component.site-footer-publish";
 @import "component.site-footer-social-icons";
 @import "component.gallery-toggle";
+
+
+// article page
+@import "component.article-social";
 
 // poperty article template
 @import "component.property-details";

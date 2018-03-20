@@ -344,7 +344,7 @@
         @include card-sm-wide-base();
         margin-bottom:7vw;
 
-        height: 250px;
+        // height: 250px;
 
         a.card {
             @include card-image-top(auto, auto);
@@ -353,11 +353,11 @@
             > article {
 
                 > figure{
-                    height: 160px;
+                    height: 50vw;
                     margin-bottom:6px;
                     > picture{
                         > img {
-                            max-height: 160px;
+                            // max-height: 160px;
                         }
                     }
                 }

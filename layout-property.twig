@@ -39,11 +39,11 @@
 
 
 
-    <section class="row">
+    <section class="row u-margin-bottom-40">
         <div class="col-sm-6">
 
 
-            <div class="row" style="margin-bottom:40px;">
+            <div class="row u-margin-bottom-40">
                 <div class="col-sm-9">
 
                     <!-- # The Following is code from View Real Estate -->
@@ -89,10 +89,10 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row u-margin-bottom-40">
 
                 {% if articles[articleCount] %}
-                    <div class="col-sm-3 large-split">
+                    <div class="col-sm-9 col-md-3 m-split">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             position: (articleCount+1),
@@ -105,16 +105,19 @@
                     </div>
                 {% endif %}
 
-                <div class="col-sm-3 large-split">
+                <div class="col-sm-9 col-md-3 m-split">
+
+
+                {% set mobileStyles = ["card-sm-wide-mobile", "card-sm-mobile", "card-sm-mobile"] %}
 
                 {% for i in 0..2 if articles[articleCount] %}
-
+                   
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
                         position: (articleCount+1),
                         networkData: networkData,
                         imageSize: {width: 80, height: 95},
-                        containerClass: 'feature-side feature-side-tablet'
+                        containerClass: 'feature-side feature-side-tablet ' ~ mobileStyles[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i < 2 %}
@@ -133,7 +136,7 @@
             <div class="row">
 
                 {% for i in 0..1 if articles[articleCount] %}
-                    <div class="col-sm-3 large-split">
+                    <div class="col-sm-9 col-md-3 m-split">
 
                     {{this.render('partials/_single-article.twig', {
                         article: articles[articleCount], 
@@ -162,7 +165,7 @@
     </section>
 
 
-    <section class="row">
+    <section class="row u-margin-bottom-40">
         <div class="col-sm-9">
 
             <section class="row">

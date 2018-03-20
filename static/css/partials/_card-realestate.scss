@@ -133,7 +133,7 @@
             > article {
 
                 > figure{
-                    display:none;
+                    // display:none;
                 }
 
                 > .content{
@@ -173,27 +173,33 @@
         margin-bottom: 32px;
 
         a.card {
-            // @include card-image-left(200px, 143px);
-            height:auto;
-            padding-bottom:20px;
+            @include card-image-top(100%);
+            // height:173px;
+
             > article {
 
                 > figure{
-                    display:none;
+                    height:50vw;
+                    margin-right:18px;
+                    margin-bottom:10px;
                 }
 
                 > .content{
+                    p.property__attribute--contract {
+                        margin-top:17px;
+                    }
 
-                    h1{
-                        font-size: rem(25);
+                h1 {
+                        font-size: rem(26);
                         font-weight:600;
-                        line-height:1.2;
-                        margin-top:0px;
-                        margin-bottom:6px;
+                        line-height:.85;
+                        margin-top:10px;
+                        margin-bottom:7px;
                     }
                     h2{
                         font-size: rem(14);
-                        margin-bottom:8px;
+
+
                     }
                     p.excerpt {
                         max-height:40px;

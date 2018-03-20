@@ -19,7 +19,7 @@
         {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
         <figure class="{{galleryStyle}}-featured-image">
-            <img src="{{articleImg}}" class="{{galleryStyle}}-featured-image_img">
+            <img src="{{articleImg}}" class="{{galleryStyle}}-featured-image__img">
             {% if image.type == 'video' %} 
                 {% set mediaUrl = "" %}
                 {% if image.media.isSystemVideo == 'TRUE'%}
@@ -41,7 +41,7 @@
                 </a>
             {% endif %}
             <figcaption>
-                <p class="{{galleryStyle}}-featured-image__caption>{{image.caption}}</p>
+                <p class="{{galleryStyle}}-featured-image__caption">{{image.caption}}</p>
             </figcaption>
         </figure>
     {% endfor %}
