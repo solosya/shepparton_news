@@ -34142,11 +34142,8 @@ Acme.article = function() {
 Acme.article.prototype.insertOovvuu = function() {
     articleContent = $("#articleContent").children();
     oovvuu = jQuery.parseJSON($("#oovvuu").text());
-    brightcove = jQuery.parseJSON($("#brightcove").text());
+    brightcove = $("#brightcove").text();
     if (brightcove == '') {brightcove = "5370537724001";} 
-    console.log(oovvuu);
-    console.log(brightcove);
-    console.log($('.article_content > p').length);
     if (oovvuu.status_code == 200) {
         oovvuu = oovvuu.embedCodes.group1;
 
@@ -34156,7 +34153,6 @@ Acme.article.prototype.insertOovvuu = function() {
             //if ($('.article_content > p').length > targetPars[i]) {
 
                 if (oovvuu.length > i) {
-                    console.log('woo?');
 
                     content = 
                     '<div style="display: block; position: relative; max-width: 100%; margin-bottom:15px;"><div style="padding-top: 56.25%;">\
@@ -34172,7 +34168,6 @@ Acme.article.prototype.insertOovvuu = function() {
                         targetPar =  $('.article_content > p').length-1;
                         i = targetPars.length;
                     }
-                    console.log(targetPar);
                     $(content).insertAfter( $('.article_content > p')[targetPar]);
                 }
             //}
