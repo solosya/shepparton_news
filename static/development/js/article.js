@@ -10,15 +10,15 @@ Acme.article.prototype.insertOovvuu = function() {
     articleContent = $("#articleContent").children();
     oovvuu = jQuery.parseJSON($("#oovvuu").text());
     brightcove = jQuery.parseJSON($("#brightcove").text());
-    if (brightcove == '') {brightcove = "5370537724001"} 
-    // console.log(oovvuu);
-    // console.log(brightcove);
+    if (brightcove == '') {brightcove = "5370537724001";} 
     if (oovvuu.status_code == 200) {
         oovvuu = oovvuu.embedCodes.group1;
 
         targetPars = [3, 100];
-        for (i=1; i <= targetPars.length; i++) {
-            if ($('.article_content > p').length >= targetPars[i]) {
+        for (i=0; i < targetPars.length; i++) {
+
+            //if ($('.article_content > p').length > targetPars[i]) {
+
                 if (oovvuu.length > i) {
 
                     content = 
@@ -29,13 +29,15 @@ Acme.article.prototype.insertOovvuu = function() {
                         mozallowfullscreen\
                         style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></iframe>\
                     </div></div>';
+
                     targetPar = targetPars[i];
                     if( $('.article_content > p').length < targetPars[i]) {
                         targetPar =  $('.article_content > p').length-1;
+                        i = targetPars.length;
                     }
                     $(content).insertAfter( $('.article_content > p')[targetPar]);
                 }
-            }
+            //}
         }
     }
         
