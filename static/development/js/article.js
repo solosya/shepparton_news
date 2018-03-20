@@ -9,7 +9,7 @@ Acme.article = function() {
 Acme.article.prototype.insertOovvuu = function() {
     articleContent = $("#articleContent").children();
     oovvuu = jQuery.parseJSON($("#oovvuu").text());
-    brightcove = jQuery.parseJSON($("#brightcove").text());
+    brightcove = $("#brightcove").text();
     if (brightcove == '') {brightcove = "5370537724001";} 
     if (oovvuu.status_code == 200) {
         oovvuu = oovvuu.embedCodes.group1;
