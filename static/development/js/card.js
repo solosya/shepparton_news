@@ -104,7 +104,8 @@ Card.prototype.bindDeleteHideArticle = function()
 
 Card.prototype.bindSocialUpdatePost = function () 
 {
-    $('.editSocialPost').on('click', function (e) {
+    $(document).on('click', '.j-editSocialPost', function (e) {
+
         e.preventDefault();
         var elem = $(this);
         var url = elem.data('url');
@@ -314,7 +315,9 @@ Card.prototype.initDroppable = function()
                     }
                     
                     $(".card p, .card h2").dotdotdot();
-                    self.events();
+                    // self.events();
+                    self.events_refresh();
+
                 },
             });
 
@@ -322,17 +325,24 @@ Card.prototype.initDroppable = function()
     }); 
 };
 
+Card.prototype.events_refresh = function() 
+{
+    if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
+        this.initDroppable();
+        this.initDraggable();        
+        this.bindPinUnpinArticle();
+        this.bindDeleteHideArticle();
+    }
+};
+
 Card.prototype.events = function() 
 {
-    var self = this;
-
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
-        self.initDroppable();
-        self.initDraggable();        
-        self.bindPinUnpinArticle();
-        self.bindDeleteHideArticle();
-        self.bindSocialUpdatePost();  
+        this.initDroppable();
+        this.initDraggable();        
+        this.bindPinUnpinArticle();
+        this.bindDeleteHideArticle();
+        this.bindSocialUpdatePost();
     }
-
-    self.bindSocialPostPopup();
+    this.bindSocialPostPopup();
 };
