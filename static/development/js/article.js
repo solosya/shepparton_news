@@ -3,7 +3,48 @@ Acme.ArticleController = function() {
 }
 Acme.article = function() {
     // this.events();
+    //this.showOovvuu();
 };
+
+Acme.article.prototype.insertOovvuu = function() {
+    articleContent = $("#articleContent").children();
+    oovvuu = jQuery.parseJSON($("#oovvuu").text());
+    brightcove = jQuery.parseJSON($("#brightcove").text());
+    if (brightcove == '') {brightcove = "5370537724001";} 
+    if (oovvuu.status_code == 200) {
+        oovvuu = oovvuu.embedCodes.group1;
+
+        targetPars = [3, 100];
+        for (i=0; i < targetPars.length; i++) {
+
+            //if ($('.article_content > p').length > targetPars[i]) {
+
+                if (oovvuu.length > i) {
+
+                    content = 
+                    '<div style="display: block; position: relative; max-width: 100%; margin-bottom:15px;"><div style="padding-top: 56.25%;">\
+                        <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
+                        allowfullscreen\
+                        webkitallowfullscreen\
+                        mozallowfullscreen\
+                        style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></iframe>\
+                    </div></div>';
+
+                    targetPar = targetPars[i];
+                    if( $('.article_content > p').length < targetPars[i]) {
+                        targetPar =  $('.article_content > p').length-1;
+                        i = targetPars.length;
+                    }
+                    $(content).insertAfter( $('.article_content > p')[targetPar]);
+                }
+            //}
+        }
+    }
+        
+
+    
+};
+
 
 Acme.article.prototype.InsertInterstitial = function() {
     if ($('.article_content > p').length >= 9) {
