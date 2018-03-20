@@ -60,6 +60,30 @@
     				"label": "Auction Date",
     				"type": "inputbox",
     				"datetimepicker": true
+                },
+    			{
+    				"name": "inspect_date1",
+    				"label": "Inspection Date 1",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspect_date2",
+    				"label": "Inspection Date 2",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspect_date3",
+    				"label": "Inspection Date 3",
+    				"type": "inputbox",
+    				"datetimepicker": true
+    			},
+    			{
+    				"name": "inspect_date4",
+    				"label": "Inspection Date 4",
+    				"type": "inputbox",
+    				"datetimepicker": true
     			},
                 {
                     "name": "pricerange",
