@@ -152,20 +152,21 @@
         <!-- End Google Analytics -->
     {% endif %}
 
-    <script>
-        LoginRadiusSSO.init('mcmedia');
-        var options = { appName : 'mcmedia'};
-        aas.init(options);
-        LoginRadiusSSO.isNotLoginThenLogout(function(){}, function(key){
-            sessionStorage.setItem("LRTokenKey",key);
-            LoginRadiusSDK.getUserprofile( function( profile) {
-                aas.setUid(profile.Uid);
-                ga( 'set', '&uid',profile.Uid );
+
+    {% if site != 'dairy' and _AppHelper.getApplicationEnv() == 'PROD' %}
+        <script>
+            LoginRadiusSSO.init('mcmedia');
+            var options = { appName : 'mcmedia'};
+            aas.init(options);
+            LoginRadiusSSO.isNotLoginThenLogout(function(){}, function(key){
+                sessionStorage.setItem("LRTokenKey",key);
+                LoginRadiusSDK.getUserprofile( function( profile) {
+                    aas.setUid(profile.Uid);
+                    ga( 'set', '&uid',profile.Uid );
+                });
             });
-        });
-    </script>
-
-
+        </script>
+    {% endif %}
 
 
 
