@@ -2,20 +2,20 @@
 
 	.article_content {
 
-		&:before {
-			content: '';
-			display:block;
-			position:absolute;
-			top:0;
-			right:7px;
-			bottom:0;
-			width:1px;
-			background:color(lightgrey);
+		// &:before {
+		// 	content: '';
+		// 	display:block;
+		// 	position:absolute;
+		// 	top:0;
+		// 	right:7px;
+		// 	bottom:0;
+		// 	width:1px;
+		// 	background:color(lightgrey);
 
-			@media screen and (max-width: $mmd-break) {
-				display:none;
-			}
-		}
+		// 	@media screen and (max-width: $mmd-break) {
+		// 		display:none;
+		// 	}
+		// }
 
 
 		// > {

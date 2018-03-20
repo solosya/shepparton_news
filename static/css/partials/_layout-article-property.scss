@@ -1,0 +1,56 @@
+
+.property-page__attribute--contract {
+    text-transform:uppercase;
+    color: color(red);
+    font-size: rem(14);
+}
+
+.property-page__address {
+    margin:0;
+    color: color(darkgrey60pc);
+    font-weight:600;
+    line-height: 1.29;
+    font-size: rem(14);
+
+}
+.property-page__price {
+    font-family: $font-family-serif;
+    color:color(darkblue);
+    height: 30px;
+    overflow:hidden;
+    font-size: rem(26);
+    font-weight:600;
+    line-height:.85;
+    margin-top:10px;
+    margin-bottom:7px;
+}
+
+.property-page__spaces {
+    padding:0;
+    margin:0;
+    overflow:auto;
+    margin-bottom:12px;
+    margin-top:5px;
+}
+
+.property-page__spaces-item {
+    list-style:none;
+    float:left;
+    margin-right:20px;
+}
+.property-page__spaces-count {
+    font-weight:300;
+    position: relative;
+    top: 2px;
+}
+
+.cat-time {
+    line-height: 0;
+    padding-bottom: 8px;
+    margin-top: 15px;
+    time {
+        font-family: $font-family-serif;
+        font-size: rem(11);
+        color: color(darkgrey60pc);
+    }
+}
