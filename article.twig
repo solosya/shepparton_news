@@ -5,13 +5,14 @@
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
+{{this.registerJs("Acme.articleController.insertOovvuu();")}}
 
 
 
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
-{% set site        = networkData.title | lower | split(" ")[0]%}
-
+{% set site = networkData.title | lower | split(" ")[0]%}
+{% set oovvuu = _Article.getOovvuuData(article) %} 
 
 
 {% set articleImg = false %}
@@ -54,7 +55,6 @@
 <meta name="__sync_contentCategory" content="Premium">
 
 <main id="main" class="container" role="main">
-
 
 
     <article class="article-main">
@@ -152,7 +152,10 @@
                 <div class="row article-row">
                     <div class="col-md-6">
 
-                        <div class="article_content">
+                        <div class="hidden" id="oovvuu"> {{oovvuu}}</div>
+                        <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
+
+                        <div class="article_content" id="articleContent">
                             {{ article.content | _resizeImages({'width': 600}) | raw }}
                         </div><!-- .content-->
 
