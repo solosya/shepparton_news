@@ -34213,7 +34213,7 @@ Acme.article = function() {
 Acme.article.prototype.insertOovvuu = function() {
     articleContent = $("#articleContent").children();
     oovvuu = jQuery.parseJSON($("#oovvuu").text());
-    brightcove = $("#brightcove").text();
+    brightcove = $("#brightcove").text().trim();
     if (brightcove == '') {brightcove = "5370537724001";} 
     if (oovvuu.status_code == 200) {
         oovvuu = oovvuu.embedCodes.group1;
@@ -36196,7 +36196,7 @@ $('document').ready(function() {
     var masthead = $('#masthead');
     var articleAd = $('#articleAdScroll');
 
-    $('.video-player').videoPlayer();
+    // $('.video-player').videoPlayer();
     
     $("img.lazyload").lazyload({
         effect : "fadeIn"
