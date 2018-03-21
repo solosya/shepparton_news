@@ -795,41 +795,41 @@ span.leadsentence{
 }
 
 #rev-search {
-    background-color: unset;
+    background-color: unset !important;
     .rev-search-inner{
         .rev-search-title{
-            content: "Your first stop before buying a home. View the whole picture.";
-            margin: 0 0 0 7px;
-            float: left;
-            width: 100%;
-            text-align: left;
-            height: 20px;
-            position: relative;
-            color: #000;  
+            content: "Your first stop before buying a home. View the whole picture." !important;
+            margin: 0 0 0 7px !important;
+            float: left !important;
+            width: 100% !important;
+            text-align: left !important;
+            height: 20px !important;
+            position: relative !important;
+            color: #000 !important;  
         }
         form {
-            width:100%;
+            width:100% !important;
             .rev-search-item-wrapper {
-                width: 100%;
+                width: 100% !important;
             }
             .rev-search-item {
                 &.rev-search-submit {
                     button {
-                        background-color: #f03746;
-                        border: 1px solid #f03746;
+                        background-color: #f03746 !important;
+                        border: 1px solid #f03746 !important;
                     }
                 }
             }
         }
     }
     .rev-search-logo {
-        float: left;
-        width: 15%;
-        height: unset;
-        text-align: center;
-        position: absolute;
-        right: 15px;
-        top: 7px;
+        float: left !important;
+        width: 15% !important;
+        height: unset !important;
+        text-align: center !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 7px !important;
     }
 }
 
