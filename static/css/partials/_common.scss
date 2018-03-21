@@ -798,14 +798,18 @@ span.leadsentence{
     background-color: unset !important;
     .rev-search-inner{
         .rev-search-title{
-            content: "Your first stop before buying a home. View the whole picture." !important;
+            
             margin: 0 0 0 7px !important;
             float: left !important;
             width: 100% !important;
             text-align: left !important;
             height: 20px !important;
             position: relative !important;
-            color: #000 !important;  
+            span{
+                color: #000 !important;
+                content: "Your first stop before buying a home. View the whole picture." !important;
+            }
+              
         }
         form {
             width:100% !important;
