@@ -13,7 +13,7 @@ $('document').ready(function() {
     var masthead = $('#masthead');
     var articleAd = $('#articleAdScroll');
 
-    $('.video-player').videoPlayer();
+    // $('.video-player').videoPlayer();
     
     $("img.lazyload").lazyload({
         effect : "fadeIn"

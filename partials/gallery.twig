@@ -35,34 +35,37 @@
                         data-poster     = "{{image.path}}" 
                         data-caption    = "{{article.title | raw}}">
                         
-                        {# <div class="icons">
-                            <div class="icon">
-                                <i class="fa fa-play"></i>
-                            </div>
-                        </div>  #}
-
                         <video controls class="article-video__player" poster="{{image.path}}">
-                        {# <source src="{{mediaUrl}}" type="video/webm"/> #}
-                        <source src="{{mediaUrl}}" type="video/mp4"/>
-                        {# <source src="{{mediaUrl}}" type="video/ogg"/> #}
+                            <source src="{{mediaUrl}}" type="video/mp4"/>
                         </video>
 
-                         {# <iframe class="article-video__player" src="{{mediaUrl}}?autoplay=false"  frameborder="0" allowfullscreen></iframe> #}
                     </a>
 
-                {# {% else %}
-
-                    {% if media.source == 'youtube' %}
-                        {% set mediaUrl = "https://www.youtube.com/embed/" ~ media.videoId  %}
-                    {% else %}
-                        {% set mediaUrl = "http://player.vimeo.com/video/" ~ media.videoId  %}
-                    {% endif %}
-
-                    <a href="javascript:void(0)" itemprop="video" class="video-overlay" data-source="{{media.source}}" data-url="{{mediaUrl}}"  data-video-id="{{media.videoId}}" data-poster="{{media.path}}" data-caption="{{article.title | raw}}">
-                        <iframe class="slick-video" src="{{mediaUrl}}" frameborder="0" allowfullscreen></iframe>
-                    </a> #}
 
                 {% endif %}
+                
+                
+                {% if image.source == 'youtube' %}
+                    {% set mediaUrl = "https://www.youtube.com/embed/" ~ image.videoId  %}
+                
+                {% elseif image.source == 'vimeo' %}
+                    {% set mediaUrl = "http://player.vimeo.com/video/" ~ image.videoId  %}
+                
+                {% elseif image.source == 'brightcove' %}
+                    {% set videoId      = image.videoId | split("::")[0]  %}
+                    {% set accountID    = image.videoId | split("::")[1]  %}
+                    {% set playerID     = image.videoId | split("::")[2]  %}
+                    {% set mediaUrl = "//players.brightcove.net/" ~ accountID ~ "/" ~ playerID ~ "_default/index.html?videoId=" ~ videoId ~ "&playsinline"  %}
+                {% endif %}
+
+
+                <iframe src="{{mediaUrl}}" 
+                    allowfullscreen
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
+                </iframe>
+
 
 
             {% endif %}
