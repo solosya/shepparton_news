@@ -15,11 +15,12 @@
 	bottom:0;
 }
 
-
-.owl-carousel.default {
-	z-index:2
+.owl-gallery-image.default, .owl-gallery-video.default {
+	z-index:2;
+	position :relative;
 }
-.owl-carousel:not(.default) {
+
+.owl-gallery-image:not(.default),  .owl-gallery-video:not(.default){
 	position:absolute;
 	top:0;
 	z-index:1;
@@ -28,6 +29,20 @@
 		display:none;
 	}
 }
+
+
+// .owl-carousel.default {
+// 	z-index:2
+// }
+// .owl-carousel:not(.default) {
+// 	position:absolute;
+// 	top:0;
+// 	z-index:1;
+
+// 	figcaption {
+// 		display:none;
+// 	}
+// }
 
 
 
