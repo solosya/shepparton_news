@@ -20,31 +20,21 @@
 
         <figure class="{{galleryStyle}}-featured-image">
             <img src="{{articleImg}}" class="{{galleryStyle}}-featured-image__img">
+            
             {% if image.type == 'video' %} 
+                
                 {% set mediaUrl = "" %}
-
+                
                 {% if image.isSystemVideo == 'TRUE'%}
+                    
                     {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
 
-                    <a  href            = "javascript:void(0)" 
-                        itemprop        = "video" 
-                        class           = "video-overlay video-player article-video"
-                        data-source     = "{{image.source}}" 
-                        data-video-id   = "{{image.videoId}}" 
-                        data-url        = "{{mediaUrl}}" 
-                        data-poster     = "{{image.path}}" 
-                        data-caption    = "{{article.title | raw}}">
-                        
-                        <video controls class="article-video__player" poster="{{image.path}}">
-                            <source src="{{mediaUrl}}" type="video/mp4"/>
-                        </video>
-
-                    </a>
-
-
+                    <video controls class="article-video" poster="{{image.path}}">
+                        <source src="{{mediaUrl}}" type="video/mp4"/>
+                    </video>
+                
                 {% endif %}
-                
-                
+
                 {% if image.source == 'youtube' %}
                     {% set mediaUrl = "https://www.youtube.com/embed/" ~ image.videoId  %}
                 
@@ -66,9 +56,9 @@
                     style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
                 </iframe>
 
-
-
+                
             {% endif %}
+
             <figcaption>
                 <p class="{{galleryStyle}}-featured-image__caption">{{image.caption}}</p>
             </figcaption>
