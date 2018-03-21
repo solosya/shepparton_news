@@ -22,24 +22,32 @@
             <img src="{{articleImg}}" class="{{galleryStyle}}-featured-image__img">
             {% if image.type == 'video' %} 
                 {% set mediaUrl = "" %}
-                {% if image.media.isSystemVideo == 'TRUE'%}
+
+                {% if image.isSystemVideo == 'TRUE'%}
                     {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
 
-                    <a  href="javascript:void(0)" 
-                        itemprop="video" 
-                        class="video-overlay video-player" 
-                        data-source="{{image.source}}" 
-                        data-video-id="{{image.videoId}}" 
-                        data-url="{{mediaUrl}}" 
-                        data-poster="{{image.path}}" 
-                        data-caption="{{article.title | raw}}">
+                    <a  href            = "javascript:void(0)" 
+                        itemprop        = "video" 
+                        class           = "video-overlay video-player article-video"
+                        data-source     = "{{image.source}}" 
+                        data-video-id   = "{{image.videoId}}" 
+                        data-url        = "{{mediaUrl}}" 
+                        data-poster     = "{{image.path}}" 
+                        data-caption    = "{{article.title | raw}}">
                         
-                        <div class="icons">
+                        {# <div class="icons">
                             <div class="icon">
                                 <i class="fa fa-play"></i>
                             </div>
-                        </div>
-                        {# <iframe class="slick-video" src="{{mediaUrl}}?autoplay=0"  frameborder="0" allowfullscreen></iframe> #}
+                        </div>  #}
+
+                        <video controls class="article-video__player" poster="{{image.path}}">
+                        {# <source src="{{mediaUrl}}" type="video/webm"/> #}
+                        <source src="{{mediaUrl}}" type="video/mp4"/>
+                        {# <source src="{{mediaUrl}}" type="video/ogg"/> #}
+                        </video>
+
+                         {# <iframe class="article-video__player" src="{{mediaUrl}}?autoplay=false"  frameborder="0" allowfullscreen></iframe> #}
                     </a>
 
                 {# {% else %}
