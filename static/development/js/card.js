@@ -9,9 +9,7 @@ var Card = function() {
 
 Card.prototype.renderCard = function(card, cardClass, template, type)
 {
-    console.log('rendering card new');
     var self = this;
-    console.log(template);
     var template = (template) ? Acme[template] : Acme.systemCardTemplate;
     card['cardClass'] = cardClass;
     if (card.status == "draft") {

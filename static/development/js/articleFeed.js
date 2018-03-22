@@ -1,10 +1,12 @@
-Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText) {
+Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax) {
     this.cardModel = cardModel;
     this.offset    = offset || 0;
     this.limit     = limit || 10;
     this.infinite  = infinite || false;
     this.waypoint  = false;
     this.options   = {};
+    this.loadcount = 0;
+    this.loadmax   = loadmax || null;
     this.elem      = $('.loadMoreArticles');
     this.failText  = failText || null;
     this.events();
@@ -41,6 +43,12 @@ Acme.View.articleFeed.prototype.fetch = function()
     $.fn.Ajax_LoadBlogArticles(self.options).done(function(data) {
 
         if (data.success == 1) {
+            self.loadcount++;
+
+            if ( self.loadmax !== null && self.loadcount >= self.loadmax ) {
+                self.waypoint.destroy();
+            }
+
             self.render(data);
         }
     });

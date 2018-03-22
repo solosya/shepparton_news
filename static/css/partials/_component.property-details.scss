@@ -72,3 +72,15 @@
         color: color(darkgrey60pc);
     }
 }
+
+
+.property-page-attributes__auction {
+    margin-top: 30px;
+    padding-bottom:10px;
+    font-size:rem(14);
+    border-bottom: 1px solid rgba(151, 151, 151,.5);
+    >span {
+        color:color(red);
+        font-weight:600;
+    }
+}

@@ -34296,13 +34296,15 @@ Acme.GalleryToggle.prototype.events = function() {
         console.log(option);
     });
 };
-Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText) {
+Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax) {
     this.cardModel = cardModel;
     this.offset    = offset || 0;
     this.limit     = limit || 10;
     this.infinite  = infinite || false;
     this.waypoint  = false;
     this.options   = {};
+    this.loadcount = 0;
+    this.loadmax   = loadmax || null;
     this.elem      = $('.loadMoreArticles');
     this.failText  = failText || null;
     this.events();
@@ -34339,6 +34341,12 @@ Acme.View.articleFeed.prototype.fetch = function()
     $.fn.Ajax_LoadBlogArticles(self.options).done(function(data) {
 
         if (data.success == 1) {
+            self.loadcount++;
+
+            if ( self.loadmax !== null && self.loadcount >= self.loadmax ) {
+                self.waypoint.destroy();
+            }
+
             self.render(data);
         }
     });
@@ -34674,9 +34682,7 @@ var Card = function() {
 
 Card.prototype.renderCard = function(card, cardClass, template, type)
 {
-    console.log('rendering card new');
     var self = this;
-    console.log(template);
     var template = (template) ? Acme[template] : Acme.systemCardTemplate;
     card['cardClass'] = cardClass;
     if (card.status == "draft") {
