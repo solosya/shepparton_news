@@ -40,7 +40,7 @@
                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
                                <li>
-                                    <a {% if "blogs" not in (parentItem.link |raw) %}href="{{parentItem.link |raw}}"{% endif %} class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %} style="cursor:pointer;">
+                                    <a {% if "blogs" not in (parentItem.link |raw) and "community" not in (parentItem.link |raw) %}href="{{parentItem.link |raw}}"{% endif %} class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %} style="cursor:pointer;">
                                         {% if parentItem.label != "" %}
                                             {{parentItem.label}}
                                         {% elseif parentItem.blogTitle != "" %}
