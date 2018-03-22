@@ -34226,13 +34226,17 @@ Acme.article.prototype.insertOovvuu = function() {
                 if (oovvuu.length > i) {
 
                     content = 
-                    '<div style="display: block; position: relative; max-width: 100%; margin-bottom:15px;"><div style="padding-top: 56.25%;">\
-                        <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
-                        allowfullscreen\
-                        webkitallowfullscreen\
-                        mozallowfullscreen\
-                        style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></iframe>\
-                    </div></div>';
+                    '<div class="oovvuu-video"> \
+                        <div style="padding-top: 56.25%;">\
+                            <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
+                                    allowfullscreen\
+                                    webkitallowfullscreen\
+                                    mozallowfullscreen\
+                                    style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"> \
+                            </iframe>\
+                        </div> \
+                    </div> \
+                    <p class="oovvuu-video__text">Related videos powered by Oovvuu</p>';
 
                     targetPar = targetPars[i];
                     if( $('.article_content > p').length < targetPars[i]) {
