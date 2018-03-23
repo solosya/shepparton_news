@@ -34217,7 +34217,7 @@ Acme.article.prototype.insertOovvuu = function() {
     if (brightcove == '') {brightcove = "5370537724001";} 
     if (oovvuu.status_code == 200) {
         oovvuu = oovvuu.embedCodes.group1;
-
+        minPars = 9;
         targetPars = [3, 100];
         for (i=0; i < targetPars.length; i++) {
 
@@ -34242,8 +34242,13 @@ Acme.article.prototype.insertOovvuu = function() {
                     if( $('.article_content > p').length < targetPars[i]) {
                         targetPar =  $('.article_content > p').length-1;
                         i = targetPars.length;
+                        if ($('.article_content > p').length < minPars) {
+                            targetPar = -1;
+                        }
                     }
-                    $(content).insertAfter( $('.article_content > p')[targetPar]);
+                    if (targetPar > 0) {
+                        $(content).insertAfter( $('.article_content > p')[targetPar-1]);
+                    }
                 }
             //}
         }
