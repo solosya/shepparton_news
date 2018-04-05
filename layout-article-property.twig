@@ -152,6 +152,12 @@
                         {% endif %}
 
                     </ul>
+
+                    {% if article.additionalInfo.auction_date %}
+                        {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.auction_date, 'l j M, g:ia') %}
+                        <p class="property-page-attributes__auction"><span>Auction</span> {{ date }}</p>
+                    {% endif %}
+
                 </div><!--content-block-top-->
 
 

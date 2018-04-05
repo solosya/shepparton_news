@@ -304,15 +304,8 @@ hr.divide10 {
         font-size: rem(22);
         font-family:$font-family-sans-serif;
         font-weight: 600;
-        // border-bottom: solid 1px rgba(74,74,74,.3);
         color: #000;
         font-style: normal;
-        // &.country {
-        //     color: #0d522e;
-        // }
-        // &.shepparton {
-        //     color: #f03746;
-        // }
     }
     > a {
         
@@ -323,7 +316,7 @@ hr.divide10 {
         &.country {
             color: #0d522e;
         }
-        &.shepparton {
+        &.shepp {
             color: #f03746;
         }
     }
@@ -388,7 +381,7 @@ hr.divide10 {
     fill: color(country);
   }
 
-  &.shepparton {
+  &.shepp {
     fill: color(red);
   }
 }

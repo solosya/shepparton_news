@@ -34213,11 +34213,11 @@ Acme.article = function() {
 Acme.article.prototype.insertOovvuu = function() {
     articleContent = $("#articleContent").children();
     oovvuu = jQuery.parseJSON($("#oovvuu").text());
-    brightcove = $("#brightcove").text();
+    brightcove = $("#brightcove").text().trim();
     if (brightcove == '') {brightcove = "5370537724001";} 
     if (oovvuu.status_code == 200) {
         oovvuu = oovvuu.embedCodes.group1;
-
+        minPars = 9;
         targetPars = [3, 100];
         for (i=0; i < targetPars.length; i++) {
 
@@ -34226,20 +34226,29 @@ Acme.article.prototype.insertOovvuu = function() {
                 if (oovvuu.length > i) {
 
                     content = 
-                    '<div style="display: block; position: relative; max-width: 100%; margin-bottom:15px;"><div style="padding-top: 56.25%;">\
-                        <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
-                        allowfullscreen\
-                        webkitallowfullscreen\
-                        mozallowfullscreen\
-                        style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></iframe>\
-                    </div></div>';
+                    '<div class="oovvuu-video"> \
+                        <div style="padding-top: 56.25%;">\
+                            <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
+                                    allowfullscreen\
+                                    webkitallowfullscreen\
+                                    mozallowfullscreen\
+                                    style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"> \
+                            </iframe>\
+                        </div> \
+                    </div> \
+                    <p class="oovvuu-video__text">Related videos powered by Oovvuu</p>';
 
                     targetPar = targetPars[i];
                     if( $('.article_content > p').length < targetPars[i]) {
                         targetPar =  $('.article_content > p').length-1;
                         i = targetPars.length;
+                        if ($('.article_content > p').length < minPars) {
+                            targetPar = -1;
+                        }
                     }
-                    $(content).insertAfter( $('.article_content > p')[targetPar]);
+                    if (targetPar > 0) {
+                        $(content).insertAfter( $('.article_content > p')[targetPar-1]);
+                    }
                 }
             //}
         }
@@ -34255,9 +34264,9 @@ Acme.article.prototype.InsertInterstitial = function() {
         // $("<div class='teads-inread' ></div>").insertAfter( $('.article_content > p')[5] );        
     	googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });       
     }
-    if ($('.article_content > p').length >= 4) {
-        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='div-gpt-ad-mrec-2' class='card__announcement-image google_ad google_ad_mrec text-center' ></div></div>").insertAfter( $('.article_content > p')[2] );        
-    	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-2'); });
+    if ($('.article_content > p').length >= 7) {
+        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='div-gpt-ad-mrec-5' class='card__announcement-image google_ad google_ad_mrec text-center' ></div></div>").insertAfter( $('.article_content > p')[6] );        
+    	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
 	}
 }
 
@@ -34292,13 +34301,15 @@ Acme.GalleryToggle.prototype.events = function() {
         console.log(option);
     });
 };
-Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText) {
+Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax) {
     this.cardModel = cardModel;
     this.offset    = offset || 0;
     this.limit     = limit || 10;
     this.infinite  = infinite || false;
     this.waypoint  = false;
     this.options   = {};
+    this.loadcount = 0;
+    this.loadmax   = loadmax || null;
     this.elem      = $('.loadMoreArticles');
     this.failText  = failText || null;
     this.events();
@@ -34335,6 +34346,12 @@ Acme.View.articleFeed.prototype.fetch = function()
     $.fn.Ajax_LoadBlogArticles(self.options).done(function(data) {
 
         if (data.success == 1) {
+            self.loadcount++;
+
+            if ( self.loadmax !== null && self.loadcount >= self.loadmax ) {
+                self.waypoint.destroy();
+            }
+
             self.render(data);
         }
     });
@@ -34670,9 +34687,7 @@ var Card = function() {
 
 Card.prototype.renderCard = function(card, cardClass, template, type)
 {
-    console.log('rendering card new');
     var self = this;
-    console.log(template);
     var template = (template) ? Acme[template] : Acme.systemCardTemplate;
     card['cardClass'] = cardClass;
     if (card.status == "draft") {
@@ -36196,7 +36211,7 @@ $('document').ready(function() {
     var masthead = $('#masthead');
     var articleAd = $('#articleAdScroll');
 
-    $('.video-player').videoPlayer();
+    // $('.video-player').videoPlayer();
     
     $("img.lazyload").lazyload({
         effect : "fadeIn"

@@ -1,0 +1,36 @@
+.oovvuu-video {
+    display: block; 
+    position: relative; 
+    max-width: 100%; 
+    margin: 50px 0;
+
+    &:before {
+        content:'';
+        display:block;
+        width:100%;
+        height:1px;
+        background:rgba(74, 74, 74, .3);
+        position:relative;
+        top:-25px;
+    }
+
+
+    &:after {
+        content:'';
+        display:block;
+        width:100%;
+        height:1px;
+        background:rgba(74, 74, 74, .3);
+        position:relative;
+        top:25px;
+
+    }
+}
+.oovvuu-video__text {
+    font-size: rem(12) !important;
+    font-style:italic !important;
+    position:relative !important;
+    top:-47px !important;
+    float:right;
+
+}
