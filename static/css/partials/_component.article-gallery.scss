@@ -10,6 +10,12 @@
     &-article {
         background:black;
     }
+    &-property {
+        position: relative;
+        @media screen and (min-width: $mmd-break) {
+            height:336px;
+        }
+    }
 
 }
 
@@ -36,3 +42,22 @@
 
     }
 }
+
+
+// .property-featured-image {
+// 	position: relative;
+// 	@media screen and (min-width: $mmd-break) {
+// 		height:336px;
+// 	}
+// }
+// .property-featured-image__img {
+// 	width:100%;
+// 	height:100%;
+// 	object-fit: cover;
+// }
+// .property-featured-image__caption {
+// 	@media screen and (max-width: $mobile-break) {
+// 		font-size: rem(11);
+// 		line-height: 1.36;
+// 	}
+// }
