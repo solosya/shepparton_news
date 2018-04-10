@@ -29,6 +29,12 @@
 
                         <h1 class="gallery-title">{{ quotes.smarten(article.title) }}</h1>
 
+                        {# <div class="relative">
+                        {{this.render('partials/gallery.twig', {
+                            media: article.media
+                        }) | raw}}
+                        </div> #}
+
                         <div id="owl-thumbnails" class="owl-carousel owl-shep-theme" data-slider-id="1">
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
@@ -62,21 +68,23 @@
                                 </figure>
                             {% endfor %}
                         </div>
+
+
+
+
+
                         <div id="owl-thumbs" class="owl-thumbs" data-slider-id="1">
                             {% for image in article.media %}
                                 {% set articleImg = _Media.getMediaUrl(image,152, 95, {'crop': 'fill', 'gravity': 'auto'} ) %}
                                 <img id="owl-{{loop.index}}" src="{{articleImg}}" class="owl-thumb-item">
                             {% endfor %}
-
                         </div>
 
                         <div class="content-block-top">
 
                             <p class="category">{{article.label}}</p
                             ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
-                            
-                            {# <h1>{{ quotes.smarten(article.title) }}</h1> #}
-                            
+                          
                             <p class="author"><span>By</span> {{ article.createdBy['displayName'] }}</p>
 
                         </div><!--content-block-top-->
@@ -87,21 +95,6 @@
                 </div>
             </div>
         </div>
-
-{#         <div class="container">
-
-            <div class="row article-row">
-                <div class="col-md-6">
-
-                    <div class="article_content">
-                        {{ article.content | _resizeImages({'width': 400}) | raw }}
-                    </div><!-- .content-->
-
-                </div>
-
-
-            </div>
-        </div><!-- .page-content--> #}
 
     </article>
     

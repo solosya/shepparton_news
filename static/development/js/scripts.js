@@ -107,6 +107,7 @@ $('document').ready(function() {
     }
 
     window.Acme.scrollThumbs = function(elem) {
+        console.log('scrolling thumbs');
         if (elem.length === 0) {
             return;
         }
@@ -301,6 +302,16 @@ $('document').ready(function() {
         ]
     });   
     $("#owl-gallery-video").owlCarousel({
+        items: 1,
+        dots: false,
+        nav: true,
+        navText: [
+            "",
+            ""
+        ]
+    });   
+
+    $("#owl-thumbnails").owlCarousel({
         items: 1,
         dots: false,
         nav: true,
