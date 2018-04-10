@@ -274,23 +274,25 @@ $('document').ready(function() {
     }), 750);
 
 
-    // this is used for the gallery template
-    // $("#owl-thumbnails").owlCarousel({
-    //     items: 1,
-    //     thumbs: true,
-    //     thumbsPrerendered: true,
-    //     URLhashListener:true,
-    //     startPosition: 'URLHash',
-    //     pagination: true,
-    //     dots: false,
-    //     nav: true,
-    //     navText: [
-    //         "",
-    //         ""
-    //     ]
-    // });   
+    //this is used for the gallery template
+    $("#owl-gallery-article").owlCarousel({
+        items: 1,
+        thumbs: true,
+        thumbsPrerendered: true,
+        URLhashListener:true,
+        startPosition: 'URLHash',
+        pagination: true,
+        dots: false,
+        nav: true,
+        navText: [
+            "",
+            ""
+        ]
+    });   
 
-    // this is used for the article template that may contain
+
+
+    // These two are used for the article template that may contain
     // more than one gallery. one for images, one for videos
     $("#owl-gallery-image").owlCarousel({
         items: 1,
@@ -311,15 +313,6 @@ $('document').ready(function() {
         ]
     });   
 
-    $("#owl-thumbnails").owlCarousel({
-        items: 1,
-        dots: false,
-        nav: true,
-        navText: [
-            "",
-            ""
-        ]
-    });   
 
 
 

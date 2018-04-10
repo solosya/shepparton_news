@@ -11,13 +11,16 @@
 
 {% set defaultClass = default is defined and default == true ? "default" : "" %}
 
+{# Used for the article gallery to add some caption html #}
+{% set caption = html is defined and html != '' ? html : false %}
 
 
-<div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}">
+
+<div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1">
     {% for image in media %}
         {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
-        <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}">
+        <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
                 
             {% if image.type == 'image' %} 
 
@@ -67,8 +70,9 @@
 
            
  
-            <figcaption>
+            <figcaption  style="float:unset;">
                 <p class="{{galleryStyle}}-featured-image__caption">{{image.caption}}</p>
+                <p class="{{galleryStyle}}-featured-image__caption-count">{{loop.index}} of {{loop.revindex + loop.index0}}</p>
             </figcaption>
 
 
