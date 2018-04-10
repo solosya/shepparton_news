@@ -20252,7 +20252,7 @@ a.fn.owlCarousel.Constructor.Plugins.Animate=e}(window.Zepto||window.jQuery,wind
      * @protected
      */
     Thumbs.prototype.setActive = function () {
-
+        console.log('activating thumbs');
         // get startslide
         this.owl_currentitem = this.owl._current - (this.owl._clones.length / 2);
         if (this.owl_currentitem === this.owl._items.length) {
@@ -20264,6 +20264,7 @@ a.fn.owlCarousel.Constructor.Plugins.Animate=e}(window.Zepto||window.jQuery,wind
 
         // set relative thumbnail container
         var thumbContainer = options.thumbsPrerendered ? $('.' + options.thumbContainerClass + '[data-slider-id="' + this._identifier + '"]') : this._thumbcontent._thumbcontainer;
+        console.log(thumbContainer);
         thumbContainer.children().filter('.active').removeClass('active');
         thumbContainer.children().eq(this.owl_currentitem).addClass('active');
         Acme.scrollThumbs(thumbContainer.children().eq(this.owl_currentitem));
@@ -36305,6 +36306,7 @@ $('document').ready(function() {
     }
 
     window.Acme.scrollThumbs = function(elem) {
+        console.log('scrolling thumbs');
         if (elem.length === 0) {
             return;
         }
@@ -36471,23 +36473,25 @@ $('document').ready(function() {
     }), 750);
 
 
-    // this is used for the gallery template
-    // $("#owl-thumbnails").owlCarousel({
-    //     items: 1,
-    //     thumbs: true,
-    //     thumbsPrerendered: true,
-    //     URLhashListener:true,
-    //     startPosition: 'URLHash',
-    //     pagination: true,
-    //     dots: false,
-    //     nav: true,
-    //     navText: [
-    //         "",
-    //         ""
-    //     ]
-    // });   
+    //this is used for the gallery template
+    $("#owl-gallery-article").owlCarousel({
+        items: 1,
+        thumbs: true,
+        thumbsPrerendered: true,
+        URLhashListener:true,
+        startPosition: 'URLHash',
+        pagination: true,
+        dots: false,
+        nav: true,
+        navText: [
+            "",
+            ""
+        ]
+    });   
 
-    // this is used for the article template that may contain
+
+
+    // These two are used for the article template that may contain
     // more than one gallery. one for images, one for videos
     $("#owl-gallery-image").owlCarousel({
         items: 1,
@@ -36507,6 +36511,7 @@ $('document').ready(function() {
             ""
         ]
     });   
+
 
 
 
