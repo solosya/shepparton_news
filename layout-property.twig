@@ -2,6 +2,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
+{# {% set layoutTtile = _Page.getLayoutTitle() %} #}
 
 
 
@@ -24,7 +25,7 @@
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0     : 0     %}
 
 
-<main id="main" class="container u-margin-top-25" role="main">
+<main id="main" class="container u-margin-top-25" role="main" data-layout="{{layoutTtile}}">
 
     <section class="section">
         <div class="row">
