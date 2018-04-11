@@ -26,7 +26,6 @@
                 .author {
                     height: 18px;
                     width: 100%;
-                    bottom: -15px;
                     img {
                     }
                     p {
@@ -98,6 +97,11 @@
 
                 > figure{
                     margin-bottom:6px;
+                }
+                > .content {
+                    > .author {
+                        bottom: -15px;
+                    }
                 }
             }
 
