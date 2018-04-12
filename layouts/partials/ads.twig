@@ -12,6 +12,7 @@
   var nextAdId = 1;
   var rubiconAcct = 14654;
   var gptran = false;
+  var teadsAd = false;
   // Each ad space needs two attributes, all applicable ad shape sizes, and a mapping key
   // the size attribute defines all creative sizes that can display when an ad space is called,
   // The first setting in map determines minimum screen size, then lists which ad shapes to display.
@@ -117,22 +118,8 @@ var adSizes = {
     '2',
     'btf'
   ],
-
-  'index-mrec-3-mobile-tablet-desktop' : [
-    'div-gpt-ad-mrec-3-mtd',
-    ['fluid',[300,250]],
-    [
-      [[992,0],['fluid',[300,250]]],
-      [[768,0],['fluid',[300,250]]],
-      [[300,0],['fluid',[300,250]]],
-      [[0,0],[]]
-    ],
-    'POS',
-    '3',
-    'btf'
-  ],
-  'index-mrec-4-desktop' : [
-    'div-gpt-ad-mrec-4-d',
+  'index-mrec-3-desktop' : [
+    'div-gpt-ad-mrec-3-d',
     ['fluid',[300,250]],
     [
       [[992,0],['fluid',[300,250]]],
@@ -142,7 +129,6 @@ var adSizes = {
     '2',
     'btf'
   ],
-
   'index-mrec-1-mobile-tablet' : [
     'div-gpt-ad-mrec-1-mt',
     ['fluid',[300,250]],
@@ -169,9 +155,8 @@ var adSizes = {
     '2',
     'btf'
   ],
-
-  'index-mrec-4-mobile' : [
-    'div-gpt-ad-mrec-4-m',
+  'index-mrec-3-mobile' : [
+    'div-gpt-ad-mrec-3-m',
     ['fluid',[300,250]],
     [
       [[768,0],[]],
@@ -180,6 +165,44 @@ var adSizes = {
     ],
     'POS',
     '4',
+    'btf'
+  ],
+  'index-mrec-3-tablet' : [
+    'div-gpt-ad-mrec-3-t',
+    ['fluid',[300,250]],
+    [
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '4',
+    'btf'
+  ],
+  'index-mrec-4-mobile-tablet-desktop' : [
+    'div-gpt-ad-mrec-3-mtd',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '3',
+    'btf'
+  ],
+  'index-mrec-5-mobile-tablet-desktop' : [
+    'div-gpt-ad-mrec-5-mtd',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '5',
     'btf'
   ],
 
@@ -196,6 +219,19 @@ var adSizes = {
     '2',
     'btf'
   ],
+  'index-mixed-1-mobile-tablet-desktop' : [
+    'div-gpt-ad-mixed-1-mtd',
+    [300,600],
+    [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '6',
+    'atf'
+  ],
   'section-mrec-1-desktop' : [
     'div-gpt-ad-mrec-1-d',
     ['fluid',[300,250]],
@@ -207,19 +243,6 @@ var adSizes = {
     'POS',
     '1',
     'atf'
-  ],
-  'section-mrec-2-mobile-desktop' : [
-    'div-gpt-ad-mrec-2-md',
-    ['fluid',[300,250]],
-    [
-      [[992,0],['fluid',[300,250]]],
-      [[768,0],[]],
-      [[300,0],['fluid',[300,250]]],
-      [[0,0],[]]
-    ],
-    'POS',
-    '2',
-    'btf'
   ],
   'section-mrec-1-tablet' : [
     'div-gpt-ad-mrec-1-t',
@@ -244,6 +267,44 @@ var adSizes = {
     'POS',
     '1',
     'atf'
+  ],
+  'section-mrec-2-mobile-desktop' : [
+    'div-gpt-ad-mrec-2-md',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],[]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'section-mrec-2-tablet' : [
+    'div-gpt-ad-mrec-2-t',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'section-mrec-3-mobile-tablet' : [
+    'div-gpt-ad-mrec-2-md',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '3',
+    'btf'
   ],
   'article-mrec-1-mobile-tablet-desktop' : [
     'div-gpt-ad-mrec-1-mtd',

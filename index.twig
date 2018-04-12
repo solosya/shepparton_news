@@ -116,7 +116,7 @@
             articleCount: articleCount,
             dev: dev,
             site: site,
-            ad: 'div-gpt-ad-mrec-4',
+            ad: {'index-mrec-1-mobile-tablet','index-mrec-3-mobile','index-mrec-1-desktop'},
         }) | raw}}
     </div>
 
@@ -135,9 +135,9 @@
                 events: events,
                 dev: dev,
                 site: site,
-                ad: 'div-gpt-ad-halfpage-ss',
+                ad: {'index-mrec-2-desktop','index-mrec-4-mobile-tablet-desktop'},
                 site: site,
-            }) | raw}} 
+            }) | raw}}  
         </div>
     {% endif %}
 
@@ -183,7 +183,7 @@
                 section: 'regional news',
                 dev: dev,
                 site: site,
-                ad: 'div-gpt-ad-mrec-1',
+                ad: 'index-mrec-3-desktop',
             }) | raw}} 
         </div>
     {% endif %}
@@ -267,7 +267,7 @@
                 section: 'sport',
                 dev: dev,
                 site: site,
-                ad: 'div-gpt-ad-mrec-2',
+                ad: 'index-mrec-5-mobile-tablet-desktop',
             }) | raw}} 
         </div>
     {% endif %}
@@ -298,11 +298,11 @@
 
 </main><!-- .site-main -->
 
-<div id='teads-ad-mobile-tablet-desktop' class='advert hidden-xs'
+{# <div id='teads-ad-mobile-tablet-desktop' class='advert hidden-xs'
     data-site="{{site}}"
     data-section="{{blogData.title | lower}}"
     data-type="{{blogData.type | lower}}"        
-></div>
+></div> #}
 <div id='interstitial-ad-desktop-tablet' class='advert hidden-xs'
     data-site="{{site}}"
     data-section="{{blogData.title | lower}}"

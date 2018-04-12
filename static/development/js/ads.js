@@ -35,6 +35,7 @@ Acme.InsertAds = function() {
                     console.log(adSlot);
                     return
                 }
+                if (adDivId == 'teads-ad-mobile-tablet-desktop' && teadsAd == false){ return };
                 var slotDiv = document.createElement('div');
                 adSlot.appendChild(slotDiv);
                 adSlot.classList.remove("advert");

@@ -54,7 +54,7 @@
 </section>
 
         <div class="ad-container hidden-md hidden-lg mobad5">
-            <div id='index-mrec-1-mobile-tablet' class='advert'
+            <div id='{{ ad[0] }}' class='advert'
                 data-site="{{site}}"
                 data-section="{{blogData.title | lower}}"
                 data-type="{{blogData.type | lower}}"        
@@ -119,7 +119,7 @@
         </div>
 
         <div class="ad-container visible-xs-block mobad1">
-            <div id='index-mrec-4-mobile' class='advert'
+            <div id='{{ ad[1] }}' class='advert'
                 data-site="{{site}}"
                 data-section="{{blogData.title | lower}}"
                 data-type="{{blogData.type | lower}}"        
@@ -161,7 +161,7 @@
 
         <div class="col-sm-9 col-md-3">
             <div class="ad-square hidden-sm hidden-xs">
-                <div id='index-mrec-1-desktop' class='advert'
+                <div id='{{ ad[2] }}' class='advert'
                     data-site="{{site}}"
                     data-section="{{blogData.title | lower}}"
                     data-type="{{blogData.type | lower}}"        
