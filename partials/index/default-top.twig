@@ -102,20 +102,20 @@
         
 
         
-{# {% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network' }) %} #}
+{% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network' }) %}
 
 <section>
     <div class="row">
         <div class="col-sm-3 col-md-2 most-popular">
             <h2>Most popular</h2>
 
-            {# {% for i in 0..4 if popularArticles[i] %}
+            {% for i in 0..4 if popularArticles[i] %}
                 {{this.render('../_single-article.twig', {
                     article: popularArticles[i], 
                     imageSuppress: true, 
                     containerClass: 'card-popular'
                 }) | raw}}
-            {% endfor %} #}
+            {% endfor %} 
         </div>
 
         <div class="ad-container hidden-md hidden-lg mobad1">
