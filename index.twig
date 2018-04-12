@@ -101,9 +101,10 @@
 
             {% set sections = sections | merge({
                 (key) : {
-                    'feed'   : feed,
-                    'link'   : blog.link,
-                    'title'  : sections[key]['title']
+                    'feed'      : feed,
+                    'link'      : blog.link,
+                    'title'     : sections[key]['title'],
+                    'template'  : sections[key]['template']
                     }
                 }) %}
         {% endif %}
@@ -136,7 +137,7 @@
 
 
 
-<main id="main" class="site-main" role="main" data-site="{{site}}">
+<main id="main" class="site-main" role="main">
     
 
 
@@ -170,7 +171,6 @@
     {# *******************************************************
                         First section
     ******************************************************* #}
-
 
 
 
