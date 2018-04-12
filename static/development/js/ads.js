@@ -1,5 +1,7 @@
 Acme.InsertAds = function() {
     var pageAdSlots = $('.advert');
+    //console.log('pageAdSlots:');
+    //console.log(pageAdSlots);
     if (pageAdSlots.length > 0 ){
 
         var adSlotIds = [pageAdSlots.length];
@@ -35,14 +37,16 @@ Acme.InsertAds = function() {
                 }
                 var slotDiv = document.createElement('div');
                 adSlot.appendChild(slotDiv);
+                adSlot.classList.remove("advert");
                 if (adDivId == 'infinite-variable-mobile-tablet-desktop') {
+                    adSlot.id = "infinite-loaded";
                     console.log('LOADMORE ONLY:');
                     var slotName = generateNextAdName(theAd[0]);
                     slotDiv.id = slotName;
                     slotDiv.setAttribute( 'class', 'google_ad' );
                     googletag.cmd.push(function() {
                     var slot = googletag.defineSlot('/'+dfpacct+'/'+blogAd, theAd[1], theAd[0]).setTargeting(theAd[3],[theAd[4]]).defineSizeMapping(theAd[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
-                    console.log(slot);
+                    //console.log(slot);
                     googletag.display(slotName);
                     googletag.pubads().refresh([slot]);
                 });
@@ -96,13 +100,14 @@ Acme.InsertAds = function() {
         var gptadslots = [];
         googletag.cmd.push(function() {
             for (var i=0;i<adslots.length;i++) {
-                if (adslots[i] == 'interstitial-ad-desktop-tablet') {continue};
+                if (adslots[i] == ('interstitial-ad-tablet-desktop' || 'teads-ad-mobile-tablet-desktop')) {continue};
                 var theslot = adSizes[adslots[i]];
                 if (theslot == undefined) {
                     console.log('undefined gpt ad space:');
                     console.log(adslots[i]);
                     continue
                 }
+                //console.log(theslot);
                 gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[1], theslot[0]).setTargeting(theslot[3], [theslot[4]]).defineSizeMapping(theslot[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
                 rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
             }

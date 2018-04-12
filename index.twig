@@ -120,8 +120,11 @@
         }) | raw}}
     </div>
 
-    <div id="newAdSlot"></div>
-    <script>loadNextAd()</script>
+    <div id='index-banner-1-tablet-desktop' class='advert'
+        data-site="{{site}}"
+        data-section="{{blogData.title | lower}}"
+        data-type="{{blogData.type | lower}}"        
+    ></div>
 
     {% if sections['local news'].feed.articles|length > 0 %}
         <div class="container">
@@ -188,13 +191,13 @@
 
 
 
-    <div class="ad-container visible-sm-block">
+    {# <div class="ad-container visible-sm-block">
         <div id='index-banner-1-tablet-desktop' class='advert'
             data-site="{{site}}"
             data-section="{{blogData.title | lower}}"
             data-type="{{blogData.type | lower}}"        
         ></div>
-    </div>      
+    </div>    #}   
 
 
 
@@ -295,13 +298,13 @@
 
 </main><!-- .site-main -->
 
-<div id='div-gpt-ad-interstitial' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial'); });
-    </script>
-</div>
-<div id='div-gpt-ad-teads' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });
-    </script>
-</div>
+<div id='teads-ad-mobile-tablet-desktop' class='advert hidden-xs'
+    data-site="{{site}}"
+    data-section="{{blogData.title | lower}}"
+    data-type="{{blogData.type | lower}}"        
+></div>
+<div id='interstitial-ad-desktop-tablet' class='advert hidden-xs'
+    data-site="{{site}}"
+    data-section="{{blogData.title | lower}}"
+    data-type="{{blogData.type | lower}}"        
+></div>

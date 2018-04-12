@@ -65,10 +65,11 @@ var adSizes = {
     // ad id
     'div-gpt-ad-leaderboard-1-d',
     // size
-     [970,90],
+     [[970,90],[728,90]],
     // map
      [
-      [[992,0],[970,90]],
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
       [[0,0],[]]
      ],
      // targetting
@@ -105,13 +106,11 @@ var adSizes = {
     'atf'
   ],
 
-  'index-mrec-2-mobile-tablet-desktop' : [
-    'div-gpt-ad-mrec-2-td',
+  'index-mrec-2-desktop' : [
+    'div-gpt-ad-mrec-2-d',
     ['fluid',[300,250]],
     [
       [[992,0],['fluid',[300,250]]],
-      [[768,0],['fluid',[300,250]]],
-      [[300,0],['fluid',[300,250]]],
       [[0,0],[]]
     ],
     'POS',
@@ -132,6 +131,17 @@ var adSizes = {
     '3',
     'btf'
   ],
+  'index-mrec-4-desktop' : [
+    'div-gpt-ad-mrec-4-d',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
 
   'index-mrec-1-mobile-tablet' : [
     'div-gpt-ad-mrec-1-mt',
@@ -147,11 +157,11 @@ var adSizes = {
     'atf'
   ],
 
-  'index-mrec-2-mobile' : [
-    'div-gpt-ad-mrec-2-m',
+  'index-mrec-2-mobile-tablet' : [
+    'div-gpt-ad-mrec-2-mt',
     ['fluid',[300,250]],
     [
-      [[768,0],[]],
+      [[768,0],[728,90]],
       [[300,0],['fluid',[300,250]]],
       [[0,0],[]]
     ],
@@ -177,7 +187,7 @@ var adSizes = {
     'div-gpt-ad-leaderboard-2-td',
     ['fluid',[300,250]],
     [
-      [[992,0],[970,90]],
+      [[992,0],[]],
       [[768,0],[728,90]],
       [[300,0],[]],
       [[0,0],[]]
@@ -185,6 +195,118 @@ var adSizes = {
     'POS',
     '2',
     'btf'
+  ],
+  'section-mrec-1-desktop' : [
+    'div-gpt-ad-mrec-1-d',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'section-mrec-2-mobile-desktop' : [
+    'div-gpt-ad-mrec-2-md',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],[]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'section-mrec-1-tablet' : [
+    'div-gpt-ad-mrec-1-t',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'section-mrec-1-mobile' : [
+    'div-gpt-ad-mrec-1-m',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],[]],
+      [[0,0],['fluid',[300,250]]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'article-mrec-1-mobile-tablet-desktop' : [
+    'div-gpt-ad-mrec-1-mtd',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'article-mrec-2-inarticle-mobile' : [
+    'div-gpt-ad-mrec-1-mtd',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],[]],
+      [[0,0],['fluid',[300,250]]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'article-halfpage-1-disqus-tablet-desktop' : [
+    'div-gpt-ad-halfpage-ss',
+    [300,600],
+    [
+      [[992,0],[300,600]],
+      [[768,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'blog-mrec-1-mobile-tablet' : [
+    'div-gpt-ad-mrec-1-mt',
+    [300,600],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'blog-mrec-2-tablet' : [
+    'div-gpt-ad-mrec-1-mt',
+    [300,600],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
   ],
   'infinite-variable-mobile-tablet-desktop' : [
     'div-gpt-ad-infinite-mtd',
@@ -198,7 +320,24 @@ var adSizes = {
     'POS',
     '3',
     'btf'
+  ],
+  'teads-ad-mobile-tablet-desktop' : [
+    'div-gpt-ad-teads-mtd',
+    [[1,1]],
+    [],
+    '',
+    '',
+    ''
+  ],
+  'interstitial-ad-desktop-tablet' : [
+    'div-gpt-ad-interstitial-td',
+    [],
+    [],
+    '',
+    '',
+    ''
   ]
+
 }
       
    
