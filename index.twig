@@ -141,11 +141,11 @@
 
 
     <div class="ad-container hidden-md hidden-lg mobad2">
-        <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
-            </script>
-        </div>
+        <div id='index-mrec-2-mobile-tablet' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
     </div>
 
 
@@ -189,11 +189,11 @@
 
 
     <div class="ad-container visible-sm-block">
-        <div id='div-gpt-ad-leaderboard-3' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
-            </script>
-        </div>
+        <div id='index-banner-1-tablet-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
     </div>      
 
 
@@ -276,7 +276,7 @@
 
 
 
-    {% if sections['business'].feed.articles|length > 0 %}
+    {# {% if sections['business'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/medium-section.twig', {
                 articles: sections['business'], 
@@ -287,7 +287,7 @@
                 ad: 'div-gpt-ad-mrec-3',                
             }) | raw}} 
         </div>
-    {% endif %}
+    {% endif %} #}
 
 
 
