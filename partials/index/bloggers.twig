@@ -5,7 +5,7 @@
                 <img src="{{ logo }}">
             </div>
             <div class="content">
-                <p class="header">Bloggers</p>
+                <p class="header">{{title}}</p>
                 <p class="local">Your local news</p>
             </div>
 
@@ -16,18 +16,18 @@
         <div class="col-sm-3">                                            
             {% if i == 0 %}
                 {{this.render('../_single-article.twig', {
-                    article: articles.feed.articles[i], 
-                    imageSuppress: true,
-                    site:site,
+                    article:        articles.feed.articles[i], 
+                    imageSuppress:  true,
+                    site:           site,
                     containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile {{site}}'
                 }) | raw}}
 
                 <hr class="divide visible-xs-block">
             {% else %}
                 {{this.render('../_single-article.twig', {
-                    article: articles.feed.articles[i], 
-                    imageSuppress: true,
-                    site:site,
+                    article:        articles.feed.articles[i], 
+                    imageSuppress:  true,
+                    site:           site,
                     containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile {{site}} border__left'
                 }) | raw}}
 

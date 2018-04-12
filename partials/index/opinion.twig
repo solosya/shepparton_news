@@ -1,14 +1,16 @@
-{% set desktopCount = (dev) ? articleCount : 0 %}
-{% set tabletCount = (dev) ? articleCount : 0 %}
+{% set desktopCount = 0 %}
+{% set tabletCount  = 0 %}
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
         <p><a href="{{articles.link}}">View All</a></p>
         <div class="hk">
-            <h2>Opinion</h2>
+            <h2>{{title}}</h2>
             <p></p>
         </div>
     </div>
+
+
 
 <!-- desktop -->
     <div class="visible-xs-block visible-md-block visible-lg-block">
@@ -19,17 +21,20 @@
             <div class="{{opinionClass[i]}}">
 
                 {{this.render('../_single-article.twig', {
-                    article: articles.feed.articles[desktopCount], 
-                    imageSuppress: true,
+                    article:        articles.feed.articles[desktopCount], 
+                    imageSuppress:  true,
                     containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
                 }) | raw}}
-                {% set desktopCount = (dev) ? articleCount : desktopCount + 1 %}
+                {% set desktopCount = (dev) ? 0 : desktopCount + 1 %}
 
                 <hr class="divide visible-xs-block">
 
             </div>
         {% endfor %}
     </div>
+
+
+
 
 <!-- tablet -->
     <div class="visible-sm-block">
@@ -38,11 +43,11 @@
             <div class="col-sm-3">
 
                 {{this.render('../_single-article.twig', {
-                    article: articles.feed.articles[tabletCount], 
-                    imageSuppress: true,
+                    article:        articles.feed.articles[tabletCount], 
+                    imageSuppress:  true,
                     containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
                 }) | raw}}
-                {% set tabletCount = (dev) ? articleCount : tabletCount + 1 %}
+                {% set tabletCount = (dev) ? 0 : tabletCount + 1 %}
 
                 <hr class="divide visible-xs-block">
 

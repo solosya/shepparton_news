@@ -1,23 +1,23 @@
-{% set sectionCount = (dev) ? articleCount : 0 %}
+{% set articleCount = 0 %}
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
         <p><a href="{{articles.link}}">View All</a></p>
         <div class="hk">
-            <h2>{{ section }}</h2>
+            <h2>{{ title }}</h2>
             <p></p>
         </div>
     </div>
 
     <div class="col-md-4 col-sm-6">
-        {% if articles.feed.articles[sectionCount] %}
+        {% if articles.feed.articles[articleCount] %}
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[sectionCount], 
-                imageSize: {width:409, height:530},
-                site: site,
+                article:        articles.feed.articles[articleCount], 
+                imageSize:      {width:409, height:530},
+                site:           site,
                 containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
             }) | raw}}
-            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
         {% endif %}
         <hr class="divide visible-xs-block space-only">        
 
@@ -25,18 +25,16 @@
     </div>
     <div class="col-md-2 col-sm-3">
         {% set cardspace = ['', 'row-space'] %}
-        {% for i in 0..1 if articles.feed.articles[sectionCount] %}
-            {# {% if section == 'dairy' %}
-            {%   set cardspace = ['dairy-card', 'row-space'] %}
-            {% endif %} #}
+        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+
 
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[sectionCount], 
-                imageSize: {width:300},
-                site: site,
+                article:        articles.feed.articles[articleCount], 
+                imageSize:      {width:300},
+                site:           site,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
             }) | raw}}
-            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
             <hr class="divide visible-xs-block">
 
         {% endfor %}
@@ -54,14 +52,16 @@
             </div>
         </div>
         
-        {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+           
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[sectionCount], 
-                imageSize: {width:300},
-                site: site,
+                article:        articles.feed.articles[articleCount], 
+                imageSize:      {width:300},
+                site:           site,
                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
-            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            
             {% if i == 0 %}
                 <hr class="divide">
             {% endif %}

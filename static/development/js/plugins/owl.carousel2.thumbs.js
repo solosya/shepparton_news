@@ -182,7 +182,7 @@
      * @protected
      */
     Thumbs.prototype.setActive = function () {
-        console.log('activating thumbs');
+
         // get startslide
         this.owl_currentitem = this.owl._current - (this.owl._clones.length / 2);
         if (this.owl_currentitem === this.owl._items.length) {
@@ -194,7 +194,6 @@
 
         // set relative thumbnail container
         var thumbContainer = options.thumbsPrerendered ? $('.' + options.thumbContainerClass + '[data-slider-id="' + this._identifier + '"]') : this._thumbcontent._thumbcontainer;
-        console.log(thumbContainer);
         thumbContainer.children().filter('.active').removeClass('active');
         thumbContainer.children().eq(this.owl_currentitem).addClass('active');
         Acme.scrollThumbs(thumbContainer.children().eq(this.owl_currentitem));

@@ -6,7 +6,6 @@
 {% set layout        = _Page.getLayoutName() %}
 {% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
-{# {% set layout        = blogData.layout %} #}
 {% set url           = _AppHelper.getParsedUrl %}
 {% set site          = networkData.title | lower | split(" ")[0]%}
 {# {% set site          = "dairy" %} #}
@@ -181,6 +180,7 @@
 
 
 <body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-site="{{site}}">
+
 
 {{ this.beginBody() }}
       
