@@ -1,4 +1,4 @@
-{% set sectionCount = (dev) ? articleCount : 0 %}
+{% set articleCount = 0 %}
 
 <section class="row">
     <div class="col-sm-9 section-header">
@@ -9,25 +9,30 @@
         </div>
     </div>
 
-    {% for i in 0..2 if articles.feed.articles[sectionCount] %}
+
+
+    {% for i in 0..2 if articles.feed.articles[articleCount] %}
         {{this.render('../_single-article.twig', {
-            article: articles.feed.articles[sectionCount], 
-            imageSize: {width:300},
-            site: site,
+            article:        articles.feed.articles[articleCount], 
+            imageSize:      {width:300},
+            site:           site,
             containerClass: 'col-sm-2 card-sm card-sm-tablet card-sm-mobile'
         }) | raw}}
-        {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% set articleCount = (dev) ? 0 : articleCount + 1 %}
         <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
     {% endfor %}
 
-    {% if articles.feed.articles[sectionCount] %}
+
+
+    {% if articles.feed.articles[articleCount] %}
         {{this.render('../_single-article.twig', {
-            article: articles.feed.articles[sectionCount], 
-            imageSize: {width:300},
-            site: site,
+            article:        articles.feed.articles[articleCount], 
+            imageSize:      {width:300},
+            site:           site,
             containerClass: 'col-sm-3 card-sm-wide card-sm-wide-tablet card-sm-mobile'
         }) | raw}}
-        {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% set articleCount = (dev) ? 0 : articleCount + 1 %}
 
     {% endif %}
+    
 </section>

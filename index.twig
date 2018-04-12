@@ -22,35 +22,35 @@
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 {% set sections =  {} %}
 
 {% if site | lower == 'shepp' %}
     {% set sections =  {
             "local news": {
-                "title": "Local News", "limit" : 6, 'template' : 'partials/index/large-section.twig'
+                "title": "Local News", "limit" : 6, 'template'      : 'partials/index/large-section.twig'
             }, 
             "regional news": {
-                "title": "Regional News", "limit" : 5, 'template' : 'partials/index/medium-section.twig'
+                "title": "Regional News", "limit" : 5, 'template'   : 'partials/index/medium-section.twig'
             },
             "opinion": {
-                "title": "Opinion", "limit" : 4, 'template' : 'partials/index/opinion.twig'
+                "title": "Opinion", "limit" : 4, 'template'         : 'partials/index/opinion.twig'
             },
             "rural news": {
-                "title": "Rural News", "limit" : 3, 'template' : 'partials/index/row-three.twig'
+                "title": "Rural News", "limit" : 3, 'template'      : 'partials/index/row-three.twig'
             },
             "sport": {
-                "title": "Sport", "limit" : 5, 'template' : 'partials/index/section-with-feature.twig'
+                "title": "Sport", "limit" : 5, 'template'           : 'partials/index/section-with-feature.twig'
             },
             "national": {
-                "title": "National", "limit" : 4, 'template' : 'partials/index/row-four.twig'
+                "title": "National", "limit" : 4, 'template'        : 'partials/index/row-four.twig'
             },
             "business": {
-                "title": "Business", "limit" : 5, 'template' : 'partials/index/medium-section.twig'
+                "title": "Business", "limit" : 5, 'template'        : 'partials/index/medium-section.twig'
             },
             "bloggers": {
-                "title": "Bloggers", "limit" : 2, 'template' : 'partials/index/bloggers.twig'
+                "title": "Bloggers", "limit" : 2, 'template'        : 'partials/index/bloggers.twig'
             }
         }
     %}
@@ -175,12 +175,10 @@
 
 
     {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
-    {% if sectionFeed.feed.articles|length > 0 %}
-
-        {% set temp = sectionFeed.template != '' ? sectionFeed.template : 'partials/index/large-section.twig' %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
+            {{this.render(sectionFeed.template, {
                 articles:       sectionFeed, 
                 articleCount:   articleCount,
                 title:          sectionFeed.title,
@@ -213,18 +211,15 @@
     ******************************************************* #}
     {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
 
-    {% if sectionFeed.feed.articles|length > 0 %}
-        {% set temp = sectionFeed.template != '' ? sectionFeed.template : 'partials/index/bloggers.twig' %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
+            {{this.render(sectionFeed.template, {
                 articles:       sectionFeed, 
-                articleCount:   articleCount,
                 title:          sectionFeed.title,
                 dev:            dev,
                 site:           site,
                 logo:           networkData.templatePath ~ '/static/images/megaphone.svg',
-                networkData:    networkData
             }) | raw}} 
         </div>
     {% endif %}
@@ -239,20 +234,20 @@
                         Third section
     ******************************************************* #}
 
-    {% if sections['regional news'].feed.articles|length > 0 %}
-        {% set temp = sections['regional news'].template != '' ? sections['regional news'].template : 'partials/index/medium-section.twig' %}
+    {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
-                articles: sections['regional news'], 
-                articleCount: articleCount,
-                title: sections['regional news'].title,
-                dev: dev,
-                site: site,
-                ad: 'div-gpt-ad-mrec-1',
+            {{this.render(sectionFeed.template, {
+                articles:       sectionFeed, 
+                title:          sectionFeed.title,
+                dev:            dev,
+                site:           site,
+                ad:             'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
+    {% set sectionCount = sectionCount + 1 %}
 
 
 
@@ -276,19 +271,19 @@
                         Fourth section
     ******************************************************* #}
 
-    {% if sections['opinion'].feed.articles|length > 0 %}
-        {% set temp = sections['opinion'].template != '' ? sections['opinion'].template : 'partials/index/opinion.twig' %}
+    {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
-                articles: sections['opinion'], 
-                articleCount: articleCount,
-                title: sections['opinion'].title,
-                dev: dev,
-                site: site,
+            {{this.render(sectionFeed.template, {
+                articles:       sectionFeed, 
+                title:          sectionFeed.title,
+                dev:            dev,
+                site:           site,
             }) | raw}} 
         </div>
     {% endif %}
+    {% set sectionCount = sectionCount + 1 %}
 
 
 
@@ -301,20 +296,19 @@
                         Fifth section
     ******************************************************* #}
 
-    {% if sections['rural news'].feed.articles|length > 0 %}
-        {% set temp = sections['rural news'].template != '' ? sections['rural news'].template : 'partials/index/row-three.twig' %}
+    {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
-                articles: sections['rural news'], 
-                articleCount: articleCount,
-                title: sections['rural news'].title,
-                dev: dev,
-                site: site,
-                cards: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
+            {{this.render(sectionFeed.template, {
+                articles:       sectionFeed, 
+                title:          sectionFeed.title,
+                dev:            dev,
+                site:           site,
             }) | raw}} 
         </div>
     {% endif %}
+    {% set sectionCount = sectionCount + 1 %}
 
 
 
@@ -327,19 +321,19 @@
                         Sixth section
     ******************************************************* #}
 
-    {% if sections['national'].feed.articles|length > 0 %}
-        {% set temp = sections['national'].template != '' ? sections['national'].template : 'partials/index/row-four.twig' %}
+    {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
-                articles: sections['national'], 
-                articleCount: articleCount,
-                title: sections['national'].title,
-                dev: dev,
-                site: site,
+            {{this.render(sectionFeed.template, {
+                articles:       sectionFeed, 
+                title:          sectionFeed.title,
+                dev:            dev,
+                site:           site,
             }) | raw}} 
         </div>
     {% endif %}
+    {% set sectionCount = sectionCount + 1 %}
 
 
 
@@ -351,20 +345,20 @@
                         Seventh section
     ******************************************************* #}
 
-    {% if sections['sport'].feed.articles|length > 0 %}
-        {% set temp = sections['sport'].template != '' ? sections['sport'].template : 'partials/index/section-with-feature.twig' %}
+    {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
-                articles: sections['sport'], 
-                articleCount: articleCount,
-                title: sections['sport'].title,
-                dev: dev,
-                site: site,
-                ad: 'div-gpt-ad-mrec-2',
+            {{this.render(sectionFeed.template, {
+                articles:   sectionFeed, 
+                title:      sectionFeed.title,
+                dev:        dev,
+                site:       site,
+                ad:         'div-gpt-ad-mrec-2',
             }) | raw}} 
         </div>
     {% endif %}
+    {% set sectionCount = sectionCount + 1 %}
 
 
 
@@ -377,20 +371,20 @@
     ******************************************************* #}
 
 
-    {% if sections['business'].feed.articles|length > 0 %}
-        {% set temp = sections['business'].template != '' ? sections['business'].template : 'partials/index/medium-section.twig' %}
+    {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
 
         <div class="container">
-            {{this.render(temp, {
-                articles: sections['business'], 
-                articleCount: articleCount,
-                title: sections['business'].title,
-                dev: dev,
-                site: site,
-                ad: 'div-gpt-ad-mrec-3',                
+            {{this.render(sectionFeed.template, {
+                articles:   sectionFeed, 
+                title:      sectionFeed.title,
+                dev:        dev,
+                site:       site,
+                ad:         'div-gpt-ad-mrec-3',                
             }) | raw}} 
         </div>
     {% endif %}
+    {% set sectionCount = sectionCount + 1 %}
 
 
 
