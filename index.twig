@@ -17,8 +17,6 @@
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
 
-{% set date = date() %}
-{% set events = _Event.getEvents({"limit": 5, "start_date": date.date | split(" ")[0]}) %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
@@ -29,28 +27,34 @@
 {% if site | lower == 'shepp' %}
     {% set sections =  {
             "local news": {
-                "title": "Local News", "limit" : 6, 'template'      : 'partials/index/large-section.twig'
+                "title": "Local News",      "limit" : 6, 'template' : 'partials/index/large-section.twig', 
+                    'template_params' : {
+                        'ad': 'div-gpt-ad-halfpage-ss'
+                    }
             }, 
             "regional news": {
-                "title": "Regional News", "limit" : 5, 'template'   : 'partials/index/medium-section.twig'
+                "title": "Regional News",   "limit" : 5, 'template' : 'partials/index/medium-section.twig'
             },
             "opinion": {
-                "title": "Opinion", "limit" : 4, 'template'         : 'partials/index/opinion.twig'
+                "title": "Opinion",         "limit" : 4, 'template' : 'partials/index/opinion.twig', 
+                    'template_params' : {
+                        'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
+                    }
             },
             "rural news": {
-                "title": "Rural News", "limit" : 3, 'template'      : 'partials/index/row-three.twig'
+                "title": "Rural News",      "limit" : 3, 'template' : 'partials/index/row-three.twig'
             },
             "sport": {
-                "title": "Sport", "limit" : 5, 'template'           : 'partials/index/section-with-feature.twig'
+                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-with-feature.twig'
             },
             "national": {
-                "title": "National", "limit" : 4, 'template'        : 'partials/index/row-four.twig'
+                "title": "National",        "limit" : 4, 'template' : 'partials/index/row-four.twig'
             },
             "business": {
-                "title": "Business", "limit" : 5, 'template'        : 'partials/index/medium-section.twig'
+                "title": "Business",        "limit" : 5, 'template' : 'partials/index/medium-section.twig'
             },
             "bloggers": {
-                "title": "Bloggers", "limit" : 2, 'template'        : 'partials/index/bloggers.twig'
+                "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig'
             }
         }
     %}
@@ -61,28 +65,28 @@
 {% elseif site | lower == 'country' %}
     {% set sections =  {
             "dairy": {
-                "title": "Dairy", "limit" : 5, 'template' : ''
+                "title": "Dairy",           "limit" : 5, 'template' : 'partials/index/medium-section.twig'
             }, 
             "water": {
-                "title": "Water", "limit" : 4, 'template' : ''
+                "title": "Water",           "limit" : 4, 'template' : 'partials/index/small-section.twig'
             },
             "horticulture": {
-                "title": "Horticulture", "limit" : 3, 'template' : ''
+                "title": "Horticulture",    "limit" : 3, 'template' : 'partials/index/row-three.twig'
             },
             "livestock": {
-                "title": "Livestock", "limit" : 3, 'template' : ''
+                "title": "Livestock",       "limit" : 3, 'template' : 'partials/index/small-section-events.twig'
             },
             "cropping": {
-                "title": "Cropping", "limit" : 3, 'template' : ''
+                "title": "Cropping",        "limit" : 3, 'template' : 'partials/index/row-three.twig'
             },
             "videos": {
-                "title": "Videos", "limit" : 2, 'template' : ''
+                "title": "Videos",          "limit" : 2, 'template' : ''
             },
             "blogs homepage": {
-                "title": "Bloggers", "limit" : 2, 'template' : ''
+                "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig'
             },
             "viticulture": {
-                "title": "Viticulture",  "limit" : 3, 'template' : ''
+                "title": "Viticulture",     "limit" : 3, 'template' : 'partials/index/row-three-ad.twig'
             }
         }
     %}
@@ -115,16 +119,12 @@
 
 {# First set a common order then add site order to beginning #}
 {% set sectionCount = 0 %}
-{% set sectionOrder = ["world", "business", "videos", "community"] %}
+{% set sectionOrder = [] %}
 
 {% if site == 'shepp' %}
     {% set sectionOrder = ["local news", "bloggers", 'regional news', 'opinion', 'rural news', 'sport'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ["dairy", "water", 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
-{% elseif site == 'dairy'  %}
-    {% set sectionOrder = ["new zealand", "australia"] | merge(sectionOrder ) %}
-{% else %}
-    {% set sectionOrder = ["australia", "new zealand"] | merge(sectionOrder ) %}
 {% endif %}
 
 
@@ -172,21 +172,21 @@
                         First section
     ******************************************************* #}
 
-
-
     {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
     {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
+        {% set params = {
+            articles: sectionFeed, 
+            title:    sectionFeed.title,
+            dev:      dev,
+            site:     site
+        } %}
+
+        {% if sectionFeed.template_params is defined %}
+            {% set params = params | merge(sectionFeed.template_params) %}
+        {% endif %}
 
         <div class="container">
-            {{this.render(sectionFeed.template, {
-                articles:       sectionFeed, 
-                articleCount:   articleCount,
-                title:          sectionFeed.title,
-                events:         events,
-                dev:            dev,
-                site:           site,
-                ad: 'div-gpt-ad-halfpage-ss'
-            }) | raw}} 
+            {{this.render(sectionFeed.template, params) | raw}} 
         </div>
     {% endif %}
     {% set sectionCount = sectionCount + 1 %}
@@ -211,16 +211,23 @@
     ******************************************************* #}
     {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
 
-    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
+    {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != '' %}
+        {% set params = {
+            articles: sectionFeed, 
+            title:    sectionFeed.title,
+            dev:      dev,
+            site:     site
+        } %}
 
+        {% if sectionFeed.template_params is defined %}
+            {% set params = params | merge(sectionFeed.template_params) %}
+        {% endif %}
+        <h1>here</h1>
+        <pre>
+            {{dump(sectionFeed)}}
+        </pre>
         <div class="container">
-            {{this.render(sectionFeed.template, {
-                articles:       sectionFeed, 
-                title:          sectionFeed.title,
-                dev:            dev,
-                site:           site,
-                logo:           networkData.templatePath ~ '/static/images/megaphone.svg',
-            }) | raw}} 
+            {{this.render(sectionFeed.template, params) | raw}} 
         </div>
     {% endif %}
     {% set sectionCount = sectionCount + 1 %}
@@ -273,14 +280,23 @@
 
     {% set sectionFeed = sections[ sectionOrder[sectionCount] ] %}
     {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != ''%}
+    <h1>hi ho</hi>
+        {% set params = {
+            articles: sectionFeed, 
+            title:    sectionFeed.title,
+            dev:      dev,
+            site:     site
+        } %}
+
+        {% if sectionFeed.template_params is defined %}
+            {% set params = params | merge(sectionFeed.template_params) %}
+        {% endif %}
+        <pre>
+            {{dump(sectionFeed.template_params)}}
+        </pre>
 
         <div class="container">
-            {{this.render(sectionFeed.template, {
-                articles:       sectionFeed, 
-                title:          sectionFeed.title,
-                dev:            dev,
-                site:           site,
-            }) | raw}} 
+            {{this.render(sectionFeed.template,params) | raw}} 
         </div>
     {% endif %}
     {% set sectionCount = sectionCount + 1 %}
