@@ -20,14 +20,14 @@
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 {% set sectionFeeds =  {} %}
 
 {% if site | lower == 'shepp' %}
     {% set sectionFeeds =  {
             "local news": {
-                "title": "Local News",       "limit" : 2
+                "title": "Local News",       "limit" : 4
             },
             "local sport": {
                 "title": "Local Sport",      "limit" : 2
@@ -67,7 +67,8 @@
         'Top': {
             'template': 'partials/index/default-top.twig',
             'template_params' : {},
-            'feeds': ['opinion', 'local news']
+            'feeds': ['opinion', 'local news'],
+            'articleOrder': ['opinion', 'local news', 'local news', 'opinion', 'local news', 'opinion']
         },
         'Local': {
             'template': 'partials/index/large-section.twig',
@@ -101,15 +102,17 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
-
-
+{# 
+<pre>
+ {{dump(sectionFeeds)}}
+</pre> #}
 
 
 {% set sectionCount = 0 %}
 {% set sectionOrder = [] %}
 
 {% if site == 'shepp' %}
-    {% set sectionOrder = ['local news', 'bloggers', 'regional news', 'opinion', 'rural news', 'sport'] %}
+    {% set sectionOrder = ['Top', 'Local'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
 {% endif %}
@@ -161,16 +164,44 @@
     {# *******************************************************
                            SECTIONS
     ******************************************************* #}
+    {% for pagesection in sectionOrder %}
 
-    {% for title, section in pageSections %}
-       
-        {% set feedArr = {} %}
-        
-        {% for feed in section.feeds %}
+        {% set section = pageSections[pagesection] %}
+            {# <pre>
+                {{dump( section )}}
+            </pre> #}
 
-            {% set feedArr = feedArr | merge({
-                 (feed) : sectionFeeds[feed] 
-            }) %}
+        {% set count = {} %}
+
+        {% set feedArr = [] %}
+            {# <pre>
+                {{dump(sectionFeeds['opinion'] | length )}}
+                {{dump(sectionFeeds['local news'] | length )}}
+            </pre> #}
+
+        {% for a in section.articleOrder %}
+            {% set count = count | merge( { (a) : count[a] + 1 } ) %}
+            {# <pre>
+                {{dump(a)}}
+                {{dump(count)}}
+            </pre>
+
+            <pre>
+                {{dump('hello world')}}
+
+                {{dump(count[a] - 1)}}
+                {{ dump(sectionFeeds[a].feed.articles[ count[a] - 1 ]) }}
+            </pre> #}
+
+            {% set feedArr = feedArr | merge( { (loop.index0) : sectionFeeds[a].feed.articles[ count[a] - 1 ] }) %}
+            
+
+
+
+            {# {% set sectionFeeds[a].count = sectionFeeds[a].count + 1 %} #}
+
+
+
         {% endfor %}
 
 
