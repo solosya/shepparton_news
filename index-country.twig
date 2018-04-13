@@ -28,41 +28,49 @@
 
 {% set sections =  {
         "dairy": {
+            "title": "Dairy",
             "feed": "",
             "link": "",
             "limit" : 5
         }, 
         "water": {
+            "title": "Water",
             "feed": "",
             "link": "",
             "limit" : 4
         },
         "horticulture": {
+            "title": "Horticulture",
             "feed": "",
             "link": "",
             "limit" : 3
         },
         "livestock": {
+            "title": "Livestock",
             "feed": "",
             "link": "",
             "limit" : 3
         },
         "cropping": {
+            "title": "Cropping",
             "feed": "",
             "link": "",
             "limit" : 3
         },
         "videos": {
+            "title": "Videos",
             "feed": "",
             "link": "",
             "limit" : 2
         },
         "blogs homepage": {
+            "title": "Bloggers",
             "feed": "",
             "link": "",
             "limit" : 2
         },
         "viticulture": {
+            "title": "Viticulture",
             "feed": "",
             "link": "",
             "limit" : 3
@@ -76,7 +84,8 @@
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
-                    'link' : blog.link
+                    'link' : blog.link,
+                    'title'     : sections[key]['title']
                     }
                 }) %}
         {% endif %}
@@ -232,7 +241,7 @@
             {{this.render('partials/index/medium-section.twig', {
                 articles: sections['dairy'], 
                 articleCount: articleCount,
-                section: 'dairy',
+                title: 'dairy',
                 dev: dev,
                 site: site,
                 ad: 'div-gpt-ad-mrec-4',
@@ -250,7 +259,7 @@
             {{this.render('partials/index/bloggers.twig', {
                 articles: sections['blogs homepage'], 
                 articleCount: articleCount,
-                section: 'working dogs',
+                title: 'working dogs',
                 dev: dev,
                 site: site,
                 logo: networkData.templatePath ~ '/static/images/megaphone.svg',
@@ -264,7 +273,7 @@
             {{this.render('partials/index/small-section.twig', {
                 articles: sections['water'], 
                 articleCount: articleCount,
-                section: 'water',
+                title: 'water',
                 dev: dev,
                 site: site,
                 ad: 'div-gpt-ad-mrec-1',
@@ -285,7 +294,7 @@
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['horticulture'], 
                 articleCount: articleCount,
-                section: 'horticulture',
+                title: 'horticulture',
                 dev: dev,
                 site: site,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright-main',
@@ -301,7 +310,7 @@
             {{this.render('partials/index/row-three-ad.twig', {
                 articles: sections['viticulture'], 
                 articleCount: articleCount,
-                section: 'viticulture',
+                title: 'viticulture',
                 dev: dev,
                 site: site,
                 ad: 'div-gpt-ad-mrec-2',
@@ -318,7 +327,7 @@
             {{this.render('partials/index/small-section-events.twig', {
                 articles: sections['livestock'], 
                 articleCount: articleCount,
-                section: 'livestock',
+                title: 'livestock',
                 events: events,
                 dev: dev,
                 site: site,
@@ -342,7 +351,7 @@
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['cropping'], 
                 articleCount: articleCount,
-                section: 'cropping',
+                title: 'cropping',
                 dev: dev,
                 site: site,
                 cards: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
