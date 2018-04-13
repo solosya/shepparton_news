@@ -12,7 +12,7 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{% set limit = 15 %}
+{% set limit = 1 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -22,13 +22,17 @@
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
-{% set sections =  {} %}
+{% set sectionFeeds =  {} %}
 
 {% if site | lower == 'shepp' %}
-    {% set sections =  {
+    {% set sectionFeeds =  {
             "local news": {
-                "title": "Local News",      "limit" : 6, 'template' : 'partials/index/large-section.twig', 'template_params' : {}
+                "title": "Local News",       "limit" : 2
+            },
+            "local sport": {
+                "title": "Local Sport",      "limit" : 2
             }, 
+
             "regional news": {
                 "title": "Regional News",   "limit" : 5, 'template' : 'partials/index/medium-section.twig', 
                     'template_params' : {
@@ -36,19 +40,19 @@
                     }
             },
             "opinion": {
-                "title": "Opinion",         "limit" : 4, 'template' : 'partials/index/opinion.twig', 'template_params' : {}
+                "title": "Opinion",         "limit" : 4
             },
             "rural news": {
-                "title": "Rural News",      "limit" : 3, 'template' : 'partials/index/row-three.twig', 'template_params' : {}
+                "title": "Rural News",      "limit" : 3
             },
             "sport": {
-                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-with-feature.twig', 'template_params' : {}
+                "title": "Sport",           "limit" : 5
             },
             "national": {
-                "title": "National",        "limit" : 4, 'template' : 'partials/index/row-four.twig', 'template_params' : {}
+                "title": "National",        "limit" : 4
             },
             "business": {
-                "title": "Business",        "limit" : 5, 'template' : 'partials/index/medium-section.twig', 'template_params' : {}
+                "title": "Business",        "limit" : 5
             },
             "bloggers": {
                 "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig',
@@ -59,57 +63,38 @@
         }
     %}
 
+    {% set pageSections =  {
+        'Top': {
+            'template': 'partials/index/default-top.twig',
+            'template_params' : {},
+            'feeds': ['opinion', 'local news']
+        },
+        'Local': {
+            'template': 'partials/index/large-section.twig',
+            'template_params' : {},
+            'feeds': ['local news', 'opinion']
+        },
 
+    } %}
 
-
-{% elseif site | lower == 'country' %}
-    {% set sections =  {
-            "dairy": {
-                "title": "Dairy",           "limit" : 5, 'template' : 'partials/index/medium-section.twig'
-            }, 
-            "water": {
-                "title": "Water",           "limit" : 4, 'template' : 'partials/index/small-section.twig'
-            },
-            "horticulture": {
-                "title": "Horticulture",    "limit" : 3, 'template' : 'partials/index/row-three.twig'
-            },
-            "livestock": {
-                "title": "Livestock",       "limit" : 3, 'template' : 'partials/index/small-section-events.twig'
-            },
-            "cropping": {
-                "title": "Cropping",        "limit" : 3, 'template' : 'partials/index/row-three.twig'
-            },
-            "videos": {
-                "title": "Videos",          "limit" : 2, 'template' : ''
-            },
-            "blogs homepage": {
-                "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig'
-            },
-            "viticulture": {
-                "title": "Viticulture",     "limit" : 3, 'template' : 'partials/index/row-three-ad.twig'
-            }
-        }
-    %}
 
 {% endif  %}
 
 
-{% for key, value in sections %}
+{% for key, value in sectionFeeds %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
             
             {% set feed = dev 
                     ? articlesArr 
-                    : _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
+                    : _Blog.getBlogFeed({'limit': sectionFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
             %}
 
-            {% set sections = sections | merge({
+            {% set sectionFeeds = sectionFeeds | merge({
                 (key) : {
                     'feed'      : feed,
                     'link'      : blog.link,
-                    'title'     : sections[key]['title'],
-                    'template'  : sections[key]['template'],
-                    'template_params'  : sections[key]['template_params'],
+                    'title'     : sectionFeeds[key]['title']
                     }
                 }) %}
 
@@ -147,7 +132,7 @@
                 Top of Index page n articles
     ******************************************************* #}
 
-    <div class="container">
+    {# <div class="container">
         {{this.render('partials/index/default-top.twig', {
             articles: articles, 
             articleCount: articleCount,
@@ -156,13 +141,13 @@
             ad: 'div-gpt-ad-mrec-4',
         }) | raw}}
     </div>
+ #}
 
 
 
 
-
-    <div id="newAdSlot"></div>
-    <script>loadNextAd()</script>
+    {# <div id="newAdSlot"></div>
+    <script>loadNextAd()</script> #}
 
 
 
@@ -177,24 +162,32 @@
                            SECTIONS
     ******************************************************* #}
 
-    {% for section in sectionOrder %}
+    {% for title, section in pageSections %}
        
-        {% set sectionFeed = sections[ section ] %}
+        {% set feedArr = {} %}
         
-        {% if sectionFeed.feed.articles|length > 0 and sectionFeed.template != '' %}
+        {% for feed in section.feeds %}
+
+            {% set feedArr = feedArr | merge({
+                 (feed) : sectionFeeds[feed] 
+            }) %}
+        {% endfor %}
+
+
+        {% if section.template != '' %}
             {% set params = {
-                articles: sectionFeed, 
-                title:    sectionFeed.title,
+                articles: feedArr, 
+                title:    title,
                 dev:      dev,
                 site:     site
             } %}
 
-            {% if sectionFeed.template_params | length > 0  %}
-                {% set params = params | merge(sectionFeed.template_params) %}
+            {% if section.template_params | length > 0  %}
+                {% set params = params | merge(section.template_params) %}
             {% endif %}
 
             <div class="container">
-                {{this.render(sectionFeed.template, params) | raw}} 
+                {{this.render(section.template, params) | raw}} 
             </div>
         {% endif %}
 
