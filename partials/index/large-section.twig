@@ -65,11 +65,11 @@
                 </div>
 
                 <div class="ad-large-vert visible-md-block visible-lg-block {{ site }}" style="margin-top:30px;position:absolute;">
-                    <div id='div-gpt-ad-halfpage-3' class="google_ad">
-                        <script type='text/javascript'>
-                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage-3'); });
-                        </script>
-                    </div>
+                     <div id='{{ ad[0] }}' class='advert'
+                        data-site="{{site}}"
+                        data-section="{{blogData.title | lower}}"
+                        data-type="{{blogData.type | lower}}"        
+                    ></div>
                 </div>
             </div>
 
@@ -126,11 +126,11 @@
 
 
                         <div class="ad-large-vert visible-sm-block col-sm-1">
-                            <div id='div-gpt-ad-halfpage-4' class="google_ad">
-                                <script type='text/javascript'>
-                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage-4'); });
-                                </script>
-                            </div>
+                             <div id='{{ ad[1] }}' class='advert'
+                                    data-site="{{site}}"
+                                    data-section="{{blogData.title | lower}}"
+                                    data-type="{{blogData.type | lower}}"        
+                                ></div>
                         </div>                        
 
 

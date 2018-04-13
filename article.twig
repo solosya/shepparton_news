@@ -174,13 +174,11 @@
 
                                 <div class="col-sm-9">
                                     <div class="ad-side-container" style="height:250px;position:relative;width:300px;margin: 0 auto;">
-                                        <div class="ad-square lockad">
-                                            <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-1'>
-                                                <script type='text/javascript'>
-                                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-1'); });
-                                                </script>
-                                            </div>
-                                        </div>
+                                        <div id='article-mrec-1-mobile-tablet-desktop' class='advert'
+                                            data-site="{{site}}"
+                                            data-section="{{blogData.title | lower}}"
+                                            data-type="{{blogData.type | lower}}"        
+                                        ></div>
                                     </div>
 
                                     <h2 class="sidebar-header {{site}}">Latest articles</h2>
@@ -263,4 +261,8 @@
 
     </article>
 </main><!--site-main-->
-<div id="div-gpt-ad-teads" class="hidden-xs"></div>
+<div id='teads-ad-mobile-tablet-desktop' class='advert'
+    data-site="{{site}}"
+    data-section="{{blogData.title | lower}}"
+    data-type="{{blogData.type | lower}}"        
+></div>

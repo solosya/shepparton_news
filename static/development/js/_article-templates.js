@@ -170,7 +170,7 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div id='newAdSlot' class='infinite-ad'></div><script>loadNextAd()</script>";
+    "<div id='infinite-variable-mobile-tablet-desktop' class='advert' data-site='{{site}}' data-section='{{blogData.title | lower}}' data-type='{{blogData.type | lower}}'></div>{{this.registerJs('Acme.InsertAds();')}}";
 
 
 

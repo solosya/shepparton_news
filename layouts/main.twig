@@ -89,7 +89,8 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=cd70b2f4f" type="text/css" media="all">
+
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=b724ecab" type="text/css" media="all">
 
     {% else %}
 
@@ -196,14 +197,13 @@
     {# Don't show this add on blog pages.  Index is a blog so only allow there #}
     {% if (pageTypeClass != "blog" and layout != "layout-property") or url.path == '/'%}
     <div class="ad-container top-ad">
-        <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });
-            </script>
-        </div>
+        <div id='main-banner-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
     </div>
     {% endif %}
-
 
     {{ content | raw }}
 
@@ -238,7 +238,7 @@
 
 
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-
+    {{this.registerJs("Acme.InsertAds();")}}
 
     {{ this.endBody() }}
 

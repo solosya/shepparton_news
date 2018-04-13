@@ -27,12 +27,15 @@
 {% if site | lower == 'shepp' %}
     {% set sections =  {
             "local news": {
-                "title": "Local News",      "limit" : 6, 'template' : 'partials/index/large-section.twig', 'template_params' : {}
+                "title": "Local News",      "limit" : 6, 'template' : 'partials/index/large-section.twig', 
+                    'template_params' : {
+                        'ad': ['index-mrec-2-desktop','index-mrec-4-mobile-tablet-desktop']
+                    }
             }, 
             "regional news": {
                 "title": "Regional News",   "limit" : 5, 'template' : 'partials/index/medium-section.twig', 
                     'template_params' : {
-                        'ad': 'div-gpt-ad-halfpage-ss'
+                        'ad': 'index-mrec-3-desktop'
                     }
             },
             "opinion": {
@@ -42,13 +45,19 @@
                 "title": "Rural News",      "limit" : 3, 'template' : 'partials/index/row-three.twig', 'template_params' : {}
             },
             "sport": {
-                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-with-feature.twig', 'template_params' : {}
+                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-with-feature.twig', 
+                    'template_params' : {
+                        'ad': 'index-mrec-5-mobile-tablet-desktop'
+                    }
             },
             "national": {
                 "title": "National",        "limit" : 4, 'template' : 'partials/index/row-four.twig', 'template_params' : {}
             },
             "business": {
-                "title": "Business",        "limit" : 5, 'template' : 'partials/index/medium-section.twig', 'template_params' : {}
+                "title": "Business",        "limit" : 5, 'template' : 'partials/index/medium-section.twig', 
+                    'template_params' : {
+                        'ad': 'index-mrec-6-mobile-tablet-desktop'
+                    }
             },
             "bloggers": {
                 "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig',
@@ -65,7 +74,10 @@
 {% elseif site | lower == 'country' %}
     {% set sections =  {
             "dairy": {
-                "title": "Dairy",           "limit" : 5, 'template' : 'partials/index/medium-section.twig'
+                "title": "Dairy",           "limit" : 5, 'template' : 'partials/index/medium-section.twig', 
+                    'template_params' : {
+                        'ad': 'index-mrec-2-desktop'
+                    }
             }, 
             "water": {
                 "title": "Water",           "limit" : 4, 'template' : 'partials/index/small-section.twig'
@@ -86,7 +98,10 @@
                 "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig'
             },
             "viticulture": {
-                "title": "Viticulture",     "limit" : 3, 'template' : 'partials/index/row-three-ad.twig'
+                "title": "Viticulture",     "limit" : 3, 'template' : 'partials/index/row-three-ad.twig', 
+                    'template_params' : {
+                        'ad': 'index-mrec-4-mobile-tablet-desktop'
+                    }
             }
         }
     %}
@@ -153,7 +168,7 @@
             articleCount: articleCount,
             dev: dev,
             site: site,
-            ad: 'div-gpt-ad-mrec-4',
+            ad: ['index-mrec-1-mobile-tablet','index-mrec-3-mobile','index-mrec-1-desktop'],
         }) | raw}}
     </div>
 
@@ -161,8 +176,13 @@
 
 
 
-    <div id="newAdSlot"></div>
-    <script>loadNextAd()</script>
+   <div class="ad-container">
+        <div id='index-banner-1-tablet-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
+    </div>
 
 
 
@@ -201,21 +221,21 @@
 
         {% if loop.index == 1 %}
             <div class="ad-container hidden-md hidden-lg mobad2">
-                <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
-                    <script type='text/javascript'>
-                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
-                    </script>
-                </div>
+                <div id='index-mrec-2-mobile-tablet' class='advert'
+                    data-site="{{site}}"
+                    data-section="{{blogData.title | lower}}"
+                    data-type="{{blogData.type | lower}}"        
+                ></div>
             </div>
         {% endif %}
 
         {% if loop.index == 3 %}
             <div class="ad-container visible-sm-block">
-                <div id='div-gpt-ad-leaderboard-3' class="google_ad google_ad_leaderboard">
-                    <script type='text/javascript'>
-                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-3'); });
-                    </script>
-                </div>
+                <div id='index-mrec-3-tablet' class='advert'
+                    data-site="{{site}}"
+                    data-section="{{blogData.title | lower}}"
+                    data-type="{{blogData.type | lower}}"        
+                ></div>
             </div>      
         {% endif %}
 
@@ -238,15 +258,8 @@
 
 
 
-<div id='div-gpt-ad-interstitial' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial'); });
-    </script>
-</div>
-
-
-<div id='div-gpt-ad-teads' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });
-    </script>
-</div>
+<div id='interstitial-ad-desktop-tablet' class='advert hidden-xs'
+    data-site="{{site}}"
+    data-section="{{blogData.title | lower}}"
+    data-type="{{blogData.type | lower}}"        
+></div>
