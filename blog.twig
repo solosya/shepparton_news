@@ -27,11 +27,11 @@
 
 
 {{this.registerJs("Acme.cards = CardController();")}}
-{{this.registerJs("Acme.ads = Acme.InsertAds();")}}
+{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}} #}
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true, Acme.ads);")}}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
 
 {# {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %} #}
 
