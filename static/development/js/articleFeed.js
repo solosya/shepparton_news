@@ -179,11 +179,11 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section) {
         var theAd = adSizes[adDivId];
         var adSlot = document.getElementById(adDivId);
-        if ((theAd || adSlot) == undefined) {
+        if ((theAd || adSlot || adSizes[0] || adSizes[1] || adSizes[2] || adSizes[3] || adSizes[4]) == undefined) {
             console.log('id/slot not found:');
             console.log(adDivId);
             console.log(adSlot);
-            return
+            return;
         }
         if (adDivId == 'teads-ad-mobile-tablet-desktop' && teadsAd == false){ return };
         var slotDiv = document.createElement('div');
@@ -217,10 +217,10 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             for (var i=0;i<adslots.length;i++) {
                 if (adslots[i] == ('interstitial-ad-tablet-desktop' || 'teads-ad-mobile-tablet-desktop')) {continue};
                 var adSpecs = adSizes[adslots[i]];
-                if (adSpecs == undefined) {
+                if ((adSpecs || adSpecs[0] || adSpecs[1] || adSpecs[5]) == undefined) {
                     console.log('undefined rubicon ad space:');
                     console.log(adslots[i]);
-                    continue
+                    continue;
                 }
                 rubicontag.defineSlot('/'+dfpacct+'/'+network, adSpecs[1], adSpecs[0]).setPosition(adSpecs[5]);
             }
@@ -248,12 +248,11 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             for (var i=0;i<adslots.length;i++) {
                 if (adslots[i] == ('interstitial-ad-tablet-desktop' || 'teads-ad-mobile-tablet-desktop')) {continue};
                 var theslot = adSizes[adslots[i]];
-                if (theslot == undefined || theslot[0] == undefined || theslot[1] == undefined || theslot[2] == undefined || theslot[3] == undefined || theslot[4] == undefined) {
+                if ((theslot || theslot[0] || theslot[1] || theslot[2] || theslot[3] || theslot[4]) == undefined) {
                     console.log('undefined gpt ad space:');
                     console.log(adslots[i]);
-                    continue
+                    continue;
                 }
-                //console.log(theslot);
                 gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[1], theslot[0]).setTargeting(theslot[3], [theslot[4]]).defineSizeMapping(theslot[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
                 rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
             }
