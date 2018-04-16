@@ -3,6 +3,7 @@
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
 {{this.registerJs("Acme.cards = CardController();")}}
+{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}} #}
 
 
 
@@ -15,7 +16,7 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true, Acme.InsertAds());")}}
 
 
 

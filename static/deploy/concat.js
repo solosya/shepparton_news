@@ -34447,7 +34447,7 @@ Acme.GalleryToggle.prototype.events = function() {
         console.log(option);
     });
 };
-Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax) {
+Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax, adsModel) {
     this.cardModel = cardModel;
     this.offset    = offset || 0;
     this.limit     = limit || 10;
@@ -34567,7 +34567,7 @@ Acme.View.articleFeed.prototype.render = function(data)
     self.elem.data('rendertype', '');
 
     if (ads_on == "yes") {
-       this.InsertAds();
+       self.adsModel.InsertAds();
     }
 };
 
