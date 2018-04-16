@@ -27,10 +27,11 @@
 
 
 {{this.registerJs("Acme.cards = CardController();")}}
+{{this.registerJs("Acme.ads = Acme.InsertAds();")}}
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true, Acme.InsertAds());")}}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true, Acme.ads);")}}
 
 {# {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %} #}
 
@@ -197,7 +198,7 @@
 
 
         <div class="mobad9">
-            <div id='blog-mixed-3-mobile-tablet-desktop' class='advert'
+            <div id='blog-mixed-1-mobile-tablet-desktop' class='advert'
                 data-site="{{site}}"
                 data-section="{{blogData.title | lower}}"
                 data-type="{{blogData.type | lower}}"        

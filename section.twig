@@ -13,10 +13,11 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
+{{this.registerJs("Acme.ads = Acme.InsertAds();")}}
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true, Acme.InsertAds());")}}
+{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true, Acme.ads);")}}
 
 
 
