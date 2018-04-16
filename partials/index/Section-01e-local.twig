@@ -1,0 +1,126 @@
+{% set articleCount = 0 %}
+
+{% set date = date() %}
+{% set events = _Event.getEvents({"limit": 5, "start_date": date.date | split(" ")[0]}) %}
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ title }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="col-md-9 col-sm-9">
+        <div class="row">
+            <div class="col-sm-9 col-md-6">
+                {% if articles.feed.articles[articleCount] %}
+                    {{this.render('../_single-article.twig', {
+                        article: articles.feed.articles[articleCount], 
+                        position: articleCount + 1, 
+                        imageSize: {width:640, height:400},
+                        site:site,
+                        containerClass: 'home-feature-sm home-feature-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% endif %}
+                <div class="row u-margin-top-30">
+                    {% for i in 0..2 if articles.feed.articles[articleCount] %}
+                        <div class="col-sm-3 col-xs-9">
+                            {{this.render('../_single-article.twig', {
+                                article: articles.feed.articles[articleCount], 
+                                imageSize: {width:300},
+                                site:site,
+                                containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                            </div>
+                            <hr class="divide visible-xs-block">                            
+                    {% endfor %}
+                </div>
+
+                <div class="row u-margin-top-30">
+                    <div class="col-sm-4 col-xs-9">
+                        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+                                {% set cardClassOne = ['feature-side feature-side-tablet ','card-sm-wide card-sm-wide-tablet '] %}
+                                {{this.render('../_single-article.twig', {
+                                    article: articles.feed.articles[articleCount], 
+                                    imageSize: {width:300},
+                                    site:site,
+                                    containerClass: cardClassOne[i] ~ 'card-sm-mobile'
+                                }) | raw}}
+                                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                                
+                                {% if i < 1 %}
+                                <hr class="divide10 space-only">
+                                {% endif %}                                  
+                        {% endfor %}
+                    </div>
+                    <div class="col-sm-5 col-xs-9">
+                        {% for i in 0..2 if articles.feed.articles[articleCount] %}
+                                {{this.render('../_single-article.twig', {
+                                    article: articles.feed.articles[articleCount], 
+                                    imageSize: {width:300},
+                                    site:site,
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                }) | raw}}
+                                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                                {% if i < 2 %}
+                                <hr class="divide18">
+                                {% endif %}                            
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-9 col-md-3">
+                <hr class="divide15 visible-sm-block visible-xs-block space-only">
+
+                <div class="row three-cols">
+                    <div class="col-sm-9 events">
+                        <h2>Events</h2>
+                        {% for i in 0..3 if events[i] %}
+                            {{this.render('../_single-event.twig', {
+                                event: events[i],
+                                imageSize: {width: 90},
+                                site:site,
+                                containerClass: 'card-event card-event-tablet card-event-mobile'
+                            }) | raw}}
+
+                            {% if i < 3 %}
+                                <hr class="divide10">
+                            {% endif %}
+
+                        {% endfor %}
+                    </div>
+
+
+                    {% for i in 0..1 if articles.feed.articles[articleCount] %}
+                        <div class="col-md-2 col-sm-1">
+                            {{this.render('../_single-article.twig', {
+                                article: articles.feed.articles[articleCount], 
+                                imageSize: {width:300},
+                                site:site,
+                                containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                            <hr class="divide10 space-only hidden-xs"> 
+                            <hr class="divide15 visible-xs-block">                          
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="visible-md-block visible-lg-block {{ site }}" style="position:absolute;">
+                     <div id='{{ ad[0] }}' class='advert'
+                        data-site="{{site}}"
+                        data-section="{{blogData.title | lower}}"
+                        data-type="{{blogData.type | lower}}"        
+                    ></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

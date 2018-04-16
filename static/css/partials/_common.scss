@@ -293,10 +293,9 @@ hr.divide10 {
         margin-top: -69px;
         padding-left: 35px;
         margin-left: -15px;
-        width: 22%;
         @media screen and (max-width: $mmd-break-down) {
             margin-left: -35px;
-            width: 26%;
+            // width: 26%;
         }
     }
     

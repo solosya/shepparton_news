@@ -179,6 +179,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section) {
         var theAd = adSizes[adDivId];
         var adSlot = document.getElementById(adDivId);
+        console.log(theAd);
         if ((theAd || adSlot || theAd[0] || theAd[1] || theAd[2] || theAd[3] || theAd[4]) == undefined) {
             console.log('id/slot not found:');
             console.log(adDivId);

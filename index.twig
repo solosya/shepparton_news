@@ -27,40 +27,40 @@
 {% if site | lower == 'shepp' %}
     {% set sections =  {
             "local news": {
-                "title": "Local News",      "limit" : 6, 'template' : 'partials/index/large-section.twig', 
+                "title": "Local News",      "limit" : 12, 'template' : 'partials/index/section-01-local.twig', 
                     'template_params' : {
                         'ad': ['index-mrec-2-desktop','index-mrec-4-mobile-tablet-desktop']
                     }
             }, 
             "regional news": {
-                "title": "Regional News",   "limit" : 5, 'template' : 'partials/index/medium-section.twig', 
+                "title": "Regional News",   "limit" : 13, 'template' : 'partials/index/section-07-regional.twig', 
                     'template_params' : {
-                        'ad': 'index-mrec-3-desktop'
+                        'ad': ['index-mrec-3-desktop']
                     }
             },
             "opinion": {
-                "title": "Opinion",         "limit" : 4, 'template' : 'partials/index/opinion.twig', 'template_params' : {}
+                "title": "Opinion",         "limit" : 4, 'template' : 'partials/index/section-03-opinion.twig', 'template_params' : {}
             },
             "rural news": {
-                "title": "Rural News",      "limit" : 3, 'template' : 'partials/index/row-three.twig', 'template_params' : {}
+                "title": "Rural News",      "limit" : 3, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
             },
             "sport": {
-                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-with-feature.twig', 
+                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-06-small-three-events.twig', 
                     'template_params' : {
                         'ad': 'index-mrec-5-mobile-tablet-desktop'
                     }
             },
             "national": {
-                "title": "National",        "limit" : 4, 'template' : 'partials/index/row-four.twig', 'template_params' : {}
+                "title": "National",        "limit" : 4, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
             },
             "business": {
-                "title": "Business",        "limit" : 5, 'template' : 'partials/index/medium-section.twig', 
+                "title": "Business",        "limit" : 5, 'template' : 'partials/index/section-06-small-three-events.twig', 
                     'template_params' : {
                         'ad': 'index-mrec-6-mobile-tablet-desktop'
                     }
             },
             "bloggers": {
-                "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/bloggers.twig',
+                "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/section-06-small-three-events.twig',
                     'template_params' : {
                         'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
                     }
@@ -163,7 +163,7 @@
     ******************************************************* #}
 
     <div class="container">
-        {{this.render('partials/index/default-top.twig', {
+        {{this.render('partials/index/section-00-top.twig', {
             articles: articles, 
             articleCount: articleCount,
             dev: dev,

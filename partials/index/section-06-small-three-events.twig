@@ -1,0 +1,49 @@
+{% set articleCount = 0 %}
+
+{% set date = date() %}
+{% set events = _Event.getEvents({"limit": 5, "start_date": date.date | split(" ")[0]}) %}
+
+
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ title }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+   
+
+    <div>    
+        
+        {% for i in 0..2 if articles.feed.articles[articleCount] %}
+            <div class="col-sm-2">
+            {{this.render('../_single-article.twig', {
+                article: articles.feed.articles[articleCount], 
+                imageSize: {width:300},
+                site: site,
+                containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : sectionCount + 1 %}
+            <hr class="divide visible-xs-block">
+            </div>
+        {% endfor %}
+
+        <div class="col-sm-3 mini-events">
+            <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
+                <a href="{{networkData.defaultBlogUrl}}/@events"><h2 class="">Events</h2></a>
+            {% for i in 0..3 if events[i] %}
+                {{this.render('../_single-event.twig', {
+                    event: events[i],
+                    imageSize: {width: 90},
+                    site: site,
+                    containerClass: 'card-event card-event-tablet card-event-mobile'
+                }) | raw}}
+                    <hr class="divide12">
+            {% endfor %}
+            
+        </div>
+    </div>
+    </section>
