@@ -34447,7 +34447,7 @@ Acme.View.articleFeed.prototype.events = function()
     }
 };
 
-Acme.InsertAds = function() {
+Acme.View.articleFeed.prototype.InsertAds = function() {
     var pageAdSlots = $('.advert');
     //console.log('pageAdSlots:');
     //console.log(pageAdSlots);
