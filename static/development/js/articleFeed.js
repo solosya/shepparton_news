@@ -155,9 +155,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         for (var i=0;i<pageAdSlots.length;i++) {
             adSlotIds[i] = pageAdSlots[i].id;
         }
-        var slotOne = $('#'+pageAdSlots[0].id);
-        var siteSection = getSiteSection(slotOne.data('site'),slotOne.data('section'),siteAdSections);
-        var networkSite = networkSelect[slotOne.data('site')];
+        var siteSection = getSiteSection(effectiveURL,effectiveSection,siteAdSections);
+        var networkSite = networkSelect[effectiveURL];
         if (rubiconAcct != undefined) {
             (function() {
                 var account_id = rubiconAcct;
@@ -168,48 +167,47 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                 var node = document.getElementsByTagName('script')[0];
                 node.parentNode.appendChild(rct);
             })();
-            rubiconTagPush(adSlotIds,siteSection,networkSite);
+            rubiconTagPush(adSlotIds,siteSection,networkSite,effectiveType);
         }
-        gptTagPush(adSlotIds,siteSection,networkSite);
+        gptTagPush(adSlotIds,siteSection,networkSite,effectiveType);
 
         for (var i=0;i<adSlotIds.length;i++) {
-            function loadNextAd(blogAd,adDivId,section) {
-                var theAd = adSizes[adDivId];
-                var adSlot = document.getElementById(adDivId);
-                if ((theAd || adSlot) == undefined) {
-                    console.log('id/slot not found:');
-                    console.log(adDivId);
-                    console.log(adSlot);
-                    return
-                }
-                if (adDivId == 'teads-ad-mobile-tablet-desktop' && teadsAd == false){ return };
-                var slotDiv = document.createElement('div');
-                adSlot.appendChild(slotDiv);
-                adSlot.classList.remove("advert");
-                if (adDivId == 'infinite-variable-mobile-tablet-desktop') {
-                    adSlot.id = "infinite-loaded";
-                    console.log('LOADMORE ONLY:');
-                    var slotName = generateNextAdName(theAd[0]);
-                    slotDiv.id = slotName;
-                    slotDiv.setAttribute( 'class', 'google_ad' );
-                    googletag.cmd.push(function() {
-                    var slot = googletag.defineSlot('/'+dfpacct+'/'+blogAd, theAd[1], theAd[0]).setTargeting(theAd[3],[theAd[4]]).defineSizeMapping(theAd[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
-                    //console.log(slot);
-                    googletag.display(slotName);
-                    googletag.pubads().refresh([slot]);
-                });
-                } else {
-                    var slotName = theAd[0];
-                    slotDiv.id = slotName;
-                    slotDiv.setAttribute( 'class', 'google_ad' );
-                    googletag.cmd.push(function() { googletag.display(slotName); });
-                }         
-            }
-            //test sites =
             loadNextAd(networkSite,adSlotIds[i],siteSection);
-            //final sites, with properly set up dfp =
-            //loadNextAd(container.data('site'),container.data('id'),container.data('class'),container.data('size'),container.data('map'));
         }
+    }
+
+    function loadNextAd(blogAd,adDivId,section) {
+        var theAd = adSizes[adDivId];
+        var adSlot = document.getElementById(adDivId);
+        if ((theAd || adSlot) == undefined) {
+            console.log('id/slot not found:');
+            console.log(adDivId);
+            console.log(adSlot);
+            return
+        }
+        if (adDivId == 'teads-ad-mobile-tablet-desktop' && teadsAd == false){ return };
+        var slotDiv = document.createElement('div');
+        adSlot.appendChild(slotDiv);
+        adSlot.classList.remove("advert");
+        if (adDivId == 'infinite-variable-mobile-tablet-desktop') {
+            adSlot.id = "infinite-loaded";
+            console.log('LOADMORE ONLY:');
+            console.log(theAd);
+            var slotName = generateNextAdName(theAd[0]);
+            slotDiv.id = slotName;
+            slotDiv.setAttribute( 'class', 'google_ad' );
+            googletag.cmd.push(function() {
+                var slot = googletag.defineSlot('/'+dfpacct+'/'+blogAd, theAd[1], theAd[0]).setTargeting(theAd[3],[theAd[4]]).defineSizeMapping(theAd[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
+                //console.log(slot);
+                googletag.display(slotName);
+                googletag.pubads().refresh([slot]);
+            });
+        } else {
+            var slotName = theAd[0];
+            slotDiv.id = slotName;
+            slotDiv.setAttribute( 'class', 'google_ad' );
+            googletag.cmd.push(function() { googletag.display(slotName); });
+        }         
     }
 
     function rubiconTagPush(adslots,section,network,page) {
@@ -250,7 +248,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             for (var i=0;i<adslots.length;i++) {
                 if (adslots[i] == ('interstitial-ad-tablet-desktop' || 'teads-ad-mobile-tablet-desktop')) {continue};
                 var theslot = adSizes[adslots[i]];
-                if (theslot == undefined) {
+                if (theslot == undefined || theslot[0] == undefined || theslot[1] == undefined || theslot[2] == undefined || theslot[3] == undefined || theslot[4] == undefined) {
                     console.log('undefined gpt ad space:');
                     console.log(adslots[i]);
                     continue

@@ -60,7 +60,7 @@
     {# Want to remove the below script when possible  #}
     {# Currently only being used for ads i think  #}
     <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/blogsettings.js?ver=28"></script>
-    
+    <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{blogData.type | lower}}';</script>
 
     {% if site != 'dairy' and site != 'shepp' and _AppHelper.getApplicationEnv() == 'PROD' %}
         <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
