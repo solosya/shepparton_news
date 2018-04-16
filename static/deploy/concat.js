@@ -34567,7 +34567,7 @@ Acme.View.articleFeed.prototype.render = function(data)
     self.elem.data('rendertype', '');
 
     if (ads_on == "yes") {
-       self.adsModel.InsertAds();
+       self.adsModel();
     }
 };
 
