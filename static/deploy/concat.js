@@ -34048,7 +34048,7 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div id='infinite-variable-mobile-tablet-desktop' class='advert' data-site='{{site}}' data-section='{{blogData.title | lower}}' data-type='{{blogData.type | lower}}'></div>{{this.registerJs('Acme.InsertAds();')}}";
+    "<div id='infinite-variable-mobile-tablet-desktop' class='advert' data-site='{{site}}' data-section='{{blogData.title | lower}}' data-type='{{blogData.type | lower}}'></div>";
 
 
 
@@ -34565,6 +34565,10 @@ Acme.View.articleFeed.prototype.render = function(data)
 
 
     self.elem.data('rendertype', '');
+
+    if (ads_on == "yes") {
+       this.InsertAds();
+    }
 };
 
 
