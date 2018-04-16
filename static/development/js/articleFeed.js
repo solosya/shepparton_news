@@ -1,5 +1,6 @@
 Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax, adsModel) {
     this.cardModel = cardModel;
+    this.adsModel  = adsModel;
     this.offset    = offset || 0;
     this.limit     = limit || 10;
     this.infinite  = infinite || false;
