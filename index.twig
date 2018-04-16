@@ -53,10 +53,10 @@
             "national": {
                 "title": "National",        "limit" : 4, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
             },
-            "business": {
-                "title": "Business",        "limit" : 5, 'template' : 'partials/index/section-06-small-three-events.twig', 
+            "News": {
+                "title": "News",        "limit" : 13, 'template' : 'partials/index/section-01-local.twig', 
                     'template_params' : {
-                        'ad': 'index-mrec-6-mobile-tablet-desktop'
+                        'ad': ['index-mrec-2-desktop','index-mrec-4-mobile-tablet-desktop']
                     }
             },
             "bloggers": {
@@ -139,7 +139,7 @@
 {% set sectionOrder = [] %}
 
 {% if site == 'shepp' %}
-    {% set sectionOrder = ['local news', 'bloggers', 'regional news', 'opinion', 'rural news', 'sport'] %}
+    {% set sectionOrder = ['news','local news', 'bloggers', 'regional news', 'opinion', 'rural news', 'sport'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
 {% endif %}
