@@ -179,7 +179,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section) {
         var theAd = adSizes[adDivId];
         var adSlot = document.getElementById(adDivId);
-        if ((theAd || adSlot || adSizes[0] || adSizes[1] || adSizes[2] || adSizes[3] || adSizes[4]) == undefined) {
+        if ((theAd || adSlot || theAd[0] || theAd[1] || theAd[2] || theAd[3] || theAd[4]) == undefined) {
             console.log('id/slot not found:');
             console.log(adDivId);
             console.log(adSlot);
@@ -192,7 +192,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         if (adDivId == 'infinite-variable-mobile-tablet-desktop') {
             adSlot.id = "infinite-loaded";
             console.log('LOADMORE ONLY:');
-            console.log(theAd);
+            console.log(theAd,dfpacct,blogAd,section);
             var slotName = generateNextAdName(theAd[0]);
             slotDiv.id = slotName;
             slotDiv.setAttribute( 'class', 'google_ad' );
