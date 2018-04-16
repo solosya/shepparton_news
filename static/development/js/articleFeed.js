@@ -192,12 +192,12 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         if (adDivId == 'infinite-variable-mobile-tablet-desktop') {
             adSlot.id = "infinite-loaded";
             console.log('LOADMORE ONLY:');
-            console.log(theAd,dfpacct,blogAd,section);
+            // console.log(theAd,dfpacct,blogAd,section);
             var slotName = generateNextAdName(theAd[0]);
             slotDiv.id = slotName;
             slotDiv.setAttribute( 'class', 'google_ad' );
             googletag.cmd.push(function() {
-                var slot = googletag.defineSlot('/'+dfpacct+'/'+blogAd, theAd[1], theAd[0]).setTargeting(theAd[3],[theAd[4]]).defineSizeMapping(theAd[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
+                var slot = googletag.defineSlot('/'+dfpacct+'/'+blogAd, theAd[1], slotName).setTargeting(theAd[3],[theAd[4]]).defineSizeMapping(theAd[2]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
                 //console.log(slot);
                 googletag.display(slotName);
                 googletag.pubads().refresh([slot]);
