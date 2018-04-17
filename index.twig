@@ -30,13 +30,9 @@
     {% set blogFeeds = {
             "aapp":             { "limit" : 15},
             "local news":       { "limit" : 6},
-            "local sport":      { "limit" : 2}, 
-            "regional news":    { "limit" : 5},
             "opinion":          { "limit" : 4},
-            "rural news":       { "limit" : 3},
-            "sport":            { "limit" : 5},
-            "national":         { "limit" : 4},
-            "business":         { "limit" : 5},
+            "real estate":      { "limit" : 3},
+            "automotive":       { "limit" : 3},
             "bloggers":         { "limit" : 3}
         }
     %}
@@ -46,18 +42,78 @@
             'template': 'partials/index/default-top.twig',
             'blogs'         : ['aapp'],
         },
-        'local news': {
-            'template': 'partials/index/large-section.twig',
+        'local': {
+            'template': 'partials/index/section-01-local.twig',
+            'template_params' : {
+                 'ad': 'index-mrec-2'
+            },
             'title' : 'Local News',
             'blogs': ['local news'],
         },
+        "real estate": {
+            'title'     : "Real Estate",
+            'blogs'     : ['real estate']
+            'template'  : 'partials/index/section-02-real-estate.twig', 
+            'template_params' : {
+                'href': ['https://www.realestateview.com.au','0'],
+                'networkData' : networkData
+            },
+        },
+        "automotive": {
+            'title'     : "Automotive",
+            'blogs'     : ['automotive']
+            'template'  : 'partials/index/section-02-real-estate.twig', 
+        },
+        "opinion": {
+            'title'     : "Opinion",
+            'blogs'     : ['opinion']
+            'template'  : 'partials/index/section-03-opinion.twig',
+        },
         'bloggers' :  {
-            'template' : 'partials/index/bloggers.twig',
-            'blogs': ['bloggers'],
+            'blogs'     : ['bloggers'],
+            'template'  : 'partials/index/bloggers.twig',
             'template_params' : {
                 'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
             }
-        }                   
+        },
+        "videos": {
+            'title'     : "Videos",
+            'template'  : 'partials/index/section-04-videos.twig'
+        },
+        "galleries": {
+            'title'     : "Galleries",
+            'template'  : 'partials/index/section-05-gallery.twig'
+        },
+        "social": {
+            'title'     : "Social",
+            'template'  : 'partials/index/ssection-06-small-three-events.twig'
+        },
+        "contributed photos": {
+            'title'     : "Contributed Photos",
+            'template'  : 'partials/index/section-05-gallery.twig'
+        }, 
+        "regional news": {
+            'title'     : "Regional News",
+            'template'  : 'partials/index/section-07-regional.twig', 
+            'template_params' : {
+                'ad': 'index-mrec-3'
+            }
+        },
+        "rural news": {
+            'title'     : "Rural News",
+            'template'  : 'partials/index/section-08-rural.twig',
+            'template_params' : {
+                'ad': 'index-mrec-4'
+            }
+        },
+        "national": {
+            'title'     : "National and World",
+            'template'  : 'partials/index/section-09-national.twig', 
+            'template_params' : {
+                'ad': 'index-mrec-5'
+            }
+        }
+
 
 
     } %}
@@ -91,9 +147,8 @@
 
 {% set sectionCount = 0 %}
 {% set sectionOrder = [] %}
-
 {% if site == 'shepparton' %}
-    {% set sectionOrder = ['index', 'local news', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'regional news', 'rural news'] %}
+    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', , 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
 {% endif %}
