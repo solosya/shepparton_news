@@ -60,6 +60,7 @@
         "real estate": {
             'title'     : "Real Estate",
             'blogs'     : ['real estate'],
+            'background': true,
             'template'  : 'partials/index/section-02-real-estate.twig', 
             'template_params' : {
                 'href': ['https://www.realestateview.com.au','0'],
@@ -86,6 +87,7 @@
         "videos": {
             'title'     : "Videos",
             'blogs'     : ['video'],
+            'background': true,
             'template'  : 'partials/index/section-04-videos.twig'
         },
         "galleries": {
@@ -240,9 +242,18 @@
                 {% set params = params | merge(section.template_params) %}
             {% endif %}
 
-            <div class="container">
-                {{this.render(section.template, params) | raw}} 
-            </div>
+            {% if section.background %}
+                <div class="section-background">
+            {% endif %}
+
+                <div class="container">
+                    {{this.render(section.template, params) | raw}} 
+                </div>
+
+            {% if section.background %}
+                </div>
+            {% endif %}
+
         {% endif %}
 
         {% if loop.index == 5 %}
