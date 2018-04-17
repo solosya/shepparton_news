@@ -58,7 +58,7 @@
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             
-
+                    <hr class="divide visible-xs-block">
             {% endif %}
         </div>
     </div>    
@@ -76,9 +76,9 @@
                     {% set articleCount = (dev) ? articleCount : sectionCount + 1 %}
                 {% endif %}
 
-                <hr class="divide visible-xs-block space-only">
+               <hr class="divide visible-xs-block">
             </div>
-             <div class="col-md-2 col-sm-3">
+             <div class="col-md-2 col-sm-3 col-xs-9">
                 {% if articles.feed.articles[articleCount] %}
 
 
@@ -106,7 +106,7 @@
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     
-                   
+                   <hr class="divide visible-xs-block">
                 {% endif %}
             </div>
         </div>

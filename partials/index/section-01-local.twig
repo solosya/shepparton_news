@@ -48,7 +48,7 @@
                                     containerClass: cardClassOne[i] ~ 'card-sm-mobile'
                                 }) | raw}}
                                 {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                                
+                                <hr class="divide visible-xs-block"> 
                                 {% if i < 1 %}
                                 <hr class="divide10 space-only">
                                 {% endif %}                                  
@@ -65,7 +65,8 @@
                                 {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                                 {% if i < 2 %}
                                 <hr class="divide18">
-                                {% endif %}                            
+                                {% endif %} 
+                                <hr class="divide visible-xs-block">                            
                         {% endfor %}
                     </div>
                 </div>
