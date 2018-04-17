@@ -1,5 +1,4 @@
-{% if sections['videos'].feed.articles|length > 0 %}
-    {% set videoCount = (dev) ? articleCount : 0 %}
+{% set articleCount = 0 %}
 
     <section class="section-background">
         <div class="container">
@@ -14,14 +13,14 @@
             </div>
 
             <div class="row">
-                {% for i in 0..2 if sections['videos'].feed.articles[videoCount] %}
+                {% for i in 0..2 if articles.feed.articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
-                        article: sections['videos'].feed.articles[videoCount], 
+                        article: articles.feed.articles[articleCount], 
                         imageSize: {width:95},
                         site: site,
                         containerClass: 'col-sm-3 card-sm-wide card-sm-wide-mobile'
                     }) | raw}}
-                    {% set videoCount = (dev) ? videoCount : videoCount + 1 %}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
                 {% endfor %}
 

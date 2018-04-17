@@ -12,7 +12,7 @@
 
     {% if title[0] == 'Real Estate' %}
         <div class="col-sm-9">
-            <div class="row u-margin-bottom-40">
+            <div class="u-margin-bottom-40">
 
                 <!-- # The Following is code from View Real Estate -->
                 <div id="rev-search" >
@@ -70,7 +70,6 @@
                         imageSize: {width: 300, height: 195},
                         containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
                     }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                     {% if i < 2 %}
                         <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
@@ -101,7 +100,6 @@
                         imageSize: {width: 300, height: 195},
                         containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
                     }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                     {% if i < 2 %}
                         <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
