@@ -32,8 +32,9 @@
                                 containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                                <hr class="divide visible-xs-block"> 
                             </div>
-                            <hr class="divide visible-xs-block">                            
+                                                       
                     {% endfor %}
                 </div>
 
@@ -50,7 +51,7 @@
                                 {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                                 <hr class="divide visible-xs-block"> 
                                 {% if i < 1 %}
-                                <hr class="divide10 space-only">
+                                <hr class="divide10 space-only hidden-xs">
                                 {% endif %}                                  
                         {% endfor %}
                     </div>
