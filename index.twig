@@ -24,11 +24,11 @@
 
 
 {# The following list of blogs are required for each site to load the feeds #}
-{% set blogFeeds =  {} %}
-{% if site | lower == 'shepparton' %}
+{% set blogFeeds =  { (site) : { "limit" : 15} } %}
 
-    {% set blogFeeds = {
-            "shepparton":       { "limit" : 15},
+{% if site == 'sheparton' %}
+
+    {% set blogFeeds = blogFeeds | merge({
             "local news":       { "limit" : 6},
             "opinion":          { "limit" : 4},
             "real estate":      { "limit" : 3},
@@ -41,8 +41,9 @@
             "regional news":    { "limit" : 13},
             "rural news":       { "limit" : 16},
             "national":         { "limit" : 13}
-        }
+        })
     %}
+
 
     {% set pageSections =  {
         'index': {
