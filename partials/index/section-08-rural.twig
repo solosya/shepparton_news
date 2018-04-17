@@ -59,6 +59,7 @@
     </div>
     <div class="col-md-9 col-sm-9">
         <div class="row u-margin-top-40">
+
             {% for i in 0..2 if articles[articleCount] %}
                 <div class="col-md-2 col-sm-3">
                     {{this.render('../_single-article.twig', {
@@ -71,9 +72,10 @@
                     <hr class="divide visible-xs-block">
                 </div>
             {% endfor %}
+            
             <div class="col-sm-3">
+
                  {% if articles[articleCount] %}
-                       
                         {{this.render('../_single-article.twig', {
                             article:        articles[articleCount], 
                             imageSize:      {width:300},
@@ -84,11 +86,13 @@
                         
                        <hr class="divide visible-xs-block">
                     {% endif %}
+
             </div>
         </div>
     </div>
     <div class="col-md-9 col-sm-9">
         <div class="row u-margin-top-40">
+
             {% for i in 0..2 if articles[articleCount] %}
                 <div class="col-md-2 col-sm-3">
                     {{this.render('../_single-article.twig', {
@@ -101,6 +105,8 @@
                     <hr class="divide visible-xs-block">
                 </div>
             {% endfor %}
+
+
             <div class="col-sm-3 ad-square">
                  <div id='{{ ad }}' class='advert'></div>
             </div>
@@ -110,6 +116,7 @@
     <div class="col-md-9 col-sm-9">
         <div class="row u-margin-top-40">
             <div class="col-sm-3">
+
                 {% if articles[articleCount] %}
                        
                     {{this.render('../_single-article.twig', {
@@ -122,7 +129,10 @@
                     
                    <hr class="divide visible-xs-block">
                 {% endif %}
+
             </div>
+
+
             {% for i in 0..3 if articles[articleCount] %}
                 <div class="col-md-3 col-sm-3">
                     {% set theDivider = [' divideright','',' divideright',''] %}
@@ -136,7 +146,10 @@
                     <hr class="divide visible-xs-block">
                     <hr class="divide15 hidden-xs space-only">
                 </div>
+
             {% endfor %}
+
+
         </div>
     </div>
 

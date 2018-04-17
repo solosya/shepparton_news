@@ -13,9 +13,121 @@
 
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
+{% set sectionOrder = [] %}
+
+
+
+
+
+
+
+
+
+{# *******************************************************
+                GLOBAL SITE SECTIONS
+              (each site can override)
+******************************************************* #}
+
+{% set pageSections =  {
+    'index': {
+        'template': 'partials/index/section-00-top.twig',
+        'blogs'         : [(site)],
+    },
+    'local': {
+        'template': 'partials/index/section-01-local.twig',
+        'template_params' : {
+                'ad': 'index-mrec-2'
+        },
+        'title' : 'Local News',
+        'blogs': ['local news'],
+    },
+    "real estate": {
+        'title'     : "Real Estate",
+        'blogs'     : ['real estate'],
+        'background': true,
+        'template'  : 'partials/index/section-02-real-estate.twig', 
+        'template_params' : {
+            'href': ['https://www.realestateview.com.au','0'],
+            'networkData' : networkData
+        },
+    },
+    "automotive": {
+        'title'     : "Automotive",
+        'blogs'     : ['automotive'],
+        'template'  : 'partials/index/section-02-real-estate.twig', 
+    },
+    "opinion": {
+        'title'     : "Opinion",
+        'blogs'     : ['opinion'],
+        'template'  : 'partials/index/section-03-opinion.twig',
+    },
+    'bloggers' :  {
+        'blogs'     : ['bloggers'],
+        'template'  : 'partials/index/bloggers.twig',
+        'template_params' : {
+            'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
+        }
+    },
+    "videos": {
+        'title'     : "Videos",
+        'blogs'     : ['video'],
+        'background': true,
+        'template'  : 'partials/index/section-04-videos.twig'
+    },
+    "galleries": {
+        'title'     : "Galleries",
+        'blogs'     : ['galleries'],
+        'template'  : 'partials/index/section-05-gallery.twig'
+    },
+    "social": {
+        'title'     : "Social",
+        'blogs'     : ['social'],
+        'template'  : 'partials/index/section-06-social.twig'
+    },
+    "contributed photos": {
+        'title'     : "Contributed Photos",
+        'blogs'     : ['contributed photos'],
+        'template'  : 'partials/index/section-05-gallery.twig'
+    }, 
+    "regional news": {
+        'title'     : "Regional News",
+        'blogs'     : ['regional news'],
+        'template'  : 'partials/index/section-07-regional.twig', 
+        'template_params' : {
+            'ad': 'index-mrec-3'
+        }
+    },
+    "rural news": {
+        'title'     : "Rural News",
+        'blogs'     : ['rural news'],
+        'template'  : 'partials/index/section-08-rural.twig',
+        'template_params' : {
+            'ad': 'index-mrec-4'
+        }
+    },
+    "national": {
+        'title'     : "National and World",
+        'blogs'     : ['national'],
+        'template'  : 'partials/index/section-09-national.twig', 
+        'template_params' : {
+            'ad': 'index-mrec-5'
+        }
+    }
+} %}
+
+
+
+
+
+
+
 
 
 {# The following list of blogs are required for each site to load the feeds #}
+
+{# *******************************************************
+                    SHEPPARTON
+******************************************************* #}
 {% set blogFeeds =  { (site) : { "limit" : 15} } %}
 
 {% if site == 'shepparton' or site == 'aapp' %}
@@ -36,107 +148,49 @@
         })
     %}
 
-
-    {% set pageSections =  {
-        'index': {
-            'template': 'partials/index/section-00-top.twig',
-            'blogs'         : [(site)],
-        },
-        'local': {
-            'template': 'partials/index/section-01-local.twig',
-            'template_params' : {
-                 'ad': 'index-mrec-2'
-            },
-            'title' : 'Local News',
-            'blogs': ['local news'],
-        },
-        "real estate": {
-            'title'     : "Real Estate",
-            'blogs'     : ['real estate'],
-            'background': true,
-            'template'  : 'partials/index/section-02-real-estate.twig', 
-            'template_params' : {
-                'href': ['https://www.realestateview.com.au','0'],
-                'networkData' : networkData
-            },
-        },
-        "automotive": {
-            'title'     : "Automotive",
-            'blogs'     : ['automotive'],
-            'template'  : 'partials/index/section-02-real-estate.twig', 
-        },
-        "opinion": {
-            'title'     : "Opinion",
-            'blogs'     : ['opinion'],
-            'template'  : 'partials/index/section-03-opinion.twig',
-        },
-        'bloggers' :  {
-            'blogs'     : ['bloggers'],
-            'template'  : 'partials/index/bloggers.twig',
-            'template_params' : {
-                'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
-            }
-        },
-        "videos": {
-            'title'     : "Videos",
-            'blogs'     : ['video'],
-            'background': true,
-            'template'  : 'partials/index/section-04-videos.twig'
-        },
-        "galleries": {
-            'title'     : "Galleries",
-            'blogs'     : ['galleries'],
-            'template'  : 'partials/index/section-05-gallery.twig'
-        },
-        "social": {
-            'title'     : "Social",
-            'blogs'     : ['social'],
-            'template'  : 'partials/index/section-06-social.twig'
-        },
-        "contributed photos": {
-            'title'     : "Contributed Photos",
-            'blogs'     : ['contributed photos'],
-            'template'  : 'partials/index/section-05-gallery.twig'
-        }, 
-        "regional news": {
-            'title'     : "Regional News",
-            'blogs'     : ['regional news'],
-            'template'  : 'partials/index/section-07-regional.twig', 
-            'template_params' : {
-                'ad': 'index-mrec-3'
-            }
-        },
-        "rural news": {
-            'title'     : "Rural News",
-            'blogs'     : ['rural news'],
-            'template'  : 'partials/index/section-08-rural.twig',
-            'template_params' : {
-                'ad': 'index-mrec-4'
-            }
-        },
-        "national": {
-            'title'     : "National and World",
-            'blogs'     : ['national'],
-            'template'  : 'partials/index/section-09-national.twig', 
-            'template_params' : {
-                'ad': 'index-mrec-5'
-            }
-        }
+    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
 
 
 
-    } %}
 
 
-{% endif  %}
-{# <pre>
-    {{dump(blogFeeds)}}
-</pre> #}
-{# <pre>
-    {{dump(networkData.networkBlogs)}}
-</pre> #}
 
 
+{# *******************************************************
+                    COUNTRY
+******************************************************* #}
+
+{% elseif site == 'country' %}
+
+    {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
+
+
+
+
+
+
+
+
+{# *******************************************************
+                    DARIY
+******************************************************* #}
+
+{% elseif site == 'country' %}
+
+    {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
+
+{% endif %}
+
+
+
+
+
+
+
+
+{# *******************************************************
+                Fetch all needed feeds
+******************************************************* #}
 {% for key, value in blogFeeds %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
@@ -159,15 +213,6 @@
 
 
 
-{% set sectionCount = 0 %}
-{% set sectionOrder = [] %}
-{% if site == 'shepparton' or site == 'aapp'%}
-    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
-{% elseif site == 'country' %}
-    {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
-{% endif %}
-
-
 
 
 
@@ -181,7 +226,7 @@
     
 
     {# *******************************************************
-                           SECTIONS
+                        RENDER SECTIONS
     ******************************************************* #}
     {% for pagesection in sectionOrder %}
 
@@ -239,11 +284,16 @@
 
         {% endif %}
 
+
+
+
         {% if loop.index == 5 %}
             <div class="ad-container mobad2">
                 <div id='index-banner-3' class='advert'></div>
             </div> 
         {% endif %}
+
+
 
         {% if loop.index == 8 %}
             <div class="ad-container mobad2">
