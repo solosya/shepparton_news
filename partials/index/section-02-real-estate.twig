@@ -10,7 +10,7 @@
     </div>
 
 
-    {% if title[0] == 'Real Estate' %}
+    {% if title == 'Real Estate' %}
         <div class="col-sm-9">
             <div class="u-margin-bottom-40">
 
@@ -80,34 +80,6 @@
         </div>
     </div> 
 
-    <div class="col-md-9 col-sm-9 section-header">
-        {% if href[1] != '0' %}<p><a href="{{ href[1] }}">View All</a></p>{% endif %}
-        <div class="hk">
-            <h2>{{ title[1] }}</h2>
-            <p></p>
-        </div>
-    </div> 
 
-    <div class="col-sm-9">
-        <div class="row">
-
-            {% for i in 0..2 if articles[articleCount] %}
-                <div class="col-sm-9 col-md-3">
-                    {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        template: 'property_card',
-                        networkData: networkData,
-                        imageSize: {width: 300, height: 195},
-                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                    {% if i < 2 %}
-                        <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
-                    {% endif %}
-                </div>
-            {% endfor %}
-
-        </div>
-    </div>   
 
 </section>
