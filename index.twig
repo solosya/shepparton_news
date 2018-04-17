@@ -33,13 +33,20 @@
             "opinion":          { "limit" : 4},
             "real estate":      { "limit" : 3},
             "automotive":       { "limit" : 3},
-            "bloggers":         { "limit" : 3}
+            "bloggers":         { "limit" : 3},
+            "video":            { "limit" : 3},
+            "galleries":        { "limit" : 3},
+            "social":           { "limit" : 3},
+            "contributed photos":{ "limit" : 3},
+            "regional news":    { "limit" : 13},
+            "rural news":       { "limit" : 16},
+            "national":         { "limit" : 13}
         }
     %}
 
     {% set pageSections =  {
         'index': {
-            'template': 'partials/index/default-top.twig',
+            'template': 'partials/index/section-00-top.twig',
             'blogs'         : ['aapp'],
         },
         'local': {
@@ -52,7 +59,7 @@
         },
         "real estate": {
             'title'     : "Real Estate",
-            'blogs'     : ['real estate']
+            'blogs'     : ['real estate'],
             'template'  : 'partials/index/section-02-real-estate.twig', 
             'template_params' : {
                 'href': ['https://www.realestateview.com.au','0'],
@@ -61,12 +68,12 @@
         },
         "automotive": {
             'title'     : "Automotive",
-            'blogs'     : ['automotive']
+            'blogs'     : ['automotive'],
             'template'  : 'partials/index/section-02-real-estate.twig', 
         },
         "opinion": {
             'title'     : "Opinion",
-            'blogs'     : ['opinion']
+            'blogs'     : ['opinion'],
             'template'  : 'partials/index/section-03-opinion.twig',
         },
         'bloggers' :  {
@@ -89,7 +96,7 @@
         "social": {
             'title'     : "Social",
             'blogs'     : ['social'],
-            'template'  : 'partials/index/ssection-06-small-three-events.twig'
+            'template'  : 'partials/index/section-06-social.twig'
         },
         "contributed photos": {
             'title'     : "Contributed Photos",
@@ -155,7 +162,7 @@
 {% set sectionCount = 0 %}
 {% set sectionOrder = [] %}
 {% if site == 'shepparton' %}
-    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', , 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
+    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
 {% endif %}
