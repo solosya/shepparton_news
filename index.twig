@@ -29,40 +29,43 @@
             "local news": {
                 "title": "Local News",      "limit" : 12, 'template' : 'partials/index/section-01-local.twig', 
                     'template_params' : {
-                        'ad': ['index-mrec-2-desktop','index-mrec-4-mobile-tablet-desktop']
+                        'ad': 'index-mrec-2'
                     }
-            }, 
-            "regional news": {
-                "title": "Regional News",   "limit" : 13, 'template' : 'partials/index/section-07-regional.twig', 
-                    'template_params' : {
-                        'ad': ['index-mrec-3-desktop']
-                    }
+            },
+            "real estate": {
+                "title": "National",        "limit" : 6, 'template' : 'partials/index/section-02-real-estate.twig', 'template_params' : {}
             },
             "opinion": {
                 "title": "Opinion",         "limit" : 4, 'template' : 'partials/index/section-03-opinion.twig', 'template_params' : {}
             },
-            "rural news": {
-                "title": "Rural News",      "limit" : 3, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
+            "videos": {
+                "title": "Videos",         "limit" : 3, 'template' : 'partials/index/section-04-videos.twig', 'template_params' : {}
             },
-            "sport": {
-                "title": "Sport",           "limit" : 5, 'template' : 'partials/index/section-06-small-three-events.twig', 
+            "galleries": {
+                "title": "Galleries",        "limit" : 3, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
+            },
+            "social": {
+                "title": "Social",        "limit" : 3, 'template' : 'partials/index/ssection-06-small-three-events.twig', 'template_params' : {}
+            },
+            "contributed photos": {
+                "title": "Contributed Photos",        "limit" : 3, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
+            }, 
+            "regional news": {
+                "title": "Regional News",   "limit" : 13, 'template' : 'partials/index/section-07-regional.twig', 
                     'template_params' : {
-                        'ad': 'index-mrec-5-mobile-tablet-desktop'
+                        'ad': 'index-mrec-3'
+                    }
+            },
+            "rural news": {
+                "title": "Rural News",      "limit" : 16, 'template' : 'partials/index/section-08-rural.twig',
+                'template_params' : {
+                        'ad': 'index-mrec-4'
                     }
             },
             "national": {
-                "title": "National",        "limit" : 4, 'template' : 'partials/index/section-05-gallery.twig', 'template_params' : {}
-            },
-            "news": {
-                "title": "News",        "limit" : 13, 'template' : 'partials/index/section-01-local.twig', 
+                "title": "National & World",        "limit" : 13, 'template' : 'partials/index/section-09-national.twig', 
                     'template_params' : {
-                        'ad': ['index-mrec-1-desktop','index-mrec-5-mobile-tablet-desktop']
-                    }
-            },
-            "bloggers": {
-                "title": "Bloggers",        "limit" : 2, 'template' : 'partials/index/section-06-small-three-events.twig',
-                    'template_params' : {
-                        'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
+                        'ad': 'index-mrec-5'
                     }
             }
         }
@@ -139,7 +142,7 @@
 {% set sectionOrder = [] %}
 
 {% if site == 'shepp' %}
-    {% set sectionOrder = ['news','local news', 'bloggers', 'regional news', 'opinion', 'rural news', 'sport'] %}
+    {% set sectionOrder = ['local news', 'real estate', 'opinion', 'videos', 'galleries', 'social', 'photos', 'regional news', 'rural news', 'national'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
 {% endif %}
@@ -168,7 +171,7 @@
             articleCount: articleCount,
             dev: dev,
             site: site,
-            ad: ['index-mrec-1-mobile-tablet','index-mrec-3-mobile','index-mrec-1-desktop'],
+            ad: 'index-mrec-1'
         }) | raw}}
     </div>
 
@@ -176,12 +179,8 @@
 
 
 
-   <div class="ad-container">
-        <div id='index-banner-1-tablet-desktop' class='advert'
-            data-site="{{site}}"
-            data-section="{{blogData.title | lower}}"
-            data-type="{{blogData.type | lower}}"        
-        ></div>
+   <div class="ad-container mobad2">
+        <div id='index-banner-2' class='advert'></div>
     </div>
 
 
@@ -218,25 +217,16 @@
             </div>
         {% endif %}
 
-
-        {% if loop.index == 1 %}
-            <div class="ad-container hidden-md hidden-lg mobad2">
-                <div id='index-mrec-2-mobile-tablet' class='advert'
-                    data-site="{{site}}"
-                    data-section="{{blogData.title | lower}}"
-                    data-type="{{blogData.type | lower}}"        
-                ></div>
-            </div>
+        {% if loop.index == 5 %}
+            <div class="ad-container mobad2">
+                <div id='index-banner-3' class='advert'></div>
+            </div> 
         {% endif %}
 
-        {% if loop.index == 3 %}
-            <div class="ad-container visible-sm-block">
-                <div id='index-mrec-3-tablet' class='advert'
-                    data-site="{{site}}"
-                    data-section="{{blogData.title | lower}}"
-                    data-type="{{blogData.type | lower}}"        
-                ></div>
-            </div>      
+        {% if loop.index == 8 %}
+            <div class="ad-container mobad2">
+                <div id='index-banner-4' class='advert'></div>
+            </div> 
         {% endif %}
 
 

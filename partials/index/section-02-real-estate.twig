@@ -1,0 +1,72 @@
+{% set articleCount = 0 %}
+
+<section class="row">
+    <div class="col-md-9 col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ title }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6">
+        {% if articles.feed.articles[articleCount] %}
+            {{this.render('../_single-article.twig', {
+                article:        articles.feed.articles[articleCount], 
+                imageSize:      {width:409, height:530},
+                site:           site,
+                containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
+            }) | raw}}
+            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+        {% endif %}
+        <hr class="divide visible-xs-block space-only">        
+
+
+    </div>
+    <div class="col-md-2 col-sm-3">
+        {% set cardspace = ['', 'row-space'] %}
+        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+
+
+            {{this.render('../_single-article.twig', {
+                article:        articles.feed.articles[articleCount], 
+                imageSize:      {width:300},
+                site:           site,
+                containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
+            }) | raw}}
+            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+            <hr class="divide visible-xs-block">
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="col-md-3 visible-xs-block visible-md-block visible-lg-block">
+{# 
+        <div class="ad-square hidden-xs" style="margin-bottom:30px;">
+            <div id='{{ ad }}' class='advert'
+                data-site="{{site}}"
+                data-section="{{blogData.title | lower}}"
+                data-type="{{blogData.type | lower}}"        
+            ></div>
+        </div> #}
+        
+        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+           
+            {{this.render('../_single-article.twig', {
+                article:        articles.feed.articles[articleCount], 
+                imageSize:      {width:300},
+                site:           site,
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            
+            {% if i == 0 %}
+                <hr class="divide">
+            {% endif %}
+
+        {% endfor %}
+    </div>    
+
+</section>

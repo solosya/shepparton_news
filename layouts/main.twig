@@ -197,11 +197,7 @@
     {# Don't show this add on blog pages.  Index is a blog so only allow there #}
     {% if (pageTypeClass != "blog" and layout != "layout-property") or url.path == '/'%}
     <div class="ad-container top-ad">
-        <div id='main-banner-desktop' class='advert'
-            data-site="{{site}}"
-            data-section="{{blogData.title | lower}}"
-            data-type="{{blogData.type | lower}}"        
-        ></div>
+        <div id='main-banner-desktop' class='advert'></div>
     </div>
     {% endif %}
 
