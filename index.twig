@@ -148,8 +148,7 @@
             {% set blogFeeds = blogFeeds | merge({
                 (key) : {
                     'feed'      : feed,
-                    'link'      : blog.link,
-                    'title'     : blogFeeds[key]['title']
+                    'link'      : blog.link
                     }
                 }) %}
 
@@ -230,7 +229,8 @@
 
         {% if section.template != '' %}
             {% set params = {
-                articles: feedArr, 
+                articles: feedArr,
+                link:     blogFeeds[ section.blogs[0] ].link,
                 title:    section.title is defined ? section.title : '',
                 dev:      dev,
                 site:     site
@@ -258,7 +258,6 @@
         {% endif %}
 
 
-        {# {{dump(loop.index)}} #}
 
     {% endfor %}
 
