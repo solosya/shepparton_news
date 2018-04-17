@@ -4,8 +4,6 @@
 {% set layout      = blogData.layout %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
-{# {% set site        =  'country' %} #}
-
 {# {% set layoutTitle = _Page.getLayoutTitle() %} #}
 
 {{this.registerJs("Acme.cards = CardController();")}}
@@ -13,20 +11,14 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{# {% set limit = 1 %}
-{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
-{% set articles = articlesArr.articles %} #}
-
-
-<!-- used to index each article as we loop over throughout the template -->
-{# {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %} #}
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
 
 
 {# The following list of blogs are required for each site to load the feeds #}
 {% set blogFeeds =  { (site) : { "limit" : 15} } %}
 
-{% if site == 'shepparton' %}
+{% if site == 'shepparton' or site == 'aapp' %}
 
     {% set blogFeeds = blogFeeds | merge({
             "local news":       { "limit" : 6},
@@ -48,7 +40,7 @@
     {% set pageSections =  {
         'index': {
             'template': 'partials/index/section-00-top.twig',
-            'blogs'         : ['aapp'],
+            'blogs'         : [(site)],
         },
         'local': {
             'template': 'partials/index/section-01-local.twig',
@@ -137,12 +129,18 @@
 
 
 {% endif  %}
+{# <pre>
+    {{dump(blogFeeds)}}
+</pre> #}
+{# <pre>
+    {{dump(networkData.networkBlogs)}}
+</pre> #}
 
 
 {% for key, value in blogFeeds %}
     {% for blog in networkData.networkBlogs %}
         {% if blog.title | lower == key %}
-            
+
             {% set feed = dev 
                     ? articlesArr 
                     : _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
@@ -163,7 +161,7 @@
 
 {% set sectionCount = 0 %}
 {% set sectionOrder = [] %}
-{% if site == 'shepparton' %}
+{% if site == 'shepparton' or site == 'aapp'%}
     {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
 {% elseif site == 'country' %}
     {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
@@ -181,22 +179,6 @@
 
 <main id="main" class="site-main" role="main">
     
-
-
-
-
-
-    {# <div id="newAdSlot"></div>
-    <script>loadNextAd()</script> #}
-
-
-
-
-
-
-
-
-
 
     {# *******************************************************
                            SECTIONS
@@ -272,12 +254,6 @@
 
 
     {% endfor %}
-
-
-   
-
-
-
 
 
 
