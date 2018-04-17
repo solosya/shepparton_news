@@ -62,18 +62,20 @@
         <div class="row">
 
             {% for i in 0..2 if articles.feed.articles[articleCount] %}
-                {{this.render('../_single-article.twig', {
-                    article: articles.feed.articles[articleCount], 
-                    template: 'property_card',
-                    networkData: networkData,
-                    imageSize: {width: 300, height: 195},
-                    containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
-                }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                {% if i < 2 %}
-                    <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
-                {% endif %}
+                <div class="col-sm-9 col-md-3 m-split">
+                    {{this.render('../_single-article.twig', {
+                        article: articles.feed.articles[articleCount], 
+                        template: 'property_card',
+                        networkData: networkData,
+                        imageSize: {width: 300, height: 195},
+                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                    }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    {% if i < 2 %}
+                        <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                    {% endif %}
+                </div>
             {% endfor %}
 
         </div>
@@ -91,17 +93,20 @@
         <div class="row">
 
             {% for i in 0..2 if articles.feed.articles[articleCount] %}
-                {{this.render('../_single-article.twig', {
-                    article: articles.feed.articles[articleCount], 
-                    template: 'property_card',
-                    networkData: networkData,
-                    imageSize: {width: 300, height: 195},
-                    containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
-                }) | raw}}
-                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                {% if i < 2 %}
-                    <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
-                {% endif %}
+                <div class="col-sm-9 col-md-3 m-split">
+                    {{this.render('../_single-article.twig', {
+                        article: articles.feed.articles[articleCount], 
+                        template: 'property_card',
+                        networkData: networkData,
+                        imageSize: {width: 300, height: 195},
+                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                    }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    {% if i < 2 %}
+                        <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                    {% endif %}
+                </div>
             {% endfor %}
 
         </div>
