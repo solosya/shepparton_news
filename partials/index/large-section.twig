@@ -15,9 +15,9 @@
     <div class="col-md-9 col-sm-9">
         <div class="row">
             <div class="col-sm-9 col-md-6">
-                {% if articles.feed.articles[articleCount] %}
+                {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles.feed.articles[articleCount], 
+                        article: articles[articleCount], 
                         position: articleCount + 1, 
                         imageSize: {width:640, height:400},
                         site:site,
@@ -32,10 +32,10 @@
                 <hr class="divide15 visible-sm-block visible-xs-block space-only">
 
                 <div class="row three-cols">
-                    {% for i in 0..1 if articles.feed.articles[articleCount] %}
+                    {% for i in 0..1 if articles[articleCount] %}
                         <div class="col-md-2 col-sm-1">
                             {{this.render('../_single-article.twig', {
-                                article: articles.feed.articles[articleCount], 
+                                article: articles[articleCount], 
                                 imageSize: {width:300},
                                 site:site,
                                 containerClass: 'feature-side card-sm-tablet card-sm-mobile'
@@ -49,10 +49,10 @@
                         </div>
                     {% endfor %}
                 
-                    {% if articles.feed.articles[articleCount] %}
+                    {% if articles[articleCount] %}
                         <div class="col-md-2 col-sm-1">                    
                             {{this.render('../_single-article.twig', {
-                                article: articles.feed.articles[articleCount], 
+                                article: articles[articleCount], 
                                 imageSize: {width:300},
                                 site:site,
                                 containerClass: 'feature-side card-sm-tablet card-sm-mobile visible-xs-block visible-sm-block'
@@ -103,11 +103,11 @@
                             <!-- tablet cards -->
                             {% set tabletCount = 0 %}
                             <div class="row row-space md visible-sm-block">
-                                {% for i in 0..1 if articles.feed.articles[tabletCount] %}
+                                {% for i in 0..1 if articles[tabletCount]%}
                                     <div class="col-sm-9">
                                         <hr class="divide12">                           
                                         {{this.render('../_single-article.twig', {
-                                            article: articles.feed.articles[tabletCount], 
+                                            article: articles[tabletCount], 
                                             imageSize: {width:188},
                                             site:site,
                                             containerClass: 'feature-side feature-side-tablet card-sm-mobile'
@@ -141,9 +141,9 @@
                             <div class="row visible-md-block visible-lg-block">
                                 <div class="col-md-9">
 
-                                    {% if articles.feed.articles[articleCount] %}
+                                    {% if articles[articleCount] %}
                                         {{this.render('../_single-article.twig', {
-                                            article: articles.feed.articles[articleCount], 
+                                            article: articles[articleCount], 
                                             imageSize: {width:900},
                                             site:site,
                                             containerClass: 'card-rec-full'
@@ -161,10 +161,10 @@
                             <!-- desktop cards -->
                             {% set desktopCount = articleCount %}                            
                             <div class="row two-cols row-space md visible-md-block visible-lg-block">
-                                {% for i in 0..1 if articles.feed.articles[desktopCount] %}
+                                {% for i in 0..1 if articles[desktopCount] %}
                                     <div class="col-md-1">                                            
                                         {{this.render('../_single-article.twig', {
-                                            article: articles.feed.articles[desktopCount], 
+                                            article: articles[desktopCount], 
                                             imageSize: {width:188},
                                             site:site,
                                             containerClass: 'card-sm card-sm-tablet card-sm-mobile'
