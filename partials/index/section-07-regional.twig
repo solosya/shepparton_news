@@ -2,7 +2,7 @@
     
 <section class="row">
     <div class="col-sm-9 section-header">
-        <p><a href="{{articles.link}}">View All</a></p>
+        <p><a href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
             <p></p>
@@ -11,9 +11,9 @@
 
     <div>
         <div class="col-md-4 col-sm-6">
-            {% if articles.feed.articles[articleCount] %}
+            {% if articles[articleCount] %}
                 {{this.render('../_single-article.twig', {
-                    article:        articles.feed.articles[articleCount], 
+                    article:        articles[articleCount], 
                     imageSize:      {width:409, height:530},
                     site:           site,
                     containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
@@ -26,11 +26,11 @@
         </div>
         <div class="col-md-2 col-sm-3">
             {% set cardspace = ['', 'row-space'] %}
-            {% for i in 0..1 if articles.feed.articles[articleCount] %}
+            {% for i in 0..1 if articles[articleCount] %}
 
 
                 {{this.render('../_single-article.twig', {
-                    article:        articles.feed.articles[articleCount], 
+                    article:        articles[articleCount], 
                     imageSize:      {width:300},
                     site:           site,
                     containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
@@ -48,10 +48,10 @@
                 <div id='{{ ad }}' class='advert'></div>
             </div>
             
-            {% if articles.feed.articles[articleCount] %}
+            {% if articles[articleCount] %}
                
                 {{this.render('../_single-article.twig', {
-                    article:        articles.feed.articles[articleCount], 
+                    article:        articles[articleCount], 
                     imageSize:      {width:300},
                     site:           site,
                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
@@ -66,9 +66,9 @@
     <div class="col-md-9 col-sm-9">
         <div class="row u-margin-top-30">
             <div class="col-sm-4 col-xs-9">
-                {% if articles.feed.articles[articleCount] %}
+                {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles.feed.articles[articleCount], 
+                        article: articles[articleCount], 
                         imageSize: {width:414, height:255},
                         site: site,
                         containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
@@ -78,12 +78,12 @@
 
                <hr class="divide visible-xs-block">
             </div>
-             <div class="col-md-2 col-sm-3 col-xs-9">
-                {% if articles.feed.articles[articleCount] %}
+             <div class="col-md-2 col-sm-3">
+                {% if articles[articleCount] %}
 
 
                     {{this.render('../_single-article.twig', {
-                        article:        articles.feed.articles[articleCount], 
+                        article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
                         containerClass: 'card-sm card-sm-tablet card-sm-mobile'
@@ -96,10 +96,10 @@
             </div>
             <div class="col-md-3">
          
-                {% if articles.feed.articles[articleCount] %}
+                {% if articles[articleCount] %}
                    
                     {{this.render('../_single-article.twig', {
-                        article:        articles.feed.articles[articleCount], 
+                        article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
                         containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
@@ -113,11 +113,11 @@
     </div>
     <div class="col-md-9 col-sm-9 u-margin-top-30">
         <div class="row">
-            {% for i in 0..5 if articles.feed.articles[articleCount] %}
+            {% for i in 0..5 if articles[articleCount] %}
                 {% set theDivider = [' divideright',' divideright','',' divideright',' divideright',''] %}
                 <div class="col-sm-3 col-xs-9">
                     {{this.render('../_single-article.twig', {
-                        article:        articles.feed.articles[articleCount], 
+                        article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]

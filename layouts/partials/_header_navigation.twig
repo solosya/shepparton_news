@@ -1,3 +1,6 @@
+{% set headermenu = _Menu.get({'menuType': 'header'}) %}
+
+
 
 <header id="masthead" class="site-header container-fluid">
 
@@ -33,14 +36,27 @@
                                         <button class="submit search-icon-mobile" type="submit" id="mobileSearchButton"></button>
                                     </form>
                                 </fieldset>  
-                            </li>                             
-                            {% for parentItem in blog.blogHeaderMenu  %}
+                            </li>  
+
+
+                            {% for parentItem in headermenu %}
 
                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
                                <li>
-                                    <a {% if "blogs" not in (parentItem.link |raw) and "more" not in (parentItem.link |raw) %}href="{{parentItem.link |raw}}"{% endif %} class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %} style="cursor:pointer;">
+                                    <a {% if "blogs" not in (parentItem.link |raw) and "more" not in (parentItem.link |raw) %}  
+                                                href="{{parentItem.link | raw}}"
+                                        {% endif %} 
+                                        
+                                        class="{{activeClass}} {{externalClass}}" 
+                                        
+                                        {% if parentItem.target != "" %} 
+                                            target="{{parentItem.target}}"
+                                        {% endif %} 
+                                            
+                                            style="cursor:pointer;">
+
                                         {% if parentItem.label != "" %}
                                             {{parentItem.label}}
                                         {% elseif parentItem.blogTitle != "" %}
@@ -77,6 +93,8 @@
         {% if 'dairy' in (networkData.title | lower) %}
         {%   set visibility = ' visible-md-block visible-lg-block' %}
         {% endif %}
+
+
 
         <div class="header-bottom {{ visibility }}">
 
@@ -140,7 +158,8 @@
                     <nav class="sb-custom-menu menu-bar" id="menu-mobile">
                         <div class="menuContainer">
                             <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
-                                   {% for parentItem in blog.blogHeaderMenu  %}
+                                   
+                                   {% for parentItem in headermenu  %}
 
                                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
@@ -207,8 +226,9 @@
                                             <button class="submit search-icon-mobile" type="submit" id="mobileSearchButton"></button>
                                         </form>
                                     </fieldset>  
-                                </li>                             
-                                {% for parentItem in blog.blogHeaderMenu  %}
+                                </li>    
+                                                         
+                                {% for parentItem in headermenu  %}
 
                                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}

@@ -12,11 +12,11 @@
         </div>
     </div>
 
-    {% for i in 0..1 if articles.feed.articles[i] %}
+    {% for i in 0..1 if articles[i] %}
         <div class="col-sm-3">                                            
             {% if i == 0 %}
                 {{this.render('../_single-article.twig', {
-                    article:        articles.feed.articles[i], 
+                    article:        articles[i], 
                     imageSuppress:  true,
                     site:           site,
                     containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile {{site}}'
@@ -25,7 +25,7 @@
                 <hr class="divide visible-xs-block">
             {% else %}
                 {{this.render('../_single-article.twig', {
-                    article:        articles.feed.articles[i], 
+                    article:        articles[i], 
                     imageSuppress:  true,
                     site:           site,
                     containerClass: 'card-blogger card-blogger-tablet card-blogger-mobile {{site}} border__left'

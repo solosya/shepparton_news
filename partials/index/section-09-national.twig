@@ -2,7 +2,7 @@
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
-        <p><a href="{{articles.link}}">View All</a></p>
+        <p><a href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
             <p></p>
@@ -10,9 +10,9 @@
     </div>
 
     <div class="col-xs-9 col-sm-9 col-md-6">
-        {% if articles.feed.articles[articleCount] %}                                                                
+        {% if articles[articleCount] %}                                                                
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[articleCount], 
+                article: articles[articleCount], 
                 imageSize: {width:640, height:400},
                 site: site,
                 containerClass: 'home-feature home-feature-tablet home-feature-mobile index-feature'
@@ -22,12 +22,12 @@
         {% endif %}
 
         <div class="row u-margin-top-30">
-            {% for i in 0..1 if articles.feed.articles[articleCount] %}
+            {% for i in 0..1 if articles[articleCount] %}
                 {% set theDivider = [' divideright',''] %}
                     
                 {% if i == 0 %}<div class="col-sm-5">{% else %}<div class="col-sm-4">{% endif %}
                     {{this.render('../_single-article.twig', {
-                        article: articles.feed.articles[articleCount],
+                        article: articles[articleCount],
                         imageSize: {width:95},
                         site: site,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~theDivider[i]
@@ -39,10 +39,10 @@
         </div>
 
         <div class="row u-margin-top-40">
-            {% if articles.feed.articles[articleCount] %}     
+            {% if articles[articleCount] %}     
                 <div class="col-sm-6">
                     {{this.render('../_single-article.twig', {
-                        article: articles.feed.articles[articleCount],
+                        article: articles[articleCount],
                         imageSize: {width:95},
                         site: site,
                         containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
@@ -52,10 +52,10 @@
                 </div>
             {% endif %}
 
-            {% if articles.feed.articles[articleCount] %}     
+            {% if articles[articleCount] %}     
                 <div class="col-sm-3 col-xs-9">
                     {{this.render('../_single-article.twig', {
-                        article: articles.feed.articles[articleCount],
+                        article: articles[articleCount],
                         imageSize: {width:95},
                         site: site,
                         containerClass: 'card-sm card-sm-tablet card-sm-mobile'
@@ -72,10 +72,10 @@
             <div class="col-sm-9 ad-square u-margin-bottom-30">
                  <div id='{{ ad }}' class='advert'></div>
             </div>
-            {% for i in 0..3 if articles.feed.articles[articleCount] %}
+            {% for i in 0..3 if articles[articleCount] %}
                 <div class="col-sm-9 col-xs-9">
                     {{this.render('../_single-article.twig', {
-                        article: articles.feed.articles[articleCount],
+                        article: articles[articleCount],
                         imageSize: {width:95},
                         site: site,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile'

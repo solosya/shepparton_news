@@ -7,7 +7,7 @@
 
 <section class="row">
     <div class="col-sm-9 section-header">
-        <p><a href="{{articles.link}}">View All</a></p>
+        <p><a href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
             <p></p>
@@ -18,10 +18,10 @@
 
     <div>    
         
-        {% for i in 0..2 if articles.feed.articles[articleCount] %}
+        {% for i in 0..2 if articles[articleCount] %}
             <div class="col-sm-2">
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[articleCount], 
+                article: articles[articleCount], 
                 imageSize: {width:300},
                 site: site,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile'

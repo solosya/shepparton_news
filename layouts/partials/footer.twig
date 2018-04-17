@@ -1,4 +1,5 @@
 {% set link = _Blog.getHomeBlogSettings() %}
+{% set footerMenu = _Menu.get({'menuType': 'footer'}) %}
 
 <footer class="site-footer">
     <div class="container">        
@@ -43,40 +44,37 @@
 
         <div class="row site-footer-links">
             <div class="col-xs-9">
-
-                {% set menuItems = blog.blogFooterMenu %}                
-
-                {% if menuItems | length > 0 %}
+                {% if footerMenu | length > 0 %}
                     {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(0, 3),
+                        items: footerMenu | slice(0, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
                     }) | raw}}
                 {% endif %}
 
-                {% if menuItems | length > 3 %}
+                {% if footerMenu | length > 3 %}
                     {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(3, 3),
+                        items: footerMenu | slice(3, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
                     }) | raw}}
                 {% endif %}
 
-                {% if menuItems | length > 6 %}
+                {% if footerMenu | length > 6 %}
                     {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(6, 3),
+                        items: footerMenu | slice(6, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
                     }) | raw}}
                 {% endif %}
 
-                {% if menuItems | length > 9 %}
+                {% if footerMenu | length > 9 %}
                     {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(9, 3),
+                        items: footerMenu | slice(9, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
                    }) | raw}}
                 {% endif %}
 
-                {% if menuItems | length > 12 %}
+                {% if footerMenu | length > 12 %}
                     {{this.render('_footer_navigation.twig', {
-                        items: menuItems | slice(12, 3),
+                        items: footerMenu | slice(12, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
                     }) | raw}}
                 {% endif %}
