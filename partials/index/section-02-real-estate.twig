@@ -62,7 +62,7 @@
         <div class="row">
 
             {% for i in 0..2 if articles.feed.articles[articleCount] %}
-                {{this.render('partials/_single-article.twig', {
+                {{this.render('../_single-article.twig', {
                     article: articles.feed.articles[articleCount], 
                     template: 'property_card',
                     networkData: networkData,
@@ -91,7 +91,7 @@
         <div class="row">
 
             {% for i in 0..2 if articles.feed.articles[articleCount] %}
-                {{this.render('partials/_single-article.twig', {
+                {{this.render('../_single-article.twig', {
                     article: articles.feed.articles[articleCount], 
                     template: 'property_card',
                     networkData: networkData,
