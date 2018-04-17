@@ -1,192 +1,391 @@
-{# {% set blogNetworkName = (networkData.title | lower) %}
-{% set blogPrefixName = (blogData.title | lower) %}
-{% set pageType = (blogData.type | lower) %} #}
-
-
-{# {% if (networkData.title | lower) == 'country news' %}
-    {% set blogNetworkName = 'countrynews' %}
-{% elseif 'dairy' in (networkData.title | lower) %}
-    {% set blogNetworkName = 'dairy_news' %}
-{% else %}
-    {% set blogNetworkName = 'sheppnews' %}
-{% endif %} #}
-
-
-{% if (networkData.title | lower) == (blogData.title | lower) %}
-    {% set blogPrefixName = 'www' %}
-{% elseif (blogData.title | lower) == 'australian rules' or (blogData.title | lower) == 'cricket' or (blogData.title | lower) == 'golf' or (blogData.title | lower) == 'netball' or (blogData.title | lower) == 'racing' or (blogData.title | lower) == 'soccer' or (blogData.title | lower) == 'tennis' %}
-    {% set blogPrefixName = 'sport' %}
-{% else %}
-    {% set blogPrefixName = (blogData.title | lower) %}
-{% endif %}
-
-{% set pageType = (blogData.type | lower) %}
-
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <script>
-            
-            var blogNetwork = getBlogSettings('{{networkData.title | lower}}',1);
-            console.log("ad ", blogNetwork);
-            blogPrefix = '{{blogPrefixName}}';
-            var mapping, mappingMob, mappingHalfPageComments;
-            var setSite = function(uri) {
-                var site, parser;
-                if (typeof(uri) === 'undefined' || uri === '' || uri.indexOf('http') < 0) {
-                    uri = window.document.location.href;
-                }
-                parser = window.document.createElement('a');
-                parser.href = uri;
-                site = parser.hostname;
-                return site;
-            };
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
 
-            var rubicontag = rubicontag || {};
-                rubicontag.cmd = rubicontag.cmd || [];
-                
-            var gptadslots = [];
-            var googletag = googletag || {};
-            googletag.cmd = googletag.cmd || [];
-            
-            (function() {
-                var account_id = 14654;
-                var rct = document.createElement('script');
-                    rct.type = 'text/javascript';
-                    rct.async = true;
-                    rct.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') + '//ads.rubiconproject.com/header/' + account_id + '.js';
-                var node = document.getElementsByTagName('script')[0];
-                    node.parentNode.appendChild(rct);
-            })();
-            
-            rubicontag.cmd.push(function() {
-                rubicontag.addFPV('BLOGPREFIX', '{{blogPrefixName}}');
-                rubicontag.addFPV('page-type', '{{pageType}}');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setPosition('atf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-1').setPosition('atf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90], [320, 50], [300, 50]], 'div-gpt-ad-leaderboard-2').setPosition('atf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-2').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-3').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-4').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-5').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-6').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-7').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-8').setPosition('btf');
-                rubicontag.defineSlot('/4082264/'+blogNetwork, [[300, 250]], 'div-gpt-ad-mrec-9').setPosition('btf');
-                rubicontag.run(gptrun);
-            });
-            
-            googletag.cmd.push(function() {
-                var mapping1 = googletag.sizeMapping()
-                                .addSize([1000, 200], [[970, 250], [970, 90], [728, 90]])
-                                .addSize([768, 200], [[728, 90]])
-                                .addSize([480, 200], [])
-                                .addSize([360, 200], [])
-                                .addSize([320, 400], [])
-                                .build();
+  var rubicontag = rubicontag || {};
+  rubicontag.cmd = rubicontag.cmd || [];
 
-                var mapping2 = googletag.sizeMapping()
-                                .addSize([1000, 200], [[300, 250]])
-                                .addSize([768, 200], [[300, 250]])
-                                .addSize([480, 200], ['fluid', [300, 250]])
-                                .addSize([360, 200], ['fluid', [300, 250]])
-                                .addSize([320, 400], ['fluid', [300, 250]])
-                                .build();
+  // this is the number of your dfp account:
+  var dfpacct = '4082264';
+  // leave this variable, it needs to be here
+  var nextAdId = 1;
+  var rubiconAcct = 14654;
+  var gptran = false;
+  var teadsAd = false;
+  // Each ad space needs two attributes, all applicable ad shape sizes, and a mapping key
+  // the size attribute defines all creative sizes that can display when an ad space is called,
+  // The first setting in map determines minimum screen size, then lists which ad shapes to display.
+  // It will try to grab the first listed, and will move to the next if the first is unavailable.
+  // for publish website advertising, width 992+ is desktop, 769-991 is tablet and 0-768 is mobile
 
-                var mapping3 = googletag.sizeMapping()
-                                .addSize([1000, 200], [[300, 600]])
-                                .addSize([768, 200], [[300, 600]])
-                                .addSize([480, 200], [[300, 250]])
-                                .addSize([360, 200], [[300, 250]])
-                                .addSize([320, 400], [[300, 250]])
-                                .build();
 
-                var mapping4 = googletag.sizeMapping()
-                                .addSize([1000, 200], [[970, 250], [970, 90], [728, 90]])
-                                .addSize([768, 200], [[728, 90]])
-                                .addSize([480, 200], [[320, 50]])
-                                .addSize([360, 200], [[320, 50]])
-                                .addSize([320, 400], [[320, 50]])
-                                .build();
+var networkSelect = {
+    'dairy' : 'dairy_news',
+    'shepp' : 'sheppnews',
+    'country' : 'countrynews',
+    'riverine' : 'riverineherald',
+    'benalla' : 'benallaensign',
+    'campaspe' : 'campaspenews',
+    'cobram' : 'cobramcourier',
+    'corowa' : 'corowafreepress',
+    'deniliquin' : 'deniliquinpastoraltimes',
+    'kyabram' : 'kyabramfreepress',
+    'mcivor' : 'mcivortimes',
+    'seymour' : 'seymourtelegraph',
+    'tatura' : 'taturaguardian',
+    'yarrawonga' : 'yarrawongachronicle',
+    'riverina' : 'southernriverinanews'
+}
 
-                var mapping5 = [[[1000, 200],[]],[[768, 200],[]],[[0,0],['fluid', [300, 250]]]]
-                var mapping6 = [[[1000, 200],['fluid', [300, 250]]],[[768, 200],['fluid', [300, 250]]],[[0,0],[]]]
-                var mapping7 = [[[992, 200],[300, 600]],[[768, 200],[]],[[0,0],[]]]
-                var mapping8 = [[[992, 200],[]],[[768, 200],[300, 600]],[[0,0],[]]]
-                var mapping9 = [[[992, 200],['fluid', [300, 250]]],[[768, 200],[]],[[0,0],[]]]
-                var mapping10 = [[[992, 200],[]],[[768, 200],['fluid', [300, 250]]],[[0,0],[]]]
+var siteAdSections = {
 
-                
-                gptadslots[0] = googletag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-leaderboard-1').setTargeting('POS', ['1']).defineSizeMapping(mapping1).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[1] = googletag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90], [320, 50]], 'div-gpt-ad-leaderboard-2').setTargeting('POS', ['2']).defineSizeMapping(mapping4).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[2] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-1').setTargeting('POS', ['5']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[3] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-2').setTargeting('POS', ['2']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());   
-                gptadslots[4] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-3').setTargeting('POS', ['3']).defineSizeMapping(mapping2).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[5] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-4').setTargeting('POS', ['4']).defineSizeMapping(mapping6).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[6] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss').setTargeting('POS', ['1']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[7] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-ss-2').setTargeting('POS', ['1']).defineSizeMapping(mapping3).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
-                gptadslots[8] = googletag.defineSlot('/4082264/'+blogNetwork, [[1, 1]], 'div-gpt-ad-teads').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[9] = googletag.defineOutOfPageSlot('/4082264/'+blogNetwork, 'div-gpt-ad-interstitial').setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[10] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-5').setTargeting('POS', ['1']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[11] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-6').setTargeting('POS', ['6']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[12] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-7').setTargeting('POS', ['7']).defineSizeMapping(mapping5).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[13] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-3').setTargeting('POS', ['1']).defineSizeMapping(mapping7).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[14] = googletag.defineSlot('/4082264/'+blogNetwork, [[300, 600], [300, 250]], 'div-gpt-ad-halfpage-4').setTargeting('POS', ['1']).defineSizeMapping(mapping8).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[15] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-8').setTargeting('POS', ['1']).defineSizeMapping(mapping10).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                gptadslots[16] = googletag.defineSlot('/4082264/'+blogNetwork, ['fluid', [300, 250]], 'div-gpt-ad-mrec-9').setTargeting('POS', ['1']).defineSizeMapping(mapping9).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads()); 
+  'sport' : [
+    'sport',
+    'australian rules',
+    'cricket',
+    'golf',
+    'netball',
+    'racing',
+    'soccer',
+    'tennis'
+  ],
 
-                for (var i=0; i < gptadslots.length; i++) {
-                    rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
-                };
-                
-                googletag.pubads().enableSingleRequest();
-                googletag.pubads().collapseEmptyDivs();
-                googletag.pubads().setCentering(true);
-                googletag.pubads().setTargeting('page-type', ['{{pageType}}']).setTargeting('tag', []);
-                //googletag.pubads().enableSyncRendering();
-                googletag.enableServices();
-                
-            });
-            
-            var gptran = false;
-            var gptrun = function() {
-                // don't run again if already ran
-                if (gptran) {
-                    return;
-                }
-                gptran = true;
-                var gads = document.createElement('script');
-                    gads.async = true;
-                    gads.type = 'text/javascript';
-                var useSSL = 'https:' === document.location.protocol;
-                    gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-                var node = document.getElementsByTagName('script')[0];
-                    node.parentNode.insertBefore(gads, node);
-            };
+  'lifestyle' : [
+    'lifestyle',
+    'fashion',
+    'garden',
+    'home'
+  ]
 
-            var nextSlotId = 1;
-            function generateNextSlotName() {
-               var id = nextSlotId++;
-               return 'adslot' + id;
-            }
+};
+  
 
-             
-            function loadNextAd() {
-               var adSlot = document.getElementById("newAdSlot");
-               var slotName = generateNextSlotName();
-               var slotDiv = document.createElement('div');
-               adSlot.appendChild(slotDiv);
-               slotDiv.id = slotName;
-               slotDiv.setAttribute( 'class', 'google_ad google_ad_leaderboard' );
-               adSlot.id = "";
-               adSlot.setAttribute( 'class', 'ad-container mobad5' );
-               
-               googletag.cmd.push(function() {
-                 var slot = googletag.defineSlot('/4082264/'+blogNetwork, [[970, 250], [970, 90], [728, 90], [300, 250]], slotName).defineSizeMapping([[[1025,0],[[970,250],[970,90],[728,90]]],[[768,0],[728,90]],[[0,0],[300,250]]]).setTargeting('BLOGPREFIX', ['{{blogPrefixName}}']).addService(googletag.pubads());
-                 googletag.display(slotName);
-                 googletag.pubads().refresh([slot]);
-               });
-            }
+var adSizes = {
+  'main-banner-desktop' : [
+    // ad id
+    'div-gpt-ad-leaderboard-1-d',
+    // size
+     [[970,90],[728,90]],
+    // map
+     [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[]],
+      [[0,0],[]]
+     ],
+     // targetting
+     'POS',
+     // targetting 2 
+     '1',
+     // rubicon
+     'atf'
+    ],
+
+  'fixed-banner-tablet-mobile' : [
+    'div-gpt-ad-leaderboard-1-mt',
+    [[728,90],[320,50]],
+    [
+      [[992,0],[]],
+      [[768,0],[728,90]],
+      [[300,0],[320,50]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+
+  'index-mrec-1' : [
+    'div-gpt-ad-mrec-1',
+    ['fluid',[300,250]],
+    [
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+
+  'index-mrec-2' : [
+    'div-gpt-ad-mrec-2',
+    ['fluid',[300,250]],
+    [
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'index-mrec-3' : [
+    'div-gpt-ad-mrec-3',
+    ['fluid',[300,250]],
+    [
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '3',
+    'btf'
+  ],
+  'index-mrec-4' : [
+    'div-gpt-ad-mrec-4',
+    ['fluid',[300,250]],
+    [
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS', 
+    '4',
+    'atf'
+  ],
+
+  'index-mrec-5' : [
+    'div-gpt-ad-mrec-5',
+    ['fluid',[300,250]],
+    [
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '5',
+    'btf'
+  ],
+  'index-banner-2' : [
+    'div-gpt-ad-leaderboard-2',
+    [[970,90],[728,90],'fluid',[300,250]],
+    [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'index-banner-3' : [
+    'div-gpt-ad-leaderboard-3',
+    [[970,90],[728,90],'fluid',[300,250]],
+    [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '3',
+    'btf'
+  ],
+  'index-banner-4' : [
+    'div-gpt-ad-leaderboard-4',
+    [[970,90],[728,90],'fluid',[300,250]],
+    [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '4',
+    'btf'
+  ],
+  'section-mrec-1-desktop' : [
+    'div-gpt-ad-mrec-1-d',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'section-mrec-1-tablet' : [
+    'div-gpt-ad-mrec-1-t',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'section-mrec-1-mobile' : [
+    'div-gpt-ad-mrec-1-m',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],[]],
+      [[0,0],['fluid',[300,250]]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'section-mrec-2-mobile-desktop' : [
+    'div-gpt-ad-mrec-2-md',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],[]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'section-mrec-2-tablet' : [
+    'div-gpt-ad-mrec-2-t',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '2',
+    'btf'
+  ],
+  'section-mrec-3-mobile-tablet' : [
+    'div-gpt-ad-mrec-2-md',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '3',
+    'btf'
+  ],
+  'article-mrec-1-mobile-tablet-desktop' : [
+    'div-gpt-ad-mrec-1-mtd',
+    ['fluid',[300,250]],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'article-mrec-2-inarticle-mobile' : [
+    'div-gpt-ad-mrec-1-mtd',
+    ['fluid',[300,250]],
+    [
+      [[992,0],[]],
+      [[768,0],[]],
+      [[0,0],['fluid',[300,250]]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'article-halfpage-1-disqus-tablet-desktop' : [
+    'div-gpt-ad-halfpage-ss',
+    [300,600],
+    [
+      [[992,0],[300,600]],
+      [[768,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'blog-mrec-1-mobile-tablet' : [
+    'div-gpt-ad-mrec-1-mt',
+    [300,600],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'blog-mrec-2-tablet' : [
+    'div-gpt-ad-mrec-2-t',
+    [300,600],
+    [
+      [[992,0],[]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],[]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'blog-mixed-1-mobile-tablet-desktop' : [
+    'div-gpt-ad-mixed-1-mtd',
+    [300,600],
+    [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'blog-mrec-3-mobile-tablet-desktop' : [
+    'div-gpt-ad-mrec-3-mtd',
+    [300,600],
+    [
+      [[992,0],['fluid',[300,250]]],
+      [[768,0],['fluid',[300,250]]],
+      [[300,0],['fluid',[300,250]]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'atf'
+  ],
+  'infinite-variable-mobile-tablet-desktop' : [
+    'div-gpt-ad-infinite-mtd',
+    [[970,90],[728,90],[300,250]],
+    [
+      [[992,0],[[970,90],[728,90]]],
+      [[768,0],[728,90]],
+      [[300,0],[300,250]],
+      [[0,0],[]]
+    ],
+    'POS',
+    '1',
+    'btf'
+  ],
+  'teads-ad-mobile-tablet-desktop' : [
+    'div-gpt-ad-teads-mtd',
+    [[1,1]],
+    [],
+    '',
+    '',
+    ''
+  ],
+  'interstitial-ad-desktop-tablet' : [
+    'div-gpt-ad-interstitial-td',
+    [],
+    [],
+    '',
+    '',
+    ''
+  ]
+
+}
+      
+   
+
 </script>
-

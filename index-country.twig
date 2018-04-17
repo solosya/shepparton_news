@@ -28,41 +28,49 @@
 
 {% set sections =  {
         "dairy": {
+            "title": "Dairy",
             "feed": "",
             "link": "",
             "limit" : 5
         }, 
         "water": {
+            "title": "Water",
             "feed": "",
             "link": "",
             "limit" : 4
         },
         "horticulture": {
+            "title": "Horticulture",
             "feed": "",
             "link": "",
             "limit" : 3
         },
         "livestock": {
+            "title": "Livestock",
             "feed": "",
             "link": "",
             "limit" : 3
         },
         "cropping": {
+            "title": "Cropping",
             "feed": "",
             "link": "",
             "limit" : 3
         },
         "videos": {
+            "title": "Videos",
             "feed": "",
             "link": "",
             "limit" : 2
         },
         "blogs homepage": {
+            "title": "Bloggers",
             "feed": "",
             "link": "",
             "limit" : 2
         },
         "viticulture": {
+            "title": "Viticulture",
             "feed": "",
             "link": "",
             "limit" : 3
@@ -76,7 +84,8 @@
             {% set sections = sections | merge({
                 (key) : {
                     'feed': _Blog.getBlogFeed({'limit': sections[key]['limit'], 'offset': 0, 'blogid':blog.guid}),
-                    'link' : blog.link
+                    'link' : blog.link,
+                    'title'     : sections[key]['title']
                     }
                 }) %}
         {% endif %}
@@ -148,11 +157,11 @@
     </div>
 
     <div class="ad-container hidden-md hidden-lg mobad5">
-        <div id='div-gpt-ad-mrec-7' class="card__announcement-image google_ad google_ad_mrec text-center" >
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-7'); });
-            </script>
-        </div>
+        <div id='index-mrec-1-mobile-tablet' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
     </div>
 
     <div class="container">
@@ -222,8 +231,11 @@
     </div>
 
     <div class="mobad7">
-        <div id="newAdSlot"></div>
-        <script>loadNextAd()</script>
+        <div id='infinite-variable-mobile-tablet-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
     </div>
 
 
@@ -232,17 +244,20 @@
             {{this.render('partials/index/medium-section.twig', {
                 articles: sections['dairy'], 
                 articleCount: articleCount,
-                section: 'dairy',
+                title: 'dairy',
                 dev: dev,
                 site: site,
-                ad: 'div-gpt-ad-mrec-4',
+                ad: 'index-mrec-1-desktop',
             }) | raw}} 
         </div>
     {% endif %}
 
     <div class="mobad3">
-        <div id="newAdSlot"></div>
-        <script>loadNextAd()</script> 
+        <div id='infinite-variable-mobile-tablet-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div> 
     </div>       
 
     {% if sections['blogs homepage'].feed.articles|length > 0 %}
@@ -250,7 +265,7 @@
             {{this.render('partials/index/bloggers.twig', {
                 articles: sections['blogs homepage'], 
                 articleCount: articleCount,
-                section: 'working dogs',
+                title: 'working dogs',
                 dev: dev,
                 site: site,
                 logo: networkData.templatePath ~ '/static/images/megaphone.svg',
@@ -264,20 +279,19 @@
             {{this.render('partials/index/small-section.twig', {
                 articles: sections['water'], 
                 articleCount: articleCount,
-                section: 'water',
+                title: 'water',
                 dev: dev,
                 site: site,
-                ad: 'div-gpt-ad-mrec-1',
             }) | raw}} 
         </div>
     {% endif %}
 
     <div class="ad-container hidden-md hidden-lg mobad7">
-        <div id='div-gpt-ad-mrec-6' class="card__announcement-image google_ad google_ad_mrec text-center" >
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-6'); });
-            </script>
-        </div>
+        <div id='index-mrec-2-mobile-tablet' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"        
+        ></div>
     </div>
 
     {% if sections['horticulture'].feed.articles|length > 0 %}
@@ -285,7 +299,7 @@
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['horticulture'], 
                 articleCount: articleCount,
-                section: 'horticulture',
+                title: 'horticulture',
                 dev: dev,
                 site: site,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright-main',
@@ -301,10 +315,10 @@
             {{this.render('partials/index/row-three-ad.twig', {
                 articles: sections['viticulture'], 
                 articleCount: articleCount,
-                section: 'viticulture',
+                title: 'viticulture',
                 dev: dev,
                 site: site,
-                ad: 'div-gpt-ad-mrec-2',
+                ad: 'index-mrec-4-mobile-tablet-desktop',
                 site: 'country',                
             }) | raw}} 
         </div>
@@ -318,7 +332,7 @@
             {{this.render('partials/index/small-section-events.twig', {
                 articles: sections['livestock'], 
                 articleCount: articleCount,
-                section: 'livestock',
+                title: 'livestock',
                 events: events,
                 dev: dev,
                 site: site,
@@ -326,12 +340,12 @@
             }) | raw}} 
         </div>
 
-         <div class="ad-container hidden-md hidden-lg mobad9">
-            <div id='div-gpt-ad-mrec-5' class="card__announcement-image google_ad google_ad_mrec text-center" >
-                <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
-                </script>
-            </div>
+         <div class="ad-container visible-xs-block mobad9">
+            <div id='index-mrec-3-mobile' class='advert'
+                data-site="{{site}}"
+                data-section="{{blogData.title | lower}}"
+                data-type="{{blogData.type | lower}}"        
+            ></div>
         </div>
     {% endif %}
 
@@ -342,7 +356,7 @@
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['cropping'], 
                 articleCount: articleCount,
-                section: 'cropping',
+                title: 'cropping',
                 dev: dev,
                 site: site,
                 cards: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
@@ -390,11 +404,11 @@
                         <div class="col-sm-3 col-md-3">
                             <div style="margin-bottom:30px;position:relative;">
                                 <div class="ad-square" style="margin-top:30px;">
-                                    <div class="card__announcement-image google_ad google_ad_mrec text-center" id='div-gpt-ad-mrec-3'>
-                                        <script type='text/javascript'>
-                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-3'); });
-                                        </script>
-                                    </div>
+                                    <div id='index-mrec-5-mobile-tablet-desktop' class='advert'
+                                        data-site="{{site}}"
+                                        data-section="{{blogData.title | lower}}"
+                                        data-type="{{blogData.type | lower}}"        
+                                    ></div>
                                 </div>
                             </div>
                         </div>
@@ -408,9 +422,9 @@
 {% endif %}
 
 
-<div id='div-gpt-ad-interstitial' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial'); });
-    </script>
-</div>
+<div id='interstitial-ad-desktop-tablet' class='advert hidden-xs'
+    data-site="{{site}}"
+    data-section="{{blogData.title | lower}}"
+    data-type="{{blogData.type | lower}}"        
+></div>
 

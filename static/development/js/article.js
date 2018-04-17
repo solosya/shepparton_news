@@ -58,11 +58,10 @@ Acme.article.prototype.insertOovvuu = function() {
 Acme.article.prototype.InsertInterstitial = function() {
     if ($('.article_content > p').length >= 9) {
         // $("<div class='teads-inread' ></div>").insertAfter( $('.article_content > p')[5] );        
-    	googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });       
+    	teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {
-        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='div-gpt-ad-mrec-5' class='card__announcement-image google_ad google_ad_mrec text-center' ></div></div>").insertAfter( $('.article_content > p')[6] );        
-    	googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
+        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='article-mrec-2-inarticle-mobile' class='advert' ></div></div>").insertAfter( $('.article_content > p')[6] );
 	}
 }
 

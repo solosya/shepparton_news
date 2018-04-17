@@ -55,13 +55,13 @@
     </div>
 </section>
 
-        <div class="ad-container hidden-md hidden-lg mobad5">
-            <div id='div-gpt-ad-mrec-5' class="card__announcement-image google_ad google_ad_mrec text-center" >
-                <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-5'); });
-                </script>
-            </div>
-        </div>
+        {# <div class="ad-container hidden-md hidden-lg mobad5">
+            <div id='{{ ad }}' class='advert'
+                data-site="{{site}}"
+                data-section="{{blogData.title | lower}}"
+                data-type="{{blogData.type | lower}}"        
+            ></div>
+        </div> #}
 
         <section class="row five-cols top-stories-row visible-xs-block visible-md-block visible-lg-block">
             
@@ -120,13 +120,13 @@
             {% endfor %} 
         </div>
 
-        <div class="ad-container hidden-md hidden-lg mobad1">
-            <div id='div-gpt-ad-mrec-6' class="card__announcement-image google_ad google_ad_mrec text-center" >
-                <script type='text/javascript'>
-                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-mrec-6'); });
-                </script>
-            </div>
-        </div>
+        {# <div class="ad-container visible-xs-block mobad1">
+            <div id='{{ ad[2] }}' class='advert'
+                data-site="{{site}}"
+                data-section="{{blogData.title | lower}}"
+                data-type="{{blogData.type | lower}}"        
+            ></div>
+        </div> #}
 
         <hr class="divide visible-xs-block">
 
@@ -162,12 +162,8 @@
 
 
         <div class="col-sm-9 col-md-3">
-            <div class="ad-square hidden-sm hidden-xs">
-                <div class="card__announcement-image google_ad google_ad_mrec text-center" id='{{ ad }}'>
-                    <script type='text/javascript'>
-                        googletag.cmd.push(function() { googletag.display('{{ ad }}'); });
-                    </script>
-                </div>
+            <div class="ad-square">
+                <div id='{{ ad }}' class='advert'></div>
             </div>
         </div>
     </div>

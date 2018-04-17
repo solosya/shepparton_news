@@ -60,7 +60,7 @@
     {# Want to remove the below script when possible  #}
     {# Currently only being used for ads i think  #}
     <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/blogsettings.js?ver=28"></script>
-    
+    <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{blogData.type | lower}}';</script>
 
     {% if site != 'dairy' and site != 'shepparton' and _AppHelper.getApplicationEnv() == 'PROD' %}
         <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
@@ -89,7 +89,8 @@
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=cd70b2f4f" type="text/css" media="all">
+
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a0039ebd" type="text/css" media="all">
 
     {% else %}
 
@@ -194,14 +195,9 @@
     {# Don't show this add on blog pages.  Index is a blog so only allow there #}
     {% if (pageTypeClass != "blog" and layout != "layout-property") or url.path == '/'%}
     <div class="ad-container top-ad">
-        <div id='div-gpt-ad-leaderboard-1' class="google_ad google_ad_leaderboard">
-            <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-leaderboard-1'); });
-            </script>
-        </div>
+        <div id='main-banner-desktop' class='advert'></div>
     </div>
     {% endif %}
-
 
     {{ content | raw }}
 
@@ -234,7 +230,7 @@
 
 
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-
+    {{this.registerJs("Acme.View.articleFeed.prototype.InsertAds();")}}
 
     {{ this.endBody() }}
 

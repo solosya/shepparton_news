@@ -179,17 +179,21 @@
     </div>
 
 
-    <div id="newAdSlot" style="margin-top: 20px;"></div>
-    <script>loadNextAd()</script>
+    <div id='infinite-variable-mobile-tablet-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"
+            style="margin-top: 20px;"        
+        ></div> 
 
     {% if sections['management'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/medium-section.twig', {
                 articles: sections['management'], 
                 articleCount: articleCount,
-                section: 'management',
+                title: 'management',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-1',
+                ad: 'index-mrec-1-desktop',
                 site: site,
             }) | raw}} 
         </div>
@@ -203,22 +207,25 @@
             {{this.render('partials/index/small-section.twig', {
                 articles: sections['from the experts'], 
                 articleCount: articleCount,
-                section: 'from the experts',
+                title: 'from the experts',
                 dev: dev,
                 site: site,
             }) | raw}} 
         </div>
     {% endif %}
 
-    <div id="newAdSlot"></div>
-    <script>loadNextAd()</script>
+    <div id='infinite-variable-mobile-tablet-desktop' class='advert'
+            data-site="{{site}}"
+            data-section="{{blogData.title | lower}}"
+            data-type="{{blogData.type | lower}}"
+        ></div> 
 
     {% if sections['markets'].feed.articles|length > 0 %}
         <div class="container">
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['markets'], 
                 articleCount: articleCount,
-                section: 'markets',
+                title: 'markets',
                 dev: dev,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright dairy',
                 site: site,
@@ -234,23 +241,20 @@
             {{this.render('partials/index/row-three-ad.twig', {
                 articles: sections['machinery & products'], 
                 articleCount: articleCount,
-                section: 'machinery & products',
+                title: 'machinery & products',
                 dev: dev,
-                ad: 'div-gpt-ad-mrec-3',
+                ad: 'index-mrec-4-mobile-tablet-desktop',
                 site: site,
             }) | raw}} 
         </div>
     {% endif %}
-
-    <div class="hidden-xs hidden-md hidden-lg"><div id="newAdSlot"></div></div>
-    <script>loadNextAd()</script>
 
     {% if sections['animal health'].feed.articles|length > 0 %}
             <div class="container">
             {{this.render('partials/index/row-three.twig', {
                 articles: sections['animal health'], 
                 articleCount: articleCount,
-                section: 'animal health',
+                title: 'animal health',
                 dev: dev,
                 cards: 'feature-side feature-side-tablet card-sm-mobile divideright dairy',
                 site: site,
@@ -259,13 +263,8 @@
     {% endif %}    
 </main><!-- .site-main -->
 
-<div id='div-gpt-ad-interstitial' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-interstitial'); });
-    </script>
-</div>
-<div id='div-gpt-ad-teads' class="hidden-xs">
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-teads'); });
-    </script>
-</div>
+<div id='interstitial-ad-desktop-tablet' class='advert hidden-xs'
+    data-site="{{site}}"
+    data-section="{{blogData.title | lower}}"
+    data-type="{{blogData.type | lower}}"        
+></div>
