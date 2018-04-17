@@ -26,14 +26,17 @@
 
 {% if site | lower == 'shepp' %}
     {% set sections =  {
-            "local news": {
-                "title": "Local News",      "limit" : 12, 'template' : 'partials/index/section-01-local.twig', 
+            "local": {
+                "title": "Local",      "limit" : 12, 'template' : 'partials/index/section-01-local.twig', 
                     'template_params' : {
                         'ad': 'index-mrec-2'
                     }
             },
             "real estate": {
-                "title": "Real Estate",        "limit" : 6, 'template' : 'partials/index/section-02-real-estate.twig', 'template_params' : {}
+                "title": ["Real Estate","Automotive"],        "limit" : 6, 'template' : 'partials/index/section-02-real-estate.twig', 
+                    'template_params' : {
+                        'href': ['https://www.realestateview.com.au','0']
+                }
             },
             "opinion": {
                 "title": "Opinion",         "limit" : 4, 'template' : 'partials/index/section-03-opinion.twig', 'template_params' : {}
@@ -62,8 +65,8 @@
                         'ad': 'index-mrec-4'
                     }
             },
-            "national": {
-                "title": "National & World",        "limit" : 13, 'template' : 'partials/index/section-09-national.twig', 
+            "national and world": {
+                "title": "National and World",        "limit" : 13, 'template' : 'partials/index/section-09-national.twig', 
                     'template_params' : {
                         'ad': 'index-mrec-5'
                     }

@@ -2,71 +2,109 @@
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
-        <p><a href="{{articles.link}}">View All</a></p>
+        <p><a href="{{ href[0] }}">View All</a></p>
         <div class="hk">
-            <h2>{{ title }}</h2>
+            <h2>{{ title[0] }}</h2>
             <p></p>
         </div>
     </div>
 
-    <div class="col-md-4 col-sm-6">
-        {% if articles.feed.articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-                article:        articles.feed.articles[articleCount], 
-                imageSize:      {width:409, height:530},
-                site:           site,
-                containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-        {% endif %}
-        <hr class="divide visible-xs-block space-only">        
 
+    {% if title[0] == 'Real Estate' %}
+        <div class="col-sm-9">
+            <div class="row u-margin-bottom-40">
 
-    </div>
-    <div class="col-md-2 col-sm-3">
-        {% set cardspace = ['', 'row-space'] %}
-        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+                <!-- # The Following is code from View Real Estate -->
+                <div id="rev-search" >
+                    <div class="rev-search-inner clearfix">
+                        <div class="rev-search-title">
+                            <span>Find your place</span>
+                        </div>
 
+                        <form action="https://www.realestateview.com.au/portal/search/" method="get" target="_blank">
 
-            {{this.render('../_single-article.twig', {
-                article:        articles.feed.articles[articleCount], 
-                imageSize:      {width:300},
-                site:           site,
-                containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
-            }) | raw}}
-            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-            <hr class="divide visible-xs-block">
+                            <input type="hidden" name="utm_source" value="reiq" />
+                            <input type="hidden" name="utm_medium" value="widget" />
+                            <input type="hidden" name="iss" value="true" />
 
-        {% endfor %}
+                            <div class="rev-search-item-wrapper clearfix">
+                                <div class="rev-search-item rev-search-contract-type">
+                                    <input type="hidden" name="smt" />
+                                    <div class="search-type-selected" tabindex="0">Buy</div>
+                                    <div id="search-type-dropdown-placeholder"></div>
+                                </div>
 
-    </div>
+                                <div class="rev-search-item rev-search-location">
+                                    <input type="hidden" name="loc" />
+                                    <input type="text" id="input-location" autocomplete="off" placeholder="Search by suburb, postcode or area" />
+                                    <div id="suggestions-dropdown-placeholder"></div>
+                                </div>
 
+                                <div class="rev-search-item rev-search-submit">
+                                    <button>Search</button>
+                                </div>
+                            </div>
+                        </form>
 
-    <div class="col-md-3 visible-xs-block visible-md-block visible-lg-block">
-{# 
-        <div class="ad-square hidden-xs" style="margin-bottom:30px;">
-            <div id='{{ ad }}' class='advert'
-                data-site="{{site}}"
-                data-section="{{blogData.title | lower}}"
-                data-type="{{blogData.type | lower}}"        
-            ></div>
-        </div> #}
-        
-        {% for i in 0..1 if articles.feed.articles[articleCount] %}
-           
-            {{this.render('../_single-article.twig', {
-                article:        articles.feed.articles[articleCount], 
-                imageSize:      {width:300},
-                site:           site,
-                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            
-            {% if i == 0 %}
-                <hr class="divide">
-            {% endif %}
+                        <div class="rev-search-logo">
+                            <a href="//www.realestateview.com.au">
+                                <img src="//realestateview.com.au/assets/content/images/logo-rev_white.png" alt="realestateVIEW" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        {% endfor %}
-    </div>    
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="col-sm-9">
+        <div class="row">
+
+            {% for i in 0..2 if articles.feed.articles[articleCount] %}
+                {{this.render('partials/_single-article.twig', {
+                    article: articles.feed.articles[articleCount], 
+                    template: 'property_card',
+                    networkData: networkData,
+                    imageSize: {width: 300, height: 195},
+                    containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                {% if i < 2 %}
+                    <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div> 
+
+    <div class="col-md-9 col-sm-9 section-header">
+        {% if href[1] != '0' %}<p><a href="{{ href[1] }}">View All</a></p>{% endif %}
+        <div class="hk">
+            <h2>{{ title[1] }}</h2>
+            <p></p>
+        </div>
+    </div> 
+
+    <div class="col-sm-9">
+        <div class="row">
+
+            {% for i in 0..2 if articles.feed.articles[articleCount] %}
+                {{this.render('partials/_single-article.twig', {
+                    article: articles.feed.articles[articleCount], 
+                    template: 'property_card',
+                    networkData: networkData,
+                    imageSize: {width: 300, height: 195},
+                    containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                {% if i < 2 %}
+                    <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>   
 
 </section>
