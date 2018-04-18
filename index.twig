@@ -32,14 +32,14 @@
     'index': {
         'template': 'partials/index/section-00-top.twig',
         'template_params' : {
-                'ad': 'index-mrec-1'
+                'ad': 'mrec-2'
         },
         'blogs'         : [(site)],
     },
     'local': {
         'template': 'partials/index/section-01-local.twig',
         'template_params' : {
-                'ad': 'index-mrec-2'
+                'ad': 'mrec-4'
         },
         'title' : 'Local News',
         'blogs': ['local news'],
@@ -97,7 +97,7 @@
         'blogs'     : ['regional news'],
         'template'  : 'partials/index/section-07-regional.twig', 
         'template_params' : {
-            'ad': 'index-mrec-3'
+            'ad': 'mrec-6'
         }
     },
     "rural news": {
@@ -105,7 +105,7 @@
         'blogs'     : ['rural news'],
         'template'  : 'partials/index/section-08-rural.twig',
         'template_params' : {
-            'ad': 'index-mrec-4'
+            'ad': 'mrec-8'
         }
     },
     "national": {
@@ -113,7 +113,7 @@
         'blogs'     : ['national'],
         'template'  : 'partials/index/section-09-national.twig', 
         'template_params' : {
-            'ad': 'index-mrec-5'
+            'ad': 'mrec-9'
         }
     }
 } %}
@@ -291,15 +291,15 @@
 
         {% if loop.index == 1 %}
             <div class="ad-container mobad9">
-                <div id='index-banner-2' class='advert'></div>
+                <div id='banner-3' class='advert'></div>
             </div> 
         {% elseif loop.index == 7 %}
             <div class="ad-container mobad2">
-                <div id='index-banner-3' class='advert'></div>
+                <div id='banner-5' class='advert'></div>
             </div> 
         {% elseif loop.index == 10 %}
             <div class="ad-container mobad9">
-                <div id='index-banner-4' class='advert'></div>
+                <div id='banner-7' class='advert'></div>
             </div> 
         {% endif %}
 

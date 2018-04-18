@@ -39,7 +39,7 @@
                    <hr class="divide visible-xs-block">
                 {% endif %}
             </div>
-            <div class="col-md-2 col-sm-3">
+            <div class="col-md-2 col-sm-3 col-xs-9">
                 {% if articles[articleCount] %}
 
 
@@ -61,7 +61,7 @@
         <div class="row u-margin-top-40 m-no-margin-top">
 
             {% for i in 0..2 if articles[articleCount] %}
-                <div class="col-md-2 col-sm-3">
+                <div class="col-md-2 col-sm-3 col-xs-9">
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
                         imageSize:      {width:300},
@@ -73,7 +73,7 @@
                 </div>
             {% endfor %}
             
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-xs-9">
 
                  {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
@@ -94,7 +94,7 @@
         <div class="row u-margin-top-40 m-no-margin-top">
 
             {% for i in 0..2 if articles[articleCount] %}
-                <div class="col-md-2 col-sm-3">
+                <div class="col-md-2 col-sm-3 col-xs-9">
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
                         imageSize:      {width:300},
@@ -121,7 +121,7 @@
     <div class="col-md-9 col-sm-9">
         <div class="row u-margin-top-40 m-no-margin-top">
             <hr class="divide visible-xs-block">
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-xs-9">
 
                 {% if articles[articleCount] %}
                        
@@ -140,7 +140,7 @@
 
 
             {% for i in 0..3 if articles[articleCount] %}
-                <div class="col-md-3 col-sm-3">
+                <div class="col-md-3 col-sm-3 col-xs-9">
                     {% set theDivider = [' divideright','',' divideright',''] %}
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 

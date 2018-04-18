@@ -90,7 +90,7 @@
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=fb470de0" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=15139353" type="text/css" media="all">
 
     {% else %}
 
@@ -166,12 +166,21 @@
 
 
 
+{% if site == ("dairy" or "country" ) %}
 
+    {{ this.render('partials/ads_old.twig', {
+        networkData: networkData,
+        blogData: blogData
+    }) | raw }}
+
+{% else %}
 
     {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
     }) | raw }}
+
+{% endif %}
 
 
 

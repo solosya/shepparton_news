@@ -1,0 +1,62 @@
+{% set sectionCount = (dev) ? articleCount : 0 %}
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ title }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        {% if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+                article: articles.feed.articles[sectionCount], 
+                imageSize: {width:409, height:530},
+                site: site,
+                containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
+            }) | raw}}
+            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% endif %}
+
+        <hr class="divide visible-xs-block space-only">
+
+    </div>
+
+   
+
+    <div class="col-sm-3">
+        
+        {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+                article: articles.feed.articles[sectionCount], 
+                imageSize: {width:300},
+                site: site,
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+            }) | raw}}
+            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% if i == 0 %}
+                <hr class="divide hidden-xs" style="margin: 32px 0;">
+                <hr class="divide visible-xs-block">
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="col-sm-2 mini-events">
+        <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
+            <a href="{{networkData.defaultBlogUrl}}/@events"><h2 class="">Events</h2></a>
+        {% for i in 0..3 if events[i] %}
+            {{this.render('../_single-event.twig', {
+                event: events[i],
+                imageSize: {width: 90},
+                site: site,
+                containerClass: 'card-event card-event-tablet card-event-mobile'
+            }) | raw}}
+                <hr class="divide12">
+        {% endfor %}
+        
+    </div>
+</section>
