@@ -1,0 +1,53 @@
+{% set sectionCount = (dev) ? articleCount : 0 %}
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{articles.link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ title }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+    {% if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+            article: articles.feed.articles[sectionCount], 
+            imageSize: {width:300},
+            site: site,
+            containerClass: 'col-sm-3 col-md-2 card-sm card-sm-tablet card-sm-mobile'
+        }) | raw}}
+                <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+        {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% endif %}
+
+        {% if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+            article: articles.feed.articles[sectionCount], 
+            imageSize: {width:300},
+            site: site,
+            containerClass: 'col-sm-2 card-sm card-sm-tablet card-sm-mobile'
+        }) | raw}}
+                <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+        {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% endif %}
+
+        {% if articles.feed.articles[sectionCount] %}
+            {{this.render('../_single-article.twig', {
+            article: articles.feed.articles[sectionCount], 
+            imageSize: {width:300},
+            containerClass: 'col-md-2 card-sm card-sm-tablet card-sm-mobile hidden-sm'
+        }) | raw}}
+                <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+        {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+        {% endif %}
+
+    <div class="col-sm-3">
+        <div class="ad-square">
+            <div class="card__announcement-image google_ad google_ad_mrec text-center {{ site }}" id='{{ ad }}'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() { googletag.display('{{ ad }}'); });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
