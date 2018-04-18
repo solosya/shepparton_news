@@ -32,15 +32,14 @@
     'index': {
         'template': 'partials/index/section-00-top.twig',
         'template_params' : {
-                'ad': 'mrec-2',
-                'partSize': 3
+            'ad': 'mrec-2',
         },
         'blogs'         : [(site)],
     },
     'local': {
         'template': 'partials/index/section-01-local.twig',
         'template_params' : {
-                'ad': 'mrec-4'
+            'ad': 'mrec-4'
         },
         'title' : 'Local News',
         'blogs': ['local news'],
@@ -121,7 +120,6 @@
         'template' : 'partials/index/section-00-top.twig',
         'template_params' : {
             'ad': 'mrec-2',
-            'partSize': 2
         },
         'blogs'     : [(site)]
     },
@@ -163,10 +161,7 @@
     },
     'index-dairy': {
         'template': 'partials/index/section-00-top.twig',
-        'template_params' : {
-            'partSize': 1
-        },
-        'blogs'         : [(site)]
+        'blogs'     : [(site)]
     },
     'management': {
         'title'     : "Management",
@@ -200,7 +195,6 @@
         'blogs'     : ['animal health']
     }
 } %}
-
 
 
 
@@ -328,7 +322,6 @@
 
 
 <main id="main" class="site-main" role="main">
-    
 
     {# *******************************************************
                         RENDER SECTIONS
@@ -390,50 +383,52 @@
         {% endif %}
 
 
-    {% if site == 'country' %}
-        {% if loop.index == 1 %}
-            <div class="ad-container mobad9">
-                <div id='banner-3' class='advert'></div>
-            </div> 
-        {% elseif loop.index == 2 %}
-            <div class="ad-container mobad2">
-                <div id='banner-5' class='advert'></div>
-            </div> 
-        {% elseif loop.index == 6 %}
-            <div class="ad-container mobad9">
-                <div id='banner-7' class='advert'></div>
-            </div> 
-        {% endif %}
+        {% if site == 'country' %}
+            {% if loop.index == 1 %}
+                <div class="ad-container mobad9">
+                    <div id='banner-3' class='advert'></div>
+                </div> 
+            {% elseif loop.index == 2 %}
+                <div class="ad-container mobad2">
+                    <div id='banner-5' class='advert'></div>
+                </div> 
+            {% elseif loop.index == 6 %}
+                <div class="ad-container mobad9">
+                    <div id='banner-7' class='advert'></div>
+                </div> 
+            {% endif %}
+            
+        {% elseif site == 'dairy' %}
+            {% if loop.index == 1 %}
+                <div class="ad-container mobad9">
+                    <div id='banner-3' class='advert'></div>
+                </div> 
+            {% elseif loop.index == 3 %}
+                <div class="ad-container mobad2">
+                    <div id='banner-5' class='advert'></div>
+                </div> 
+            {% elseif loop.index == 5 %}
+                <div class="ad-container mobad9">
+                    <div id='banner-7' class='advert'></div>
+                </div> 
+            {% endif %}
+        {% else %}
+
         
-    {% elseif site == 'dairy' %}
-        {% if loop.index == 1 %}
-            <div class="ad-container mobad9">
-                <div id='banner-3' class='advert'></div>
-            </div> 
-        {% elseif loop.index == 3 %}
-            <div class="ad-container mobad2">
-                <div id='banner-5' class='advert'></div>
-            </div> 
-        {% elseif loop.index == 5 %}
-            <div class="ad-container mobad9">
-                <div id='banner-7' class='advert'></div>
-            </div> 
+            {% if loop.index == 1 %}
+                <div class="ad-container mobad9">
+                    <div id='banner-3' class='advert'></div>
+                </div> 
+            {% elseif loop.index == 7 %}
+                <div class="ad-container mobad2">
+                    <div id='banner-5' class='advert'></div>
+                </div> 
+            {% elseif loop.index == 10 %}
+                <div class="ad-container mobad9">
+                    <div id='banner-7' class='advert'></div>
+                </div> 
+            {% endif %}
         {% endif %}
-    {% else %}
-        {% if loop.index == 1 %}
-            <div class="ad-container mobad9">
-                <div id='banner-3' class='advert'></div>
-            </div> 
-        {% elseif loop.index == 7 %}
-            <div class="ad-container mobad2">
-                <div id='banner-5' class='advert'></div>
-            </div> 
-        {% elseif loop.index == 10 %}
-            <div class="ad-container mobad9">
-                <div id='banner-7' class='advert'></div>
-            </div> 
-        {% endif %}
-    {% endif %}
 
 
     {% endfor %}

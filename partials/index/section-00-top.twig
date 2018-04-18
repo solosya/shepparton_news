@@ -1,5 +1,8 @@
 {% set articleCount = 0 %}
 
+{% set five_rowExceptions = ['country'] %}
+{% set popularExceptions = ['dairy'] %}
+
 <section class="home-main-stories">
     <div class="row">
         <div class="col-xs-9 col-sm-9 col-md-6">
@@ -63,6 +66,8 @@
             ></div>
         </div> #}
 
+    {% if site not in five_rowExceptions %}
+
         <section class="row five-cols top-stories-row visible-xs-block visible-md-block visible-lg-block">
             
             {% set desktopCount = articleCount %}
@@ -84,7 +89,10 @@
             {% endfor %}
         </section>
 
-        
+    {% endif %}
+
+
+
 
         <section class="row sm-two-cols visible-sm-block">
             {% set tabletCount = articleCount %} 
@@ -105,9 +113,12 @@
         </section>
 
 
+
         
 
-{% if partSize > 1 %}        
+
+
+{% if site not in popularExceptions %}
     {% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network' }) %}
 
     <section>
@@ -163,7 +174,9 @@
                 </div>
             </div>
         </div>
-        {% if partSize > 2 %}        
+
+
+
             <div class="row row-space">
                 <hr class="divide visible-xs-block">
                 <div class="col-sm-3">
@@ -217,6 +230,6 @@
                 </div>
                 <hr class="divide10 visible-xs-block">
             </div>
-        {% endif %}
+
     </section>
 {% endif %}
