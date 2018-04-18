@@ -166,21 +166,11 @@
 
 
 
-{% if site == ("dairy" or "country" ) %}
-
-    {{ this.render('partials/ads_old.twig', {
-        networkData: networkData,
-        blogData: blogData
-    }) | raw }}
-
-{% else %}
 
     {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
     }) | raw }}
-
-{% endif %}
 
 
 
@@ -239,6 +229,7 @@
 
 
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
     {{this.registerJs("Acme.View.articleFeed.prototype.InsertAds();")}}
 
     {{ this.endBody() }}

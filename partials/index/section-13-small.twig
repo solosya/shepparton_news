@@ -1,4 +1,4 @@
-{% set sectionCount = (dev) ? articleCount : 0 %}
+{% set articleCount = (dev) ? articleCount : 0 %}
 
 <section class="row">
     <div class="col-sm-9 section-header">
@@ -10,14 +10,14 @@
     </div>
 
     <div class="col-sm-4">
-        {% if articles.feed.articles[sectionCount] %}
+        {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[sectionCount], 
+                article: articles[articleCount], 
                 imageSize: {width:414, height:255},
                 site: site,
                 containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
             }) | raw}}
-            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         {% endif %}
 
         <hr class="divide visible-xs-block space-only">
@@ -26,14 +26,14 @@
 
     <div class="col-sm-2">
         {% set cardspace = ['', 'row-space'] %}
-        {% if articles.feed.articles[sectionCount] %}
+        {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[sectionCount], 
+                article: articles[articleCount], 
                 imageSize: {width:300},
                 site: site,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
             }) | raw}}
-            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             <hr class="divide visible-xs-block">
 
         {% endif %}
@@ -43,14 +43,14 @@
 
     <div class="col-sm-3">
         
-        {% for i in 0..1 if articles.feed.articles[sectionCount] %}
+        {% for i in 0..1 if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[sectionCount], 
+                article: articles[articleCount], 
                 imageSize: {width:300},
                 site: site,
                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
-            {% set sectionCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             {% if i == 0 %}
                 <hr class="divide">
             {% endif %}

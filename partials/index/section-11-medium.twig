@@ -2,7 +2,7 @@
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
-        <p><a href="{{articles.link}}">View All</a></p>
+        <p><a href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
             <p></p>
@@ -10,9 +10,9 @@
     </div>
 
     <div class="col-md-4 col-sm-6">
-        {% if articles.feed.articles[articleCount] %}
+        {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
-                article:        articles.feed.articles[articleCount], 
+                article:        articles[articleCount], 
                 imageSize:      {width:409, height:530},
                 site:           site,
                 containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
@@ -23,33 +23,35 @@
 
 
     </div>
-    <div class="col-md-2 col-sm-3">
+    <div class="col-md-2 col-sm-3 col-xs-9">
         {% set cardspace = ['', 'row-space'] %}
-        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+        {% for i in 0..1 if articles[articleCount] %}
 
 
             {{this.render('../_single-article.twig', {
-                article:        articles.feed.articles[articleCount], 
+                article:        articles[articleCount], 
                 imageSize:      {width:300},
                 site:           site,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
             }) | raw}}
             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-            <hr class="divide visible-xs-block">
+            {% if i == 1 %}
+                <div class="row">
+                    <hr class="divide visible-xs-block">
+                </div>
+            {% else %}
+                <hr class="divide visible-xs-block">
+            {% endif %}
 
         {% endfor %}
 
     </div>
 
 
-    <div class="col-md-3 visible-xs-block visible-md-block visible-lg-block">
+    <div class="col-md-3 col-xs-9">
 
-        <div class="ad-square hidden-xs" style="margin-bottom:30px;">
-            <div id='{{ ad }}' class='advert'
-                data-site="{{site}}"
-                data-section="{{blogData.title | lower}}"
-                data-type="{{blogData.type | lower}}"        
-            ></div>
+        <div class="ad-square u-margin-bottom-30 m-no-margin-bottom">
+            <div id='{{ ad }}' class='advert'></div>
         </div>
         
         {% for i in 0..1 if articles.feed.articles[articleCount] %}
@@ -62,7 +64,11 @@
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             
-            {% if i == 0 %}
+            {% if i == 1 %}
+                <div class="row">
+                    <hr class="divide visible-xs-block">
+                </div>
+            {% else %}
                 <hr class="divide">
             {% endif %}
 
