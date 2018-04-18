@@ -175,7 +175,7 @@
     @media screen and (max-width: $sm-break-down){
         @include card-feature-thin-base();
         height:387px;
-        margin-bottom:20px;
+        // margin-bottom:20px;
 
         a.card {
 

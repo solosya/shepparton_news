@@ -315,7 +315,7 @@ hr.divide10 {
         &.country {
             color: #0d522e;
         }
-        &.shepparton {
+        &.shepparton, &.shepp {
             color: #f03746;
         }
     }
@@ -380,7 +380,7 @@ hr.divide10 {
     fill: color(country);
   }
 
-  &.shepparton {
+  &.shepparton, &.shepp {
     fill: color(red);
   }
 }

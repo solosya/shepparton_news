@@ -58,7 +58,7 @@
         </div>
     </div>
     <div class="col-md-9 col-sm-9">
-        <div class="row u-margin-top-40">
+        <div class="row u-margin-top-40 m-no-margin-top">
 
             {% for i in 0..2 if articles[articleCount] %}
                 <div class="col-md-2 col-sm-3">
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="col-md-9 col-sm-9">
-        <div class="row u-margin-top-40">
+        <div class="row u-margin-top-40 m-no-margin-top">
 
             {% for i in 0..2 if articles[articleCount] %}
                 <div class="col-md-2 col-sm-3">
@@ -102,8 +102,13 @@
                         containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                    <hr class="divide visible-xs-block">
-                </div>
+                    {% if i < 2 %}
+                            <hr class="divide visible-xs-block">
+                        </div>
+                    {% else %}
+                        </div>
+                        <hr class="divide visible-xs-block">
+                    {% endif %}
             {% endfor %}
 
 
@@ -114,7 +119,8 @@
     </div>
 
     <div class="col-md-9 col-sm-9">
-        <div class="row u-margin-top-40">
+        <div class="row u-margin-top-40 m-no-margin-top">
+            <hr class="divide visible-xs-block">
             <div class="col-sm-3">
 
                 {% if articles[articleCount] %}
@@ -143,8 +149,14 @@
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                    <hr class="divide visible-xs-block">
-                    <hr class="divide15 hidden-xs space-only">
+                    {% if i == 3 %}
+                        <div class="row">
+                            <hr class="divide visible-xs-block">
+                        </div>
+                    {% else %}
+                            <hr class="divide visible-xs-block">
+                            <hr class="divide15 hidden-xs space-only">
+                    {% endif %}
                 </div>
 
             {% endfor %}

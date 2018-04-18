@@ -1,5 +1,6 @@
 {% set desktopCount = 0 %}
 {% set tabletCount  = 0 %}
+{% set mobileCount  = 0 %}
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
@@ -13,7 +14,7 @@
 
 
 <!-- desktop -->
-    <div class="visible-xs-block visible-md-block visible-lg-block">
+    <div class="visible-md-block visible-lg-block">
         {% set opinionClass = ["col-md-2", "col-md-2", "col-md-2", "col-md-3"] %}
 
         {% for i in 0..3 if articles[desktopCount] %}
@@ -48,6 +49,26 @@
                     containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
                 }) | raw}}
                 {% set tabletCount = (dev) ? 0 : tabletCount + 1 %}
+
+                <hr class="divide visible-xs-block">
+
+            </div>
+        {% endfor %}
+    </div>
+<!-- mobile -->
+    <div class="visible-xs-block">
+        {% set opinionClass = ["col-md-2", "col-md-2", "col-md-2", "col-md-3"] %}
+
+        {% for i in 0..3 if articles[mobileCount] %}
+            {% set finalClass = (i == 0) ? 'final' : '' %}
+            <div class="{{opinionClass[i]}}">
+
+                {{this.render('../_single-article.twig', {
+                    article:        articles[mobileCount], 
+                    imageSuppress:  true,
+                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
+                }) | raw}}
+                {% set mobileCount = (dev) ? 0 : mobileCount + 1 %}
 
                 <hr class="divide visible-xs-block">
 
