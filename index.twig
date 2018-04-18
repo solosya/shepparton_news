@@ -118,44 +118,37 @@
         }
     },
     'index-country': {
-        'template': 'partials/index/section-00-top.twig',
+        'template' : 'partials/index/section-00-top.twig',
         'template_params' : {
-                'ad': 'mrec-2',
-                'partSize': 2
+            'ad': 'mrec-2',
+            'partSize': 2
         },
-        'blogs'         : [(site)]
+        'blogs'     : [(site)]
     },
     'dairy': {
         'title'     : "Dairy",
-        'template': 'partials/index/section-11-medium.twig',
+        'template'  : 'partials/index/section-11-medium.twig',
         'template_params' : {
-                'ad': 'mrec-4'
+            'ad': 'mrec-4'
         },
-        'blogs'         : ['dairy']
-    },
-    'bloggers' :  {
-        'blogs'     : ['bloggers'],
-        'template'  : 'partials/index/bloggers.twig',
-        'template_params' : {
-            'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
-        }
+        'blogs'     : ['dairy']
     },
     'water': {
         'title'     : "Water",
-        'template': 'partials/index/section-13-small.twig',
-        'blogs'         : ['water']
+        'template'  : 'partials/index/section-13-small.twig',
+        'blogs'     : ['water']
     },
     'horticulture': {
         'title'     : "Horticulture",
-        'template': 'partials/index/section-14-three.twig',
-        'blogs'         : ['horticulture']
+        'template'  : 'partials/index/section-14-three.twig',
+        'blogs'     : ['horticulture']
     },
     'viticulture': {
         'title'     : "Viticulture",
-        'template': 'partials/index/section-15-three-ad.twig',
-        'blogs'         : ['viticulture'],
+        'template'  : 'partials/index/section-15-three-ad.twig',
+        'blogs'     : ['viticulture'],
         'template_params' : {
-                'ad': 'mrec-6'
+            'ad': 'mrec-6'
         }
     },
     "livestock": {
@@ -165,46 +158,46 @@
     },
     'cropping': {
         'title'     : "Cropping",
-        'template': 'partials/index/section-14-three.twig',
-        'blogs'         : ['cropping']
+        'template'  : 'partials/index/section-14-three.twig',
+        'blogs'     : ['cropping']
     },
     'index-dairy': {
         'template': 'partials/index/section-00-top.twig',
         'template_params' : {
-                'partSize': 1
+            'partSize': 1
         },
         'blogs'         : [(site)]
     },
     'management': {
         'title'     : "Management",
-        'template': 'partials/index/section-11-medium.twig',
+        'template'  : 'partials/index/section-11-medium.twig',
         'template_params' : {
-                'ad': 'mrec-2'
+            'ad': 'mrec-2'
         },
-        'blogs'         : ['management']
+        'blogs'     : ['management']
     },
     'from the experts': {
         'title'     : "From The Experts",
-        'template': 'partials/index/section-13-small.twig',
-        'blogs'         : ['from the experts']
+        'template'  : 'partials/index/section-13-small.twig',
+        'blogs'     : ['from the experts']
     },
     'markets': {
         'title'     : "Markets",
-        'template': 'partials/index/section-14-three.twig',
-        'blogs'         : ['markets']
+        'template'  : 'partials/index/section-14-three.twig',
+        'blogs'     : ['markets']
     },
     'machinery & products': {
         'title'     : "Machinery & Products",
-        'template': 'partials/index/section-15-three-ad.twig',
-        'blogs'         : ['machinery & products'],
+        'template'  : 'partials/index/section-15-three-ad.twig',
+        'blogs'     : ['machinery & products'],
         'template_params' : {
                 'ad': 'mrec-4'
         }
     },
     'animal health': {
         'title'     : "Animal Health",
-        'template': 'partials/index/section-14-three.twig',
-        'blogs'         : ['animal health']
+        'template'  : 'partials/index/section-14-three.twig',
+        'blogs'     : ['animal health']
     }
 } %}
 
@@ -256,7 +249,7 @@
 
     {% set blogFeeds = blogFeeds | merge({
             "dairy":            { "limit" : 5},
-            "blogs homepage":   { "limit" : 2},
+            "blogs":            { "limit" : 2},
             "water":            { "limit" : 4},
             "horticulture":     { "limit" : 3},
             "viticulture":      { "limit" : 3},
@@ -265,7 +258,7 @@
         })
     %}
 
-    {% set sectionOrder = ['index-country','dairy', 'blogs homepage', 'water', 'horticulture', 'viticulture', 'livestock', 'cropping'] %}
+    {% set sectionOrder = ['index-country','dairy', 'bloggers', 'water', 'horticulture', 'viticulture', 'livestock', 'cropping'] %}
 
 
 
