@@ -32,7 +32,8 @@
     'index': {
         'template': 'partials/index/section-00-top.twig',
         'template_params' : {
-                'ad': 'mrec-2'
+                'ad': 'mrec-2',
+                'partSize': 3
         },
         'blogs'         : [(site)],
     },
@@ -115,6 +116,95 @@
         'template_params' : {
             'ad': 'mrec-9'
         }
+    },
+    'index-country': {
+        'template': 'partials/index/section-00-top.twig',
+        'template_params' : {
+                'ad': 'mrec-2',
+                'partSize': 2
+        },
+        'blogs'         : [(site)]
+    },
+    'dairy': {
+        'title'     : "Dairy",
+        'template': 'partials/index/section-11-medium.twig',
+        'template_params' : {
+                'ad': 'mrec-4'
+        },
+        'blogs'         : ['dairy']
+    },
+    'bloggers' :  {
+        'blogs'     : ['bloggers'],
+        'template'  : 'partials/index/bloggers.twig',
+        'template_params' : {
+            'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
+        }
+    },
+    'water': {
+        'title'     : "Water",
+        'template': 'partials/index/section-13-water.twig',
+        'blogs'         : ['water']
+    },
+    'horticulture': {
+        'title'     : "Horticulture",
+        'template': 'partials/index/section-14-three.twig',
+        'blogs'         : ['horticulture']
+    },
+    'viticulture': {
+        'title'     : "Viticulture",
+        'template': 'partials/index/section-15-three-ad.twig',
+        'blogs'         : ['viticulture'],
+        'template_params' : {
+                'ad': 'mrec-6'
+        }
+    },
+    "livestock": {
+        'title'     : "Livestock",
+        'blogs'     : ['livestock'],
+        'template'  : 'partials/index/section-06-social.twig'
+    },
+    'cropping': {
+        'title'     : "Cropping",
+        'template': 'partials/index/section-14-three.twig',
+        'blogs'         : ['cropping']
+    },
+    'index-dairy': {
+        'template': 'partials/index/section-00-top.twig',
+        'template_params' : {
+                'partSize': 1
+        },
+        'blogs'         : [(site)]
+    },
+    'management': {
+        'title'     : "Management",
+        'template': 'partials/index/section-11-medium.twig',
+        'template_params' : {
+                'ad': 'mrec-2'
+        },
+        'blogs'         : ['management']
+    },
+    'from the experts': {
+        'title'     : "From The Experts",
+        'template': 'partials/index/section-13-water.twig',
+        'blogs'         : ['from the experts']
+    },
+    'markets': {
+        'title'     : "Markets",
+        'template': 'partials/index/section-14-three.twig',
+        'blogs'         : ['markets']
+    },
+    'machinery & products': {
+        'title'     : "Machinery & Products",
+        'template': 'partials/index/section-15-three-ad.twig',
+        'blogs'         : ['machinery & products'],
+        'template_params' : {
+                'ad': 'mrec-4'
+        }
+    },
+    'animal health': {
+        'title'     : "Animal Health",
+        'template': 'partials/index/section-14-three.twig',
+        'blogs'         : ['animal health']
     }
 } %}
 
@@ -136,18 +226,17 @@
 {% if site == 'shepparton' or site == 'aapp' %}
 
     {% set blogFeeds = blogFeeds | merge({
-            "local news":       { "limit" : 12},
-            "opinion":          { "limit" : 4},
-            "real estate":      { "limit" : 3},
-            "automotive":       { "limit" : 3},
-            "bloggers":         { "limit" : 3},
-            "video":            { "limit" : 3},
-            "galleries":        { "limit" : 3},
-            "social":           { "limit" : 3},
-            "contributed photos":{ "limit" : 3},
-            "regional news":    { "limit" : 13},
-            "rural news":       { "limit" : 16},
-            "national":         { "limit" : 9}
+            "local news":           { "limit" : 12},
+            "opinion":              { "limit" : 4},
+            "real estate":          { "limit" : 3},
+            "automotive":           { "limit" : 3},
+            "video":                { "limit" : 3},
+            "galleries":            { "limit" : 3},
+            "social":               { "limit" : 3},
+            "contributed photos":   { "limit" : 3},
+            "regional news":        { "limit" : 13},
+            "rural news":           { "limit" : 16},
+            "national":             { "limit" : 9}
         })
     %}
 
@@ -165,7 +254,18 @@
 
 {% elseif site == 'country' %}
 
-    {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
+    {% set blogFeeds = blogFeeds | merge({
+            "dairy":            { "limit" : 5},
+            "blogs homepage":   { "limit" : 2},
+            "water":            { "limit" : 4},
+            "horticulture":     { "limit" : 3},
+            "viticulture":      { "limit" : 3},
+            "livestock":        { "limit" : 3},
+            "cropping":         { "limit" : 3}
+        })
+    %}
+
+    {% set sectionOrder = ['index-country','dairy', 'blogs homepage', 'water', 'horticulture', 'viticulture', 'livestock', 'cropping'] %}
 
 
 
@@ -175,12 +275,21 @@
 
 
 {# *******************************************************
-                    DARIY
+                    DAIRY
 ******************************************************* #}
 
-{% elseif site == 'country' %}
+{% elseif site == 'dairy' %}
 
-    {% set sectionOrder = ['dairy', 'water', 'horticulture', 'livestock', 'cropping', 'videos', 'blogs homepage', 'viticulture'] %}
+    {% set blogFeeds = blogFeeds | merge({
+            "management":           { "limit" : 5},
+            "from the experts":     { "limit" : 4},
+            "markets":              { "limit" : 3},
+            "machinery & products": { "limit" : 3},
+            "animal health":        { "limit" : 3}
+        })
+    %}
+
+    {% set sectionOrder = ['index-dairy', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %}
 
 {% endif %}
 
