@@ -15,7 +15,7 @@
 
         {% for i in 0..2 if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
-                article: articles.feed.articles[articleCount], 
+                article: articles[articleCount], 
                 imageSize: {width:300},
                 site: site,
                 containerClass: 'col-sm-3 card-sm-wide card-sm-wide-tablet card-sm-mobile'
