@@ -1,6 +1,6 @@
 {% set articleCount = 0 %}
 
-<section class="row">
+<section class="row" data-articles="{{articles | length}}">
     <div class="col-md-9 col-sm-9 section-header">
         <p><a href="{{link}}">View All</a></p>
         <div class="hk">
@@ -54,10 +54,10 @@
             <div id='{{ ad }}' class='advert'></div>
         </div>
         
-        {% for i in 0..1 if articles.feed.articles[articleCount] %}
+        {% for i in 0..1 if articles[articleCount] %}
            
             {{this.render('../_single-article.twig', {
-                article:        articles.feed.articles[articleCount], 
+                article:        articles[articleCount], 
                 imageSize:      {width:300},
                 site:           site,
                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
