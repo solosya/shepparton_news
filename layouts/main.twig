@@ -230,7 +230,10 @@
 
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
-    {{this.registerJs("Acme.View.articleFeed.prototype.InsertAds();")}}
+    {{this.registerJs("
+        Acme.adInsert = new Acme.View.articleFeed();
+        Acme.adInsert.InsertAds();"
+    )}}
 
     {{ this.endBody() }}
 
