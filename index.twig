@@ -3,7 +3,7 @@
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
-{% set homeBlog    = blogData['title'] %}
+{% set homeBlog    = blogData['title'] | lower %}
 
 
 {# {% set layoutTitle = _Page.getLayoutTitle() %} #}
@@ -16,8 +16,6 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 {% set sectionOrder = [] %}
-
-
 
 
 
@@ -416,6 +414,7 @@
                     <div id='banner-7' class='advert'></div>
                 </div> 
             {% endif %}
+        
         {% else %}
 
         
