@@ -35,7 +35,8 @@
         'template_params' : {
             'ad': 'mrec-2',
         },
-        'blogs' : [(homeBlog)],
+        'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', 'deniliquin news', 'aap'],
+        'articleOrder' : [(homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'entertainment', 'rural news', 'aap'],
     },
     'local': {
         'template': 'partials/index/section-01-local.twig',
@@ -243,7 +244,14 @@
 {% elseif site == 'country' %}
 
     {% set blogFeeds = blogFeeds | merge({
-            (homeBlog):         { "limit" : 15},
+            (homeBlog):         { "limit" : 1},
+            "news":             { "limit" : 1},
+            "sport":            { "limit" : 1},
+            "rural news":       { "limit" : 1},
+            "entertainment":    { "limit" : 1},
+            "deniliquin news":  { "limit" : 1},
+            "aap":              { "limit" : 3},
+
             "dairy":            { "limit" : 5},
             "blogs homepage":   { "limit" : 2},
             "water":            { "limit" : 4},
