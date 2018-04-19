@@ -112,6 +112,11 @@
         height: 330px;
     }
 
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        width: 360px;
+        height: 390px;
+    }
+
     > .panel {
         height: 40px;
         border-bottom: 1px solid color(lightgrey);
