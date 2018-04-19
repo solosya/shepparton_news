@@ -65,7 +65,7 @@
         'template'  : 'partials/index/section-03-opinion.twig',
     },
     'bloggers' :  {
-        'blogs'     : ['blogs'],
+        'blogs'     : ['blogs homepage'],
         'template'  : 'partials/index/section-12-bloggers.twig',
         'template_params' : {
             'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
@@ -245,7 +245,7 @@
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):         { "limit" : 15},
             "dairy":            { "limit" : 5},
-            "blogs":            { "limit" : 2},
+            "blogs homepage":   { "limit" : 2},
             "water":            { "limit" : 4},
             "horticulture":     { "limit" : 3},
             "viticulture":      { "limit" : 3},
