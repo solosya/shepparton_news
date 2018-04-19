@@ -1,0 +1,52 @@
+
+
+{% set count = {} %}
+
+{% set feedArr = [] %}
+
+
+{# If a page section has articles from multiple blogs, assemble here #}
+{% if section.articleOrder is defined and section.articleOrder | length > 0 %}
+    
+    {% for a in section.articleOrder %}
+        
+        {% set count = count | merge( { (a) : count[a] + 1 } ) %}
+
+        {% set feedArr = feedArr | merge( { (loop.index0) : blogFeeds[a].feed.articles[ count[a] - 1 ] }) %}
+        
+    {% endfor %}
+
+{# else if a page section has articles from a single blog, no assembly required #}
+{% else %}
+
+    {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
+
+{% endif %}
+
+
+{% if section.template != '' %}
+    {% set params = {
+        articles: feedArr,
+        link:     blogFeeds[ section.blogs[0] ].link,
+        title:    section.title is defined ? section.title : '',
+        dev:      dev,
+        site:     site
+    } %}
+
+    {% if section.template_params is defined and section.template_params | length > 0  %}
+        {% set params = params | merge(section.template_params) %}
+    {% endif %}
+
+    {% if section.background %}
+        <div class="section-background">
+    {% endif %}
+
+        <div class="container">
+            {{this.render(section.template, params) | raw}} 
+        </div>
+
+    {% if section.background %}
+        </div>
+    {% endif %}
+
+{% endif %}

@@ -1,0 +1,197 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+{% set homeBlog    = blogData['title'] | lower %}
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+{% set sectionOrder = [] %}
+
+
+
+
+
+
+
+{# *******************************************************
+                GLOBAL SITE SECTIONS
+              (each site can override)
+******************************************************* #}
+
+{% set pageSections =  {
+    'section_0': {
+        'template': 'partials/index/section-01-local.twig',
+        'title' : 'Echuca',
+        'blogs' : ['Echuca News'],
+    },
+    'section_1': {
+        'template': 'partials/index/section-01-local.twig',
+        'title' : 'Deniliquin',
+        'blogs': ['Deniliquin News'],
+    },
+    "section_2": {
+        'title'     : "Finley",
+        'blogs'     : ['Finley News'],
+        'template': 'partials/index/section-01-local.twig',
+    },
+    "section_3": {
+        'title'     : "Kyabram",
+        'blogs'     : ['Kyabram News'],
+        'template': 'partials/index/section-01-local.twig',
+    },
+    "section_4": {
+        'title'     : "Benella",
+        'blogs'     : ['Benella News'],
+        'template': 'partials/index/section-01-local.twig',
+    }
+} %}
+
+
+
+
+
+
+
+
+{# The following list of blogs are required for each site to load the feeds #}
+
+{# *******************************************************
+                        COMMON
+******************************************************* #}
+{% set blogFeeds = {
+        "Echuca News":          { "limit" : 5},
+        "Echuca Sport":         { "limit" : 1},
+        "Echuca Social":        { "limit" : 1},
+        "Echuca LifeStyle":     { "limit" : 1},
+        "Echuca Entertainment": { "limit" : 1},
+
+        "Deniliquin News":      { "limit" : 5},
+        "Deniliquin Opinion":   { "limit" : 1},
+        "Deniliquin Sport":     { "limit" : 2},
+        "Deniliquin Entertainment": { "limit" : 1},
+
+        "Finley News":          { "limit" : 5},
+        "Finley Sport":         { "limit" : 1},
+
+        "Kyabram News":         { "limit" : 5},
+        "Kyabram Sport":        { "limit" : 2},
+
+        "Benalla News":         { "limit" : 5},
+        "Benalla Sport":        { "limit" : 3},
+
+        "Cobram News":          { "limit" : 3},
+        "Cobram Sport":         { "limit" : 1},
+
+        "Seymour News":         { "limit" : 2},
+        "Seymour Sport":        { "limit" : 1},
+
+        "Rochester News":       { "limit" : 3},
+        "Rochester Sport":      { "limit" : 1},
+
+        "heathcote News":       { "limit" : 2},
+        "heathcote Sport":      { "limit" : 1},
+
+        "tatura News":          { "limit" : 3},
+
+        "yarrawonga News":      { "limit" : 2},
+        "yarrawonga Sport":     { "limit" : 2},
+
+        "corowa News":          { "limit" : 3},
+        "corowa Sport":         { "limit" : 1},
+
+
+    }
+%}
+
+{% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4'] %}
+
+
+
+
+
+
+
+
+
+{# *******************************************************
+                Fetch all needed feeds
+******************************************************* #}
+{% for key, value in blogFeeds %}
+    {% for blog in networkData.networkBlogs %}
+        {% if blog.title | lower == key | lower %}
+
+            {% set feed = dev 
+                    ? articlesArr 
+                    : _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
+            %}
+
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : {
+                    'feed'      : feed,
+                    'link'      : blog.link
+                    }
+                }) %}
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main" class="site-main" role="main">
+
+
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-9 header">
+                    <div class="hk">
+                        <h2>{{this.title}}</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+    {# *******************************************************
+                        RENDER SECTIONS
+    ******************************************************* #}
+    {% for pagesection in sectionOrder %}
+        {% set params = {
+            'section'   : pageSections[pagesection],
+            'blogFeeds' : blogFeeds,
+            'site'      : site,
+            'dev'       : dev
+        } %}
+    
+        {{this.render('render.twig', params) | raw}} 
+
+    {% endfor %}
+
+
+
+</main><!-- .site-main -->
+
+
