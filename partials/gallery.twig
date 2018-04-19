@@ -16,7 +16,7 @@
 
 
 
-<div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1">
+<div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1" default="{{default}}>
     {% for image in media %}
         {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
