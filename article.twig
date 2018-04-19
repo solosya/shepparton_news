@@ -28,7 +28,7 @@
 
     {# seperate videos and images into seperate arrays #}
     {% for image in article.media %}
-        {% if image.type == 'image' %}
+        {% if image.type == 'image' or image.type == 'doc' %}
             {% set images = images|merge([image]) %}
         {% endif %}
         {% if image.type == 'video' %}
