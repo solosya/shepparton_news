@@ -96,7 +96,7 @@
 
         <section class="row sm-two-cols visible-sm-block">
             {% set tabletCount = articleCount %} 
-            {% for i in 0..5 if articles[tabletCount] %}
+            {% for i in 0..3 if articles[tabletCount] %}
                 <div class="col-sm-1">
                     {{this.render('../_single-article.twig', {
                         article: articles[tabletCount], 
