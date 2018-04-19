@@ -32198,7 +32198,6 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
     //Follow/Unfollow a user or writer
     $.fn.followUser = function (options) {
 
-        console.log('whoo');
 
         var defaults = {
             'onSuccess': function () {},
