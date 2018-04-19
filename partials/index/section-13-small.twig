@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-md-4 col-sm-5 col-xs-9">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
@@ -24,7 +24,7 @@
 
     </div>
 
-    <div class="col-sm-2">
+    <div class="col-md-2 col-sm-4 col-xs-9">
         {% set cardspace = ['', 'row-space'] %}
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
@@ -41,9 +41,11 @@
     </div>
 
 
-    <div class="col-sm-3">
+    
         
         {% for i in 0..1 if articles[articleCount] %}
+            {% set colSet = [' col-sm-offset-1',''] %}
+            <div class="col-md-3 col-sm-4 col-xs-9{{ colSet[i] }}">
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 imageSize: {width:300},
@@ -58,8 +60,6 @@
             {% else %}
                 <hr class="divide">
             {% endif %}
-
+        </div>
         {% endfor %}
-
-    </div>
 </section>

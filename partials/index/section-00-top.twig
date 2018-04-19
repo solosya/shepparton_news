@@ -30,10 +30,13 @@
                     <div class="col-sm-1 col-md-9">
                         <div id="weather" class="weather"></div>
                         <div id="weather-dropdown" class="weather-dropdown hidden"></div>
+                        <div class="row">
+                            <hr class="divide10 visible-sm-block">
+                        </div>
                     </div>
 
                     <hr class="divide10 visible-xs-block" style="clear:both">
-                    <hr class="divide10 visible-sm-block">  
+                      
                     {% for i in 0..2 if articles[i] %}
                         <div class="col-sm-1 col-md-9">
                             {{this.render('../_single-article.twig', {
@@ -95,7 +98,6 @@
 
 
         <section class="row sm-two-cols visible-sm-block">
-            <hr class="divide10 visible-sm-block">
             {% set tabletCount = articleCount %} 
             {% for i in 0..3 if articles[tabletCount] %}
                 <div class="col-sm-1">
