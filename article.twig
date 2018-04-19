@@ -76,7 +76,7 @@
                             {% endif %}
 
 
-                            <div class="gallery-container relative">
+                            <div class="gallery-container relative" data-featured="{{featured}}">
 
                                 {% if images|length > 0 %}
                                     {% set imageFeature = featured == 'image' ? true : false %}
