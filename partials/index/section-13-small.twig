@@ -41,25 +41,25 @@
     </div>
 
 
-    
+    <hr class="divide15 visible-sm-block space-only">
         
-        {% for i in 0..1 if articles[articleCount] %}
-            {% set colSet = [' col-sm-offset-1',''] %}
-            <div class="col-md-3 col-sm-4 col-xs-9{{ colSet[i] }}">
-            {{this.render('../_single-article.twig', {
-                article: articles[articleCount], 
-                imageSize: {width:300},
-                site: site,
-                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-             {% if i == 1 %}
-                <div class="row">
-                    <hr class="divide visible-xs-block">
-                </div>
-            {% else %}
-                <hr class="divide">
-            {% endif %}
+    {% for i in 0..1 if articles[articleCount] %}
+        {% set colSet = ['',' col-md-offset-0 col-sm-offset-1 col-xs-offset-0'] %}
+        <div class="col-md-3 col-sm-4 col-xs-9{{ colSet[i] }}">
+        {{this.render('../_single-article.twig', {
+            article: articles[articleCount], 
+            imageSize: {width:300},
+            site: site,
+            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+        }) | raw}}
+        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        {% if i == 1 %}
+            <div class="row">
+                <hr class="divide visible-xs-block">
+            </div>
+        {% else %}
+            <hr class="divide">
+        {% endif %}
         </div>
-        {% endfor %}
+    {% endfor %}
 </section>
