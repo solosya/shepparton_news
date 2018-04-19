@@ -22,7 +22,9 @@
             }) | raw}}
             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
             {% if i < 2 %}
-                <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                <hr class="divide12 visible-xs-block" style="margin-left:15px;margin-right:15px;">    
+            {% else %}
+                <hr class="divide visible-xs-block">
             {% endif %}
         {% endfor %}
 

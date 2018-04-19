@@ -51,7 +51,11 @@
                 containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            {% if i == 0 %}
+             {% if i == 1 %}
+                <div class="row">
+                    <hr class="divide visible-xs-block">
+                </div>
+            {% else %}
                 <hr class="divide">
             {% endif %}
 

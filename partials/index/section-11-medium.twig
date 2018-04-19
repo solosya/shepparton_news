@@ -48,31 +48,38 @@
     </div>
 
 
-    <div class="col-md-3 col-xs-9">
-
-        <div class="ad-square u-margin-bottom-30 m-no-margin-bottom">
-            <div id='{{ ad }}' class='advert'></div>
-        </div>
-        
-        {% for i in 0..1 if articles[articleCount] %}
-           
-            {{this.render('../_single-article.twig', {
-                article:        articles[articleCount], 
-                imageSize:      {width:300},
-                site:           site,
-                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            
-            {% if i == 1 %}
-                <div class="row">
-                    <hr class="divide visible-xs-block">
+    <div class="col-md-3 col-sm-9">
+        <div class="row">
+            <div class="col-md-9 col-sm-4 col-xs-9">
+                <div class="ad-square u-margin-bottom-30 m-no-margin-bottom">
+                    <div id='{{ ad }}' class='advert'></div>
                 </div>
-            {% else %}
-                <hr class="divide">
-            {% endif %}
+            </div>
+            <hr class="divide visible-xs-block">
+        </div>
+        <div class="col-sm-offset-1 visible-sm-block">
+        <div class="row">
+            {% for i in 0..1 if articles[articleCount] %}
+                <div class="col-md-9 col-sm-4 col-xs-9">
+                    {{this.render('../_single-article.twig', {
+                        article:        articles[articleCount], 
+                        imageSize:      {width:300},
+                        site:           site,
+                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    
+                    {% if i == 1 %}
+                        <div class="row">
+                            <hr class="divide visible-xs-block">
+                        </div>
+                    {% else %}
+                        <hr class="divide">
+                    {% endif %}
+                </div>
 
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>    
 
 </section>
