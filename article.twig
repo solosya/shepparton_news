@@ -79,7 +79,10 @@
                             <div class="gallery-container relative" data-featured="{{featured}}">
 
                                 {% if images|length > 0 %}
-                                    {% set imageFeature = featured == 'image' ? true : false %}
+                                    {% set imageFeature = false %}
+                                    {% if featured == 'image' or featured == 'doc' %}
+                                        {% set imageFeature = true %}
+                                    {% endif %}
                                     {{this.render('partials/gallery.twig', {
                                         media: images,
                                         default: imageFeature
