@@ -22,7 +22,7 @@
 
         <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
                 
-            {% if image.type == 'image' %} 
+            {% if image.type == 'image' or image.type == 'doc'%} 
 
                 <img src="{{articleImg}}" class="article-gallery__img {{galleryStyle}}-featured-image__img">
 
