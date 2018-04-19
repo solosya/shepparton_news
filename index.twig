@@ -214,7 +214,14 @@
 {% if site == 'shepparton' or site == 'aapp' %}
 
     {% set blogFeeds = blogFeeds | merge({
-            (homeBlog):             { "limit" : 15},
+            (homeBlog):             { "limit" : 1},
+            "news":                 { "limit" : 1},
+            "sport":                { "limit" : 1},
+            "rural news":           { "limit" : 1},
+            "entertainment":        { "limit" : 1},
+            "deniliquin news":      { "limit" : 1},
+            "aap":                  { "limit" : 3},
+
             "local news":           { "limit" : 12},
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
@@ -244,14 +251,7 @@
 {% elseif site == 'country' %}
 
     {% set blogFeeds = blogFeeds | merge({
-            (homeBlog):         { "limit" : 1},
-            "news":             { "limit" : 1},
-            "sport":            { "limit" : 1},
-            "rural news":       { "limit" : 1},
-            "entertainment":    { "limit" : 1},
-            "deniliquin news":  { "limit" : 1},
-            "aap":              { "limit" : 3},
-
+            (homeBlog):         { "limit" : 15},
             "dairy":            { "limit" : 5},
             "blogs homepage":   { "limit" : 2},
             "water":            { "limit" : 4},

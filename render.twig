@@ -7,9 +7,8 @@
 
 {# If a page section has articles from multiple blogs, assemble here #}
 {% if section.articleOrder is defined and section.articleOrder | length > 0 %}
-    
     {% for a in section.articleOrder %}
-        
+
         {% set count = count | merge( { (a) : count[a] + 1 } ) %}
 
         {% set feedArr = feedArr | merge( { (loop.index0) : blogFeeds[a].feed.articles[ count[a] - 1 ] }) %}
@@ -22,7 +21,6 @@
     {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
 
 {% endif %}
-
 
 {% if section.template != '' %}
     {% set params = {
