@@ -237,6 +237,7 @@
                 top: 0;
                 right: -13px;
             }
+
             &:last-child {
                 &:after {
                     display:none;
@@ -246,6 +247,19 @@
                 &:after {
                     right: 0;
                 }
+            }
+        }
+
+        &.divideright-ofs {
+            &:after {
+                content: '';
+                display: block;
+                height: 100%;
+                background: color(lightgrey);
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: -85px;
             }
         }
 
