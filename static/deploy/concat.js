@@ -34047,7 +34047,7 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div id='infinite-variable-mobile-tablet-desktop' class='advert' data-site='{{site}}' data-section='{{blogData.title | lower}}' data-type='{{blogData.type | lower}}'></div>";
+    "<div id='infinite-variable-mobile-tablet-desktop' class='advert col-sm-9'></div>";
 
 
 
@@ -34211,46 +34211,50 @@ Acme.article = function() {
 
 Acme.article.prototype.insertOovvuu = function() {
     articleContent = $("#articleContent").children();
-    oovvuu = jQuery.parseJSON($("#oovvuu").text());
-    brightcove = $("#brightcove").text().trim();
-    if (brightcove == '') {brightcove = "5370537724001";} 
-    if (oovvuu.status_code == 200) {
-        oovvuu = oovvuu.embedCodes.group1;
-        minPars = 9;
-        targetPars = [3, 100];
-        for (i=0; i < targetPars.length; i++) {
+    try {
+        oovvuu = jQuery.parseJSON($("#oovvuu").text());
+        brightcove = $("#brightcove").text().trim();
+        if (brightcove == '') {brightcove = "5370537724001";} 
+        if (oovvuu.status_code == 200) {
+            oovvuu = oovvuu.embedCodes.group1;
+            minPars = 9;
+            targetPars = [3, 100];
+            for (i=0; i < targetPars.length; i++) {
 
-            //if ($('.article_content > p').length > targetPars[i]) {
+                //if ($('.article_content > p').length > targetPars[i]) {
 
-                if (oovvuu.length > i) {
+                    if (oovvuu.length > i) {
 
-                    content = 
-                    '<div class="oovvuu-video"> \
-                        <div style="padding-top: 56.25%;">\
-                            <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
-                                    allowfullscreen\
-                                    webkitallowfullscreen\
-                                    mozallowfullscreen\
-                                    style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"> \
-                            </iframe>\
+                        content = 
+                        '<div class="oovvuu-video"> \
+                            <div style="padding-top: 56.25%;">\
+                                <iframe src="//players.brightcove.net/'+brightcove+'/default_default/index.html?videoId='+oovvuu[i].embed_code+'" \
+                                        allowfullscreen\
+                                        webkitallowfullscreen\
+                                        mozallowfullscreen\
+                                        style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"> \
+                                </iframe>\
+                            </div> \
                         </div> \
-                    </div> \
-                    <p class="oovvuu-video__text">Related videos powered by Oovvuu</p>';
+                        <p class="oovvuu-video__text">Related videos powered by Oovvuu</p>';
 
-                    targetPar = targetPars[i];
-                    if( $('.article_content > p').length < targetPars[i]) {
-                        targetPar =  $('.article_content > p').length-1;
-                        i = targetPars.length;
-                        if ($('.article_content > p').length < minPars) {
-                            targetPar = -1;
+                        targetPar = targetPars[i];
+                        if( $('.article_content > p').length < targetPars[i]) {
+                            targetPar =  $('.article_content > p').length-1;
+                            i = targetPars.length;
+                            if ($('.article_content > p').length < minPars) {
+                                targetPar = -1;
+                            }
+                        }
+                        if (targetPar > 0) {
+                            $(content).insertAfter( $('.article_content > p')[targetPar-1]);
                         }
                     }
-                    if (targetPar > 0) {
-                        $(content).insertAfter( $('.article_content > p')[targetPar-1]);
-                    }
-                }
-            //}
+                //}
+            }
         }
+    } catch(err) {
+        console.log(err);
     }
         
 
@@ -34264,7 +34268,7 @@ Acme.article.prototype.InsertInterstitial = function() {
     	teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {
-        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='article-mrec-2-inarticle-mobile' class='advert' ></div></div>").insertAfter( $('.article_content > p')[6] );
+        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='mrec-14-m' class='advert' ></div></div>").insertAfter( $('.article_content > p')[6] );
 	}
 }
 
@@ -34449,7 +34453,7 @@ Acme.View.articleFeed.prototype.events = function()
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var pageAdSlots = $('.advert');
     //console.log('pageAdSlots:');
-    //console.log(pageAdSlots);
+    console.log(pageAdSlots);
     if (pageAdSlots.length > 0 ){
 
         var adSlotIds = [pageAdSlots.length];

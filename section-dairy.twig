@@ -69,11 +69,7 @@
                     <div class="row">
                 
                         <div class="ad-square visible-md-block visible-lg-block col-sm-1 col-md-9" style="margin-bottom:15px;position:relative;">
-                            <div id='section-mrec-1-desktop' class='advert'
-                                data-site="{{site}}"
-                                data-section="{{blogData.title | lower}}"
-                                data-type="{{blogData.type | lower}}"
-                            ></div> 
+                            <div id='mrec-12-d' class='advert'></div> 
                         </div>
 
                         <div class="col-sm-1 col-md-9">
@@ -110,12 +106,8 @@
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endfor %}
 
-                        <div class="ad-container hidden-md hidden-lg" style="margin-bottom:50px">
-                            <div id='section-mrec-3-mobile-tablet' class='advert'
-                                data-site="{{site}}"
-                                data-section="{{blogData.title | lower}}"
-                                data-type="{{blogData.type | lower}}"
-                            ></div> 
+                        <div class="ad-container visible-xs-block" style="margin-bottom:50px">
+                            <div id='mrec-14-m' class='advert'></div> 
                         </div>
 
                         {% for i in 3..8 if articles[articleCount] %} 
@@ -156,24 +148,12 @@
 
                     {% endfor %}
 
-                    <div class="ad-large-vert visible-sm-block" style="position:absolute;">
-                        <div id='section-mrec-2-tablet' class='advert'
-                                data-site="{{site}}"
-                                data-section="{{blogData.title | lower}}"
-                                data-type="{{blogData.type | lower}}"
-                            ></div> 
-                    </div>
-
 
                 </div>
 
-                <div class="col-md-3 visible-xs-block visible-md-block visible-lg-block">
+                <div class="col-md-3 hidden-xs">
                     <div class="ad-square clearfixed">
-                        <div id='section-mrec-2-mobile-desktop' class='advert'
-                            data-site="{{site}}"
-                            data-section="{{blogData.title | lower}}"
-                            data-type="{{blogData.type | lower}}"
-                        ></div>
+                        <div id='mrec-16-td' class='advert'></div>
                     </div>
                 </div>
             </div>

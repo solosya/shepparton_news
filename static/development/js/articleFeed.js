@@ -148,7 +148,7 @@ Acme.View.articleFeed.prototype.events = function()
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var pageAdSlots = $('.advert');
     //console.log('pageAdSlots:');
-    //console.log(pageAdSlots);
+    console.log(pageAdSlots);
     if (pageAdSlots.length > 0 ){
 
         var adSlotIds = [pageAdSlots.length];
