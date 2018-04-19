@@ -3,6 +3,8 @@
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
+{% set homeBlog    = blogData['title'] %}
+
 
 {# {% set layoutTitle = _Page.getLayoutTitle() %} #}
 
@@ -34,7 +36,7 @@
         'template_params' : {
             'ad': 'mrec-2',
         },
-        'blogs'         : [(site)],
+        'blogs' : [(homeBlog)],
     },
     'local': {
         'template': 'partials/index/section-01-local.twig',
@@ -50,7 +52,6 @@
         'background': true,
         'template'  : 'partials/index/section-02-real-estate.twig', 
         'template_params' : {
-            'href': ['https://www.realestateview.com.au'],
             'networkData' : networkData
         },
     },
@@ -121,7 +122,7 @@
         'template_params' : {
             'ad': 'mrec-2',
         },
-        'blogs'     : [(site)]
+        'blogs'     : [(homeBlog)]
     },
     'dairy': {
         'title'     : "Dairy",
@@ -161,7 +162,7 @@
     },
     'index-dairy': {
         'template': 'partials/index/section-00-top.twig',
-        'blogs'     : [(site)]
+        'blogs'     : [(homeBlog)]
     },
     'management': {
         'title'     : "Management",
@@ -206,13 +207,14 @@
 {# The following list of blogs are required for each site to load the feeds #}
 
 {# *******************************************************
-                    SHEPPARTON
+                        SHEPPARTON
 ******************************************************* #}
-{% set blogFeeds =  { (site) : { "limit" : 15} } %}
+{% set blogFeeds =  {} %}
 
 {% if site == 'shepparton' or site == 'aapp' %}
 
     {% set blogFeeds = blogFeeds | merge({
+            (homeBlog):             { "limit" : 15},
             "local news":           { "limit" : 12},
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
@@ -242,6 +244,7 @@
 {% elseif site == 'country' %}
 
     {% set blogFeeds = blogFeeds | merge({
+            (homeBlog):         { "limit" : 15},
             "dairy":            { "limit" : 5},
             "blogs":            { "limit" : 2},
             "water":            { "limit" : 4},
@@ -268,6 +271,7 @@
 {% elseif site == 'dairy' %}
 
     {% set blogFeeds = blogFeeds | merge({
+            (homeBlog):             { "limit" : 15},
             "management":           { "limit" : 5},
             "from the experts":     { "limit" : 4},
             "markets":              { "limit" : 3},
