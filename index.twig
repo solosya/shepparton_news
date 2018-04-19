@@ -2,7 +2,8 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
-{% set site        = networkData.title | lower | split(" ")[0]%}
+{# {% set site        = networkData.title | lower | split(" ")[0]%}
+ #}{% set site        = 'dairy' %}
 {% set homeBlog    = blogData['title'] | lower %}
 
 
