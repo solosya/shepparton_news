@@ -26,10 +26,15 @@
                 site: site,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile'
             }) | raw}}
-            {% set articleCount = (dev) ? articleCount : sectionCount + 1 %}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             <hr class="divide visible-xs-block">
             </div>
         {% endfor %}
+
+
+
+
+
 
         <div class="col-sm-3 mini-events">
             <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
