@@ -14,7 +14,7 @@ Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, l
 
 Acme.View.articleFeed.prototype.fetch = function()
 {
-    console.log('fetching');
+
     var self = this;
     self.elem.html("Please wait...");
 
@@ -132,7 +132,7 @@ Acme.View.articleFeed.prototype.events = function()
     });
 
     if (this.infinite && this.offset >= this.limit) {
-        console.log('setting infinite');
+
         self.waypoint = new Waypoint({
             element: self.elem,
             offset: '100%',
@@ -179,7 +179,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section) {
         var theAd = adSizes[adDivId];
         var adSlot = document.getElementById(adDivId);
-        console.log(theAd);
+
         if ((theAd || adSlot || theAd[0] || theAd[1] || theAd[2] || theAd[3] || theAd[4]) == undefined) {
             console.log('id/slot not found:');
             console.log(adDivId);
@@ -192,7 +192,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         adSlot.classList.remove("advert");
         if (adDivId == 'infinite-variable-mobile-tablet-desktop') {
             adSlot.id = "infinite-loaded";
-            console.log('LOADMORE ONLY:');
+
             // console.log(theAd,dfpacct,blogAd,section);
             var slotName = generateNextAdName(theAd[0]);
             slotDiv.id = slotName;
