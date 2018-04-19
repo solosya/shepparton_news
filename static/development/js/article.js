@@ -65,7 +65,7 @@ Acme.article.prototype.InsertInterstitial = function() {
     	teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {
-        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='article-mrec-2-inarticle-mobile' class='advert' ></div></div>").insertAfter( $('.article_content > p')[6] );
+        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='mrec-14-m' class='advert' ></div></div>").insertAfter( $('.article_content > p')[6] );
 	}
 }
 
