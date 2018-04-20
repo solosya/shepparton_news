@@ -51,7 +51,7 @@
     <div class="col-md-3 col-sm-9 u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
         <div class="row">
             
-                <div class="ad-square u-margin-bottom-30 u-mobile-no-margin-bottom col-xs-9 col-sm-4 col-md-9">
+                <div class="ad-square u-margin-bottom-30 u-mobile-no-margin-bottom col-sm-9">
                     <div id='{{ ad }}' class='advert'></div>
                     <div class="row">
                         <hr class="divide visible-xs-block">
@@ -61,12 +61,15 @@
             
             
             {% for i in 0..1 if articles[articleCount] %}
-                <div class="col-md-9 col-sm-5 col-xs-9">
+                {% set forArts = ['',' col-sm-offset-1 col-md-offset-0 col-xs-offset-0'] %}
+                {% set forCards = [' divideright-tablet',''] %}
+                    
+                <div class="col-md-9 col-sm-4 col-xs-9{{ forArts[i] }}">
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
-                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                        containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ forCards[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     
