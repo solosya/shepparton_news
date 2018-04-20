@@ -1,5 +1,5 @@
 {% set articleCount = 0 %}
-    
+
 <section class="row">
     <div class="col-sm-9 section-header">
         <p><a href="{{link}}">View All</a></p>
@@ -10,7 +10,10 @@
     </div>
 
     <div class="col-md-9 col-sm-9">
+        
         <div class="row">
+            
+            
             <div class="col-sm-9 col-md-6">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
@@ -22,6 +25,8 @@
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% endif %}
+
+
                 <div class="row u-margin-top-30">
                     {% for i in 0..2 if articles[articleCount] %}
                         <div class="col-sm-3 col-xs-9">
@@ -31,12 +36,14 @@
                                 site:site,
                                 containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                             }) | raw}}
-                            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block"> 
                             </div>
                                                        
                     {% endfor %}
                 </div>
+
+
 
                 <div class="row u-margin-top-30 m-no-margin-top">
                     <div class="col-sm-4 col-xs-9">
@@ -48,13 +55,15 @@
                                     site:site,
                                     containerClass: cardClassOne[i] ~ 'card-sm-mobile'
                                 }) | raw}}
-                                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block"> 
                                 {% if i < 1 %}
                                 <hr class="divide10 space-only hidden-xs">
                                 {% endif %}                                  
                         {% endfor %}
                     </div>
+
+
                     <div class="col-sm-5 col-xs-9">
                         {% for i in 0..2 if articles[articleCount] %}
                                 {{this.render('../_single-article.twig', {
@@ -63,7 +72,7 @@
                                     site:site,
                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                 }) | raw}}
-                                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 {% if i < 2 %}
                                 <hr class="divide18 hidden-xs">
                                 {% endif %} 
@@ -74,6 +83,8 @@
             </div>
 
 
+
+            {# Side column #}
             <div class="col-sm-9 col-md-3">
                 <hr class="divide15 visible-sm-block space-only">
 
@@ -86,7 +97,7 @@
                                 site:site,
                                 containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                             }) | raw}}
-                            {% set articleCount = (dev) ? 0 : articleCount + 1 %} 
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %} 
                             {% if i == 2 %}                                
                                 </div>
                                 <hr class="divide visible-xs-block"> 

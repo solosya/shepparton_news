@@ -44,7 +44,8 @@
             'ad': 'mrec-4'
         },
         'title' : 'Local News',
-        'blogs': ['local news'],
+        'blogs': ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
+        'articleOrder' : ['news', 'news', 'sport', 'news', 'education', 'news', 'entertainment', 'sport', 'news', 'news', 'sport', 'lifestyle'],
     },
     "real estate": {
         'title'     : "Real Estate",
@@ -225,14 +226,14 @@
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):             { "limit" : 1},
-            "news":                 { "limit" : 1},
-            "sport":                { "limit" : 1},
-            "rural news":           { "limit" : 1},
+            "news":                 { "limit" : 6},
+            "sport":                { "limit" : 3},
+            "education":            { "limit" : 1},
+            "lifestyle":            { "limit" : 1},
             "entertainment":        { "limit" : 1},
             "deniliquin news":      { "limit" : 1},
             "aap":                  { "limit" : 3},
 
-            "local news":           { "limit" : 12},
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
             "automotive":           { "limit" : 3},
