@@ -65,13 +65,6 @@
         'blogs'     : ['opinion'],
         'template'  : 'partials/index/section-07.twig',
     },
-    'bloggers' :  {
-        'blogs'     : ['blogs homepage'],
-        'template'  : 'partials/index/section-25.twig',
-        'template_params' : {
-            'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
-        }
-    },
     "videos": {
         'title'     : "Videos",
         'blogs'     : ['video'],
@@ -130,11 +123,18 @@
     },
     'dairy': {
         'title'     : "Dairy",
-        'template'  : 'partials/index/section-11-medium.twig',
+        'template'  : 'partials/index/section-26.twig',
         'template_params' : {
             'ad': 'mrec-4'
         },
         'blogs'     : ['dairy']
+    },
+    'bloggers' :  {
+        'blogs'     : ['blogs homepage'],
+        'template'  : 'partials/index/section-25.twig',
+        'template_params' : {
+            'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
+        }
     },
     'water': {
         'title'     : "Water",
@@ -156,8 +156,8 @@
     },
     "livestock": {
         'title'     : "Livestock",
+        'template'  : 'partials/index/section-09.twig',
         'blogs'     : ['livestock'],
-        'template'  : 'partials/index/section-09.twig'
     },
     'cropping': {
         'title'     : "Cropping",
@@ -176,7 +176,7 @@
     },
     'management': {
         'title'     : "Management",
-        'template'  : 'partials/index/section-11-medium.twig',
+        'template'  : 'partials/index/section-26.twig',
         'template_params' : {
             'ad': 'mrec-2'
         },
