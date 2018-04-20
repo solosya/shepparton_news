@@ -14,13 +14,14 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+
+{% if dev %}
+    {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
+{% endif %}
+
 
 {% set sectionOrder = [] %}
-
-
-
-
 
 
 
@@ -267,6 +268,7 @@
     %}
 
     {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
+    {# {% set sectionOrder = ['rural news'] %} #}
 
 
 
@@ -333,12 +335,19 @@
 ******************************************************* #}
 {% for key, value in blogFeeds %}
     {% for blog in networkData.networkBlogs %}
-        {% if blog.title | lower == key | lower %}
 
-            {% set feed = dev 
-                    ? articlesArr 
-                    : _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) 
-            %}
+
+        {# FOR DEV  #}
+        {% if dev %}
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : { 'feed' : articlesArr, 'link' : '#' } }) %}
+        {% endif %}
+
+
+        {# FOR PRODUCTION #}
+        {% if not dev and blog.title | lower == key | lower or dev %}
+
+            {% set feed = _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) %}
 
             {% set blogFeeds = blogFeeds | merge({
                 (key) : {

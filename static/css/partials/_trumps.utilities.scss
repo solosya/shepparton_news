@@ -43,6 +43,11 @@ div[class*="col-md"] {
             width:50%;
             float:left;
         }
+        &.split {
+            width:50%;
+            float:left;
+        }
+
         &.clearfixed {
             clear:both;
         }

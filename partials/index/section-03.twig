@@ -10,6 +10,11 @@
     </div>
 
     <div class="col-md-9 col-sm-9">
+        
+        
+        {# ********************
+                ROW 1
+        ******************** #}
         <div class="row">
             <div class="col-sm-4 col-xs-9">
                 {% if articles[articleCount] %}
@@ -58,7 +63,18 @@
             </div>
         </div>
     </div>
+
+
+
+
+
     <div class="col-md-9 col-sm-9">
+
+
+        {# ********************
+                ROW 2
+        ******************** #}
+
         <div class="row u-margin-top-40 u-mobile-no-margin-top">
 
             {% for i in 0..2 if articles[articleCount] %}
@@ -91,35 +107,57 @@
             </div>
         </div>
     </div>
+
+
+
+
+
     <div class="col-md-9 col-sm-9">
+
+        {# ********************
+                ROW 3
+        ******************** #}
+
         <div class="row u-margin-top-40 u-mobile-no-margin-top">
-
-            {% for i in 0..2 if articles[articleCount] %}
-                <div class="col-md-2 col-sm-3 col-xs-9">
-                    {{this.render('../_single-article.twig', {
-                        article:        articles[articleCount], 
-                        imageSize:      {width:80, height:90},
-                        site:           site,
-                        containerClass: 'card-sm card-sm-tablet card-sm-mobile'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                    {% if i < 2 %}
+            
+            <div class="col-md-6 col-sm-3 col-xs-9">
+                <div class="row">
+                    {% for i in 0..3 if articles[articleCount] %}
+                        <div class="col-md-3 col-sm-3 col-xs-9 large-split">
+                            {% set theDivider = [' divideright','',' divideright',''] %}
+                            {{this.render('../_single-article.twig', {
+                                article:        articles[articleCount], 
+                                imageSize:      {width:80, height:90},
+                                site:           site,
+                                containerClass: 'feature-side feature-side-tablet card-sm-mobile' 
+                            }) | raw}}
+                            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                            {% if i < 2 %}
+                                <hr class="divide18 hidden-xs">
+                            {% endif %} 
                             <hr class="divide visible-xs-block">
-                        </div>
-                    {% else %}
-                        </div>
-                        <hr class="divide visible-xs-block">
-                    {% endif %}
-            {% endfor %}
+                        </div>                         
+                    {% endfor %}
+                </div>
+            </div>
 
-
-            <div class="col-sm-3 ad-square">
+            <div class="col-md-3 col-sm-3 ad-square">
                  <div id='{{ ad }}' class='advert'></div>
             </div>
         </div>
     </div>
 
+
+
+
+
+
     <div class="col-md-9 col-sm-9">
+
+        {# ********************
+                ROW 4
+        ******************** #}
+
         <div class="row u-margin-top-40 u-mobile-no-margin-top">
             <hr class="divide visible-xs-block">
             <div class="col-sm-3 col-xs-9">
@@ -150,18 +188,12 @@
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-                    {% if i == 3 %}
-                        <div class="row">
-                            <hr class="divide visible-xs-block">
-                        </div>
-                    {% else %}
-                            <hr class="divide visible-xs-block">
-                            <hr class="divide15 hidden-xs space-only">
-                    {% endif %}
-                </div>
-
+                    {% if i < 2 %}
+                        <hr class="divide18 hidden-xs">
+                    {% endif %} 
+                    <hr class="divide visible-xs-block">
+                </div>                         
             {% endfor %}
-
 
         </div>
     </div>
