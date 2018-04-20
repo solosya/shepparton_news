@@ -29,13 +29,13 @@
 {% set pageSections =  {
     'section_0': {
         'template'  : 'partials/index/section-01-local.twig',
-        'title'     : 'News',
-        'blogs'     : ['Local News'],
+        'title'     : 'Echuca',
+        'blogs'     : ['Echuca News'],
     },
     'section_1': {
         'template'  : 'partials/index/section-01-local.twig',
-        'title'     : 'Sport',
-        'blogs'     : ['Sport'],
+        'title'     : 'Deniliquin',
+        'blogs'     : ['Deniliquin News'],
     },
     "section_2": {
         'title'     : "Finley",
@@ -51,28 +51,7 @@
         'title'     : "Benella",
         'blogs'     : ['Benella News'],
         'template': 'partials/index/section-01-local.twig',
-    },
-    "section_5": {
-        'title'     : "Kyabram",
-        'blogs'     : ['Kyabram News'],
-        'template': 'partials/index/section-01-local.twig',
-    },
-    "section_6": {
-        'title'     : "Kyabram",
-        'blogs'     : ['Kyabram News'],
-        'template': 'partials/index/section-01-local.twig',
-    },
-    "section_7": {
-        'title'     : "Kyabram",
-        'blogs'     : ['Kyabram News'],
-        'template': 'partials/index/section-01-local.twig',
-    },
-    "section_8": {
-        'title'     : "Kyabram",
-        'blogs'     : ['Kyabram News'],
-        'template': 'partials/index/section-01-local.twig',
-    },
-
+    }
 } %}
 
 
@@ -88,19 +67,19 @@
                         COMMON
 ******************************************************* #}
 {% set blogFeeds = {
-        "Local News":           { "limit" : 5},
-        "Local Sport":          { "limit" : 4},
-        "Opinion":              { "limit" : 4},
-        "Entertainment":        { "limit" : 3},
-        "Lifestyle":            { "limit" : 3},
-        "Education":            { "limit" : 4},
-        "Contributed Phots":    { "limit" : 3},
-        "Galleries":            { "limit" : 3},
-        "Social":               { "limit" : 3},
+        "News":             { "limit" : 5},
+        "Sport":            { "limit" : 4},
+        "Opinion":          { "limit" : 4},
+        "LifeStyle":        { "limit" : 3},
+        "Entertainment":    { "limit" : 3},
+        "Education":        { "limit" : 4},
+        "Contributed Photos": { "limit" : 3},
+        "Galleries":        { "limit" : 1},
+        "Social":           { "limit" : 2},
     }
 %}
 
-{% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8'] %}
+{% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4'] %}
 
 
 
