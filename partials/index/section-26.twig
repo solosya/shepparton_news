@@ -62,7 +62,7 @@
             
             {% for i in 0..1 if articles[articleCount] %}
                 {% set forArts = ['',' col-sm-offset-1 col-md-offset-0 col-xs-offset-0'] %}
-                {% set forCards = [' divideright-tablet',''] %}
+                {% set forCards = [' divideright-ofs',''] %}
                     
                 <div class="col-md-9 col-sm-4 col-xs-9{{ forArts[i] }}">
                     {{this.render('../_single-article.twig', {
