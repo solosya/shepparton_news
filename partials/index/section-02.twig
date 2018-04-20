@@ -31,7 +31,7 @@
 
                 {{this.render('../_single-article.twig', {
                     article:        articles[articleCount], 
-                    imageSize:      {width:300},
+                    imageSize:      {width:195},
                     site:           site,
                     containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
                 }) | raw}}
@@ -87,7 +87,7 @@
 
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
-                        imageSize:      {width:300},
+                        imageSize:      {width:195},
                         site:           site,
                         containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                     }) | raw}}
@@ -121,7 +121,7 @@
                 <div class="col-sm-3 col-xs-9">
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
-                        imageSize:      {width:300},
+                        imageSize:      {width:80, height:90},
                         site:           site,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
                     }) | raw}}
