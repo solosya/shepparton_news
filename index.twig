@@ -201,7 +201,7 @@
         'template'  : 'partials/index/section-23.twig',
         'blogs'     : ['machinery & products'],
         'template_params' : {
-                'ad': 'mrec-4'
+                'ad': 'mrec-6'
         }
     },
     'animal health': {
@@ -284,7 +284,7 @@
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):         { "limit" : 15},
-            "dairy":            { "limit" : 5},
+            "dairy":            { "limit" : 6},
             "blogs homepage":   { "limit" : 2},
             "water":            { "limit" : 4},
             "horticulture":     { "limit" : 3},
@@ -311,7 +311,7 @@
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):             { "limit" : 15},
-            "management":           { "limit" : 5},
+            "management":           { "limit" : 6},
             "from the experts":     { "limit" : 4},
             "markets":              { "limit" : 3},
             "machinery & products": { "limit" : 3},
@@ -393,7 +393,7 @@
 
 
         {% if site == 'country' %}
-            {% if loop.index == 2 %}
+            {% if loop.index == 3 %}
                 <div class="ad-container mobad9">
                     <div id='banner-3' class='advert'></div>
                 </div> 
