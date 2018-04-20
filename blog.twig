@@ -142,8 +142,9 @@
                     <hr class="divide15 visible-sm-block space-only">
 
                     <div class="row two-cols">
+                        <div class="col-sm-1 col-md-2">
                         {% for i in 0..1 if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-2">
+                            
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:160},
@@ -154,15 +155,29 @@
                                 <hr class="divide visible-xs-block">
 
                                 <hr class="divide hidden-xs hidden-sm">
-                                <hr class="divide15 visible-sm-block space-only">
+                                <hr class="divide25 visible-sm-block">
 
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            </div>
+                            
                         {% endfor %}
+                        </div>
+                        <div class="most-popular col-sm-1 col-md-2" style="margin:0;">
+                           <h2>Most popular</h2>
+                           <hr class="divide10">
+                           {% for i in 0..4 if popularArticles[i] %}
+                               {{this.render('partials/_single-article.twig', {
+                                   article: popularArticles[i], 
+                                   imageSuppress: true, 
+                                   containerClass: 'card-popular blog'
+                               }) | raw}}
+                               <hr class="divide10">
+                           {% endfor %}
+
+                        </div>
                     </div>
 
 
-                    <div class="row two-cols">
+                    {# <div class="row two-cols">
                        <div class="most-popular col-sm-1 col-md-2" style="margin:0;">
                            <h2>Most popular</h2>
                            <hr class="divide10">
@@ -176,17 +191,16 @@
                            {% endfor %}
 
                         </div>
-                    </div> 
+                    </div>  #}
 
-                </div>
-                 <div class="col-xs-2 col-sm-1 col-md-9 mobad9 u-margin-top-30 u-mobile-no-margin-top u-margin-bottom-30 u-mobile-no-margin-bottom">
-                    <div id='banner-13-v' class='advert mobad3'></div> 
                 </div>
             </div>
         </section>
 
 
-             
+             <div class="mobad9 u-margin-top-30 u-mobile-no-margin-top u-margin-bottom-30 u-mobile-no-margin-bottom">
+                <div id='banner-3' class='advert mobad3'></div> 
+            </div>
 
 
         <section>
