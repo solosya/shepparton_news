@@ -39,7 +39,7 @@
         'articleOrder' : [(homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'entertainment', 'rural news', 'aap'],
     },
     'local': {
-        'template': 'partials/index/section-01-local.twig',
+        'template': 'partials/index/section-01.twig',
         'template_params' : {
             'ad': 'mrec-4'
         },
@@ -50,7 +50,7 @@
         'title'     : "Real Estate",
         'blogs'     : ['real estate'],
         'background': true,
-        'template'  : 'partials/index/section-02-real-estate.twig', 
+        'template'  : 'partials/index/section-05.twig', 
         'template_params' : {
             'networkData' : networkData
         },
@@ -58,16 +58,16 @@
     "automotive": {
         'title'     : "Automotive",
         'blogs'     : ['automotive'],
-        'template'  : 'partials/index/section-02-real-estate.twig', 
+        'template'  : 'partials/index/section-05.twig', 
     },
     "opinion": {
         'title'     : "Opinion",
         'blogs'     : ['opinion'],
-        'template'  : 'partials/index/section-03-opinion.twig',
+        'template'  : 'partials/index/section-07.twig',
     },
     'bloggers' :  {
         'blogs'     : ['blogs homepage'],
-        'template'  : 'partials/index/section-12-bloggers.twig',
+        'template'  : 'partials/index/section-25.twig',
         'template_params' : {
             'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
         }
@@ -76,27 +76,27 @@
         'title'     : "Videos",
         'blogs'     : ['video'],
         'background': true,
-        'template'  : 'partials/index/section-04-videos.twig'
+        'template'  : 'partials/index/section-08.twig'
     },
     "galleries": {
         'title'     : "Galleries",
         'blogs'     : ['galleries'],
-        'template'  : 'partials/index/section-05-gallery.twig'
+        'template'  : 'partials/index/section-08.twig'
     },
     "social": {
         'title'     : "Social",
         'blogs'     : ['social'],
-        'template'  : 'partials/index/section-06-social.twig'
+        'template'  : 'partials/index/section-09.twig'
     },
     "contributed photos": {
         'title'     : "Contributed Photos",
         'blogs'     : ['contributed photos'],
-        'template'  : 'partials/index/section-05-gallery.twig'
+        'template'  : 'partials/index/section-08.twig'
     }, 
     "regional news": {
         'title'     : "Regional News",
         'blogs'     : ['regional news'],
-        'template'  : 'partials/index/section-07-regional.twig', 
+        'template'  : 'partials/index/section-02.twig', 
         'template_params' : {
             'ad': 'mrec-6'
         }
@@ -104,7 +104,7 @@
     "rural news": {
         'title'     : "Rural News",
         'blogs'     : ['rural news'],
-        'template'  : 'partials/index/section-08-rural.twig',
+        'template'  : 'partials/index/section-03.twig',
         'template_params' : {
             'ad': 'mrec-8'
         }
@@ -112,13 +112,17 @@
     "national": {
         'title'     : "National and World",
         'blogs'     : ['national'],
-        'template'  : 'partials/index/section-09-national.twig', 
+        'template'  : 'partials/index/section-21.twig', 
         'template_params' : {
             'ad': 'mrec-9'
         }
     },
+
+
+
+
     'index-country': {
-        'template' : 'partials/index/section-00-top.twig',
+        'template': 'partials/index/section-15.twig',
         'template_params' : {
             'ad': 'mrec-2',
         },
@@ -160,8 +164,14 @@
         'template'  : 'partials/index/section-14-three.twig',
         'blogs'     : ['cropping']
     },
+
+
+
+
+
+
     'index-dairy': {
-        'template': 'partials/index/section-00-top.twig',
+        'template': 'partials/index/section-15.twig',
         'blogs'     : [(homeBlog)]
     },
     'management': {
