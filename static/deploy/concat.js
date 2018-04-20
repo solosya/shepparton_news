@@ -34047,7 +34047,7 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div id='infinite-variable-mobile-tablet-desktop' class='advert col-sm-9 mobad5'></div>";
+    "<div id='infinite-variable-mobile-tablet-desktop' class='advert col-sm-9 mobad5' style='padding:0;'></div>";
 
 
 
