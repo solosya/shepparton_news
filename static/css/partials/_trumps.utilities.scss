@@ -101,16 +101,16 @@ div[class*="col-sm"] {
 .u-margin-bottom-15 { margin-bottom: 25px; }
 .u-margin-bottom-10 { margin-bottom: 10px; }
 @media screen and (max-width: $sm-break-down){
-    .m-no-margin-top {margin-top:0!important;}
-    .m-no-margin-bottom {margin-bottom:0!important;}
+    .u-mobile-no-margin-top {margin-top:0!important;}
+    .u-mobile-no-margin-bottom {margin-bottom:0!important;}
 }
 @media screen and (min-width: $sm-break) and (max-width:$mmd-break-down){
-    .t-no-margin-top {margin-top:0!important;}
-    .t-no-margin-bottom {margin-bottom:0!important;}
+    .u-tablet-no-margin-top {margin-top:0!important;}
+    .u-tablet-no-margin-bottom {margin-bottom:0!important;}
 }
 @media screen and (min-width: $mmd-break){
-    .d-no-margin-top {margin-top:0!important;}
-    .d-no-margin-bottom {margin-bottom:0!important;}
+    .u-desktop-no-margin-top {margin-top:0!important;}
+    .u-desktop-no-margin-bottom {margin-bottom:0!important;}
 }
 
 
