@@ -12,10 +12,10 @@
     <div class="col-xs-9 col-sm-9 col-md-6">
         {% if articles[articleCount] %}                                                                
             {{this.render('../_single-article.twig', {
-                article: articles[articleCount], 
-                imageSize: {width:640, height:400},
-                site: site,
-                containerClass: 'home-feature home-feature-tablet home-feature-mobile'
+                article         : articles[articleCount], 
+                imageSize       : {width:640, height:400},
+                site            : site,
+                containerClass  : 'home-feature home-feature-tablet home-feature-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
@@ -27,10 +27,10 @@
                     
                 {% if i == 0 %}<div class="col-sm-5 col-xs-9">{% else %}<div class="col-sm-4 col-xs-9">{% endif %}
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount],
-                        imageSize: {width:95},
-                        site: site,
-                        containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~theDivider[i]
+                        article         : articles[articleCount],
+                        imageSize       : {width:95},
+                        site            : site,
+                        containerClass  : 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">
@@ -42,10 +42,10 @@
             {% if articles[articleCount] %}     
                 <div class="col-sm-6 col-xs-9">
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount],
-                        imageSize: {width:95},
-                        site: site,
-                        containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
+                        article         : articles[articleCount],
+                        imageSize       : {width:414, height:255},
+                        site            : site,
+                        containerClass  : 'home-feature-xs home-feature-tablet home-feature-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">
@@ -55,10 +55,10 @@
             {% if articles[articleCount] %}     
                 <div class="col-sm-3 col-xs-9">
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount],
-                        imageSize: {width:95},
-                        site: site,
-                        containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                        article         : articles[articleCount],
+                        imageSize       : {width:195},
+                        site            : site,
+                        containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     <div class="row">
@@ -78,10 +78,10 @@
             {% for i in 0..3 if articles[articleCount] %}
                 <div class="col-sm-9 col-xs-9">
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount],
-                        imageSize: {width:95},
-                        site: site,
-                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                        article         : articles[articleCount],
+                        imageSize       : {width:95},
+                        site            : site,
+                        containerClass  : 'feature-side feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i < 3 %}
