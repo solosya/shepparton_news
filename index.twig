@@ -365,7 +365,7 @@
 
 
         {# FOR PRODUCTION #}
-        {% if not dev and blog.title | lower == key | lower or dev %}
+        {% if not dev and blog.title | lower == key | lower %}
 
             {% set feed = _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) %}
 
@@ -379,9 +379,6 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
-
-
-
 
 
 
