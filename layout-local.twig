@@ -11,7 +11,11 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+
+{% if dev %}
+    {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
+{% endif %}
 
 {% set sectionOrder = [] %}
 
@@ -90,7 +94,7 @@
         "news":                 { "limit" : 5},
         "sport":                { "limit" : 4},
         "opinion":              { "limit" : 4},
-        "lifeStyle":            { "limit" : 3},
+        "lifestyle":            { "limit" : 3},
         "entertainment":        { "limit" : 3},
         "education":            { "limit" : 4},
         "contributed photos":   { "limit" : 3},
@@ -142,7 +146,9 @@
 
 
 
-
+{# <pre>
+    {{dump(blogFeeds)}}
+</pre> #}
 
 
 

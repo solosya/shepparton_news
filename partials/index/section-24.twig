@@ -9,6 +9,28 @@
         </div>
     </div>
 
+
+    <div class="col-md-3">
+
+        
+        {% if articles[articleCount] %}
+            {{this.render('../_single-article.twig', {
+                article:        articles[articleCount], 
+                imageSize:      {width:300, height:160},
+                site:           site,
+                containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile',
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            
+
+        {% endif %}
+
+    </div>
+
+
+
+
+
     {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
@@ -41,9 +63,7 @@
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
     {% endif %}
 
-    <div class="col-sm-3">
-        <div class="ad-square">
-            <div id='{{ ad }}' class='advert'></div>
-        </div>
-    </div>
+
+
+
 </section>

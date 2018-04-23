@@ -1,5 +1,7 @@
 {% set articleCount = 0 %}
-    
+
+
+
 <section class="row">
     <div class="col-sm-9 section-header">
         <p><a href="{{link}}">View All</a></p>
@@ -35,7 +37,7 @@
                    
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
-                        imageSize:      {width:300},
+                        imageSize:      {width:300, height:160},
                         site:           site,
                         containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                     }) | raw}}
