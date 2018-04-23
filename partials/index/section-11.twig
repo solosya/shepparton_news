@@ -50,18 +50,23 @@
     <div class="col-md-3">
 
         
-        {% for i in 0..3 if articles[articleCount] %}
-            {% set theDivider = [' divideright',' divideright','',' divideright',' divideright',''] %}
-            
+        {% for i in 0..1 if articles[articleCount] %}
+            {# {% set colSet = [' divideright-ofs',' col-md-offset-0 col-sm-offset-1 col-xs-offset-0'] %} #}
+            {# <div class="col-md-3 col-sm-4 col-xs-9{{ colSet[i] }}"> #}
             {{this.render('../_single-article.twig', {
-                article:        articles[articleCount], 
-                imageSize:      {width:80, height:90},
-                site:           site,
-                containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
+                article: articles[articleCount], 
+                imageSize: {width:300},
+                site: site,
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-        
+            
+            {% if i == 1 %}
                 <hr class="divide visible-xs-block">
+            {% else %}
+                <hr class="divide hidden-sm">
+            {% endif %}
+
         {% endfor %}
 
         
