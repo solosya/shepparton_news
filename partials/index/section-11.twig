@@ -51,8 +51,6 @@
 
         
         {% for i in 0..1 if articles[articleCount] %}
-            {# {% set colSet = [' divideright-ofs',' col-md-offset-0 col-sm-offset-1 col-xs-offset-0'] %} #}
-            {# <div class="col-md-3 col-sm-4 col-xs-9{{ colSet[i] }}"> #}
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 imageSize: {width:300},

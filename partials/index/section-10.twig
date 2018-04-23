@@ -41,9 +41,28 @@
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
     {% endif %}
 
-    <div class="col-sm-3">
-        <div class="ad-square">
-            <div id='{{ ad }}' class='advert'></div>
-        </div>
+
+
+
+    <div class="col-md-3">
+
+        
+        {% for i in 0..1 if articles[articleCount] %}
+            {{this.render('../_single-article.twig', {
+                article: articles[articleCount], 
+                imageSize: {width:300},
+                site: site,
+                containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            
+            {% if i == 1 %}
+                <hr class="divide visible-xs-block">
+            {% else %}
+                <hr class="divide hidden-sm">
+            {% endif %}
+
+        {% endfor %}
+
     </div>
 </section>
