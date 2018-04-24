@@ -1,4 +1,4 @@
-@mixin card-sm-base() {
+@mixin card-11-base() {
     position:relative;
     a.card {
         > article {
@@ -34,57 +34,15 @@
         }
 
     }
-    &.dairy-card {
-        a.card {
-            > article {
-                > figure {
-                    margin-bottom: 3px;
-                }
-
-                > .content {
-                    background-color: #7bc127;
-                    padding: 20px;
-                    height: 87px;
- 
-                    > .category {
-                        display: none;
-                    }
-
-                    h2 {
-                        text-align: center;
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        color: white;
-                        height: 24px;
-                        margin-bottom: 0px;
-                    }
-
-                    > p {
-                        display: block;
-                        font-size: rem(14);
-                        text-align: center;
-                        text-transform: uppercase;
-                        color: white;
-                        height: 24px;
-                    }
-
-                    > .author {
-                        display: none;
-                    }
-                }
-            }
-        }
-    }
-}
 
 
 
-.card-sm{
+.card-11{
     @media screen and (min-width: $mmd-break){
-        @include card-sm-base();
+        @include card-11-base();
 
         a.card {
-            @include card-image-top(auto, 160px);
+            @include card-image-bottom(auto, 377px);
             height:250px;
 
             > article {
@@ -94,11 +52,6 @@
                 }
             }
 
-            &.withImage__content {
-                .content {
-                    height: 80px;
-                }
-            }
 
 
             &.without__image {
@@ -151,35 +104,6 @@
                         }
                     }
 
-                    &.facebook {
-                        .content{
-                            .icon {
-                                width:10px;
-                                height:20px;
-                                background-size:contain;
-                            }
-                        }
-                    }
-                    &.twitter {
-                        .content{
-                            .icon {
-                                width:22px;
-                                height:18px;
-                                background-size:contain;
-                            }
-                        }
-                    }
-
-                    &.instagram{ 
-                        &.without__content {
-                            @include card-image-top(auto, 209px);
-                            &.withImage__content {
-                                .content {
-                                    height: 34px;
-                                }
-                            }
-                        }
-                    }
                 }
 
                 
@@ -206,12 +130,12 @@
 }
 
 
-.card-sm-tablet{
+.card-11-tablet{
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-        @include card-sm-base();
+        @include card-11-base();
 
         a.card {
-            @include card-image-top(auto, 160px);
+            @include card-image-bottom(auto, 160px);
             height:250px;
 
             > article {
@@ -301,7 +225,7 @@
 
                 &.instagram{ 
                     &.without__content {
-                        @include card-image-top(auto, 209px);
+                        @include card-image-bottom(auto, 209px);
                         &.withImage__content {
                             .content {
                                 height: 34px;
@@ -332,9 +256,9 @@
 }
 
 
-.card-sm-mobile {
+.card-11-mobile {
     @media screen and (max-width: $sm-break-down){
-        @include card-sm-base();
+        @include card-11-base();
 
         height:85px;
 
@@ -390,7 +314,7 @@
 
                 &.instagram{ 
                     &.without__content {
-                        @include card-image-top(auto, 209px);
+                        @include card-image-bottom(auto, 209px);
                         .author {
                             display:block;
                         }

@@ -7,7 +7,7 @@
 {% set homeBlog    = blogData['title'] | lower %}
 
 
-{# {% set layoutTitle = _Page.getLayoutTitle() %} #}
+{% set layoutTitle = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 
 {{this.registerJs("Acme.cards = CardController();")}}
 
@@ -31,6 +31,10 @@
 ******************************************************* #}
 
 {% set pageSections =  {
+    'breaking_news' : {
+        'template': 'partials/index/section-00.twig',
+        'blogs' : ['breaking news'],
+    },
     'index': {
         'template': 'partials/index/section-15.twig',
         'template_params' : {
@@ -288,10 +292,10 @@
     %}
 
     {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
-    {# {% set sectionOrder = ['rural news'] %} #}
-
-
-
+    {% if layoutTitle == 'major_breaking_news' %}
+        {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
+        {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
+    {% endif %} 
 
 
 
@@ -388,7 +392,7 @@
 
 
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main" role="main" data-layout="{{layoutTitle}}">
 
 
     {# *******************************************************

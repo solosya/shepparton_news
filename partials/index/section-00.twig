@@ -1,0 +1,52 @@
+{% set articleCount = 0 %}
+
+<section class="home-main-stories">
+    <div class="row">
+
+        <div class="col-sm-9 col-md-7 breaking-news">
+            <h2 class="breaking-news_subhead">Greater Shepparton</h2>
+            <h1 class="breaking-news_header">Breaking News</h1>
+        </div>
+
+
+        <div class="col-sm-9 col-md-7">
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : articleCount + 1, 
+                    imageSize       : {width:640, height:400},
+                    site            : site,
+                    containerClass  : 'card-11'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+            {% endif %}
+        </div>
+
+
+
+
+        {% if articles[articleCount] %}
+            <div class="col-sm-9 col-md-2">
+                <div class="row">
+                      
+                    {% for i in 0..1 if articles[articleCount] %}
+                        <div class="col-md-9">
+                            {{this.render('../_single-article.twig', {
+                                article         : articles[articleCount],
+                                imageSize       : {width:95},
+                                position        : articleCount + 1, 
+                                site            : site,
+                                containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+

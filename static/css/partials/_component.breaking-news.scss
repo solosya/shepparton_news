@@ -1,0 +1,20 @@
+.breaking-news {
+    margin-bottom:10px;
+}
+.breaking-news_subhead{
+    font-family: $font-family-serif;
+    font-size: rem(14);
+    font-style: italic;
+    line-height: 1.07;
+    color: color(darkgrey);
+  
+}
+.breaking-news_header{
+    color: color(red);
+    margin-top:10px;
+    font-family: $base-font-family;
+    font-size: rem(20);
+    font-weight: bold;
+    line-height: 0.75;
+    text-transform: uppercase;
+}
