@@ -28,29 +28,88 @@
 
 {% set pageSections =  {
     'section_0': {
-        'template'  : 'partials/index/section-01.twig',
+        'template'  : 'partials/index/section-35.twig',
         'title'     : 'Echuca',
-        'blogs'     : ['Echuca News'],
+        'template_params' : {
+            'ad': 'mrec-2',
+        },
+        'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
+        'articleorder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
     },
     'section_1': {
-        'template'  : 'partials/index/section-01.twig',
+        'template'  : 'partials/index/section-36.twig',
         'title'     : 'Deniliquin',
-        'blogs'     : ['Deniliquin News'],
+        'template_params' : {
+            'ad': 'mrec-4',
+        },
+        'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
+        'articleorder' : ['deniliquin news','deniliquin sport','deniliquin news','deniliquin opinion','deniliquin entertainment']
     },
     "section_2": {
         'title'     : "Finley",
-        'blogs'     : ['Finley News'],
-        'template': 'partials/index/section-01.twig',
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-6',
+        },
+        'blogs' : ['finley news','finley sport'],
+        'articleorder' : ['finley news','finley news','finley sport']
     },
     "section_3": {
         'title'     : "Kyabram",
-        'blogs'     : ['Kyabram News'],
-        'template': 'partials/index/section-01.twig',
+        'template': 'partials/index/section-37.twig',
+        'blogs' : ['kyabram news','kyabram sport'],
+        'articleorder' : ['kyabram news','kyabram news','kyabram sport']
     },
     "section_4": {
         'title'     : "Benella",
-        'blogs'     : ['Benella News'],
-        'template': 'partials/index/section-01.twig',
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['benella news','benella sport'],
+        'articleorder' : ['benella news','benella sport','benella news','benella news']
+    },
+    "section_5": {
+        'title'     : "Cobram",
+        'template': 'partials/index/section-38.twig',
+        'blogs' : ['cobram news','cobram sport'],
+        'articleorder' : ['cobram news','cobram sport','cobram news','cobram news']
+    },
+    "section_6": {
+        'title'     : "Seymour",
+        'template': 'partials/index/section-37.twig',
+        'blogs' : ['seymour news','seymour sport'],
+        'articleorder' : ['seymour news','seymour news','seymour sport']
+    },
+    "section_7": {
+        'title'     : "Rochester",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['rochester news','rochester sport'],
+        'articleorder' : ['rochester news','rochester sport','rochester news','rochester news']
+    },
+    "section_8": {
+        'title'     : "Heathcote",
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-8',
+        },
+        'blogs' : ['heathcote news','heathcote sport'],
+        'articleorder' : ['heathcote news','heathcote news','heathcote sport']
+    },
+    "section_9": {
+        'title'     : "Tatura",
+        'template': 'partials/index/section-37.twig',
+        'blogs' : ['tatura news','tatura sport'],
+        'articleorder' : ['tatura news','tatura news','tatura sport']
+    },
+    "section_10": {
+        'title'     : "Yarrawonga",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['yarrawonga news','yarrawonga sport'],
+        'articleorder' : ['yarrawonga news','yarrawonga news','yarrawonga sport','yarrawonga news']
+    },
+    "section_11": {
+        'title'     : "Corowa",
+        'template': 'partials/index/section-38.twig',
+        'blogs' : ['corowa news','corowa sport'],
+        'articleorder' : ['corowa news','corowa sport','corowa news','corowa news']
     }
 } %}
 
@@ -67,51 +126,52 @@
                         COMMON
 ******************************************************* #}
 {% set blogFeeds = {
-        "Echuca News":          { "limit" : 5},
-        "Echuca Sport":         { "limit" : 1},
-        "Echuca Social":        { "limit" : 1},
-        "Echuca LifeStyle":     { "limit" : 1},
-        "Echuca Entertainment": { "limit" : 1},
+        "echuca news":          { "limit" : 1},
+        "echuca sport":         { "limit" : 1},
+        "echuca social":        { "limit" : 1},
+        "echuca lifestyle":     { "limit" : 1},
+        "echuca entertainment": { "limit" : 1},
 
-        "Deniliquin News":      { "limit" : 5},
-        "Deniliquin Opinion":   { "limit" : 1},
-        "Deniliquin Sport":     { "limit" : 2},
-        "Deniliquin Entertainment": { "limit" : 1},
+        "deniliquin news":      { "limit" : 2},
+        "deniliquin opinion":   { "limit" : 1},
+        "deniliquin sport":     { "limit" : 1},
+        "deniliquin entertainment": { "limit" : 1},
 
-        "Finley News":          { "limit" : 5},
-        "Finley Sport":         { "limit" : 1},
+        "finley news":          { "limit" : 2},
+        "finley sport":         { "limit" : 1},
 
-        "Kyabram News":         { "limit" : 5},
-        "Kyabram Sport":        { "limit" : 2},
+        "kyabram news":         { "limit" : 2},
+        "kyabram sport":        { "limit" : 1},
 
-        "Benalla News":         { "limit" : 5},
-        "Benalla Sport":        { "limit" : 3},
+        "benalla news":         { "limit" : 3},
+        "benalla sport":        { "limit" : 1},
 
-        "Cobram News":          { "limit" : 3},
-        "Cobram Sport":         { "limit" : 1},
+        "cobram news":          { "limit" : 3},
+        "cobram sport":         { "limit" : 1},
 
-        "Seymour News":         { "limit" : 2},
-        "Seymour Sport":        { "limit" : 1},
+        "seymour news":         { "limit" : 2},
+        "seymour sport":        { "limit" : 1},
 
-        "Rochester News":       { "limit" : 3},
-        "Rochester Sport":      { "limit" : 1},
+        "rochester news":       { "limit" : 3},
+        "rochester sport":      { "limit" : 1},
 
-        "heathcote News":       { "limit" : 2},
-        "heathcote Sport":      { "limit" : 1},
+        "heathcote news":       { "limit" : 2},
+        "heathcote sport":      { "limit" : 1},
 
-        "tatura News":          { "limit" : 3},
+        "tatura news":          { "limit" : 2},
+        "tatura sport":          { "limit" : 1},
 
-        "yarrawonga News":      { "limit" : 2},
-        "yarrawonga Sport":     { "limit" : 2},
+        "yarrawonga news":      { "limit" : 3},
+        "yarrawonga sport":     { "limit" : 1},
 
-        "corowa News":          { "limit" : 3},
-        "corowa Sport":         { "limit" : 1},
+        "corowa news":          { "limit" : 3},
+        "corowa sport":         { "limit" : 1}
 
 
     }
 %}
 
-{% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4'] %}
+{% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8', 'section_9', 'section_10', 'section_11'] %}
 
 
 
@@ -187,6 +247,20 @@
         } %}
     
         {{this.render('render.twig', params) | raw}} 
+
+        {% if loop.index == 2 %}
+            <div class="ad-container mobad9">
+                <div id='banner-3' class='advert'></div>
+            </div> 
+        {% elseif loop.index == 5 %}
+            <div class="ad-container mobad9">
+                <div id='banner-5' class='advert'></div>
+            </div> 
+        {% elseif loop.index == 8 %}
+            <div class="ad-container mobad9">
+                <div id='banner-7' class='advert'></div>
+            </div> 
+        {% endif %}
 
     {% endfor %}
 

@@ -1,4 +1,4 @@
-{% set articleCount = (dev) ? articleCount : 0 %}
+{% set articleCount = 0 %}
 
 <section class="row">
     <div class="col-sm-9 section-header">
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="col-md-4 col-sm-5 col-xs-9">
+    <div class="col-md-4 col-sm-4 col-xs-9">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
@@ -24,41 +24,39 @@
 
     </div>
 
-    <div class="col-md-2 col-sm-4 col-xs-9">
-        {% if articles[articleCount] %}
+    <div class="col-md-3 col-sm-5 col-xs-9">
+         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 imageSize: {width:300},
                 site: site,
-                containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                containerClass: 'card-sm feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            <hr class="divide visible-xs-block">
+            
+                <hr class="divide visible-xs-block visible-sm-block">
+
+        {% endif %}
+
+    </div>
+
+    <div class="col-md-2 col-sm-5 col-xs-9">
+         {% if articles[articleCount] %}
+            {{this.render('../_single-article.twig', {
+                article: articles[articleCount], 
+                imageSize: {width:300},
+                site: site,
+                containerClass: 'card-sm feature-side-tablet card-sm-mobile'
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            <div class="row">
+                <hr class="divide visible-xs-block">
+            </div>
 
         {% endif %}
 
     </div>
 
 
-    <hr class="divide15 visible-sm-block space-only" style="width:90%;">
-        
-    {% for i in 0..1 if articles[articleCount] %}
-        {% set colSet = [' divideright-ofs',' col-md-offset-0 col-sm-offset-1 col-xs-offset-0'] %}
-        <div class="col-md-3 col-sm-4 col-xs-9{{ colSet[i] }}">
-        {{this.render('../_single-article.twig', {
-            article: articles[articleCount], 
-            imageSize: {width:300},
-            site: site,
-            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-        }) | raw}}
-        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-        {% if i == 1 %}
-            <div class="row">
-                <hr class="divide visible-xs-block">
-            </div>
-        {% else %}
-            <hr class="divide hidden-sm">
-        {% endif %}
-        </div>
-    {% endfor %}
+    
 </section>
