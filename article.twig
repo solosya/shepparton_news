@@ -5,14 +5,18 @@
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
-{{this.registerJs("Acme.articleController.insertOovvuu();")}}
 
 
 
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
 {% set site = networkData.title | lower | split(" ")[0]%}
-{% set oovvuu = _Article.getOovvuuData(article) %} 
+
+{% if site != 'country' %}
+    {{this.registerJs("Acme.articleController.insertOovvuu();")}}
+    {% set oovvuu = _Article.getOovvuuData(article) %} 
+{% endif %}
+
 
 
 {% set articleImg = false %}
