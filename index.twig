@@ -294,9 +294,27 @@
 
     {# {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %} #}
     {% set sectionOrder = ['index'] %}
+
     {% if layoutTitle == 'major_breaking_news' %}
         {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
         {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
+    {% endif %} 
+
+    {% if layoutTitle == 'minor_breaking_news' %}
+        {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
+        
+        {% set pageSections = pageSections | merge({ 'index' : 
+            {
+                'template': 'partials/index/section-15.twig',
+                'template_params' : {
+                    'ad': 'mrec-2',
+                    'layout': 'breaking news',
+                },
+                'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', 'deniliquin news', 'aap', 'echuca news', 'galleries', 'dairy news'],
+                'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'news', 'rural news', 'aap', 'echuca news', 'news', 'aap', 'galleries', 'aap', 'dairy news'],
+            }
+        }) %}
+
     {% endif %} 
 
 

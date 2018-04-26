@@ -343,7 +343,7 @@
                         opacity:1;
                     }
                 }
-                @media #{$media-ipadLandscape}, #{$media-ipadPortrait} {
+                @media #{$media-tabletLandscape}, #{$media-ipadPortrait} {
                     display: none;
                 }
             }

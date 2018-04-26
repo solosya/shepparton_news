@@ -95,45 +95,6 @@
                     }
                 }
             }  
-
-            &.social {
-                &.withImage__content {
-                    .content {
-                        .icon {
-                            display:block;
-                            position: absolute;
-                            top: -150px;
-                            left: 10px;
-                        }
-
-                        >p {
-                            height:65px;
-                            margin-bottom:6px;
-                        }
-
-                        .category {
-                            padding-bottom: 5px;
-                        }
-                    }
-                }
-
-                
-                &.without__image {
-                    .content {
-                        .icon {
-                            display:block;
-                            position:absolute;
-                            bottom:20px;
-                        }
-                        >p {
-                            max-height:70px;
-                        }
-                        .author {
-                            bottom: 80px;
-                        }
-                    }
-                }
-            }
         }
     }
 }
@@ -166,11 +127,11 @@
 
             }
 
-            &.withImage__content {
-                .content {
-                    height: 80px;
-                }
-            }
+            // &.withImage__content {
+            //     .content {
+            //         height: 80px;
+            //     }
+            // }
 
 
             &.without__image {
@@ -202,68 +163,6 @@
                     }
                 }
             }  
-
-            &.social {
-                .content {
-                    .icon {
-                        // display:none;
-                    }
-
-                    >p {
-                        height:65px;
-                        margin-bottom:6px;
-                    }
-
-                    .category {
-                        padding-bottom: 5px;
-                    }
-                }
-
-                &.facebook {
-                    .content{
-                        .icon {
-                            width:10px;
-                            height:20px;
-                            background-size:contain;
-                        }
-                    }
-                }
-                &.twitter {
-                    .content{
-                        .icon {
-                            width:22px;
-                            height:18px;
-                            background-size:contain;
-                        }
-                    }
-                }
-
-                &.instagram { 
-                    &.without__content {
-                        @include card-image-bottom(auto, 209px);
-                        &.withImage__content {
-                            .content {
-                                height: 34px;
-                            }
-                        }
-                    }
-                }
-                &.without__image {
-                    .content {
-                        .icon {
-                            display:block;
-                            position:absolute;
-                            bottom:20px;
-                        }
-                        >p {
-                            max-height:70px;
-                        }
-                        .author {
-                            bottom: 80px;
-                        }
-                    }
-                }
-            }
         }
     }
 }
@@ -273,72 +172,71 @@
     @media screen and (max-width: $sm-break-down){
         @include card-11-base();
 
-        height:85px;
-
         a.card {
-            @include card-image-left(89px, 85px);
+            @include card-image-bottom(auto);
+            // height:449px;
 
-            article {
-                > .content {
-                    margin-left: 100px;
-                    height: 89px;
-                    h2{
-                        font-size: rem(14);
-                        height: 60px;
-                        line-height: 1.28;
+            > article {
+
+                >figure {
+                    height: 55vw;
+                }
+
+                .content {
+                    > h2 {
+                        font-family: $font-family-serif;
+                        font-size: rem(22);
+                        font-weight:600;
+                        line-height: 1.25;
+                        max-height:112px;
+                    }
+                    .author {
+                        margin-top:12px;
+                        margin-bottom:15px;
                     }
                 }
+
+
             }
+
+            // &.withImage__content {
+            //     .content {
+            //         height: 80px;
+            //     }
+            // }
+
 
             &.without__image {
-                article {
-                    > .content {
-                        margin-left: 0;
-                    }
-                }
-            }
-
-            &.social {
+                background:color(offwhite);
                 .content {
-                    .icon {
-                        // display:none;
+                    padding:63px 20px 5px 20px;
+
+                    height:100%;
+
+                    h2 {
+                        font-size: rem(17);
+                        font-weight:normal;
+                        line-height: 1.29;
+                        height:70px;
                     }
 
-                    >p {
-                        height:65px;
-                        margin-bottom:6px;
-                    }
-                }
+                    .author {
+                        bottom: 40px;
 
-                &.facebook {
-                    .content{
-
-                    }
-                }
-                &.twitter {
-                    .content{
-                        .icon {
-                            width:22px;
-                            height:18px;
-                            background-size:contain;
-                        }
-                    }
-                }
-
-                &.instagram{ 
-                    &.without__content {
-                        @include card-image-bottom(auto, 209px);
-                        .author {
+                        &:after {
+                            content:'';
+                            position: absolute;
                             display:block;
+                            width: 62px;
+                            height:1px;
+                            background:color(lightgrey);
+                            margin-top:20px;
                         }
                     }
                 }
-
-            }
-
+            }  
         }
     }
-
 }
 
 

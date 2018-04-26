@@ -82,9 +82,8 @@ div[class*="col-sm"] {
 }
 
 
-.relative {
-    position:relative;
-}
+.relative { position:relative; }
+
 .no-padding {padding:0;}
 .u-padding-5 { padding:5px; }
 .u-padding-10 { padding:10px }
@@ -103,22 +102,132 @@ div[class*="col-sm"] {
 .u-margin-bottom-30 { margin-bottom: 30px; }
 .u-margin-bottom-25 { margin-bottom: 25px; }
 .u-margin-bottom-25 { margin-bottom: 20px; }
-.u-margin-bottom-15 { margin-bottom: 25px; }
+.u-margin-bottom-15 { margin-bottom: 15px; }
 .u-margin-bottom-10 { margin-bottom: 10px; }
-@media screen and (max-width: $sm-break-down){
+
+
+@media #{$media-mobile} {
     .u-mobile-no-margin-top {margin-top:0!important;}
     .u-mobile-no-margin-bottom {margin-bottom:0!important;}
+    .u-margin-bottom-100 { margin-bottom: 100px; }
+    .u-mobile-margin-bottom-60 { margin-bottom: 60px; }
+    .u-mobile-margin-bottom-50 { margin-bottom: 50px; }
+    .u-mobile-margin-bottom-40 { margin-bottom: 40px; }
+    .u-mobile-margin-bottom-30 { margin-bottom: 30px; }
+    .u-mobile-margin-bottom-25 { margin-bottom: 25px; }
+    .u-mobile-margin-bottom-20 { margin-bottom: 20px; }
+    .u-mobile-margin-bottom-15 { margin-bottom: 15px; }
+    .u-mobile-margin-bottom-10 { margin-bottom: 10px; }
+
+
+    .u-mobile-margin-top-60 { margin-top: 60px; }
+    .u-mobile-margin-top-50 { margin-top: 50px; }
+    .u-mobile-margin-top-40 { margin-top: 40px; }
+    .u-mobile-margin-top-30 { margin-top: 30px; }
+    .u-mobile-margin-top-25 { margin-top: 25px; }
+    .u-mobile-margin-top-20 { margin-top: 20px; }
+    .u-mobile-margin-top-15 { margin-top: 15px; }
+    .u-mobile-margin-top-10 { margin-top: 10px; }
+
 }
-@media screen and (min-width: $sm-break) and (max-width:$mmd-break-down){
+@media #{$media-tablet} {
     .u-tablet-no-margin-top {margin-top:0!important;}
     .u-tablet-no-margin-bottom {margin-bottom:0!important;}
+    .u-tablet-margin-bottom-60 { margin-bottom: 60px; }
+    .u-tablet-margin-bottom-50 { margin-bottom: 50px; }
+    .u-tablet-margin-bottom-40 { margin-bottom: 40px; }
+    .u-tablet-margin-bottom-30 { margin-bottom: 30px; }
+    .u-tablet-margin-bottom-25 { margin-bottom: 25px; }
+    .u-tablet-margin-bottom-20 { margin-bottom: 20px; }
+    .u-tablet-margin-bottom-15 { margin-bottom: 15px; }
+    .u-tablet-margin-bottom-10 { margin-bottom: 10px; }
+
+    .u-tablet-margin-top-60 { margin-top: 60px; }
+    .u-tablet-margin-top-50 { margin-top: 50px; }
+    .u-tablet-margin-top-40 { margin-top: 40px; }
+    .u-tablet-margin-top-30 { margin-top: 30px; }
+    .u-tablet-margin-top-25 { margin-top: 25px; }
+    .u-tablet-margin-top-20 { margin-top: 20px; }
+    .u-tablet-margin-top-15 { margin-top: 15px; }
+    .u-tablet-margin-top-10 { margin-top: 10px; }
+
+
 }
-@media screen and (min-width: $mmd-break){
+@media #{$media-desktop_up} {
     .u-desktop-no-margin-top {margin-top:0!important;}
     .u-desktop-no-margin-bottom {margin-bottom:0!important;}
+    .u-desktop-margin-bottom-60 { margin-bottom: 60px; }
+    .u-desktop-margin-bottom-50 { margin-bottom: 50px; }
+    .u-desktop-margin-bottom-40 { margin-bottom: 40px; }
+    .u-desktop-margin-bottom-30 { margin-bottom: 30px; }
+    .u-desktop-margin-bottom-25 { margin-bottom: 25px; }
+    .u-desktop-margin-bottom-20 { margin-bottom: 20px; }
+    .u-desktop-margin-bottom-15 { margin-bottom: 15px; }
+    .u-desktop-margin-bottom-10 { margin-bottom: 10px; }
+
+    .u-desktop-margin-top-60 { margin-top: 60px; }
+    .u-desktop-margin-top-50 { margin-top: 50px; }
+    .u-desktop-margin-top-45 { margin-top: 45px; }
+    .u-desktop-margin-top-40 { margin-top: 40px; }
+    .u-desktop-margin-top-30 { margin-top: 30px; }
+    .u-desktop-margin-top-25 { margin-top: 25px; }
+    .u-desktop-margin-top-20 { margin-top: 20px; }
+    .u-desktop-margin-top-15 { margin-top: 15px; }
+    .u-desktop-margin-top-10 { margin-top: 10px; }
+
+
 }
 
 
+div.space40 {
+    margin-top:40px;
+
+    @media screen and (max-width: $sm-break-down){
+        margin-top:20px;
+    }
+}
+
+
+hr.divide {
+    margin:28px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+    @media screen and (max-width: $sm-break-down){
+        margin: 15px 0;
+    }
+}
+
+hr.divide24 {
+    margin:24px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+}
+hr.divide18 {
+    margin:18px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+    padding: 0;
+    width: 100%;
+}
+hr.divide15 {
+    margin:15px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+}
+hr.divide12 {
+    margin:12px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+}
+hr.divide10 {
+    margin:10px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+}
+
+.space-only {
+    opacity: 0;
+}
 
 
 

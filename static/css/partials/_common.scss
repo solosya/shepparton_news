@@ -67,55 +67,6 @@
 
 
 
-div.space40 {
-    margin-top:40px;
-
-    @media screen and (max-width: $sm-break-down){
-        margin-top:20px;
-    }
-}
-
-
-hr.divide {
-    margin:28px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-    @media screen and (max-width: $sm-break-down){
-        margin: 15px 0;
-    }
-}
-
-hr.divide24 {
-    margin:24px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-hr.divide18 {
-    margin:18px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-    padding: 0;
-    width: 100%;
-}
-hr.divide15 {
-    margin:15px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-hr.divide12 {
-    margin:12px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-hr.divide10 {
-    margin:10px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-
-.space-only {
-    opacity: 0;
-}
 
 @mixin adtext {
     .google_ad {

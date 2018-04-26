@@ -121,7 +121,7 @@
 
 
 .card-realestate-tablet{
-    @media #{$media-iPad} {
+    @media #{$media-tablet} {
         @include card-realestate-base();
 
         margin-bottom: 32px;

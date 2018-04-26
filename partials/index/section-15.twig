@@ -1,14 +1,63 @@
 {% set articleCount = 0 %}
 {% set cardIndex = 0 %}
 
-{# {% set site = 'dairy' %} #}
+{% set layout = layout is defined ? layout : false %}
+
 
 {% set five_rowExceptions = ['country'] %}
 {% set popularExceptions  = ['dairy'] %}
 {% set bottomExceptions   = ['country', 'dairy'] %}
 
 
+
+{% if layout == 'breaking news' %}
+<section class="breaking-news">
+    <div class="row">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="breaking-news_subhead">Greater Shepparton</h2>
+                    <h1 class="breaking-news_header breaking-news_header@md">Breaking News</h1>
+                </div>
+                <div class="col-md-3 hidden-sm hidden-xs">
+                    <div id="weather" class="weather j-weather-panel"></div>
+                    <div id="weather-dropdown" class="weather-dropdown hidden j-weather-panel-dropdown"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row u-mobile-margin-bottom-20">
+        <div class="col-md-9">
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : articleCount + 1, 
+                    imageSize       : {width:970, height:478},
+                    site            : site,
+                    dev:            dev,
+                    containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+
+
+
+
+
+
 {# CARD 1 #}
+{# We don't show the normal top part if minor breaking news layout  #}
+{% if not layout %}
 <section class="home-main-stories">
     <div class="row">
         <div class="col-xs-9 col-sm-9 col-md-6">
@@ -83,13 +132,13 @@
     </div>
 </section>
 
-
+{% endif %}
 
 
     {# We go back as we added an extra card above that is only to be seen on tablet  #}
-    {% if not dev %}
+    {% if not dev and layout %}
         {% set articleCount = articleCount - 1 %}
-    {% else %}
+    {% elseif (not layout) %}
         {% set cardIndex = cardIndex - 1 %}
     {% endif %}
 
