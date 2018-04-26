@@ -136,7 +136,7 @@
 
 
     {# We go back as we added an extra card above that is only to be seen on tablet  #}
-    {% if not dev and layout %}
+    {% if not dev and layout != 'breaking news' %}
         {% set articleCount = articleCount - 1 %}
     {% elseif (not layout) %}
         {% set cardIndex = cardIndex - 1 %}
