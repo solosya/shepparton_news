@@ -32,7 +32,16 @@
 ******************************************************* #}
 
 {% set pageSections =  {
-    'section_0': {
+    'shepp': {
+        'template'  : 'partials/index/section-11.twig',
+        'title'     : 'Shepparton',
+        'template_params' : {
+            'ad': 'mrec-2',
+        },
+        'blogs' : ['shepp news','shepp sport','shepp social','shepp lifestyle','shepp entertainment'],
+        'articleorder' : ['shepp news','shepp sport','shepp entertainment','shepp social','shepp lifestyle']
+    },
+    'echuca_0': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Echuca',
         'template_params' : {
@@ -41,7 +50,16 @@
         'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
         'articleorder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
     },
-    'section_1': {
+    'echuca_1': {
+        'template'  : 'partials/index/section-27.twig',
+        'title'     : 'Echuca',
+        'template_params' : {
+            'ad': 'mrec-4',
+        },
+        'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
+        'articleorder' : ['echuca news','echuca sport','echuca social','chuca lifestyle','echuca entertainment']
+    },
+    'deniliquin_0': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'Deniliquin',
         'template_params' : {
@@ -50,7 +68,13 @@
         'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
         'articleorder' : ['deniliquin news','deniliquin sport','deniliquin news','deniliquin opinion','deniliquin entertainment']
     },
-    "section_2": {
+    "deniliquin_1": {
+        'title'     : "Deniliquin",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
+        'articleorder' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment']
+    },
+    "finley": {
         'title'     : "Finley",
         'template': 'partials/index/section-23.twig',
         'template_params' : {
@@ -59,37 +83,37 @@
         'blogs' : ['finley news','finley sport'],
         'articleorder' : ['finley news','finley news','finley sport']
     },
-    "section_3": {
+    "kyabram": {
         'title'     : "Kyabram",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['kyabram news','kyabram sport'],
         'articleorder' : ['kyabram news','kyabram news','kyabram sport']
     },
-    "section_4": {
+    "benella": {
         'title'     : "Benella",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['benella news','benella sport'],
         'articleorder' : ['benella news','benella sport','benella news','benella news']
     },
-    "section_5": {
+    "cobram": {
         'title'     : "Cobram",
         'template': 'partials/index/section-24.twig',
         'blogs' : ['cobram news','cobram sport'],
         'articleorder' : ['cobram news','cobram sport','cobram news','cobram news']
     },
-    "section_6": {
+    "seymour": {
         'title'     : "Seymour",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['seymour news','seymour sport'],
         'articleorder' : ['seymour news','seymour news','seymour sport']
     },
-    "section_7": {
+    "rochester": {
         'title'     : "Rochester",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['rochester news','rochester sport'],
         'articleorder' : ['rochester news','rochester sport','rochester news','rochester news']
     },
-    "section_8": {
+    "heathcote": {
         'title'     : "Heathcote",
         'template': 'partials/index/section-23.twig',
         'template_params' : {
@@ -98,23 +122,95 @@
         'blogs' : ['heathcote news','heathcote sport'],
         'articleorder' : ['heathcote news','heathcote news','heathcote sport']
     },
-    "section_9": {
+    "tatura": {
         'title'     : "Tatura",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['tatura news','tatura sport'],
         'articleorder' : ['tatura news','tatura news','tatura sport']
     },
-    "section_10": {
+    "yarrawonga": {
         'title'     : "Yarrawonga",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['yarrawonga news','yarrawonga sport'],
         'articleorder' : ['yarrawonga news','yarrawonga news','yarrawonga sport','yarrawonga news']
     },
-    "section_11": {
+    "corowa": {
         'title'     : "Corowa",
         'template': 'partials/index/section-24.twig',
         'blogs' : ['corowa news','corowa sport'],
         'articleorder' : ['corowa news','corowa sport','corowa news','corowa news']
+    },
+    'country news': {
+        'template'  : 'partials/index/section-11.twig',
+        'title'     : 'News',
+        'template_params' : {
+            'ad': 'mrec-2',
+        },
+        'blogs' : ['country news']
+    },
+    'dairy': {
+        'template'  : 'partials/index/section-27.twig',
+        'title'     : 'Dairy',
+        'template_params' : {
+            'ad': 'mrec-4',
+        },
+        'blogs' : ['dairy']                                                                                  
+    },
+    "horticulture": {
+        'title'     : "Horticulture",
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-6',
+        },
+        'blogs' : ['horticulture']
+    },
+    "cropping": {
+        'title'     : "Cropping",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['cropping']
+    },
+    "livestock": {
+        'title'     : "Livestock",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['livestock']
+    },
+    "viticulture": {
+        'title'     : "Viticulture",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['viticulture']
+    },
+    "water": {
+        'title'     : "Water",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['water']
+    },
+    "management": {
+        'title'     : "Management",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['management']
+    },
+    "from the experts": {
+        'title'     : "From The Experts",
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-8',
+        },
+        'blogs' : ['from the experts']
+    },
+    "markets": {
+        'title'     : "Markets",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['markets']
+    },
+    "machinery & products": {
+        'title'     : "Machinery & Products",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['machinery & products']
+    },
+    "animal health": {
+        'title'     : "Animal Health",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['animal health']
     }
 } %}
 
@@ -175,7 +271,16 @@
     }
 %}
 
-{% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8', 'section_9', 'section_10', 'section_11'] %}
+{# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
+{% if homeBlog == 'Regional' %}
+    {% if site == 'shepp' %} 
+        {%  set sectionOrder = ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benella', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'] %} 
+    {% endif %}
+{% elseif homeBlog == 'Rural' %}
+    {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
+{% elseif homeBlog == 'National & World'}
+    {%  set sectionOrder = ['national news', 'Sport', 'world', 'finance', 'entertainment', 'other news'] %} 
+{% endif %}
 
 
 {# *******************************************************
