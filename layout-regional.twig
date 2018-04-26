@@ -213,13 +213,13 @@
         'template': 'partials/index/section-24.twig',
         'blogs' : ['animal health']
     },
-    'national news': {
+    'national': {
         'template'  : 'partials/index/section-11.twig',
-        'title'     : 'National News',
+        'title'     : 'National',
         'template_params' : {
             'ad': 'mrec-2',
         },
-        'blogs' : ['national news']
+        'blogs' : ['national']
     },
     "national & world sport": {
         'title'     : "National & World Sport",
@@ -312,7 +312,7 @@
         "machinery & products": { "limit" : 4},
         "animal health":        { "limit" : 4},
 
-        "national news":        { "limit" : 5},
+        "national":        { "limit" : 5},
         "national & world sport": { "limit" : 4},
         "world":                { "limit" : 5},
         "aap finance":          { "limit" : 3},
@@ -329,7 +329,7 @@
 {% elseif homeBlog == 'rural' %}
     {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
 {% elseif homeBlog == 'national & world' %}
-    {%  set sectionOrder = ['national news', 'national & world sport', 'world', 'aap finance', 'aap entertainment', 'other news'] %} 
+    {%  set sectionOrder = ['national', 'national & world sport', 'world', 'aap finance', 'aap entertainment', 'other news'] %} 
 {% endif %}
 
 
