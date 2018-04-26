@@ -49,7 +49,7 @@
     .show-weather {
        	position: absolute;
     	top: 10px;
-        left: 150px; 
+        left: 130px; 
 
     	&:hover {
     		cursor: pointer;
@@ -110,6 +110,7 @@
         padding: 0 15px;
         width: 100%;
         height: 330px;
+        position:static;
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {

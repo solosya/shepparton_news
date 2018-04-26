@@ -292,8 +292,8 @@
         })
     %}
 
-    {# {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %} #}
-    {% set sectionOrder = ['index'] %}
+    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
+    {# {% set sectionOrder = ['index'] %} #}
 
     {% if layoutTitle == 'major_breaking_news' %}
         {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
