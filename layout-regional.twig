@@ -124,20 +124,19 @@
         "echuca lifestyle":     { "limit" : 1},
         "echuca entertainment": { "limit" : 1},
 
-        "deniliquin news":      { "limit" : 1},
+        "deniliquin news":      { "limit" : 2},
         "deniliquin opinion":   { "limit" : 1},
-        "deniliquin sport":     { "limit" : 2},
+        "deniliquin sport":     { "limit" : 1},
         "deniliquin entertainment": { "limit" : 1},
 
         "finley news":          { "limit" : 2},
         "finley sport":         { "limit" : 1},
 
-        "kyabram news":         { "limit" : 1},
-        "kyabram sport":        { "limit" : 2},
+        "kyabram news":         { "limit" : 2},
+        "kyabram sport":        { "limit" : 1},
 
-        "benalla news":         { "limit" : 1},
-        "benalla sport":        { "limit" : 3},
-
+        "benalla news":         { "limit" : 3},
+        "benalla sport":        { "limit" : 1},
         "cobram news":          { "limit" : 3},
         "cobram sport":         { "limit" : 1},
 
@@ -150,23 +149,20 @@
         "heathcote news":       { "limit" : 2},
         "heathcote sport":      { "limit" : 1},
 
-        "tatura news":          { "limit" : 3},
+        "tatura news":          { "limit" : 2},
+        "tatura sport":          { "limit" : 1},
 
-        "yarrawonga news":      { "limit" : 2},
-        "yarrawonga Sport":     { "limit" : 2},
+        "yarrawonga news":      { "limit" : 3},
+        "yarrawonga sport":     { "limit" : 1},
 
         "corowa news":          { "limit" : 3},
-        "corowa Sport":         { "limit" : 1},
+        "corowa sport":         { "limit" : 1}
 
 
     }
 %}
 
 {% set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8', 'section_9', 'section_10', 'section_11'] %}
-
-
-
-
 
 
 {# *******************************************************
@@ -241,6 +237,20 @@
         } %}
     
         {{this.render('render.twig', params) | raw}} 
+
+        {% if loop.index == 2 %}
+            <div class="ad-container mobad9">
+                <div id='banner-3' class='advert'></div>
+            </div> 
+        {% elseif loop.index == 5 %}
+            <div class="ad-container mobad9">
+                <div id='banner-5' class='advert'></div>
+            </div> 
+        {% elseif loop.index == 8 %}
+            <div class="ad-container mobad9">
+                <div id='banner-7' class='advert'></div>
+            </div> 
+        {% endif %}
 
     {% endfor %}
 
