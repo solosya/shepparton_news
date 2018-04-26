@@ -96,7 +96,7 @@
                         position        : articleCount,
                         containerClass  : 'home-feature-xs home-feature-tablet home-feature-mobile'
                     }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : sectionCount + 1 %}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% endif %}
 
                <hr class="divide visible-xs-block">
