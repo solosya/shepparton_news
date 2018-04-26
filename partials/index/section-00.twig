@@ -1,6 +1,6 @@
 {% set articleCount = 0 %}
 
-<section class="home-main-stories">
+<section class="breaking-stories">
     <div class="row">
 
         <div class="col-sm-9 col-md-7 breaking-news">
@@ -14,9 +14,9 @@
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount], 
                     position        : articleCount + 1, 
-                    imageSize       : {width:640, height:400},
+                    imageSize       : {width:740, height:377},
                     site            : site,
-                    containerClass  : 'card-11'
+                    containerClass  : 'card-11 card-11-tablet card-11-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
 
@@ -29,15 +29,17 @@
         {% if articles[articleCount] %}
             <div class="col-sm-9 col-md-2">
                 <div class="row">
-                      
+                    
+                    {% set offsets = ['', 'col-sm-offset-1'] %}
+
                     {% for i in 0..1 if articles[articleCount] %}
-                        <div class="col-md-9">
+                        <div class="col-md-9 col-sm-4 {{offsets[i]}}">
                             {{this.render('../_single-article.twig', {
                                 article         : articles[articleCount],
                                 imageSize       : {width:95},
                                 position        : articleCount + 1, 
                                 site            : site,
-                                containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                                containerClass  : 'card-sm feature-side-tablet card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         </div>
@@ -48,5 +50,24 @@
         {% endif %}
 
     </div>
+
+    <div class="row u-margin-top-20">
+
+            {% for i in 0..2 if articles[articleCount] %}
+
+                <div class="col-sm-3 col-xs-9">
+                    {{this.render('../_single-article.twig', {
+                        article:        articles[articleCount], 
+                        imageSize:      {width:80, height:90},
+                        site:           site,
+                        containerClass: 'feature-side card-sm-tablet card-sm-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    
+                </div>
+            {% endfor %}
+    </div>
+
+
 </section>
 
