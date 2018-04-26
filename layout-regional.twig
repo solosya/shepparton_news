@@ -276,7 +276,7 @@
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
 {% if homeBlog == 'regional' %}
-    {% if site == 'shepp' %} 
+    {% if site == ('shepparton' or 'shepp') %} 
         {%  set sectionOrder = ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benella', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'] %} 
     {% endif %}
 {% elseif homeBlog == 'rural' %}
