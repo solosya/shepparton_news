@@ -37104,15 +37104,15 @@ UserArticlesController.Load = (function ($) {
                 var local = res.data[0];
                 var name = local.location.split('/')[1];
 
-                $('#weather').html(weatherPanel(name, true)(local));
+                $('.j-weather-panel').html(weatherPanel(name, true)(local));
 
                 var days = local.daily.slice(1,7).map(weatherPanel(name, false)).join('');
 
-                $('#weather-dropdown').html(days);
+                $('.j-weather-panel-dropdown').html(days);
 
                 $('.show-weather').on("click", function () {
                     $('.show-weather').toggleClass('flip');
-                    $('#weather-dropdown').toggleClass('hidden');
+                    $('.j-weather-panel-dropdown').toggleClass('hidden');
                 });
             }
         })
