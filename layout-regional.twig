@@ -90,11 +90,11 @@
         'blogs' : ['kyabram news','kyabram sport'],
         'articleorder' : ['kyabram news','kyabram news','kyabram sport']
     },
-    "benella": {
-        'title'     : "Benella",
+    "benalla": {
+        'title'     : "Benalla",
         'template': 'partials/index/section-12.twig',
-        'blogs' : ['benella news','benella sport'],
-        'articleorder' : ['benella news','benella sport','benella news','benella news']
+        'blogs' : ['benalla news','benalla sport'],
+        'articleorder' : ['benalla news','benalla sport','benalla news','benalla news']
     },
     "cobram": {
         'title'     : "Cobram",
@@ -212,7 +212,46 @@
         'title'     : "Animal Health",
         'template': 'partials/index/section-24.twig',
         'blogs' : ['animal health']
-    }
+    },
+    'national news': {
+        'template'  : 'partials/index/section-11.twig',
+        'title'     : 'National News',
+        'template_params' : {
+            'ad': 'mrec-2',
+        },
+        'blogs' : ['national news']
+    },
+    "national & world sport": {
+        'title'     : "National & World Sport",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['national & world sport']
+    },
+    'world': {
+        'template'  : 'partials/index/section-27.twig',
+        'title'     : 'World',
+        'template_params' : {
+            'ad': 'mrec-4',
+        },
+        'blogs' : ['world']                                                                                  
+    },
+    "aap finance": {
+        'title'     : "Finance",
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-6',
+        },
+        'blogs' : ['aap finance']
+    },
+     "aap entertainment": {
+        'title'     : "Entertainment",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['aap entertainment']
+    },
+     "other news": {
+        'title'     : "Other News",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['other news']
+    },
 } 
 
 %}
@@ -235,42 +274,50 @@
         "echuca social":        { "limit" : 1},
         "echuca lifestyle":     { "limit" : 1},
         "echuca entertainment": { "limit" : 1},
-
         "deniliquin news":      { "limit" : 2},
         "deniliquin opinion":   { "limit" : 1},
         "deniliquin sport":     { "limit" : 1},
         "deniliquin entertainment": { "limit" : 1},
-
         "finley news":          { "limit" : 2},
         "finley sport":         { "limit" : 1},
-
         "kyabram news":         { "limit" : 2},
         "kyabram sport":        { "limit" : 1},
-
         "benalla news":         { "limit" : 3},
         "benalla sport":        { "limit" : 1},
         "cobram news":          { "limit" : 3},
         "cobram sport":         { "limit" : 1},
-
         "seymour news":         { "limit" : 2},
         "seymour sport":        { "limit" : 1},
-
         "rochester news":       { "limit" : 3},
         "rochester sport":      { "limit" : 1},
-
         "heathcote news":       { "limit" : 2},
         "heathcote sport":      { "limit" : 1},
-
         "tatura news":          { "limit" : 2},
-        "tatura sport":          { "limit" : 1},
-
+        "tatura sport":         { "limit" : 1},
         "yarrawonga news":      { "limit" : 3},
         "yarrawonga sport":     { "limit" : 1},
-
         "corowa news":          { "limit" : 3},
-        "corowa sport":         { "limit" : 1}
+        "corowa sport":         { "limit" : 1},
 
+        "country news":         { "limit" : 5},
+        "dairy":                { "limit" : 5},
+        "horticulture":         { "limit" : 3},
+        "cropping":             { "limit" : 3},
+        "livestock":            { "limit" : 4},
+        "viticulture":          { "limit" : 4},
+        "water":                { "limit" : 3},
+        "management":           { "limit" : 4},
+        "from the experts":     { "limit" : 3},
+        "markets":              { "limit" : 3},
+        "machinery & products": { "limit" : 4},
+        "animal health":        { "limit" : 4},
 
+        "national news":        { "limit" : 5},
+        "national & world sport": { "limit" : 4},
+        "world":                { "limit" : 5},
+        "aap finance":          { "limit" : 3},
+        "aap entertainment":    { "limit" : 4},
+        "other news":           { "limit" : 4}
     }
 %}
 
@@ -282,7 +329,7 @@
 {% elseif homeBlog == 'rural' %}
     {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
 {% elseif homeBlog == 'national & world' %}
-    {%  set sectionOrder = ['national news', 'Sport', 'world', 'finance', 'entertainment', 'other news'] %} 
+    {%  set sectionOrder = ['national news', 'national & world sport', 'world', 'aap finance', 'aap entertainment', 'other news'] %} 
 {% endif %}
 
 
