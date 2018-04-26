@@ -33,75 +33,88 @@
 
 {% set pageSections =  {
     'section_0': {
-        'title'         : 'Echuca',
-        'blogs'         : ['echuca news', 'echuca sport', 'echuca social', 'echuca lifestyle', 'echuca entertainment'],
-        'articleOrder'  : ['echuca news', 'echuca sport', 'echuca entertainment', 'echuca social', 'echuca lifestyle'],
-        'template'      : 'partials/index/section-11.twig',
+        'template'  : 'partials/index/section-11.twig',
+        'title'     : 'Echuca',
+        'template_params' : {
+            'ad': 'mrec-2',
+        },
+        'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
+        'articleorder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
     },
     'section_1': {
-        'title'         : 'Deniliquin',
-        'blogs'         : ['deniliquin news', 'deniliquin opinion', 'deniliquin sport', 'deniliquin entertainment'],
-        'articleOrder'  : ['deniliquin news', 'deniliquin sport', 'deniliquin sport', 'deniliquin opinion', 'deniliquin entertainment'],
-        'template'      : 'partials/index/section-27.twig',
+        'template'  : 'partials/index/section-27.twig',
+        'title'     : 'Deniliquin',
+        'template_params' : {
+            'ad': 'mrec-4',
+        },
+        'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
+        'articleorder' : ['deniliquin news','deniliquin sport','deniliquin news','deniliquin opinion','deniliquin entertainment']
     },
     "section_2": {
-        'title'         : "Finley",
-        'blogs'         : ['finley news', 'finley sport'],
-        'articleOrder'  : ['finley news', 'finley news', 'finley sport'],
-        'template'      : 'partials/index/section-23.twig',
+        'title'     : "Finley",
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-6',
+        },
+        'blogs' : ['finley news','finley sport'],
+        'articleorder' : ['finley news','finley news','finley sport']
     },
     "section_3": {
-        'title'         : "Kyabram",
-        'blogs'         : ['kyabram news', 'kyabram sport'],
-        'articleOrder'  : ['kyabram news', 'kyabram sport', 'kyabram sport'],
-        'template'      : 'partials/index/section-06.twig',
+        'title'     : "Kyabram",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['kyabram news','kyabram sport'],
+        'articleorder' : ['kyabram news','kyabram news','kyabram sport']
     },
     "section_4": {
-        'title'         : "Benalla",
-        'blogs'         : ['benalla news', 'benalla sport'],
-        'articleOrder'  : ['benalla news', 'benalla sport', 'benalla sport', 'benalla sport'],
-        'template'      : 'partials/index/section-12.twig',
+        'title'     : "Benella",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['benella news','benella sport'],
+        'articleorder' : ['benella news','benella sport','benella news','benella news']
     },
     "section_5": {
-        'title'         : "Cobram",
-        'blogs'         : ['cobram news', 'cobram sport'],
-        'articleOrder'  : ['cobram news', 'cobram news', 'cobram news', 'cobram sport'],
-        'template'      : 'partials/index/section-24.twig',
+        'title'     : "Cobram",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['cobram news','cobram sport'],
+        'articleorder' : ['cobram news','cobram sport','cobram news','cobram news']
     },
     "section_6": {
-        'title'         : "Seymour",
-        'blogs'         : ['seymour news', 'seymour sport'],
-        'articleOrder'  : ['seymour news', 'seymour news', 'seymour sport'],
-        'template'      : 'partials/index/section-06.twig',
+        'title'     : "Seymour",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['seymour news','seymour sport'],
+        'articleorder' : ['seymour news','seymour news','seymour sport']
     },
     "section_7": {
-        'title'         : "Rochester",
-        'blogs'         : ['rochester news', 'rochester sport'],
-        'articleOrder'  : ['rochester news', 'rochester sport', 'rochester news', 'rochester news'],
-        'template'      : 'partials/index/section-12.twig',
+        'title'     : "Rochester",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['rochester news','rochester sport'],
+        'articleorder' : ['rochester news','rochester sport','rochester news','rochester news']
     },
     "section_8": {
-        'title'         : "Heathcote",
-        'blogs'         : ['heathcote news', 'heathcote sport'],
-        'articleOrder'  : ['heathcote sport', 'heathcote news', 'heathcote news'],
-        'template'      : 'partials/index/section-23.twig',
+        'title'     : "Heathcote",
+        'template': 'partials/index/section-23.twig',
+        'template_params' : {
+            'ad': 'mrec-8',
+        },
+        'blogs' : ['heathcote news','heathcote sport'],
+        'articleorder' : ['heathcote news','heathcote news','heathcote sport']
     },
     "section_9": {
-        'title'         : "Tatura",
-        'blogs'         : ['tatura news'],
-        'template'      : 'partials/index/section-06.twig',
+        'title'     : "Tatura",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['tatura news','tatura sport'],
+        'articleorder' : ['tatura news','tatura news','tatura sport']
     },
     "section_10": {
-        'title'         : "Yarrawonga",
-        'blogs'         : ['yarrawonga news', 'yarrawonga sport'],
-        'articleOrder'  : ['yarrawonga news', 'yarrawonga news', 'yarrawonga sport', 'yarrawonga sport'],
-        'template'      : 'partials/index/section-12.twig',
+        'title'     : "Yarrawonga",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['yarrawonga news','yarrawonga sport'],
+        'articleorder' : ['yarrawonga news','yarrawonga news','yarrawonga sport','yarrawonga news']
     },
     "section_11": {
-        'title'         : "Corowa",
-        'blogs'         : ['corowa news', 'corowa sport'],
-        'articleOrder'  : ['corowa news', 'corowa sport', 'corowa news', 'corowa news'],
-        'template'      : 'partials/index/section-24.twig',
+        'title'     : "Corowa",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['corowa news','corowa sport'],
+        'articleorder' : ['corowa news','corowa sport','corowa news','corowa news']
     }
 } %}
 
