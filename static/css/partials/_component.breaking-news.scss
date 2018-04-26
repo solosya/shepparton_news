@@ -21,7 +21,7 @@
 }
 
 .breaking-news_header\@md {
-    @media #{$media-up-to-desktop} {
+    @media #{$up-to-desktop} {
         font-size: rem(16);
     }
 }

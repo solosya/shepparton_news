@@ -8,30 +8,30 @@
     
     &-article {
         background:black;
-        @media #{$media-mobile} {
+        @media #{$mobile} {
             height:50vw;
         }
         
-        @media #{$media-tablet} {
+        @media #{$tablet} {
             height:390px;
         }
     
-        @media #{$media-desktop_up} {
+        @media #{$desktop_up} {
             height:440px;
         }
     
     }
     &-property {
         position: relative;
-        @media #{$media-mobile} {
+        @media #{$mobile} {
             height:50vw;
         }
         
-        @media #{$media-tablet} {
+        @media #{$tablet} {
             height:390px;
         }
 
-        @media #{$media-desktop_up} {
+        @media #{$desktop_up} {
             height:336px;
         }    
     }
