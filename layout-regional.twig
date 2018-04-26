@@ -212,7 +212,9 @@
         'template': 'partials/index/section-24.twig',
         'blogs' : ['animal health']
     }
-} %}
+} 
+
+%}
 
 
 
@@ -278,7 +280,7 @@
     {% endif %}
 {% elseif homeBlog == 'Rural' %}
     {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
-{% elseif homeBlog == 'National & World'}
+{% elseif homeBlog == 'National & World' %}
     {%  set sectionOrder = ['national news', 'Sport', 'world', 'finance', 'entertainment', 'other news'] %} 
 {% endif %}
 
