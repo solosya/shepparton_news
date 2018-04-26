@@ -6,6 +6,7 @@
 {% set homeBlog    = blogData['title'] | lower %}
 
 
+
 {{this.registerJs("Acme.cards = CardController();")}}
 
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
@@ -274,13 +275,13 @@
 %}
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
-{% if homeBlog == 'Regional' %}
+{% if homeBlog == 'regional' %}
     {% if site == 'shepp' %} 
         {%  set sectionOrder = ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benella', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'] %} 
     {% endif %}
-{% elseif homeBlog == 'Rural' %}
+{% elseif homeBlog == 'rural' %}
     {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
-{% elseif homeBlog == 'National & World' %}
+{% elseif homeBlog == 'national & world' %}
     {%  set sectionOrder = ['national news', 'Sport', 'world', 'finance', 'entertainment', 'other news'] %} 
 {% endif %}
 
@@ -325,7 +326,7 @@
 
 
 
-<main id="main" class="site-main" role="main">
+<main id="main" class="site-main" role="main" data-blog="{{ homeBlog }}">
 
 
         <section class="container">
