@@ -21,7 +21,7 @@
                     position:       articleCount,
                     containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
                 }) | raw}}
-                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             {% endif %}
             <hr class="divide visible-xs-block space-only">        
         </div>
@@ -40,7 +40,7 @@
                     position:       articleCount,
                     containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
                 }) | raw}}
-                {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% if i == 0 %}<hr class="divide visible-xs-block"> {% endif %}
 
             {% endfor %}
@@ -113,7 +113,7 @@
                         position:       articleCount,
                         containerClass: 'card-sm card-sm-tablet card-sm-mobile'
                     }) | raw}}
-                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     <hr class="divide visible-xs-block">
                 {% endif %}
             </div>
@@ -155,7 +155,7 @@
                         position:       articleCount,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
                     }) | raw}}
-                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 5 %}
                         <div class="row">
                             <hr class="divide visible-xs-block">
