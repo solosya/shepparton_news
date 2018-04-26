@@ -3,7 +3,6 @@
 {% set blogData    = _Blog.getBlog() %}
 {% set layout      = blogData.layout %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
-{# {% set site        = 'country' %} #}
 {% set homeBlog    = blogData['title'] | lower %}
 
 
@@ -41,8 +40,8 @@
         'template_params' : {
             'ad': 'mrec-2',
         },
-        'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', 'deniliquin news', 'aap'],
-        'articleOrder' : [(homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'entertainment', 'rural news', 'aap'],
+        'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', 'deniliquin news', 'aap', 'echuca news', 'galleries', 'dairy news'],
+        'articleOrder' : [(homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'news', 'rural news', 'aap', 'echuca news', 'news', 'aap', 'galleries', 'aap', 'dairy news'],
     },
     'local': {
         'template': 'partials/index/section-01.twig',
@@ -51,7 +50,7 @@
         },
         'title' : 'Local News',
         'blogs': ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
-        'articleOrder' : ['news', 'news', 'sport', 'news', 'education', 'news', 'entertainment', 'sport', 'news', 'news', 'sport', 'lifestyle'],
+        'articleOrder' : ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle'],
     },
     "real estate": {
         'title'     : "Real Estate",
@@ -241,8 +240,9 @@
             "lifestyle":            { "limit" : 1},
             "entertainment":        { "limit" : 1},
             "deniliquin news":      { "limit" : 1},
-            "aap":                  { "limit" : 3},
+            "aap":                  { "limit" : 5},
             "rural news":           { "limit" : 3},
+            'dairy news':            { "limit" : 1},
 
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
@@ -292,7 +292,8 @@
         })
     %}
 
-    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
+    {# {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %} #}
+    {% set sectionOrder = ['index'] %}
     {% if layoutTitle == 'major_breaking_news' %}
         {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
         {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
@@ -388,7 +389,9 @@
 
 
 
-
+{# <pre>
+    {{dump(blogFeeds)}}
+</pre> #}
 
 
 
