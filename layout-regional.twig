@@ -222,7 +222,7 @@
         'blogs' : ['national']
     },
     "national & world sport": {
-        'title'     : "National & World Sport",
+        'title'     : "Sport",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['national & world sport']
     },
@@ -246,12 +246,7 @@
         'title'     : "Entertainment",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['aap entertainment']
-    },
-     "other news": {
-        'title'     : "Other News",
-        'template': 'partials/index/section-06.twig',
-        'blogs' : ['other news']
-    },
+    }
 } 
 
 %}
@@ -329,7 +324,7 @@
 {% elseif homeBlog == 'rural' %}
     {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
 {% elseif homeBlog == 'national & world' %}
-    {%  set sectionOrder = ['national', 'national & world sport', 'world', 'aap finance', 'aap entertainment', 'other news'] %} 
+    {%  set sectionOrder = ['national', 'national & world sport', 'world', 'aap finance', 'aap entertainment'] %} 
 {% endif %}
 
 

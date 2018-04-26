@@ -116,7 +116,8 @@
             article {
                 > .content {
                     h2{
-                        line-height:1.2;
+                        font-size: rem(16);
+                        line-height:1.35;
                         height:36px;
                         font-weight: normal;
                     }
