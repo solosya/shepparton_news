@@ -29,7 +29,7 @@
 
                 <hr class="divide visible-xs-block space-only">
             </div>
-            <div class="col-md-3 col-xs-9">
+            <div class="col-md-3 col-sm-5 col-xs-9">
          
                 {% if articles[articleCount] %}
                    
@@ -37,23 +37,23 @@
                         article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
-                        containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                        containerClass: 'card-sm-wide feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     
-                   <hr class="divide visible-xs-block">
+                   <hr class="divide visible-xs-block visible-sm-block">
                 {% endif %}
             </div>
 
 
-            <div class="col-md-2 col-sm-3 col-xs-9">
+            <div class="col-md-2 col-sm-5 col-xs-9">
                 {% if articles[articleCount] %}
 
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
                         imageSize:      {width:195},
                         site:           site,
-                        containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                        containerClass: 'card-sm feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                     <hr class="divide visible-xs-block">
