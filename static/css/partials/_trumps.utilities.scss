@@ -250,6 +250,25 @@ div[class*="col-sm"] {
     }
 }
 
+
+@media #{$tablet} {
+    .two-cols-tablet {
+        .col-md-1, .col-sm-1, .col-lg-1 {
+            width: 50%;
+        }
+    }
+}
+
+
+@media #{$tablet-up} {
+    .two-cols-tablet-up {
+        .col-md-1, .col-sm-1, .col-lg-1 {
+            width: 50%;
+        }
+    }
+}
+
+
 @media #{tablet-up} {
     .three-cols .col-md-1,
     .three-cols .col-sm-1,
