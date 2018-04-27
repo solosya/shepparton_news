@@ -154,13 +154,13 @@
 
             {% for i in 0..4 if articles[articleCount] %}
                 {{this.render('../_single-article.twig', {
-                    article: articles[articleCount], 
-                    position: cardIndex + 1, 
-                    imageSize: {width:500},
-                    site: site,
-                    swap: false,
-                    dev:dev,
-                    containerClass: 'col-sm-1 top-stories top-stories-tablet top-stories-mobile'
+                    article         : articles[articleCount], 
+                    position        : cardIndex + 1, 
+                    imageSize       : {width:80},
+                    site            : site,
+                    swap            : false,
+                    dev             : dev,
+                    containerClass  : 'col-sm-1 top-stories top-stories-tablet card-sm-mobile'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
@@ -192,13 +192,13 @@
                                 {% for i in 0..3 if articles[articleCount] %}
                                     <div class="col-sm-1">
                                         {{this.render('../_single-article.twig', {
-                                            article: articles[articleCount], 
-                                            position: cardIndex + 1, 
-                                            imageSize: {width:80},
-                                            site: site,
-                                            dev:dev,
-                                            swap: false,
-                                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                            article         : articles[articleCount], 
+                                            position        : cardIndex + 1, 
+                                            imageSize       : {width:80},
+                                            site            : site,
+                                            dev             : dev,
+                                            swap            : false,
+                                            containerClass  : 'feature-side-tablet'
                                         }) | raw}}
                                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                         {% set cardIndex = cardIndex + 1 %}
@@ -234,10 +234,10 @@
 
                 {% for i in 0..4 if popularArticles[i] %}
                     {{this.render('../_single-article.twig', {
-                        article: popularArticles[i], 
-                        imageSuppress: true,
-                        swap: false,
-                        containerClass: 'card-popular'
+                        article         : popularArticles[i], 
+                        imageSuppress   : true,
+                        swap            : false,
+                        containerClass  : 'card-popular'
                     }) | raw}}
                 {% endfor %} 
             </div>
@@ -255,13 +255,13 @@
             <div class="col-sm-3 col-md-2">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: cardIndex + 1, 
-                        imageSize: {width:300},
-                        site: site,
-                        swap: false,
-                        dev:dev,
-                        containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                        article         : articles[articleCount], 
+                        position        : cardIndex + 1, 
+                        imageSize       : {width:300},
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
@@ -274,12 +274,12 @@
             <div class="col-sm-3 col-md-2">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: cardIndex + 1, 
-                        site: site,
-                        swap: false,
-                        dev:dev,
-                        containerClass: 'card-sm card-sm-tablet card-sm-mobile'
+                        article         : articles[articleCount], 
+                        position        : cardIndex + 1, 
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
@@ -315,13 +315,13 @@
             <div class="col-sm-3">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: cardIndex + 1, 
-                        imageSize: {width:300},
-                        site: site,
-                        swap: false,
-                        dev:dev,
-                        containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                        article         : articles[articleCount], 
+                        position        : cardIndex + 1, 
+                        imageSize       : {width:300},
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
@@ -335,13 +335,13 @@
             <div class="col-sm-3">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: cardIndex + 1, 
-                        imageSize: {width:300},
-                        site: site,
-                        swap: false,
-                        dev:dev,
-                        containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                        article         : articles[articleCount], 
+                        position        : cardIndex + 1, 
+                        imageSize       : {width:300},
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
@@ -353,13 +353,13 @@
             <div class="col-sm-3">
                 {% for i in 0..1 if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
-                        article: articles[articleCount], 
-                        position: cardIndex + 1, 
-                        imageSize: {width:300},
-                        site: site,
-                        swap: false,
-                        dev:dev,
-                        containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                        article         : articles[articleCount], 
+                        position        : cardIndex + 1, 
+                        imageSize       : {width:300},
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'feature-side feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
