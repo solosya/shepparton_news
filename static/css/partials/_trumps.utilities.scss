@@ -160,7 +160,7 @@ div[class*="col-sm"] {
 
 
 }
-@media #{$desktop_up} {
+@media #{$desktop-up} {
     .u-desktop-float-left { float:left; }
     .u-desktop-float-right { float:right; }
     .u-desktop-clear-both { clear:both; }
@@ -217,7 +217,7 @@ div[class*="col-sm"] {
     }
 }
 
-@media #{$desktop_up} {
+@media #{$desktop-up} {
     .two-cols .col-md-2,
     .two-cols .col-sm-2,
     .two-cols .col-lg-2  {
@@ -234,7 +234,7 @@ div[class*="col-sm"] {
     }
 }
 
-@media #{tablet-to-desktop} {
+@media #{tablet-up} {
     .three-cols .col-md-1,
     .three-cols .col-sm-1,
     .three-cols .col-lg-1 {
@@ -243,7 +243,7 @@ div[class*="col-sm"] {
     }
 }
 
-@media #{$desktop_up} {
+@media #{$desktop-up} {
     .three-cols .col-md-2,
     .three-cols .col-sm-2,
     .three-cols .col-lg-2  {
@@ -473,3 +473,94 @@ hr.divide10 {
 .flex13{-webkit-flex:13 0 0;-ms-flex:13 0 0;flex:13 0 0;-moz-flex:13 0 0;}
 .flex15{-webkit-flex:15 0 0;-ms-flex:15 0 0;flex:15 0 0;-moz-flex:15 0 0;}
 
+.divideright {
+    @media #{$tablet} {
+    // @media screen and (min-width : 768px)  and (max-width : 991px) {
+
+        &:after {
+            content: '';
+            display: block;
+            height: 100%;
+            background: color(lightgrey);
+            width: 1px;
+            position: absolute;
+            top: 0;
+            right: -13px;
+        }
+        &:last-child {
+            &:after {
+                display:none;
+            }
+        }
+        &.dairy {
+            &:after {
+                right: 0;
+            }
+        }
+        &.divideright__nogap {
+            &:after {
+                right: 0;
+            }
+        }
+    }
+}
+.divideright-desk {
+    @media #{$desktop_up} {
+        &:after {
+            content: '';
+            display: block;
+            height: 100%;
+            background: color(lightgrey);
+            width: 1px;
+            position: absolute;
+            top: 0;
+            right: -13px;
+        }
+        &:last-child {
+            &:after {
+                display:none;
+            }
+        }
+        &.dairy {
+            &:after {
+                right: 0;
+            }
+        }
+        &.divideright__nogap {
+            &:after {
+                right: 0;
+            }
+        }
+    }
+}
+
+.divideright-main {
+    &:after {
+        content: '';
+        display: block;
+        height: 100%;
+        background: color(lightgrey);
+        width: 1px;
+        position: absolute;
+        top: 0;
+        right: 5px;
+    }
+    &:last-child {
+        &:after {
+            display:none;
+        }
+    }
+}
+
+.divideright-ofs {
+    &:after {
+        content: '';
+        display: block;
+        height: 100%;
+        background: color(lightgrey);
+        width: 1px;
+        position: absolute;
+        top: 0;
+        right: -85px;
+    }
+}

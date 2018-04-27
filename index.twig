@@ -13,7 +13,7 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 {% if dev %}
     {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
@@ -292,8 +292,8 @@
         })
     %}
 
-    {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %}
-    {# {% set sectionOrder = ['index'] %} #}
+    {# {% set sectionOrder = ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'] %} #}
+    {% set sectionOrder = ['local', 'regional news', 'rural news'] %}
 
     {% if layoutTitle == 'major_breaking_news' %}
         {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}

@@ -9,6 +9,8 @@
         </div>
     </div>
 
+
+
     {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
@@ -20,6 +22,8 @@
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
     {% endif %}
 
+
+
     {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
             article: articles[articleCount], 
@@ -30,6 +34,8 @@
                 <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
     {% endif %}
+
+
 
     {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {

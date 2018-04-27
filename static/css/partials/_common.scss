@@ -76,6 +76,7 @@
             color: color(grey);
             position: relative;
             float: right;
+            height:20px;
             @media screen and (max-width: $mmd-break){
                 display:none
             }   

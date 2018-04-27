@@ -148,50 +148,6 @@
 
         height:95px;
 
-        &.divideright, &.divideright-desk {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: -13px;
-            }
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-            &.dairy {
-                &:after {
-                    right: 0;
-                }
-            }
-            &.divideright__nogap {
-                &:after {
-                    right: 0;
-                }
-            }
-        }
-        &.divideright-main {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: 5px;
-            }
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-        }
 
 
 
@@ -231,48 +187,6 @@
         @include card-feature-side-base();
 
         height:95px;
-        &.divideright, &.divideright-tablet {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: -13px;
-            }
-
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-            &.dairy {
-                &:after {
-                    right: 0;
-                }
-            }
-            &.divideright__nogap {
-                &:after {
-                    right: 0;
-                }
-            }
-        }
-
-        &.divideright-ofs {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: -85px;
-            }
-        }
-
 
         a.card {
             @include card-image-left(80px);
@@ -314,5 +228,7 @@
         }
     }
 }
+
+
 
 

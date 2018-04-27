@@ -16,7 +16,7 @@
             height:390px;
         }
     
-        @media #{$desktop_up} {
+        @media #{$desktop-up} {
             height:440px;
         }
     
@@ -31,7 +31,7 @@
             height:390px;
         }
 
-        @media #{$desktop_up} {
+        @media #{$desktop-up} {
             height:336px;
         }    
     }
