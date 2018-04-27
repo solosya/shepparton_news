@@ -53,31 +53,32 @@
 
         <div class="col-md-3 col-sm-9">
 
-            <div class="ad-square row">
-                <div id='{{ ad }}' class='advert col-md-9 col-sm-4'></div>
-            </div>
-            
             <div class="row">
-                <hr class="divide visible-xs-block">
-                <hr class="divide15 hidden-xs space-only">
-            
-
-
-
-            {# Card 4 #}
-                {% if articles[articleCount] %}
-                   
-                    {{this.render('../_single-article.twig', {
-                        article:        articles[articleCount], 
-                        imageSize:      {width:300},
-                        position:       articleCount,
-                        site:           site,
-                        containerClass: 'col-md-9 col-sm-5 card-sm-wide card-sm-wide-tablet card-sm-mobile'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                <div class="ad-square  col-md-9 col-sm-4">
+                    <div id='{{ ad }}' class='advert'></div>
+                </div>
                 
-                        <hr class="divide visible-xs-block">
-                {% endif %}
+                
+                    <hr class="divide visible-xs-block">
+                    <hr class="divide15 hidden-xs space-only">
+                
+
+
+
+                {# Card 4 #}
+                    {% if articles[articleCount] %}
+                       
+                        {{this.render('../_single-article.twig', {
+                            article:        articles[articleCount], 
+                            imageSize:      {width:300},
+                            position:       articleCount,
+                            site:           site,
+                            containerClass: 'col-md-9 col-sm-5 card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    
+                            <hr class="divide visible-xs-block">
+                    {% endif %}
             </div>
         </div>
     </div>    
