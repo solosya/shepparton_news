@@ -671,16 +671,6 @@ span.leadsentence{
     }
 }
 
-.gallery-title {
-    font-size: rem(41);
-    color: #FFF;
-    margin-bottom: 25px;
-    @media screen and (max-width: $sm-break-down) {
-        font-size: rem(30);
-        margin-bottom: 15px;
-    }
-}
-
 #rev-search {
     background-color: unset !important;
     .rev-search-inner{
