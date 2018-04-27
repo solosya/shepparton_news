@@ -17,7 +17,14 @@
         ROW 1
 ******************** #}
 <div class="row">
-    <div class="col-sm-4 col-xs-9">
+
+{# ***********  ROW 1 COL 1  ***************
+                -----------
+                  * |   |      
+                ----------- 
+#}
+    {# Card 1 #}
+    <div class="col-sm-4 col-md-4 col-xs-9">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
@@ -26,7 +33,7 @@
                 swap            : false,
                 dev             : dev,
                 position        : cardIndex,
-                containerClass  : 'home-feature-xs home-feature-tablet home-feature-mobile'
+                containerClass  : 'home-feature-xs home-feature-xs-tablet home-feature-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : sectionCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}
@@ -34,7 +41,17 @@
 
         <hr class="divide visible-xs-block space-only">
     </div>
-    <div class="col-md-3 col-xs-9">
+
+
+
+
+{# ***********  ROW 1 COL 2  ***************
+                -----------
+                    | * |      
+                ----------- 
+#}
+    {# Card 2 #}
+    <div class="col-xs-9 col-sm-5 col-md-3 ">
     
         {% if articles[articleCount] %}
             
@@ -45,17 +62,24 @@
                 swap            : false,
                 dev             : dev,
                 position        : cardIndex,
-                containerClass  : 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                containerClass  : 'card-sm-wide feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}
             
-            <hr class="divide visible-xs-block">
+            <hr class="divide visible-xs-block visible-sm-block">
         {% endif %}
     </div>
 
 
-    <div class="col-md-2 col-sm-3 col-xs-9">
+
+{# ***********  ROW 1 COL 3  ***************
+                -----------
+                    |   | *     
+                ----------- 
+#}
+    {# Card 3 #}
+    <div class="col-xs-9 col-sm-5 col-md-2 ">
         {% if articles[articleCount] %}
 
             {{this.render('../_single-article.twig', {
@@ -65,7 +89,7 @@
                 swap            : false,
                 dev             : dev,
                 position        : cardIndex,
-                containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                containerClass  : 'card-sm feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}
@@ -88,8 +112,17 @@
 
 <div class="row u-margin-top-40 u-mobile-no-margin-top">
 
+{# ***********  ROW 2 COL 1  ***************
+                -----------
+                   *   |     
+                ----------- 
+#}
+
+    {# Card 4,5,6 #}
     {% for i in 0..2 if articles[articleCount] %}
-        <div class="col-md-2 col-sm-3 col-xs-9">
+        {% set classes= ['4','5'] %}
+        {% set colClass = classes[i%2] %}
+        <div class="col-md-2 col-sm-{{colClass}} col-xs-9">
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
                 imageSize       : {width:195},
@@ -97,16 +130,25 @@
                 swap            : false,
                 dev             : dev,
                 position        : cardIndex,
-                containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                containerClass  : 'card-sm feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}
-            <hr class="divide visible-xs-block">
+            {% set line = i < 2 ? 'visible-sm-block' : '' %}
+            <hr class="divide visible-xs-block {{line}}">
         </div>
     {% endfor %}
-    
-    <div class="col-sm-3 col-xs-9">
 
+
+
+{# ***********  ROW 2 COL 2  ***************
+                -----------
+                       | *    
+                ----------- 
+#}
+
+    {# Card 7 #}
+    <div class="col-xs-9 col-sm-5 col-md-3">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
@@ -115,7 +157,7 @@
                 swap            : false,
                 dev             : dev,
                 position        : cardIndex,
-                containerClass  : 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                containerClass  : 'card-sm-wide feature-side-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}
@@ -131,16 +173,24 @@
 
 
 
-        {# ********************
-                ROW 3
-        ******************** #}
+{# ********************
+        ROW 3
+******************** #}
 
 <div class="row u-margin-top-40 u-mobile-no-margin-top">
     
-    <div class="col-md-6 col-sm-3 col-xs-9">
+{# ***********  ROW 3 COL 1,2  *************** #}
+{# 
+    -----------
+     * | * |     
+    ----------- 
+#}
+    <div class="col-md-6 col-sm-5 col-xs-9">
         <div class="row">
+
+            {# Cards 8,9,10,11 #}
             {% for i in 0..3 if articles[articleCount] %}
-                <div class="col-md-3 col-sm-3 col-xs-9 large-split">
+                <div class="col-xs-9 col-sm-9 col-md-3 desktop-split">
                     {% set theDivider = [' divideright','',' divideright',''] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
@@ -154,14 +204,21 @@
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
                     {% if i < 2 %}
-                        <hr class="divide18 hidden-xs">
+                        <hr class="divide18 hidden-xs hidden-sm">
                     {% endif %} 
-                    <hr class="divide visible-xs-block">
+                    <hr class="divide visible-xs-block visible-sm-block">
                 </div>                         
             {% endfor %}
         </div>
     </div>
 
+
+
+{# ***********  ROW 3 COL 3  *************** 
+                -----------
+                   |   | *    
+                ----------- 
+#}
     <div class="col-md-3 col-sm-3 ad-square">
             <div id='{{ ad }}' class='advert'></div>
     </div>
@@ -179,7 +236,16 @@
 
 <div class="row u-margin-top-40 u-mobile-no-margin-top">
     <hr class="divide visible-xs-block">
-    <div class="col-sm-3 col-xs-9">
+    
+
+
+{# ***********  ROW 4 COL 1  ***************
+                -----------
+                 * |   |     
+                ----------- 
+#}
+    {# Card 12 #}
+    <div class="col-sm-5 col-md-3 col-xs-9">
 
         {% if articles[articleCount] %}
                 
@@ -201,9 +267,18 @@
     </div>
 
 
+{# ***********  ROW 4 COL 2,3  ***************
+                -----------
+                   | * | *   
+                ----------- 
+#}
+    {# Cards 13,14,15,16 #}
     {% for i in 0..3 if articles[articleCount] %}
-        <div class="col-md-3 col-sm-3 col-xs-9">
-            {% set theDivider = [' divideright','',' divideright',''] %}
+
+        {% set classes= ['4','4', '5', '4'] %}
+
+        <div class="col-xs-9 col-sm-{{classes[i]}} col-md-3 ">
+
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
                 imageSize       : {width:80, height:90},
@@ -211,7 +286,7 @@
                 swap            : false,
                 dev             : dev,
                 position        : cardIndex,
-                containerClass  : 'feature-side feature-side-tablet card-sm-mobile' ~ theDivider[i]
+                containerClass  : 'feature-side feature-side-tablet card-sm-mobile '
             }) | raw}}
             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}

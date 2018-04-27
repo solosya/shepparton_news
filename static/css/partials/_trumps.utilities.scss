@@ -80,6 +80,19 @@ div[class*="col-sm"] {
     }
 }
 
+div[class*="col-sm"] {
+    @media screen and (min-width: 992px) {
+
+        &.desktop-split {
+            width:50%;
+            float:left;
+        }
+        &.clearfixed {
+            clear:both;
+        }
+    }
+}
+
 
 .relative { position:relative; }
 
