@@ -35,11 +35,15 @@
         {% set params = params | merge(section.template_params) %}
     {% endif %}
 
+    {% set margin = 'u-margin-top-60' %}
+
     {% if section.background %}
-        <div class="section-background">
+        <div class="section-background {{margin}}">
+            {% set margin = '' %}
+
     {% endif %}
 
-        <div class="container">
+        <div class="container {{margin}}">
             {{this.render(section.template, params) | raw}} 
         </div>
 

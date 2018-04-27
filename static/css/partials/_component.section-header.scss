@@ -1,0 +1,33 @@
+.section-header {
+    p>a {
+        margin:0;
+        font-family: $font-family-serif;
+        font-size: rem(14);
+        font-style:italic;
+        color:color(red);
+    }
+    
+    div.hk {
+        display:flex;
+        h2 {
+            flex-grow: 0;
+            font-size: rem(20);
+            font-weight:600;
+            margin-bottom:25px;
+            text-transform: uppercase;
+        }
+        p {
+            flex-grow: 1;
+
+            &:after {
+                content: '';
+                display:block;
+                height:1px;
+                background:color(lightgrey);
+                width:99%;
+                margin-top: 18px;
+                margin-left: 7px;
+            }
+        }
+    }
+}
