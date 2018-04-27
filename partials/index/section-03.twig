@@ -11,6 +11,44 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+    <div class="col-md-9 col-sm-9">
+        
+        
+        {# ********************
+                ROW 1
+        ******************** #}
+        <div class="row">
+            <div class="col-sm-4 col-xs-9">
+                {% if articles[articleCount] %}
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        imageSize: {width:414, height:255},
+                        site: site,
+                        containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : sectionCount + 1 %}
+                {% endif %}
+
+                <hr class="divide visible-xs-block space-only">
+            </div>
+            <div class="col-md-3 col-sm-5 col-xs-9">
+         
+                {% if articles[articleCount] %}
+                   
+                    {{this.render('../_single-article.twig', {
+                        article:        articles[articleCount], 
+                        imageSize:      {width:300},
+                        site:           site,
+                        containerClass: 'card-sm-wide feature-side-tablet card-sm-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    
+                   <hr class="divide visible-xs-block visible-sm-block">
+                {% endif %}
+            </div>
+>>>>>>> 580312b5feff5a046944b16cfb3e0486dc5f5a14
 
         
 {# ********************
@@ -54,6 +92,7 @@
         {% endif %}
     </div>
 
+<<<<<<< HEAD
 
     <div class="col-md-2 col-sm-3 col-xs-9">
         {% if articles[articleCount] %}
@@ -70,6 +109,19 @@
             {% set articleCount = (dev) ? 0 : articleCount + 1 %}
             {% set cardIndex = cardIndex + 1 %}
             <hr class="divide visible-xs-block">
+=======
+            <div class="col-md-2 col-sm-5 col-xs-9">
+                {% if articles[articleCount] %}
+
+                    {{this.render('../_single-article.twig', {
+                        article:        articles[articleCount], 
+                        imageSize:      {width:195},
+                        site:           site,
+                        containerClass: 'card-sm feature-side-tablet card-sm-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    <hr class="divide visible-xs-block">
+>>>>>>> 580312b5feff5a046944b16cfb3e0486dc5f5a14
 
         {% endif %}
 
