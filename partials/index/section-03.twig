@@ -105,15 +105,15 @@
                     {% endif %}
 
             </div>
-            <div class="col-sm-6 visible-sm-block">
+            <div class="col-sm-6 visible-sm-block two-cols">
                 {% set tabletCount = articleCount %}
                     {% for i in 0..1 if articles[tabletCount] %}
-                        <div class="col-sm-3">
+                        <div class="col-sm-1">
                             {{this.render('../_single-article.twig', {
                                 article:        articles[tabletCount], 
                                 imageSize:      {width:300, height:300},
                                 site:           site,
-                                containerClass: 'feature-side feature-side-tablet card-sm-mobile' 
+                                containerClass: 'card-sm-tablet' 
                             }) | raw}}
                             {% set tabletCount = (dev) ? 0 : tabletCount + 1 %}
                         </div>                         
