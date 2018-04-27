@@ -61,7 +61,7 @@
                 
                 
                     <hr class="divide visible-xs-block">
-                    <hr class="divide10 visible-md-block visible-lg-block space-only col-md-6">
+                    <hr class="divide10 hidden-xs space-only col-md-6">
                 
 
 
@@ -114,7 +114,7 @@
                         imageSize:      {width:195},
                         site:           site,
                         position:       articleCount,
-                        containerClass: 'card-sm feature-card-tablet card-sm-mobile'
+                        containerClass: 'card-sm feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     <hr class="divide visible-xs-block visible-sm-block">
@@ -132,7 +132,7 @@
                         imageSize:      {width:300},
                         site:           site,
                         position:       articleCount,
-                        containerClass: 'card-sm-wide feature-card-tablet card-sm-mobile'
+                        containerClass: 'card-sm-wide feature-side-tablet card-sm-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     
