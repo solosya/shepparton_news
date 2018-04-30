@@ -140,21 +140,6 @@
         }
     }
 
-
-    .most-popular {
-        @media screen and (max-width: $sm-break-down){
-           margin: -10px 0; 
-            
-        }
-        &.country {
-            @media screen and (max-width: $sm-break-down){        
-                margin: 0 0 -10px 0;
-            }
-        }
-
-    }
-
-
     .most-popular, .events, .trending {
         >h2 {
             font-weight:600;
@@ -180,6 +165,9 @@
     .section-background {
         padding: 25px 0;
         background:rgba(185,185,185,.2);
+        @media screen and (min-width: $mmd-break) {
+            margin: 30px 0 0 0;
+        }
     }
 
 

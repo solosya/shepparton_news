@@ -90,7 +90,7 @@
                         <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
                     </div>
 
-                    <hr class="divide10 visible-xs-block" style="clear:both">
+                    <hr class="divide visible-xs-block" style="clear:both">
                       
 
 
@@ -113,14 +113,14 @@
 
                             {% if i < 2 %}
                                 <hr class="divide15 visible-md-block visible-lg-block">
-                                <hr class="divide10 visible-xs-block">                             
+                                <hr class="divide visible-xs-block">                             
                             {% endif %}
                             <hr class="divide10 visible-sm-block">  
                         </div>
                     {% endfor %}
 
                     {% if site not in five_rowExceptions %}
-                        <hr class="divide10 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                        <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
                     {% else %}
                         <hr class="divide15 visible-xs-block">
                     {% endif %}
@@ -165,9 +165,9 @@
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
                 {% if i < 4 %}    
-                    <hr class="divide10 visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                    <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
                 {% else %}
-                    <hr class="divide10 visible-xs-block">
+                    <hr class="divide visible-xs-block">
                 {% endif %}
 
             {% endfor %}
@@ -290,7 +290,9 @@
 
             <div class="col-sm-9 col-md-3">
                 <div class="ad-square u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
-                    <div id='{{ ad }}' class='advert'></div>
+                    <div class='advert-desktop' data-adsize="mrec"></div>
+                    <div class='advert-tablet' data-adsize="banner"></div>
+                    <div class='advert-mobile' data-adsize="mrec"></div>
                 </div>
             </div>
         </div>
@@ -370,7 +372,7 @@
                 {% endfor %}
 
             </div>
-            <hr class="divide10 visible-xs-block">
+            <hr class="divide visible-xs-block">
         </div>
 
     </section>
