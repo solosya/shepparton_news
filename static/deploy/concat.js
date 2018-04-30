@@ -34452,7 +34452,6 @@ Acme.View.articleFeed.prototype.events = function()
 
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var screenWidth = $(window).width();
-    console.log(screenWidth);
     if (screenWidth >= 300 && screenWidth <= 768) {
         var pageAdSlots = $('.advert-mobile');
         var mediaSize = 'mobile'; 
@@ -34465,13 +34464,11 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     } else {
         console.log('screen too small for advertising.');
     }
-    console.log(pageAdSlots,mediaSize);
     if (pageAdSlots.length > 0 ){
 
         var adSlotIds = [pageAdSlots.length];
         var adSlotSizes = [pageAdSlots.length];
         for (var i=0;i<pageAdSlots.length;i++) {
-
             var thisSlot = pageAdSlots[i];
             var newID = generateNextAdName(mediaSize+'-');
             thisSlot.id = newID;
@@ -34479,11 +34476,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             thisSlot = $('#'+thisSlot.id);
             var slotSize = thisSlot.data('adsize');
             adSlotSizes[i] = mediaSize+'-'+slotSize;
-            adSlotIds[i] = newID;
-            
+            adSlotIds[i] = newID;  
         }
-        console.log(adSlotIds,adSlotSizes);
-        
         var siteSection = getSiteSection(effectiveURL,effectiveSection,siteAdSections);
         var networkSite = networkSelect[effectiveURL];
         if (rubiconAcct != undefined) {
@@ -34507,7 +34501,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section,size) {
         var theAd = adSizes[size];
         var adSlot = document.getElementById(adDivId);
-        console.log(adSlot);
         if ((theAd || adSlot || theAd[0] || theAd[1] || theAd[2] || theAd[3]) == undefined) {
             console.log('id/slot not found:');
             console.log(adDivId);
@@ -34528,9 +34521,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         rubicontag.cmd.push(function() {
             rubicontag.addFPV('BLOGPREFIX', section);
             rubicontag.addFPV('page-type', page);
-            console.log(adslots);
-            console.log(sizes);
-
             for (var i=0;i<adslots.length;i++) {
                 if (sizes[i] == ('desktop-interstitial' || 'desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
                 var adSpecs = adSizes[sizes[i]];
