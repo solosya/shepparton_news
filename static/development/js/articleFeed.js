@@ -224,9 +224,9 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                     var rubPos = 'btf';
                 }
                 var adSpecs = adSizes[sizes[i]];
-                if ((adSpecs || adSpecs[0]) == undefined) {
+                if (adSpecs == undefined || adSpecs[0] == undefined) {
                     console.log('undefined rubicon ad space:');
-                    console.log(adslots[i]);
+                    console.log(sizes[i]);
                     continue;
                 }
                 rubicontag.defineSlot('/'+dfpacct+'/'+network, adSpecs[0], 'div-gpt-'+adslots[i]).setPosition(rubPos);
