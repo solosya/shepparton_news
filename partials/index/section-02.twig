@@ -197,14 +197,13 @@
                 ROW  3
 ************************************** #}
 
-<div class="row u-margin-top-30 u-mobile-no-margin-top">
+<div class="row u-margin-top-30 u-mobile-no-margin-top sm-two-cols">
 
     {# Cards 8,9,10,11,12,13 #}
     {% for i in 0..5 if articles[articleCount] %}
-        {% set theDivider = [' divideright-desk',' divideright-desk','',' divideright-desk',' divideright-desk',''] %}
-        {% set offset = ['','col-sm-offset-1 col-md-offset-0','','col-sm-offset-1 col-md-offset-0','','col-sm-offset-1 col-md-offset-0'] %}
-
-        <div class="col-sm-4 col-md-3 col-xs-9 {{offset[i]}}">
+        {% set theDivider = [' divideright-desk',' divideright-desk','',' divideright-desk',' divideright-desk after-display',''] %}
+       
+        <div class="col-sm-1 col-md-3 col-xs-9 {{offset[i]}}">
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
                 imageSize       : {width:80, height:90},
@@ -218,15 +217,14 @@
             {% set cardIndex = cardIndex + 1 %}
 
             {% if i == 5 %}
-                <div class="row">
-                    <hr class="divide visible-xs-block">
+                <div class="row visible-xs-block">
+                    <hr class="divide">
                 </div>
             {% elseif i < 3 %}
-                <hr class="divide visible-xs-block ">
-                <hr class="divide15 hidden-xs space-only">
-            {% else %}
-                <hr class="divide visible-xs-block ">
-                <hr class="divide15 visible-sm-block space-only">
+                <hr class="divide visible-xs-block visible-sm-block">
+                <hr class="divide15 visible-md-block visible-lg-block space-only">
+            {% elseif i < 4 %}
+                <hr class="divide visible-xs-block visible-sm-block">
             {% endif %}
         </div>
     {% endfor %}

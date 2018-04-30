@@ -554,6 +554,7 @@ hr.divide10 {
         &:last-child {
             &:after {
                 display:none;
+
             }
         }
         &.dairy {
@@ -564,6 +565,11 @@ hr.divide10 {
         &.divideright__nogap {
             &:after {
                 right: 0;
+            }
+        }
+        &.after-display{
+            &:after {
+                display:block;
             }
         }
     }

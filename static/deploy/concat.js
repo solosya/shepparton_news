@@ -34565,8 +34565,13 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                     console.log(adslots[i]);
                     continue;
                 }
-                gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[0], 'div-gpt-'+adslots[i]).setTargeting(theslot[2], [POStarget]).defineSizeMapping(theslot[1]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
-                POStarget++;
+                if (sizes[i] == ('desktop-banner-main' || 'tablet-banner-main' || 'mobile-banner-main')) { 
+                    var thePOS = '1';
+                } else {
+                    var thePOS = POStarget.toString();
+                    POStarget++;
+                }
+                gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[0], 'div-gpt-'+adslots[i]).setTargeting(theslot[2], [thePOS]).defineSizeMapping(theslot[1]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
                 rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
             }
             googletag.pubads().enableSingleRequest();
