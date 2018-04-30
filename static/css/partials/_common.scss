@@ -112,19 +112,18 @@
 
 .ad-container {
     text-align: center;
+    margin: 30px auto 30px auto;  
 
     @media screen and (min-width: $mmd-break) {
-        width: 970px;
-        margin: 0px auto 40px auto !important;        
+        width: 970px;       
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
         width: 728px;
-        margin: 0px auto 40px auto !important;
     }    
 
     @media screen and (max-width: $sm-break-down){
-        margin: 30px auto 30px auto;
+        margin: 0px auto;
     } 
     
     @include adtext;
@@ -132,61 +131,7 @@
         margin-right: $grid-gutter-width / 2;
     }
 }
-@media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
-    .mobad1 {
-        margin-top: 30px;
-    }
-}
 
-@media screen and (max-width: $sm-break-down){
-    .mobad1 {
-        margin-top: -35px !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad2 {
-        margin-top: 0 !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad3 {
-        margin-top: -10px !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad4 {
-        margin-top: -65px !important;
-        margin-bottom: -15px !important;
-    }
-    .mobad5 {
-        margin-top: 5px !important;
-        margin-bottom: 15px !important;
-        padding-top: 0 !important;
-    }
-    .mobad6 {
-        margin-top: 0px !important;
-        margin-bottom: -15px !important;
-    }
-    .mobad7 {
-        margin-top: -5px !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad8 {
-        margin-top: -50px!important;
-        margin-bottom: 15px!important;
-    }
-    .mobad9 {
-        margin-top: -15px!important;
-        margin-bottom: 15px!important;
-    }
-    .mobadregen {
-        margin-top: -58px!important;
-        margin-bottom: 15px!important;
-    }
-}
-@media screen and (min-width: $mmd-break) {
-    .margin-top-30-desk{
-        margin-top: 30px;
-    }
-    
-}
 
 #mainAjaxArticlescardClass, #mainAjaxArticles {
     .ad-container {  
@@ -254,7 +199,7 @@
         margin-top: -69px;
         padding-left: 35px;
         margin-left: -15px;
-        @media screen and (max-width: $mmd-break-down) {
+        @media screen and (max-width: $sm-break-down) {
             margin-left: -35px;
             // width: 26%;
         }

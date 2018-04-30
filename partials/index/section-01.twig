@@ -126,10 +126,12 @@
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %} 
                             {% set cardIndex = cardIndex + 1 %}
-                            {% if i == 2 %}                                
-                                <hr class="divide visible-xs-block"> 
+                            {% if i == 2 %}    
+                                <div class="row">                            
+                                    <hr class="divide visible-xs-block"> 
+                                </div>
                             {% else %}
-                                <hr class="divide10 space-only hidden-xs"> 
+                                <hr class="divide10 space-only visible-md-block visible-lg-block"> 
                                 <hr class="divide visible-xs-block">
                             {% endif %}   
                         </div>

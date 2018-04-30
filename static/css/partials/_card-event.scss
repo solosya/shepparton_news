@@ -3,7 +3,7 @@
     margin: 9px 0 -5px 0;
     a.card {
         @include card-image-left(37px, 37px);
-        height:52px;
+        height:42px;
 
         > article {
             position:relative;
@@ -96,7 +96,7 @@
         @include card-event-base();
         a.card {
             @include card-image-left(46px, 46px);            
-            height: 50px;
+            height: 40px;
             > article {
                 > figure {
                     display:none;

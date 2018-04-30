@@ -205,8 +205,16 @@
                     {% set cardIndex = cardIndex + 1 %}
                     {% if i < 2 %}
                         <hr class="divide18 hidden-xs hidden-sm">
+                        <hr class="divide visible-xs-block visible-sm-block">
+                    {% elseif i == 3 %}
+                        <div class="row">
+                            <hr class="divide visible-xs-block">
+                        </div>
+                        <hr class="divide visible-sm-block">
+                    {% else %}
+                        <hr class="divide visible-xs-block visible-sm-block">
                     {% endif %} 
-                    <hr class="divide visible-xs-block visible-sm-block">
+                    
                 </div>                         
             {% endfor %}
         </div>
@@ -234,7 +242,7 @@
         ROW 4
 ******************** #}
 
-<div class="row u-margin-top-40 u-mobile-no-margin-top">
+<div class="row u-margin-top-15 u-mobile-no-margin-top">
     <hr class="divide visible-xs-block">
     
 
@@ -293,8 +301,14 @@
 
             {% if i < 2 %}
                 <hr class="divide18 hidden-xs">
-            {% endif %} 
-            <hr class="divide visible-xs-block">
+                <hr class="divide visible-xs-block">
+            {% elseif i == 3 %}
+                <div class="row">
+                    <hr class="divide visible-xs-block">
+                </div>
+            {% else %}
+                <hr class="divide visible-xs-block">
+            {% endif %}
         </div>                         
     {% endfor %}
 

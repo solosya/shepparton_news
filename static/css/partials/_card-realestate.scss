@@ -78,7 +78,7 @@
     @media screen and (min-width: $mmd-break){
         @include card-realestate-base();
 
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
 
         a.card {
             @include card-image-top(300px, 195px);
@@ -124,7 +124,7 @@
     @media #{$tablet} {
         @include card-realestate-base();
 
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
 
         a.card {
             // @include card-image-left(200px, 143px);
@@ -170,7 +170,7 @@
     @media #{$mobile} {
         @include card-realestate-base();
 
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
 
         a.card {
             @include card-image-top(100%);

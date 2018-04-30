@@ -73,8 +73,9 @@
         <div class="ad-square">
             <div id='{{ ad }}' class='advert'></div>
         </div>
-        
-
+        <div class="row">
+            <hr class="divide visible-xs-block">
+        </div>
         {# Card 4 #}
         {% if articles[articleCount] %}
             
@@ -215,9 +216,12 @@
                 <div class="row">
                     <hr class="divide visible-xs-block">
                 </div>
-            {% else %}
+            {% elseif i < 3 %}
                 <hr class="divide visible-xs-block ">
                 <hr class="divide15 hidden-xs space-only">
+            {% else %}
+                <hr class="divide visible-xs-block ">
+                <hr class="divide15 visible-sm-block space-only">
             {% endif %}
         </div>
     {% endfor %}
