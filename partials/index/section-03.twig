@@ -185,12 +185,13 @@
      * | * |     
     ----------- 
 #}
-    <div class="col-md-6 col-sm-5 col-xs-9">
+    <div class="col-md-6 col-sm-9 sm-two-cols">
         <div class="row">
 
             {# Cards 8,9,10,11 #}
+            {% set classes= ['4','5','5','5'] %}
             {% for i in 0..3 if articles[articleCount] %}
-                <div class="col-xs-9 col-sm-9 col-md-3 desktop-split">
+                <div class="col-xs-9 col-sm-{{ classes[i] }} col-md-3 desktop-split">
                     {% set theDivider = [' divideright','',' divideright',''] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
@@ -203,19 +204,30 @@
                     }) | raw}}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
-                    {% if i < 2 %}
-                        <hr class="divide18 hidden-xs hidden-sm">
-                        <hr class="divide visible-xs-block visible-sm-block">
-                    {% elseif i == 3 %}
-                        <div class="row">
-                            <hr class="divide visible-xs-block">
+                    {% if i == 1 %}
+                            <hr class="divide18 hidden-xs hidden-sm">
+                            <hr class="divide visible-xs-block visible-sm-block">
+                        </div>
+                        <div class="col-sm-4 visible-sm-block">
+                                <div class='advert-tablet' data-adsize="mrec"></div>
                         </div>
                         <hr class="divide visible-sm-block">
-                    {% else %}
-                        <hr class="divide visible-xs-block visible-sm-block">
+                    {% elseif i == 2 %}
+                            <hr class="divide visible-xs-block visible-sm-block">
+                        </div>
+                    {% elseif i == 0 %}
+                            <hr class="divide visible-xs-block">
+                        </div>
+                    {% elseif i == 3 %}
+                            <div class="row">
+                                <hr class="divide visible-xs-block">
+                            </div>
+                            
+                        </div>
+                        <hr class="divide10 visible-sm-block col-sm-9 space-only">
                     {% endif %} 
                     
-                </div>                         
+                                        
             {% endfor %}
         </div>
     </div>
@@ -227,9 +239,10 @@
                    |   | *    
                 ----------- 
 #}
-    <div class="col-md-3 col-sm-3 ad-square">
-            <div class='advert-desktop advert-mobile advert-tablet' data-adsize="mrec"></div>
+    <div class="col-md-3 col-sm-3 ad-square hidden-sm">
+            <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
     </div>
+    
 </div>
 
 
@@ -242,7 +255,7 @@
         ROW 4
 ******************** #}
 
-<div class="row u-margin-top-15 u-mobile-no-margin-top">
+<div class="row u-margin-top-15 u-mobile-no-margin-top sm-two-cols">
     <hr class="divide visible-xs-block">
     
 
@@ -253,7 +266,7 @@
                 ----------- 
 #}
     {# Card 12 #}
-    <div class="col-sm-5 col-md-3 col-xs-9">
+    <div class="col-sm-1 col-md-3 col-xs-9">
 
         {% if articles[articleCount] %}
                 
@@ -283,9 +296,9 @@
     {# Cards 13,14,15,16 #}
     {% for i in 0..3 if articles[articleCount] %}
 
-        {% set classes= ['4','4', '5', '4'] %}
+        {# {% set classes= ['4','4', '5', '4'] %} #}
 
-        <div class="col-xs-9 col-sm-{{classes[i]}} col-md-3 ">
+        <div class="col-xs-9 col-sm-1 col-md-3 ">
 
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
