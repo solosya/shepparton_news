@@ -196,7 +196,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section,size) {
         var theAd = adSizes[size];
         var adSlot = document.getElementById(adDivId);
-        if ((theAd || adSlot || theAd[0] || theAd[1] || theAd[2] || theAd[3]) == undefined) {
+        if ((theAd || adSlot || theAd[0] || theAd[1]) == undefined) {
             console.log('id/slot not found:');
             console.log(adDivId);
             console.log(adSlot);
@@ -218,13 +218,18 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             rubicontag.addFPV('page-type', page);
             for (var i=0;i<adslots.length;i++) {
                 if (sizes[i] == ('desktop-interstitial' || 'desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
+                if (sizes[i] == ('desktop-banner-main' || 'tablet-banner-main' || 'mobile-banner-main')) { 
+                    var rubPos = 'atf';
+                } else {
+                    var rubPos = 'btf';
+                }
                 var adSpecs = adSizes[sizes[i]];
-                if ((adSpecs || adSpecs[0] || adSpecs[3]) == undefined) {
+                if ((adSpecs || adSpecs[0]) == undefined) {
                     console.log('undefined rubicon ad space:');
                     console.log(adslots[i]);
                     continue;
                 }
-                rubicontag.defineSlot('/'+dfpacct+'/'+network, adSpecs[0], 'div-gpt-'+adslots[i]).setPosition(adSpecs[3]);
+                rubicontag.defineSlot('/'+dfpacct+'/'+network, adSpecs[0], 'div-gpt-'+adslots[i]).setPosition(rubPos);
             }
             rubicontag.run(gptrun);
         });
@@ -250,7 +255,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             for (var i=0;i<adslots.length;i++) {
                 if (sizes[i] == ('desktop-interstitial' || 'desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
                 var theslot = adSizes[sizes[i]];
-                if ((theslot || theslot[0] || theslot[1] || theslot[2] || theslot[3]) == undefined) {
+                if ((theslot || theslot[0] || theslot[1] || theslot[2]) == undefined) {
                     console.log('undefined gpt ad space:');
                     console.log(adslots[i]);
                     continue;
