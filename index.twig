@@ -37,17 +37,11 @@
     },
     'index': {
         'template': 'partials/index/section-15.twig',
-        'template_params' : {
-            'ad': 'mrec-2',
-        },
         'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', 'deniliquin news', 'aap', 'echuca news', 'galleries', 'dairy news'],
         'articleOrder' : [(homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'news', 'rural news', 'aap', 'echuca news', 'news', 'aap', 'galleries', 'aap', 'dairy news'],
     },
     'local': {
         'template': 'partials/index/section-01.twig',
-        'template_params' : {
-            'ad': 'mrec-4'
-        },
         'title' : 'Local News',
         'blogs': ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'articleOrder' : ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle'],
@@ -96,28 +90,19 @@
         'title'     : "Regional News",
         'blogs'     : ['echuca news', 'kyabram news', 'benalla news', 'deniliquin news', 'finley news', 'cobram news', 'seymour news', 'rochester news', 'heathcote news', 'tatura news', 'yarrawonga news', 'corowa news', 'echuca sport'],
         'articleOrder' : ['echuca news', 'kyabram news', 'benalla news', 'finley news', 'deniliquin news', 'cobram news', 'seymour news', 'rochester news', 'heathcote news', 'tatura news', 'yarrawonga news', 'corowa news', 'echuca sport'],
-        'template'  : 'partials/index/section-02.twig', 
-        'template_params' : {
-            'ad': 'mrec-6'
-        }
+        'template'  : 'partials/index/section-02.twig'
     },
     "rural news": {
         'title'     : "Rural News",
         'blogs'     : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'machinery & products', 'cropping', 'rural management', 'viticulture', 'from the experts'],
         'articleOrder' : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'dairy', 'rural news', 'machinery & products', 'rural management', 'water', 'cropping', 'viticulture', 'from the experts'],
-        'template'  : 'partials/index/section-03.twig',
-        'template_params' : {
-            'ad': 'mrec-8'
-        }
+        'template'  : 'partials/index/section-03.twig'
     },
     "national": {
         'title'     : "National and World",
         'blogs'     : ['national', 'finance', 'world', 'world', 'sport', 'horse racing', 'national', 'entertainment', 'other news'],
         'articleOrder' : ['national', 'finance', 'world', 'horse racing', 'entertainment', 'sport', 'other news'],
-        'template'  : 'partials/index/section-04.twig', 
-        'template_params' : {
-            'ad': 'mrec-9'
-        }
+        'template'  : 'partials/index/section-04.twig'
     },
 
 
@@ -436,52 +421,20 @@
 
 
         {% if site == 'country' %}
-            {% if loop.index == 3 %}
-                <div class="ad-container">
-                    <div id='banner-3' class='advert'></div>
-                </div> 
-            {% elseif loop.index == 4 %}
-                <div class="ad-container">
-                    <div id='banner-5' class='advert'></div>
-                </div> 
-            {% elseif loop.index == 7 %}
-                <div class="ad-container">
-                    <div id='banner-7' class='advert'></div>
-                </div> 
-            {% endif %}
-            
+            {% set bannerSpots = [3,4,7] %}
         {% elseif site == 'dairy' %}
-            {% if loop.index == 1 %}
-                <div class="ad-container">
-                    <div id='banner-3' class='advert'></div>
-                </div> 
-            {% elseif loop.index == 3 %}
-                <div class="ad-container">
-                    <div id='banner-5' class='advert'></div>
-                </div> 
-            {% elseif loop.index == 4 %}
-                <div class="ad-container">
-                    <div id='banner-7' class='advert'></div>
-                </div> 
-            {% endif %}
-        
+            {% set bannerSpots = [1,3,4] %}
         {% else %}
-
-        
-            {% if loop.index == 1 %}
-                <div class="ad-container mobad9">
-                    <div id='banner-3' class='advert'></div>
-                </div> 
-            {% elseif loop.index == 7 %}
-                <div class="ad-container mobad2">
-                    <div id='banner-5' class='advert'></div>
-                </div> 
-            {% elseif loop.index == 10 %}
-                <div class="ad-container mobad9">
-                    <div id='banner-7' class='advert'></div>
-                </div> 
-            {% endif %}
+            {% set bannerSpots = [1,7,10] %}
         {% endif %}
+
+        {% if loop.index in bannerSpots %}
+            <div class="ad-container">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+            </div> 
+        {% endif %}
+
 
 
     {% endfor %}
@@ -494,4 +447,4 @@
 
 
 
-<div id='interstitial-ad' class='advert hidden-xs'></div>
+<div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>

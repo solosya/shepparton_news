@@ -36,36 +36,24 @@
     'shepp': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Shepparton',
-        'template_params' : {
-            'ad': 'mrec-2',
-        },
         'blogs' : ['shepp news','shepp sport','shepp social','shepp lifestyle','shepp entertainment'],
         'articleorder' : ['shepp news','shepp sport','shepp entertainment','shepp social','shepp lifestyle']
     },
     'echuca_0': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Echuca',
-        'template_params' : {
-            'ad': 'mrec-2',
-        },
         'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
         'articleorder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
     },
     'echuca_1': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'Echuca',
-        'template_params' : {
-            'ad': 'mrec-4',
-        },
         'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
         'articleorder' : ['echuca news','echuca sport','echuca social','chuca lifestyle','echuca entertainment']
     },
     'deniliquin_0': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'Deniliquin',
-        'template_params' : {
-            'ad': 'mrec-4',
-        },
         'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
         'articleorder' : ['deniliquin news','deniliquin sport','deniliquin news','deniliquin opinion','deniliquin entertainment']
     },
@@ -78,9 +66,6 @@
     "finley": {
         'title'     : "Finley",
         'template': 'partials/index/section-23.twig',
-        'template_params' : {
-            'ad': 'mrec-6',
-        },
         'blogs' : ['finley news','finley sport'],
         'articleorder' : ['finley news','finley news','finley sport']
     },
@@ -117,9 +102,6 @@
     "heathcote": {
         'title'     : "Heathcote",
         'template': 'partials/index/section-23.twig',
-        'template_params' : {
-            'ad': 'mrec-8',
-        },
         'blogs' : ['heathcote news','heathcote sport'],
         'articleorder' : ['heathcote news','heathcote news','heathcote sport']
     },
@@ -144,9 +126,6 @@
     'country news': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'News',
-        'template_params' : {
-            'ad': 'mrec-2',
-        },
         'blogs' : ['country news']
     },
     'dairy': {
@@ -160,9 +139,6 @@
     "horticulture": {
         'title'     : "Horticulture",
         'template': 'partials/index/section-23.twig',
-        'template_params' : {
-            'ad': 'mrec-6',
-        },
         'blogs' : ['horticulture']
     },
     "cropping": {
@@ -193,9 +169,6 @@
     "from the experts": {
         'title'     : "From The Experts",
         'template': 'partials/index/section-23.twig',
-        'template_params' : {
-            'ad': 'mrec-8',
-        },
         'blogs' : ['from the experts']
     },
     "markets": {
@@ -216,9 +189,6 @@
     'national': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'National',
-        'template_params' : {
-            'ad': 'mrec-2',
-        },
         'blogs' : ['national']
     },
     "national & world sport": {
@@ -229,17 +199,11 @@
     'world': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'World',
-        'template_params' : {
-            'ad': 'mrec-4',
-        },
         'blogs' : ['world']                                                                                  
     },
     "aap finance": {
         'title'     : "Finance",
         'template': 'partials/index/section-23.twig',
-        'template_params' : {
-            'ad': 'mrec-6',
-        },
         'blogs' : ['aap finance']
     },
      "aap entertainment": {
@@ -402,16 +366,19 @@
         {{this.render('render.twig', params) | raw}} 
 
         {% if loop.index == 2 %}
-            <div class="ad-container mobad9">
-                <div id='banner-3' class='advert'></div>
+            <div class="ad-container">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
             </div> 
         {% elseif loop.index == 5 %}
-            <div class="ad-container mobad9">
-                <div id='banner-5' class='advert'></div>
+            <div class="ad-container">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
             </div> 
         {% elseif loop.index == 8 %}
-            <div class="ad-container mobad9">
-                <div id='banner-7' class='advert'></div>
+            <div class="ad-container">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
             </div> 
         {% endif %}
 
