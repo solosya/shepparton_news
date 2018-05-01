@@ -51,7 +51,7 @@
                            position: articleCount + 1,
                            imageSize: {width:640, height:400},
                            site: site,
-                           containerClass: 'home-feature-sm home-feature-mobile'
+                           containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
                        }) | raw}}
                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                    {% endif %}
@@ -72,13 +72,13 @@
 
                      {% if articles[articleCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9">
-                                <hr class="divide12 visible-md-block visible-lg-block">                            
+                                <hr class="divide12 visible-md-block visible-lg-block space-only">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
                                      site: site,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright-tablet'
+                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                  }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block">
@@ -88,13 +88,13 @@
                     <!-- extra story for tablet, mobile -->
 
                      {% if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9 visible-sm-block visible-xs-block">
+                            <div class="col-sm-1 col-md-9 col-xs-9">
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
                                      site: site,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright'
+                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                  }) | raw}}
                             </div>
                      {% endif %}
@@ -103,17 +103,16 @@
                 </div>
             </div>
 
-            <div class="row row-space sm-two-cols">
+            <div class="row row-space">
 
-                {% set divider = ['visible-lg-block visible-md-block divideright', 'divideright', ''] %}
                 {% for i in 0..2 if articles[articleCount] %}
-                    <div class="col-sm-1 col-md-3 col-xs-9">
+                    <div class="col-sm-3 col-md-3 col-xs-9">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:160, height:190},
                             position: articleCount + 1,
                             site: site,
-                            containerClass: 'feature-side feature-side-tablet card-sm-mobile ' ~ divider[i]
+                            containerClass: 'feature-side card-sm-tablet card-sm-mobile '
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">
@@ -152,24 +151,26 @@
 
 
 
-    <div class="container u-margin-top-60">
+    <div class="container u-desktop-margin-top-60 u-tablet-margin-top-20">
         <section>
             <div class="row">
-                <div class="col-md-6 col-sm-5">
+                <div class="col-md-6 col-sm-9">
                     <div class="row">
                         {% for i in 0..8 if articles[articleCount] %}
 
-                            <div class="col-md-3 col-sm-9">
+                            <div class="col-md-3 col-sm-3">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
                                     position: articleCount + 1,
                                     site: site,                               
-                                    containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
+                                    containerClass: 'card-sm card-sm-tablet card-sm-wide-mobile '
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
-                                <hr class="divide18 visible-md-block visible-lg-block space-only">
-                                <hr class="divide18 visible-sm-block">
+                                {% if i < 6 %}
+                                    <hr class="divide18 visible-md-block visible-lg-block space-only">
+                                    <hr class="divide10 visible-sm-block space-only">
+                                {% endif %}
 
                             </div>
 
@@ -178,29 +179,45 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-4 trending {{ site }}" style="">
-                   <h2>Trending stories</h2>
+                <div class="col-sm-9 visible-sm-block">
+                    <div class="ad-container">
+                        <div class='advert-tablet' data-adsize="banner"></div>
+                        <div class='advert-mobile' data-adsize="mrec"></div>
+                    </div>
+                </div>
 
-                    {% for i in 0..3 if popularArticles[popCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: popularArticles[popCount], 
-                            imageSize: {width:190, height:160},
-                            site: site,
-                            containerClass: 'feature-side feature-side-tablet card-sm-mobile '
-                        }) | raw}}
+                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }}">
+                    <div class="row trending {{ site }}">
+                       <h2>Trending stories</h2>
 
-                        {% set popCount = (dev) ? popCount : popCount + 1 %}
+                        {% for i in 0..3 if popularArticles[popCount] %}
+                            <div class="col-sm-1 col-md-9 col-xs-9">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: popularArticles[popCount], 
+                                    imageSize: {width:190, height:160},
+                                    site: site,
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile '
+                                }) | raw}}
 
-                        <hr class="divide18">
-
-                    {% endfor %}
+                                {% set popCount = (dev) ? popCount : popCount + 1 %}
+                                {% if i < 2 %}
+                                    <hr class="divide18 hidden-xs">
+                                    <hr class="divide visible-xs-block">
+                                {% elseif i == 2 %}
+                                    <hr class="divide18 visible-lg-block visible-md-block">
+                                    <hr class="divide visible-xs-block">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
 
 
                 </div>
 
-                <div class="col-md-3 hidden-xs">
+                <div class="col-md-3 visible-md-block visible-lg-block">
+                    <hr class="divide15 space-only">
                     <div class="ad-square clearfixed">
-                        <div class='advert-desktop advert-tablet' data-adsize="mrec"></div>
+                        <div class='advert-desktop' data-adsize="mrec"></div>
                     </div>
                 </div>
             </div>
