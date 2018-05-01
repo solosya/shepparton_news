@@ -42,7 +42,7 @@
     'echuca_0': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Echuca',
-        'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
+        'blogs' : ['echuca news','Echuca Sport','echuca social','echuca lifestyle','echuca entertainment'],
         'articleorder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
     },
     'echuca_1': {
@@ -229,7 +229,7 @@
 ******************************************************* #}
 {% set blogFeeds = {
         "echuca news":          { "limit" : 1},
-        "echuca sport":         { "limit" : 1},
+        "Echuca Sport":         { "limit" : 1},
         "echuca social":        { "limit" : 1},
         "echuca lifestyle":     { "limit" : 1},
         "echuca entertainment": { "limit" : 1},
@@ -282,12 +282,15 @@
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
 {% if homeBlog == 'regional' %}
+    {% set bannerSpots = [2,5,8] %}
     {% if site == ('shepparton' or 'shepp') %} 
         {%  set sectionOrder = ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benella', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'] %} 
     {% endif %}
 {% elseif homeBlog == 'rural' %}
+    {% set bannerSpots = [2,5,8] %}
     {%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
 {% elseif homeBlog == 'national & world' %}
+    {% set bannerSpots = [] %}
     {%  set sectionOrder = ['national', 'national & world sport', 'world', 'aap finance', 'aap entertainment'] %} 
 {% endif %}
 
@@ -365,17 +368,7 @@
     
         {{this.render('render.twig', params) | raw}} 
 
-        {% if loop.index == 2 %}
-            <div class="ad-container">
-                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-                <div class='advert-mobile' data-adsize="mrec"></div>
-            </div> 
-        {% elseif loop.index == 5 %}
-            <div class="ad-container">
-                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-                <div class='advert-mobile' data-adsize="mrec"></div>
-            </div> 
-        {% elseif loop.index == 8 %}
+        {% if loop.index in bannerSpots %}
             <div class="ad-container">
                 <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
                 <div class='advert-mobile' data-adsize="mrec"></div>
