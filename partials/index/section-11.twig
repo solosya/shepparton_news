@@ -15,8 +15,9 @@
             {{this.render('../_single-article.twig', {
                 article:        articles[articleCount], 
                 imageSize:      {width:409, height:530},
-                position: cardindex + 1,
+                position: cardIndex,
                 site:           site,
+                div:div,
                 containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -35,7 +36,8 @@
                 article:        articles[articleCount], 
                 imageSize:      {width:195},
                 site:           site,
-                position: cardindex + 1,
+                position: cardIndex,
+                div:div,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -62,7 +64,8 @@
                         article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
-                        position: cardindex + 1,
+                        position: cardIndex,
+                        div:div,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright-tablet'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
