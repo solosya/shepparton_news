@@ -13,14 +13,14 @@
         {# ********************
                 ROW 1
         ******************** #}
-        <div class="row">
-            <div class="col-sm-4 col-xs-9">
+        <div class="row sm-two-cols">
+            <div class="col-md-4 col-sm-1 col-xs-9">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         imageSize: {width:414, height:255},
                         site: site,
-                        containerClass: 'home-feature-xs home-feature-tablet home-feature-mobile'
+                        containerClass: 'home-feature-xs home-feature-xs-tablet home-feature-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% endif %}
@@ -29,7 +29,7 @@
 
             </div>
 
-            <div class="col-md-3 col-sm-5 col-xs-9">
+            <div class="col-md-3 col-sm-1 col-xs-9">
                  {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
@@ -45,7 +45,7 @@
 
             </div>
 
-            <div class="col-md-2 col-sm-5 col-xs-9">
+            <div class="col-md-2 col-sm-1 col-xs-9">
                  {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 

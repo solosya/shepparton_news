@@ -10,46 +10,63 @@
     </div>
 
 
-
-    {% if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-            article: articles[articleCount], 
-            imageSize: {width:300},
-            site: site,
-            containerClass: 'col-sm-3 col-md-2 card-sm card-sm-tablet card-sm-mobile'
-        }) | raw}}
-                <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
-        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-    {% endif %}
-
-
-
-    {% if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-            article: articles[articleCount], 
-            imageSize: {width:300},
-            site: site,
-            containerClass: 'col-sm-2 card-sm card-sm-tablet card-sm-mobile'
-        }) | raw}}
-                <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
-        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-    {% endif %}
+    <div class="col-md-2 col-sm-9 sm-two-cols">
+        <div class="row">
+            {% if articles[articleCount] %}
+                    {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    imageSize: {width:300},
+                    site: site,
+                    containerClass: 'col-sm-1 col-md-9 card-sm card-sm-wide-tablet card-sm-mobile'
+                }) | raw}}
+                        <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            {% endif %}
+            <div class="col-sm-1 visible-sm-block">
+                <div class="ad-square">
+                    <div class='advert-tablet' data-adsize="mrec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="col-sm-9 col-md-4 col-xs-9 two-cols u-tablet-margin-top-30">
+        <div class="row">
+            {% if articles[articleCount] %}
+                <div class="col-md-1 col-sm-1 col-xs-9">
+                    {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    imageSize: {width:300},
+                    site: site,
+                    containerClass: 'card-sm feature-side-tablet card-sm-mobile'
+                }) | raw}}
+                        <hr class="divide visible-xs-block">
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endif %}
 
-    {% if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-            article: articles[articleCount], 
-            imageSize: {width:300},
-            containerClass: 'col-md-2 card-sm card-sm-tablet card-sm-mobile hidden-sm'
-        }) | raw}}
-                <hr class="divide visible-xs-block">
-        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-    {% endif %}
 
-    <div class="col-sm-3">
+
+            {% if articles[articleCount] %}
+                <div class="col-md-1 col-sm-1 col-xs-9">
+                        {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        imageSize: {width:300},
+                        containerClass: 'card-sm feature-side-tablet card-sm-mobile'
+                    }) | raw}}
+                        <div class="row">
+                            <hr class="divide visible-xs-block">
+                        </div>
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-3 hidden-sm col-xs-9">
         <div class="ad-square">
-            <div class='advert-desktop advert-tablet advert-mobile' data-adsize="mrec"></div>
+            <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
         </div>
     </div>
 </section>

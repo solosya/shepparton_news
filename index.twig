@@ -27,6 +27,13 @@
 {# *******************************************************
                 GLOBAL SITE SECTIONS
               (each site can override)
+
+'local': {
+    'template': 'partials/index/section-01.twig',
+    'title' : 'Local News',
+    'blogs': ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
+    'articleOrder' : ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle'],
+},
 ******************************************************* #}
 
 {% set pageSections =  {
@@ -41,7 +48,7 @@
         'articleOrder' : [(homeBlog), 'aap', 'sport', 'deniliquin news', 'news', 'aap', 'news', 'rural news', 'aap', 'echuca news', 'news', 'aap', 'galleries', 'aap', 'dairy news'],
     },
     'local': {
-        'template': 'partials/index/section-01.twig',
+        'template': 'partials/index/section-24.twig',
         'title' : 'Local News',
         'blogs': ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'articleOrder' : ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle'],
