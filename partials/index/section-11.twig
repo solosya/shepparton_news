@@ -1,5 +1,5 @@
 {% set articleCount = 0 %}
-{% set cardIndex = 0 %}
+{% set cardIndex = 1 %}
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
@@ -15,9 +15,10 @@
             {{this.render('../_single-article.twig', {
                 article:        articles[articleCount], 
                 imageSize:      {width:409, height:530},
-                position: cardIndex,
+                position:       cardIndex,
+                swap:           false,
                 site:           site,
-                div:div,
+                div:            div,
                 containerClass: 'home-feature-thin home-feature-thin-tablet home-feature-thin-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -36,8 +37,9 @@
                 article:        articles[articleCount], 
                 imageSize:      {width:195},
                 site:           site,
-                position: cardIndex,
-                div:div,
+                swap:           false,
+                position:       cardIndex,
+                div:            div,
                 containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ cardspace[i]
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -64,8 +66,9 @@
                         article:        articles[articleCount], 
                         imageSize:      {width:300},
                         site:           site,
-                        position: cardIndex,
-                        div:div,
+                        swap:           false,
+                        position:       cardIndex,
+                        div:            div,
                         containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright-tablet'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -88,12 +91,6 @@
                     <hr class="divide visible-xs-block">
                 </div>
             </div>
-            {# <div class="ad-square u-margin-top-60 u-mobile-no-margin-top col-sm-9">
-                <div class='advert-tablet' data-adsize="banner"></div>
-                <div class="row">
-                    <hr class="divide visible-xs-block">
-                </div>
-            </div> #}
 
             <div class="ad-square col-sm-1 visible-sm-block">
                 <div class='advert-tablet' data-adsize="mrec" style="height:250px;"></div>
