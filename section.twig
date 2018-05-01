@@ -88,13 +88,13 @@
                     <!-- extra story for tablet, mobile -->
 
                      {% if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
+                            <div class="col-sm-1 visible-sm-block">
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
                                      site: site,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                     containerClass: 'feature-side-tablet'
                                  }) | raw}}
                             </div>
                      {% endif %}
@@ -103,16 +103,17 @@
                 </div>
             </div>
 
-            <div class="row row-space">
+            <div class="row row-space desk-four-cols">
 
-                {% for i in 0..2 if articles[articleCount] %}
-                    <div class="col-sm-3 col-md-3 col-xs-9">
+                {% for i in 0..3 if articles[articleCount] %}
+                    {% set visibleClass = [' hidden-sm','','',''] %}
+                    <div class="col-sm-3 col-md-1 col-xs-9">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:160, height:190},
                             position: articleCount + 1,
                             site: site,
-                            containerClass: 'feature-side card-sm-tablet card-sm-mobile '
+                            containerClass: 'feature-side card-sm-tablet card-sm-mobile ' ~ visibleClass[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">

@@ -269,12 +269,29 @@ div[class*="col-sm"] {
 }
 
 
-@media #{tablet-up} {
+@media #{$tablet-up} {
     .three-cols .col-md-1,
     .three-cols .col-sm-1,
     .three-cols .col-lg-1 {
         width: 33.3333%;
         *width: 33.3333%;
+    }
+}
+
+@media #{$tablet-up} {
+    .four-cols .col-md-1,
+    .four-cols .col-sm-1,
+    .four-cols .col-lg-1 {
+        width: 25%;
+        *width: 25%;
+    }
+}
+@media #{$desktop-up} {
+    .desk-four-cols .col-md-1,
+    .desk-four-cols .col-sm-1,
+    .desk-four-cols .col-lg-1 {
+        width: 25%;
+        *width: 25%;
     }
 }
 
