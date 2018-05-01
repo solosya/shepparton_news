@@ -12,7 +12,7 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 {% if dev %}
     {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
@@ -37,91 +37,91 @@
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Shepparton',
         'blogs' : ['shepp news','shepp sport','shepp social','shepp lifestyle','shepp entertainment'],
-        'articleorder' : ['shepp news','shepp sport','shepp entertainment','shepp social','shepp lifestyle']
+        'articleOrder' : ['shepp news','shepp sport','shepp entertainment','shepp social','shepp lifestyle']
     },
     'echuca_0': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Echuca',
-        'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
-        'articleorder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
+        'blogs'     : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
+        'articleOrder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle']
     },
     'echuca_1': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'Echuca',
         'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
-        'articleorder' : ['echuca news','echuca sport','echuca social','chuca lifestyle','echuca entertainment']
+        'articleOrder' : ['echuca news','echuca sport','echuca social','chuca lifestyle','echuca entertainment']
     },
     'deniliquin_0': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'Deniliquin',
         'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
-        'articleorder' : ['deniliquin news','deniliquin sport','deniliquin news','deniliquin opinion','deniliquin entertainment']
+        'articleOrder' : ['deniliquin news','deniliquin sport','deniliquin news','deniliquin opinion','deniliquin entertainment']
     },
     "deniliquin_1": {
         'title'     : "Deniliquin",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment'],
-        'articleorder' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment']
+        'articleOrder' : ['deniliquin news','deniliquin sport','deniliquin opinion','deniliquin entertainment']
     },
     "finley": {
         'title'     : "Finley",
         'template': 'partials/index/section-23.twig',
         'blogs' : ['finley news','finley sport'],
-        'articleorder' : ['finley news','finley news','finley sport']
+        'articleOrder' : ['finley news','finley news','finley sport']
     },
     "kyabram": {
         'title'     : "Kyabram",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['kyabram news','kyabram sport'],
-        'articleorder' : ['kyabram news','kyabram news','kyabram sport']
+        'articleOrder' : ['kyabram news','kyabram news','kyabram sport']
     },
     "benalla": {
         'title'     : "Benalla",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['benalla news','benalla sport'],
-        'articleorder' : ['benalla news','benalla sport','benalla news','benalla news']
+        'articleOrder' : ['benalla news','benalla sport','benalla news','benalla news']
     },
     "cobram": {
         'title'     : "Cobram",
         'template': 'partials/index/section-24.twig',
         'blogs' : ['cobram news','cobram sport'],
-        'articleorder' : ['cobram news','cobram sport','cobram news','cobram news']
+        'articleOrder' : ['cobram news','cobram sport','cobram news','cobram news']
     },
     "seymour": {
         'title'     : "Seymour",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['seymour news','seymour sport'],
-        'articleorder' : ['seymour news','seymour news','seymour sport']
+        'articleOrder' : ['seymour news','seymour news','seymour sport']
     },
     "rochester": {
         'title'     : "Rochester",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['rochester news','rochester sport'],
-        'articleorder' : ['rochester news','rochester sport','rochester news','rochester news']
+        'articleOrder' : ['rochester news','rochester sport','rochester news','rochester news']
     },
     "heathcote": {
         'title'     : "Heathcote",
         'template': 'partials/index/section-23.twig',
         'blogs' : ['heathcote news','heathcote sport'],
-        'articleorder' : ['heathcote news','heathcote news','heathcote sport']
+        'articleOrder' : ['heathcote news','heathcote news','heathcote sport']
     },
     "tatura": {
         'title'     : "Tatura",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['tatura news','tatura sport'],
-        'articleorder' : ['tatura news','tatura news','tatura sport']
+        'articleOrder' : ['tatura news','tatura news','tatura sport']
     },
     "yarrawonga": {
         'title'     : "Yarrawonga",
         'template': 'partials/index/section-12.twig',
         'blogs' : ['yarrawonga news','yarrawonga sport'],
-        'articleorder' : ['yarrawonga news','yarrawonga news','yarrawonga sport','yarrawonga news']
+        'articleOrder' : ['yarrawonga news','yarrawonga news','yarrawonga sport','yarrawonga news']
     },
     "corowa": {
         'title'     : "Corowa",
         'template': 'partials/index/section-24.twig',
         'blogs' : ['corowa news','corowa sport'],
-        'articleorder' : ['corowa news','corowa sport','corowa news','corowa news']
+        'articleOrder' : ['corowa news','corowa sport','corowa news','corowa news']
     },
     'country news': {
         'template'  : 'partials/index/section-11.twig',
