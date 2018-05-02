@@ -19,11 +19,14 @@
 
 {% set sectionOrder = [] %}
 
+{% if homeBlog != 'local' %}
+    {% set theSection = homeBlog ~ " " %}
+{% else %}
+    {% set theSection = '' %}
+{% endif %}
 
 
-
-
-
+{# {% set theSection = '' %} #}
 
 {# *******************************************************
                 GLOBAL SITE SECTIONS
@@ -33,47 +36,47 @@
 {% set pageSections =  {
     'section_0': {
         'template'  : 'partials/index/section-11.twig',
-        'title'     : 'News',
-        'blogs'     : ['news'],
+        'title'     : theSection ~ 'News',
+        'blogs'     : [theSection ~ 'news'],
     },
     'section_1': {
         'template'  : 'partials/index/section-12.twig',
-        'title'     : 'Sport',
-        'blogs'     : ['sport'],
+        'title'     : theSection ~ 'Sport',
+        'blogs'     : [theSection ~ 'sport'],
     },
     "section_2": {
-        'title'     : "Opinion",
-        'blogs'     : ['opinion'],
+        'title'     : theSection ~ "Opinion",
+        'blogs'     : [theSection ~ 'opinion'],
         'template': 'partials/index/section-07.twig',
     },
     "section_3": {
-        'title'     : "Entertainment",
-        'blogs'     : ['entertainment'],
+        'title'     : theSection ~ "Entertainment",
+        'blogs'     : [theSection ~ 'entertainment'],
         'template': 'partials/index/section-23.twig',
     },
     "section_4": {
-        'title'     : "Lifestyle",
-        'blogs'     : ['lifestyle'],
+        'title'     : theSection ~ "Lifestyle",
+        'blogs'     : [theSection ~ 'lifestyle'],
         'template': 'partials/index/section-06.twig',
     },
     "section_5": {
-        'title'     : "Education",
-        'blogs'     : ['education'],
+        'title'     : theSection ~ "Education",
+        'blogs'     : [theSection ~ 'education'],
         'template': 'partials/index/section-12.twig',
     },
     "section_6": {
-        'title'     : "Contributed Photos",
-        'blogs'     : ['contributed photos'],
+        'title'     : theSection ~ "Contributed Photos",
+        'blogs'     : [theSection ~ 'contributed photos'],
         'template': 'partials/index/section-08.twig',
     },
     "section_7": {
-        'title'     : "Galleries",
-        'blogs'     : ['galleries'],
+        'title'     : theSection ~ "Galleries",
+        'blogs'     : [theSection ~ 'galleries'],
         'template': 'partials/index/section-08.twig',
     },
     "section_8": {
-        'title'     : "Social",
-        'blogs'     : ['social'],
+        'title'     : theSection ~ "Social",
+        'blogs'     : [theSection ~ 'social'],
         'template': 'partials/index/section-10.twig',
     },
 } %}
@@ -90,16 +93,20 @@
 {# *******************************************************
                         COMMON
 ******************************************************* #}
+
+
+
+
 {% set blogFeeds = {
-        "news":                 { "limit" : 5},
-        "sport":                { "limit" : 4},
-        "opinion":              { "limit" : 4},
-        "lifestyle":            { "limit" : 3},
-        "entertainment":        { "limit" : 3},
-        "education":            { "limit" : 4},
-        "contributed photos":   { "limit" : 3},
-        "galleries":            { "limit" : 3},
-        "social":               { "limit" : 5},
+        (theSection ~ "news"):              { "limit" : 5},
+        (theSection ~ "sport"):             { "limit" : 4},
+        (theSection ~ "opinion"):           { "limit" : 4},
+        (theSection ~ "lifestyle"):         { "limit" : 3},
+        (theSection ~ "entertainment"):     { "limit" : 3},
+        (theSection ~ "education"):         { "limit" : 4},
+        (theSection ~ "contributed photos"):{ "limit" : 3},
+        (theSection ~ "galleries"):         { "limit" : 3},
+        (theSection ~ "social"):            { "limit" : 5}
     }
 %}
 
