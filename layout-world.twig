@@ -1,0 +1,179 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+{% set homeBlog    = blogData['title'] | lower %}
+
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+{% if dev %}
+    {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
+{% endif %}
+
+{% set sectionOrder = [] %}
+
+
+
+
+
+
+
+
+{# *******************************************************
+                GLOBAL SITE SECTIONS
+              (each site can override)
+******************************************************* #}
+
+{% set pageSections =  {
+    'national': {
+        'template'  : 'partials/index/section-11.twig',
+        'title'     : 'National',
+        'blogs' : ['national']
+    },
+    "national & world sport": {
+        'title'     : "Sport",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['national & world sport']
+    },
+    'world': {
+        'template'  : 'partials/index/section-27.twig',
+        'title'     : 'World',
+        'blogs' : ['world']                                                                                  
+    },
+    "aap finance": {
+        'title'     : "Finance",
+        'template': 'partials/index/section-23.twig',
+        'blogs' : ['aap finance']
+    },
+     "aap entertainment": {
+        'title'     : "Entertainment",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['aap entertainment']
+    }
+} 
+
+%}
+
+
+
+
+
+
+
+
+{# The following list of blogs are required for each site to load the feeds #}
+
+{# *******************************************************
+                        COMMON
+******************************************************* #}
+{% set blogFeeds = {
+        "national":        { "limit" : 5},
+        "national & world sport": { "limit" : 4},
+        "world":                { "limit" : 5},
+        "aap finance":          { "limit" : 3},
+        "aap entertainment":    { "limit" : 4},
+        "other news":           { "limit" : 4}
+    }
+%}
+
+{# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
+
+    {% set bannerSpots = [] %}
+    {%  set sectionOrder = ['national', 'national & world sport', 'world', 'aap finance', 'aap entertainment'] %} 
+
+
+{# *******************************************************
+                Fetch all needed feeds
+******************************************************* #}
+{% for key, value in blogFeeds %}
+    {% for blog in networkData.networkBlogs %}
+
+
+        {# FOR DEV  #}
+        {% if dev %}
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : { 'feed' : articlesArr, 'link' : '#' } }) %}
+        {% endif %}
+
+
+        {# FOR PRODUCTION #}
+        {% if not dev and blog.title | lower == key | lower %}
+
+            {% set feed = _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) %}
+
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : {
+                    'feed'      : feed,
+                    'link'      : blog.link
+                    }
+                }) %}
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+<main id="main" class="site-main" role="main" data-blog="{{ homeBlog }}">
+
+
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-9 header">
+                    <div class="hk">
+                        <h2>{{this.title}}</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+    {# *******************************************************
+                        RENDER SECTIONS
+    ******************************************************* #}
+    {% for pagesection in sectionOrder %}
+        {% set params = {
+            'section'   : pageSections[pagesection],
+            'blogFeeds' : blogFeeds,
+            'site'      : site,
+            'dev'       : dev
+        } %}
+    
+        {{this.render('render.twig', params) | raw}} 
+
+        {% if loop.index in bannerSpots %}
+            <div class="ad-container">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+            </div> 
+        {% endif %}
+
+    {% endfor %}
+
+
+
+</main><!-- .site-main -->
+
+
