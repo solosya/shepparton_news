@@ -68,25 +68,22 @@
 
 
 
-@mixin adtext {
-    .google_ad {
-        &:after {
-            content: "Advertisement";
-            font-size: rem(10);
-            color: color(grey);
-            position: relative;
-            float: right;
-            height:20px;
-            margin-bottom:10px;
-            @media screen and (max-width: $mmd-break){
-                display:none
-            }   
-        }
+.google_ad {
+    &:after {
+        content: "Advertisement";
+        font-size: rem(10);
+        color: color(grey);
+        position: relative;
+        float: right;
+        height:20px;
+        @media screen and (max-width: $sm-break-down){
+            display:none
+        }   
     }
 }
 
 .ad-square {
-    @include adtext;
+    // @include adtext;
 
     > .dairy {
         @media screen and (max-width: $sm-break){        
@@ -103,7 +100,7 @@
 
 .ad-large-vert {
     height:600px;
-    @include adtext;
+    // @include adtext;
     &.bottom {
         position:absolute;
         bottom:15px;
@@ -126,7 +123,7 @@
         margin: 0px auto;
     } 
     
-    @include adtext;
+    // @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
     }
