@@ -1,9 +1,12 @@
 {% import "quotes.twig" as quotes %}
 
 {% set label = article.label %}
-{% set splitLabel = label | split(" ") %}
-{% if splitLabel | length > 1 and splitLable[0] | lower == 'aap' %}
 
+{% set splitLabel = label | split(" ") %}
+
+{# Remove "AAP" from the label unless "AAP" is the only word #}
+{% if splitLabel | length > 1 and splitLabel[0] | lower == 'aap' %}
+    {% set label = splitLabel | slice(1, length) | join(" ") %}
 {% endif %}
 
 
