@@ -87,7 +87,7 @@
         a.card {
             @include card-image-top(300px, 195px);
             // height:173px;
-
+            height: 275px;
             > article {
 
                 > figure{

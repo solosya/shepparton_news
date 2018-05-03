@@ -15,7 +15,7 @@
                 article:        articles[articleCount], 
                 imageSize:      {width:640, height:400},
                 site:           site,
-                containerClass: 'home-feature home-feature-tablet home-feature-mobile'
+                containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         {% endif %}
@@ -52,11 +52,12 @@
 
     <div class="col-md-3 col-sm-9">
        <div class="row sm-two-cols">
-            <div class="ad-square u-desktop-margin-bottom-15 u-mobile-no-margin-bottom">
+            <div class="ad-square">
                 <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                 <div class="row visible-xs-block">
                     <hr class="divide">
                 </div>
+                <hr class="divide18 visible-lg-block visible-md-block space-only">
             </div>
             <div class="ad-container visible-sm-block">
                 <div class='advert-tablet' data-adsize="banner"></div>

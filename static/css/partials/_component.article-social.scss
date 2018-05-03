@@ -5,6 +5,9 @@
 .article-social\@sm {
     margin-top:26px;
     margin-bottom:21px;
+    @media #{$mobile} {
+    	margin: 0;
+    }
     @media #{$up-to-desktop} {
         float:none;
 	}

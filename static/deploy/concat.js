@@ -34047,7 +34047,7 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div id='infinite-variable-mobile-tablet-desktop' class='advert col-sm-9 mobad5' style='padding:0;'></div><hr class='divide18 visible-xs-block'>";
+    "<div class='advert-desktop advert-tablet col-sm-9 hidden-xs' data-adsize='banner' style='padding:0;'></div><div class='advert-mobile col-sm-9 visible-xs-block' data-adsize='mrec' style='padding:0;'></div><hr class='divide18 visible-xs-block'>";
 
 
 
@@ -34268,7 +34268,7 @@ Acme.article.prototype.InsertInterstitial = function() {
     	teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {
-        $("<div class='ad-container hidden-md hidden-lg mobad2' style='position:relative;width:300px;margin: 0 auto;'><div id='mrec-14-m' class='advert' ></div></div>").insertAfter( $('.article_content > p')[6] );
+        $("<div class='visible-xs-block ad-article' style='position:relative;width:300px;margin: 0 auto;'><div class='advert-mobile' data-adsize='mrec'></div></div>").insertAfter( $('.article_content > p')[6] );
 	}
 }
 
@@ -34513,7 +34513,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         adSlot.classList.remove("advert-"+mediaSize);
         var slotName = 'div-gpt-'+adDivId;
         slotDiv.id = slotName;
-        slotDiv.setAttribute( 'class', 'google_ad' );
+        slotDiv.setAttribute( 'class', 'google_ad '+size);
         googletag.cmd.push(function() { googletag.display(slotName); });       
     }
 

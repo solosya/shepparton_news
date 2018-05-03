@@ -7,7 +7,7 @@
 
 
 
-{% set limit = 17 %}
+{% set limit = 18 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -116,17 +116,29 @@
                             containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ visibleClass[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        <hr class="divide visible-xs-block">
+                        {% if i < 3 %}<hr class="divide visible-xs-block">{% endif %}
                     </div>
                 {% endfor %}
 
             </div>
         </section>
 
-        <div class="ad-container mobad8">
+        <div class="ad-container hidden-xs">
             <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-            <div class='advert-mobile' data-adsize="mrec"></div>
+            
         </div>
+        <div class="row visible-xs-block">
+                <div class="ad-square col-xs-9">
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                    <div class='advert-mobile' data-adsize="mrec"></div>
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                </div>
+                
+         </div>
 
 
         <section class="">
@@ -187,8 +199,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }}">
-                    <div class="row trending {{ site }}">
+                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} hidden-xs">
+                    <div class="row trending {{ site }} ">
                        <h2>Trending stories</h2>
 
                         {% for i in 0..3 if popularArticles[popCount] %}

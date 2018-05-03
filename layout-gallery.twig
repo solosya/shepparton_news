@@ -7,7 +7,7 @@
 
 
 
-{% set limit = 17 %}
+{% set limit = 18 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -63,16 +63,16 @@
 
                 
 
-                <div class="col-md-3 col-sm-9 sm-two-cols">
+                <div class="col-md-3 col-xs-9 hidden-sm">
                     <div class="row">
                 
-                        <div class="ad-square col-md-9 col-sm-1" style="position:relative;height:250px;">
-                            <div class='advert-desktop advert-mobile advert-tablet' data-adsize="mrec" style="float:left;"></div>
+                        <div class="ad-square col-md-9 col-xs-9 hidden-sm" style="position:relative;height:250px;">
+                            <div class='advert-desktop advert-mobile' data-adsize="mrec" style="float:left;"></div>
                         </div>                      
                         <hr class="divide visible-xs-block">   
                      {% if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
-                                <hr class="divide24 visible-md-block visible-lg-block">                            
+                            <div class="col-md-9 col-xs-9">
+                                <hr class="divide24 visible-lg-block visible-md-block space-only">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:640, height:480},
@@ -80,7 +80,6 @@
                                      site: site,
                                      containerClass: 'feature-side card-sm-wide-tablet card-sm-wide-mobile'
                                  }) | raw}}
-                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block">
                             </div>
                      {% endif %}              
@@ -88,17 +87,35 @@
                 </div>
             </div>
 
-            <div class="row row-space">
+            <div class="row row-space sm-two-cols">
 
-                {% set divider = ['divideright', 'divideright', ''] %}
-                {% for i in 0..2 if articles[articleCount] %}
-                    <div class="col-sm-3 col-md-3 col-xs-9">
+                {% for i in 0..1 if articles[articleCount] %}
+                    {% set smVis = [' visible-sm-block',''] %} 
+                    <div class="col-sm-1 col-md-3 col-xs-9">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:640, height:480},
                             position: articleCount + 1,
                             site: site,
-                            containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile ' ~ divider[i]
+                            containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile' ~ smVis[i]
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        <hr class="divide visible-xs-block">
+                    </div>
+                {% endfor %}
+
+                <div class="ad-container visible-sm-block u-tablet-margin-top-30">
+                    <div class='advert-tablet' data-adsize="banner"></div>
+                </div>
+
+                {% for i in 0..1 if articles[articleCount] %}
+                    <div class="col-sm-1 col-md-3 col-xs-9">
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            imageSize: {width:640, height:480},
+                            position: articleCount + 1,
+                            site: site,
+                            containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         <hr class="divide visible-xs-block">
@@ -108,8 +125,8 @@
             </div>
         </section>
 
-        <div class="ad-container mobad8">
-            <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+        <div class="ad-container mobad8 hidden-sm">
+            <div class='advert-desktop' data-adsize="banner"></div>
             <div class='advert-mobile' data-adsize="mrec"></div>
         </div>
     </div>
@@ -119,7 +136,29 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row">
-                        {% for i in 0..8 if articles[articleCount] %}
+                        {% for i in 0..2 if articles[articleCount] %}
+
+                            <div class="col-sm-3">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:190, height:160},
+                                    position: articleCount + 1,
+                                    site: site,                               
+                                    containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
+                                }) | raw}}
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide18 hidden-xs space-only">
+
+                            </div>
+
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% endfor %}
+                        <div class="ad-container">
+                            <div class='advert-tablet' data-adsize="banner"></div>
+                            <div class='advert-mobile' data-adsize="mrec"></div>
+                        </div>
+
+                        {% for i in 0..5 if articles[articleCount] %}
 
                             <div class="col-sm-3">
                                 {{this.render('partials/_single-article.twig', {

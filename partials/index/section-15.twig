@@ -7,8 +7,12 @@
 {% set five_rowExceptions = ['country'] %}
 {% set popularExceptions  = ['dairy'] %}
 {% set bottomExceptions   = ['country', 'dairy'] %}
-
-
+<div class="row">
+    <div class="container hidden-md hidden-lg u-tablet-margin-top-10 ">
+        <div class="weather j-weather-panel u-tablet-float-right "></div>
+        <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
+    </div>
+</div>
 
 {% if layout == 'breaking news' %}
 <section class="breaking-news">
