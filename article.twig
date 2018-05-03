@@ -180,12 +180,12 @@
                             <div class="row">
 
                                 <div class="col-sm-9">
-                                    <div class="ad-side-container" style="height:250px;position:relative;width:300px;margin: 0 auto;">
+                                    <div class="ad-side-container hidden-sm" style="height:250px;position:relative;width:300px;margin: 0 auto;">
                                         <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                                     </div>
                                     <div class='advert-tablet visible-sm-block u-tablet-margin-top-30' data-adsize="banner"></div>
 
-                                    <h2 class="sidebar-header {{site}}">Latest articles</h2>
+                                    {% if recentArticles[0] %}<h2 class="sidebar-header {{site}}">Latest articles</h2>{% endif %}
                                 </div>
 
                                 {% for i in 0..3 if recentArticles[i] %}
