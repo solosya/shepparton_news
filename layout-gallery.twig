@@ -66,13 +66,13 @@
                 <div class="col-md-3 col-xs-9 hidden-sm">
                     <div class="row">
                 
-                        <div class="ad-square col-md-9 col-xs-9" style="position:relative;height:250px;">
+                        <div class="ad-square col-md-9 col-xs-9 hidden-sm" style="position:relative;height:250px;">
                             <div class='advert-desktop advert-mobile' data-adsize="mrec" style="float:left;"></div>
                         </div>                      
                         <hr class="divide visible-xs-block">   
                      {% if articles[articleCount] %}
                             <div class="col-md-9 col-xs-9">
-                                <hr class="divide24 hidden-sm">                            
+                                <hr class="divide24 visible-lg-block visible-md-block space-only">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:640, height:480},
@@ -104,7 +104,7 @@
                     </div>
                 {% endfor %}
 
-                <div class="ad-container">
+                <div class="ad-container visible-sm-block u-tablet-margin-top-30">
                     <div class='advert-tablet' data-adsize="banner"></div>
                 </div>
 
@@ -125,7 +125,7 @@
             </div>
         </section>
 
-        <div class="ad-container mobad8">
+        <div class="ad-container mobad8 hidden-sm">
             <div class='advert-desktop' data-adsize="banner"></div>
             <div class='advert-mobile' data-adsize="mrec"></div>
         </div>

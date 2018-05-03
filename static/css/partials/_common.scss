@@ -401,6 +401,13 @@ figcaption{
         font-family: $font-family-serif;
         float: left;
 
+        @media screen and (max-width: $sm-break){
+            font-size: rem(11);
+            line-height: rem(15);
+            margin-bottom:15px;
+        }
+    
+
         &.credit{
             font-style: normal;
             float: right;
