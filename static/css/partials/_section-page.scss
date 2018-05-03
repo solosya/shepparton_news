@@ -14,10 +14,13 @@ body.channel, body.section, body.page {
                 margin-bottom:25px;
                 color:color(red);
                 text-transform:uppercase;
-                @media #{$mobile} {
-                     &.hk__segment{
+                
+            }
+            @media #{$mobile} {
+                 &.hk__segment{
+                    h2{
                         margin-bottom: 0;
-                     }
+                    }
                 }
             }
             p {
