@@ -66,8 +66,8 @@
                 <div class="col-md-3 col-xs-9 hidden-sm">
                     <div class="row">
                 
-                        <div class="ad-square col-md-9 col-xs-9 hidden-sm" style="position:relative;height:250px;">
-                            <div class='advert-desktop advert-mobile' data-adsize="mrec" style="float:left;"></div>
+                        <div class="ad-square col-md-9 col-xs-9 visible-md-block visible-lg-block" style="position:relative;height:250px;">
+                            <div class='advert-desktop ' data-adsize="mrec" style="float:left;"></div>
                         </div>                      
                         <hr class="divide visible-xs-block">   
                      {% if articles[articleCount] %}
@@ -100,13 +100,24 @@
                             containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile' ~ smVis[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        <hr class="divide visible-xs-block">
+                        {% if i > 0 %}<hr class="divide visible-xs-block">{% endif %}
                     </div>
                 {% endfor %}
 
                 <div class="ad-container visible-sm-block u-tablet-margin-top-30">
                     <div class='advert-tablet' data-adsize="banner"></div>
                 </div>
+
+                <div class="ad-square col-xs-9 visible-xs-block">
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                    <div class='advert-mobile' data-adsize="mrec"></div>
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                </div>
+               
 
                 {% for i in 0..1 if articles[articleCount] %}
                     <div class="col-sm-1 col-md-3 col-xs-9">
@@ -125,9 +136,8 @@
             </div>
         </section>
 
-        <div class="ad-container mobad8 hidden-sm">
+        <div class="ad-container mobad8 visible-md-block visible-lg-block">
             <div class='advert-desktop' data-adsize="banner"></div>
-            <div class='advert-mobile' data-adsize="mrec"></div>
         </div>
     </div>
 
@@ -155,7 +165,15 @@
                         {% endfor %}
                         <div class="ad-container">
                             <div class='advert-tablet' data-adsize="banner"></div>
+                        </div>
+                        <div class="ad-square col-xs-9 visible-xs-block">
+                            <div class="row">
+                                <hr class="divide">
+                            </div>
                             <div class='advert-mobile' data-adsize="mrec"></div>
+                            <div class="row">
+                                <hr class="divide">
+                            </div>
                         </div>
 
                         {% for i in 0..5 if articles[articleCount] %}
