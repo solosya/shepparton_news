@@ -1,5 +1,12 @@
 {% import "quotes.twig" as quotes %}
-    
+
+{% set label = article.label %}
+{% set splitLabel = label | split(" ") %}
+{% if splitLabel | length > 1 and splitLable[0] | lower == 'aap' %}
+
+{% endif %}
+
+
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == 'false' %}
     <figure class="{{params.figureClass}}">
         <picture>
@@ -12,7 +19,7 @@
 
 
 <div class="content">
-    <div class="category">{{article.label}}</div>
+    <div class="category">{{label}}</div>
     
     <h2 class="{{params.figureClass}}">{{ params.articleTitle }}</h2>
     
