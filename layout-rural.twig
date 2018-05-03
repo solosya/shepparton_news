@@ -205,10 +205,14 @@
         {{this.render('render.twig', params) | raw}} 
 
         {% if loop.index in bannerSpots %}
-            <div class="ad-container">
+            <div class="ad-container hidden-xs">
                 <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-                <div class='advert-mobile' data-adsize="mrec"></div>
             </div> 
+            <div class="ad-square col-xs-9 visible-xs-block">
+                <div class="row"><hr class="divide"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+                <div class="row"><hr class="divide"></div>
+            </div>
         {% endif %}
 
     {% endfor %}

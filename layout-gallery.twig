@@ -100,7 +100,7 @@
                             containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile' ~ smVis[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% if i > 0 %}<hr class="divide visible-xs-block">{% endif %}
+                        {% if i == 0 %}<hr class="divide visible-xs-block">{% endif %}
                     </div>
                 {% endfor %}
 
@@ -163,7 +163,7 @@
 
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
-                        <div class="ad-container">
+                        <div class="ad-container hidden-xs">
                             <div class='advert-tablet' data-adsize="banner"></div>
                         </div>
                         <div class="ad-square col-xs-9 visible-xs-block">
