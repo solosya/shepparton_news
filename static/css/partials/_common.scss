@@ -184,7 +184,10 @@
     border: 0;
     border-right: 1px solid color(lightgrey);       
     margin-left: 15px;
-
+    &:hover {
+        color:none;
+    }
+    
     &.facebook-icon {
         margin-left: 0px;
     }
@@ -285,9 +288,6 @@
   align-items: center;
   fill: black;
 
-  &:hover{
-    color:none;
-  }
   &.dairy {
     fill: color(dairy);
   }
