@@ -77,8 +77,18 @@
         float: right;
         height:0;
         @media screen and (max-width: $sm-break-down){
-            display:none
+            display:none;
         }   
+    }
+    &.tablet-teads,
+    &.desktop-teads {
+        &:after {
+            display:none;
+        }
+    }
+    
+    &.mobile-banner{
+
     }
 }
 

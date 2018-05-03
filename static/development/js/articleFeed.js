@@ -208,7 +208,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         adSlot.classList.remove("advert-"+mediaSize);
         var slotName = 'div-gpt-'+adDivId;
         slotDiv.id = slotName;
-        slotDiv.setAttribute( 'class', 'google_ad' );
+        slotDiv.setAttribute( 'class', 'google_ad '+size);
         googletag.cmd.push(function() { googletag.display(slotName); });       
     }
 
