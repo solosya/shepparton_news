@@ -251,7 +251,11 @@
 				margin-bottom: 0px;		
 			}
 
-
+			.event-details {
+				ul>li{
+					list-style-type: disc
+				}
+			}
 		}
 		.event-sidebar {
 			margin: 65px 0 100px 0;
