@@ -164,7 +164,7 @@
 
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% endfor %}
-                        <div class="ad-container hidden-xs col-sm-9">
+                        <div class="ad-container visible-sm-block col-sm-9">
                             <div class='advert-tablet' data-adsize="banner"></div>
                         </div>
                         <div class="ad-square col-xs-9 visible-xs-block">
@@ -188,7 +188,7 @@
                                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
-                                <hr class="divide18 hidden-xs space-only">
+                                {% if i < 3 %} <hr class="divide18 hidden-xs space-only">{% endif %}
 
                             </div>
 
