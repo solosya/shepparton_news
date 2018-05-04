@@ -81,7 +81,9 @@
         }   
     }
     &.tablet-teads,
-    &.desktop-teads {
+    &.desktop-teads,
+    &.tablet-interstitial,
+    &.desktop-interstitial, {
         &:after {
             display:none;
         }

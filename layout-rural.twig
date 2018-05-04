@@ -33,10 +33,13 @@
 ******************************************************* #}
 
 {% set pageSections =  {
-    'country news': {
+    'rural news': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Rural News',
-        'blogs' : ['country news']
+        'blogs' : ['rural news'],
+        'template_params' : {
+            'link' : networkData.defaultBlogUrl ~ '/@rural-news'
+        }
     },
     'dairy': {
         'template'  : 'partials/index/section-27.twig',
@@ -110,7 +113,7 @@
                         COMMON
 ******************************************************* #}
 {% set blogFeeds = {
-        "country news":         { "limit" : 5},
+        "rural news":         { "limit" : 5},
         "dairy":                { "limit" : 5},
         "horticulture":         { "limit" : 3},
         "cropping":             { "limit" : 3},
@@ -127,7 +130,7 @@
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
 {% set bannerSpots = [2,5,8] %}
-{%  set sectionOrder = ['country news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
+{%  set sectionOrder = ['rural news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
 
 
 
