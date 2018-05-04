@@ -34452,7 +34452,6 @@ Acme.View.articleFeed.prototype.events = function()
 
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var screenWidth = $(window).width();
-    window.alert(screenWidth);
     if (screenWidth >= 300 && screenWidth <= 767) {
         var pageAdSlots = $('.advert-mobile');
         var mediaSize = 'mobile'; 
