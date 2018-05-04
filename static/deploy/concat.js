@@ -34047,7 +34047,7 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div class='advert-desktop advert-tablet col-sm-9 hidden-xs' data-adsize='banner' style='padding:0;'></div><div class='advert-mobile col-sm-9 visible-xs-block' data-adsize='mrec' style='padding:0;'></div><hr class='divide18 visible-xs-block'>";
+    "<div class='advert-desktop advert-tablet col-sm-9 hidden-xs u-margin-top-30' data-adsize='banner' style='padding:0;'></div><div class='advert-mobile col-sm-9 visible-xs-block' data-adsize='mrec' style='padding:0;'></div><hr class='divide18 visible-xs-block'>";
 
 
 
@@ -34452,10 +34452,10 @@ Acme.View.articleFeed.prototype.events = function()
 
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var screenWidth = $(window).width();
-    if (screenWidth >= 300 && screenWidth <= 768) {
+    if (screenWidth >= 300 && screenWidth <= 767) {
         var pageAdSlots = $('.advert-mobile');
         var mediaSize = 'mobile'; 
-    } else if (screenWidth >= 769 && screenWidth <= 991) {
+    } else if (screenWidth >= 768 && screenWidth <= 991) {
         var pageAdSlots = $('.advert-tablet');
         var mediaSize = 'tablet';
     } else if (screenWidth >= 992) {

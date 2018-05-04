@@ -165,7 +165,7 @@
 
 
     <div class="container u-desktop-margin-top-40 u-tablet-margin-top-20">
-        <section class="u-desktop-margin-bottom-30">
+        <section>
             <div class="row">
                 <div class="col-md-6 col-sm-9">
                     <div class="row">
@@ -199,9 +199,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} hidden-xs u-margin-bottom-30">
+                <div class="col-md-3 visible-md-block visible-lg-block">
+                    <div class="ad-square clearfixed">
+                        <div class='advert-desktop' data-adsize="mrec"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} hidden-xs u-desktop-margin-top-30">
                     <div class="row trending {{ site }} ">
-                       <h2>Trending stories</h2>
+                       <h2 class="col-sm-9">Trending stories</h2>
 
                         {% for i in 0..3 if popularArticles[popCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9">
@@ -225,12 +231,6 @@
                     </div>
 
 
-                </div>
-
-                <div class="col-md-3 visible-md-block visible-lg-block">
-                    <div class="ad-square clearfixed">
-                        <div class='advert-desktop' data-adsize="mrec"></div>
-                    </div>
                 </div>
             </div>
         </section>
