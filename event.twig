@@ -50,6 +50,10 @@
             <div class="col-md-6 event-content event-content__body">
                 <div class="row">
                     <div class="content-block-top">
+                        {# {% if _User.isAdminUser() %}
+                            <br />
+                            <a href="{{event.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
+                        {% endif %} #}
 
                         <p class="category">Events</p
                         ><time datetime="{{publishDate}}">{{ event.publishDate }}</time>
