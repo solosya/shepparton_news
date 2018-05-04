@@ -222,6 +222,11 @@
                 > figure{
                     margin-bottom:6px;
                 }
+                > .content{
+                    h2 {
+                        height: 60px;
+                    }
+                }
             }
 
             &.withImage__content {
