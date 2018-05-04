@@ -131,9 +131,6 @@
                     <div class="col-sm-9 event-detail">
                         <div class="col-sm-2 contact {{site}}" src="{{networkData.templatePath}}/static/images/event/envelope.svg"></div><p class="contact col-sm-7">
                         
-                        <pre>
-                            {{dump(event)}}
-                        </pre>
                         {% if event.contactName != "" %}
                             {{ event.contactName }}
                         {% endif %}
