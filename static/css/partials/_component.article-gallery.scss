@@ -10,6 +10,7 @@
         background:black;
         @media #{$mobile} {
             height:50vw;
+            margin-bottom: 25px;
         }
         
         @media #{$tablet} {
