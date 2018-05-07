@@ -29,6 +29,15 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 
+{# Remove "AAP" from the section title unless "AAP" is the only word #}
+{% set title = this.title %}
+{% set splitTitle = title | split(" ") %}
+{% if splitTitle | length > 1 and splitTitle[0] | lower == 'aap' %}
+    {% set title = splitTitle | slice(1, length) | join(" ") %}
+{% endif %}
+
+
+
 <main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     
     <div class="container">
@@ -37,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-9 header">
                     <div class="hk">
-                        <h2>{{this.title}}</h2>
+                        <h2>{{title}}</h2>
                         <p></p>
                     </div>
                 </div>

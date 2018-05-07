@@ -113,8 +113,12 @@
                     "name": "car_count",
                     "label": "Number of car spaces",
                     "type": "inputbox"
+                },
+                {
+                    "name": "features",
+                    "label": "Features (comma separated)",
+                    "type": "inputbox"
                 }
-
     		]
     	}
     }
