@@ -55,6 +55,8 @@
             <div class="col-md-3 property-page-details property-page-details@sm hidden-xs hidden-sm">
 
 
+
+            {% if article.additionalInfo.inspect_date1 %}
                 <div class="property-page-inspections">
                     <p class="property-page-inspections__text">Open for inspection</p>
                         <ul class="property-page-inspections__list">
@@ -76,7 +78,16 @@
                             {% endif %}
                         </ul>
                 </div>
+            {% endif %}
 
+
+
+            {% if article.additionalInfo.features %}
+                <div class="property-page-inspections">
+                    <p class="property-page-inspections__text">Features include</p>
+                    <p class="property-page-inspections__p">{{article.additionalInfo.features}}</p>
+                </div>
+            {% endif %}
 
 
 
