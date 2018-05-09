@@ -7,6 +7,7 @@
 {% set five_rowExceptions = ['country'] %}
 {% set popularExceptions  = ['dairy'] %}
 {% set bottomExceptions   = ['country', 'dairy'] %}
+
 <div class="row">
     <div class="container hidden-md hidden-lg u-tablet-margin-top-10 ">
         <div class="weather j-weather-panel u-tablet-float-right "></div>
@@ -64,7 +65,18 @@
 {% if not layout %}
 <section class="home-main-stories">
     <div class="row">
+
+
+
+        <div class="editors-picks col-xs-9">
+            <h1 class="editors-picks__h1 editors-picks__h1@sm">EDITOR'S PICKS</h1>
+            <p class="editors-picks__p editors-picks__p@sm">A selection of the latest Local, Regional, National &amp; World News.</p>
+        </div>
+
+
+
         <div class="col-xs-9 col-sm-9 col-md-6">
+
             {% if articles[articleCount] %}                                                                
                 {{this.render('../_single-article.twig', {
                     article: articles[articleCount], 
