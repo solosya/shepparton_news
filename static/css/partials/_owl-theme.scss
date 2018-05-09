@@ -13,15 +13,18 @@
     height:0px;
     -webkit-tap-highlight-color: transparent;
 
-    // @media #{$mobile} {
-    //     top: 40%;
-    // }
+    @media #{$mobile} {
+        margin-top:-40px;
+    }
 }
 
-.owl-carousel__base .owl-stage-outer .owl-stage .owl-item figure figcaption p {
-    @media screen and (max-width: $sm-break-down) {
-        font-size:rem(12);
-        line-height: rem(14);
+.owl-carousel__base .owl-stage-outer .owl-stage .owl-item figure figcaption{
+    margin-bottom:0;
+     p {
+        @media screen and (max-width: $sm-break-down) {
+            font-size:rem(12);
+            line-height: rem(14);
+        }
     }
 }
 
