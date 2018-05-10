@@ -176,6 +176,14 @@
                         margin-right: 0px;
                     }
                 }
+                &.social {
+                    > .content {
+                        > .category {
+                            position: inherit;
+                        }
+                    }
+
+                }
             }            
         }
     }

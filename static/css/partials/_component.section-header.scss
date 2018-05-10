@@ -29,5 +29,12 @@
                 margin-left: 7px;
             }
         }
+        &.hk__segment {
+            @media #{$tablet} {
+                h2 {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 }

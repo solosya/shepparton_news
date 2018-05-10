@@ -18,18 +18,24 @@
 
     <div>    
         
-        {% for i in 0..2 if articles[articleCount] %}
-            <div class="col-sm-2">
-            {{this.render('../_single-article.twig', {
-                article: articles[articleCount], 
-                imageSize: {width:300},
-                site: site,
-                containerClass: 'card-sm card-sm-tablet card-sm-mobile'
-            }) | raw}}
-            {% set articleCount = (dev) ? 0 : articleCount + 1 %}
-            <hr class="divide visible-xs-block">
+        <div class="col-sm-6">
+            <div class="row sm-two-cols">
+                {% for i in 0..2 if articles[articleCount] %}
+                    {% set tabCard = [' card-sm-tablet',' feature-side-tablet',' feature-side-tablet'] %}
+                    <div class="col-md-3 col-sm-1">
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        imageSize: {width:300},
+                        site: site,
+                        containerClass: 'card-sm card-sm-mobile' ~ tabCard[i]
+                    }) | raw}}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    <hr class="divide visible-xs-block">
+                    {% if i == 1 %}<hr class="divide visible-sm-block">{% endif %}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
 
 
 
