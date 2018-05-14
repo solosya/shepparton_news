@@ -40,12 +40,13 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set ArticleContent = ArticleContent | join('<p>') %}
 
     {{this.registerJs("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}}
-
+    {{this.registerJs("https://videos.oovvuu.com/mmgp/v1/ovu_curate.js")}}
+    
     {# {{this.registerJs("Acme.articleController.insertOovvuu();")}} #}
     {# {% set oovvuu = _Article.getOovvuuData(article) %}  #}
 {% endif %}
 {# end Oovvuu #}
-
+  
 
 
 
@@ -97,7 +98,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 <main id="main" class="container" role="main">
 
 
-    <article id="article-content" class="article-main" data-id="{{article.id}}">
+    <article id="article-content" class="article-main" data-id="{{article.id}}" data-status="{{article.status}}>
 
 
             <div class="page-content">
@@ -154,10 +155,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             <p class="category">{{article.label}}</p
                             ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                             
-                            <h1>{{ quotes.smarten(article.title) }}</h1>
+                            <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>
                             
                             <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
                             {% if not _User.isGuest() %}
+                                <a href="#" id="oovvuu-curate" class="" style="margin-left:20px;padding-top:5px">Curate videos</a>
                                 <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
                             {% endif %}
 
