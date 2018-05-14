@@ -23,6 +23,13 @@ body.channel, body.section, body.page {
                     }
                 }
             }
+            @media #{$tablet} {
+                 &.hk__segment{
+                    h2{
+                        margin-bottom: 0;
+                    }
+                }
+            }
             p {
                 flex-grow: 1;
                 &:after {
