@@ -13,7 +13,7 @@
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 
-{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 {% if dev %}
     {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}

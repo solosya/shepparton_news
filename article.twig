@@ -7,19 +7,51 @@
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
 
 
-{# {{this.registerJsFile("https://maps.googleapis.com/maps/api/js?key=AIzaSyCRILYoQMiSjf_1Q_DhL199ha5w410AOLU")}} #}
-{# {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}} #}
+
+
+
+{# The folling splits up the article content and places divs for Oovvuu videos in
+at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
+and 3rd video at the end if there's been at least 5 paragraphs since the last video #}
+{% if site != 'country' %}
+    {% set videoDivs = [
+        "<div id='head-video'></div></p>", 
+        "<div id='fourth-par-video'></div></p>", 
+        "<div id='foot-video'></div></p>"
+    ] %}
+
+    {% set ArticleContent = article.content | split('<p>') %}
+    {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
+    {% for i in 0..ArticleContent | length %}
+
+        {% if i == 4 %}
+            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+        {% endif %}
+
+        {% if i == 9 %}
+            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[1]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+        {% endif %}
+
+    {% endfor %}
+    {% if lastVideo %}
+        {% set ArticleContent = ArticleContent | merge([videoDivs[2]]) %}
+    {% endif %}
+
+    {% set ArticleContent = ArticleContent | join('<p>') %}
+
+    {{this.registerJs("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}}
+
+    {# {{this.registerJs("Acme.articleController.insertOovvuu();")}} #}
+    {# {% set oovvuu = _Article.getOovvuuData(article) %}  #}
+{% endif %}
+{# end Oovvuu #}
+
 
 
 
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
-{% set site = networkData.title | lower | split(" ")[0]%}
-
-{% if site != 'country' %}
-    {{this.registerJs("Acme.articleController.insertOovvuu();")}}
-    {% set oovvuu = _Article.getOovvuuData(article) %} 
-{% endif %}
+{% set site = networkData.title | lower | split(" ")[0] %}
 
 
 
@@ -65,7 +97,7 @@
 <main id="main" class="container" role="main">
 
 
-    <article id="article" class="article-main" data-id="{{article.id}}">
+    <article id="article-content" class="article-main" data-id="{{article.id}}">
 
 
             <div class="page-content">
@@ -118,10 +150,6 @@
 
                         <div class="content-block-top">
                             
-                            {% if _User.isAdminUser() %}
-                                <br />
-                                <a href="{{article.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
-                            {% endif %}
 
                             <p class="category">{{article.label}}</p
                             ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
@@ -172,7 +200,7 @@
                         <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
 
                         <div class="article_content" id="articleContent">
-                            {{ article.content | _resizeImages({'width': 600}) | raw }}
+                            {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
                         </div><!-- .content-->
 
                     </div>
