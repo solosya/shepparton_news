@@ -100,7 +100,7 @@ gulp.task('scripts', function(){
         './static/development/js/plugins/owl.carousel2.thumbs.js',
         './static/development/js/plugins/moment.js',
         './static/development/js/plugins/bootstrap-datetimepicker.js',
-        // './static/development/js/plugins/view-1.1.3.js',
+        './static/development/js/plugins/view-1.1.3.js',
 
 
 

@@ -196,20 +196,22 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     function loadNextAd(blogAd,adDivId,section,size) {
         var theAd = adSizes[size];
         var adSlot = document.getElementById(adDivId);
-        if ((theAd || adSlot || theAd[0] || theAd[1]) == undefined) {
+        if ((undefined == theAd || undefined == adSlot || undefined == theAd[0] || undefined == theAd[1])) {
             console.log('id/slot not found:');
             console.log(adDivId);
             console.log(adSlot);
             return;
         }
-        if (adDivId == ('desktop-teads' || 'tablet-teads' || 'mobile-teads') && teadsAd == false){ return };
+        if ((adDivId == 'desktop-teads' || adDivId == 'tablet-teads' || adDivId == 'mobile-teads') && teadsAd == false){ return };
         var slotDiv = document.createElement('div');
         adSlot.appendChild(slotDiv);
         adSlot.classList.remove("advert-"+mediaSize);
         var slotName = 'div-gpt-'+adDivId;
         slotDiv.id = slotName;
         slotDiv.setAttribute( 'class', 'google_ad '+size);
-        googletag.cmd.push(function() { googletag.display(slotName); });       
+        googletag.cmd.push(function() { 
+            googletag.display(slotName); 
+        });       
     }
 
     function rubiconTagPush(adslots,section,network,page,sizes) {
