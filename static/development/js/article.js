@@ -5,6 +5,17 @@ Acme.article = function() {
     this.events();
 };
 
+Acme.article.prototype.getOovvuuVideos = function() {
+    // console.log('getting oovvuu videos');
+    var url = 'https://905wo67qr6.execute-api.us-west-2.amazonaws.com/v1/MMGP/list/publisher/47?limit=3';
+
+    Acme.server.fetch(url).then(function(r) {
+        console.log(r);
+    });
+}
+
+
+
 // Acme.article.prototype.insertOovvuu = function() {
 //     articleContent = $("#articleContent").children();
 //     try {
