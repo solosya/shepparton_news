@@ -144,7 +144,7 @@ Card.prototype.bindSocialPostPopup = function()
             var articleId = $(this).parent().data('id');
             var payload = {articleId: articleId, _csrf: csrfToken}
         }
-
+        console.log(_appJsConfig.appHostName + url, payload);
         if (!isRequestSent) {
 
             $.ajax({
