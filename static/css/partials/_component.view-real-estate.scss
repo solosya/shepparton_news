@@ -87,3 +87,11 @@
         z-index: 100;
     }
 }
+
+@media #{$tablet} {
+
+    #rev-search #suggestions-dropdown-placeholder {
+        left: 165px !important;
+        width: 420px;
+    }
+}
