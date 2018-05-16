@@ -214,7 +214,6 @@ window.templates.listingSavedTmpl =  '<p>Following approval it will be posted to
 
 var socialCardTemplate =  
 '<div class="{{cardClass}}"> \
-    <pre style="display:none">{{dump(social)}}</pre>\
     <a  href="{{social.url}}"\
         target="_blank"\
         class="swap card social {{social.source}} {{#if social.hasMedia}} withImage__content {{else }} without__image {{/if}} {{videoClass}}"\
