@@ -57,3 +57,15 @@
     width:20% !important;
     margin-left:10px;
 }
+
+#rev-search .rev-search-item {
+    &.rev-search-location {
+        position:static;
+    }
+}
+
+#rev-search #suggestions-dropdown-placeholder {
+    left: 215px !important;
+    width: 570px;
+    z-index: 100;
+}
