@@ -55,12 +55,12 @@
                             <a href="{{event.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
                         {% endif %} #}
 
-                        <p class="category">Events</p
-                        ><time datetime="{{publishDate}}">{{ event.publishDate }}</time>
+                        <a href="{{ networkData.defaultBlogUrl }}/@events"><p class="category" >Events</p
+                        ></a><time datetime="{{publishDate}}">{{ event.publishDate }}</time>
                         
                         <h1>{{ quotes.smarten(event.title) }}</h1>
                         
-                        <p class="author"><span>By</span> {{ event.createdBy['name'] }}</p>
+                        {# <p class="author"><span>By</span> {{ event.createdBy['name'] }}</p> #}
                     </div>
 
                     <div class="col-md-9">
