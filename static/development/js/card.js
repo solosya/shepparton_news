@@ -153,6 +153,7 @@ Card.prototype.bindSocialPostPopup = function()
                 dataType: 'json',
                 data: payload,
                 success: function (data, textStatus, jqXHR) {
+                    console.log(data, textStatus, jqXHR);
                     data.hasMediaVideo = false;
                     if (data.media['type'] === 'video') {
                         data.hasMediaVideo = true;
@@ -175,6 +176,7 @@ Card.prototype.bindSocialPostPopup = function()
                     }, 500);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown, textStatus, jqXHR);
                     isRequestSent = false;
                 },
                 beforeSend: function (jqXHR, settings) {
