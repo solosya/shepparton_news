@@ -5,7 +5,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
-
+{% set blogInfo = _Blog.getBlog() %}
 {% set articleImg = false %}
 {% if article.media|length > 0 %}
     {% set articleImg = _Media.getMediaUrl(article.media[0],1094, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
@@ -25,7 +25,7 @@
                     <div class="col-md-9">
                         <div class="page-content" style="margin:0;">
                             <div class="content-block-top" style="margin:0;">
-                                <p class="category">{{article.label}}</p><br>{# <time datetime="{{publishedDate}}">{{article.publishedDate}}</time> #}
+                                <a href="{{blogInfo.url}}"><p class="category">{{article.label}}</p></a><br>{# <time datetime="{{publishedDate}}">{{article.publishedDate}}</time> #}
                                 <h1 class="gallery-title">{{ quotes.smarten(article.title) }}</h1>
                             </div>
                         </div>
