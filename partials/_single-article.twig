@@ -118,8 +118,7 @@
     {% set videoClass = (social.media['type'] == 'video') ? 'video' : '' %}
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
-    {% set socialSource = social.source %}
-    <pre style="display:none;">{{dump(social)}}</pre>    
+    {% set socialSource = social.source %} 
 
     <div class="{{containerClass}}">
         <a  href                = "{{social.url}}"
