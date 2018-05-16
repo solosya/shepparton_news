@@ -46,7 +46,7 @@ gulp.task('concat', function () {
         './static/development/js/sdk/media-player/mediaelementplayer.css',
         './static/development/js/plugins/owl.carousel.min.css',
         './static/development/js/plugins/owl.theme.default.css',
-        './static/development/js/plugins/view-1.1.3.css'
+        // './static/development/js/plugins/view-1.1.3.css'
 
     ]) // path to your file
     .pipe(concat('concat.css'))
