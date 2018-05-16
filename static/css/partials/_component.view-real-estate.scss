@@ -1,0 +1,59 @@
+#rev-search {
+    background-color: unset !important;
+    .rev-search-item {
+       &.rev-search-contract-type {
+            position:static;
+        }
+    }
+    .rev-search-inner{
+        .rev-search-title{
+            
+            margin: 0 0 0 7px !important;
+            float: left !important;
+            width: 100% !important;
+            text-align: left !important;
+            height: 20px !important;
+            position: relative !important;
+            span{
+                color: #000 !important;
+                content: "Your first stop before buying a home. View the whole picture." !important;
+                float: left!important;
+                width: 100%!important;
+                text-align: left!important;
+                height: 20px!important;
+                position: relative!important;
+                font-size: 15px!important;
+                font-weight: 600!important;
+            }
+              
+        }
+        form {
+            width:100% !important;
+            .rev-search-item-wrapper {
+                width: 100% !important;
+            }
+            .rev-search-item {
+                &.rev-search-submit {
+                    button {
+                        background-color: #f03746 !important;
+                        border: 1px solid #f03746 !important;
+                    }
+                }
+            }
+        }
+    }
+    .rev-search-logo {
+        float: left !important;
+        width: 15% !important;
+        height: unset !important;
+        text-align: center !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 7px !important;
+    }
+}
+
+#rev-search .rev-search-contract-type #search-type-dropdown-placeholder .search-type-list {
+    width:20% !important;
+    margin-left:10px;
+}
