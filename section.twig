@@ -214,7 +214,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} hidden-xs u-desktop-margin-top-30">
+                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} u-desktop-margin-top-30">
                     <div class="row trending {{ site }} ">
                        <h2 class="col-sm-9">Trending stories</h2>
 
@@ -234,6 +234,11 @@
                                 {% elseif i == 2 %}
                                     <hr class="divide18 visible-lg-block visible-md-block">
                                     <hr class="divide visible-xs-block">
+                                {% elseif i > 2 %}
+                                    <hr class="divide18 visible-lg-block visible-md-block">
+                                    <div class="row visible-xs-block">
+                                        <hr class="divide">
+                                    </div>
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -251,11 +256,11 @@
                         limit           : 12,
                         name            : "section-load",
                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40",
+                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
                         container       : "mainAjaxArticlescardClass",
                         buttonClass     : "infinite",
                         ads             : "yes",
-                        after           : '<hr class="divide18 visible-xs-block">'
+                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
                     }) | raw }}
                 {% endif %}
                </div>

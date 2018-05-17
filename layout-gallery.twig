@@ -100,7 +100,7 @@
                             containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile' ~ smVis[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% if i == 0 %}<hr class="divide visible-xs-block">{% endif %}
+                        
                     </div>
                 {% endfor %}
 
@@ -149,7 +149,7 @@
                     <div class="row">
                         {% for i in 0..2 if articles[articleCount] %}
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 col-xs-9">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
@@ -157,7 +157,7 @@
                                     site: site,                               
                                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                                 }) | raw}}
-                                <hr class="divide visible-xs-block">
+                                
                                 <hr class="divide18 hidden-xs space-only">
 
                             </div>
@@ -179,7 +179,7 @@
 
                         {% for i in 0..5 if articles[articleCount] %}
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 col-xs-9">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
@@ -210,7 +210,7 @@
                         container       : "mainAjaxArticlescardClass",
                         buttonClass     : "infinite",
                         ads             : "yes",
-                        after           : '<hr class="divide18 visible-xs-block">'
+                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
                     }) | raw }}
                 {% endif %}
                </div>
