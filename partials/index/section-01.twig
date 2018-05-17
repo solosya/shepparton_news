@@ -115,7 +115,7 @@
 
                     {# Card 10,11,12 #}
                     {% for i in 0..2 if articles[articleCount] %}
-                        <div class="col-md-9 col-sm-3">
+                        <div class="col-md-9 col-sm-3 col-xs-9">
                             {{this.render('../_single-article.twig', {
                                 article: articles[articleCount], 
                                 imageSize: {width:300, height:160},

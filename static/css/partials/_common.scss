@@ -89,8 +89,19 @@
         }
     }
     
-    &.mobile-banner{
-
+    &.tablet-banner{
+        height: 90px;
+        width: 728px;
+    }
+    &.desktop-banner{
+        height: 90px;
+        min-width: 728px;
+    }
+    &.mobile-mrec,
+    &.tablet-mrec,
+    &.desktop-mrec {
+        height: 250px;
+        width:  300px;
     }
 }
 

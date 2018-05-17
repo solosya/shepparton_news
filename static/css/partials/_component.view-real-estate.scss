@@ -25,6 +25,9 @@
                 font-size: 15px!important;
                 font-weight: 600!important;
             }
+            @media #{$mobile} {
+                width: 80%!important;
+            }
               
         }
         form {
@@ -50,6 +53,9 @@
         position: absolute !important;
         right: 15px !important;
         top: 7px !important;
+        @media #{$mobile} {
+            right: 35px !important;
+        }
     }
 }
 

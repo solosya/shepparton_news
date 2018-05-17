@@ -90,7 +90,7 @@
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=572006b3" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=f16cd1d5" type="text/css" media="all">
 
 
     {% else %}
@@ -231,10 +231,10 @@
 
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
-    {{this.registerJs("
+    {# {{this.registerJs("
         Acme.adInsert = new Acme.View.articleFeed();
         Acme.adInsert.InsertAds();"
-    )}}
+    )}} #}
 
     {{ this.endBody() }}
 

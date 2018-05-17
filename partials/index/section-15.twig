@@ -114,7 +114,7 @@
                     {% for i in 0..3 if articles[i] %}
                 
                         {% set class = ['', '', '', 'visible-sm-block'] %}
-                        <div class="col-sm-1 col-md-9">
+                        <div class="col-sm-1 col-md-9 col-xs-9">
                             {{this.render('../_single-article.twig', {
                                 article: articles[articleCount],
                                 imageSize: {width:95},
@@ -206,7 +206,7 @@
                             <section class="row sm-two-cols visible-sm-block">
 
                                 {% for i in 0..3 if articles[articleCount] %}
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-1 col-xs-9">
                                         {{this.render('../_single-article.twig', {
                                             article         : articles[articleCount], 
                                             position        : cardIndex + 1, 
@@ -245,7 +245,7 @@
 
 
             {# ************ MOST POPULAR ************   #}
-            <div class="col-sm-3 col-md-2 most-popular">
+            <div class="col-sm-3 col-md-2 col-xs-9 most-popular">
                 <h2>Most popular</h2>
 
                 {% for i in 0..4 if popularArticles[i] %}
@@ -268,7 +268,7 @@
 
 
 
-            <div class="col-sm-3 col-md-2">
+            <div class="col-sm-3 col-md-2 col-xs-9">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
@@ -287,7 +287,7 @@
             </div>
 
 
-            <div class="col-sm-3 col-md-2">
+            <div class="col-sm-3 col-md-2 col-xs-9">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
@@ -330,7 +330,7 @@
 
         <div class="row row-space">
             <hr class="divide visible-xs-block">
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-xs-9">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
@@ -350,7 +350,7 @@
             </div>
 
 
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-xs-9">
                 {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
@@ -368,7 +368,7 @@
 
 
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-xs-9">
                 {% for i in 0..1 if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
