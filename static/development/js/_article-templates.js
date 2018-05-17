@@ -171,7 +171,7 @@ Acme.property_card =
 
 window.templates.ads_infinite = 
     "<div class='advert-desktop advert-tablet col-sm-9 hidden-xs u-margin-top-30' data-adsize='banner' style='padding:0;'></div>\
-    <div class='col-xs-9 visible-xs-block' style='padding:0;width:300px;'><div class='advert-mobile' data-adsize='mrec'></div></div>\
+    <div class='col-xs-9 visible-xs-block' style='padding:0;width:300px;height:250px;'><div class='advert-mobile' data-adsize='mrec'></div></div>\
     <hr class='divide18 visible-xs-block'>";
 
 
