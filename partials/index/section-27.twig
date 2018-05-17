@@ -33,11 +33,10 @@
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 1 %}
-                        <div class="row">
-                            <hr class="divide visible-xs-block">
-                        </div>
+                        
+                        <div class="col-xs-9 visible-xs-block"><div class="row"><hr class="divide"></div></div>
                     {% else %}
-                        <hr class="divide visible-xs-block">
+                        <div class="col-xs-9 visible-xs-block"><hr class="divide"></div>
                     {% endif %}
 
                 {% endfor %}
@@ -52,7 +51,7 @@
 
     <div class="col-md-3 col-sm-9">
        <div class="row sm-two-cols">
-            <div class="ad-square">
+            <div class="ad-square col-xs-9">
                 <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                 <div class="row visible-xs-block">
                     <hr class="divide">
