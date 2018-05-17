@@ -153,9 +153,9 @@
                                     site: site,                               
                                     containerClass: 'card-sm card-sm-tablet card-sm-wide-mobile '
                                 }) | raw}}
-                                {% if i < 5 %}
+                                
                                     <hr class="divide visible-xs-block">
-                                {% endif %}
+                        
 
                             </div>
 
@@ -165,13 +165,14 @@
                     </div>
                 </div>
 
-            <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} hidden-xs">
+            <div class="col-md-3 col-sm-9 sm-two-cols {{ site }}">
                 <div class="visible-md-block visible-lg-block">
                     <div class="ad-square clearfixed">
                         <div class='advert-desktop' data-adsize="mrec"></div>
                     </div>
                     <hr class="divide15 space-only">
                 </div>
+
                 <div class="row u-tablet-margin-top-30">
                     {% for i in 0..1 if articles[articleCount] %}
 
@@ -183,7 +184,7 @@
                                 site: site,                               
                                 containerClass: 'feature-side feature-side-tablet card-sm-mobile '
                             }) | raw}}
-                            <hr class="divide visible-xs-block">
+                            
                             {% if i < 1 %}
                                 <hr class="divide hidden-sm">
                             {% else %}
@@ -211,7 +212,7 @@
                         limit           : 12,
                         name            : "section-load",
                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40",
+                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
                         container       : "mainAjaxArticlescardClass",
                         buttonClass     : "infinite",
                         ads             : "yes",
