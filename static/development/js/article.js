@@ -5,14 +5,14 @@ Acme.article = function() {
     this.events();
 };
 
-Acme.article.prototype.getOovvuuVideos = function() {
-    // console.log('getting oovvuu videos');
-    var url = 'https://905wo67qr6.execute-api.us-west-2.amazonaws.com/v1/MMGP/list/publisher/47?limit=3';
+// Acme.article.prototype.getOovvuuVideos = function() {
+//     console.log('getting oovvuu videos');
+//     var url = 'https://905wo67qr6.execute-api.us-west-2.amazonaws.com/v1/MMGP/list/publisher/47?limit=3';
 
-    Acme.server.fetch(url).then(function(r) {
-        console.log(r);
-    });
-}
+//     Acme.server.fetch(url).then(function(r) {
+//         console.log(r);
+//     });
+// }
 
 
 
@@ -83,13 +83,11 @@ Acme.article.prototype.events = function() {
 
     $('#oovvuu-curate').on('click', function(e) {
         e.preventDefault();
-        console.log('go gadget go!');
         var article_text = $('#articleContent').text();
         var id = $('#article-content').data('id');
         var headline = $('#article-title').text();
         var status = $('#article-content').data('status');
 
-        console.log(content, id, title);
         OVU.OovvuuCurateVideos(id, null, headline, null, article_text, status);
         // OVU.OovvuuCurateVideos(id, user_id, headline, lede, article_text,article_status, tags);
 
