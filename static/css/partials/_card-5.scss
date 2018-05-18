@@ -381,9 +381,14 @@
 
 
             &.without__image {
+                height: 230px;
                 .content {
+                    padding: 30px 20px 5px 20px;
                     h2 {
                         max-height:45px;
+                    }
+                    > .author {
+                        bottom: 45px;
                     }
                 }
             }  
