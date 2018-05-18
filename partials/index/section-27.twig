@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="col-xs-9 col-sm-9 col-md-6">
+    <div class="col-sm-9 col-md-6">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article:        articles[articleCount], 
@@ -72,9 +72,9 @@
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 1 %}
-                        <div class="row">
+                        {# <div class="row">
                             <hr class="divide visible-xs-block">
-                        </div>
+                        </div> #}
                     {% else %}
                         <hr class="divide20 visible-md-block visible-lg-block">
                         <hr class="divide visible-xs-block">
