@@ -34764,13 +34764,18 @@ Acme.article.prototype.events = function() {
 
     $('#oovvuu-curate').on('click', function(e) {
         e.preventDefault();
-        var article_text = $('#articleContent').text();
-        var id = ""+$('#article-content').data('id');
-        var headline = $('#article-title').text();
-        var status = $('#article-content').data('status');
-        OVU.OovvuuCurateVideos(id, null, headline, null, article_text, status);
-        // OVU.OovvuuCurateVideos(id, user_id, headline, lede, article_text,article_status, tags);
+        $.getScript("https://videos.oovvuu.com/mmgp/dev/ovu_curate.js")
+            .done(function() {
+                var article_text = $('#articleContent').text();
+                var id = ""+$('#article-content').data('id');
+                var headline = $('#article-title').text();
+                var status = $('#article-content').data('status');
+                OVU.OovvuuCurateVideos(id, null, headline, null, article_text, status);
+             // OVU.OovvuuCurateVideos(id, user_id, headline, lede, article_text,article_status, tags);
 
+            }).fail(function(r) {
+                console.log(r);
+            });
     });
 }
 
