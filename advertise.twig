@@ -20,6 +20,7 @@
                 <div class="col-sm-12 col-md-5">
                     <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
                         <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
+                        <input type="hidden" id="contactform-returnto" class="form-control" name="returnto" value="/advertise">
                         <div class="controls-full">
                             <div class="form-group field-contactform-name required">
                                 <input type="text" id="contactform-name" class="form-control" name="name" placeholder="Name">
