@@ -7,6 +7,9 @@
     {% set messages = messages ~ m %}
 {% endfor %}
 
+{% set contactpage = _Page.getPageData("contact-details") %}
+ 
+
     <main id="main" class="site-main eventForm" role="main">
         
         <div class="container contact-us">
@@ -86,7 +89,7 @@
 
                     <div class="col-sm-12 col-md-3 contact-details">
 
-                        {{page.content | raw}}
+                       {{contactpage.content | raw}}
 
                     </div>
                 {% endif %}
