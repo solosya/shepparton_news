@@ -7,6 +7,11 @@
     {% set messages = messages ~ m %}
 {% endfor %}
 
+{% set contactpage = _Page.getPageData("contact-us") %}
+ 
+
+
+
     <main id="main" class="site-main eventForm" role="main">
         
         <div class="container contact-us">
@@ -21,7 +26,7 @@
                     </div>
                 </div>
 
-{# 
+
                 {% if messages != "" %}
 
 
@@ -29,7 +34,7 @@
                     <a class="contact-us__link" href="{{networkData.defaultBlogUrl}}">Home</a>
 
 
-                {% else %} #}
+                {% else %}
 
 
                     <div class="col-sm-12 col-md-5 ">
@@ -86,10 +91,10 @@
 
                     <div class="col-sm-12 col-md-3 contact-details">
 
-                        {{page.content | raw}}
+                        {{contactpage.content | raw}}
 
                     </div>
-                {# {% endif %} #}
+                {% endif %}
 
             </section>
         </div>
