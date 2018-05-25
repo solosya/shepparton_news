@@ -8,7 +8,7 @@
 {% endfor %}
 
 {% set contactpage = _Page.getPageData("contact-details") %}
- 
+
 
     <main id="main" class="site-main eventForm" role="main">
         
@@ -38,7 +38,7 @@
                     <div class="col-sm-12 col-md-5 ">
                         <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
                             <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
-                            <input type="hidden" id="contactform-returnto" class="form-control" name="returnto" value="/contact">
+                            <input type="hidden" id="contactform-returnto" class="form-control" name="returnto" value="/@contact-us">
 
                             <div class="controls-full">
                                 <div class="form-group field-contactform-name required">

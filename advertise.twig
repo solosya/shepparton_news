@@ -36,6 +36,23 @@
                             </div>
                         </div>
 
+                        {% if _Network.getCaptchaSiteKey() is defined and _Network.getCaptchaSiteKey() is not empty %}
+                                <div class="g-recaptcha" data-sitekey="{{_Network.getCaptchaSiteKey()}}" style="padding-bottom:30px;"></div>
+                                <div class="captchaContainer">
+                                    <div class="captchaMessage"></div>
+                                </div>
+                            {% else %}           
+                                <div class="account-modal__content_container">
+                                    <div class="account-modal__content_item-container">
+                                        <div class="account-modal__input-container">
+                                            <div class="account-modal__input_content captcha">
+                                                {{_AppForm.captcha({class: 'account-modal__input account-modal__input--captcha', placeholder: 'Enter the text shown above'}) | raw }}
+                                            </div>
+                                        </div>
+                                    </div>                        
+                                </div>
+                            {% endif %}
+
                         <div class="controls-full">
                             <div class="form-group">
                                 <button type="submit" id="btnContact" class="_btn submit" style="margin-top:20px;" name="contact-button">SEND</button>
