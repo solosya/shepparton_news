@@ -92,16 +92,22 @@
     &.tablet-banner{
         height: 90px;
         width: 728px;
+         margin-left: auto;
+        margin-right: auto;
     }
     &.desktop-banner{
         height: 90px;
         min-width: 728px;
+         margin-left: auto;
+        margin-right: auto;
     }
     &.mobile-mrec,
     &.tablet-mrec,
     &.desktop-mrec {
         height: 250px;
         width:  300px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

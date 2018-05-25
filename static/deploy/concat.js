@@ -36956,12 +36956,10 @@ $('document').ready(function() {
 
     $(".sb-custom-menu > .menuContainer > ul > li > span").on("click", function(e) {
         e.preventDefault();
-        console.log('clicking arrow');
         var elem = $(this);
 
         if (elem.hasClass('selected')) {
             elem.removeClass('selected');
-            console.log('hiding menu');
             elem.parent().children('ul.sub-menu').stop(true,true).slideUp('fast');
             return;
         }
@@ -36973,19 +36971,18 @@ $('document').ready(function() {
         listItems.each(function(i) {
             var item = $(this);
             if ( !item.find('span').hasClass('selected') ) {
-                console.log('hiding menu 2');
                 item.children('ul.sub-menu').stop(true,true).slideUp('fast');
             }
         });
         
 
         if (elem.hasClass('selected')) {
-            console.log('showing menu');
-
             elem.parent().children('ul').stop(true,true).slideDown('fast');
         }
 
     });
+
+
 
 
 
