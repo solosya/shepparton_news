@@ -7,6 +7,14 @@
     {% set messages = messages ~ m %}
 {% endfor %}
 
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+    <script>
+    function contactEnable() {
+        $('#btnContact').prop('disabled', false); 
+    }
+    </script>
+
+
 {% set contactpage = _Page.getPageData("contact-details") %}
 
 
@@ -59,7 +67,7 @@
 
 
                             {% if _Network.getCaptchaSiteKey() is defined and _Network.getCaptchaSiteKey() is not empty %}
-                                <div class="g-recaptcha" data-sitekey="{{_Network.getCaptchaSiteKey()}}" style="padding-bottom:30px;"></div>
+                                <div class="g-recaptcha" data-sitekey="{{_Network.getCaptchaSiteKey()}}" data-callback="contactEnable" style="padding-bottom:30px;"></div>
                                 <div class="captchaContainer">
                                     <div class="captchaMessage"></div>
                                 </div>
@@ -79,8 +87,7 @@
 
                             <div class="controls-full">
                                 <div class="form-group">
-                                    <button type="submit" id="btnContact" class="_btn submit" style="margin-top:20px;" name="contact-button">SEND</button>
-                                </div>
+                                    <button type="submit" disabled id="btnContact" class="_btn submit" style="margin-top:20px;" name="contact-button">SEND</button>                                </div>
                             </div>
                         </form>
                     </div>
