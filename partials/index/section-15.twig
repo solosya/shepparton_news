@@ -13,10 +13,11 @@
         <div class="weather j-weather-panel u-tablet-float-right "></div>
         <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
     </div>
+    <div class="col-sm-9 visible-sm-block"><hr class="divide10"></div>
 </div>
 
 {% if layout == 'breaking news' %}
-<section class="breaking-news">
+<section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40">
     <div class="row">
 
         <div class="col-md-9">
@@ -25,7 +26,7 @@
                     <h2 class="breaking-news_subhead">Greater Shepparton</h2>
                     <h1 class="breaking-news_header breaking-news_header@md">Breaking News</h1>
                 </div>
-                <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="col-md-3 hidden-sm hidden-xs u-desktop-indent-left-20">
                     <div class="weather j-weather-panel"></div>
                     <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
                 </div>
@@ -100,7 +101,7 @@
 
                     <hr class="divide15 visible-xs-block visible-sm-block space-only">
 
-                    <div class="col-sm-1 col-md-9 hidden-xs hidden-sm">
+                    <div class="col-sm-1 col-md-9 hidden-xs hidden-sm u-desktop-indent-left-20">
                         <div class="weather j-weather-panel"></div>
                         <div class="weather-dropdown j-weather-panel-dropdown hidden"></div>
                         <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
@@ -243,7 +244,7 @@
     {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network' }) %}
 
     <section>
-        <div class="row u-margin-top-30 u-mobile-no-margin-top">
+        <div class="row u-tablet-margin-top-30 u-desktop-margin-top-50 u-mobile-no-margin-top">
 
 
             {# ************ MOST POPULAR ************   #}
