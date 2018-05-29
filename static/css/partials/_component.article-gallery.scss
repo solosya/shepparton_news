@@ -4,7 +4,8 @@
 
 .article-gallery__image {
     position: relative;
-    
+    height:515px;
+    background:black; 
     
     &-article {
         background:black;
@@ -42,9 +43,11 @@
 
 
 .article-gallery__img {
-    width:100%;
+    // width:100%;
+    width:auto !important;
     height:100%;
     object-fit: cover;
+    margin:auto;
 
     &-property {
         background:white;
