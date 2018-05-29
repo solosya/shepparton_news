@@ -42,6 +42,7 @@ Acme.GalleryToggle = function() {
     this.events();
 };
 Acme.GalleryToggle.prototype.events = function() {
+    var self = this;
     $('#gallery-toggle').on('click', function(e) {
         var option = $(e.target);
 
@@ -51,14 +52,39 @@ Acme.GalleryToggle.prototype.events = function() {
 
             option.addClass('gallery-toggle__item--selected');
             var type = types.indexOf( option.data('type') );
-
             var show = $('.owl-gallery-' + types[type]);
             var hide = $('.owl-gallery-' + types[!type | 0]);
             hide.removeClass('default');
             show.addClass('default');
-
-            $('.article-video').muted = true;
-
+            
+            if (types[type] == 'image') {
+                self.stopVideo();
+            }
         }
     });
+
+
+    $('.owl-prev, .owl-next').on('click', function(e) {
+        self.stopVideo();
+    });
+
 };
+
+Acme.GalleryToggle.prototype.stopVideo = function() {
+    $('.article-video').each(function() {
+        this.pause();
+    });
+    
+    $('.external-article-video').each(function() {
+        var videoSource = $(this).data('source');
+        if ( videoSource == 'youtube' ){
+            this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+        } else if (videoSource == 'brightcove') {
+            this.contentWindow.postMessage("pauseVideo", location.protocol+'//players.brightcove.net');
+        } else if (videoSource == 'vimeo') {
+            var player = new Vimeo.Player(this);
+            player.pause();
+        }
+    });
+
+}

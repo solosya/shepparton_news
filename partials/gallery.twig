@@ -44,10 +44,11 @@
                 {% else %}
 
                     {% if image.source == 'youtube' %}
-                        {% set mediaUrl = "//www.youtube.com/embed/" ~ image.videoId  %}
+                        {% set mediaUrl = "//www.youtube.com/embed/" ~ image.videoId ~ '?enablejsapi=1&version=3&playerapiid=ytplayer' %}
                     
                     {% elseif image.source == 'vimeo' %}
                         {% set mediaUrl = "//player.vimeo.com/video/" ~ image.videoId  %}
+                        {{this.registerJsFile("https://player.vimeo.com/api/player.js")}}
                     
                     {% elseif image.source == 'brightcove' %}
                         {% set videoId      = image.videoId | split("::")[0]  %}
@@ -58,6 +59,8 @@
 
 
                     <iframe src="{{mediaUrl}}" 
+                        class="external-article-video"
+                        data-source={{image.source}}
                         allowfullscreen
                         webkitallowfullscreen
                         mozallowfullscreen
