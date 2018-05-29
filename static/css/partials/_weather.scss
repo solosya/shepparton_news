@@ -63,7 +63,7 @@
 .weather {
     @include weather-panel;
     height: 100%;
-    @media #{$desktop}{
+    @media #{$desktop-up}{
         width: 340px;
         padding-left: 20px;
         padding-right: 20px;
@@ -112,7 +112,7 @@
     height: 360px;
     padding-top: 10px;
     justify-content: space-between;
-    @media #{$desktop}{
+    @media #{$desktop-up}{
         width: 340px;
         padding-left: 20px;
         padding-right: 20px;
