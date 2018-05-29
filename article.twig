@@ -40,12 +40,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
     {% set ArticleContent = ArticleContent | join('<p>') %}
     {{this.registerJsFile("https://videos.oovvuu.com/mmgp/dev/ovu_rec.js")}}
-    {# {% if _User.isAdminUser() %} #}
-        {# {{this.registerJsFile("https://videos.oovvuu.com/mmgp/dev/ovu_curate.js")}} #}
-    {# {% endif %} #}
     
-    {# {{this.registerJs("Acme.articleController.insertOovvuu();")}} #}
-    {# {% set oovvuu = _Article.getOovvuuData(article) %}  #}
 {% endif %}
 {# end Oovvuu #}
   
