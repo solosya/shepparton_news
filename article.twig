@@ -107,7 +107,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             {% if imageToggle %}
                                 <div id="gallery-toggle" class="gallery-toggle">
                                     <ul class="gallery-toggle__list">
-                                        <li data-type="image" class="gallery-toggle__item {% if featured == 'image' %} gallery-toggle__item--selected {% endif %}">Image</li
+                                        <li data-type="image" class="gallery-toggle__item {% if featured != 'video' %} gallery-toggle__item--selected {% endif %}">Image</li
                                        ><li data-type="video" class="gallery-toggle__item {% if featured == 'video' %} gallery-toggle__item--selected {% endif %}">Video</li>
                                     </ul>
                                 </div>
