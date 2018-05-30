@@ -18,15 +18,6 @@
     }
 }
 
-.owl-carousel__base .owl-stage-outer .owl-stage .owl-item figure figcaption{
-    margin-bottom:0;
-     p {
-        @media screen and (max-width: $sm-break-down) {
-            font-size:rem(12);
-            line-height: rem(14);
-        }
-    }
-}
 
 .owl-shep-theme .owl-nav .owl-next {
     background-image: url('../icons/gallery-arrow-right.svg');

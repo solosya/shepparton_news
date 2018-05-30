@@ -123,7 +123,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     {% endif %}
                                     {{this.render('partials/gallery.twig', {
                                         media: images,
-                                        default: imageFeature
+                                        default: imageFeature,
+                                        galleryStyle: 'article'
                                     }) | raw}}
                                 {% endif %}
 
@@ -133,8 +134,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     {{this.render('partials/gallery.twig', {
                                         media: videos,
                                         type : 'video',
-                                        default: videoFeature
-
+                                        default: videoFeature,
+                                        galleryStyle: 'article'
                                     }) | raw}}
                                 {% endif %}
 
