@@ -24,6 +24,12 @@
     top: 20px;
     right: 23px;
     z-index: 100;
+    @media #{$mobile} {
+        width: 35px;
+        height: 35px;
+        top: 15px;
+        right: 15px;
+    }
 }
 
 
