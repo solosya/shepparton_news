@@ -363,11 +363,11 @@
     &.riverine{
         background-size: 135px;
         background-position: center;
-        width: 132px;
+        width: 135px !important;
         height: 58px;
         @media #{$up-to-desktop} {
             background-size: 80px;
-            width: 120px;
+            width: 120px !important;
         }
     }
     &.benalla{
@@ -463,10 +463,10 @@
         }
     }
     &.yarrawonga{
-        background-size: 177px;
+        background-size: 160px;
         background-position: center;
         height: 48px;
-        width: 177px;
+        width: 160px !important;
         @media #{$up-to-desktop} {
             background-size: 120px;
             width: 120px !important;  
