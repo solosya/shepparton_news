@@ -3,7 +3,7 @@
     margin: 9px 0 -5px 0;
     a.card {
         @include card-image-left(37px, 37px);
-        height:52px;
+        height:42px;
 
         > article {
             position:relative;
@@ -28,7 +28,7 @@
                 }
                 > h2{
                     font-weight: 600;
-                    font-size: rem(12);
+                    font-size: rem(14);
                     line-height:1.33;
                     margin-bottom:0;
                     height:45px;
@@ -48,14 +48,14 @@
                 > time {
                     display:block;
                     margin-left:6px;
-                    font-size: rem(8);
+                    font-size:rem(13);
                     font-weight:700;
                     color:color(red);
                     text-transform: uppercase;
                     position: relative;
                     left: -60px;
                     text-align: center;
-                    width: 40px;
+                    width: 60px;
                     &.country {
                         color:#0d522e;
                     }
@@ -78,7 +78,6 @@
             > article {
                 > .content {
                     > time {
-                        font-size:rem(10);
                         top: -3px;
                         position: absolute;
                         margin-left: 60px;
@@ -96,7 +95,7 @@
         @include card-event-base();
         a.card {
             @include card-image-left(46px, 46px);            
-            height: 50px;
+            height: 40px;
             > article {
                 > figure {
                     display:none;
@@ -144,11 +143,11 @@
                         width:75%;
                     }
                     > time {
-                        font-size:rem(10);
                         top: -3px;
                         position: absolute;
                         margin-left: 60px;
                         text-align: left;
+                        width: 50px;
                     }
                 }
             }

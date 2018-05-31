@@ -1,5 +1,5 @@
 body.layout-article-gallery {
-	background:color(galleryback);
+	background:color(white);
 }
 
 body.article {
@@ -12,12 +12,23 @@ body.article {
 
 			.gallery-row {
 				padding-top:62px;
-				background:color(galleryback);
+				background:color(white);
+
+				.gallery-title {
+				    font-size: rem(41);
+				    color: #000;
+				    margin-bottom: 25px;
+				    @media screen and (max-width: $sm-break-down) {
+				        font-size: rem(30);
+				        margin-bottom: 15px;
+				    }
+				}
 
 
 
 				figure {
 
+				
 					> figcaption {
 						 > p {
 						 	font-size: rem(12);
@@ -25,7 +36,7 @@ body.article {
 						 	float:none;
 						 	line-height:1.33;
 						 	text-align:center;
-							color:white;
+							color:black;
 						 }
 						 > p.count {
 							margin-top:7px;

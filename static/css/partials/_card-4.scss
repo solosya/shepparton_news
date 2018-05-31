@@ -26,12 +26,6 @@
                 .author {
                     height: 18px;
                     width: 100%;
-                    img {
-                    }
-                    p {
-                    }
-                    > time {
-                    }
                 }
                 
                 > time {
@@ -50,7 +44,7 @@
                 > .content {
                     background-color: #7bc127;
                     padding: 20px;
-                    height: 87px;
+                    height: 84px;
  
                     > .category {
                         display: none;
@@ -99,9 +93,8 @@
                     margin-bottom:6px;
                 }
                 > .content {
-                    > .author {
-                        bottom: -15px;
-                    }
+                    height: 84px;
+
                 }
             }
 
@@ -153,7 +146,7 @@
                         }
 
                         >p {
-                            height:65px;
+                            max-height:65px;
                             margin-bottom:6px;
                         }
 
@@ -230,9 +223,10 @@
                 > figure{
                     margin-bottom:6px;
                 }
-                > .content {
-                    > .author{
-                        bottom: -15px;
+                > .content{
+                    h2 {
+                        height: 60px;
+                        margin-bottom: 0;
                     }
                 }
             }
@@ -282,7 +276,7 @@
                     }
 
                     >p {
-                        height:65px;
+                        height:45px;
                         margin-bottom:6px;
                     }
 
@@ -357,9 +351,9 @@
                     margin-left: 100px;
                     height: 89px;
                     h2{
-                        font-size: rem(14);
+                        font-size: rem(16);
                         height: 60px;
-                        line-height: 1.28;
+                        line-height: 1.35;
                     }
                 }
             }

@@ -1,17 +1,25 @@
 {% set articleCount = 0 %}
 
+
+
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
-        {% if title != 'Automotive' %}<p><a href="{{ link }}">View All</a></p>{% endif %}
+        {# {% if title != 'Automotive' %}
+            <p><a href="{{ link }}">View All</a></p>
+        {% endif %} #}
         <div class="hk">
             <h2>{{ title }}</h2>
+
             <p></p>
         </div>
     </div>
 
 
     {% if title == 'Real Estate' %}
-        <div class="col-sm-9">
+
+        {{this.registerJsFile(networkData['templatePath'] ~ '/static/development/js/plugins/view-1.1.3.js')}}
+
+        <div id="real-estate-section" class="col-sm-9">
             <div class="u-margin-bottom-40">
 
                 <!-- # The Following is code from View Real Estate -->

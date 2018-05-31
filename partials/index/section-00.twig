@@ -1,0 +1,89 @@
+{% set articleCount = 0 %}
+
+<section class="breaking-news u-desktop-margin-bottom-40">
+    <div class="row">
+
+        <div class="col-sm-9 col-md-7 ">
+            <h2 class="breaking-news_subhead">Greater Shepparton</h2>
+            <h1 class="breaking-news_header breaking-news_header@md">Breaking News</h1>
+
+            <div class="u-mobile-margin-bottom-20">
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : articleCount + 1, 
+                    imageSize       : {width:740, height:377},
+                    site            : site,
+                    containerClass  : 'card-11 card-11-tablet card-11-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+            {% endif %}
+            </div>
+        </div>
+
+    
+
+
+        {% if articles[articleCount] %}
+            <div class="col-sm-9 col-md-2">
+                <div class="row u-tablet-margin-top-15">
+                    
+                    {% set offsets = ['', 'col-sm-offset-1 col-md-offset-0 u-desktop-margin-top-45'] %}
+
+                    {% for i in 0..1 if articles[articleCount] %}
+
+                        <div class="col-md-9 col-xs-9 col-sm-4 {{offsets[i]}}">
+
+                            {% if loop.index0 == 0 %}
+                                <hr class="divide15 visible-xs-block">                             
+                            {% endif %}
+
+
+
+
+
+                            {{this.render('../_single-article.twig', {
+                                article         : articles[articleCount],
+                                imageSize       : {width:95},
+                                position        : articleCount + 1, 
+                                site            : site,
+                                containerClass  : 'card-sm feature-side-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            
+                            <hr class="divide15 visible-xs-block">                             
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="row u-desktop-margin-top-20 u-tablet-margin-top-30">
+
+            {% for i in 0..2 if articles[articleCount] %}
+
+                <div class="col-sm-3 col-xs-9">
+                    {{this.render('../_single-article.twig', {
+                        article:        articles[articleCount], 
+                        imageSize:      {width:80, height:90},
+                        site:           site,
+                        containerClass: 'feature-side card-sm-tablet card-sm-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    
+                    {% if loop.index0 != 2 %}
+                        <hr class="divide15 visible-xs-block">                             
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+    </div>
+
+
+</section>
+

@@ -170,7 +170,9 @@ Acme.property_card =
 
 
 window.templates.ads_infinite = 
-    "<div id='infinite-variable-mobile-tablet-desktop' class='advert col-sm-9 mobad5' style='padding:0;'></div><hr class='divide18 visible-xs-block'>";
+    "<div class='advert-desktop advert-tablet col-sm-9 hidden-xs u-margin-top-30' data-adsize='banner' style='padding:0;'></div>\
+    <div class='col-xs-9 visible-xs-block' style='padding:0;width:300px;height:250px;'><div class='advert-mobile' data-adsize='mrec'></div></div>\
+    <hr class='divide18 col-xs-9 visible-xs-block'>";
 
 
 
@@ -212,7 +214,6 @@ window.templates.pulldown =
 
 window.templates.listingSavedTmpl =  '<p>Following approval it will be posted to the events page within 24 hours.</p><div><form><button class="btn _btn dialogButton">Okay</button></form></div>';
 
-                                        
 var socialCardTemplate =  
 '<div class="{{cardClass}}"> \
     <a  href="{{social.url}}"\
@@ -221,6 +222,7 @@ var socialCardTemplate =
         data-id="{{socialId}}"\
         data-position="{{position}}"\
         data-guid="{{social.guid}}"\
+        data-blog-guid="{{social.blog.guid}}"\
         data-social="1"\
         data-article-image="{{{social.media.path}}}"\
         data-article-text="{{social.content}}">\

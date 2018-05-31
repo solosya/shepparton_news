@@ -105,7 +105,7 @@
 
 
 .home-feature-thin {
-    @media screen and (min-width: $sm-break) {
+    @media screen and (min-width: $mmd-break) {
         @include card-feature-thin-base();
 
         height:530px;
@@ -166,7 +166,67 @@
     }
 }
 
+.home-feature-thin-tablet {
+    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+        @include card-feature-thin-base();
 
+        height:530px;
+        a.card {
+            article {
+
+                > .content {
+                    padding: 400px 20px 10px 30px;
+
+
+
+                }
+            }
+
+            &.social {
+                .content {
+                    padding-top:31px;
+                    .icon {
+                        margin-bottom:320px;
+                    }
+                    > p {
+                        font-size: rem(22);
+                        margin-top: 10px;
+                        margin-bottom:10px;
+                        height: 55px;
+                        line-height: 1.18;
+                    }
+                }
+
+                &.twitter, &.instagram{
+                    .content{
+                        padding-top: 31;
+                        .icon {
+                            margin-bottom:300px;
+                        }
+
+                        >p {
+                            height:110px;
+                            font-size:rem(22);
+                            line-height:1.18;
+                        }
+
+                    }
+                }
+
+                &.instagram{
+                    &.without__content {
+                        .content{
+                            .icon {
+                                margin-bottom:400px;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
 
 
 

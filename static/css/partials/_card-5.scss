@@ -116,7 +116,7 @@
 
                     > p.excerpt {
                         font-size: rem(15);
-                        height:17px;
+                        height:15px;
                         line-height: 1;
                         margin-top: 2px;
                     }
@@ -381,9 +381,14 @@
 
 
             &.without__image {
+                height: 230px;
                 .content {
+                    padding: 30px 20px 5px 20px;
                     h2 {
                         max-height:45px;
+                    }
+                    > .author {
+                        bottom: 45px;
                     }
                 }
             }  

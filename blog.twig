@@ -126,7 +126,9 @@
 
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% endfor %}
-
+                    <div class="row visible-xs-block">
+                        <hr class="divide">
+                    </div>
                 </div>
 
 
@@ -134,11 +136,15 @@
 
                 <div class="col-sm-9 col-md-3">
                 
-                    <div class="ad-square addSpaceMobile u-margin-bottom-30 u-mobile-no-margin-bottom">
-                        <div id='mrec-2' class='advert mobad1'></div>
+                    <div class="u-margin-bottom-30 u-mobile-no-margin-bottom hidden-sm">
+                        <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                     </div>
-
-                    <hr class="divide visible-xs-block">
+                    <div class="ad-container  visible-sm-block">
+                        <div class='advert-tablet' data-adsize="banner"></div>
+                    </div>
+                    <div class="row visible-xs-block">
+                        <hr class="divide">
+                    </div>
                     <hr class="divide15 visible-sm-block space-only">
 
                     <div class="row two-cols">
@@ -170,9 +176,18 @@
                                    imageSuppress: true, 
                                    containerClass: 'card-popular blog'
                                }) | raw}}
-                               <hr class="divide10">
+                                {% if i < 4 %}
+                                   <hr class="divide10">
+                                {% else %}
+                                    <hr class="divide10 hidden-xs">
+                                      
+                                {% endif %}
                            {% endfor %}
+                        
 
+                        </div>
+                        <div class="row visible-xs-block">
+                            <hr class="divide">
                         </div>
                     </div>
 
@@ -199,7 +214,11 @@
 
 
              <div class="mobad9 u-margin-top-30 u-mobile-no-margin-top u-margin-bottom-30 u-mobile-no-margin-bottom">
-                <div id='banner-3' class='advert mobad3'></div> 
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+                <div class="row visible-xs-block">
+                    <hr class="divide">
+                </div>
             </div>
 
 
@@ -229,7 +248,7 @@
 
         <section>
 
-            <div class="row">
+            <div class="row u-desktop-margin-top-40">
                 <div class="col-sm-9 col-md-6">
 
                     <div class="row">
@@ -278,10 +297,10 @@
 
 
 
-                <div class="col-sm-3 addSpaceMobile margin-top-30-desk visible-md-block visible-lg-block">
+                <div class="col-sm-3 addSpaceMobile visible-md-block visible-lg-block">
                 
                     <div class="ad-square" style="margin-bottom:30px;">
-                        <div id='mrec-18-d' class='advert'></div> 
+                        <div class='advert-desktop' data-adsize="mrec"></div> 
                     </div>
 
                 </div>
@@ -302,7 +321,7 @@
                         container       : "mainAjaxArticles",
                         buttonClass     : "infinite",
                         ads             : "yes",
-                        after           : '<hr class="divide18 visible-xs-block>'
+                        after           : '<hr class="divide18 visible-xs-block">'
                     }) | raw }}
                 {% endif %}
             </div>

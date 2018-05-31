@@ -110,6 +110,7 @@
 
 			@media screen and (max-width: $sm-break) {
 				margin-top:35px;
+				margin-bottom:30px;
 			}
 
 
@@ -259,9 +260,9 @@
 
 
 		.article-sidebar {
-			@media screen and (max-width: $sm-break-down) {
-				margin-top: 30px;
-			}
+			// @media screen and (max-width: $sm-break-down) {
+			// 	margin-top: 30px;
+			// }
 
 			h2.sidebar-header {
 				margin-top:40px;
@@ -272,6 +273,9 @@
 				margin-bottom:16px;
 		        &.dairy {
 	                color: color(red);
+		        }
+		        @media #{$mobile} {
+		        	margin-top:15px;
 		        }				
 			}
 		}
@@ -282,6 +286,7 @@
 		    margin-bottom: 78px;
 		    @media screen and (max-width: $sm-break-down) {
 		    	    margin-top: 0;
+		    	    margin-bottom:0;
 		    }
 		    
 

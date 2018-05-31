@@ -67,73 +67,52 @@
 
 
 
-div.space40 {
-    margin-top:40px;
 
-    @media screen and (max-width: $sm-break-down){
-        margin-top:20px;
+.google_ad {
+    &:after {
+        content: "Advertisement";
+        font-size: rem(10);
+        color: color(grey);
+        position: relative;
+        float: right;
+        height:0;
+        @media screen and (max-width: $sm-break-down){
+            display:none;
+        }   
     }
-}
-
-
-hr.divide {
-    margin:28px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-    @media screen and (max-width: $sm-break-down){
-        margin: 15px 0;
-    }
-}
-
-hr.divide24 {
-    margin:24px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-hr.divide18 {
-    margin:18px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-    padding: 0;
-    width: 100%;
-}
-hr.divide15 {
-    margin:15px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-hr.divide12 {
-    margin:12px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-hr.divide10 {
-    margin:10px 0;
-    border: 0;
-    border-top: 1px solid color(lightgrey);
-}
-
-.space-only {
-    opacity: 0;
-}
-
-@mixin adtext {
-    .google_ad {
+    &.tablet-teads,
+    &.desktop-teads,
+    &.tablet-interstitial,
+    &.desktop-interstitial, {
         &:after {
-            content: "Advertisement";
-            font-size: rem(10);
-            color: color(grey);
-            position: relative;
-            float: right;
-            @media screen and (max-width: $mmd-break){
-                display:none
-            }   
+            display:none;
         }
+    }
+    
+    &.tablet-banner{
+        height: 90px;
+        width: 728px;
+         margin-left: auto;
+        margin-right: auto;
+    }
+    &.desktop-banner{
+        height: 90px;
+        min-width: 728px;
+         margin-left: auto;
+        margin-right: auto;
+    }
+    &.mobile-mrec,
+    &.tablet-mrec,
+    &.desktop-mrec {
+        height: 250px;
+        width:  300px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
 .ad-square {
-    @include adtext;
+    // @include adtext;
 
     > .dairy {
         @media screen and (max-width: $sm-break){        
@@ -150,7 +129,7 @@ hr.divide10 {
 
 .ad-large-vert {
     height:600px;
-    @include adtext;
+    // @include adtext;
     &.bottom {
         position:absolute;
         bottom:15px;
@@ -159,81 +138,26 @@ hr.divide10 {
 
 .ad-container {
     text-align: center;
+    margin: 30px auto 30px auto;  
 
     @media screen and (min-width: $mmd-break) {
-        width: 970px;
-        margin: 0px auto 40px auto !important;        
+        width: 970px;       
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
         width: 728px;
-        margin: 0px auto 40px auto !important;
     }    
 
     @media screen and (max-width: $sm-break-down){
-        margin: 30px auto 30px auto;
+        margin: 0px auto;
     } 
     
-    @include adtext;
+    // @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
     }
 }
-@media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
-    .mobad1 {
-        margin-top: 30px;
-    }
-}
 
-@media screen and (max-width: $sm-break-down){
-    .mobad1 {
-        margin-top: -35px !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad2 {
-        margin-top: 0 !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad3 {
-        margin-top: -10px !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad4 {
-        margin-top: -65px !important;
-        margin-bottom: -15px !important;
-    }
-    .mobad5 {
-        margin-top: 5px !important;
-        margin-bottom: 15px !important;
-        padding-top: 0 !important;
-    }
-    .mobad6 {
-        margin-top: 0px !important;
-        margin-bottom: -15px !important;
-    }
-    .mobad7 {
-        margin-top: -5px !important;
-        margin-bottom: 15px !important;
-    }
-    .mobad8 {
-        margin-top: -50px!important;
-        margin-bottom: 15px!important;
-    }
-    .mobad9 {
-        margin-top: -15px!important;
-        margin-bottom: 15px!important;
-    }
-    .mobadregen {
-        margin-top: -58px!important;
-        margin-bottom: 15px!important;
-    }
-}
-@media screen and (min-width: $mmd-break) {
-    .margin-top-30-desk{
-        margin-top: 30px;
-    }
-    
-}
 
 #mainAjaxArticlescardClass, #mainAjaxArticles {
     .ad-container {  
@@ -250,7 +174,6 @@ hr.divide10 {
 }
 .loadmore__section {
     @media screen and (max-width: $sm-break-down) {
-        margin-top: -25px;
         margin-left: 15px;
         margin-right: 15px;
     }
@@ -279,7 +202,10 @@ hr.divide10 {
     border: 0;
     border-right: 1px solid color(lightgrey);       
     margin-left: 15px;
-
+    &:hover {
+        color: transparent;
+    }
+    
     &.facebook-icon {
         margin-left: 0px;
     }
@@ -301,14 +227,14 @@ hr.divide10 {
         margin-top: -69px;
         padding-left: 35px;
         margin-left: -15px;
-        @media screen and (max-width: $mmd-break-down) {
+        @media screen and (max-width: $sm-break-down) {
             margin-left: -35px;
             // width: 26%;
         }
     }
     
     a h2 {
-        font-size: rem(22);
+        font-size: rem(20);
         font-family:$font-family-sans-serif;
         font-weight: 600;
         color: #000;
@@ -506,6 +432,13 @@ figcaption{
         font-family: $font-family-serif;
         float: left;
 
+        @media screen and (max-width: $sm-break){
+            font-size: rem(11);
+            line-height: rem(15);
+            margin-bottom:15px;
+        }
+    
+
         &.credit{
             font-style: normal;
             float: right;
@@ -579,67 +512,6 @@ span.leadsentence{
 }
 
 
-
-@media (max-width: $sm-break-down){
-    .five-cols .col-md-1,
-    .five-cols .col-sm-1,
-    .five-cols .col-lg-1  {
-        width: 100%;
-        *width: 100%;
-    }
-}
-@media (min-width: $sm-break) {
-    .five-cols .col-md-1,
-    .five-cols .col-sm-1,
-    .five-cols .col-lg-1 {
-        width: 20%;
-        *width: 20%;
-    }
-}
-
-@media (min-width: $sm-break) {
-    .two-cols {
-        .col-md-1, .col-sm-1, .col-lg-1 {
-            width: 50%;
-        }
-    }
-}
-
-@media (min-width: $mmd-break) {
-    .two-cols .col-md-2,
-    .two-cols .col-sm-2,
-    .two-cols .col-lg-2  {
-        width: 100%;
-        *width: 100%;
-    }
-}
-
-@media (min-width: $mobile-break) and (max-width: $mmd-break-down) {
-    .sm-two-cols {
-        .col-md-1, .col-sm-1, .col-lg-1 {
-            width: 50%;
-        }
-    }
-}
-
-@media (min-width: $sm-break) {
-    .three-cols .col-md-1,
-    .three-cols .col-sm-1,
-    .three-cols .col-lg-1 {
-        width: 33.3333%;
-        *width: 33.3333%;
-    }
-}
-
-@media (min-width: $mmd-break) {
-    .three-cols .col-md-2,
-    .three-cols .col-sm-2,
-    .three-cols .col-lg-2  {
-        width: 100%;
-        *width: 100%;
-    }
-}
-
 .col-profile-left, .col-profile-right {
     position: relative;
     min-height: 1px;
@@ -659,9 +531,6 @@ span.leadsentence{
     }
 }
 
-.margin-top-40 {
-    margin-top: 40px;
-}
 
 
 #signin {
@@ -784,64 +653,5 @@ span.leadsentence{
     }
 }
 
-.gallery-title {
-    font-size: rem(41);
-    color: #FFF;
-    margin-bottom: 25px;
-    @media screen and (max-width: $sm-break-down) {
-        font-size: rem(30);
-        margin-bottom: 15px;
-    }
-}
-
-#rev-search {
-    background-color: unset !important;
-    .rev-search-inner{
-        .rev-search-title{
-            
-            margin: 0 0 0 7px !important;
-            float: left !important;
-            width: 100% !important;
-            text-align: left !important;
-            height: 20px !important;
-            position: relative !important;
-            span{
-                color: #000 !important;
-                content: "Your first stop before buying a home. View the whole picture." !important;
-                float: left!important;
-                width: 100%!important;
-                text-align: left!important;
-                height: 20px!important;
-                position: relative!important;
-                font-size: 15px!important;
-                font-weight: 600!important;
-            }
-              
-        }
-        form {
-            width:100% !important;
-            .rev-search-item-wrapper {
-                width: 100% !important;
-            }
-            .rev-search-item {
-                &.rev-search-submit {
-                    button {
-                        background-color: #f03746 !important;
-                        border: 1px solid #f03746 !important;
-                    }
-                }
-            }
-        }
-    }
-    .rev-search-logo {
-        float: left !important;
-        width: 15% !important;
-        height: unset !important;
-        text-align: center !important;
-        position: absolute !important;
-        right: 15px !important;
-        top: 7px !important;
-    }
-}
 
 

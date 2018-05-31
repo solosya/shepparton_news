@@ -2,8 +2,9 @@
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == true ? 'true' : 'false'  %}
 {% set template = (template is defined and template != '') ? template : 'main'  %}
-{% set swap     = swap is defined and swap == 'false' ? '' : 'swap'  %}
-{% set inline   = inline is defined and inline != '' ? inline : ''  %}
+{% set swap     =   swap is defined and swap == 'false' ? '' : 'swap'  %}
+{% set dev      =    dev is defined and dev == true     ? true : false  %}
+{% set inline   = inline is defined and inline != ''    ? inline : ''  %}
 
 {% set lightbox = ''  %}
 {% set articleImg = '' %}
@@ -54,8 +55,8 @@
     {% set params = {
         placeholder:     'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'',
         figureClass:     article.featuredMedia['type'] == 'video' ? 'video' : '',
-        articleImgSmall: _Media.getMediaUrl(article.featuredMedia,500, 500, {'crop': 'fill', 'gravity': 'faces'} ),
-        articleImgMedium:_Media.getMediaUrl(article.featuredMedia,768, 768, {'crop': 'fill', 'gravity': 'faces'} ),
+        articleImgSmall: _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
+        articleImgMedium:_Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
         articleImg:      _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
         publishDate:     publishDate,
         articleTitle:    articleTitle,
@@ -78,9 +79,13 @@
             data-article-image  = "{{params.articleImg}}" 
             data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}">
 
-
+            {% if dev %}
+                <div class="article_number">{{position}}</div>
+            {% endif %}
+            
             {# Article content including image #}
             <article class="{{lightbox}}">
+
                 {{ this.render('_article-'~template~'.twig', {
                     article: article,  
                     params:params, 
@@ -113,8 +118,7 @@
     {% set videoClass = (social.media['type'] == 'video') ? 'video' : '' %}
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
-    {% set socialSource = social.source %}
-
+    {% set socialSource = social.source %} 
 
     <div class="{{containerClass}}">
         <a  href                = "{{social.url}}"

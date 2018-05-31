@@ -1,0 +1,226 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+{% set homeBlog    = blogData['title'] | lower %}
+
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+{% if dev %}
+    {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
+{% endif %}
+
+{% set sectionOrder = [] %}
+
+
+
+
+
+
+
+
+{# *******************************************************
+                GLOBAL SITE SECTIONS
+              (each site can override)
+******************************************************* #}
+
+{% set pageSections =  {
+    'rural news': {
+        'template'  : 'partials/index/section-11.twig',
+        'title'     : 'Rural News',
+        'blogs' : ['rural news'],
+        'template_params' : {
+            'link' : networkData.defaultBlogUrl ~ '/@rural-news'
+        }
+    },
+    'dairy': {
+        'template'  : 'partials/index/section-27.twig',
+        'title'     : 'Dairy',
+        'blogs' : ['dairy']                                                                                  
+    },
+    "horticulture": {
+        'title'     : "Horticulture",
+        'template': 'partials/index/section-23.twig',
+        'blogs' : ['horticulture']
+    },
+    "cropping": {
+        'title'     : "Cropping",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['cropping']
+    },
+    "livestock": {
+        'title'     : "Livestock",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['livestock']
+    },
+    "viticulture": {
+        'title'     : "Viticulture",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['viticulture']
+    },
+    "water": {
+        'title'     : "Water",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['water']
+    },
+    "management": {
+        'title'     : "Management",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['rural management']
+    },
+    "from the experts": {
+        'title'     : "From The Experts",
+        'template': 'partials/index/section-23.twig',
+        'blogs' : ['from the experts']
+    },
+    "markets": {
+        'title'     : "Markets",
+        'template': 'partials/index/section-06.twig',
+        'blogs' : ['rural markets']
+    },
+    "machinery & products": {
+        'title'     : "Machinery & Products",
+        'template': 'partials/index/section-12.twig',
+        'blogs' : ['machinery & products']
+    },
+    "animal health": {
+        'title'     : "Animal Health",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['animal health']
+    }
+} 
+
+%}
+
+
+
+
+
+
+
+
+{# The following list of blogs are required for each site to load the feeds #}
+
+{# *******************************************************
+                        COMMON
+******************************************************* #}
+{% set blogFeeds = {
+        "rural news":         { "limit" : 5},
+        "dairy":                { "limit" : 5},
+        "horticulture":         { "limit" : 3},
+        "cropping":             { "limit" : 3},
+        "livestock":            { "limit" : 4},
+        "viticulture":          { "limit" : 4},
+        "water":                { "limit" : 3},
+        "rural management":     { "limit" : 4},
+        "from the experts":     { "limit" : 3},
+        "rural markets":        { "limit" : 3},
+        "machinery & products": { "limit" : 4},
+        "animal health":        { "limit" : 4}
+    }
+%}
+
+{# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
+{% set bannerSpots = [2,5,8] %}
+{%  set sectionOrder = ['rural news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
+
+
+
+{# *******************************************************
+                Fetch all needed feeds
+******************************************************* #}
+{% for key, value in blogFeeds %}
+    {% for blog in networkData.networkBlogs %}
+
+
+        {# FOR DEV  #}
+        {% if dev %}
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : { 'feed' : articlesArr, 'link' : '#' } }) %}
+        {% endif %}
+
+
+        {# FOR PRODUCTION #}
+        {% if not dev and blog.title | lower == key | lower %}
+
+            {% set feed = _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) %}
+
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : {
+                    'feed'      : feed,
+                    'link'      : blog.link
+                    }
+                }) %}
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+<main id="main" class="site-main" role="main" data-blog="{{ homeBlog }}">
+
+
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-9 header">
+                    <div class="hk hk__segment">
+                        <h2>{{this.title}}</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+    {# *******************************************************
+                        RENDER SECTIONS
+    ******************************************************* #}
+    {% for pagesection in sectionOrder %}
+        {% set params = {
+            'section'   : pageSections[pagesection],
+            'blogFeeds' : blogFeeds,
+            'site'      : site,
+            'dev'       : dev
+        } %}
+    
+        {{this.render('render.twig', params) | raw}} 
+
+        {% if loop.index in bannerSpots %}
+            <div class="ad-container hidden-xs">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+            </div> 
+            <div class="ad-square col-sm-9 visible-xs-block">
+                <div class="row"><hr class="divide"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+
+
+</main><!-- .site-main -->
+
+

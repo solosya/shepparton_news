@@ -49,7 +49,7 @@
     .show-weather {
        	position: absolute;
     	top: 10px;
-        left: 150px; 
+        left: 130px; 
 
     	&:hover {
     		cursor: pointer;
@@ -63,6 +63,11 @@
 .weather {
     @include weather-panel;
     height: 100%;
+    @media #{$desktop-up}{
+        width: 340px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .weather-date {
@@ -87,10 +92,13 @@
 
 	display: flex;
 	flex-direction: row;
-
+    position:relative;
     height: 34px;
 
     margin-bottom: 20px;
+    @media #{$mobile}{
+        margin-bottom:5px;
+    }
 }
 
 .weather-dropdown {
@@ -104,12 +112,18 @@
     height: 360px;
     padding-top: 10px;
     justify-content: space-between;
+    @media #{$desktop-up}{
+        width: 340px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 
     @media screen and (max-width: $sm-break-down) {
-        margin-left: -15px;
-        padding: 0 15px;
+        // margin-left: -15px;
+        // padding: 0 15px;
         width: 100%;
         height: 330px;
+        position:static;
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {

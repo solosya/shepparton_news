@@ -57,9 +57,7 @@
     <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-72px.png" sizes="72x72" id="apple-icon-md" />
     <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-144px.png" sizes="144x144" id="apple-icon-lg" />
 
-    {# Want to remove the below script when possible  #}
-    {# Currently only being used for ads i think  #}
-    <script type="text/javascript" src="{{networkData.templatePath}}/static/development/js/blogsettings.js?ver=28"></script>
+    
     <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{blogData.type | lower}}';</script>
 
     {% if site != 'dairy' and site != 'shepparton' and _AppHelper.getApplicationEnv() == 'PROD' %}
@@ -90,7 +88,8 @@
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
 
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=35225334" type="text/css" media="all">
+
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=e6ca06d7" type="text/css" media="all">
 
     {% else %}
 
@@ -194,7 +193,7 @@
     {# Don't show this add on blog pages.  Index is a blog so only allow there #}
     {% if (pageTypeClass != "blog" and layout != "layout-property") or url.path == '/'%}
     <div class="ad-container top-ad">
-        <div id='main-banner-desktop' class='advert'></div>
+        <div class='advert-desktop' data-adsize="banner-main"></div>
     </div>
     {% endif %}
 
@@ -228,7 +227,7 @@
     </div>
 
 
-    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
 
     {{this.registerJs("
         Acme.adInsert = new Acme.View.articleFeed();

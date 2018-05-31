@@ -148,45 +148,6 @@
 
         height:95px;
 
-        &.divideright {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: -13px;
-            }
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-            &.dairy {
-                &:after {
-                    right: 0;
-                }
-            }
-        }
-        &.divideright-main {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: 5px;
-            }
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-        }
 
 
 
@@ -202,7 +163,7 @@
                         margin-right: 20px;
                     }
                     >p.excerpt {
-                        height: 25px;
+                        height: 18px;
                         font-size: 13px;
                     }
                 }
@@ -226,43 +187,6 @@
         @include card-feature-side-base();
 
         height:95px;
-        &.divideright, &.divideright-tablet {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: -13px;
-            }
-
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-            &.dairy {
-                &:after {
-                    right: 0;
-                }
-            }
-        }
-
-        &.divideright-ofs {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: -85px;
-            }
-        }
-
 
         a.card {
             @include card-image-left(80px);
@@ -276,7 +200,7 @@
                         max-width: 238px;
                     }
                     p.excerpt {
-                        height: 25px;
+                        height: 18px;
                         font-size: 13px;
                     }
                 }
@@ -293,16 +217,18 @@
                         display: none;
                     }
                     .category {
-                        top: 5px;
-                        position: absolute;
+                        // top: 5px;
+                        // position: absolute;
                     }
                     .author {
-                        bottom: 15px;
+                        // bottom: 15px;
                     }
                 }
             }
         }
     }
 }
+
+
 
 

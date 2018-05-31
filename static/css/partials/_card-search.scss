@@ -72,24 +72,6 @@
         a.card {
             height:195px;
         }
-
-        &.divideright {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: 5px;
-            }
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-        }
     }
 }
 
@@ -97,24 +79,6 @@
 .search-tablet {
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         @include card-search-base();
-
-        &.divideright {
-            &:after {
-                content: '';
-                display: block;
-                height: 100%;
-                background: color(lightgrey);
-                width: 1px;
-                position: absolute;
-                top: 0;
-                right: 5px;
-            }
-            &:last-child {
-                &:after {
-                    display:none;
-                }
-            }
-        }
 
 
         a.card {

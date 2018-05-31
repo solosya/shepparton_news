@@ -2,20 +2,54 @@
 {{ set(this, 'title', article.title) }}
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
+{{this.registerJs("console.log(window);")}}
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
 
 
 
+
+
+{# The folling splits up the article content and places divs for Oovvuu videos in
+at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
+and 3rd video at the end if there's been at least 5 paragraphs since the last video #}
+{% if site != 'country' and site != 'dairy' %}
+    {% set videoDivs = [
+        "<div id='head-video'></div></p>", 
+        "<div id='fourth-par-video'></div></p>", 
+        "<div id='foot-video'></div></p>"
+    ] %}
+
+    {% set ArticleContent = article.content | split('<p>') %}
+    {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
+    {% for i in 0..ArticleContent | length %}
+
+        {% if i == 4 %}
+            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+        {% endif %}
+
+        {% if i == 9 %}
+            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[1]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+        {% endif %}
+
+    {% endfor %}
+    {% if lastVideo %}
+        {% set ArticleContent = ArticleContent | merge([videoDivs[2]]) %}
+    {% endif %}
+
+    {% set ArticleContent = ArticleContent | join('<p>') %}
+    {{this.registerJsFile("https://videos.oovvuu.com/mmgp/dev/ovu_rec.js")}}
+    
+{% endif %}
+{# end Oovvuu #}
+  
+
+
+
 {% set blogInfo = _Blog.getBlog() %}
 {% set networkData = _Network.getNetworkData() %}
-{% set site = networkData.title | lower | split(" ")[0]%}
-
-{% if site != 'country' %}
-    {{this.registerJs("Acme.articleController.insertOovvuu();")}}
-    {% set oovvuu = _Article.getOovvuuData(article) %} 
-{% endif %}
+{% set site = networkData.title | lower | split(" ")[0] %}
 
 
 
@@ -61,7 +95,7 @@
 <main id="main" class="container" role="main">
 
 
-    <article class="article-main">
+    <article id="article-content" class="article-main" data-id="{{article.id}}" data-status="{{article.status}}">
 
 
             <div class="page-content">
@@ -73,7 +107,7 @@
                             {% if imageToggle %}
                                 <div id="gallery-toggle" class="gallery-toggle">
                                     <ul class="gallery-toggle__list">
-                                        <li data-type="image" class="gallery-toggle__item {% if featured == 'image' %} gallery-toggle__item--selected {% endif %}">Image</li
+                                        <li data-type="image" class="gallery-toggle__item {% if featured != 'video' %} gallery-toggle__item--selected {% endif %}">Image</li
                                        ><li data-type="video" class="gallery-toggle__item {% if featured == 'video' %} gallery-toggle__item--selected {% endif %}">Video</li>
                                     </ul>
                                 </div>
@@ -89,7 +123,8 @@
                                     {% endif %}
                                     {{this.render('partials/gallery.twig', {
                                         media: images,
-                                        default: imageFeature
+                                        default: imageFeature,
+                                        galleryStyle: 'article'
                                     }) | raw}}
                                 {% endif %}
 
@@ -99,8 +134,8 @@
                                     {{this.render('partials/gallery.twig', {
                                         media: videos,
                                         type : 'video',
-                                        default: videoFeature
-
+                                        default: videoFeature,
+                                        galleryStyle: 'article'
                                     }) | raw}}
                                 {% endif %}
 
@@ -114,18 +149,16 @@
 
                         <div class="content-block-top">
                             
-                            {% if _User.isAdminUser() %}
-                                <br />
-                                <a href="{{article.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
-                            {% endif %}
 
-                            <p class="category">{{article.label}}</p
-                            ><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
+                            <a href="{{blogInfo.url}}"><p class="category" >{{article.label}}</p
+                            ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                             
-                            <h1>{{ quotes.smarten(article.title) }}</h1>
+                            <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>
                             
                             <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
-                            {% if not _User.isGuest() %}
+
+                            {% if _User.isAdminUser() %}
+                                <a href="#" id="oovvuu-curate" class="" style="margin-left:20px;padding-top:5px">Curate videos</a>
                                 <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
                             {% endif %}
 
@@ -168,7 +201,7 @@
                         <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
 
                         <div class="article_content" id="articleContent">
-                            {{ article.content | _resizeImages({'width': 600}) | raw }}
+                            {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
                         </div><!-- .content-->
 
                     </div>
@@ -180,11 +213,12 @@
                             <div class="row">
 
                                 <div class="col-sm-9">
-                                    <div class="ad-side-container" style="height:250px;position:relative;width:300px;margin: 0 auto;">
-                                        <div id='mrec-2' class='advert'></div>
+                                    <div class="ad-side-container hidden-sm u-mobile-margin-top-15" style="height:250px;position:relative;width:300px;margin: 0 auto;">
+                                        <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                                     </div>
+                                    <div class='advert-tablet visible-sm-block u-tablet-margin-top-30' data-adsize="banner"></div>
 
-                                    <h2 class="sidebar-header {{site}}">Latest articles</h2>
+                                    {% if recentArticles[0] %}<h2 class="sidebar-header {{site}}">Latest articles</h2>{% endif %}
                                 </div>
 
                                 {% for i in 0..3 if recentArticles[i] %}
@@ -241,7 +275,7 @@
 
             <div class="row related-articles">
                 <div class="col-md-9">
-                    <h1>RELATED ARTICLES</h1>
+                    <h1>MOST POPULAR</h1>
                 </div>
                 
                 <div>
@@ -264,4 +298,4 @@
 
     </article>
 </main><!--site-main-->
-<div id='teads-ad' class='advert'></div>
+<div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>

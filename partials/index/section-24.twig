@@ -1,0 +1,57 @@
+{% set articleCount = 0 %}
+
+<section class="row">
+    <div class="col-sm-9 section-header">
+        <p><a href="{{link}}">View All</a></p>
+        <div class="hk">
+            <h2>{{ title }}</h2>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="col-md-3 col-sm-3 col-xs-9">
+            {% if articles[articleCount] %}
+                {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    imageSize: {width:414, height:255},
+                    site: site,
+                    containerClass: 'card-sm-wide card-sm-tablet home-feature-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            {% endif %}
+
+            <hr class="divide visible-xs-block space-only">
+
+            <hr class="divide10 visible-sm-block space-only">
+
+        </div>
+
+         {%  for i in 0..2 if articles[articleCount] %}
+            {% set classSM = ['2','4','4'] %}
+            {% set classTAB = ['card-sm-tablet','feature-side-tablet','feature-side-tablet'] %}
+             <div class="col-md-2 col-sm-{{ classSM[i] }} col-xs-9">
+                {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    imageSize: {width:300},
+                    site: site,
+                    containerClass: 'card-sm ' ~ classTAB[i] ~ ' card-sm-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% if i == 2 %}
+                    <div class="row">
+                        <hr class="divide visible-xs-block">
+                    </div>
+                {% elseif i == 0 %}
+                    <hr class="divide visible-xs-block">
+                {% else %}
+                    <hr class="divide visible-xs-block visible-sm-block">
+                {% endif %}
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    
+</section>

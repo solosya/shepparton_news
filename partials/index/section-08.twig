@@ -1,6 +1,15 @@
 {% set articleCount = 0 %}
+{# {{this.registerJs("
+    Acme.articleController = Acme.ArticleController();
+    Acme.articleController.getOovvuuVideos();
+")}} #}
+
+
 
 <section>
+    {# <div id='home-video'></div>
+    {{this.registerJsFile("https://videos.oovvuu.com/mmgp/dev/ovu_masthead.js")}} #}
+
     <div class="row">
         <div class="col-sm-9 section-header">
             <p><a href="{{link}}">View All</a></p>
@@ -18,7 +27,7 @@
                 article         : articles[articleCount], 
                 imageSize       : {width:300},
                 site            : site,
-                containerClass  : 'col-sm-3 card-sm-wide card-sm-tablet card-sm-wide-mobile'
+                containerClass  : 'col-sm-3 card-sm-wide card-sm-tablet card-sm-mobile'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             

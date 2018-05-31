@@ -103,6 +103,8 @@
 			@media screen and (max-width: $sm-break) {
 				// font-size: rem(14);
 				line-height: 1.62;
+				margin-bottom:0;
+				font-size: rem(17.5);
 			}
 
 			&:first-child {
@@ -123,6 +125,7 @@
 			clear: both;
 			margin-bottom: 20px;
 			margin-top: 10px;
+			list-style-type: disc;
 		}
 
 	    blockquote {

@@ -50,13 +50,17 @@
             <div class="col-md-6 event-content event-content__body">
                 <div class="row">
                     <div class="content-block-top">
+                        {# {% if _User.isAdminUser() %}
+                            <br />
+                            <a href="{{event.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
+                        {% endif %} #}
 
-                        <p class="category">Events</p
-                        ><time datetime="{{publishDate}}">{{ event.publishDate }}</time>
+                        <a href="{{ networkData.defaultBlogUrl }}/@events"><p class="category" >Events</p
+                        ></a><time datetime="{{publishDate}}">{{ event.publishDate }}</time>
                         
                         <h1>{{ quotes.smarten(event.title) }}</h1>
                         
-                        <p class="author"><span>By</span> {{ event.createdBy['name'] }}</p>
+                        {# <p class="author"><span>By</span> {{ event.createdBy['name'] }}</p> #}
                     </div>
 
                     <div class="col-md-9">
@@ -130,11 +134,12 @@
 
                     <div class="col-sm-9 event-detail">
                         <div class="col-sm-2 contact {{site}}" src="{{networkData.templatePath}}/static/images/event/envelope.svg"></div><p class="contact col-sm-7">
-                        {% if event.createdBy.name != "" %}
-                            {{ event.createdBy.name }}
+                        
+                        {% if event.contactName != "" %}
+                            {{ event.contactName }}
                         {% endif %}
-                        {% if event.createdBy.email != "" %}
-                            {{ event.createdBy.email }}
+                        {% if event.contactEmail != "" %}
+                            {{ event.contactEmail }}
                         {% endif %}
                         </p>
                     </div>

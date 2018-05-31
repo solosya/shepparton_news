@@ -195,6 +195,12 @@ main.eventForm {
             margin-top:40px;
             background: color(red);
             color:white;
+            &:disabled,
+            &[disabled] {
+                background-color: #cccccc;
+                color: #666666;
+            }
+
         }
         
         .floatcontainer {

@@ -16,7 +16,12 @@
                     color: color(red);
                     font-size: rem(10.5);
                 }
-
+                .property__address {
+                    color:black;
+                    font-size:rem(17);
+                    margin-top: 5px;
+                    height: 25px;
+                }
                 h1 {
                     font-family: $font-family-serif;
                     color:color(darkblue);
@@ -78,12 +83,12 @@
     @media screen and (min-width: $mmd-break){
         @include card-realestate-base();
 
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
 
         a.card {
             @include card-image-top(300px, 195px);
             // height:173px;
-
+            height: 275px;
             > article {
 
                 > figure{
@@ -121,10 +126,10 @@
 
 
 .card-realestate-tablet{
-    @media #{$media-iPad} {
+    @media #{$tablet} {
         @include card-realestate-base();
 
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
 
         a.card {
             // @include card-image-left(200px, 143px);
@@ -167,10 +172,10 @@
 
 
 .card-realestate-mobile{
-    @media #{$media-mobile} {
+    @media #{$mobile} {
         @include card-realestate-base();
 
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
 
         a.card {
             @include card-image-top(100%);

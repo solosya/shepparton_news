@@ -11,7 +11,7 @@
         h2 {
         	font-family: $font-family-sans-serif !important;
             flex-grow: 0;
-            font-size: rem(36) !important;
+            font-size: rem(30) !important;
             font-weight:300 !important;
             margin-bottom:25px !important;
             margin-top:0px !important;
@@ -148,7 +148,11 @@
 				text-transform:uppercase;
 				margin-right:8px;
 				margin-bottom: 0px;
-				line-height: 1.18;				
+				line-height: 1.18;
+				@media screen and (max-width: $sm-break) {
+					font-size:rem(11);
+				}
+	
 			}
 			
 			time {
@@ -185,7 +189,7 @@
 				width: 90%;
 				
 				@media screen and (max-width: $sm-break) {
-					margin-top: 40px;
+					margin-top: 10px;
 
 				}
 				@media screen and (max-width: $sm-break) {
@@ -226,7 +230,9 @@
 				margin-bottom: 0px;
 
 				@media screen and (max-width: $mobile-break) {
-					font-size: rem(14);
+					font-size: rem(22);
+					margin-top: 15px;
+
 				}
 			}
 
@@ -251,7 +257,11 @@
 				margin-bottom: 0px;		
 			}
 
-
+			.event-details {
+				ul>li{
+					list-style-type: disc;
+				}
+			}
 		}
 		.event-sidebar {
 			margin: 65px 0 100px 0;

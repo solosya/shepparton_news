@@ -18,14 +18,15 @@
 
 <div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1" data-default="{{default}}">
     {% for image in media %}
-        {% set articleImg = _Media.getMediaUrl(image,1094, 515, {'crop': 'fill', 'gravity': 'faces'} ) %}
+
+        {% set articleImg = _Media.getMediaUrl(image, 0, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
 
         <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
                 
             {% if image.type == 'image' or image.type == 'doc'%} 
-
-                <img src="{{articleImg}}" class="article-gallery__img {{galleryStyle}}-featured-image__img">
-
+                <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">
+                    <img src="{{articleImg}}" class="article-gallery__img">
+                </div>
             {% endif %}                
             
             
@@ -44,10 +45,11 @@
                 {% else %}
 
                     {% if image.source == 'youtube' %}
-                        {% set mediaUrl = "//www.youtube.com/embed/" ~ image.videoId  %}
+                        {% set mediaUrl = "//www.youtube.com/embed/" ~ image.videoId ~ '?enablejsapi=1&version=3&playerapiid=ytplayer' %}
                     
                     {% elseif image.source == 'vimeo' %}
                         {% set mediaUrl = "//player.vimeo.com/video/" ~ image.videoId  %}
+                        {{this.registerJsFile("https://player.vimeo.com/api/player.js")}}
                     
                     {% elseif image.source == 'brightcove' %}
                         {% set videoId      = image.videoId | split("::")[0]  %}
@@ -58,6 +60,8 @@
 
 
                     <iframe src="{{mediaUrl}}" 
+                        class="external-article-video"
+                        data-source={{image.source}}
                         allowfullscreen
                         webkitallowfullscreen
                         mozallowfullscreen
@@ -70,12 +74,13 @@
 
            
  
-            <figcaption  style="float:unset;">
-                <p class="{{galleryStyle}}-featured-image__caption">{{image.caption}}</p>
+            <figcaption style="float:unset;">
+                <p class="{{galleryStyle}}-featured-image__caption">{{image.caption | preg_replace('/(?<=\.) +tags:.+/', '') | raw }}</p>
                 <p class="{{galleryStyle}}-featured-image__caption-count">{{loop.index}} of {{loop.revindex + loop.index0}}</p>
             </figcaption>
-
-
         </figure>
+
+
+
     {% endfor %}
 </div>

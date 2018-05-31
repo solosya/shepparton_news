@@ -13,17 +13,11 @@
     height:0px;
     -webkit-tap-highlight-color: transparent;
 
-    // @media #{$media-mobile} {
-    //     top: 40%;
-    // }
-}
-
-.owl-carousel__base .owl-stage-outer .owl-stage .owl-item figure figcaption p {
-    @media screen and (max-width: $sm-break-down) {
-        font-size:rem(12);
-        line-height: rem(14);
+    @media #{$mobile} {
+        margin-top:-50px;
     }
 }
+
 
 .owl-shep-theme .owl-nav .owl-next {
     background-image: url('../icons/gallery-arrow-right.svg');
@@ -44,7 +38,7 @@
     white-space:nowrap;
     .owl-thumb-item {
         &.active {
-            border:4px solid rgba(255,255,255,.5);
+            border:4px solid #B9B9B9;
         }
     }
 }

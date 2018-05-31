@@ -1,18 +1,28 @@
 {% import "quotes.twig" as quotes %}
-    
+
+{% set label = article.label %}
+
+{% set splitLabel = label | split(" ") %}
+
+{# Remove "AAP" from the label unless "AAP" is the only word #}
+{% if splitLabel | length > 1 and splitLabel[0] | lower == 'aap' %}
+    {% set label = splitLabel | slice(1, length) | join(" ") %}
+{% endif %}
+
+
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == 'false' %}
     <figure class="{{params.figureClass}}">
         <picture>
             <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.articleImgMedium}}">
             <source media="(max-width: 500px)" srcset="{{params.articleImgSmall}}">
-            <img class="img-responsive" src="{{params.articleImg}}" data-original="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
+            <img class="img-responsive lazyload" src="{{params.articleImg}}" data-original="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
         </picture>
     </figure>
 {% endif %}
 
 
 <div class="content">
-    <div class="category">{{article.label}}</div>
+    <div class="category">{{label}}</div>
     
     <h2 class="{{params.figureClass}}">{{ params.articleTitle }}</h2>
     

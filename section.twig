@@ -7,7 +7,7 @@
 
 
 
-{% set limit = 17 %}
+{% set limit = 18 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -29,6 +29,15 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
 
+{# Remove "AAP" from the section title unless "AAP" is the only word #}
+{% set title = this.title %}
+{% set splitTitle = title | split(" ") %}
+{% if splitTitle | length > 1 and splitTitle[0] | lower == 'aap' %}
+    {% set title = splitTitle | slice(1, length) | join(" ") %}
+{% endif %}
+
+
+
 <main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     
     <div class="container">
@@ -37,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-9 header">
                     <div class="hk">
-                        <h2>{{this.title}}</h2>
+                        <h2>{{title}}</h2>
                         <p></p>
                     </div>
                 </div>
@@ -51,7 +60,7 @@
                            position: articleCount + 1,
                            imageSize: {width:640, height:400},
                            site: site,
-                           containerClass: 'home-feature-sm home-feature-mobile'
+                           containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
                        }) | raw}}
                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                    {% endif %}
@@ -67,18 +76,18 @@
                     <div class="row">
                 
                         <div class="ad-square u-margin-bottom-15 hidden-xs hidden-sm" style="position:relative;">
-                            <div id='mrec-12-d' class='advert'></div>
+                            <div class='advert-desktop' data-adsize="mrec"></div>
                         </div>                      
 
                      {% if articles[articleCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9">
-                                <hr class="divide12 visible-md-block visible-lg-block">                            
+                                <hr class="divide12 visible-md-block visible-lg-block space-only">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
                                      site: site,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright-tablet'
+                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
                                  }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block">
@@ -88,13 +97,13 @@
                     <!-- extra story for tablet, mobile -->
 
                      {% if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9 visible-sm-block visible-xs-block">
+                            <div class="col-sm-1 visible-sm-block">
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
                                      imageSize: {width:160, height:190},
                                      position: articleCount + 1,
                                      site: site,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile divideright'
+                                     containerClass: 'feature-side-tablet'
                                  }) | raw}}
                             </div>
                      {% endif %}
@@ -103,29 +112,42 @@
                 </div>
             </div>
 
-            <div class="row row-space sm-two-cols">
+            <div class="row row-space desk-four-cols">
 
-                {% set divider = ['visible-lg-block visible-md-block divideright', 'divideright', ''] %}
-                {% for i in 0..2 if articles[articleCount] %}
-                    <div class="col-sm-1 col-md-3 col-xs-9">
+                {% for i in 0..3 if articles[articleCount] %}
+                    {% set visibleClass = [' hidden-sm','','',''] %}
+                    <div class="col-sm-3 col-md-1 col-xs-9">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:160, height:190},
                             position: articleCount + 1,
                             site: site,
-                            containerClass: 'feature-side feature-side-tablet card-sm-mobile ' ~ divider[i]
+                            containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ visibleClass[i]
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        <hr class="divide visible-xs-block">
+                        {% if i < 3 %}<hr class="divide visible-xs-block">{% endif %}
                     </div>
                 {% endfor %}
 
             </div>
         </section>
 
-        <div class="ad-container mobad8">
-            <div id='banner-3' class='advert'></div>
+        <div class="ad-container hidden-xs">
+            <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+            
         </div>
+        <div class="row visible-xs-block">
+                <div class="ad-square col-xs-9">
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                    <div class='advert-mobile' data-adsize="mrec"></div>
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                </div>
+                
+         </div>
 
 
         <section class="">
@@ -147,24 +169,30 @@
         </section>
     </div>
 
-    <div class="container" style="margin-top:-25px;">
+
+
+
+
+    <div class="container u-desktop-margin-top-40 u-tablet-margin-top-20">
         <section>
             <div class="row">
-                <div class="col-md-6 col-sm-5">
+                <div class="col-md-6 col-sm-9">
                     <div class="row">
                         {% for i in 0..8 if articles[articleCount] %}
 
-                            <div class="col-md-3 col-sm-9">
+                            <div class="col-md-3 col-sm-3">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
                                     position: articleCount + 1,
                                     site: site,                               
-                                    containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile ' ~cardspace[i]
+                                    containerClass: 'card-sm card-sm-tablet card-sm-wide-mobile '
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">
-                                <hr class="divide18 visible-md-block visible-lg-block space-only">
-                                <hr class="divide18 visible-sm-block">
+                                {% if i < 6 %}
+                                    <hr class="divide18 visible-md-block visible-lg-block space-only">
+                                    <hr class="divide10 visible-sm-block space-only">
+                                {% endif %}
 
                             </div>
 
@@ -173,30 +201,50 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-4 split trending {{ site }}" style="">
-                   <h2>Trending stories</h2>
-
-                    {% for i in 0..3 if popularArticles[popCount] %}
-                        {{this.render('partials/_single-article.twig', {
-                            article: popularArticles[popCount], 
-                            imageSize: {width:190, height:160},
-                            site: site,
-                            containerClass: 'feature-side feature-side-tablet card-sm-mobile '
-                        }) | raw}}
-
-                        {% set popCount = (dev) ? popCount : popCount + 1 %}
-
-                        <hr class="divide18">
-
-                    {% endfor %}
-
-
+                <div class="col-sm-9 visible-sm-block">
+                    <div class="ad-container">
+                        <div class='advert-tablet' data-adsize="banner"></div>
+                        <div class='advert-mobile' data-adsize="mrec"></div>
+                    </div>
                 </div>
 
-                <div class="col-md-3 hidden-xs">
+                <div class="col-md-3 visible-md-block visible-lg-block">
                     <div class="ad-square clearfixed">
-                        <div id='mrec-16-td' class='advert'></div>
+                        <div class='advert-desktop' data-adsize="mrec"></div>
                     </div>
+                </div>
+
+                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} u-desktop-margin-top-30">
+                    <div class="row trending {{ site }} ">
+                       <h2 class="col-sm-9">Trending stories</h2>
+
+                        {% for i in 0..3 if popularArticles[popCount] %}
+                            <div class="col-sm-1 col-md-9 col-xs-9">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: popularArticles[popCount], 
+                                    imageSize: {width:190, height:160},
+                                    site: site,
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile '
+                                }) | raw}}
+
+                                {% set popCount = (dev) ? popCount : popCount + 1 %}
+                                {% if i < 2 %}
+                                    <hr class="divide18 hidden-xs">
+                                    <hr class="divide visible-xs-block">
+                                {% elseif i == 2 %}
+                                    <hr class="divide18 visible-lg-block visible-md-block">
+                                    <hr class="divide visible-xs-block">
+                                {% elseif i > 2 %}
+                                    <hr class="divide18 visible-lg-block visible-md-block">
+                                    <div class="row visible-xs-block">
+                                        <hr class="divide">
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
                 </div>
             </div>
         </section>
@@ -208,11 +256,11 @@
                         limit           : 12,
                         name            : "section-load",
                         non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40",
+                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
                         container       : "mainAjaxArticlescardClass",
                         buttonClass     : "infinite",
                         ads             : "yes",
-                        after           : '<hr class="divide18 visible-xs-block">'
+                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
                     }) | raw }}
                 {% endif %}
                </div>

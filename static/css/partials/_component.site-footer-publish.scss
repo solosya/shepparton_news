@@ -1,6 +1,9 @@
 .publish {
     // padding-right: 0px;
     margin-top:40px;
+    @media #{$mobile}{
+        margin-left: 0;
+    }
 }
 
 .publish__p {

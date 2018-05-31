@@ -24,6 +24,7 @@
 @import "elements.all";
 
 //components
+@import "component.section-header";
 @import "component.contact-us";
 @import "component.blog-symbol";
 @import "component.blog-social-icons";
@@ -33,6 +34,9 @@
 @import "component.site-footer-publish";
 @import "component.site-footer-social-icons";
 @import "component.gallery-toggle";
+@import "component.breaking-news";
+@import "component.editors-picks";
+@import "component.view-real-estate";
 
 
 // article page
@@ -102,6 +106,7 @@
 
 @import "card-9";
 @import "card-10";
+@import "card-11";
 
 @import "card-event";
 @import "card-event-list";

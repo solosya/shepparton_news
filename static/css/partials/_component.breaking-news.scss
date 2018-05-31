@@ -1,0 +1,27 @@
+.breaking-news {
+    margin-top:17px;
+    margin-bottom:10px;
+}
+.breaking-news_subhead{
+    font-family: $font-family-serif;
+    font-size: rem(14);
+    font-style: italic;
+    line-height: 1.07;
+    color: color(darkgrey);
+  
+}
+.breaking-news_header{
+    color: color(red);
+    margin:10px 0;
+    font-family: $base-font-family;
+    font-size: rem(20);
+    font-weight: bold;
+    line-height: 0.75;
+    text-transform: uppercase;
+}
+
+.breaking-news_header\@md {
+    @media #{$up-to-desktop} {
+        font-size: rem(16);
+    }
+}
