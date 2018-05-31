@@ -51,6 +51,9 @@
         }) | raw}}
         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
         {% if i == 1 %}
+            <div class="row xisible-xs-block">
+                <hr class="divide">
+            </div>
         {% else %}
             <hr class="divide">
         {% endif %}
