@@ -74,7 +74,7 @@
            
  
             <figcaption style="float:unset;">
-                <p class="{{galleryStyle}}-featured-image__caption">{{image.caption}}</p>
+                <p class="{{galleryStyle}}-featured-image__caption">{{image.caption | preg_replace('/(?<=\.) +tags:.+/', '') | raw }}</p>
                 <p class="{{galleryStyle}}-featured-image__caption-count">{{loop.index}} of {{loop.revindex + loop.index0}}</p>
             </figcaption>
         </figure>
