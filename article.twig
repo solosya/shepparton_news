@@ -14,7 +14,7 @@
 {# The folling splits up the article content and places divs for Oovvuu videos in
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
 and 3rd video at the end if there's been at least 5 paragraphs since the last video #}
-{% if site != 'country' %}
+{% if site != 'country' and site != 'dairy' %}
     {% set videoDivs = [
         "<div id='head-video'></div></p>", 
         "<div id='fourth-par-video'></div></p>", 
