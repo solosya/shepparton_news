@@ -310,16 +310,12 @@
 {# The following list of blogs are required for each site to load the feeds #}
 
 
-{% set socialExceptions = ['shepparton','shepp','riverine','dairy','country'] %}
 {% set blogFeeds =  {} %}
-{% if site not in socialExceptions %}
-
-
 
 {# *******************************************************
                 MASTHEADS & REGIONAL SITES
 ******************************************************* #}
-{% elseif site != 'dairy' and site != 'country' %}
+{% if site != 'dairy' and site != 'country' %}
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):             { "limit" : 1},
