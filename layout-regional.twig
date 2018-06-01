@@ -218,14 +218,30 @@
 %}
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
+{% set theSections = {
+    "shepparton" : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "shepp"      : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "riverine"   : ['shepparton', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "deniliquin" : ['shepp', 'echuca_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "southern"   : ['shepp', 'echuca_1', 'deniliquin_1', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "kyabram"    : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'], 
+    "benalla"    : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "cobram"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "seymour"    : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "rochester"  : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "heathcote"  : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'tatura', 'yarrawonga', 'corowa'],
+    "tatura"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'yarrawonga', 'corowa'],
+    "yarrawonga" : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'corowa'],
+    "corowa"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga'],
+    
+    } 
+%}
+
 
     {% set bannerSpots = [2,5,8] %}
-    {% if site == ('shepparton' or 'shepp') %} 
-        {%  set sectionOrder = ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'] %}
-    {% else %}
-    {%  set sectionOrder = ['shepp','echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'] %}
-    {% endif %}
-
+    
+        {%  set sectionOrder = theSections[site] %}
+    
 
 
 {# *******************************************************
