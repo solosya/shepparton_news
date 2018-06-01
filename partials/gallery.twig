@@ -52,9 +52,13 @@
                         {{this.registerJsFile("https://player.vimeo.com/api/player.js")}}
                     
                     {% elseif image.source == 'brightcove' %}
+
                         {% set videoId      = image.videoId | split("::")[0]  %}
                         {% set accountID    = image.videoId | split("::")[1]  %}
                         {% set playerID     = image.videoId | split("::")[2]  %}
+                        {% if playerID == '' %}
+                            {% set playerID = 'default' %}
+                        {% endif %}
                         {% set mediaUrl = "//players.brightcove.net/" ~ accountID ~ "/" ~ playerID ~ "_default/index.html?videoId=" ~ videoId ~ "&playsinline"  %}
                     {% endif %}
 
