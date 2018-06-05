@@ -376,9 +376,9 @@
     ******************************************************* #}
    
 
-    {% for value in regionalSelect[site]['regional'] %}
+    {% for key in regionalSelect[site]['regional'] %}
         {% set blogFeeds = blogFeeds | merge({ 
-                value : {"limit" : 1 }
+                (key) : {"limit" : 1 }
             })
         %}
     {% endfor %}
