@@ -34995,8 +34995,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             rubicontag.addFPV('BLOGPREFIX', section);
             rubicontag.addFPV('page-type', page);
             for (var i=0;i<adslots.length;i++) {
-                if (sizes[i] == ('desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
-                if (sizes[i] == ('desktop-banner-main' || 'tablet-banner-main' || 'mobile-banner-main')) { 
+                if (sizes[i] == 'desktop-teads' || sizes[i] == 'tablet-teads' || sizes[i] == 'mobile-teads') {continue};
+                if (sizes[i] == 'desktop-banner-main' || sizes[i] == 'tablet-banner-main' || sizes[i] == 'mobile-banner-main') { 
                     var rubPos = 'atf';
                 } else {
                     var rubPos = 'btf';
@@ -35007,6 +35007,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                     console.log(sizes[i]);
                     continue;
                 }
+
                 rubicontag.defineSlot('/'+dfpacct+'/'+network, adSpecs[0], 'div-gpt-'+adslots[i]).setPosition(rubPos);
             }
             rubicontag.run(gptrun);
@@ -35031,19 +35032,20 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         var gptadslots = [];
         googletag.cmd.push(function() {
             for (var i=0;i<adslots.length;i++) {
-                if (sizes[i] == ('desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
+                if (sizes[i] == 'desktop-teads' || sizes[i] == 'tablet-teads' || sizes[i] == 'mobile-teads') {continue};
                 var theslot = adSizes[sizes[i]];
                 if ((theslot || theslot[0] || theslot[1] || theslot[2]) == undefined) {
                     console.log('undefined gpt ad space:');
                     console.log(adslots[i]);
                     continue;
                 }
-                if (sizes[i] == ('desktop-banner-main' || 'tablet-banner-main' || 'mobile-banner-main')) { 
+                if (sizes[i] == 'desktop-banner-main' || sizes[i] == 'tablet-banner-main' || sizes[i] == 'mobile-banner-main') { 
                     var thePOS = '1';
                 } else {
                     var thePOS = POStarget.toString();
                     POStarget++;
                 }
+
                 gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[0], 'div-gpt-'+adslots[i]).setTargeting(theslot[2], [thePOS]).defineSizeMapping(theslot[1]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
                 rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
             }
