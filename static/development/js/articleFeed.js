@@ -174,7 +174,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                 newID = 'ad-'+mediaSize+'-interstitial';
                 thisSlot = pageAdSlots[i];
                 thisSlot.id = newID;
-                console.log(thisSlot,newID) 
             };
             adSlotSizes[i] = mediaSize+'-'+slotSize;
             adSlotIds[i] = newID;  
@@ -225,7 +224,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             rubicontag.addFPV('BLOGPREFIX', section);
             rubicontag.addFPV('page-type', page);
             for (var i=0;i<adslots.length;i++) {
-                if (sizes[i] == ('desktop-interstitial' || 'desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
+                if (sizes[i] == ('desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
                 if (sizes[i] == ('desktop-banner-main' || 'tablet-banner-main' || 'mobile-banner-main')) { 
                     var rubPos = 'atf';
                 } else {
@@ -261,7 +260,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         var gptadslots = [];
         googletag.cmd.push(function() {
             for (var i=0;i<adslots.length;i++) {
-                if (sizes[i] == ('desktop-interstitial' || 'desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
+                if (sizes[i] == ('desktop-teads' || 'tablet-teads' || 'mobile-teads')) {continue};
                 var theslot = adSizes[sizes[i]];
                 if ((theslot || theslot[0] || theslot[1] || theslot[2]) == undefined) {
                     console.log('undefined gpt ad space:');
