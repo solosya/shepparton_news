@@ -34941,6 +34941,12 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             
             thisSlot = $('#'+thisSlot.id);
             var slotSize = thisSlot.data('adsize');
+            if (slotSize == 'interstitial') { 
+                newID = 'ad-'+mediaSize+'-interstitial';
+                thisSlot = pageAdSlots[i];
+                thisSlot.id = newID;
+                console.log(thisSlot,newID) 
+            };
             adSlotSizes[i] = mediaSize+'-'+slotSize;
             adSlotIds[i] = newID;  
         }
