@@ -7,7 +7,9 @@
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
 
-
+{% set blogInfo = _Blog.getBlog() %}
+{% set networkData = _Network.getNetworkData() %}
+{% set site = networkData.title | lower | split(" ")[0] %}
 
 
 
