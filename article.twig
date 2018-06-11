@@ -7,11 +7,6 @@
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
 
-{% set blogInfo = _Blog.getBlog() %}
-{% set networkData = _Network.getNetworkData() %}
-{% set site = networkData.title | lower | split(" ")[0] %}
-
-
 
 {# The folling splits up the article content and places divs for Oovvuu videos in
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
