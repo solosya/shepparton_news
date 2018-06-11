@@ -6,6 +6,8 @@
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
+{% set blogInfo = _Blog.getBlog() %}
+{% set networkData = _Network.getNetworkData() %}
 {% set site = networkData.title | lower | split(" ")[0] %}
 
 
@@ -48,8 +50,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
-{% set blogInfo = _Blog.getBlog() %}
-{% set networkData = _Network.getNetworkData() %}
+
 
 
 
