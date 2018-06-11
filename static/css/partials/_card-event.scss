@@ -63,6 +63,13 @@
 
             }
         }
+        &.without__image{
+            >.article{
+                >.content{
+                    margin-left: 0;
+                }
+            }
+        }
     }
     .event-sharing-panel {
         display: none;
