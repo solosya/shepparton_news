@@ -22,29 +22,6 @@
 
 {% set sectionOrder = [] %}
 
-{% set siteUrls =  {
-    'dairy' : 'dairynewsaustralia',
-    'shepparton' : 'sheppnews',
-    'shepp' : 'sheppnews',
-    'country' : 'countrynews',
-    'riverine' : 'riverineherald',
-    'benalla' : 'benallaensign',
-    'campaspe' : 'campaspenews',
-    'cobram' : 'cobramcourier',
-    'corowa' : 'corowafreepress',
-    'deniliquin' : 'denipt',
-    'kyabram' : 'kyfreepress',
-    'mcivor' : 'mcivortimes',
-    'seymour' : 'seymourtelegraph',
-    'tatura' : 'taturaguardian',
-    'yarrawonga' : 'yarrawongachronicle',
-    'riverina' : 'southernriverinanews'
-} %}
-
-{% set siteUrl = siteUrls[site] %}
-
-
-
 {# *******************************************************
                 GLOBAL SITE SECTIONS
               (each site can override)
@@ -203,10 +180,7 @@
     "videos": {
         'title'     : "Videos",
         'background': true,
-        'template'  : 'partials/index/section-video.twig',
-        'template_params' : {
-            'link' : ('https://video.'~siteUrl~'.com.au/')
-        }
+        'template'  : 'partials/index/section-video.twig'        
     },
     "galleries": {
         'title'     : "Galleries",
