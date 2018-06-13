@@ -61,7 +61,7 @@ body.channel, body.section, body.page {
             margin: 40px auto;
     }
     .loadmore__section{
-        @include colourselect('>row>.clearfix>div>a.card>article>.content>.category') 
+        @include colourselect('>.row>.clearfix>div>a.card>article>.content>.category') 
     }
 
 }
