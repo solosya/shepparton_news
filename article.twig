@@ -2,7 +2,6 @@
 {{ set(this, 'title', article.title) }}
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
-{{this.registerJs("console.log(window);")}}
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {{this.registerJs("Acme.articleController.InsertInterstitial();")}}
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
@@ -12,6 +11,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set site = networkData.title | lower | split(" ")[0] %}
 
+{% set ArticleContent = article.content %}
 
 {# The folling splits up the article content and places divs for Oovvuu videos in
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
@@ -43,8 +43,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set ArticleContent = ArticleContent | join('<p>') %}
     {{this.registerJsFile("https://videos.oovvuu.com/mmgp/dev/ovu_rec.js")}}
 
-{% else %}
-    {% set ArticleContent = article.content %}
 {% endif %}
 {# end Oovvuu #}
   
