@@ -22,8 +22,6 @@
 
 {% set sectionOrder = [] %}
 
-
-
 {# *******************************************************
                 GLOBAL SITE SECTIONS
               (each site can override)
@@ -182,7 +180,7 @@
     "videos": {
         'title'     : "Videos",
         'background': true,
-        'template'  : 'partials/index/section-video.twig'
+        'template'  : 'partials/index/section-video.twig'        
     },
     "galleries": {
         'title'     : "Galleries",
@@ -342,6 +340,8 @@
                 MASTHEADS & REGIONAL SITES
 ******************************************************* #}
 {% if site != 'dairy' and site != 'country' %}
+
+    
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):             { "limit" : 1},
