@@ -50,7 +50,7 @@
                                                 href="{{parentItem.link | raw}}"
                                         {% endif %} 
                                         
-                                        class="{{activeClass}} {{externalClass}}" 
+                                        class="{{activeClass}} {{externalClass}} {{site}}" 
                                         
                                         {% if parentItem.target != "" %} 
                                             target="{{parentItem.target}}"
@@ -74,7 +74,7 @@
                                             {% for childItem in parentItem.children %}
                                                 {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
                                                 <li>
-                                                    <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                    <a class="{{externalClass}} {{site}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
                                                      {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                                                     </a>
                                                 </li>
