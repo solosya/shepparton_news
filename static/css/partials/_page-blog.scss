@@ -28,21 +28,10 @@ body.blog {
                 }
             }
             p.blogowner {
-                color:color(red);
                 font-size: rem(14);
                 padding-bottom: 15px;
                 padding-top: 5px;
-
-                &.shepparton, &.shepp {
-                   color:color(red);
-                }
-
-                &.country {
-                    color:color(darkcountry);
-                }
-                &.dairy {
-                    color:color(dairy);
-                }                
+                @include colourselect('');              
             }
 
             // .follow {

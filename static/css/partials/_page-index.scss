@@ -131,7 +131,7 @@
         text-align: center;
         padding-bottom: 12px;
         line-height: 1;
-        color: color(red);
+        @include colourselect('');
         &:after {
             display: inline-block;
             content: '';
@@ -150,17 +150,13 @@
         >h2 {
             font-weight:600;
             font-size: rem(22);
-            color: color(red);
             margin-bottom:13px;
             line-height:1;
             padding-bottom: 10px;
+            @include colourselect('');
         }
 
-        &.dairy {
-            > h2 {
-                color: color(red);
-            }
-        }
+        @include colourselect('');
     }
 
     .advert-padding {
@@ -181,9 +177,9 @@
     .current-issue-card {
         display: flex;
         margin: 0px;
-        background: color(red);
         height: 60px;
-        padding: 12px 0px;   
+        padding: 12px 0px;  
+        @include colourselect(''); 
 
         > a.download-current {
             color: white;
@@ -227,12 +223,11 @@
         margin-bottom: 0px;
 
         > h2 {
-            color: color(red);
             font-weight: 600;
             font-size: rem(15);
             letter-spacing: 0.9px;
             text-transform: uppercase;
-
+            @include colourselect('');
             &::after {
                 display: block;
                 content: 'Subscribe to our mailing list';

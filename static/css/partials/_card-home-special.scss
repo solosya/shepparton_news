@@ -12,7 +12,7 @@
                 width:100%;
 
                 > .category{
-                    color:color(red);
+                    @include colourselect('');
                 }
                 > h2{
                     font-size: rem(32);

@@ -11,13 +11,13 @@
   
 }
 .breaking-news_header{
-    color: color(red);
     margin:10px 0;
     font-family: $base-font-family;
     font-size: rem(20);
     font-weight: bold;
     line-height: 0.75;
     text-transform: uppercase;
+    @include colourselect('');
 }
 
 .breaking-news_header\@md {

@@ -18,8 +18,8 @@
                 position:relative;
 
                 > .category{
-                    color: color(red);
                     font-size: rem(10);
+                    @include colourselect('');
                 }
                 > h2{
                     font-size: rem(20);
@@ -37,10 +37,10 @@
                     position:absolute;
                     bottom:20px;
                     > p {
-                        color:color(red);
                         font-weight:bold;
                         font-size: rem(14);
                         border-right: none;
+                        @include colourselect('');
                     }
                     > time {
                         display: none;

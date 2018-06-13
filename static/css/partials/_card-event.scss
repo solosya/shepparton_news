@@ -50,15 +50,12 @@
                     margin-left:6px;
                     font-size:rem(13);
                     font-weight:700;
-                    color:color(red);
                     text-transform: uppercase;
                     position: relative;
                     left: -60px;
                     text-align: center;
                     width: 60px;
-                    &.country {
-                        color:#0d522e;
-                    }
+                    @include colourselect('');
                 }
 
             }
@@ -169,10 +166,10 @@
 
                 .event-time {
                     p {
-                        color: color(red);
                         font-size: rem(14);
                         font-family: $font-family-sans-serif;
                         font-weight: bold;
+                        @include colourselect('');
                     }
                 }
 
@@ -210,10 +207,10 @@
                     position: absolute;
                     bottom: 20px;
                     p {
-                        color: color(red);
                         font-size: rem(14);
                         font-family: $font-family-sans-serif;
                         font-weight: bold;
+                        @include colourselect('');
                     }
                 }
 

@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-9 header">
                     <div class="hk">
-                        <h2>{{title}}</h2>
+                        <h2 class="{{site}}">{{title}}</h2>
                         <p></p>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
 
                 <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} u-desktop-margin-top-30">
                     <div class="row trending {{ site }} ">
-                       <h2 class="col-sm-9">Trending stories</h2>
+                       <h2 class="col-sm-9 {{site}}">Trending stories</h2>
 
                         {% for i in 0..3 if popularArticles[popCount] %}
                             <div class="col-sm-1 col-md-9 col-xs-9">
@@ -248,7 +248,7 @@
                 </div>
             </div>
         </section>
-        <section class="loadmore__section">
+        <section class="loadmore__section {{site}}">
             <div class="row">
                 {% if articles|length >= limit %}
                     {{ this.render('partials/ajaxarticles.twig', {

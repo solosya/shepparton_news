@@ -4,7 +4,7 @@
 
 <section class="row">
     <div class="col-md-9 col-sm-9 section-header">
-        <p><a href="{{link}}">View All</a></p>
+        <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{title}}</h2>
             <p></p>
@@ -24,7 +24,8 @@
                 {{this.render('../_single-article.twig', {
                     article:        articles[desktopCount], 
                     imageSuppress:  true,
-                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
+                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass,
+                    site: site
                 }) | raw}}
                 {% set desktopCount = (dev) ? 0 : desktopCount + 1 %}
 
@@ -46,7 +47,8 @@
                 {{this.render('../_single-article.twig', {
                     article:        articles[tabletCount], 
                     imageSuppress:  true,
-                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
+                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass,
+                    site: site
                 }) | raw}}
                 {% set tabletCount = (dev) ? 0 : tabletCount + 1 %}
 
@@ -66,7 +68,8 @@
                 {{this.render('../_single-article.twig', {
                     article:        articles[mobileCount], 
                     imageSuppress:  true,
-                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass
+                    containerClass: 'card-opinion card-opinion-tablet card-opinion-mobile ' ~ finalClass,
+                    site: site
                 }) | raw}}
                 {% set mobileCount = (dev) ? 0 : mobileCount + 1 %}
 

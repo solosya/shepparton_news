@@ -149,7 +149,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         <div class="content-block-top">
                             
 
-                            <a href="{{blogInfo.url}}"><p class="category" >{{article.label}}</p
+                            <a href="{{blogInfo.url}}"><p class="category {{site}}" >{{article.label}}</p
                             ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                             
                             <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>
@@ -199,7 +199,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         <div class="hidden" id="oovvuu"> {{oovvuu}}</div>
                         <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
 
-                        <div class="article_content" id="articleContent">
+                        <div class="article_content {{site}}" id="articleContent">
                             {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
                         </div><!-- .content-->
 
@@ -225,7 +225,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                         {{this.render('partials/_single-article.twig', {
                                             article: recentArticles[i], 
                                             imageSuppress: false,
-                                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                            containerClass: 'feature-side feature-side-tablet card-sm-mobile',
+                                            site:   site
                                         }) | raw}}
                                         
                                         {% if i < 4 %}
@@ -283,7 +284,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             {{this.render('partials/_single-article.twig', {
                                 article: relatedArticles[i], 
                                 imageSize: {width: 300, height: 180},
-                                containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
+                                containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile',
+                                site:   site
                             }) | raw}}
                         </div>
                     {% endfor %}

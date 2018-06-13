@@ -1,4 +1,5 @@
 {% set headermenu = _Menu.get({'menuType': 'header'}) %}
+{% set site       = networkData.title | lower | split(" ")[0]%}
 
 
 
@@ -33,7 +34,7 @@
                                     <form method="get" action="{{networkData.defaultBlogUrl}}/search">
                                         <label for="header-search" class="assistive-text sr-only">Search</label>
                                         <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                        <button class="submit search-icon-mobile" type="submit" id="mobileSearchButton"></button>
+                                        <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
                                     </form>
                                 </fieldset>  
                             </li>  
@@ -49,7 +50,7 @@
                                                 href="{{parentItem.link | raw}}"
                                         {% endif %} 
                                         
-                                        class="{{activeClass}} {{externalClass}}" 
+                                        class="{{activeClass}} {{externalClass}} {{site}}" 
                                         
                                         {% if parentItem.target != "" %} 
                                             target="{{parentItem.target}}"
@@ -72,7 +73,7 @@
                                         <ul class="sub-menu">
                                             {% for childItem in parentItem.children %}
                                                 {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                <li>
+                                                <li class="{{site}}">
                                                     <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
                                                      {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                                                     </a>
@@ -96,7 +97,7 @@
 
 
 
-        <div class="header-bottom {{ visibility }}">
+        <div class="header-bottom {{ visibility }} {{ site }}">
 
             {% if 'dairy' not in (networkData.title | lower) %}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
@@ -128,7 +129,7 @@
                         <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
                             <label for="header-search" class="assistive-text sr-only">Search</label>
                             <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                            <button class="submit" type="submit" id="searchsubmit"></button>
+                            <button class="submit {{site}}" type="submit" id="searchsubmit"></button>
                         </form>
                     </fieldset>  
 
@@ -230,7 +231,7 @@
                                         <form method="get" action="{{networkData.defaultBlogUrl}}/search">
                                             <label for="header-search" class="assistive-text sr-only">Search</label>
                                             <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                            <button class="submit search-icon-mobile" type="submit" id="mobileSearchButton"></button>
+                                            <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
                                         </form>
                                     </fieldset>  
                                 </li>    
@@ -274,7 +275,7 @@
             </div>            
 
 
-            <div class="header-bottom {{ visibility }}">
+            <div class="header-bottom {{ visibility }} {{site}}">
                 {% if 'dairy' not in (networkData.title | lower) %}
 
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
@@ -301,7 +302,7 @@
                             <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
                                 <label for="header-search" class="assistive-text sr-only">Search</label>
                                 <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                <button class="submit" type="submit" id="searchsubmit"></button>
+                                <button class="submit {{site}}" type="submit" id="searchsubmit"></button>
                             </form>
                         </fieldset>  
 

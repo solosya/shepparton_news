@@ -8,12 +8,14 @@
 
 .card-popular {
 
+    @include colourselect('&:before');
+
     &:before {
         float:left;
         font-size:rem(17);
-        color: color(red);
         margin-right:10px;
         line-height:1;
+        
         @media screen and (max-width: $sm-break-down){
             font-size: rem(20);
         }

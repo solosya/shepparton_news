@@ -13,8 +13,8 @@
 
                 p.property__attribute--contract {
                     text-transform:uppercase;
-                    color: color(red);
                     font-size: rem(10.5);
+                    @include colourselect('');
                 }
                 .property__address {
                     color:black;

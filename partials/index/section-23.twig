@@ -2,7 +2,7 @@
 
 <section class="row">
     <div class="col-sm-9 col-xs-9 section-header">
-        <p><a href="{{link}}">View All</a></p>
+        <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
             <p></p>
@@ -53,6 +53,7 @@
                         {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         imageSize: {width:300},
+                        site: site,
                         containerClass: 'card-sm feature-side-tablet card-sm-mobile'
                     }) | raw}}
                         <div class="row">

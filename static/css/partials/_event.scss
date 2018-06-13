@@ -15,8 +15,8 @@
             font-weight:300 !important;
             margin-bottom:25px !important;
             margin-top:0px !important;
-            color:color(red);
             text-transform:uppercase;
+            @include colourselect('');
         }
         p {
             flex-grow: 1;
@@ -35,23 +35,13 @@
 			position: absolute;
 			right: 15px;
 			bottom: 5px;
-			color: color(red);
 			font-family: $font-family-serif;
 			font-size: rem(14);
 			font-style: italic;
-			&.country {
-			    color:  #0d522f;
-			}
+			@include colourselectdark();
         }
 
-        &.country{
-        	a{
-    	    	color:#0d522e !important;
-    	    }
-    	    h2{
-    	    	color:#0d522e !important;
-    	    }
-        }	
+         @include colourselectdark();
 
     }
 }
@@ -143,7 +133,6 @@
 
 			p.category {
 				font-size:rem(13);
-				color:color(red);
 				float:left;
 				text-transform:uppercase;
 				margin-right:8px;
@@ -152,6 +141,7 @@
 				@media screen and (max-width: $sm-break) {
 					font-size:rem(11);
 				}
+				@include colourselect('');
 	
 			}
 			
@@ -223,7 +213,6 @@
 				margin-top: 45px;
 				font-size: rem(22);
 				font-weight: bold;
-				color: color(red);
 				line-height:1.18;
 				letter-spacing: 1px;
 				text-transform: uppercase;
@@ -234,6 +223,7 @@
 					margin-top: 15px;
 
 				}
+				@include colourselect('');
 			}
 
 			p.time {

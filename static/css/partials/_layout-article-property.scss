@@ -1,8 +1,8 @@
 
 .property-page__attribute--contract {
     text-transform:uppercase;
-    color: color(red);
     font-size: rem(14);
+    @include colourselect('');
 }
 
 .property-page__address {

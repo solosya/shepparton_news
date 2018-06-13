@@ -8,12 +8,7 @@
     clip-path: polygon(20px 0px, 100% 0px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0px 100%, 0px 20px);
 
     }
-    &.country {
-        background: #8bc833; 
-    }
-    &.shepparton, &.shepp {
-        background: color(red); 
-    }
+    @include colourselectbackground('');
     .logo {
         position: absolute;
         bottom: 0px;

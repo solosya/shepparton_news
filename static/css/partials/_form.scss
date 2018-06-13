@@ -60,10 +60,10 @@ main.eventForm {
 
         p.form-section-label {
             font-size: rem(15);
-            color:color(red);
             margin-bottom:12px;
             font-weight:700;
             margin-top:45px;
+            @include colourselect('');
         }
 
         hr {
@@ -193,13 +193,13 @@ main.eventForm {
 
         button.submit {
             margin-top:40px;
-            background: color(red);
             color:white;
             &:disabled,
             &[disabled] {
                 background-color: #cccccc;
                 color: #666666;
             }
+            @include colourselectbackground('');
 
         }
         

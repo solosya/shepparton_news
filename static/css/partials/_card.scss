@@ -122,8 +122,8 @@ a.card {
 
             .category{
                 font-size: rem(10.5);
-                color:color(red);
                 text-transform:uppercase;
+                @include colourselect('');
             }
 
             h2{

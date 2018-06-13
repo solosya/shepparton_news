@@ -33,16 +33,9 @@
                     p{
                         display:block;
                         font-weight:700;
-                        color: color(red);
                         border:none;
                         font-family:$font-family-sans-serif;
-
-                        &.country {
-                            color:#0d522e;
-                        }
-                        &.dairy {
-                            color: #118ce0;
-                        }
+                        @include colourselect('');
                     }
                     time{
                         display:block;
