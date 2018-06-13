@@ -107,7 +107,7 @@ Acme.systemCardTemplate =
         {{/if}} \
         \
         <div class="content">\
-                <div class="category">{{label}}</div>\
+                <div class="category {{site}}">{{label}}</div>\
                 <h2>{{{ title }}}</h2>\
                 <div class="author">\
                     <img src="{{profileImg}}" class="img-circle">\

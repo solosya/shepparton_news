@@ -9,7 +9,6 @@
 {% set layoutTitle = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 
 {{this.registerJs("Acme.cards = CardController();")}}
-{{this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';")}}
 {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
 {{this.registerJs( templatePath )}}
 

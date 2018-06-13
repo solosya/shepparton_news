@@ -60,8 +60,8 @@ body.channel, body.section, body.page {
     .top-ad {
             margin: 40px auto;
     }
-    .loadmore__section{
-        @include colourselect('>.row>.clearfix>div>a.card>article>.content>.category') 
-    }
+    // .loadmore__section{
+    //     @include colourselect('>.row>.clearfix>div>a.card>article>.content>.category') 
+    // }
 
 }

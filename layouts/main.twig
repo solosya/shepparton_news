@@ -8,6 +8,7 @@
 {% set blogName      = blogData.title %}
 {% set url           = _AppHelper.getParsedUrl %}
 {% set site          = networkData.title | lower | split(" ")[0]%}
+
 {# {% set site          = "dairy" %} #}
 
 
@@ -89,7 +90,7 @@
 
 
 
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=7ce8ca9c" type="text/css" media="all">
+    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=68cd14b6" type="text/css" media="all">
 
     {% else %}
 
@@ -124,7 +125,7 @@
 
 
 
-
+    {{this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';")}}
     {{ this.render('partials/_user-styles.twig', {networkData: networkData} ) | raw }}
 
 

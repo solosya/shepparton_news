@@ -34460,7 +34460,7 @@ Acme.systemCardTemplate =
         {{/if}} \
         \
         <div class="content">\
-                <div class="category">{{label}}</div>\
+                <div class="category {{site}}">{{label}}</div>\
                 <h2>{{{ title }}}</h2>\
                 <div class="author">\
                     <img src="{{profileImg}}" class="img-circle">\
@@ -35219,6 +35219,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
     card['hasArticleMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
+    card['site'] = _appJsConfig.site;
     
     // mainly for screen to turn off lazyload and loading background img
     card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
