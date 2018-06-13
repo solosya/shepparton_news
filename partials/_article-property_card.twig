@@ -1,4 +1,6 @@
 {% import "quotes.twig" as quotes %}
+{% set site          = networkData.title | lower | split(" ")[0]%}
+
 
 {% set info = article.additionalInfo %}
 
