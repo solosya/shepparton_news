@@ -50,14 +50,18 @@ body.channel, body.section, body.page {
         margin-bottom: 30px;
 
         @media screen and (max-width: $sm-break){
-         padding-top: 25px;
-         #div-gpt-ad-mrec-7{
-            margin-top: -30px;
-            margin-bottom: -25px;
-         }
-    }
+            padding-top: 25px;
+            #div-gpt-ad-mrec-7{
+                margin-top: -30px;
+                margin-bottom: -25px;
+            }
+        }
     }
     .top-ad {
             margin: 40px auto;
-        }
+    }
+    .loadmore__section{
+        @include colourselect('>row>.clearfix>div>a.card>article>.content>.category') 
+    }
+
 }
