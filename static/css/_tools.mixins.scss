@@ -1,7 +1,7 @@
 @mixin colourselect($class) {
 	@if $class != '' {
 		#{$class} {
-			color: #9933ff;
+			color: #000;
 		}
 		
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
@@ -22,7 +22,7 @@
 
 	} @else {
 
-		color: #9933ff;
+		color: #000;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        color: #f03746;
 	    }
@@ -40,7 +40,7 @@
 @mixin colourselectdark($class) {
 	@if $class != '' {
 		#{$class} {
-			color: #9933ff;
+			color: #000;
 		}
 		
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
@@ -61,7 +61,7 @@
 
 	} @else {
 
-		color: #9933ff;
+		color: #000;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        color: #f03746;
 	    }
@@ -79,7 +79,7 @@
 @mixin colourselectbackground($class) {
 	@if $class != '' {
 		#{$class} {
-			background-color: #9933ff;
+			background-color: #000;
 		}
 		
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
@@ -98,7 +98,7 @@
 	        }
 	    }
 	} @else {
-		background-color: #9933ff;
+		background-color: #000;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        background-color: #f03746;
 	    }
@@ -115,7 +115,7 @@
 @mixin colourselectfill($class) {
 	@if $class != '' {
 		#{$class} {
-			fill: #9933ff;
+			fill: #000;
 		}
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
@@ -134,7 +134,7 @@
 	    }
 	} @else {
 
-	    fill: #9933ff;
+	    fill: #000;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        fill: #f03746;
 	    }
@@ -149,25 +149,39 @@
 }
 
 @mixin colourselectstroke($class) {
-	#{$class} {
-        stroke: #9933ff;
-        fill: #fff;
-    }
-    &.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-        #{$class} {
-            stroke: #f03746;
-        }
-    }
-    &.country, &.campaspe {
-        #{$class} {
+	@if $class != '' {
+		#{$class} {
+	        stroke: #000;
+	        fill: #fff;
+	    }
+	    &.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+	        #{$class} {
+	            stroke: #f03746;
+	        }
+	    }
+	    &.country, &.campaspe {
+	        #{$class} {
+	            stroke: #0d522e;
+	        }
+	    }
+	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+	       #{$class} {
+	            stroke: #118ce0;
+	        }
+	    }
+	} @else {
+		stroke: #000;
+        fill: #fff;	    
+	    &.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {	        
+            stroke: #f03746;	        
+	    }
+	    &.country, &.campaspe {	        
             stroke: #0d522e;
-        }
-    }
-    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-       #{$class} {
-            stroke: #118ce0;
-        }
-    }
+	    }
+	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {	      
+            stroke: #118ce0;	       
+	    }
+	}
 }
 
 @mixin tintbefore($value:0.4) {
