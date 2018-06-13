@@ -42,15 +42,12 @@
                     margin-left:6px;
                     font-size: rem(8);
                     font-weight:700;
-                    color:color(red);
                     text-transform: uppercase;
                     position: relative;
                     left: -60px;
                     text-align: center;
                     width: 40px;
-                    &.country {
-                        color:  #0d522f;
-                    }
+                    @include colourselect('');
                 }
 
             }
@@ -190,9 +187,9 @@
                         font-weight: bold;
                         font-size: rem(28);
                         letter-spacing: 1.4px;
-                        color: color(red);
                         line-height: 1;
                         width: 140px;
+                        @include colourselect('');
                         &.event-start{
                             top: 0;
                         }
@@ -305,7 +302,6 @@
                         font-weight: bold;
                         font-size: rem(16);
                         letter-spacing: 1.4px;
-                        color: color(red);
                         line-height: 1;
                         &.event-start{
                             top: 0;
@@ -313,9 +309,7 @@
                         &.event-end{
                             top: 20px;
                         }
-                        &.country {
-                            color:  #0d522f;
-                        }   
+                        @include colourselect('');   
                     }
 
                     .event-date--month {
@@ -406,10 +400,10 @@
 
                 .event-time {
                     p {
-                        color: color(red);
                         font-size: rem(14);
                         font-family: $font-family-sans-serif;
                         font-weight: bold;
+                        @include colourselect('');
                     }
                 }
 
@@ -448,10 +442,10 @@
                     position: absolute;
                     bottom: 50px;
                     p {
-                        color: color(red);
                         font-size: rem(14);
                         font-family: $font-family-sans-serif;
                         font-weight: bold;
+                        @include colourselect('');
                     }
                 }
 

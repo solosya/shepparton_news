@@ -10,8 +10,8 @@
 
 <div class="row">
     <div class="container hidden-md hidden-lg u-tablet-margin-top-10 ">
-        <div class="weather j-weather-panel u-tablet-float-right "></div>
-        <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
+        <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
+        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
     </div>
     <div class="col-sm-9 visible-sm-block"><hr class="divide10"></div>
 </div>
@@ -27,8 +27,8 @@
                     <h1 class="breaking-news_header breaking-news_header@md">Breaking News</h1>
                 </div>
                 <div class="col-md-3 hidden-sm hidden-xs u-desktop-indent-left-20">
-                    <div class="weather j-weather-panel"></div>
-                    <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
+                    <div class="weather j-weather-panel {{site}}"></div>
+                    <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
                 </div>
             </div>
         </div>
@@ -103,8 +103,8 @@
                     <hr class="divide15 visible-xs-block visible-sm-block space-only">
 
                     <div class="col-sm-1 col-md-9 hidden-xs hidden-sm u-desktop-indent-left-20">
-                        <div class="weather j-weather-panel"></div>
-                        <div class="weather-dropdown j-weather-panel-dropdown hidden"></div>
+                        <div class="weather j-weather-panel {{site}}"></div>
+                        <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
                         <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
                     </div>
                       
@@ -248,14 +248,15 @@
 
             {# ************ MOST POPULAR ************   #}
             <div class="col-sm-3 col-md-2 col-xs-9 most-popular">
-                <h2>Most popular</h2>
+                <h2 class="{{site}}">Most popular</h2>
 
                 {% for i in 0..4 if popularArticles[i] %}
                     {{this.render('../_single-article.twig', {
                         article         : popularArticles[i], 
                         imageSuppress   : true,
                         swap            : false,
-                        containerClass  : 'card-popular'
+                        containerClass  : 'card-popular ' ~ site,
+                        site            : site
                     }) | raw}}
                 {% endfor %} 
             </div>

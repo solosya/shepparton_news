@@ -39,14 +39,10 @@
                         font-size: rem(14);
                         font-weight:600;
                         margin-bottom:5px;
-                        color:color(red);
                         display:block;
                         border: none;
                         font-family:$font-family-sans-serif;
-
-                        &.country {
-                            color:color(country);
-                        }
+                        @include colourselect('');
                     }
                     >img {
                         margin-right:14px;
@@ -152,9 +148,9 @@
                             font-size: rem(14);
                             font-weight:600;
                             margin-bottom:5px;
-                            color:color(red);
                             display:block;
                             border: none;
+                            @include colourselect('');
 
                         }
                         >img {
@@ -265,9 +261,9 @@
                             font-size: rem(14);
                             font-weight:600;
                             margin-bottom:5px;
-                            color:color(red);
                             display:block;
                             border: none;
+                            @include colourselect('');
 
                         }
                         >img {
@@ -368,9 +364,9 @@
                             font-size: rem(14);
                             font-weight:600;
                             margin-bottom:5px;
-                            color:color(red);
                             display:block;
                             border: none;
+                            @include colourselect('');
 
                         }
                         >img {

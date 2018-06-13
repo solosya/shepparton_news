@@ -21,7 +21,6 @@
 
     .temp-desc {
         font-family: $font-family-sans-serif;
-        color:color(red);
         font-size: rem(11);
 		font-weight: bold;
     }
@@ -68,6 +67,8 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+    @include colourselectstroke('.svg-fill');
+    @include colourselect('.temp-desc');
 }
 
 .weather-date {
@@ -83,7 +84,7 @@
 	> p {
 		font-size: rem(14);
 		line-height: 2.14;
-		color: color(red);
+		@include colourselect('');
 	}
 }
 
@@ -136,6 +137,9 @@
         border-bottom: 1px solid color(lightgrey);
         margin-bottom: 15px;
     }
+
+    @include colourselectstroke('.svg-fill');
+    @include colourselect('.temp-desc');
 }
 
 .hidden {
@@ -147,6 +151,8 @@
     border-left: 1px solid rgba(0,0,0,0.15);
     padding: 22px 0;
 }
+    
+
 
 
 

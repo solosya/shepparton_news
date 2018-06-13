@@ -22,8 +22,8 @@
                 position:relative;
 
                 > .category{
-                    color: color(red);
                     font-size: rem(10);
+                    @include colourselect('');
                 }
                 > h2{
                     font-size: rem(16);

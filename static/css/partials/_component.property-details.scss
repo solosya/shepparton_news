@@ -17,8 +17,8 @@
 
 .property-page-attributes__contract {
     text-transform:uppercase;
-    color: color(red);
     font-size: rem(14);
+    @include colourselect('');
 }
 
 
@@ -80,7 +80,7 @@
     font-size:rem(14);
     border-bottom: 1px solid rgba(151, 151, 151,.5);
     >span {
-        color:color(red);
         font-weight:600;
+        @include colourselect('');
     }
 }

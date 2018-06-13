@@ -9,8 +9,8 @@
                 font-size: rem(36);
                 font-weight:300;
                 margin-bottom:25px;
-                color:color(red);
                 text-transform:uppercase;
+                @include colourselect('');
             }
             p {
                 flex-grow: 1;

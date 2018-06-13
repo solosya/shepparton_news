@@ -50,7 +50,7 @@
                     p {
                         font-size:rem(14);
                         border-right: none;
-                        color: color(red);
+                        @include colourselect('');
                     }
                     time {
                         display: none;

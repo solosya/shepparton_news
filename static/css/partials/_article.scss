@@ -125,10 +125,10 @@
 
 				p.category {
 					font-size:rem(13);
-					color:color(red);
 					float:left;
 					text-transform:uppercase;
 					margin-right:8px;
+					@include colourselect('');
 				}
 				
 				> time {
@@ -268,12 +268,9 @@
 				margin-top:40px;
 				font-weight:700;
 				font-size: rem(22);
-				color:color(red);
 				font-family: $font-family-sans-serif;
 				margin-bottom:16px;
-		        &.dairy {
-	                color: color(red);
-		        }
+		        @include colourselect('');
 		        @media #{$mobile} {
 		        	margin-top:15px;
 		        }				

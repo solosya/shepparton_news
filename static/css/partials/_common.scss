@@ -245,13 +245,8 @@
         margin-right: 15px;
         font-family: $font-family-serif;
         font-style: italic;
-        font-size: rem(14);    
-        &.country {
-            color: #0d522e;
-        }
-        &.shepparton, &.shepp {
-            color: #f03746;
-        }
+        font-size: rem(14);
+        @include colourselectdark();
     }
     hr {
         margin: 7px 0;
@@ -260,6 +255,21 @@
 
 .events-local {
     min-height: 240px;
+    a h2 {
+        font-size: rem(20);
+        font-family:$font-family-sans-serif;
+        font-weight: 600;
+        color: #000;
+        font-style: normal;
+    }
+    > a {
+        
+        margin-right: 15px;
+        font-family: $font-family-serif;
+        font-style: italic;
+        font-size: rem(14);
+        @include colourselectdark();
+    }
 }
 
 
@@ -310,17 +320,7 @@
   align-items: center;
   fill: black;
 
-  &.dairy {
-    fill: color(dairy);
-  }
-
-  &.country {
-    fill: color(country);
-  }
-
-  &.shepparton, &.shepp {
-    fill: color(red);
-  }
+  @include colourselectfill('');
 }
 
 
@@ -492,7 +492,7 @@ span.leadsentence{
       &,
       &:hover,
       &:focus {
-        color: color(red);
+        @include colourselect('');
         background-color: transparent;
         border: none;
         border-bottom-color: transparent;
@@ -645,12 +645,12 @@ span.leadsentence{
                 }
                 button {
                     color:white;
-                    background:color(red);
                     display:block;
                     margin:auto;
                     margin-top:25px;
                     font-size:rem(14);
                     border: none;
+                    @include colourselect('');
                 }
             }
         }

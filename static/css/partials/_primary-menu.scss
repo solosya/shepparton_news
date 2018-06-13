@@ -89,7 +89,7 @@
                 position: absolute;
                 right:0px;
                 padding:3px;
-                background-color: color(red);
+                @include colourselectbackground('');
             }
             &.close {
                 @include closeIcon;
@@ -240,7 +240,7 @@
 
                 &:hover{
                     text-decoration: none;
-                    color: color(red);
+                    @include colourselect('');
                 }
             }
 
@@ -319,7 +319,7 @@
                 background:white;
             }
             &:hover {
-                background: color(red);
+                @include colourselectbackground('');
                 > a {
                     color: white;
                 }
@@ -518,7 +518,7 @@ ul.sub-menu a:focus{
         background-color: white;
         &:hover {
             > a {
-                background-color: color(red);
+                @include colourselectbackground('');
             }
         }
 

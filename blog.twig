@@ -168,13 +168,13 @@
                         {% endfor %}
                         </div>
                         <div class="most-popular col-sm-1 col-md-2" style="margin:0;">
-                           <h2>Most popular</h2>
+                           <h2 class="{{site}}">Most popular</h2>
                            <hr class="divide10">
                            {% for i in 0..4 if popularArticles[i] %}
                                {{this.render('partials/_single-article.twig', {
                                    article: popularArticles[i], 
                                    imageSuppress: true, 
-                                   containerClass: 'card-popular blog'
+                                   containerClass: 'card-popular blog '~ site
                                }) | raw}}
                                 {% if i < 4 %}
                                    <hr class="divide10">

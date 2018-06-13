@@ -33,7 +33,7 @@
     }
 
     .user-social {
-        color: color(red);
+        @include colourselect('');
     }
 }
 

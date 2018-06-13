@@ -4,10 +4,9 @@
 }
 
 .property-page-inspections__text {
-    color:color(red);
     font-size: rem(13);
     font-weight:600;
-
+    @include colourselect('');
 }
 
 .property-page-inspections__p {
