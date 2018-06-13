@@ -170,7 +170,11 @@
     "automotive": {
         'title'     : "Automotive",
         'blogs'     : ['automotive'],
-        'template'  : 'partials/index/section-05.twig', 
+        'template'  : 'partials/index/section-05.twig',
+        'template_params' : {
+            'networkData' : networkData,
+            'link': false
+        }, 
     },
     "opinion": {
         'title'     : "Opinion",
