@@ -1,7 +1,7 @@
 @mixin colourselect($class) {
 	@if $class != '' {
 		#{$class} {
-			color: pink;
+			color: #9933ff;
 		}
 		
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
@@ -22,7 +22,7 @@
 
 	} @else {
 
-		color: pink;
+		color: #9933ff;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        color: #f03746;
 	    }
@@ -38,7 +38,7 @@
 }
 
 @mixin colourselectdark() {
-	color: pink;
+	color: #9933ff;
 	&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
         color: #f03746;
     }
@@ -54,7 +54,7 @@
 @mixin colourselectbackground($class) {
 	@if $class != '' {
 		#{$class} {
-			background-color: pink;
+			background-color: #9933ff;
 		}
 		
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
@@ -73,7 +73,7 @@
 	        }
 	    }
 	} @else {
-		background-color: pink;
+		background-color: #9933ff;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        background-color: #f03746;
 	    }
@@ -90,7 +90,7 @@
 @mixin colourselectfill($class) {
 	@if $class != '' {
 		#{$class} {
-			fill: pink;
+			fill: #9933ff;
 		}
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
@@ -109,7 +109,7 @@
 	    }
 	} @else {
 
-	    fill: pink;
+	    fill: #9933ff;
 		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        fill: #f03746;
 	    }
@@ -125,7 +125,7 @@
 
 @mixin colourselectstroke($class) {
 	#{$class} {
-        stroke: pink;
+        stroke: #9933ff;
         fill: #fff;
     }
     &.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
