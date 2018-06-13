@@ -38,10 +38,10 @@
 			font-family: $font-family-serif;
 			font-size: rem(14);
 			font-style: italic;
-			@include colourselectdark();
+			@include colourselectdark('');
         }
 
-         @include colourselectdark();
+         @include colourselectdark('');
 
     }
 }

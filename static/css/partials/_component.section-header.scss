@@ -5,7 +5,7 @@
         font-family: $font-family-serif;
         font-size: rem(14);
         font-style:italic;
-        @include colourselect('');
+        @include colourselectdark('');
     }
     
     div.hk {
@@ -41,7 +41,7 @@
 }
 
 .video-section{
-    @include colourselect('.row>.section-header>p>a');
-    @include colourselect('.row>.ovu-video-wrapper>a.card>article>.content>.category');
+    @include colourselectdark('.row>.section-header>p>a');
+    @include colourselectdark('.row>.ovu-video-wrapper>a.card>article>.content>.category');
     
 }

@@ -23,7 +23,7 @@
 
                 > .category{
                     font-size: rem(10);
-                    @include colourselect('');
+                    @include colourselectdark('');
                 }
                 > h2{
                     font-size: rem(16);

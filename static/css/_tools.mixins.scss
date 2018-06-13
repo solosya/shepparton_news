@@ -37,17 +37,42 @@
 
 }
 
-@mixin colourselectdark() {
-	color: #9933ff;
-	&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-        color: #f03746;
-    }
-	&.country, &.campaspe {
-        color: #0d522e;
-    }
-    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-        color: #118ce0;
-    }
+@mixin colourselectdark($class) {
+	@if $class != '' {
+		#{$class} {
+			color: #9933ff;
+		}
+		
+		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+	        #{$class} {
+	        	color: #f03746;
+	        }
+	    }
+		&.country, &.campaspe {
+			#{$class} {
+	        	color: #0d522e;
+	        }
+	    }
+	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+	    	#{$class} {
+	        	color: #118ce0;
+	        }
+	    }
+
+	} @else {
+
+		color: #9933ff;
+		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+	        color: #f03746;
+	    }
+		&.country, &.campaspe {
+	        color:#0d522e;
+	    }
+	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+	        color: #118ce0;
+	    }
+
+	}
 
 }
 
@@ -135,7 +160,7 @@
     }
     &.country, &.campaspe {
         #{$class} {
-            stroke: #8bc833;
+            stroke: #0d522e;
         }
     }
     &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {

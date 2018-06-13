@@ -68,7 +68,7 @@
         padding-right: 20px;
     }
     @include colourselectstroke('.svg-fill');
-    @include colourselect('.temp-desc');
+    @include colourselectdark('.temp-desc');
 }
 
 .weather-date {
@@ -139,7 +139,7 @@
     }
 
     @include colourselectstroke('.svg-fill');
-    @include colourselect('.temp-desc');
+    @include colourselectdark('.temp-desc');
 }
 
 .hidden {
