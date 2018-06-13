@@ -199,7 +199,7 @@ main.eventForm {
                 background-color: #cccccc;
                 color: #666666;
             }
-            @include colourselect('');
+            @include colourselectbackground('');
 
         }
         
