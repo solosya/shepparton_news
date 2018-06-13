@@ -76,7 +76,8 @@
                         template: 'property_card',
                         networkData: networkData,
                         imageSize: {width: 300, height: 195},
-                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile',
+                        site: site
                     }) | raw}}
                     {% set articleCount = (dev) ? 0 : articleCount + 1 %}
                     {% if i < 2 %}

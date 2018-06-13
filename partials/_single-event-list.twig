@@ -1,4 +1,5 @@
 {% import "quotes.twig" as quotes %}
+{% set site          = networkData.title | lower | split(" ")[0]%}
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == 'true' ? 'true' : 'false'  %}
 {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
@@ -116,7 +117,7 @@
 
 
             <div class="content">
-                <div class="category">Events</div>
+                <div class="category {{site}}">Events</div>
                 
                 <h2 class="{{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
                 
