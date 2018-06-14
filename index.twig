@@ -144,8 +144,8 @@
     },
     'index': {
         'template': 'partials/index/section-15.twig',
-        'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
-        'articleOrder' : [(homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy']
+        'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'national', regionalSelect[site]['editors'][1], 'galleries', 'dairy', 'world'],
+        'articleOrder' : [(homeBlog), 'national', 'sport', regionalSelect[site]['editors'][0], 'news', 'world', 'news', 'rural news', 'aap finance', regionalSelect[site]['editors'][1], 'news', 'national', 'galleries', 'world', 'dairy']
     },
     'local': {
         'template': regionalSelect[site]['localpart'][0],
@@ -221,7 +221,7 @@
     "national": {
         'title'     : "National and World",
         'blogs'     : ['national', 'aap finance', 'world', 'national & world sport', 'aap horse racing', 'national', 'aap entertainment'],
-        'articleOrder' : ['national', 'aap finance', 'world', 'world', 'national & world sport', 'national & world sport', 'national', 'entertainment', 'national'],
+        'articleOrder' : ['national', 'aap finance', 'world', 'world', 'aap horse racing', 'aap afl', 'national', 'entertainment', 'national'],
         'template'  : 'partials/index/section-04.twig',
         'template_params' : {
             'link' : networkData.defaultBlogUrl ~ '/@national-and-world'
