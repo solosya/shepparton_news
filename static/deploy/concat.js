@@ -34703,7 +34703,7 @@ Acme.article.prototype.events = function() {
     $('#oovvuu-curate').on('click', function(e) {
         e.preventDefault();
         window.OVU = {};
-        $.getScript("https://videos.oovvuu.com/mmgp/dev/ovu_curate.js")
+        $.getScript("https://videos.oovvuu.com/mmgp/v1/ovu_curate.js")
             .done(function() {
                 var article_text = $('#articleContent').text();
                 var id = ""+$('#article-content').data('id');
