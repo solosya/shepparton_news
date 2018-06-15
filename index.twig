@@ -40,7 +40,7 @@
     'riverine': {
         'regional'   :  ['shepparton news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepparton sport'],
         'editors'    :  ['deniliquin news','shepparton news'],
-        'sections'   :  ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'],
+        'sections'   :  ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
@@ -387,7 +387,7 @@
         %}
     {% endfor %}
 
-    {% if site == 'shepparton' or site == 'riverine' %}
+    {% if site == 'shepparton' or site == 'shepp' %}
         {% set blogFeeds = blogFeeds | merge({ 
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
@@ -395,6 +395,21 @@
             "galleries":            { "limit" : 3},
             "social":               { "limit" : 3},
             "contributed photos":   { "limit" : 3},
+            "news":                 { "limit" : 6},
+            "sport":                { "limit" : 3},
+            "education":            { "limit" : 1},
+            "lifestyle":            { "limit" : 1},
+            "entertainment":        { "limit" : 1},
+
+            })
+        %}
+    {% elseif site == 'riverine' %}
+        {% set blogFeeds = blogFeeds | merge({ 
+            "opinion":              { "limit" : 4},
+            "real estate":          { "limit" : 3},
+            "automotive":           { "limit" : 3},
+            "galleries":            { "limit" : 3},
+            "social":               { "limit" : 3},
             "news":                 { "limit" : 6},
             "sport":                { "limit" : 3},
             "education":            { "limit" : 1},

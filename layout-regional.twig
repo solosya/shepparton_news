@@ -45,8 +45,8 @@
     'echuca_0': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Echuca',
-        'blogs'     : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
-        'articleOrder' : ['echuca news','echuca sport','echuca entertainment','echuca social','echuca lifestyle'],
+        'blogs'     : ['echuca news','echuca sport','echuca lifestyle','echuca entertainment'],
+        'articleOrder' : ['echuca news','echuca sport','echuca entertainment','echuca lifestyle','echuca news'],
         'template_params' : {
             'link' : networkData.defaultBlogUrl ~ '/@echuca'
         }
@@ -54,8 +54,8 @@
     'echuca_1': {
         'template'  : 'partials/index/section-27.twig',
         'title'     : 'Echuca',
-        'blogs' : ['echuca news','echuca sport','echuca social','echuca lifestyle','echuca entertainment'],
-        'articleOrder' : ['echuca news','echuca sport','echuca social','chuca lifestyle','echuca entertainment'],
+        'blogs' : ['echuca news','echuca sport','echuca lifestyle','echuca entertainment'],
+        'articleOrder' : ['echuca news','echuca sport','chuca lifestyle','echuca entertainment','echuca news'],
         'template_params' : {
             'link' : networkData.defaultBlogUrl ~ '/@echuca'
         }
@@ -185,7 +185,7 @@
                         COMMON
 ******************************************************* #}
 {% set blogFeeds = {
-        "echuca news":          { "limit" : 1},
+        "echuca news":          { "limit" : 2},
         "echuca sport":         { "limit" : 1},
         "echuca social":        { "limit" : 1},
         "echuca lifestyle":     { "limit" : 1},

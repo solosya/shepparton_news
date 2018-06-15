@@ -22,7 +22,7 @@
 {% set regionSelect = {
         'shepparton': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8'],
         'shepp': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8'],
-        'echuca': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_8'],
+        'echuca': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_8'],
         'deniliquin': ['section_0', 'section_1', 'section_2', 'section_3'],
         'finley': ['section_0', 'section_1'],
         'kyabram': ['section_0', 'section_1'],
@@ -40,6 +40,11 @@
 {% if homeBlog != 'local' %}
     {% set theSection = homeBlog ~ " " %}
     {% set sectionOrder = regionSelect[homeBlog] %}
+    {% if homeBlog == 'shepparton' or homeBlog == 'shepp' %}
+        {% set sectionOrder = {'section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7'} %}
+    {% elseif homeBlog == 'echuca' %} 
+        {% set sectionOrder = {'section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5'} %}       
+    {% endif %}
 {% else %}
     {% set theSection = '' %}
     {% set sectionOrder = regionSelect[site] %}
