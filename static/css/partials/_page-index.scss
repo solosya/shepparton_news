@@ -179,7 +179,7 @@
         margin: 0px;
         height: 60px;
         padding: 12px 0px;  
-        @include colourselect(''); 
+        @include colourselectbackground(''); 
 
         > a.download-current {
             color: white;

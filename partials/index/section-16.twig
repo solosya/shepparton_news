@@ -1,0 +1,134 @@
+{% set articleCount = 0 %}
+{% set cardIndex = 0 %}
+{# {% set site        = networkData.title | lower | split(" ")[0]%} #}
+
+<section class="home-main-stories">
+    <div class="row">
+        <div class="col-xs-9 col-md-6 col-sm-9">
+
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    article: articles[articleCount], 
+                    position: cardIndex + 1,  
+                    imageSize: {width:640, height:400},
+                    site: site,
+                    containerClass: 'home-feature home-feature-tablet home-feature-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+
+            {% endif %}
+        </div>
+
+        <div class="col-xs-9 col-sm-9 visible-sm-block visible-xs-block">
+            <hr class="divide10 space-only">
+        </div>
+
+        <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols ">
+            <div class="row sm-flex">
+
+                <div class="col-sm-1 col-md-9"  style="order: 2;">                    
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: cardIndex + 1, 
+                            site: site,
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        <hr class="divide12">
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-1 col-md-9"  style="order: 3;">                    
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            article: articles[articleCount], 
+                            position: cardIndex + 1, 
+                            site: site,
+                            containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        <hr class="divide12">
+                    {% endif %}
+                </div> 
+
+                <div class="col-sm-1 col-md-9"  style="order: 1;">
+                    <div class="current-issue-card {{site}}">
+                        <a class="download-current" href="https://issuu.com/dairynewsaustralia">View the current publication</a>
+                    </div>
+
+                    <hr class="divide12 visible-md-block visible-lg-block">
+                    <hr class="divide10 visible-xs-block visible-sm-block space-only">
+                </div>
+
+                <div class="col-sm-1 col-md-9" style="order: 0;">                    
+                    {{ this.render('../subscribe.twig') | raw }}
+                    <hr class="divide10 visible-xs-block visible-sm-block space-only">                            
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- .featured-slider-->
+
+<section class="row five-cols top-stories-row visible-xs-block visible-md-block visible-lg-block">
+            
+
+    {% for i in 0..4 if articles[articleCount] %}
+        {{this.render('../_single-article.twig', {
+            article         : articles[articleCount], 
+            position        : cardIndex + 1, 
+            imageSize       : {width:80},
+            site            : site,
+            swap            : false,
+            dev             : dev,
+            containerClass  : 'col-sm-1 top-stories top-stories-tablet card-sm-mobile'
+        }) | raw}}
+        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+        {% set cardIndex = cardIndex + 1 %}
+        {% if i < 4 %}    
+            <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+        {% else %}
+            <hr class="divide visible-xs-block">
+        {% endif %}
+
+    {% endfor %}
+</section>
+
+
+{# We go back as we 5 extra cards above that are not to be seen on tablet  #}
+{% if not dev %}
+    {% set articleCount = articleCount - 4 %}
+{% else %}
+    {% set cardIndex = cardIndex - 4 %}
+{% endif %}
+
+
+
+
+{# *****************************************
+            TABLET ONLY 
+*****************************************  #}
+<section class="row sm-two-cols visible-sm-block">
+
+    {% for i in 0..3 if articles[articleCount] %}
+        <div class="col-sm-1 col-xs-9">
+            {{this.render('../_single-article.twig', {
+                article         : articles[articleCount], 
+                position        : cardIndex + 1, 
+                imageSize       : {width:80},
+                site            : site,
+                dev             : dev,
+                swap            : false,
+                containerClass  : 'feature-side-tablet'
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            {% set cardIndex = cardIndex + 1 %}
+            {% if i < 2 %}
+                <hr class="divide10 visible-sm-block">
+            {% endif %}
+
+        </div>
+    {% endfor %}
+</section>
+
