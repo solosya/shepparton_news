@@ -9,6 +9,16 @@ Handlebars.registerHelper('fixPrice', function(text) {
     return text.replace(/\$/g, "");
 });
 
+Handlebars.registerHelper('labelFix', function(text) {
+    if (!text) return "";
+    var splitText = text.split(" ");
+    if (splitText.length > 1 && splitText[0].toLowerCase() === 'aap') {
+        var text = splitText[0];
+    }
+    return text;
+});
+
+
 
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
@@ -107,7 +117,7 @@ Acme.systemCardTemplate =
         {{/if}} \
         \
         <div class="content">\
-                <div class="category {{site}}">{{label}}</div>\
+                <div class="category {{site}}">{{ labelFix label }}</div>\
                 <h2>{{{ title }}}</h2>\
                 <div class="author">\
                     <img src="{{profileImg}}" class="img-circle">\
