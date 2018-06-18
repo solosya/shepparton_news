@@ -211,8 +211,8 @@
     },
     "rural news": {
         'title'     : "Rural",
-        'blogs'     : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'machinery & products', 'cropping', 'rural management', 'viticulture', 'from the experts'],
-        'articleOrder' : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'dairy', 'rural news', 'machinery & products', 'rural management', 'water', 'cropping', 'viticulture', 'from the experts'],
+        'blogs'     : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'machinery & products', 'cropping', 'rural management', 'from the experts'],
+        'articleOrder' : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'dairy', 'rural news', 'machinery & products', 'rural management', 'water', 'cropping', 'from the experts', 'rural news'],
         'template'  : 'partials/index/section-03.twig',
         'template_params' : {
             'link' : networkData.defaultBlogUrl ~ '/@rural'
@@ -350,7 +350,7 @@
             (homeBlog):             { "limit" : 1},
                            
             "aap":                  { "limit" : 5},
-            "rural news":           { "limit" : 3},
+            "rural news":           { "limit" : 4},
             'dairy':                { "limit" : 2},
 
             'water':                { "limit" : 2},
@@ -361,7 +361,6 @@
             'machinery & products': { "limit" : 1},
             'cropping':             { "limit" : 1},
             'rural management':     { "limit" : 1},
-            'viticulture':          { "limit" : 1},
             'from the experts':     { "limit" : 1},
 
             'national':             { "limit" : 3},

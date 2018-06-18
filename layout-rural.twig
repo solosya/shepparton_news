@@ -61,11 +61,6 @@
         'template': 'partials/index/section-12.twig',
         'blogs' : ['livestock']
     },
-    "viticulture": {
-        'title'     : "Viticulture",
-        'template': 'partials/index/section-24.twig',
-        'blogs' : ['viticulture']
-    },
     "water": {
         'title'     : "Water",
         'template': 'partials/index/section-06.twig',
@@ -100,7 +95,11 @@
 
 %}
 
-
+ {# "viticulture": {
+        'title'     : "Viticulture",
+        'template': 'partials/index/section-24.twig',
+        'blogs' : ['viticulture']
+    }, #}
 
 
 
@@ -118,7 +117,6 @@
         "horticulture":         { "limit" : 3},
         "cropping":             { "limit" : 3},
         "livestock":            { "limit" : 4},
-        "viticulture":          { "limit" : 4},
         "water":                { "limit" : 3},
         "rural management":     { "limit" : 4},
         "from the experts":     { "limit" : 3},
@@ -127,12 +125,14 @@
         "animal health":        { "limit" : 4}
     }
 %}
+{# "viticulture":          { "limit" : 4}, #}
+
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
 {% set bannerSpots = [2,5,8] %}
-{%  set sectionOrder = ['rural news', 'dairy', 'horticulture', 'cropping', 'livestock', 'viticulture', 'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
+{%  set sectionOrder = ['rural news', 'dairy', 'horticulture', 'cropping', 'livestock',  'water', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %} 
 
-
+{# 'viticulture', #}
 
 {# *******************************************************
                 Fetch all needed feeds
