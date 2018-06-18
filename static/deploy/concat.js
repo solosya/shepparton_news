@@ -34366,7 +34366,7 @@ Handlebars.registerHelper('labelFix', function(text) {
     if (!text) return "";
     var splitText = text.split(" ");
     if (splitText.length > 1 && splitText[0].toLowerCase() === 'aap') {
-        var text = splitText[0];
+        var text = splitText.slice(1, splitText.length).join(" ");
     }
     return text;
 });
