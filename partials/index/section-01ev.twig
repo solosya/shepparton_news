@@ -2,7 +2,7 @@
 {% set cardIndex = 0 %}
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 5, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 8, "start_date": date.date | split(" ")[0]}) %}
 
 <section class="row">
     <div class="col-sm-9 section-header">
