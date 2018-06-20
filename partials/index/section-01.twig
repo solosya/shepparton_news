@@ -57,15 +57,14 @@
                     <div class="col-sm-4 col-xs-9">
                         
                         {# Card 5,6 #}
-                        {% for i in 0..1 if articles[articleCount] %}
-                            {% set cardClassOne = ['feature-side card-sm-wide-tablet ','card-sm-wide feature-side-tablet '] %}
+                        {% if articles[articleCount] %}
                             {{this.render('../_single-article.twig', {
                                 article: articles[articleCount], 
                                 imageSize: {width:300},
                                 site:site,
                                 div:div,
                                 position: cardIndex, 
-                                containerClass: cardClassOne[i] ~ 'card-sm-mobile'
+                                containerClass: 'feature-side card-sm-wide-tablet card-sm-mobile'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             {% set cardIndex = cardIndex + 1 %}
@@ -73,8 +72,28 @@
                             <hr class="divide visible-xs-block"> 
                             {% if i < 1 %}
                             <hr class="divide10 space-only hidden-xs">
-                            {% endif %}                                  
-                        {% endfor %}
+                            {% endif %}
+                        {% endif %}
+
+                        {% if articles[articleCount] %}
+                            {{this.render('../_single-article.twig', {
+                                article: articles[articleCount], 
+                                imageSize: {width:300, height:160},
+                                site:site,
+                                div:div,
+                                position: cardIndex, 
+                                containerClass: 'card-sm-wide feature-side-tablet card-sm-mobile'
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set cardIndex = cardIndex + 1 %}
+
+                            <hr class="divide visible-xs-block"> 
+                            {% if i < 1 %}
+                            <hr class="divide10 space-only hidden-xs">
+                            {% endif %}
+                        {% endif %}
+
+
                     </div>
 
 
