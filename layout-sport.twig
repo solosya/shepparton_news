@@ -55,11 +55,6 @@
         'template': 'partials/index/section-06.twig',
         'blogs' : [(sportType ~ 'soccer')]
     },
-    "section_4": {
-        'title'     : "Tennis",
-        'template': 'partials/index/section-12.twig',
-        'blogs' : [(sportType ~ 'tennis')]
-    },
     "section_6": {
         'title'     : "Golf",
         'template': 'partials/index/section-06.twig',
@@ -95,7 +90,6 @@
         (sportType ~ 'horse racing'):   { "limit" : 5},
         (sportType ~ 'rugby')       :   { "limit" : 3},
         (sportType ~ 'soccer')      :   { "limit" : 3},
-        (sportType ~ 'tennis')      :   { "limit" : 4},
         (sportType ~ 'golf')        :   { "limit" : 3},
         (sportType ~ 'other sport') :   { "limit" : 4}
     }
@@ -103,7 +97,7 @@
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
 {% set bannerSpots = [2,5] %}
-{%  set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_6', 'section_7'] %} 
+{%  set sectionOrder = ['section_0', 'section_1', 'section_2', 'section_3', 'section_6', 'section_7'] %} 
 
 
 
