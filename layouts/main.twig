@@ -61,7 +61,7 @@
     
     <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{blogData.type | lower}}';</script>
 
-    {% if site != 'dairy' and site != 'shepparton' and _AppHelper.getApplicationEnv() == 'PROD' %}
+    {% if site != 'dairy' and _AppHelper.getApplicationEnv() == 'PROD' %}
         <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
         <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
         <script src="//gauge.lrcontent.com/v1/anonymousAuth.min.js"></script>
