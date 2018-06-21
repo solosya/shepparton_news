@@ -159,7 +159,7 @@
                     </p>
 
                     
-                    <div class="author">
+                    <div class="j-truncate author">
                         <img src="{{social.user.media.path}}" class="img-circle">
                         <p class="">{{ (socialSource == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
                         <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
