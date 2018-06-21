@@ -154,12 +154,12 @@
 
                     <div class="category {{socialSource}} {{site}}">{{socialSource}}</div>
                     
-                    <p id="updateSocial{{article.socialId}}" data-update="0">
+                    <p id="updateSocial{{article.socialId}}" data-update="0" class="j-truncate">
                              {{ quotes.smarten(social.content  | raw) }}
                     </p>
 
                     
-                    <div class="author">
+                    <div class="j-truncate author">
                         <img src="{{social.user.media.path}}" class="img-circle">
                         <p class="">{{ (socialSource == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>
                         <time datetime="">{{_AppHelper.getDateTimeBasedOnTimezone(social.publishDate, 'd M Y')}}</time>
