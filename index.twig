@@ -31,7 +31,7 @@
 {% set regionalSelect = {
     'shepparton': {
         'regional'   :  ['echuca news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','echuca sport'],
-        'editors'    :  ['deniliquin news','echuca news'],
+        'editors'    :  ['deniliquin news','echuca news','galleries'],
         'sections'   :  ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
@@ -39,7 +39,7 @@
     },
     'shepp': {
         'regional'   :  ['echuca news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','echuca sport'],
-        'editors'    :  ['deniliquin news','echuca news'],
+        'editors'    :  ['deniliquin news','echuca news','galleries'],
         'sections'   :  ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
@@ -47,7 +47,7 @@
     },
     'riverine': {
         'regional'   :  ['shepp news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['deniliquin news','shepp news'],
+        'editors'    :  ['deniliquin news','shepp news','galleries'],
         'sections'   :  ['index', 'local', 'real estate', 'automotive', 'opinion', 'videos', 'galleries', 'social', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
@@ -55,7 +55,7 @@
     },
     'deniliquin': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'opinion', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport', 'entertainment'],
@@ -63,7 +63,7 @@
     },
     'benalla': {
         'regional'   :  ['shepp news','kyabram news','deniliquin news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -71,7 +71,7 @@
     },
     'kyabram': {
         'regional'   :  ['shepp news','deniliquin news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -79,7 +79,7 @@
     },
     'southern': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','deniliquin news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -87,7 +87,7 @@
     },
     'cobram': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','deniliquin news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -95,7 +95,7 @@
     },
     'seymour': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','deniliquin news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -103,7 +103,7 @@
     },
     'campaspe': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','deniliquin news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -111,7 +111,7 @@
     },
     'mcivor': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','deniliquin news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -119,7 +119,7 @@
     },
     'tatura': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','deniliquin news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -127,7 +127,7 @@
     },
     'yarrawonga': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','deniliquin news','corowa news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -135,7 +135,7 @@
     },
     'corowa': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','deniliquin news','shepp sport'],
-        'editors'    :  ['echuca news','shepp news'],
+        'editors'    :  ['echuca news','shepp news','shepp galleries'],
         'sections'   :  ['index', 'local', 'videos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01ev.twig'],
         'localBlogs' :  ['news', 'sport'],
@@ -153,7 +153,7 @@
     'index': {
         'template': 'partials/index/section-15.twig',
         'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'national', regionalSelect[site]['editors'][1], 'galleries', 'dairy', 'world','aap finance'],
-        'articleOrder' : [(homeBlog), 'national', 'sport', regionalSelect[site]['editors'][0], 'news', 'world', 'news', 'rural news', 'aap finance', regionalSelect[site]['editors'][1], 'news', 'national', 'galleries', 'world', 'dairy']
+        'articleOrder' : [(homeBlog), 'national', 'sport', regionalSelect[site]['editors'][0], 'news', 'world', 'news', 'rural news', 'aap finance', regionalSelect[site]['editors'][1], 'news', 'national', regionalSelect[site]['editors'][2], 'world', 'dairy']
     },
     'local': {
         'template': regionalSelect[site]['localpart'][0],
