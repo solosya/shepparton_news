@@ -260,18 +260,20 @@ $('document').ready(function() {
     var cardHolder = '';
     clearTimeout(cardHolder);
     cardHolder = setTimeout((function() {
-        $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
+        $('.j-truncate').dotdotdot({
             watch: true
         });
     }), 750);
 
-    var cardHolderTwo = '';
-    clearTimeout(cardHolderTwo);
-    cardHolderTwo = setTimeout((function() {
-        $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
-            watch: true
-        });
-    }), 750);
+
+    // Why is this here twice?
+    // var cardHolderTwo = '';
+    // clearTimeout(cardHolderTwo);
+    // cardHolderTwo = setTimeout((function() {
+    //     $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
+    //         watch: true
+    //     });
+    // }), 750);
 
 
     //this is used for the gallery template

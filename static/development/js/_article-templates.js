@@ -118,8 +118,8 @@ Acme.systemCardTemplate =
         \
         <div class="content">\
                 <div class="category {{site}}">{{ labelFix label }}</div>\
-                <h2>{{{ title }}}</h2>\
-                <div class="author">\
+                <h2 class="j-truncate">{{{ title }}}</h2>\
+                <div class="j-truncate author">\
                     <img src="{{profileImg}}" class="img-circle">\
                     <p>{{ createdBy.displayName }}</p>\
                     <time datetime="{{publishDate}}">{{publishDate}}</time>\
@@ -146,7 +146,7 @@ Acme.property_card =
         <div class="content"> \
             <p class="property__attribute property__attribute--contract">{{ additionalInfo.listing_type }}</p> \
             <h1 class="price">${{ fixPrice additionalInfo.pricerange }}</h1>\
-            <h2>{{ params.articleTitle }}</h2> \
+            <h2 class="j-truncate">{{ params.articleTitle }}</h2> \
             \
             <ul class="property__spaces"> \
                 {{#if additionalInfo.bedroom_count }} \

@@ -34471,8 +34471,8 @@ Acme.systemCardTemplate =
         \
         <div class="content">\
                 <div class="category {{site}}">{{ labelFix label }}</div>\
-                <h2>{{{ title }}}</h2>\
-                <div class="author">\
+                <h2 class="j-truncate">{{{ title }}}</h2>\
+                <div class="j-truncate author">\
                     <img src="{{profileImg}}" class="img-circle">\
                     <p>{{ createdBy.displayName }}</p>\
                     <time datetime="{{publishDate}}">{{publishDate}}</time>\
@@ -34499,7 +34499,7 @@ Acme.property_card =
         <div class="content"> \
             <p class="property__attribute property__attribute--contract">{{ additionalInfo.listing_type }}</p> \
             <h1 class="price">${{ fixPrice additionalInfo.pricerange }}</h1>\
-            <h2>{{ params.articleTitle }}</h2> \
+            <h2 class="j-truncate">{{ params.articleTitle }}</h2> \
             \
             <ul class="property__spaces"> \
                 {{#if additionalInfo.bedroom_count }} \
@@ -36991,18 +36991,20 @@ $('document').ready(function() {
     var cardHolder = '';
     clearTimeout(cardHolder);
     cardHolder = setTimeout((function() {
-        $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
+        $('.j-truncate').dotdotdot({
             watch: true
         });
     }), 750);
 
-    var cardHolderTwo = '';
-    clearTimeout(cardHolderTwo);
-    cardHolderTwo = setTimeout((function() {
-        $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
-            watch: true
-        });
-    }), 750);
+
+    // Why is this here twice?
+    // var cardHolderTwo = '';
+    // clearTimeout(cardHolderTwo);
+    // cardHolderTwo = setTimeout((function() {
+    //     $('.card .content > p, .card h2, a.card > article > .content > .author').dotdotdot({
+    //         watch: true
+    //     });
+    // }), 750);
 
 
     //this is used for the gallery template

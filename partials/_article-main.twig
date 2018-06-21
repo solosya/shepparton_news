@@ -24,11 +24,11 @@
 <div class="content">
     <div class="category {{params.site}}">{{label}}</div>
     
-    <h2 class="{{params.figureClass}}">{{ params.articleTitle }}</h2>
+    <h2 class="j-truncate {{params.figureClass}}">{{ params.articleTitle }}</h2>
     
-    <p class="excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
+    <p class="j-truncate excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
    
-    <div class="author">
+    <div class="j-truncate author">
         <img src="{{params.profileImg}}" class="img-circle">
         <p class="{{params.site}}">{{ article.createdBy['displayName'] }}</p>
         <time datetime="{{publishDate}}">{{params.publishDate}}</time>
