@@ -174,29 +174,31 @@
 
                 {# for mobile #}
                 <div class="property-page-details property-page-details@sm hidden-md hidden-lg">
+                    {% if article.additionalInfo.inspect_date1 %}
+                        <div class="property-page-inspections">
+                            <p class="property-page-inspections__text">Open for inspection</p>
+                            
+                            <ul class="property-page-inspections__list">
+                                {% if article.additionalInfo.inspect_date1 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date1, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                                {% if article.additionalInfo.inspect_date2 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date2, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                                {% if article.additionalInfo.inspect_date3 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date3, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                                {% if article.additionalInfo.inspect_date4 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date4, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% endif %}
 
-                    <div class="property-page-inspections">
-                        <p class="property-page-inspections__text">Open for inspection</p>
-                        
-                        <ul class="property-page-inspections__list">
-                            {% if article.additionalInfo.inspect_date1 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date1, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                            {% if article.additionalInfo.inspect_date2 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date2, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                            {% if article.additionalInfo.inspect_date3 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date3, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                            {% if article.additionalInfo.inspect_date4 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date4, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                        </ul>
-                    </div>
 
 
                     <div class="property-page-contact">
