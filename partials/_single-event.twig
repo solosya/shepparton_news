@@ -88,9 +88,9 @@
             <div class="content">
                 <div class="category">Events</div>
                 
-                <h2 class="{{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
+                <h2 class="j-truncate {{figureClass}}">{{ quotes.smarten(event.title) }}</h2>
                 
-                <p class="excerpt">{{ quotes.smarten(event.excerpt | raw) }}</p>
+                <p class="j-truncate excerpt">{{ quotes.smarten(event.excerpt | raw) }}</p>
                
                 <div class="event-time">
                     {% if startDay == endDay %}
