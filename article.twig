@@ -88,8 +88,19 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 {% set testCount = 0 %}
 
+{% set premium = 'Premium' %}
 
-<meta name="__sync_contentCategory" content="Premium">
+{% set label = article.label %}
+{% set splitLabel = label | split(" ") %}
+
+{% if splitLabel[0] | lower == 'aap' or label |lower == 'world' or label | lower == 'national' %}
+    {% set premium = '' %}
+{% endif %}
+
+
+
+
+<meta name="__sync_contentCategory" content="{{premium}}">
 
 <main id="main" class="container" role="main">
 
