@@ -174,29 +174,31 @@
 
                 {# for mobile #}
                 <div class="property-page-details property-page-details@sm hidden-md hidden-lg">
+                    {% if article.additionalInfo.inspect_date1 %}
+                        <div class="property-page-inspections">
+                            <p class="property-page-inspections__text">Open for inspection</p>
+                            
+                            <ul class="property-page-inspections__list">
+                                {% if article.additionalInfo.inspect_date1 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date1, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                                {% if article.additionalInfo.inspect_date2 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date2, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                                {% if article.additionalInfo.inspect_date3 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date3, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                                {% if article.additionalInfo.inspect_date4 %}
+                                    {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date4, 'l j M, g:ia') %}
+                                    <li class="property-page-inspections__item">{{date}}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% endif %}
 
-                    <div class="property-page-inspections">
-                        <p class="property-page-inspections__text">Open for inspection</p>
-                        
-                        <ul class="property-page-inspections__list">
-                            {% if article.additionalInfo.inspect_date1 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date1, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                            {% if article.additionalInfo.inspect_date2 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date2, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                            {% if article.additionalInfo.inspect_date3 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date3, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                            {% if article.additionalInfo.inspect_date4 %}
-                                {% set date = _AppHelper.getDefaultTimezoneDateTime(article.additionalInfo.inspect_date4, 'l j M, g:ia') %}
-                                <li class="property-page-inspections__item">{{date}}</li>
-                            {% endif %}
-                        </ul>
-                    </div>
 
 
                     <div class="property-page-contact">
@@ -212,7 +214,7 @@
 
 
                     {# social icons for mobile #}
-                    <div class="article-social article-social@sm hidden-md hidden-lg">
+                    <div class="article-social article-social@sm hidden-md hidden-lg u-margin-top-20 u-margin-bottom-15">
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="social-icon facebook-icon">
                             <svg class="svg-icons {{site}} article-social__icons">
                                 <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
