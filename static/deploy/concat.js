@@ -35002,7 +35002,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                 googletag.cmd.push(function() { 
                     googletag.display(slotName); 
                 });
-                success = true;
+                adSuccess = true;
             } catch(err) {
                 console.log('THISISANERROR',err);
                 adSuccess = false;
