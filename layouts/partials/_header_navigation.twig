@@ -168,7 +168,7 @@
                                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{site}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             {% if parentItem.label != "" %}
                                                 {{parentItem.label}}
                                             {% elseif parentItem.blogTitle != "" %}
@@ -184,8 +184,8 @@
                                             <ul class="sub-menu">
                                                 {% for childItem in parentItem.children %}
                                                     {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                    <li>
-                                                        <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                    <li class="{{site}}">
+                                                        <a class="{{externalClass}} {{site}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
                                                          {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                                                         </a>
                                                     </li>
@@ -242,7 +242,7 @@
                                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{site}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             {% if parentItem.label != "" %}
                                                 {{parentItem.label}}
                                             {% elseif parentItem.blogTitle != "" %}
@@ -258,7 +258,7 @@
                                             <ul class="sub-menu">
                                                 {% for childItem in parentItem.children %}
                                                     {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                    <li>
+                                                    <li class="{{site}}">
                                                         <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
                                                          {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
                                                         </a>
