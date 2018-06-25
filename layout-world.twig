@@ -42,7 +42,10 @@
         'title'     : "Sport",
         'template': 'partials/index/section-06.twig',
         'blogs' : ['aap afl','aap horse racing','aap rugby','aap other sport'],
-        'articleOrder' : ['aap afl','aap horse racing','aap rugby','aap other sport']
+        'articleOrder' : ['aap afl','aap horse racing','aap rugby','aap other sport'],
+        'template_params' : {
+            'link' : (networkData.defaultBlogUrl ~ '/@national--world-sport')
+        }
     },
     'world': {
         'template'  : 'partials/index/section-27.twig',
