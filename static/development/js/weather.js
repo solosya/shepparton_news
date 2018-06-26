@@ -216,9 +216,9 @@
         } else if (siteLocation.search('benalla') >= 0 ) {
             location = 'Australia/Benalla';
         } else if (siteLocation.search('cobram') >= 0 ) {
-            location = '​Australia/Cobram';
+            location = 'Australia/Cobram';
         } else if (siteLocation.search('seymour') >= 0 ) {
-            location = '​Australia/Seymour';
+            location = 'Australia/Seymour';
         } else if (siteLocation.search('southern') >= 0 ) {
             location = 'Australia/Finley';
         } else if (siteLocation.search('tatura') >= 0 ) {
@@ -234,7 +234,7 @@
         } else if (siteLocation.search('mcivor') >= 0 ) {
             location = 'Australia/Heathcote';
         } else if (siteLocation.search('yarrawonga') >= 0 ) {
-            location = '​Australia/Yarrawonga';
+            location = 'Australia/Yarrawonga';
         } else {
             location = 'Australia/Shepparton';
         }
