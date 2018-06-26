@@ -10,13 +10,13 @@
         "blog" : {            
             "endUserAccess" : [
 
-                                "jobs",     "prop",     "events",
-                    "local",    "",         "",         "422",    
-                    "Shepparton",    "",         "",         "1203",   
-                  "country",    "",         "",         "1172",   
-                  "shepptest",  "",         "",         "972",   
-              "countrylive",    "",         "",         "1423",   
-                      "UAT",    "",         ""
+                                  "jobs",     "prop",      "events",
+                    "local",        "",         "",         "422",    
+                    "Shepparton",   "",         "",         "1203",   
+                  "country",        "",         "",         "1172",   
+                  "shepptest",      "",         "",         "972",   
+              "countrylive",        "",         "",         "1423",   
+                      "UAT",        "",         ""
                 
             ],
             "extendedAttributes": [
@@ -24,11 +24,29 @@
                     "name": "publishto",
                     "label": "Publish to...",
                     "type": "inputbox"
-                }
+                },
+                {
+    				"label": "",
+    				"type": "radio",
+    				"name": "premium",
+    				"options": {
+    					"Premium": "Premium",
+    					"Free": "Free"
+    				}
+    			}
             ]
         },
         "article": {
     		"extendedAttributes": [
+                {
+    				"label": "",
+    				"type": "radio",
+    				"name": "premium",
+    				"options": {
+    					"Premium": "Premium",
+    					"Free": "Free"
+    				}
+    			},
                 {
                     "name": "listingclose",
                     "label": "Listing close",

@@ -14,6 +14,31 @@
 {% set publishDate = _AppHelper.getDateTimeBasedOnTimezone(article.publishDate, 'F, Y') %}
 
 
+
+
+{% set premium = 'Premium' %}
+
+{% if blogInfo['additionalInfo']['premium'] is defined %}
+    {% if blogInfo['additionalInfo']['premium'] == "Premium" %}
+        {% set premium = 'Premium' %}
+    {% elseif blogInfo['additionalInfo']['premium'] == "Free" %}
+        {% set premium = '' %}
+    {% endif %}
+{% endif %}
+
+{# Override the above is premium content is set directly on the article #}
+{% if article['additionalInfo']['premium'] is defined %}
+    {% if article['additionalInfo']['premium'] == "Premium" %}
+        {% set premium = 'Premium' %}
+    {% elseif article['additionalInfo']['premium'] == "Free" %}
+        {% set premium = '' %}
+    {% endif %}
+{% endif %}
+
+
+
+<meta name="__sync_contentCategory" content="{{premium}}">
+
 <main id="main" class="gallery" role="main">
 
     <article class="article-main">
@@ -34,7 +59,8 @@
                             media: article.media,
                             type: 'article',
                             default: true,
-                            galleryStyle: 'gallery'
+                            galleryStyle: 'gallery',
+                            imageSize: {height: 500, width: 900}
 
                         }) | raw}}
 

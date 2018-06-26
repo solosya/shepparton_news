@@ -8,6 +8,7 @@
 
 
 {% set blogInfo = _Blog.getBlog() %}
+
 {% set networkData = _Network.getNetworkData() %}
 {% set site = networkData.title | lower | split(" ")[0] %}
 
@@ -88,14 +89,35 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 {% set testCount = 0 %}
 
+
+
 {% set premium = 'Premium' %}
 
-{% set label = article.label %}
+{% if blogInfo['additionalInfo']['premium'] is defined %}
+    {% if blogInfo['additionalInfo']['premium'] == "Premium" %}
+        {% set premium = 'Premium' %}
+    {% elseif blogInfo['additionalInfo']['premium'] == "Free" %}
+        {% set premium = '' %}
+    {% endif %}
+{% endif %}
+
+{# Override the above is premium content is set directly on the article #}
+{% if article['additionalInfo']['premium'] is defined %}
+    {% if article['additionalInfo']['premium'] == "Premium" %}
+        {% set premium = 'Premium' %}
+    {% elseif article['additionalInfo']['premium'] == "Free" %}
+        {% set premium = '' %}
+    {% endif %}
+{% endif %}
+
+
+
+{# {% set label = article.label %}
 {% set splitLabel = label | split(" ") %}
 
-{% if splitLabel[0] | lower == 'aap' or label |lower == 'world' or label | lower == 'national' %}
+{% if splitLabel[0] | lower == 'aap' or label | lower == 'world' or label | lower == 'national' %}
     {% set premium = '' %}
-{% endif %}
+{% endif %} #}
 
 
 
