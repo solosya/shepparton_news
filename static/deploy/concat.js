@@ -37628,7 +37628,7 @@ UserArticlesController.Load = (function ($) {
         } else if (siteLocation.search('seymour') >= 0 ) {
             location = '​Australia/Seymour';
         } else if (siteLocation.search('southern') >= 0 ) {
-            location = 'Australia/Finley​';
+            location = 'Australia/Finley';
         } else if (siteLocation.search('tatura') >= 0 ) {
             location = 'Australia/Tatura';
         } else if (siteLocation.search('denipt') >= 0 || siteLocation.search('deniliquin') >= 0) {
