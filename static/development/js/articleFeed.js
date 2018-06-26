@@ -214,9 +214,20 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         var slotName = 'div-gpt-'+adDivId;
         slotDiv.id = slotName;
         slotDiv.setAttribute( 'class', 'google_ad '+size);
-        googletag.cmd.push(function() { 
-            googletag.display(slotName); 
-        });       
+        var adAttempts = 0;
+        var adSuccess = false;
+        while (adAttempts <= 5 && adSuccess == false) {
+            try {
+                googletag.cmd.push(function() { 
+                    googletag.display(slotName); 
+                });
+                adSuccess = true;
+            } catch(err) {
+                console.log('THISISANERROR',err);
+                adSuccess = false;
+                adAttempts = adAttempts + 1;
+            }
+        }       
     }
 
     function rubiconTagPush(adslots,section,network,page,sizes) {
@@ -271,8 +282,17 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                 if (sizes[i] == 'desktop-banner-main' || sizes[i] == 'tablet-banner-main' || sizes[i] == 'mobile-banner-main') { 
                     var thePOS = '1';
                 } else {
-                    var thePOS = POStarget.toString();
-                    POStarget++;
+                    var sizeSplit = sizes[i].split("-");
+                    if (sizeSplit[1] == 'mrec') {
+                        var thePOS = mrecPOStarget.toString();
+                        mrecPOStarget++;
+                    } else if (sizeSplit[1] == 'banner') {
+                        var thePOS = bannerPOStarget.toString();
+                        bannerPOStarget++;
+                    } else {
+                        var thePOS = POStarget.toString();
+                        POStarget++;
+                    }
                 }
 
                 gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[0], 'div-gpt-'+adslots[i]).setTargeting(theslot[2], [thePOS]).defineSizeMapping(theslot[1]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
