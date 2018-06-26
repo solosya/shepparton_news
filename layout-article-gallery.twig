@@ -22,7 +22,7 @@
     {% if blogInfo['additionalInfo']['premium'] == "Premium" %}
         {% set premium = 'Premium' %}
     {% elseif blogInfo['additionalInfo']['premium'] == "Free" %}
-        {% set premium = '' %}
+        {% set premium = 'Free' %}
     {% endif %}
 {% endif %}
 
@@ -31,7 +31,7 @@
     {% if article['additionalInfo']['premium'] == "Premium" %}
         {% set premium = 'Premium' %}
     {% elseif article['additionalInfo']['premium'] == "Free" %}
-        {% set premium = '' %}
+        {% set premium = 'Free' %}
     {% endif %}
 {% endif %}
 
