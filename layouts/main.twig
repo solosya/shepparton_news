@@ -12,7 +12,7 @@
 {# {% set site          = "dairy" %} #}
 
 
-{% if blogName == 'menu map' %}
+{% if blogName | lower == 'menu map' %}
  {{ content | raw }}
 {% else %}
 

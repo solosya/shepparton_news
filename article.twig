@@ -112,13 +112,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
-{# {% set label = article.label %}
-{% set splitLabel = label | split(" ") %}
-
-{% if splitLabel[0] | lower == 'aap' or label | lower == 'world' or label | lower == 'national' %}
-    {% set premium = '' %}
-{% endif %} #}
-
 
 
 
@@ -157,6 +150,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                         media: images,
                                         default: imageFeature,
                                         galleryStyle: 'article'
+
                                     }) | raw}}
                                 {% endif %}
 
