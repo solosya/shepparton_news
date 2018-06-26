@@ -207,7 +207,38 @@
             }
         }
 
-        var location = 'Australia/Shepparton';
+        var siteLocation = window.location.href;
+        //console.log('thesite:',window.location.href);
+        var location = '';
+
+        if (siteLocation.search('riverine') >= 0 ) {
+            location = 'Australia/Echuca';
+        } else if (siteLocation.search('benalla') >= 0 ) {
+            location = 'Australia/Benalla';
+        } else if (siteLocation.search('cobram') >= 0 ) {
+            location = '​Australia/Cobram';
+        } else if (siteLocation.search('seymour') >= 0 ) {
+            location = '​Australia/Seymour';
+        } else if (siteLocation.search('southern') >= 0 ) {
+            location = 'Australia/Finley​';
+        } else if (siteLocation.search('tatura') >= 0 ) {
+            location = 'Australia/Tatura';
+        } else if (siteLocation.search('denipt') >= 0 || siteLocation.search('deniliquin') >= 0) {
+            location = 'Australia/Deniliquin';
+        } else if (siteLocation.search('campaspe') >= 0 ) {
+            location = 'Australia/Campaspe';
+        } else if (siteLocation.search('corowa') >= 0 ) {
+            location = 'Australia/Corowa';
+        } else if (siteLocation.search('kyfree') >= 0 || siteLocation.search('kyabram') >= 0 ) {
+            location = 'Australia/Kyabram';
+        } else if (siteLocation.search('mcivor') >= 0 ) {
+            location = 'Australia/Heathcote';
+        } else if (siteLocation.search('yarrawonga') >= 0 ) {
+            location = '​Australia/Yarrawonga';
+        } else {
+            location = 'Australia/Shepparton';
+        }
+
 
         $.ajax({
             url: 'https://weather.pagemasters.com.au/weather?q=' + location,
