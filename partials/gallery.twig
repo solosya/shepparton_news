@@ -3,6 +3,16 @@
 {% set owl      = '' %}
 {% set owlClass = '' %}
 
+{% set imgWidth  = imageSize.width  is defined ? imageSize.width  : 970 %}
+{% set imgHeight = imageSize.height is defined ? imageSize.height : 440 %}
+{% set gravity   = 'faces' %}
+
+
+{% if galleryStyle == "gallery" %} 
+    {% set imgWidth = 0 %}
+    {% set imgHeight = 515 %}
+    {% set gravity = 'auto' %}
+{% endif %}
 
 {% if ( media | length > 1 ) %}
     {% set owl = "owl-gallery-" ~ type %}
@@ -19,7 +29,7 @@
 <div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1" data-default="{{default}}">
     {% for image in media %}
 
-        {% set articleImg = _Media.getMediaUrl(image, 0, 515, {'crop': 'fill', 'gravity': 'auto'} ) %}
+        {% set articleImg = _Media.getMediaUrl(image, imgWidth, imgHeight, {'crop': 'fill', 'gravity': gravity} ) %}
 
         <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
                 

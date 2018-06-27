@@ -9,14 +9,18 @@
 {% set url           = _AppHelper.getParsedUrl %}
 {% set site          = networkData.title | lower | split(" ")[0]%}
 
-{# {% set site          = "dairy" %} #}
 
 
+{# This allows a JSON representation of the header menu to be returned
+for Oovvuu to use to replicate the menu on the video site. #}
 {% if blogName | lower == 'menu map' %}
  {{ content | raw }}
 {% else %}
 
 
+
+
+{# The below used for login with Syncronex #}
 {% set pageURL = _AppHelper.getCurrentUrl(true) %}
 
 {% if pageURL matches '{sp-tk}' %}
@@ -29,6 +33,9 @@
         %}
     {% endif %}
 {% endif %}
+
+
+
 
 
 
@@ -83,15 +90,13 @@
     <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
 
 
+
     {% set isPage = 'content_box_page' in _Page.getBodyClass() and 'page-contact-us' not in _Page.getBodyClass() %}
 
 
+
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-
-
-
-    <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a3b77ad1" type="text/css" media="all">
-
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=a3b77ad1" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -125,7 +130,7 @@
 
 
 
-    {{this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';")}}
+    {{ this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';") }}
     {{ this.render('partials/_user-styles.twig', {networkData: networkData} ) | raw }}
 
 
@@ -149,7 +154,7 @@
     {% endif %}
 
 
-    {% if site != 'dairy' and site != 'shepparton' and _AppHelper.getApplicationEnv() == 'PROD' %}
+    {% if site != 'dairy' and _AppHelper.getApplicationEnv() == 'PROD' %}
         <script>
             LoginRadiusSSO.init('mcmedia');
             var options = { appName : 'mcmedia'};
@@ -191,12 +196,14 @@
     }) | raw }}
 
 
-    {# Don't show this add on blog pages.  Index is a blog so only allow there #}
+    {# Don't show this ad on blog pages.  Index is a blog so only allow there #}
     {% if (pageTypeClass != "blog" and layout != "layout-property") or url.path == '/'%}
     <div class="ad-container top-ad">
         <div class='advert-desktop' data-adsize="banner-main"></div>
     </div>
     {% endif %}
+
+
 
     {{ content | raw }}
 
