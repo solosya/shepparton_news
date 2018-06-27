@@ -3,8 +3,36 @@
 {% set blogData    = _Blog.getBlog() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
+{% set colours = {
+    "shepparton" : "#f03746",
+    "riverine"   : "#f03746",
+    "benalla"    : "#f03746",
+    "cobram"     : "#f03746",
+    "seymour"    : "#f03746",
+    "southern"   : "#f03746",
+    "tatura"     : "#f03746",
+    "deniliquin" : "#f03746",
+
+    "country"    : "#8bc833",
+    "campaspe"   : "#8bc833",
+
+    "dairy"      : "#118ce0",
+    "corowa"     : "#118ce0",
+    "kyabram"    : "#118ce0",
+    "mcivor"     : "#118ce0",
+    "yarrawonga" : "#118ce0"
+    }
+%}
+
+{% set colour = "#f03746" %}
+
+{% if site in colours | keys %}
+    {% set colour = colours[site] %}
+{% endif %}
+
 { "blogHeaderMenu": 
     {{ _Menu.get({'menuType': 'header'}) | json_encode(constant('JSON_PRETTY_PRINT')) }}
 , "blogFooterMenu": 
     {{ _Menu.get({'menuType': 'footer'}) | json_encode(constant('JSON_PRETTY_PRINT')) }}
+, "sitecolour": "{{colour}}"
 }
