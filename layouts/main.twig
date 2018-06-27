@@ -56,10 +56,10 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {% set favicon = '' %}
     {% if networkData.favMedia | length > 0 %}
         {% set favicon = _Media.getMediaUrl(networkData.favMedia, 80, 80)%}
+        <link rel="shortcut icon" href="{{favicon}}" />
+        <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
     {% endif %}
 
-    <link rel="shortcut icon" href="{{favicon}}" />
-    <link rel="icon" href="{{favicon}}" sizes="any" type="image/svg+xml" />
 
     <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-57px.png" sizes="57x57" id="apple-icon-sm" />
     <link rel="apple-touch-icon" href="'{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-72px.png" sizes="72x72" id="apple-icon-md" />
