@@ -16,7 +16,7 @@
 <div class="content">
 
     {% set contractType = (article.additionalInfo.listing_type | lower == 'buy') ? 'For Sale' : 'For Lease'  %}
-    <p class="property__attribute property__attribute--contract {{site}}">{{ contractType }} | ${{ info.pricerange | preg_replace("/\\$/", '')}}</p>
+    <p class="property__attribute property__attribute--contract {{site}}">{{ contractType }} | {{ info.pricerange }}</p>
 
     <h2 class="j-truncate property__address">{{ params.articleTitle }}</h2>
 
