@@ -34957,7 +34957,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             };
 
             if (mediaSize == 'mobile') {
-                console.log(mediaSize,i,pageAdSlots,adSlotSizes,adSlotIds);
                 if (slotSize == 'banner-main') {
                     for (x=adSlotSizes.length;x>0;x--){
                        adSlotSizes[x] = adSlotSizes[x-1];
