@@ -34941,23 +34941,38 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         console.log('screen too small for advertising.');
     }
     if (pageAdSlots.length > 0 ){
+        if (mediaSize == 'mobile') {
+            var x = 4;
+        } else {
+            var x = pageAdSlots.length;   
+        }
 
-        var adSlotIds = [pageAdSlots.length];
-        var adSlotSizes = [pageAdSlots.length];
+        var adSlotIds = [x];
+        var adSlotSizes = [x];
         for (var i=0;i<pageAdSlots.length;i++) {
             var thisSlot = pageAdSlots[i];
             var newID = generateNextAdName(mediaSize+'-');
             thisSlot.id = newID;
-            
             thisSlot = $('#'+thisSlot.id);
             var slotSize = thisSlot.data('adsize');
+            
+            if ((i > 3) && (mediaSize == 'mobile') && (slotSize != 'banner-main')) {continue}
+
             if (slotSize == 'interstitial') { 
                 newID = 'ad-'+mediaSize+'-interstitial';
                 thisSlot = pageAdSlots[i];
                 thisSlot.id = newID;
             };
-            adSlotSizes[i] = mediaSize+'-'+slotSize;
-            adSlotIds[i] = newID;  
+
+            if ((i > 3) && (mediaSize == 'mobile')) {
+                adSlotSizes[4] = mediaSize+'-'+slotSize;
+                adSlotIds[4] = newID;
+            } else {
+                adSlotSizes[i] = mediaSize+'-'+slotSize;
+                adSlotIds[i] = newID;
+            }
+           
+
         }
         var siteSection = getSiteSection(effectiveURL,effectiveSection,siteAdSections);
         var networkSite = networkSelect[effectiveURL];
