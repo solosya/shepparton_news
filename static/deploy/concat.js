@@ -34941,14 +34941,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         console.log('screen too small for advertising.');
     }
     if (pageAdSlots.length > 0 ){
-        if (mediaSize == 'mobile') {
-            var x = 4;
-        } else {
-            var x = pageAdSlots.length;   
-        }
-
-        var adSlotIds = [x];
-        var adSlotSizes = [x];
+        var adSlotIds = [pageAdSlots.length];
+        var adSlotSizes = [pageAdSlots.length];
         for (var i=0;i<pageAdSlots.length;i++) {
             var thisSlot = pageAdSlots[i];
             var newID = generateNextAdName(mediaSize+'-');
@@ -34956,17 +34950,23 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             thisSlot = $('#'+thisSlot.id);
             var slotSize = thisSlot.data('adsize');
             
-            if ((i > 3) && (mediaSize == 'mobile') && (slotSize != 'banner-main')) {continue}
-
             if (slotSize == 'interstitial') { 
                 newID = 'ad-'+mediaSize+'-interstitial';
                 thisSlot = pageAdSlots[i];
                 thisSlot.id = newID;
             };
 
-            if ((i > 3) && (mediaSize == 'mobile')) {
-                adSlotSizes[4] = mediaSize+'-'+slotSize;
-                adSlotIds[4] = newID;
+            if (mediaSize == 'mobile') {
+                if (slotSize == 'banner-main') {
+                    adSlotSizes[0] = mediaSize+'-'+slotSize;
+                    adSlotIds[0] = newID;
+                } else if (!adSlotSizes[0]) {
+                    adSlotSizes[i+1] = mediaSize+'-'+slotSize;
+                    adSlotIds[i+1] = newID;
+                } else {
+                    adSlotSizes[i] = mediaSize+'-'+slotSize;
+                    adSlotIds[i] = newID;
+                }
             } else {
                 adSlotSizes[i] = mediaSize+'-'+slotSize;
                 adSlotIds[i] = newID;
