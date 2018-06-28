@@ -34957,12 +34957,14 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             };
 
             if (mediaSize == 'mobile') {
+                console.log(mediaSize,i,pageAdSlots,adSlotSizes,adSlotIds);
                 if (slotSize == 'banner-main') {
+                    for (x=adSlotSizes.length;x>0;x--){
+                       adSlotSizes[x] = adSlotSizes[x-1];
+                       adSlotIds[x] = adSlotIds[x-1]; 
+                    }
                     adSlotSizes[0] = mediaSize+'-'+slotSize;
                     adSlotIds[0] = newID;
-                } else if (!adSlotSizes[0]) {
-                    adSlotSizes[i+1] = mediaSize+'-'+slotSize;
-                    adSlotIds[i+1] = newID;
                 } else {
                     adSlotSizes[i] = mediaSize+'-'+slotSize;
                     adSlotIds[i] = newID;
