@@ -266,41 +266,56 @@
 							height:	23px;
 							background-image: url(../images/event/calendar.svg);
 							background-repeat: no-repeat;
-							&.country {
-								background-image: url(../images/event/country/calendar.svg);											
-							}
+							&.country, &.campaspe {
+						        background-image: url(../images/event/green/calendar.svg);
+						    }
+						    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+						        background-image: url(../images/event/blue/calendar.svg);
+						    }
 						}
 						&.time{
 							height:	23px;
 							background-image: url(../images/event/clock.svg);
 							background-repeat: no-repeat;
-							&.country {
-								background-image: url(../images/event/country/clock.svg);											
-							}
+							&.country, &.campaspe {
+						        background-image: url(../images/event/green/clock.svg);
+						    }
+						    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+						        background-image: url(../images/event/blue/clock.svg);
+						    }
 						}
 						&.address{
 							height:	28px;
 							background-image: url(../images/event/location.svg);
 							background-repeat: no-repeat;
-							&.country {
-								background-image: url(../images/event/country/location.svg);											
-							}
+							&.country, &.campaspe {
+						        background-image: url(../images/event/green/location.svg);
+						    }
+						    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+						        background-image: url(../images/event/blue/location.svg);
+						    }
 						}
 						&.website{
 							height:	27px;
 							background-image: url(../images/event/bookmark.svg);
 							background-repeat: no-repeat;
-							&.country {
-								background-image: url(../images/event/country/bookmark.svg);											
-							}
+							&.country, &.campaspe {
+						        background-image: url(../images/event/green/bookmark.svg);
+						    }
+						    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+						        background-image: url(../images/event/blue/bookmark.svg);
+						    }
 						}
 						&.contact{
 							height:	19px;
 							background-image: url(../images/event/envelope.svg);
 							background-repeat: no-repeat;
-							&.country {
-								background-image: url(../images/event/country/envelope.svg);											
-							}
+							&.country, &.campaspe {
+						        background-image: url(../images/event/green/envelope.svg);
+						    }
+						    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+						        background-image: url(../images/event/blue/envelope.svg);
+						    }
 						}
 					}
 					> p {
@@ -327,11 +342,9 @@
 				>h2 {
 					font-size: 16px;
 					font-weight: bold;
-					color: #f03746;
+					@include colourselect('');
 					margin-bottom: 25px;
-					&.country {
-						color: #0d522f;
-					}
+					
 				}
 			}
 		}
