@@ -66,6 +66,15 @@
     } %}
 
     
+    {% set totalstring = "" %}
+    {% set totals = (article.total is defined) ? article.total : false %}
+    {% if totals and _User.isAdminUser() %}
+        {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+        {% set totalstring = totalstring ~ " Published " ~ params.publishDate %}
+    {% endif %}
+
+
+
 
     <div class="{{containerClass}}" data-title="{{ params.articleTitle | raw }}" {{inline}}>
         
@@ -77,7 +86,8 @@
             data-position       = "{{position}}" 
             data-social         = "0"
             data-article-image  = "{{params.articleImg}}" 
-            data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}">
+            data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
+            title               = "{{totalstring}}">
 
             {% if dev %}
                 <div class="article_number">{{position}}</div>
