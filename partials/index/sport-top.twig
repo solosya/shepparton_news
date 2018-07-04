@@ -82,7 +82,7 @@
         
 
         
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'network' }) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network', interval: 168 }) %}
 
 <section>
     <div class="row">

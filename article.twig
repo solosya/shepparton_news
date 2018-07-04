@@ -84,7 +84,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate, 'F, Y') %}
 
-{% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id] }) %}
+{% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
 {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
 
 {% set testCount = 0 %}
