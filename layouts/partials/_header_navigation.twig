@@ -99,7 +99,7 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
 
-            {% if 'dairy' not in (networkData.title | lower) %}
+            {# {% if 'dairy' not in (networkData.title | lower) %}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                 {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
 
@@ -118,10 +118,9 @@
                 {% else %}
                     <ul class="auth-links">              
                         <li><a href="{{ loginPath }}">LOG IN</a></li>
-                        {# <li><a href="{{ signUpPath }}">SIGN UP</a></li> #}
                     </ul>
                 {% endif %}
-            {% endif %}
+            {% endif %} #}
 
             <ul class="auth-links visible-md-block visible-lg-block">
                 <li id="menu-item-search" class="menu-item-search">
@@ -276,7 +275,7 @@
 
 
             <div class="header-bottom {{ visibility }} {{site}}">
-                {% if 'dairy' not in (networkData.title | lower) %}
+                {# {% if 'dairy' not in (networkData.title | lower) %}
 
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
@@ -290,11 +289,9 @@
                     {% else %}
                         <ul class="auth-links">              
                             <li><a href="{{ loginPath }}">LOG IN</a></li>
-                            {# <li><a href="{{ signUpPath }}">SIGN UP</a></li> #}
-
                         </ul>
                     {% endif %}
-                {% endif %}            
+                {% endif %}             #}
 
                 <ul class="auth-links visible-md-block visible-lg-block">
                     <li id="menu-item-search" class="menu-item-search">

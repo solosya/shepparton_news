@@ -73,6 +73,21 @@
                     "label": "Contact phone",
                     "type": "inputbox"
                 },
+                {
+                    "name": "contactname2",
+                    "label": "Contact name",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactemail2",
+                    "label": "Contact email",
+                    "type": "inputbox"
+                },
+                {
+                    "name": "contactphone2",
+                    "label": "Contact phone",
+                    "type": "inputbox"
+                },
     			{
     				"name": "auction_date",
     				"label": "Auction Date",
@@ -102,6 +117,11 @@
     				"label": "Inspection Date 4",
     				"type": "inputbox",
     				"datetimepicker": true
+                },
+    			{
+    				"name": "inspection_other",
+    				"label": "Inspection - other",
+    				"type": "inputbox"
     			},
                 {
                     "name": "pricerange",
