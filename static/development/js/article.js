@@ -9,7 +9,7 @@ Acme.article = function() {
 
 Acme.article.prototype.InsertInterstitial = function() {
     if ($('.article_content > p').length >= 9) {
-        // $("<div class='teads-inread' ></div>").insertAfter( $('.article_content > p')[5] );        
+        //console.log('TEADSTRUE');    
     	teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {

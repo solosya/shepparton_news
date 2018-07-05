@@ -34700,7 +34700,7 @@ Acme.article = function() {
 
 Acme.article.prototype.InsertInterstitial = function() {
     if ($('.article_content > p').length >= 9) {
-        // $("<div class='teads-inread' ></div>").insertAfter( $('.article_content > p')[5] );        
+        //console.log('TEADSTRUE');    
     	teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {
@@ -35019,6 +35019,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                     googletag.display(slotName); 
                 });
                 adSuccess = true;
+                //console.log(slotName,adSuccess);
             } catch(err) {
                 console.log('THISISANERROR',err);
                 adSuccess = false;
@@ -35069,7 +35070,11 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         var gptadslots = [];
         googletag.cmd.push(function() {
             for (var i=0;i<adslots.length;i++) {
-                if (sizes[i] == 'desktop-teads' || sizes[i] == 'tablet-teads' || sizes[i] == 'mobile-teads') {continue};
+                if (sizes[i] == 'desktop-teads' || sizes[i] == 'tablet-teads' || sizes[i] == 'mobile-teads') {
+                    var theNetwork = 'sheppnews';
+                } else {
+                    var theNetwork = network;
+                }
                 var theslot = adSizes[sizes[i]];
                 if ((theslot || theslot[0] || theslot[1] || theslot[2]) == undefined) {
                     console.log('undefined gpt ad space:');
@@ -35092,7 +35097,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                     }
                 }
 
-                gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+network, theslot[0], 'div-gpt-'+adslots[i]).setTargeting(theslot[2], [thePOS]).defineSizeMapping(theslot[1]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
+                gptadslots[i] = googletag.defineSlot('/'+dfpacct+'/'+theNetwork, theslot[0], 'div-gpt-'+adslots[i]).setTargeting(theslot[2], [thePOS]).defineSizeMapping(theslot[1]).setTargeting('BLOGPREFIX', [section]).addService(googletag.pubads());
+                console.log(gptadslots[i]);
                 rubicontag && rubicontag.setTargetingForGPTSlot && rubicontag.setTargetingForGPTSlot(gptadslots[i]);
             }
             googletag.pubads().enableSingleRequest();

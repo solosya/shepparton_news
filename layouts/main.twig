@@ -98,7 +98,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=2943ce45" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=31f1882c" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -200,10 +200,10 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {# Don't show this ad on blog pages.  Index is a blog so only allow there #}
-    {% if (pageTypeClass != "blog" and layout != "layout-property") or url.path == '/'%}
-    <div class="ad-container top-ad">
-        <div class='advert-desktop' data-adsize="banner-main"></div>
-    </div>
+    {% if (pageTypeClass != "blog" and layout != "layout-article-property") or (url.path == '/' or url.path == '/@www') %}
+        <div class="ad-container top-ad">
+            <div class='advert-desktop' data-adsize="banner-main"></div>
+        </div>
     {% endif %}
 
 
