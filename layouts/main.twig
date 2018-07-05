@@ -200,7 +200,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {# Don't show this ad on blog pages.  Index is a blog so only allow there #}
-    {% if (pageTypeClass != "blog" and layout != "layout-article-property") or (url.path == '/' or url.path == '/@www' %}
+    {% if (pageTypeClass != "blog" and layout != "layout-article-property") or (url.path == '/' or url.path == '/@www') %}
         <div class="ad-container top-ad">
             <div class='advert-desktop' data-adsize="banner-main"></div>
         </div>
