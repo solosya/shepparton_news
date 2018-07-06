@@ -81,7 +81,7 @@
             {% endif %}
             {% if article.additionalInfo.inspection_other %}
                  <div class="property-page-inspections">
-                    <p class="property-page-inspections__text ">Inspection</p>
+                    <p class="property-page-inspections__text {{site}}">Inspection</p>
                     <ul class="property-page-inspections__list">
                         <li class="property-page-inspections__item">{{article.additionalInfo.inspection_other}}</li>
                     </ul>
@@ -103,10 +103,10 @@
                     <p class="property-page-contact__details">For more information, please contact</p>
 
                     <p class="property-page-contact__name {{site}}">{{article.additionalInfo.contactname}}</p>
-                    <p class="property-page-contact__phone">{{article.additionalInfo.contactphone}} | {{article.additionalInfo.contactcompany}}</p>
+                    <p class="property-page-contact__phone">{{article.additionalInfo.contactphone}}  |  {{article.additionalInfo.contactcompany}}</p>
                     {% if article.additionalInfo.contactname2 %}
                         <p class="property-page-contact__name {{site}}">{{article.additionalInfo.contactname2}}</p>
-                        <p class="property-page-contact__phone">{{article.additionalInfo.contactphone2}} | {{article.additionalInfo.contactcompany}}</p>
+                        <p class="property-page-contact__phone">{{article.additionalInfo.contactphone2}}  |  {{article.additionalInfo.contactcompany}}</p>
                     {% endif %}
                 </div>
 
