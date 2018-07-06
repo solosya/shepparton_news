@@ -11,6 +11,9 @@
         margin:auto;
         display: block;
         width:auto !important;
+        @media #{$mobile} {
+            height: auto!important;
+        }
     }
 }
 
