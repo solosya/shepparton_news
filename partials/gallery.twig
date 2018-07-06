@@ -47,7 +47,7 @@ with width taken up with borders on the side #}
             {% if image.type == 'image' or image.type == 'doc'%} 
                 <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">
                     <img src="{{articleImg}}" class="article-gallery__img hidden-xs">
-                    <img src="{{mobArticleImg}}" class="article-gallery__img visible-xs-block" style="min-height:250px;">
+                    <img src="{{mobArticleImg}}" class="article-gallery__img visible-xs-inline-block" style="min-height:250px;vertical-align:middle;">
                 </div>
             {% endif %}                
             
