@@ -7,10 +7,12 @@
     // background:#B9B9B9; 
 
     .article-gallery__img {
-        width:auto !important;
         max-width: 100%;
         margin:auto;
         display: block;
+        @media #{$tablet-up} {
+            width:auto !important;
+        }
     }
 }
 
