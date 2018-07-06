@@ -210,7 +210,9 @@
                         </div>
                     {% endif %}
                     {% if article.additionalInfo.inspection_other %}
-                            <p class="property-page-inspections__text {{site}}" style="display:flex;flex-direction:row;">Inspection</p><p class="property-page-inspections__item" style="display:flex;flex-direction:row;">{{article.additionalInfo.inspection_other}}</p>
+                        <div style="display:flex;">
+                            <p class="property-page-inspections__text property-page-inspections__text__mob {{site}}">Inspection</p><p class="property-page-inspections__item property-page-inspections__item__mob">{{article.additionalInfo.inspection_other}}</p>
+                        </div>
                     {% endif %}
 
 

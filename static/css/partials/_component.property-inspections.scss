@@ -9,6 +9,13 @@
     @include colourselect('');
 }
 
+.property-page-inspections__text__mob {
+    display:flex;
+    flex-direction:row;
+    margin-right:10px;
+    margin-top:7px;
+}
+
 .property-page-inspections__p {
     font-size: rem(13);
     font-weight:400;
@@ -33,3 +40,9 @@
         padding:0;
     }
 }
+
+.property-page-inspections__item__mob {
+    display:flex;
+    flex-direction:row;
+}
+
