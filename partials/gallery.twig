@@ -6,6 +6,7 @@
 {% set imgWidth  = imageSize.width  is defined ? imageSize.width  : 970 %}
 {% set imgHeight = imageSize.height is defined ? imageSize.height : 440 %}
 {% set gravity   = 'faces' %}
+{% set mobImgHeight = imageSize.height is defined ? imageSize.height : 250 %}
 
 
 {# For gallery pages, we want images to be seen full height and maintain aspect ratio,
@@ -14,11 +15,12 @@ with width taken up with borders on the side #}
     {% set imgWidth = 0 %}
     {% set imgHeight = 515 %}
     {% set gravity = 'auto' %}
+    {% set mobImgHeight = 250 %}
 {% elseif galleryStyle == "property" %}
     {% set imgWidth = 0 %}
     {% set imgHeight = 350 %}
     {% set gravity = 'auto' %}
-
+    {% set mobImgHeight = 250 %}
 {% endif %}
 
 
@@ -38,12 +40,14 @@ with width taken up with borders on the side #}
     {% for image in media %}
 
         {% set articleImg = _Media.getMediaUrl(image, imgWidth, imgHeight, {'crop': 'fill', 'gravity': gravity} ) %}
+        {% set mobArticleImg = _Media.getMediaUrl(image, imgWidth, mobImgHeight, {'crop': 'fill', 'gravity': gravity} ) %}
 
         <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
                 
             {% if image.type == 'image' or image.type == 'doc'%} 
                 <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">
-                    <img src="{{articleImg}}" class="article-gallery__img">
+                    <img src="{{articleImg}}" class="article-gallery__img visible-xs-block">
+                    <img src="{{mobArticleImg}}" class="article-gallery__img hidden-xs">
                 </div>
             {% endif %}                
             
