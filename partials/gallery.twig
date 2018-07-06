@@ -46,8 +46,8 @@ with width taken up with borders on the side #}
                 
             {% if image.type == 'image' or image.type == 'doc'%} 
                 <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">
-                    <img src="{{articleImg}}" class="article-gallery__img visible-xs-block">
-                    <img src="{{mobArticleImg}}" class="article-gallery__img hidden-xs">
+                    <img src="{{articleImg}}" class="article-gallery__img hidden-xs">
+                    <img src="{{mobArticleImg}}" class="article-gallery__img visible-xs-block">
                 </div>
             {% endif %}                
             
