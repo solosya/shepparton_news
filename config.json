@@ -75,17 +75,17 @@
                 },
                 {
                     "name": "contactname2",
-                    "label": "Contact name",
+                    "label": "Contact name 2",
                     "type": "inputbox"
                 },
                 {
                     "name": "contactemail2",
-                    "label": "Contact email",
+                    "label": "Contact email 2",
                     "type": "inputbox"
                 },
                 {
                     "name": "contactphone2",
-                    "label": "Contact phone",
+                    "label": "Contact phone 2",
                     "type": "inputbox"
                 },
     			{
