@@ -187,7 +187,7 @@
                 <div class="property-page-details property-page-details@sm hidden-md hidden-lg">
                     {% if article.additionalInfo.inspect_date1 %}
                         <div class="property-page-inspections">
-                            <p class="property-page-inspections__text">Open for inspection</p>
+                            <p class="property-page-inspections__text {{site}}">Open for inspection</p>
                             
                             <ul class="property-page-inspections__list">
                                 {% if article.additionalInfo.inspect_date1 %}
@@ -214,9 +214,13 @@
 
                     <div class="property-page-contact">
                         <p class="property-page-contact__details">For more information, please contact</p>
-                        <p class="property-page-contact__name">{{article.additionalInfo.contactname}}</p>
-                        <p class="property-page-contact__phone">{{article.additionalInfo.contactphone}}</p>
-                        <p class="property-page-contact__company">{{article.additionalInfo.contactcompany}}</p>
+
+                        <p class="property-page-contact__name {{site}}">{{article.additionalInfo.contactname}}</p>
+                        <p class="property-page-contact__phone">{{article.additionalInfo.contactphone}}  |  {{article.additionalInfo.contactcompany}}</p>
+                        {% if article.additionalInfo.contactname2 %}
+                            <p class="property-page-contact__name {{site}}">{{article.additionalInfo.contactname2}}</p>
+                            <p class="property-page-contact__phone">{{article.additionalInfo.contactphone2}}  |  {{article.additionalInfo.contactcompany}}</p>
+                        {% endif %}
                     </div>
 
                 </div>
