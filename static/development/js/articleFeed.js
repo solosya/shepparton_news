@@ -289,11 +289,11 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
         var gptadslots = [];
         googletag.cmd.push(function() {
             for (var i=0;i<adslots.length;i++) {
-                if (sizes[i] == 'desktop-teads' || sizes[i] == 'tablet-teads' || sizes[i] == 'mobile-teads') {
-                    var theNetwork = 'sheppnews';
-                } else {
+                // if (sizes[i] == 'desktop-teads' || sizes[i] == 'tablet-teads' || sizes[i] == 'mobile-teads') {
+                //     var theNetwork = 'sheppnews';
+                // } else {
                     var theNetwork = network;
-                }
+                // }
                 var theslot = adSizes[sizes[i]];
                 if ((theslot || theslot[0] || theslot[1] || theslot[2]) == undefined) {
                     console.log('undefined gpt ad space:');
