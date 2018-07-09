@@ -4,10 +4,14 @@
 {% set blogData      = _Blog.getBlog() %}
 {% set pageClass     = _Page.getBodyClass() %}
 {% set layout        = _Page.getLayoutName() %}
-{% set pageTypeClass = blogData.type %}
 {% set blogName      = blogData.title %}
 {% set url           = _AppHelper.getParsedUrl %}
 {% set site          = networkData.title | lower | split(" ")[0]%}
+{% if 'article' in pageClass %}
+    {% set pageTypeClass = 'article' %}
+{% else %}
+    {% set pageTypeClass = blogData.type %}
+{% endif %}
 
 
 
@@ -66,7 +70,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-144px.png" sizes="144x144" id="apple-icon-lg" />
 
     
-    <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{blogData.type | lower}}';</script>
+    <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{pageTypeClass}}';</script>
 
     {# {% if site != 'dairy' and _AppHelper.getApplicationEnv() == 'PROD' %} #}
     {% if site == 'shepptest' and _AppHelper.getApplicationEnv() == 'PROD' %}
