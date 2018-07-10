@@ -4,7 +4,7 @@
 			color: #000;
 		}
 		
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
 	        	color: #f03746;
 	        }
@@ -23,7 +23,7 @@
 	} @else {
 
 		color: #000;
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        color: #f03746;
 	    }
 		&.country, &.campaspe {
@@ -43,7 +43,7 @@
 			color: #000;
 		}
 		
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
 	        	color: #f03746;
 	        }
@@ -62,7 +62,7 @@
 	} @else {
 
 		color: #000;
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        color: #f03746;
 	    }
 		&.country, &.campaspe {
@@ -82,7 +82,7 @@
 			background-color: #000;
 		}
 		
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
 	        	background-color: #f03746;
 	        }
@@ -99,7 +99,7 @@
 	    }
 	} @else {
 		background-color: #000;
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        background-color: #f03746;
 	    }
 		&.country, &.campaspe {
@@ -117,7 +117,7 @@
 		#{$class} {
 			fill: #000;
 		}
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
 		        fill: #f03746;
 		    }
@@ -135,7 +135,7 @@
 	} @else {
 
 	    fill: #000;
-		&.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        fill: #f03746;
 	    }
 		&.country, &.campaspe {
@@ -154,7 +154,7 @@
 	        stroke: #000;
 	        fill: #fff;
 	    }
-	    &.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+	    &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
 	        #{$class} {
 	            stroke: #f03746;
 	        }
@@ -172,7 +172,7 @@
 	} @else {
 		stroke: #000;
         fill: #fff;	    
-	    &.shepparton, &.shepp, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {	        
+	    &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {	        
             stroke: #f03746;	        
 	    }
 	    &.country, &.campaspe {	        

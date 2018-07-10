@@ -99,7 +99,7 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
 
-            {# {% if site != 'dairy' or  %} #}
+            {# {% if site != 'dairy' %} #}
             {% if site == 'shepptest' %}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                 {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
