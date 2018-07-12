@@ -99,8 +99,8 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
 
-            {# {% if site != 'dairy' %} #}
-            {% if site == 'shepptest' %}
+            {% if site != 'dairy' %}
+            {# {% if site == 'shepptest' %} #}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                 {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
 
@@ -276,11 +276,10 @@
 
 
             <div class="header-bottom {{ visibility }} {{site}}">
-                {# {% if 'dairy' not in (networkData.title | lower) %}
+                {% if site != 'dairy' %}
 
-                    {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
+                    {% set loginPath  = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
-
                     {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
                 
                     {% if not _User.isGuest() %}
@@ -292,7 +291,7 @@
                             <li><a href="{{ loginPath }}">LOG IN</a></li>
                         </ul>
                     {% endif %}
-                {% endif %}             #}
+                {% endif %}            
 
                 <ul class="auth-links visible-md-block visible-lg-block">
                     <li id="menu-item-search" class="menu-item-search">
@@ -319,8 +318,3 @@
     </div><!-- .site-header-main -->
 </header>
 
-
-{# <div class="container hidden-md hidden-lg u-mobile-margin-top-10 u-tablet-margin-top-10 ">
-    <div class="weather j-weather-panel u-tablet-float-right "></div>
-    <div class="weather-dropdown hidden j-weather-panel-dropdown"></div>
-</div> #}
