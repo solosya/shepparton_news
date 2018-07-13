@@ -145,7 +145,7 @@ Card.prototype.bindSocialPostPopup = function()
             var articleId = $(this).parent().data('id');
             var payload = {articleId: articleId, _csrf: csrfToken}
         }
-        console.log(_appJsConfig.appHostName + url, payload);
+
         if (!isRequestSent) {
 
             $.ajax({
@@ -154,7 +154,7 @@ Card.prototype.bindSocialPostPopup = function()
                 dataType: 'json',
                 data: payload,
                 success: function (data, textStatus, jqXHR) {
-                    console.log(data, textStatus, jqXHR);
+
                     data.hasMediaVideo = false;
                     if (data.media['type'] === 'video') {
                         data.hasMediaVideo = true;
@@ -170,8 +170,7 @@ Card.prototype.bindSocialPostPopup = function()
                     var articleTemplate = Handlebars.compile(socialPostPopupTemplate(data.source));
                     var article = articleTemplate(data);
                     $('.modal').html(article);
-                    // console.log($('.modal'));
-                    // $('.modal').modal('show');
+
                     setTimeout(function () {
                         $('.modal').modal('show');
                     }, 500);
@@ -251,10 +250,10 @@ Card.prototype.initDroppable = function()
 
             //get positions
             var sourcePosition      = sourceObj.data('position');
-            var sourcePostId        = parseInt(sourceObj.data('id'));
+            var sourcePostId        = sourceObj.data('id');
             var sourceIsSocial      = parseInt(sourceObj.data('social'));
             var destinationPosition = destObject.data('position');
-            var destinationPostId   = parseInt(destObject.data('id'));
+            var destinationPostId   = destObject.data('id');
             var destinationIsSocial = parseInt(destObject.data('social'));
 
             var swappedDestinationElement = sourceObj.clone().removeAttr('style').insertAfter( destObject );

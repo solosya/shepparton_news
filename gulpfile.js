@@ -122,7 +122,7 @@ gulp.task('scripts', function(){
         './static/development/js/sdk/media-player/mediaelement-and-player.min.js',
 
         './static/development/js/framework.js',
-        './static/development/js/!(framework)*.js', // all files that end in .js EXCEPT common*.js
+        './static/development/js/!(framework)*.js', // all files that end in .js EXCEPT framework*.js
 		])
 		.pipe(concat('concat.js'))
 		.pipe(gulp.dest('./static/deploy'))
@@ -171,4 +171,4 @@ gulp.task('watch', function (){
 	gulp.watch('./static/development/js/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts', 'user_scripts', 'styles']);
+gulp.task('default', ['scripts', 'styles']);
