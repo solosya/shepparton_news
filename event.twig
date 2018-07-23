@@ -128,7 +128,7 @@
 
                     {% if event.websiteUrl != "" %}
                         <div class="col-sm-9 event-detail">
-                            <div class="col-sm-2 website {{site}}"></div><p class="website col-sm-7">{{ event.websiteUrl }}</p>
+                            <div class="col-sm-2 website {{site}}"></div><a class="website col-sm-7" target="_blank" href="{{ event.websiteUrl }}">{{ event.websiteUrl }}</a>
                         </div>
                     {% endif %}
 
@@ -139,8 +139,12 @@
                             {{ event.contactName }}
                         {% endif %}
                         {% if event.contactEmail != "" %}
-                            {{ event.contactEmail }}
+                            <a href="mailto:{{ event.contactEmail }}">{{ event.contactEmail }}</a>
                         {% endif %}
+                        {% if event.contactNumber != "" %}
+                            <a href="mailto:{{ event.contactNumber }}">{{ event.contactNumber }}</a>
+                        {% endif %}
+
                         </p>
                     </div>
                 </div>   
