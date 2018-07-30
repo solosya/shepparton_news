@@ -99,8 +99,7 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
 
-            {% if site != 'dairy' %}
-            {# {% if site == 'shepptest' %} #}
+            {# {% if site != 'dairy' %}
                 {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                 {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
 
@@ -121,7 +120,7 @@
                         <li><a href="{{ loginPath }}">LOG IN</a></li>
                     </ul>
                 {% endif %}
-            {% endif %}
+            {% endif %} #}
 
             <ul class="auth-links visible-md-block visible-lg-block">
                 <li id="menu-item-search" class="menu-item-search">
