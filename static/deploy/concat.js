@@ -36237,7 +36237,7 @@ $('document').ready(function() {
     $(window).scroll(function() {
         var direction = 'down';
         var scroll = $(window).scrollTop();
-        console.log(scroll,scrollMetric[0],scrollMetric[1])
+        // console.log(scroll,scrollMetric[0],scrollMetric[1])
         if (scroll < scrollMetric[0]) {
             direction = 'up';
         }
