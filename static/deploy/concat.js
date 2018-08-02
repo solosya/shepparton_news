@@ -36237,28 +36237,39 @@ $('document').ready(function() {
     $(window).scroll(function() {
         var direction = 'down';
         var scroll = $(window).scrollTop();
+        console.log(scroll,scrollMetric[0],scrollMetric[1])
         if (scroll < scrollMetric[0]) {
             direction = 'up';
         }
         scrollMetric = [scroll, direction];
         scrollUpMenu();
+        adScroll();
     });
 
+
+    
 
 
 
     var adScroll = function() {
-        if ( scrollMetric[1] === 'up' && !isScolledPast(475)) {
-            articleAd.removeClass('fixad').addClass('lockad');
+
+        //set sidebar height for desktop scrolling ad
+        var articleTop = $('#articleContentContainer').position().top
+        var theHeight = $('#articleContentContainer').height();
+        $('#adScrollContainer').css("height",theHeight+"px");
+        var screenHeight = $(window).height();
+        // console.log(scrollMetric[1],scrollMetric[0])
+        if ( scrollMetric[1] === 'up' && !isScolledPast(articleTop-135)) {
+            articleAd.removeClass('fixad').addClass('lockad-top');
         }
-        else if ( scrollMetric[1] === 'up' && !isScolledPast(650)) {
-            articleAd.removeClass('bottomAd').addClass('fixad');
+        else if ( scrollMetric[1] === 'up' && !isScolledPast((theHeight-screenHeight)+articleTop+71)) {
+            articleAd.removeClass('lockad-bottom').addClass('fixad');
         }
-        else if ( scrollMetric[1] === 'down' && isScolledPast(650)) {
-            articleAd.removeClass('fixad').addClass('bottomAd');
+        else if ( scrollMetric[1] === 'down' && isScolledPast((theHeight-screenHeight)+articleTop+71)) {
+            articleAd.removeClass('fixad').addClass('lockad-bottom');
         } 
-        else if ( scrollMetric[1] === 'down' && isScolledPast(475)) {
-            articleAd.removeClass('lockad').addClass('fixad');
+        else if ( scrollMetric[1] === 'down' && isScolledPast(articleTop-135)) {
+            articleAd.removeClass('lockad-top').addClass('fixad');
         }
         
     }
@@ -36317,17 +36328,18 @@ $('document').ready(function() {
     }).resize();
 
     //On Scroll
-    pageWindow.scroll(function() {
-        // console.log('scrolling');
-        var direction = 'down';
-        var scroll = pageWindow.scrollTop();
-        if (scroll < scrollMetric[0]) {
-            direction = 'up';
-        }
-        scrollMetric = [scroll, direction];
-        adScroll();
-        // console.log(scrollMetric);
-    });
+    // pageWindow.scroll(function() {
+    //     // console.log('scrolling');
+    //     var direction = 'down';
+    //     var scroll = pageWindow.scrollTop();
+    //     console.log(scroll,scrollMetric[0]);
+    //     if (scroll < scrollMetric[0]) {
+    //         direction = 'up';
+    //     }
+    //     scrollMetric = [scroll, direction];
+    //     adScroll();
+    //     // console.log(scrollMetric);
+    // });
 
 
 
