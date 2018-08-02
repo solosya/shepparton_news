@@ -36237,7 +36237,6 @@ $('document').ready(function() {
     $(window).scroll(function() {
         var direction = 'down';
         var scroll = $(window).scrollTop();
-        // console.log(scroll,scrollMetric[0],scrollMetric[1])
         if (scroll < scrollMetric[0]) {
             direction = 'up';
         }
@@ -36258,14 +36257,21 @@ $('document').ready(function() {
         var theHeight = $('#articleContentContainer').height();
         $('#adScrollContainer').css("height",theHeight+"px");
         var screenHeight = $(window).height();
-        // console.log(scrollMetric[1],scrollMetric[0])
+        // if the window is below a certain height some of the sidebar is missing
+        // so we have to compensate so the scrolling remains smooth       
+        if (screenHeight <= 814) {
+            var screenDiff = 814 - screenHeight;
+            screenHeight = screenHeight + screenDiff;
+        }
+        // tell ad when to scroll and when not to based on the size of the article
+        // 135 is the space above left for foldaway menu
         if ( scrollMetric[1] === 'up' && !isScolledPast(articleTop-135)) {
             articleAd.removeClass('fixad').addClass('lockad-top');
         }
-        else if ( scrollMetric[1] === 'up' && !isScolledPast((theHeight-screenHeight)+articleTop+71)) {
+        else if ( scrollMetric[1] === 'up' && !isScolledPast((theHeight-screenHeight)+articleTop-43)) {
             articleAd.removeClass('lockad-bottom').addClass('fixad');
         }
-        else if ( scrollMetric[1] === 'down' && isScolledPast((theHeight-screenHeight)+articleTop+71)) {
+        else if ( scrollMetric[1] === 'down' && isScolledPast((theHeight-screenHeight)+articleTop-43)) {
             articleAd.removeClass('fixad').addClass('lockad-bottom');
         } 
         else if ( scrollMetric[1] === 'down' && isScolledPast(articleTop-135)) {
