@@ -204,7 +204,9 @@ div[class*="col-sm"] {
     .u-desktop-indent-left-20 { margin-left: -20px; }
 }
 
-
+.u-fix-width-300 {
+    width: 300px !important;
+}
 
 
 @media (max-width: $sm-break-down){
