@@ -207,6 +207,14 @@ div[class*="col-sm"] {
 .u-fix-width-300 {
     width: 300px !important;
 }
+.u-fix-adsize{
+    width: 300px !important;
+    height: 250px !important;
+    iframe {
+        width: 300px !important;
+        height: 250px !important;
+    }
+}
 
 
 @media (max-width: $sm-break-down){
