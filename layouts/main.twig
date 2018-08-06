@@ -162,20 +162,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {% endif %}
 
 
-    {% if paymeter == true %}
-        <script>
-            LoginRadiusSSO.init('mcmedia');
-            var options = { appName : 'mcmedia'};
-            aas.init(options);
-            LoginRadiusSSO.isNotLoginThenLogout(function(){}, function(key){
-                sessionStorage.setItem("LRTokenKey",key);
-                LoginRadiusSDK.getUserprofile( function( profile) {
-                    aas.setUid(profile.Uid);
-                    ga( 'set', '&uid',profile.Uid );
-                });
-            });
-        </script>
-    {% endif %}
 
 
 
@@ -250,6 +236,26 @@ for Oovvuu to use to replicate the menu on the video site. #}
         Acme.adInsert = new Acme.View.articleFeed();
         Acme.adInsert.InsertAds();"
     )}}
+
+    {% if paymeter == true %}
+        {{this.registerJs("
+            LoginRadiusSSO.init('mcmedia');
+            var options = { appName : 'mcmedia'};
+            aas.init(options);
+            LoginRadiusSSO.isNotLoginThenLogout(function(){}, function(key){
+                sessionStorage.setItem('LRTokenKey',key);
+                LoginRadiusSDK.getUserprofile( function( profile) {
+                    aas.setUid(profile.Uid);
+                    ga( 'set', '&uid',profile.Uid );
+                });
+            });"
+        )}}
+    {% endif %}
+
+
+
+
+
 
     <script type="text/javascript">
         var cachebuster = Date.now();
