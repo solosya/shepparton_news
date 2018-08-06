@@ -27,12 +27,8 @@
             margin-bottom: 25px;
         }
         
-        @media #{$tablet} {
+        @media #{$tablet-up} {
             height:390px;
-        }
-    
-        @media #{$desktop-up} {
-            height:440px;
         }
     
     }

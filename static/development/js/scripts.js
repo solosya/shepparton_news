@@ -71,23 +71,41 @@ $('document').ready(function() {
         }
         scrollMetric = [scroll, direction];
         scrollUpMenu();
+        adScroll();
     });
 
+
+    
 
 
 
     var adScroll = function() {
-        if ( scrollMetric[1] === 'up' && !isScolledPast(475)) {
-            articleAd.removeClass('fixad').addClass('lockad');
+
+        //set sidebar height for desktop scrolling ad
+        var articleTop = $('#articleContentContainer').position().top
+        var theHeight = $('#articleContentContainer').height();
+        $('#adScrollContainer').css("height",theHeight+"px");
+        var screenHeight = $(window).height();
+        // if the window is below a certain height some of the sidebar is missing
+        // so we have to compensate so the scrolling remains smooth       
+        if (screenHeight <= 814) {
+            var screenDiff = (814 - screenHeight) + 843;
+        } else {
+            screenDiff = 843;
         }
-        else if ( scrollMetric[1] === 'up' && !isScolledPast(650)) {
-            articleAd.removeClass('bottomAd').addClass('fixad');
+        // tell ad when to scroll and when not to based on the size of the article
+        // 135 is the space above left for foldaway menu
+        if ( scrollMetric[1] === 'up' && !isScolledPast(articleTop-135)) {
+            articleAd.removeClass('fixad').removeClass('lockad-bottom').addClass('lockad-top');
         }
-        else if ( scrollMetric[1] === 'down' && isScolledPast(650)) {
-            articleAd.removeClass('fixad').addClass('bottomAd');
+        else if ( scrollMetric[1] === 'up' && !isScolledPast((theHeight-screenDiff)+articleTop)) {
+            articleAd.removeClass('lockad-bottom').addClass('fixad');
+        }
+        else if ( scrollMetric[1] === 'down' && isScolledPast((theHeight-screenDiff)+articleTop)) {
+            articleAd.removeClass('fixad').removeClass('lockad-top').addClass('lockad-bottom');
         } 
-        else if ( scrollMetric[1] === 'down' && isScolledPast(475)) {
-            articleAd.removeClass('lockad').addClass('fixad');
+        else if ( scrollMetric[1] === 'down' && isScolledPast(articleTop-135)) {
+            articleAd.removeClass('lockad-top').addClass('fixad');
         }
         
     }
@@ -146,17 +164,18 @@ $('document').ready(function() {
     }).resize();
 
     //On Scroll
-    pageWindow.scroll(function() {
-        // console.log('scrolling');
-        var direction = 'down';
-        var scroll = pageWindow.scrollTop();
-        if (scroll < scrollMetric[0]) {
-            direction = 'up';
-        }
-        scrollMetric = [scroll, direction];
-        adScroll();
-        // console.log(scrollMetric);
-    });
+    // pageWindow.scroll(function() {
+    //     // console.log('scrolling');
+    //     var direction = 'down';
+    //     var scroll = pageWindow.scrollTop();
+    //     console.log(scroll,scrollMetric[0]);
+    //     if (scroll < scrollMetric[0]) {
+    //         direction = 'up';
+    //     }
+    //     scrollMetric = [scroll, direction];
+    //     adScroll();
+    //     // console.log(scrollMetric);
+    // });
 
 
 

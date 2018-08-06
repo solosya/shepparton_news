@@ -204,7 +204,32 @@ div[class*="col-sm"] {
     .u-desktop-indent-left-20 { margin-left: -20px; }
 }
 
-
+.u-fix-width-300 {
+    width: 300px !important;
+}
+.u-fix-adsize{
+    width: 300px !important;
+    height: 250px !important;
+    div {
+        width: 300px !important;
+        height: 250px !important;
+    }
+    iframe {
+        width: 300px !important;
+        height: 250px !important;
+    }
+    .ad-cads{
+        width: 300px !important;
+        height: 250px !important;
+    }
+    canvas {
+        width: 300px !important;
+        height: 250px !important;
+    }
+}
+.u-left-unset{
+    left: unset !important;
+}
 
 
 @media (max-width: $sm-break-down){
@@ -402,13 +427,7 @@ hr.divide10 {
         
     }
 }
-.lockad{
-    position: inherit;
-}
-.fixad{
-    position:  fixed;
-    top: 0;
-}
+
 
 .divide {
     margin-top: 32px;
