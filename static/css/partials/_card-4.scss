@@ -395,7 +395,7 @@
 
                 &.instagram{ 
                     &.without__content {
-                        @include card-image-top(auto, 209px);
+                        // @include card-image-top(auto, 209px);
                         .author {
                             display:block;
                         }
