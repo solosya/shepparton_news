@@ -104,8 +104,12 @@
                     <div class="col-sm-9 col-md-1 visible-md-block visible-lg-block"></div>
 
                     <div class="col-sm-9 col-md-3 contact-details">
-
-                        {{contactpage.content | raw}}
+                        {% if _Page.getPageData("contact-details") is defined %}
+                            {% set contactpage = _Page.getPageData("contact-details") %}
+                            {{contactpage.content | raw}}
+                        {% else %}
+                            <h4>No contact information found</h4>
+                        {% endif %}
 
                     </div> 
                 {% endif %}
