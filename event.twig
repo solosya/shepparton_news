@@ -152,7 +152,7 @@
                 <div class="col-sm-9 event-sidebar__events">
                     <h2 class="{{site}}">UPCOMING EVENTS</h2>
                     {% for i in 0..3 if events[i] %}
-                        {{this.render('partials/_single-event-list.twig', {
+                        {{this.render('partials/_single-event.twig', {
                             event: events[i],
                             imageSize: {width: 90},
                             site:site,
