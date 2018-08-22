@@ -151,7 +151,14 @@
     'breaking_news' : {
         'template': 'partials/index/section-00.twig',
         'blogs' : ['breaking news'],
-        'background': true,
+        'title' : 'Breaking News',
+        'background': true
+    },
+    'featured_news' : {
+        'template': 'partials/index/section-00.twig',
+        'blogs' : ['featured news'],
+        'title' : 'Feature',
+        'background': true
     },
     'index': {
         'template': 'partials/index/section-15.twig',
@@ -463,6 +470,11 @@
             {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
         {% endif %} 
 
+        {% if layoutTitle == 'major_featured_news' %}
+            {% set blogFeeds = blogFeeds | merge({ 'featured news': { "limit" : 6} }) %}
+            {% set sectionOrder = ['featured_news'] | merge(sectionOrder) %}
+        {% endif %} 
+
         {% if layoutTitle == 'minor_breaking_news' %}
             {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
             
@@ -471,6 +483,7 @@
                     'template': 'partials/index/section-15.twig',
                     'template_params' : {
                         'layout': 'breaking news',
+                        'breaking_title': 'Breaking News'
                     },
                     'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
                     'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
@@ -479,6 +492,23 @@
 
         {% endif %} 
 
+
+        {% if layoutTitle == 'minor_featured_news' %}
+            {% set blogFeeds = blogFeeds | merge({ 'featured news': { "limit" : 1} }) %}
+            
+            {% set pageSections = pageSections | merge({ 'index' : 
+                {
+                    'template': 'partials/index/section-15.twig',
+                    'template_params' : {
+                        'layout': 'featured news',
+                        'breaking_title': 'Feature'
+                    },
+                    'blogs' : ['featured news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
+                    'articleOrder' : ['featured news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
+                }
+            }) %}
+
+        {% endif %} 
 
 
 
