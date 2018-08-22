@@ -49,7 +49,8 @@ with width taken up with borders on the side #}
                     <picture>
                         <source media="(max-width: 728px)" srcset="{{articleImgMedium}}">
                         <source media="(max-width: 300px)" srcset="{{articleImgSmall}}">
-                        <img class="article-gallery__img" src="{{articleImg}}">
+                        <img class="article-gallery__img hidden-xs" src="{{articleImg}}">
+                        <img class="article-gallery__img visible-xs-block" src="{{articleImgSmall}}">
                     </picture>
                 </div>
             {% endif %}                
