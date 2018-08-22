@@ -156,7 +156,7 @@
     },
     'featured_news' : {
         'template': 'partials/index/section-00.twig',
-        'blogs' : ['featured news'],
+        'blogs' : ['feature story'],
         'title' : 'Feature',
         'background': true
     },
@@ -471,7 +471,7 @@
         {% endif %} 
 
         {% if layoutTitle == 'major_featured_news' %}
-            {% set blogFeeds = blogFeeds | merge({ 'featured news': { "limit" : 6} }) %}
+            {% set blogFeeds = blogFeeds | merge({ 'feature story': { "limit" : 6} }) %}
             {% set sectionOrder = ['featured_news'] | merge(sectionOrder) %}
         {% endif %} 
 
@@ -494,17 +494,17 @@
 
 
         {% if layoutTitle == 'minor_featured_news' %}
-            {% set blogFeeds = blogFeeds | merge({ 'featured news': { "limit" : 1} }) %}
+            {% set blogFeeds = blogFeeds | merge({ 'feature story': { "limit" : 1} }) %}
             
             {% set pageSections = pageSections | merge({ 'index' : 
                 {
                     'template': 'partials/index/section-15.twig',
                     'template_params' : {
-                        'layout': 'featured news',
+                        'layout': 'feature story',
                         'breaking_title': 'Feature'
                     },
-                    'blogs' : ['featured news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
-                    'articleOrder' : ['featured news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
+                    'blogs' : ['feature story', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
+                    'articleOrder' : ['feature story', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
                 }
             }) %}
 
