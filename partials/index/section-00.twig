@@ -1,11 +1,16 @@
 {% set articleCount = 0 %}
 
+{% set sectionLabel = blogData['additionalInfo']['sectionlabel'] is defined and 
+                      blogData['additionalInfo']['sectionlabel'] != '' 
+                            ? blogData['additionalInfo']['sectionlabel'] 
+                            : 'Feature' %}
+
+
 <section class="breaking-news u-desktop-margin-bottom-40">
     <div class="row">
 
         <div class="col-sm-9 col-md-7 ">
-            <h2 class="breaking-news_subhead">Greater Shepparton</h2>
-            <h1 class="breaking-news_header breaking-news_header@md">Breaking News</h1>
+            <h1 class="breaking-news_header breaking-news_header@md">{{sectionLabel}}</h1>
 
             <div class="u-mobile-margin-bottom-20">
             {% if articles[articleCount] %}                                                                

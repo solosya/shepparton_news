@@ -150,6 +150,9 @@
 {% set pageSections =  {
     'breaking_news' : {
         'template': 'partials/index/section-00.twig',
+        'template_params' : {
+            'blogData': blogData
+        },
         'blogs' : ['breaking news'],
         'background': true,
     },
@@ -246,6 +249,7 @@
         'template': 'partials/index/section-15.twig',
         'template_params' : {
             'networkData' : networkData,
+            'blogData': blogData
         },
         'blogs'     : [(homeBlog)]
     },
@@ -471,6 +475,7 @@
                     'template': 'partials/index/section-15.twig',
                     'template_params' : {
                         'layout': 'breaking news',
+                        'blogData': blogData
                     },
                     'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
                     'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],

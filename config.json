@@ -26,6 +26,11 @@
                     "type": "inputbox"
                 },
                 {
+                    "name": "sectionlabel",
+                    "label": "Section Label",
+                    "type": "inputbox"
+                },
+                {
     				"label": "",
     				"type": "radio",
     				"name": "premium",
