@@ -38,8 +38,8 @@ with width taken up with borders on the side #}
 <div id="{{owl}}" class="article-gallery owl-gallery-{{type}} {{owlClass}} {{defaultClass}}" data-slider-id="1" data-default="{{default}}">
     {% for image in media %}
 
-        {% set articleImgSmall = _Media.getMediaUrl(image,500, 325, {'crop': 'fill', 'gravity': gravity} ) %}
-        {% set articleImgMedium = _Media.getMediaUrl(image,768, 500, {'crop': 'fill', 'gravity': gravity} ) %}
+        {% set articleImgSmall = _Media.getMediaUrl(image,0, 250, {'crop': 'fill', 'gravity': gravity} ) %}
+        {% set articleImgMedium = _Media.getMediaUrl(image,0, 500, {'crop': 'fill', 'gravity': gravity} ) %}
         {% set articleImg = _Media.getMediaUrl(image, imgWidth, imgHeight, {'crop': 'fill', 'gravity': gravity} ) %}
 
         <figure class="article-gallery__image article-gallery__image-{{galleryStyle}}" data-hash="{{loop.index}}">
@@ -47,8 +47,8 @@ with width taken up with borders on the side #}
             {% if image.type == 'image' or image.type == 'doc'%} 
                 <div class="article-gallery__img-container article-gallery__img-container-{{galleryStyle}}">
                     <picture>
-                        <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{articleImgMedium}}">
-                        <source media="(max-width: 500px)" srcset="{{articleImgSmall}}">
+                        <source media="(max-width: 728px) and (min-width: 501px)" srcset="{{articleImgMedium}}">
+                        <source media="(max-width: 295px)" srcset="{{articleImgSmall}}">
                         <img class="article-gallery__img" src="{{articleImg}}">
                     </picture>
                 </div>

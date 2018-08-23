@@ -43,18 +43,23 @@
 {% endif %}
 
 
-{% set startDate = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j M') %}
-{% set fullStartDate = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'j F') %}
-{% set endDate = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'j M') %}
+{% set startDate        = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j M') %}
+{% set fullStartDate    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'j F') %}
+{% set endDate          = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'j M') %}
 
-{% set startTime = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'g:ia') %}
-{% set endTime = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'g:ia') %}
+{% set startDay         = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'd') %}
+{% set endDay           = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'd') %}
 
-{% set startDay = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'd') %}
-{% set endDay = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'd') %}
+{% set startTime        = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia') %}
+{% set endTime          = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia') %}
 
-{% set eventStartMonth = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'M') %}
-{% set eventEndMonth = _AppHelper.getDateTimeBasedOnTimezone(event.endDate, 'M') %}
+{% set fullStartTime    = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'g:ia M j') %}
+{% set fullEndTime      = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'g:ia M j') %}
+
+{% set eventMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'F') %}
+
+{% set startMonth       = _AppHelper.getDefaultTimezoneDateTime(event.startDate, 'M') %}
+{% set endMonth         = _AppHelper.getDefaultTimezoneDateTime(event.endDate, 'M') %}
 
 
 

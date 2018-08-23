@@ -11,9 +11,9 @@
         margin:auto;
         display: block;
         width:auto !important;
-        @media #{$mobile} {
-            height: auto!important;
-        }
+        // @media #{$mobile} {
+        //     height: auto!important;
+        // }
     }
 }
 
@@ -50,7 +50,12 @@
 
 .article-gallery__img-container {
     background-color: #B9B9B9;
-
+    @media #{$tablet}{
+        height: 400px;
+    }
+    @media #{$mobile}{
+        height: 250px;
+    }
 }
 
 .article-gallery__img-container-article {
