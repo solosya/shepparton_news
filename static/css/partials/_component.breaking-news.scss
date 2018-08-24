@@ -15,9 +15,10 @@
     font-family: $base-font-family;
     font-size: rem(20);
     font-weight: bold;
-    line-height: 0.75;
+    line-height: 1.2;
     text-transform: uppercase;
     @include colourselect('');
+
 }
 
 .breaking-news_header\@md {
