@@ -19,3 +19,6 @@ contextweb.com, 560138, RESELLER
 advertising.com, 4058, RESELLER
 
 tremorhub.com, ldyav-3ry9w, RESELLER, 1a4e959a1b50034a
+
+spotxchange.com, 227813, DIRECT, 7842df1d2fe2db34
+spotx.tv, 227813, DIRECT, 7842df1d2fe2db34
