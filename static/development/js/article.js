@@ -8,7 +8,6 @@ Acme.article = function() {
 
 
 Acme.article.prototype.InsertInterstitial = function(teads) {
-    console.log(teads);    
     if ($('.article_content > p').length >= 8 && teads == true) {
         teadsAd = true;       
     }

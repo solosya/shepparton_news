@@ -34697,7 +34697,6 @@ Acme.article = function() {
 
 
 Acme.article.prototype.InsertInterstitial = function(teads) {
-    console.log(teads);    
     if ($('.article_content > p').length >= 8 && teads == true) {
         teadsAd = true;       
     }
@@ -35002,7 +35001,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             console.log(adSlot);
             return;
         }
-        console.log(size,teadsAd);
         if ((size == 'desktop-teads' || size == 'tablet-teads' || size == 'mobile-teads') && teadsAd == false){ return };
         var slotDiv = document.createElement('div');
         adSlot.appendChild(slotDiv);
