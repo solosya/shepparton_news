@@ -223,7 +223,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             console.log(adSlot);
             return;
         }
-        if ((adDivId == 'desktop-teads' || adDivId == 'tablet-teads' || adDivId == 'mobile-teads') && teadsAd == false){ return };
+        if ((size == 'desktop-teads' || size == 'tablet-teads' || size == 'mobile-teads') && teadsAd == false){ return };
         var slotDiv = document.createElement('div');
         adSlot.appendChild(slotDiv);
         adSlot.classList.remove("advert-"+mediaSize);

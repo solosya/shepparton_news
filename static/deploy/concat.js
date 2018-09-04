@@ -34696,10 +34696,10 @@ Acme.article = function() {
 
 
 
-Acme.article.prototype.InsertInterstitial = function() {
-    if ($('.article_content > p').length >= 9) {
-        //console.log('TEADSTRUE');    
-    	teadsAd = true;       
+Acme.article.prototype.InsertInterstitial = function(teads) {
+    console.log(teads);    
+    if ($('.article_content > p').length >= 8 && teads == true) {
+        teadsAd = true;       
     }
     if ($('.article_content > p').length >= 7) {
         $("<div class='visible-xs-block ad-article' style='position:relative;width:300px;margin: 0 auto;'><div class='advert-mobile' data-adsize='mrec'></div></div>").insertAfter( $('.article_content > p')[6] );
@@ -35002,7 +35002,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             console.log(adSlot);
             return;
         }
-        if ((adDivId == 'desktop-teads' || adDivId == 'tablet-teads' || adDivId == 'mobile-teads') && teadsAd == false){ return };
+        if ((size == 'desktop-teads' || size == 'tablet-teads' || size == 'mobile-teads') && teadsAd == false){ return };
         var slotDiv = document.createElement('div');
         adSlot.appendChild(slotDiv);
         adSlot.classList.remove("advert-"+mediaSize);
