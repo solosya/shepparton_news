@@ -35002,6 +35002,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             console.log(adSlot);
             return;
         }
+        console.log(size,teadsAd);
         if ((size == 'desktop-teads' || size == 'tablet-teads' || size == 'mobile-teads') && teadsAd == false){ return };
         var slotDiv = document.createElement('div');
         adSlot.appendChild(slotDiv);
