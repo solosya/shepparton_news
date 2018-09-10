@@ -46,7 +46,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-
 {{ this.beginPage() }}
 <!DOCTYPE html>
 <html lang="en-AU" prefix="og: http://ogp.me/ns#">
@@ -156,7 +155,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-
     {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
@@ -209,22 +207,25 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-
-    <script type="text/javascript">var effectiveURL = '{{site}}';var effectiveSection = '{{blogData.title | lower}}';var effectiveType = '{{pageTypeClass}}';</script>
-
-    {{ this.render('partials/_javascript.twig', {
-        networkData: networkData
-    }) | raw }}
-
-
     <div class="SwappingHelper" style="display:none">
         <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;">
             <img class="article-image" src="{{networkData.placeHolder100x100}}" style="width:97px; height: 97px; float: left;" />
-            <p class="article-text" style="width: 165px; float: left; padding-left: 3px;color: #394659;font-size: 14px; font-family: Droid Serif,serif; line-height: 20px; margin-top:0px;">Dummy text  </p>
+            <p class="article-text" style="width: 165px; float: left; padding-left: 3px;color: #394659;font-size: 14px; font-family: Droid Serif,serif; line-height: 20px; margin-top:0px;"></p>
         </div>
     </div>
 
 
+    <script defer type="text/javascript"> 
+        var effectiveURL = '{{site}}';
+        var effectiveSection = '{{blogData.title | lower}}';
+        var effectiveType = '{{pageTypeClass}}';
+    </script>
+
+
+
+    {{ this.render('partials/_javascript.twig', {
+        networkData: networkData
+    }) | raw }}
 
 
     {{this.registerJs("

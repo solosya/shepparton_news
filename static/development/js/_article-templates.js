@@ -49,6 +49,15 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 });
 
 
+
+Acme.swappingHelper = 
+'<div class="SwappingHelper" style="display:none"> \
+    <div style="width: 270px; height: 105px; padding: 3px; background-color: #FFF; max-width: 270px; max-height: 105px; overflow: hidden; z-index: 999 !important;"> \
+        <img class="article-image" src="" style="width:97px; height: 97px; float: left;" /> \
+        <p class="article-text" style="width: 165px; float: left; padding-left: 3px;color: #394659;font-size: 14px; font-family: Droid Serif,serif; line-height: 20px; margin-top:0px;"></p> \
+    </div> \
+</div>';
+
 var screenArticles_1 = 
 '<div class="row half-height top-row">\
     {¡{content:1-2}¡}\
