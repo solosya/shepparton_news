@@ -22,7 +22,7 @@
 </div>
 
 {% if layout == 'breaking news' %}
-<section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40">
+<section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40" data-template="section-15">
     <div class="row">
 
         <div class="col-md-9">
@@ -68,7 +68,7 @@
 {# CARD 1 #}
 {# We don't show the normal top part if minor breaking news layout  #}
 {% if not layout %}
-<section class="home-main-stories">
+<section class="home-main-stories"  data-template="section-15">
     <div class="row">
 
 
@@ -171,7 +171,7 @@
         {# *****************************************
                     MOBILE AND DESKTOP 
         *****************************************  #}
-        <section class="row five-cols top-stories-row visible-xs-block visible-md-block visible-lg-block">
+        <section class="row five-cols top-stories-row visible-xs-block visible-md-block visible-lg-block"  data-template="section-15">
             
 
             {% for i in 0..4 if articles[articleCount] %}
@@ -246,7 +246,7 @@
 {% if site not in popularExceptions %}
     {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
 
-    <section>
+    <section  data-template="section-15">
         <div class="row u-tablet-margin-top-30 u-desktop-margin-top-50 u-mobile-no-margin-top">
 
 
@@ -280,7 +280,7 @@
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
                         position        : cardIndex + 1, 
-                        imageSize       : {width:300},
+                        imageSize       : {width:192, height:160},
                         site            : site,
                         swap            : false,
                         dev             : dev,
@@ -299,6 +299,7 @@
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
                         position        : cardIndex + 1, 
+                        imageSize       : {width:192, height:160},
                         site            : site,
                         swap            : false,
                         dev             : dev,
@@ -334,7 +335,7 @@
 
 {% if site not in bottomExceptions %}
 
-    <section>
+    <section data-template="section-15">
 
         <div class="row row-space">
             <hr class="divide visible-xs-block">
@@ -381,7 +382,7 @@
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount], 
                         position        : cardIndex + 1, 
-                        imageSize       : {width:300},
+                        imageSize       : {width:192, height:160},
                         site            : site,
                         swap            : false,
                         dev             : dev,
