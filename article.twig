@@ -2,8 +2,19 @@
 {{ set(this, 'title', article.title) }}
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
+
+{% if article['additionalInfo']['teads'] == "teadsOn" %}
+    {% set teadsAdSetting = true %}
+{% else %}
+    {% set teadsAdSetting = false %}
+{% endif %}
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
-{{this.registerJs("Acme.articleController.InsertInterstitial();")}}
+{% if article['additionalInfo']['teads'] == "teadsOff" %}
+   {{this.registerJs("Acme.articleController.InsertInterstitial(false);")}}
+{% else %}
+    {{this.registerJs("Acme.articleController.InsertInterstitial(true);")}}
+{% endif %}
+
 {{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
 
 

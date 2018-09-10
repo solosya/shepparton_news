@@ -53,6 +53,15 @@
     				}
     			},
                 {
+                    "label": "Teads Ad",
+                    "type": "radio",
+                    "name": "teads",
+                    "options": {
+                        "teadsOn": "on",
+                        "teadsOff": "off"
+                    }
+                },
+                {
                     "name": "listingclose",
                     "label": "Listing close",
                     "type": "inputbox",
