@@ -21569,7 +21569,7 @@ if (typeof OVU === "undefined") {
         });
       }
     } catch(e) {
-        console.log('in the catch');
+        console.log('in the catch', e);
       modalBody.innerHTML = "<p>" + JSON.parse(responseText).response+"<br><br><a href='javascript:;' onclick='OVU.getVideosClose();'>Return to article &raquo;</a></p>";
       OVU.hideModalActionButtons();
     }
