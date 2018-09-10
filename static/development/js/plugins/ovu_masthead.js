@@ -61,7 +61,7 @@ if (typeof OVU === "undefined") {
           var articleDetails = respObj['article_params'];
           var ovuHomePageContainer = document.getElementById('home-video');
   
-          if (typeof articleDetails !== 'undefined') {
+        if (typeof articleDetails !== 'undefined') {
         if(ovuHomePageContainer !== null){
           var homeHeaderHTML = '<div class="row"><div class="col-sm-9 section-header"><p><a href="'+OVU.videoURL+'">View All</a></p><div class="hk"><h2>Videos</h2><p></p></div></div></div><div class="row" id="ovu-inner-div"></div>';
           ovuHomePageContainer.insertAdjacentHTML('beforeend', homeHeaderHTML);
