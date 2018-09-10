@@ -296,8 +296,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
                 // }
                 var theslot = adSizes[sizes[i]];
                 if ((theslot || theslot[0] || theslot[1] || theslot[2]) == undefined) {
-                    console.log('undefined gpt ad space:');
-                    console.log(adslots[i]);
                     continue;
                 }
                 if (sizes[i] == 'desktop-banner-main' || sizes[i] == 'tablet-banner-main' || sizes[i] == 'mobile-banner-main') { 

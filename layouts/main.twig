@@ -129,7 +129,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-    {{ this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';") }}
     {{ this.render('partials/_user-styles.twig', {networkData: networkData} ) | raw }}
 
 
@@ -167,7 +166,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 </head>
 
 
-<body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-site="{{site}}" data-networkid="{{networkData['id']}}" data-v="15">
+<body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-site="{{site}}" data-networkid="{{networkData['id']}}" data-v="16">
 
 
 {{ this.beginBody() }}
@@ -227,10 +226,13 @@ for Oovvuu to use to replicate the menu on the video site. #}
         networkData: networkData
     }) | raw }}
 
+    {# {{ this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';") }} #}
 
     {{this.registerJs("
+        window._appJsConfig['site'] = '" ~ site ~ "';
         Acme.adInsert = new Acme.View.articleFeed();
-        Acme.adInsert.InsertAds();"
+        Acme.adInsert.InsertAds();
+        "
     )}}
 
 
