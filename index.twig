@@ -198,7 +198,11 @@
     "videos": {
         'title'     : "Videos",
         'background': true,
-        'template'  : 'partials/index/section-video.twig'        
+        'template'  : 'partials/index/section-video.twig'    ,
+        'template_params' : {
+            'networkData' : networkData,
+        }, 
+    
     },
     "galleries": {
         'title'     : "Galleries",
