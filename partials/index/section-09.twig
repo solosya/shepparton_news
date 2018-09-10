@@ -5,7 +5,7 @@
 
 
 
-<section class="row">
+<section class="row" data-template="section-09">
     <div class="col-sm-9 section-header">
         <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
@@ -25,7 +25,7 @@
                     <div class="col-md-3 col-sm-1">
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
-                        imageSize: {width:300},
+                        imageSize: {width:192, height: 160},
                         site: site,
                         containerClass: 'card-sm card-sm-mobile' ~ tabCard[i]
                     }) | raw}}
@@ -48,7 +48,7 @@
             {% for i in 0..3 if events[i] %}
                 {{this.render('../_single-event.twig', {
                     event: events[i],
-                    imageSize: {width: 90},
+                    imageSize: {width: 37, height: 37},
                     site: site,
                     containerClass: 'card-event card-event-tablet card-event-mobile'
                 }) | raw}}
