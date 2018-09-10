@@ -29,7 +29,9 @@
     <p class="j-truncate excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
    
     <div class="j-truncate author">
-        <img src="{{params.profileImg}}" class="img-circle">
+        {% if params.profileImg != false %}
+            <img src="{{params.profileImg}}" class="img-circle">
+        {% endif %}
         <p class="{{params.site}}">{{ article.createdBy['displayName'] }}</p>
         <time datetime="{{publishDate}}">{{params.publishDate}}</time>
     </div>
