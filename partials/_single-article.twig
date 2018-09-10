@@ -26,6 +26,10 @@
 {% endif %}
 
 
+{% set profileImg = false %}
+{% if authorImg is defined and authorImg == true %}
+    {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
+{% endif %}
 
 
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
@@ -60,7 +64,7 @@
         articleImg:      _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
         publishDate:     publishDate,
         articleTitle:    articleTitle,
-        profileImg:      _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}),
+        profileImg:      profileImg,
         imageSuppress:   imageSuppress,
         site:            site
     } %}
