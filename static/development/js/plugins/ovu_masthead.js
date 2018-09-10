@@ -42,6 +42,7 @@ if (typeof OVU === "undefined") {
           if (this.readyState == 4 && this.status == 200) {
               console.log(this.responseText);
               var respObj = JSON.parse(this.responseText);
+              console.log(respObj);
               OVU.showRecommendedVideos(respObj);
               }
           };
