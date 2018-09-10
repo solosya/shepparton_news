@@ -37,6 +37,7 @@ if (typeof OVU === "undefined") {
   OVU.getRecommendedVideoList = function() {
       var params = OVU.getParameters();
       var xhttp = new XMLHttpRequest();
+      console.log(params);
       xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
               console.log(this.responseText);
