@@ -229,7 +229,6 @@ if (typeof OVU === "undefined") {
   };
   
   OVU.showRecommendedVideos = function(responseText, isLoaded) {
-      console.log('showing modal');
     var modalBody = document.getElementById("getVideosModalBody");
     try {
       modalBody.innerHTML = "";
