@@ -4,11 +4,18 @@
 
 {% set info = article.additionalInfo %}
 
+
+
+
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
     <figure class="{{params.figureClass}}">
         <picture>
             <source media="(max-width: 620px)" srcset="{{params.articleImgSmall}}">
-            <img class="img-responsive" src="{{params.articleImg}}" data-original="{{params.articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{params.placeholder}}');" {%endif%}>
+            {% if params.lazyload == false %}
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.articleImg}}">
+            {% else %}
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.articleImg}}">
+            {% endif %}
         </picture>
     </figure>
 {% endif %}
