@@ -55,9 +55,10 @@
         {% set articleTitle = quotes.smarten(article.titlePreview) %}
     {% endif %}
 
+        {# placeholder:     'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'', #}
 
     {% set params = {
-        placeholder:     'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'',
+        placeholder:     "https://placeholdit.imgix.net/~text?w='1'&h='1'",
         figureClass:     article.featuredMedia['type'] == 'video' ? 'video' : '',
         articleImgSmall: _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
         articleImgMedium:_Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
