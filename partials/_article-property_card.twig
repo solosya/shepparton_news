@@ -4,7 +4,7 @@
 
 {% set info = article.additionalInfo %}
 
-{% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == 'false' %}
+{% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
     <figure class="{{params.figureClass}}">
         <picture>
             <source media="(max-width: 620px)" srcset="{{params.articleImgSmall}}">
