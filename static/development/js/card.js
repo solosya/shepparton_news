@@ -25,7 +25,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     
     // mainly for screen to turn off lazyload and loading background img
     card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
-    card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)"';
+    card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?w=1&h=1)"';
     
 
     card['readingTime']= self.renderReadingTime(card.readingTime);

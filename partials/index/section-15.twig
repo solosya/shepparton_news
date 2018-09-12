@@ -42,11 +42,12 @@
         <div class="col-md-9">
             {% if articles[articleCount] %}                                                                
                 {{this.render('../_single-article.twig', {
-                    article         : articles[articleCount], 
-                    position        : articleCount + 1, 
                     imageSize       : {width:970, height:478},
+                    lazyload        : false,
+                    position        : articleCount + 1, 
+                    article         : articles[articleCount], 
                     site            : site,
-                    dev:            dev,
+                    dev             : dev,
                     containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
@@ -85,13 +86,14 @@
 
             {% if articles[articleCount] %}                                                                
                 {{this.render('../_single-article.twig', {
-                    article: articles[articleCount], 
-                    position: cardIndex + 1, 
-                    imageSize: {width:640, height:400},
-                    site: site,
-                    swap: false,
-                    dev:dev,
-                    containerClass: 'home-feature home-feature-tablet home-feature-mobile index-feature'
+                    imageSize       : {width:640, height:400},
+                    position        : cardIndex + 1, 
+                    lazyload        : false,
+                    article         : articles[articleCount], 
+                    site            : site,
+                    swap            : false,
+                    dev             :dev,
+                    containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
@@ -120,13 +122,14 @@
                         {% set class = ['', '', '', 'visible-sm-block'] %}
                         <div class="col-sm-1 col-md-9 col-xs-9">
                             {{this.render('../_single-article.twig', {
-                                article: articles[articleCount],
-                                imageSize: {width:95},
-                                position: cardIndex + 1, 
-                                site: site,
-                                swap: false,
-                                dev:dev,
-                                containerClass: 'feature-side feature-side-tablet card-sm-mobile ' ~ class[i]
+                                imageSize       : {width:95},
+                                position        : cardIndex + 1, 
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                swap            : false,
+                                dev             :dev,
+                                containerClass  : 'feature-side feature-side-tablet card-sm-mobile ' ~ class[i]
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             {% set cardIndex = cardIndex + 1 %}

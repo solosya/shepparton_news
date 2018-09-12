@@ -22,7 +22,7 @@
 {% endif %}
 
 
-{% set placeholder   = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w='~imgWidth~'&h='~imgHeight~'' %}
+{% set placeholder   = "https://placeholdit.imgix.net/~text?w=1&h=1" %}
 {% set promotedClass = (event.isPromoted) ? 'ad_icon' : '' %}
 {% set hasMedia      = (event.media | length > 0) ? 'withImage__content': 'without__image' %}
 {% set startDay      = _AppHelper.getDateTimeBasedOnTimezone(event.startDate, 'd') %}

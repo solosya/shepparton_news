@@ -133,38 +133,6 @@ gulp.task('scripts', function(){
 });
 
 
-gulp.task('user_scripts', function(){
-    return gulp.src([
-        './bower_components/jquery/dist/jquery.js',
-        './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-        './assets/scripts/plugins/jquery.fancybox/source/jquery.fancybox.js',
-        './assets/scripts/plugins/handlebars-v4.0.5.js',
-        './assets/scripts/plugins/jquery.lazyload.min.js',
-        './assets/scripts/plugins/jquery.dotdotdot.min.js',
-        './assets/scripts/plugins/owl.carousel.min.js',
-        './static/development/js/plugins/owl.carousel.min.js',
-        './static/development/js/plugins/owl.carousel2.thumbs.min.js',
-
-        './assets/scripts/sdk/search.js',
-        './assets/scripts/sdk/video-player.js',
-        './assets/scripts/sdk/user-articles.js',
-        './assets/scripts/sdk/follow.js',
-        './assets/scripts/sdk/login.js',
-        './assets/scripts/sdk/image.js',
-        './assets/scripts/sdk/social-share.js',
-        './assets/scripts/sdk/yii/yii.js',
-        './assets/scripts/sdk/yii/yii.captcha.js',
-        './assets/scripts/sdk/uploadfile.js',
-        './assets/scripts/sdk/media-player/mediaelement-and-player.min.js',
-        './assets/scripts/*.js',
-        ])
-        .pipe(concat('user_concat.js'))
-        .pipe(gulp.dest('./static/deploy'))
-        .pipe(gp_rename('user_scripts.js'))
-        .pipe(uglify().on('error', gutil.log))
-        .pipe(gulp.dest('./static/deploy'));
-
-});
 
 gulp.task('watch', function (){
 	gulp.watch('./static/css/**/*.scss', ['styles']);
