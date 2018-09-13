@@ -39,7 +39,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
     {% for i in 0..ArticleContent | length %}
 
-        {% if i == 4 %}
+        {% if i == 5 %}
             {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
         {% endif %}
 
