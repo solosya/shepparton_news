@@ -12346,6 +12346,8 @@ return hooks;
 
                 if (d === undefined || d === null) {
                     returnMoment = moment(); //TODO should this use format? and locale?
+                    //default time is 9am -- current time is seriously NOT USEFUL.
+                    returnMoment.hour(9).minute(0);
                 } else if (moment.isDate(d) || moment.isMoment(d)) {
                     // If the date that is passed in is already a Date() or moment() object,
                     // pass it directly to moment.
@@ -22882,7 +22884,11 @@ Acme.EventForm = function(blogId)
             var data = {};
             data[e.target.id] = e.date.format('YYYY-MM-DD HH:mm');
             if(data['start_date'] || data['end_date']) {
-                $('#end_date').data("DateTimePicker").minDate(e.date);
+                if(data['start_date'] && e.date.hour() == 9 && e.date.minute() == 0) {
+                        $('#end_date').data("DateTimePicker").minDate(e.date.hour(16).minute(59));
+                    } else {
+                         $('#end_date').data("DateTimePicker").minDate(e.date);
+                    }
                 Acme.PubSub.publish("update_state", data);
             }
         });

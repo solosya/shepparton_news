@@ -142,6 +142,8 @@
 
                 if (d === undefined || d === null) {
                     returnMoment = moment(); //TODO should this use format? and locale?
+                    //default time is 9am -- current time is seriously NOT USEFUL.
+                    returnMoment.hour(9).minute(0);
                 } else if (moment.isDate(d) || moment.isMoment(d)) {
                     // If the date that is passed in is already a Date() or moment() object,
                     // pass it directly to moment.
