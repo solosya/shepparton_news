@@ -269,6 +269,11 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
+    {# loads the oovvuu/real estate panel if it's the index page #}
+    {% if pageClass == "home" %}
+        {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_masthead.js")}}
+        {{this.registerJsFile(networkData['templatePath'] ~ '/static/development/js/plugins/view-1.1.3.js')}}
+    {% endif %}
 
 
 
