@@ -14,7 +14,8 @@
 {% endif %}
 
 {% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : false %}
-{% if site == 'dairy' or site == 'shepptest' %}
+{# {% if site == 'dairy' or site == 'shepptest' %} #}
+{% if site == 'dairy' %}
     {% set paymeter = false %}
 {% endif %}
 
@@ -75,7 +76,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
     
 
 
-
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
     {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
 
@@ -121,6 +121,26 @@ for Oovvuu to use to replicate the menu on the video site. #}
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
+    {% if paymeter == true %}
+        <script>
+            document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+            var setNptTechAdblockerCookie = function(adblocker) {
+                var d = new Date();
+                d.setTime(d.getTime() + 60 * 60 * 24 * 2 * 1000);
+                document.cookie = "__adblocker=" + (adblocker ? "true" : "false") + "; expires=" + d.toUTCString() + "; path=/";
+            };
+            var script = document.createElement("script");
+            script.setAttribute("async", true);
+            script.setAttribute("src", "//www.npttech.com/advertising.js");
+            script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
+            document.getElementsByTagName("head")[0].appendChild(script);
+        </script>
+    {% endif %}
+
+
+
 
     <!-- Google Tag Manager -->
     {% if networkData.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
@@ -226,8 +246,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
         networkData: networkData
     }) | raw }}
 
-    {# {{ this.registerJs("window._appJsConfig['site'] = '" ~ site ~ "';") }} #}
-
 
 
     {{this.registerJs("
@@ -286,6 +304,17 @@ for Oovvuu to use to replicate the menu on the video site. #}
     </script>
 
 
+    {% if paymeter == true %}
+        <script>
+            (function(src) { 
+                var a=document.createElement("script");
+                a.type="text/javascript";
+                a.async=true;a.src=src;
+                var b=document.getElementsByTagName("script")[0];
+                b.parentNode.insertBefore(a,b);
+            })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
+        </script>
+    {% endif %}
 
 
     {{ this.endBody() }}
