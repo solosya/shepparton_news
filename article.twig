@@ -122,23 +122,29 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% endif %}
 
 
+
+{# The following for for Piano #}
 {% set delimiter = "1111" %}
 {% set url = _AppHelper.getParsedUrl %}
 {% set path = url.path | split("/") | last %}
+{% set contentCategory = [premium] %}
 
 {% if delimiter in path %}
     {% set categories = path | split(delimiter) | first %}
     {% set category = categories | split("-") %}
-    {% set categoryString = category | join('", "') %}
-
-    {{this.registerJs('
-        tp = window["tp"] || [];
-        tp.push(["init", function() {
-            tp.push(["setTags", ["' ~ categoryString ~ '", "' ~ premium ~ '"]]);
-        }]);
-    ')}}
-
+    {% set contentCategory = category | merge(contentCategory) %}
 {% endif %}
+
+{% set categoryString = contentCategory | join('", "') %}
+
+{{this.registerJs('
+    tp = window["tp"] || [];
+    tp.push(["init", function() {
+        tp.push(["setTags", ["' ~ categoryString ~ '"]]);
+    }]);
+')}}
+
+
 
 
 <meta name="__sync_contentCategory" content="{{premium}}">
