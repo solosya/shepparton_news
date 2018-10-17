@@ -6,6 +6,7 @@
 {% set firstCount = articles | length %}
 
 {% set networkData = _Network.getNetworkData() %}
+{% set site          = networkData.title | lower | split(" ")[0]%}
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
@@ -35,6 +36,7 @@
                                 article: article, 
                                 position: (articleCount+1), 
                                 imageSuppress: true,
+                                site: site,
                                 containerClass: 'search search-tablet search-mobile'}) | raw}}
                             {% set articleCount = articleCount + 1 %}
                         {% endfor %}

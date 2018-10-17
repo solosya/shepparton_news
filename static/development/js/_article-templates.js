@@ -128,6 +128,7 @@ Acme.systemCardTemplate =
         <div class="content">\
                 <div class="category {{site}}">{{ labelFix label }}</div>\
                 <h2 class="j-truncate">{{{ title }}}</h2>\
+                <p class="j-truncate excerpt">{{{ excerpt }}}</p>\
                 <div class="j-truncate author">\
                     <img src="{{profileImg}}" class="img-circle">\
                     <p>{{ createdBy.displayName }}</p>\
