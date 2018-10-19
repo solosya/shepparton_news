@@ -127,7 +127,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% set delimiter = "1111" %}
 {% set url = _AppHelper.getParsedUrl %}
 {% set path = url.path | split("/") | last %}
-{% set contentCategory = [premium] %}
+{% set contentCategory = [premium | lower] %}
 
 {% if delimiter in path %}
     {% set categories = path | split(delimiter) | first %}
