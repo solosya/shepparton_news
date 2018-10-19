@@ -137,6 +137,15 @@ for Oovvuu to use to replicate the menu on the video site. #}
         {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
     {% endif %}
 
+
+
+    {% if site == 'riverine' %}
+        <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0054/7754.js" async="async"></script>
+    {% endif %}
+
+
+
+
     {% if googleAnalyitcsId is defined and googleAnalyitcsId is not empty%}
         <!-- Google Analytics u -->
         <script>
