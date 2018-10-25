@@ -43,7 +43,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {% endif %}
 {% endif %}
 
-
 {% set redir = _Page.setHttpRedirects(
     {
         '|^/page/contact.*|': _AppHelper.getBaseUrl() ~ '/contact-us'
@@ -164,6 +163,15 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
         {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
     {% endif %}
+
+
+
+    {% if site == 'riverine' or site == 'shepparton' or site == 'benalla' %}
+        <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0054/7754.js" async="async"></script>
+    {% endif %}
+
+
+
 
     {% if googleAnalyitcsId is defined and googleAnalyitcsId is not empty%}
         <!-- Google Analytics u -->
