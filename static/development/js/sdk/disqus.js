@@ -26,6 +26,14 @@
                 logout: _appJsConfig.baseHttpPath + '/auth/logoff'
             };
             this.callbacks.onNewComment = [function (comment) {  //alert();
+                
+                    ga('send', {
+                        'hitType': 'event',            // Required.
+                        'eventCategory': 'Comments',   // Required.
+                        'eventAction': 'New Comment',  // Required.
+                        'eventLabel': 'New Comment'
+                    });
+    
                     var text = comment.text;
                     var post_url = currentUrl;
                     var authorId = userId;
