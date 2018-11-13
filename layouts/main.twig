@@ -134,7 +134,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# The following is code for Piano which isn't being used yet #}
     {# **************************************************************** #}
 
-    {# {% if paymeter == true %}
+    {% if paymeter == true %}
         <script>
             document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
             var setNptTechAdblockerCookie = function(adblocker) {
@@ -148,7 +148,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
             script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
             document.getElementsByTagName("head")[0].appendChild(script);
         </script>
-    {% endif %} #}
+    {% endif %}
 
 
 
@@ -280,7 +280,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-    {% if paymeter == true %}
+    {# {% if paymeter == true %}
 
         <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
         <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
@@ -302,7 +302,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
                 });
             });"
         )}}
-    {% endif %} 
+    {% endif %}  #}
 
 
 
@@ -328,7 +328,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# The following is code for Piano which isn't being used yet #}
     {# **************************************************************** #}
 
-    {# {% if paymeter == true %}
+    {% if paymeter == true %}
         <script>
             (function(src) { 
                 var a=document.createElement("script");
@@ -339,7 +339,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
                 b.parentNode.insertBefore(a,b);
             })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
         </script>
-    {% endif %} #}
+    {% endif %}
 
 
     {{ this.endBody() }}
