@@ -137,12 +137,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 {% set categoryString = contentCategory | join('", "') %}
 
-{{this.registerJs('
+{# {{this.registerJs('
     tp = window["tp"] || [];
     tp.push(["init", function() {
         tp.push(["setTags", ["' ~ categoryString ~ '"]]);
     }]);
-', 3)}}
+', 3)}} #}
 
 
 
