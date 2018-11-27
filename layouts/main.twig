@@ -323,11 +323,25 @@ for Oovvuu to use to replicate the menu on the video site. #}
     </script>
 
     {% if site == "riverine" %}
-        <script type="text/javascript" src="https://app.native.ai/docs?apiKey=ca1784c9-38fa-4c5a-b316-859dfa6a7277" async="async"></script>
+        <script type="text/javascript">
+            (function(n,a,t,i,v,e,ai){n['NativeAIObject']=v;n[v]=n[v]||function(){
+            (n[v].q=n[v].q||[]).push(arguments)},n[v].l=1*new Date();n[v].i=i;e=a.createElement(t),
+            ai=a.getElementsByTagName(t)[0];e.async=1;e.src=i+"?"+(n[v].l-n[v].l%604800000);
+            ai.parentNode.insertBefore(e,ai)})
+            (window,document,'script','https://cdn.native.ai/js/current/nativeai.js','nativeAI');
+            nativeAI('create', 'ca1784c9-38fa-4c5a-b316-859dfa6a7277');
+        </script>    
     {% endif %}
 
     {% if site == "shepparton" %}
-        <script type="text/javascript" src="https://app.native.ai/docs?apiKey=ef82263c-dcac-497b-b4b9-ebc16e3cb5b2" async="async"></script>
+        <script type="text/javascript">
+            (function(n,a,t,i,v,e,ai){n['NativeAIObject']=v;n[v]=n[v]||function(){
+            (n[v].q=n[v].q||[]).push(arguments)},n[v].l=1*new Date();n[v].i=i;e=a.createElement(t),
+            ai=a.getElementsByTagName(t)[0];e.async=1;e.src=i+"?"+(n[v].l-n[v].l%604800000);
+            ai.parentNode.insertBefore(e,ai)})
+            (window,document,'script','https://cdn.native.ai/js/current/nativeai.js','nativeAI');
+            nativeAI('create', 'ef82263c-dcac-497b-b4b9-ebc16e3cb5b2');
+        </script>    
     {% endif %}
 
 
