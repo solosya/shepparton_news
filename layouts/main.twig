@@ -46,7 +46,8 @@ for Oovvuu to use to replicate the menu on the video site. #}
 {% set redir = _Page.setHttpRedirects(
     {
         '|^/page/contact.*|': _AppHelper.getBaseUrl() ~ '/contact-us',
-        '|^/advertise.*|': _AppHelper.getBaseUrl() ~ '/contact-us'
+        '|^/advertise.*|': _AppHelper.getBaseUrl() ~ '/contact-us',
+        '|^/page/advertise.*|': _AppHelper.getBaseUrl() ~ '/contact-us'
     }, false)
 %}
 
