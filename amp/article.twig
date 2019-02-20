@@ -33,12 +33,14 @@
         ,
         {% set i = 1 %}
         {% for media in article.media %}
+        {% set medUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
         {% if media.type != 'video' %} 
+
         "image": {
             "@type": "ImageObject",
-            "url": "{{media.path}}",
-            "width": {{media.width}},
-            "height": {{media.height}}
+            "url": "{{medUrl}}",
+            "width": 1280,
+            "height": 720
         }
         {% if article.media | length > i %}
         ,
@@ -52,18 +54,18 @@
 <div class="article {{ article.media|length <= 0 ? 'no_image' : '' }}">
     <div class="article__headerSection">
         {% if article.media|length %}
-            <amp-carousel width="1280" height="600" layout="responsive" type="slides" autoplay="" loop="">
+            <amp-carousel width="1280" height="720" layout="responsive" type="slides" autoplay="" loop="">
                 {% for media in article.media %}
                     {% if media.type == 'video' %} 
                         {% set mediaUrl = "" %}
                         {% if media.isSystemVideo == 'TRUE'%}
-                            {% set mediaUrl = media.video_path  %}
+                            {% set mediaUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} )  %}
                             <div class="video-player">
                                 <amp-video id="myVideo" controls width="1280" height="550" layout="responsive" src="{{mediaUrl}}"></amp-video>
 
                                 <div id="myOverlay" class="click-to-play-overlay">
                                     <div class="play-icon" role="button" tabindex="0" on="tap:myOverlay.hide, myVideo.play"></div>
-                                    <amp-img class="poster-image" layout="fill" src="{{media.path}}"></amp-img>
+                                    <amp-img class="poster-image" layout="fill" src="{{mediaUrl}}"></amp-img>
                                 </div>
                             </div>
                         {% else %}
@@ -74,8 +76,9 @@
                             {% endif %}
                         {% endif %}                   
                     {% else %}
+                        {% set medUrl = _Media.getMediaUrl(media,1280, 720, {'crop': 'fill', 'gravity': 'faces:auto'} ) %}
                         <figure>
-                            <amp-img src="{{media.path}}" class="" layout="fill"></amp-img>
+                            <amp-img src="{{medUrl}}" class="" layout="fill"></amp-img>
                         </figure>
                     {% endif %}
                 {% endfor %}
