@@ -151,9 +151,6 @@
 {% set pageSections =  {
     'breaking_news' : {
         'template': 'partials/index/section-00.twig',
-        'template_params' : {
-            'blogData': blogData
-        },
         'blogs' : ['breaking news'],
         'background': true
     },
@@ -173,27 +170,19 @@
         'blogs': regionalSelect[site]['localBlogs'],
         'articleOrder' : regionalSelect[site]['localOrder'],
         'template_params' : {
-            'link' : (networkData.defaultBlogUrl ~ '/@local')
+            'link' : '/@local'
         }
     },
     "real estate": {
         'title'     : "Real Estate",
         'blogs'     : ['real estate'],
         'background': true,
-        'template'  : 'partials/index/section-05.twig', 
-        'template_params' : {
-            'networkData' : networkData,
-            'link': false
-        },
+        'template'  : 'partials/index/section-05.twig' 
     },
     "automotive": {
         'title'     : "Automotive",
         'blogs'     : ['automotive'],
         'template'  : 'partials/index/section-05.twig',
-        'template_params' : {
-            'networkData' : networkData,
-            'link': false
-        }, 
     },
     "opinion": {
         'title'     : "Opinion",
@@ -204,10 +193,6 @@
         'title'     : "Videos",
         'background': true,
         'template'  : 'partials/index/section-video.twig',
-        'template_params' : {
-            'networkData' : networkData,
-        }, 
-    
     },
     "galleries": {
         'title'     : "Galleries",
@@ -230,7 +215,7 @@
         'articleOrder' : regionalSelect[site]['regional'],
         'template'  : 'partials/index/section-02.twig',
         'template_params' : {
-            'link' : networkData.defaultBlogUrl ~ '/@regional'
+            'link' : '/@regional'
         }
     },
     "rural news": {
@@ -239,7 +224,7 @@
         'articleOrder' : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'dairy', 'rural news', 'machinery & products', 'rural management', 'water', 'cropping', 'from the experts', 'rural news'],
         'template'  : 'partials/index/section-03.twig',
         'template_params' : {
-            'link' : networkData.defaultBlogUrl ~ '/@rural'
+            'link' : '/@rural'
         }
     },
     "national": {
@@ -248,7 +233,7 @@
         'articleOrder' : ['national', 'aap finance', 'world', 'world', 'aap horse racing', 'aap afl', 'national', 'aap entertainment', 'national'],
         'template'  : 'partials/index/section-04.twig',
         'template_params' : {
-            'link' : networkData.defaultBlogUrl ~ '/@national--world'
+            'link' : '/@national--world'
         }
     },
 
