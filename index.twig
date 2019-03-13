@@ -203,7 +203,7 @@
     "videos": {
         'title'     : "Videos",
         'background': true,
-        'template'  : 'partials/index/section-video.twig'    ,
+        'template'  : 'partials/index/section-video.twig',
         'template_params' : {
             'networkData' : networkData,
         }, 
@@ -273,7 +273,7 @@
         'blogs'     : ['blogs homepage'],
         'template'  : 'partials/index/section-25.twig',
         'template_params' : {
-            'logo':  networkData.templatePath ~ '/static/images/megaphone.svg',
+            'logo':  '/static/images/megaphone.svg',
         }
     },
     'water': {
@@ -560,7 +560,10 @@
         {# FOR DEV  #}
         {% if dev %}
             {% set blogFeeds = blogFeeds | merge({
-                (key) : { 'feed' : articlesArr, 'link' : '#' } }) %}
+                (key) : { 
+                    'feed' : articlesArr, 
+                    'link' : '#' } 
+                }) %}
         {% endif %}
 
 
@@ -601,10 +604,12 @@
        
        
         {% set params = {
-            'section'   : pageSections[pagesection],
-            'blogFeeds' : blogFeeds,
-            'site'      : site,
-            'dev'       : dev
+            'section'     : pageSections[pagesection],
+            'blogFeeds'   : blogFeeds,
+            'site'        : site,
+            'dev'         : dev,
+            'networkData' : networkData,
+            'blogData'    : blogData
         } %}
     
         {{this.render('render.twig', params) | raw}} 

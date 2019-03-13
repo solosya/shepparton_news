@@ -22,13 +22,16 @@
 
 {% endif %}
 
+
+
 {% if section.template != '' %}
     {% set params = {
-        articles: feedArr,
-        link:     blogFeeds[ section.blogs[0] ].link,
-        title:    section.title is defined ? section.title : '',
-        dev:      dev,
-        site:     site
+        articles        : feedArr,
+        link            : blogFeeds[ section.blogs[0] ].link,
+        title           : section.title is defined ? section.title : '',
+        dev             : dev,
+        site            : site,
+        networkData     : networkData,
     } %}
 
     {% if section.template_params is defined and section.template_params | length > 0  %}
