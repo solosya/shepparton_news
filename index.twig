@@ -9,15 +9,11 @@
 {% set layout      = blogData.layout %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 {% set homeBlog    = blogData['title'] | lower %}
-
-
 {% set layoutTitle = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
-{% if dev %}
-    {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
-{% endif %}
+{% set config = _Network.getThemeConfig() %}
 
 
 {% set sectionOrder = [] %}
@@ -148,6 +144,8 @@
 } %}
 
 
+
+
 {% set pageSections =  {
     'breaking_news' : {
         'template': 'partials/index/section-00.twig',
@@ -164,13 +162,13 @@
         'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'national', regionalSelect[site]['editors'][1], regionalSelect[site]['editors'][2], 'dairy', 'world','aap finance'],
         'articleOrder' : [(homeBlog), 'national', 'sport', regionalSelect[site]['editors'][0], 'news', 'world', 'news', 'rural news', 'aap finance', regionalSelect[site]['editors'][1], 'news', 'national', regionalSelect[site]['editors'][2], 'world', 'dairy']
     },
-    'local': {
-        'template': regionalSelect[site]['localpart'][0],
-        'title' : 'Local',
-        'blogs': regionalSelect[site]['localBlogs'],
-        'articleOrder' : regionalSelect[site]['localOrder'],
-        'template_params' : {
-            'link' : '/@local'
+    "local": {
+        "template": regionalSelect[site]['localpart'][0],
+        "title" : "Local",
+        "blogs": regionalSelect[site]['localBlogs'],
+        "articleOrder" : regionalSelect[site]['localOrder'],
+        "template_params" : {
+            "link" : "/@local"
         }
     },
     "real estate": {
@@ -210,12 +208,12 @@
         'template'  : 'partials/index/section-08.twig'
     }, 
     "regional news": {
-        'title'     : "Regional",
-        'blogs'     : regionalSelect[site]['regional'],
-        'articleOrder' : regionalSelect[site]['regional'],
-        'template'  : 'partials/index/section-02.twig',
-        'template_params' : {
-            'link' : '/@regional'
+        "title"     : "Regional",
+        "blogs"     : regionalSelect[site]["regional"],
+        "articleOrder" : regionalSelect[site]["regional"],
+        "template"  : "partials/index/section-02.twig",
+        "template_params" : {
+            "link" : "/@regional"
         }
     },
     "rural news": {
@@ -249,12 +247,12 @@
         'template'  : 'partials/index/section-26.twig',
         'blogs'     : ['dairy']
     },
-    'bloggers' :  {
-        'title'     : "Bloggers",
-        'blogs'     : ['blogs homepage'],
-        'template'  : 'partials/index/section-25.twig',
-        'template_params' : {
-            'logo':  '/static/images/megaphone.svg',
+    "bloggers" :  {
+        "title"     : "Bloggers",
+        "blogs"     : ["blogs homepage"],
+        "template"  : "partials/index/section-25.twig",
+        "template_params" : {
+            "logo":  "/static/images/megaphone.svg",
         }
     },
     'water': {
@@ -445,7 +443,6 @@
 
     {% set sectionOrder = regionalSelect[site]['sections'] %}
 
-    
 
         {% if layoutTitle == 'major_breaking_news' %}
             {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
@@ -522,22 +519,35 @@
 
 
 
+{# Override the hard coded values with new site config if available #}
+{% if config['page']['index']['sectionOrder'] is defined %}
+    {% set sectionOrder = config['page']['index']['sectionOrder'] %}
+{% endif %}
 
+{% if config['page']['index']['sections'] is defined %}
+    {% set pageSections = config['page']['index']['sections'] %}
+{% endif %}
+
+{% if config['page']['index']['blogFeeds'] is defined %}
+    {% set blogFeeds = config['page']['index']['blogFeeds'] %}
+{% endif %}
 
 
 
 {# *******************************************************
                 Fetch all needed feeds
 ******************************************************* #}
-{% for key, value in blogFeeds %}
-    {% for blog in networkData.networkBlogs %}
+{% for key in blogFeeds|keys %}
+
+    {% set break = false %}
+    {% for blog in networkData.networkBlogs if not break %}
 
 
         {# FOR DEV  #}
         {% if dev %}
             {% set blogFeeds = blogFeeds | merge({
                 (key) : { 
-                    'feed' : articlesArr, 
+                    'feed' : _Blog.getBlogFeed({'limit': 1, 'offset': 0}), 
                     'link' : '#' } 
                 }) %}
         {% endif %}
@@ -554,17 +564,12 @@
                     'link'      : blog.link
                     }
                 }) %}
-
+            {% set break = true %}
         {% endif %}
+
     {% endfor %}
 {% endfor %}
 
-
-
-
-{# <pre>
-    {{dump(blogFeeds)}}
-</pre> #}
 
 
 
