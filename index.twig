@@ -444,28 +444,6 @@
     {% set sectionOrder = regionalSelect[site]['sections'] %}
 
 
-    {% if layoutTitle == 'major_breaking_news' %}
-        {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
-        {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
-    {% endif %} 
-
-    {% if layoutTitle == 'minor_breaking_news' %}
-        {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
-        
-        {% set pageSections = pageSections | merge({ 'index' : 
-            {
-                'template': 'partials/index/section-15.twig',
-                'template_params' : {
-                    'layout': 'breaking news',
-                    'blogData': blogData
-                },
-                'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
-                'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
-            }
-        }) %}
-
-    {% endif %} 
-
 
 
 
@@ -517,6 +495,9 @@
 {% endif %}
 
 
+
+
+
 {% set bannerSpots = [1,7,10] %}
 {% if site == 'country' %}
     {% set bannerSpots = [3,4,7] %}
@@ -540,6 +521,32 @@
     {% endif %}
 
 {% endif %}
+
+
+
+{% if layoutTitle == 'major_breaking_news' %}
+    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
+    {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
+{% endif %} 
+
+{% if layoutTitle == 'minor_breaking_news' %}
+    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
+    
+    {% set pageSections = pageSections | merge({ 'index' : 
+        {
+            'template': 'partials/index/section-15.twig',
+            'template_params' : {
+                'layout': 'breaking news',
+                'blogData': blogData
+            },
+            'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
+            'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
+        }
+    }) %}
+
+{% endif %} 
+
+
 
 
 {# *******************************************************
