@@ -495,6 +495,28 @@
 {% endif %}
 
 
+{% if layoutTitle == 'major_breaking_news' %}
+    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
+    {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
+{% endif %} 
+
+{% if layoutTitle == 'minor_breaking_news' %}
+    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
+    
+    {% set pageSections = pageSections | merge({ 'index' : 
+        {
+            'template': 'partials/index/section-15.twig',
+            'template_params' : {
+                'layout': 'breaking news',
+                'blogData': blogData
+            },
+            'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
+            'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
+        }
+    }) %}
+
+{% endif %} 
+
 
 
 
@@ -520,31 +542,44 @@
         {% set blogFeeds = config['page']['index']['blogFeeds'] %}
     {% endif %}
 
+
+
+
+    {% if layoutTitle == 'major_breaking_news' %}
+
+        {% if pageSections['breaking_news'] is defined %}
+            
+            {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
+
+            {% set pageSections = pageSections | 
+                merge({'breaking_news' : pageSections['breaking_news'] |
+                merge({'active'        : true})})
+            %} 
+        {% endif %} 
+        
+    {% endif %} 
+
+
+
+    {% if layoutTitle == 'minor_breaking_news' %}
+
+        {% if pageSections['minor_breaking_news'] is defined %}
+
+            {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
+            
+            {% set pageSections = pageSections | 
+                merge({ 'index'  : pageSections['minor_breaking_news'] |
+                merge({ 'active' : true})}) 
+            %}
+
+        {% endif %} 
+
+    {% endif %} 
+
 {% endif %}
 
 
 
-{% if layoutTitle == 'major_breaking_news' %}
-    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
-    {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
-{% endif %} 
-
-{% if layoutTitle == 'minor_breaking_news' %}
-    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
-    
-    {% set pageSections = pageSections | merge({ 'index' : 
-        {
-            'template': 'partials/index/section-15.twig',
-            'template_params' : {
-                'layout': 'breaking news',
-                'blogData': blogData
-            },
-            'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
-            'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
-        }
-    }) %}
-
-{% endif %} 
 
 
 
