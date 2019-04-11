@@ -147,17 +147,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     tp = window["tp"] || [];
     tp.push(["init", function() {
         tp.push(["setContentCreated", "'~article.publishedDate~'"]);
-        // The content author
         tp.push(["setContentAuthor", "'~pianoAuthor~'"]);
-        // The content section
         tp.push(["setContentSection", "'~article.label~'"]);
-        // The content tags
         tp.push(["setTags", ["'~premium~'", "'~categoryString~'"]]);
-        // If the content is native (produced internally) or not (produced externally – AAP)
         tp.push(["setContentIsNative", '~articleNative~']);
-        // The custom params
         if ("'~premium~'" != "Free" ) {
-            tp.push(["setCustomParam", "type", "premium", "content"]) //this should only show up for articles marked as premium content? // Yes
+            tp.push(["setCustomParam", "type", "premium", "content"]);
         }
     }]);
 ', 3)}}
