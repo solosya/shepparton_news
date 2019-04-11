@@ -193,6 +193,24 @@ for Oovvuu to use to replicate the menu on the video site. #}
         <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0054/7754.js" async="async"></script>
     {% endif %}
 
+    <script>
+        document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+        var setNptTechAdblockerCookie = function(adblocker) {
+            var d = new Date();
+            d.setTime(d.getTime() + 60 * 5 * 1000);
+            document.cookie = "__adblocker=" + (adblocker ? "true" : "false") + "; expires=" + d.toUTCString() + "; path=/";
+        };
+        var script = document.createElement("script");
+        script.setAttribute("async", true);
+        script.setAttribute("src", "//www.npttech.com/advertising.js");
+        script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
+        document.getElementsByTagName("head")[0].appendChild(script);
+    </script>
+
+    {% if 'article' not in pageTypeClass %}
+        <script>(function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src;var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");</script>
+    {% endif %}
+
 
 
     {{ this.render('partials/ads.twig', {

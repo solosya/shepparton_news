@@ -135,14 +135,33 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set contentCategory = category | merge(contentCategory) %}
 {% endif %}
 
-{% set categoryString = contentCategory | join('", "') %}
+{% set articleNative = true %}
 
+{% if 'AAP' in article.createdBy['displayName'] %}
+    {% set articleNative = false %}
+{% endif %}
+
+{% set categoryString = contentCategory | join('", "') %}
+{% set pianoAuthor =  article.createdBy['displayName'] %}
 {# {{this.registerJs('
     tp = window["tp"] || [];
     tp.push(["init", function() {
-        tp.push(["setTags", ["' ~ categoryString ~ '"]]);
+        tp.push(["setContentCreated", "{{article.publishedDate}}"]);
+        // The content author
+        tp.push(["setContentAuthor", "{{ pianoAuthor }}"]);
+        // The content section
+        tp.push(["setContentSection", "{{article.label}}"]);
+        // The content tags
+        tp.push(["setTags", [{{ premium }}, "{{article.label}}"]]);
+        // If the content is native (produced internally) or not (produced externally – AAP)
+        tp.push(["setContentIsNative", {{articleNative}}]);
+        // The custom params
+        if ({{premium}} != "Free" ) {
+            tp.push(["setCustomParam", "type", "premium", "content"]) //this should only show up for articles marked as premium content? // Yes
+        }
     }]);
 ', 3)}} #}
+
 
 
 
@@ -379,4 +398,22 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
     </article>
 </main><!--site-main-->
+<script type="text/javascript">
+    tp = window["tp"] || [];
+    tp.push(["init", function() {
+        tp.push(["setContentCreated", "{{article.publishedDate}}"]);
+        // The content author
+        tp.push(["setContentAuthor", "{{ pianoAuthor }}"]);
+        // The content section
+        tp.push(["setContentSection", "{{article.label}}"]);
+        // The content tags
+        tp.push(["setTags", ["{{ premium }}", "{{article.label}}"]]);
+        // If the content is native (produced internally) or not (produced externally – AAP)
+        tp.push(["setContentIsNative", {% if articleNative %}true{% else %}false{% endif %}]);
+        // The custom params
+        if ("{{premium}}" != "Free" ) {
+            tp.push(["setCustomParam", "type", "premium", "content"]) //this should only show up for articles marked as premium content? // Yes
+        }
+    }]);
+</script>
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
