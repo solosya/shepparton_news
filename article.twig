@@ -94,8 +94,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 {% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDate, 'F, Y') %}
-{% set pianoPublishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDate, 'Y-m-d') %}
-{% set pianoPublishTime = _AppHelper.getDefaultTimezoneDateTime(article.publishedDate, 'G:i:s') %}
+{% set pianoPublishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime, 'Y-m-d') %}
+{% set pianoPublishTime = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime, 'G:i:s') %}
 {% set pianoTime = pianoPublishDate ~ "T" ~ pianoPublishTime %}
 
 {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
