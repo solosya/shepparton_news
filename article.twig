@@ -140,7 +140,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 {% set articleNative = "true" %}
 
-{% if 'AAP' in article.createdBy['displayName'] %}
+{% if 'AAP' in article.label %}
     {% set articleNative = "false" %}
 {% endif %}
 
