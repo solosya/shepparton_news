@@ -93,7 +93,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% endif %}
 
 
-{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishDate, 'F, Y') %}
+{% set publishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDate, 'F, Y') %}
+{% set pianoPublishDate = _AppHelper.getDefaultTimezoneDateTime(article.publishedDate, 'Y-m-d') %}
+{% set pianoPublishTime = _AppHelper.getDefaultTimezoneDateTime(article.publishedDate, 'G:i:s') %}
+{% set pianoTime = pianoPublishDate ~ "T" ~ pianoPublishTime %}
 
 {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
 {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
@@ -135,10 +138,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set contentCategory = category | merge(contentCategory) %}
 {% endif %}
 
-{% set articleNative = true %}
+{% set articleNative = "true" %}
 
 {% if 'AAP' in article.createdBy['displayName'] %}
-    {% set articleNative = false %}
+    {% set articleNative = "false" %}
 {% endif %}
 
 {% set categoryString = contentCategory | join('", "') %}
@@ -146,10 +149,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {{this.registerJs('
     tp = window["tp"] || [];
     tp.push(["init", function() {
-        tp.push(["setContentCreated", "'~article.publishedDate~'"]);
+        tp.push(["setContentCreated", "'~pianoTime~'"]);
         tp.push(["setContentAuthor", "'~pianoAuthor~'"]);
         tp.push(["setContentSection", "'~article.label~'"]);
-        tp.push(["setTags", ["'~premium~'", "'~categoryString~'"]]);
+        tp.push(["setTags", ["'~premium~'", "'~article.label~'"]]);
         tp.push(["setContentIsNative", '~articleNative~']);
         if ("'~premium~'" != "Free" ) {
             tp.push(["setCustomParam", "type", "premium", "content"]);
