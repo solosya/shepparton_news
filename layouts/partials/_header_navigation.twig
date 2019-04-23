@@ -1,4 +1,8 @@
-{% set headermenu = _Menu.get({'menuType': 'header'}) %}
+{% if _AppHelper.getApplicationEnv() == 'PROD'%}
+    {% set headermenu = _Menu.get({'menuType': 'header'}) %}
+{% else %}
+    {% set headermenu = _Menu.get({'menuType': 'header','menuGroupName':'Default'}) %}
+{% endif %}
 {% set site       = networkData.title | lower | split(" ")[0]%}
 
 
@@ -117,7 +121,7 @@
                     
                 {% else %}
                     <ul class="auth-links">              
-                        <li><a href="{{ loginPath }}">LOG IN</a></li>
+                        <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                     </ul>
                 {% endif %}
             {% endif %}

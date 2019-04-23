@@ -1,5 +1,10 @@
 {% set link = _Blog.getHomeBlogSettings() %}
-{% set footerMenu = _Menu.get({'menuType': 'footer'}) %}
+
+{% if _AppHelper.getApplicationEnv() == 'PROD'%}
+    {% set footerMenu = _Menu.get({'menuType': 'footer'}) %}
+{% else %}
+    {% set footerMenu = _Menu.get({'menuType': 'footer','menuGroupName':'Default'}) %}
+{% endif %}
 
 <footer class="site-footer">
     <div class="container">        
