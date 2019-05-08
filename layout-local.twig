@@ -20,10 +20,10 @@
 {% set sectionOrder = [] %}
 
 {% set regionSelect = {
-        'shepparton': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8'],
-        'shepp': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7', 'section_8'],
-        'echuca': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_7', 'section_8'],
-        'riverine': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_7', 'section_8'],
+        'shepparton': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7'],
+        'shepp': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7'],
+        'echuca': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_7'],
+        'riverine': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_7'],
         'deniliquin': ['section_0', 'section_1', 'section_2', 'section_3'],
         'finley': ['section_0', 'section_1'],
         'southern': ['section_0', 'section_1'],
@@ -105,11 +105,6 @@
         'blogs'     : [theSection ~ 'galleries'],
         'template': 'partials/index/section-08.twig',
     },
-    "section_8": {
-        'title'     : theSection ~ "Social",
-        'blogs'     : [theSection ~ 'social'],
-        'template': 'partials/index/section-10.twig',
-    },
 } %}
 
 
@@ -136,8 +131,7 @@
         (theSection ~ "entertainment"):     { "limit" : 3},
         (theSection ~ "education"):         { "limit" : 4},
         (theSection ~ "contributed photos"):{ "limit" : 3},
-        (theSection ~ "galleries"):         { "limit" : 3},
-        (theSection ~ "social"):            { "limit" : 5}
+        (theSection ~ "galleries"):         { "limit" : 3}
     }
 %}
 

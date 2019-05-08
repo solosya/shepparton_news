@@ -29,7 +29,7 @@
     'shepptest': {
         'regional'   :  ["echuca news","kyabram news","benalla news","deniliquin news","finley news","cobram news","seymour news","rochester news","heathcote news","tatura news","yarrawonga news","corowa news","echuca sport"],
         'editors'    :  ['deniliquin news','echuca news','galleries'],
-        'sections'   :  ['index', 'local', 'real estate', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'],
+        'sections'   :  ['index', 'local', 'real estate', 'opinion', 'videos', 'galleries', 'contributed photos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
@@ -40,7 +40,7 @@
     'shepparton': {
         'regional'   :  ['echuca news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','echuca sport'],
         'editors'    :  ['deniliquin news','echuca news','galleries'],
-        'sections'   :  ['index', 'local', 'real estate', 'opinion', 'videos', 'galleries', 'social', 'contributed photos', 'regional news', 'rural news', 'national'],
+        'sections'   :  ['index', 'local', 'real estate', 'opinion', 'videos', 'galleries', 'contributed photos', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
@@ -48,7 +48,7 @@
     'riverine': {
         'regional'   :  ['shepp news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
         'editors'    :  ['deniliquin news','shepp news','galleries'],
-        'sections'   :  ['local', 'real estate', 'opinion', 'videos', 'galleries', 'social', 'regional news', 'rural news', 'national'],
+        'sections'   :  ['local', 'real estate', 'opinion', 'videos', 'galleries', 'regional news', 'rural news', 'national'],
         'localpart'  :  ['partials/index/section-01.twig'],
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
@@ -177,11 +177,6 @@
         'background': true,
         'template'  : 'partials/index/section-05.twig' 
     },
-    "automotive": {
-        'title'     : "Automotive",
-        'blogs'     : ['automotive'],
-        'template'  : 'partials/index/section-05.twig',
-    },
     "opinion": {
         'title'     : "Opinion",
         'blogs'     : ['opinion'],
@@ -195,11 +190,6 @@
     "galleries": {
         'title'     : "Galleries",
         'blogs'     : ['galleries'],
-        'template'  : 'partials/index/section-08.twig'
-    },
-    "social": {
-        'title'     : "Social",
-        'blogs'     : ['social'],
         'template'  : 'partials/index/section-09.twig'
     },
     "contributed photos": {
@@ -387,7 +377,6 @@
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
             "galleries":            { "limit" : 3},
-            "social":               { "limit" : 3},
             "contributed photos":   { "limit" : 3},
             "news":                 { "limit" : 6},
             "sport":                { "limit" : 3},
@@ -402,7 +391,6 @@
             "opinion":              { "limit" : 4},
             "real estate":          { "limit" : 3},
             "galleries":            { "limit" : 3},
-            "social":               { "limit" : 3},
             "news":                 { "limit" : 6},
             "sport":                { "limit" : 3},
             "education":            { "limit" : 1},
