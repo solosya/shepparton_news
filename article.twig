@@ -24,6 +24,7 @@
 {% set site = networkData.title | lower | split(" ")[0] %}
 
 {% set ArticleContent = article.content %}
+{% set pianoActive = false %}
 
 {# The folling splits up the article content and places divs for Oovvuu videos in
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
@@ -35,9 +36,17 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         "<div id='foot-video'></div></p>"
     ] %}
 
+    {% set pianoDivsStart = [
+        "<div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph --></p>"
+    ] %}
+
     {% set ArticleContent = article.content | split('<p>') %}
     {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
     {% for i in 0..ArticleContent | length %}
+        {% if i == 2 %}
+            {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+            {% set pianoActive = true %}
+        {% endif %}
 
         {% if i == 5 %}
             {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
@@ -126,6 +135,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
+
+
 {# The following for for Piano #}
 {% set delimiter = "1111-" %}
 {% set url = _AppHelper.getParsedUrl %}
@@ -181,7 +192,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             <div class="col-md-9">
 
                                 <div class="content-block-top">
-                                    
+                                    <div id="pianoArticleHeader"></div>
+                                    <!-- For articles tagged as premium include premium article identifier HTML here – currently being designed -->
 
                                     <a href="{{blogInfo.url}}"><p class="category {{site}}" >{{article.label}}</p
                                     ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
@@ -291,6 +303,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
                                 <div class="article_content {{site}}" id="articleContent">
                                     {{ ArticleContent | _resizeImages({'width': 600}) | raw }}
+                                    {% if pianoActive %}
+                                        </div>
+                                        <div id='pianoArticleContentFooter'></div>
+                                    {% endif %}
                                 </div><!-- .content-->
 
                             </div>
