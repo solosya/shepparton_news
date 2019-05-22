@@ -36,12 +36,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         "<div id='foot-video'></div></p>"
     ] %}
 
-    {% set pianoDivsStart = "<div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph --></p>" %}
+    {% set pianoDivsStart = "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->" %}
 
     {% set ArticleContent = article.content | split('<p>') %}
     {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
     {% for i in 0..ArticleContent | length %}
-        {% if i == 2 %}
+        {% if i == 3 %}
             {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
             {% set pianoActive = true %}
         {% endif %}
