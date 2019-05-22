@@ -36,9 +36,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         "<div id='foot-video'></div></p>"
     ] %}
 
-    {% set pianoDivsStart = [
-        "<div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph --></p>"
-    ] %}
+    {% set pianoDivsStart = "<div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph --></p>" %}
 
     {% set ArticleContent = article.content | split('<p>') %}
     {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
