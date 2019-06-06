@@ -2,12 +2,15 @@
 {{ set(this, 'title', article.title) }}
 {{ this.registerLinkTag({rel:'amphtml', href:_AppHelper.getServerUrl(false)~'?amp=1'}) }}
 
+{% set config = _Network.getThemeConfig() %}
 
+
+{% set teadsAdSetting = false %}
 {% if article['additionalInfo']['teads'] == "teadsOn" %}
     {% set teadsAdSetting = true %}
-{% else %}
-    {% set teadsAdSetting = false %}
 {% endif %}
+
+
 {{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
 {% if article['additionalInfo']['teads'] == "teadsOff" %}
    {{this.registerJs("Acme.articleController.InsertInterstitial(false);")}}
@@ -43,9 +46,13 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set ArticleContent = article.content | split('<p>') %}
     {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
     {% for i in 0..ArticleContent | length %}
+        
+       
         {% if i == 3 %}
-            {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-            {% set pianoActive = true %}
+            {% if config['piano'] is defined and config['piano'] == true %}
+                {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+                {% set pianoActive = true %}
+            {% endif %}
         {% endif %}
 
         {% if i == 5 %}
