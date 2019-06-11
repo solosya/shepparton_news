@@ -120,8 +120,12 @@
                     </ul> 
                     
                 {% else %}
-                    <ul class="auth-links">              
-                        <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                    <ul class="auth-links">
+                        {% if paymeterType == 'piano' %}           
+                            <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                        {% else %}
+                            <li><a  href="{{loginPath}}">LOG IN</a></li>
+                        {% endif %}
                     </ul>
                 {% endif %}
             {% endif %}
@@ -290,8 +294,12 @@
                             <li><a href="{{ logoutPath }}">LOG OUT</a></li>
                         </ul>                    
                     {% else %}
-                        <ul class="auth-links">              
+                        <ul class="auth-links">
+                        {% if paymeterType == 'piano' %}           
                             <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                        {% else %}
+                            <li><a  href="{{loginPath}}">LOG IN</a></li>
+                        {% endif %}
                         </ul>
                     {% endif %}
                 {% endif %}            
