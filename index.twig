@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
 
-{% cache 'indexCache_1' 300 %}
+{# {% cache 'indexCache_1' 300 %} #}
 
 
 {% set networkData = _Network.getNetworkData() %}
@@ -667,4 +667,4 @@
 
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
 
-{% endcache %}
+{# {% endcache %} #}
