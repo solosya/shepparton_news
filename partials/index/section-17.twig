@@ -1,0 +1,298 @@
+{% set articleCount = 0 %}
+{% set cardIndex = 0 %}
+
+{% set layout = layout is defined ? layout : false %}
+
+{% set sectionLabel = blogData['additionalInfo']['sectionlabel'] is defined and 
+                      blogData['additionalInfo']['sectionlabel'] != '' 
+                            ? blogData['additionalInfo']['sectionlabel'] 
+                            : 'Feature' %}
+
+
+
+
+<div class="row">
+    <div class="container hidden-md hidden-lg u-tablet-margin-top-10 ">
+        <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
+        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+    </div>
+    <div class="col-sm-9 visible-sm-block"><hr class="divide10"></div>
+</div>
+
+{% if layout == 'breaking news' %}
+<section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40" data-template="section-17">
+    <div class="row">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="breaking-news_header breaking-news_header@md {{site}}">{{sectionLabel}}</h1>
+                </div>
+                <div class="col-md-3 hidden-sm hidden-xs u-desktop-indent-left-20">
+                    <div class="weather j-weather-panel {{site}}"></div>
+                    <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row u-mobile-margin-bottom-20">
+        <div class="col-md-9">
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    imageSize       : {width:970, height:478},
+                    lazyload        : false,
+                    position        : articleCount + 1, 
+                    article         : articles[articleCount], 
+                    site            : site,
+                    dev             : dev,
+                    containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+
+
+
+
+
+
+{# CARD 1 #}
+{# We don't show the normal top part if minor breaking news layout  #}
+{% if not layout %}
+<section class="home-main-stories"  data-template="section-17">
+    <div class="row">
+
+
+        {# {% if site not in bottomExceptions %}
+            <div class="editors-picks col-xs-9">
+                <h1 class="editors-picks__h1 editors-picks__h1@sm">EDITOR'S PICKS</h1>
+                <p class="editors-picks__p editors-picks__p@sm">A selection of the latest Local, Regional, National &amp; World News.</p>
+            </div>
+        {% endif %} #}
+
+
+
+        <div class="col-xs-9 col-sm-9 col-md-6">
+
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    imageSize       : {width:640, height:400},
+                    position        : cardIndex + 1, 
+                    lazyload        : false,
+                    article         : articles[articleCount], 
+                    site            : site,
+                    swap            : false,
+                    dev             :dev,
+                    containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+
+            {% endif %}
+        </div>
+
+
+        {% if articles[articleCount] %}
+            <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols">
+                <div class="row">
+
+                    <hr class="divide15 visible-xs-block visible-sm-block space-only">
+
+                    <div class="col-sm-1 col-md-9 hidden-xs hidden-sm u-desktop-indent-left-20">
+                        <div class="weather j-weather-panel {{site}}"></div>
+                        <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
+                        <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
+                    </div>
+                      
+
+
+                    {# CARD 2,3,4, (5) #}
+                    {% for i in 0..3 if articles[i] %}
+                
+                        {% set class = ['', '', '', 'visible-sm-block'] %}
+                        <div class="col-sm-1 col-md-9 col-xs-9">
+                            {{this.render('../_single-article.twig', {
+                                imageSize       : {width:95},
+                                position        : cardIndex + 1, 
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                swap            : false,
+                                dev             :dev,
+                                containerClass  : 'feature-side feature-side-tablet card-sm-mobile ' ~ class[i]
+                            }) | raw}}
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set cardIndex = cardIndex + 1 %}
+
+                            {% if i < 2 %}
+                                <hr class="divide15 visible-md-block visible-lg-block">
+                                <hr class="divide visible-xs-block"> 
+                            {% elseif i == 2 %}
+                                 <hr class="divide visible-xs-block">                  
+                            {% endif %}
+                            <hr class="divide10 visible-sm-block">  
+                        </div>
+                    {% endfor %}
+
+                    {% if site not in five_rowExceptions %}
+                        <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
+                    {% else %}
+                        <hr class="divide15 visible-xs-block">
+                    {% endif %}
+
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endif %}
+
+
+    {# We go back as we added an extra card above that is only to be seen on tablet  #}
+    {% if not dev and layout != 'breaking news' %}
+        {% set articleCount = articleCount - 1 %}
+    {% elseif (not layout) %}
+        {% set cardIndex = cardIndex - 1 %}
+    {% endif %}
+
+
+
+        
+
+
+
+
+
+
+
+    <section  data-template="section-17">
+        <div class="row u-tablet-margin-top-30 u-desktop-margin-top-50 u-mobile-no-margin-top">
+
+            <div class="col-xs-9 visible-xs-block"><div class="row"><hr class="divide"></div></div>
+
+
+            {% for i in 0..2 if articles[articleCount] %}
+
+                <div class="col-sm-3 col-md-2 col-xs-9">
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            article         : articles[articleCount], 
+                            position        : cardIndex + 1, 
+                            imageSize       : {width:192, height:160},
+                            site            : site,
+                            swap            : false,
+                            dev             : dev,
+                            containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+                        <hr class="divide visible-xs-block">
+
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+
+            <div class="col-xs-9 visible-xs-block"><div class="row"><hr class="divide"></div></div>
+
+            <div class="col-sm-9 col-md-3 col-xs-9">
+                <div class="ad-square u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
+                    <div class='advert-desktop' data-adsize="mrec"></div>
+                    {#<script async id="soft-point-banner" src="https://viztrade.com/api/banner.js?inventory=59"></script> #}
+                    <div class='advert-tablet' data-adsize="banner"></div>
+                    <div class='advert-mobile' data-adsize="mrec"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+
+<section data-template="section-17">
+
+    <div class="row row-space">
+        <hr class="divide visible-xs-block">
+
+
+            {# ************ MOST POPULAR ************   #}
+            <div class="col-sm-3 col-md-3 col-xs-9 most-popular">
+                <h2 class="{{site}}">Most popular</h2>
+
+                {% for i in 0..4 if popularArticles[i] %}
+                    {{this.render('../_single-article.twig', {
+                        article         : popularArticles[i], 
+                        imageSuppress   : true,
+                        swap            : false,
+                        containerClass  : 'card-popular ' ~ site,
+                        site            : site
+                    }) | raw}}
+                {% endfor %} 
+            </div>
+            {# ************ END ************   #}
+
+
+
+
+        <div class="col-sm-3 col-xs-9">
+            {% for i in 0..1 if articles[articleCount] %}
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : cardIndex + 1, 
+                    imageSize       : {width:80, height:95},
+                    site            : site,
+                    swap            : false,
+                    dev             : dev,
+                    containerClass  : 'feature-side feature-side-tablet card-sm-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+                
+                {% if i == 0 %}
+                    <hr class="divide">
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-sm-3 col-xs-9">
+
+            {% if articles[articleCount] %}
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : cardIndex + 1, 
+                    imageSize       : {width:300, height:160},
+                    site            : site,
+                    swap            : false,
+                    dev             : dev,
+                    containerClass  : 'card-sm-wide card-sm-wide-tablet card-sm-mobile'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+                <hr class="divide visible-xs-block">
+            {% endif %}
+
+
+
+
+        </div>
+        <div class="col-xs-9 visible-xs-block"><div class="row"><hr class="divide"></div></div>
+    </div>
+
+</section>
