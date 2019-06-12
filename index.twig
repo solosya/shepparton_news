@@ -53,6 +53,9 @@
         'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
         'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
     },
+
+
+
     'deniliquin': {
         'regional'   :  ['shepp news','kyabram news','benalla news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport','shepp galleries'],
         'editors'    :  ['echuca news','shepp news','shepp galleries'],
@@ -61,6 +64,10 @@
         'localBlogs' :  ['news', 'sport', 'entertainment'],
         'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'sport', 'news', 'sport', 'news', 'news', 'sport', 'news']
     },
+
+
+
+
     'benalla': {
         'regional'   :  ['shepp news','kyabram news','deniliquin news','echuca news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport','shepp galleries'],
         'editors'    :  ['echuca news','shepp news','shepp galleries'],
@@ -530,11 +537,53 @@
         {% set pageSections = config['page']['index']['sections'] %}
         {% set sectionOrder = pageSections | keys %}
 
+        {% set blogFeeds = {} %}
+
+        {% for i, panel in pageSections %}
+
+            {% if panel['blogs'] | length > 1 %}
+
+                {% set blogFeeds = {} %}
+
+                {# If a panel has multiple blogs we get the count of items to fetch from iterating
+                over the articleOrder array #}
+                {% for blogName in panel['articleOrder'] %}
+                    {% if blogFeeds[blogName] is not defined %}
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : 1} }) %}
+                    {% else %}
+                        {% set count = feeds[blogName].limit %}
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count + 1} }) %}
+                    {% endif %}
+                {% endfor %}
+
+
+
+            {# If a panel has a single blog we get the count of items to fetch from checking the articleCount key #}
+            {% else %}
+                {% set blogName = panel['blogs'][0] %}
+
+                {% if panel['articleCount'] is defined %}
+
+                    {% set count = panel['articleCount'] %}
+                    
+                    {% if blogFeeds[blogName] is not defined or blogFeeds[blogName].limit < count %}
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count} }) %}
+
+                    {% endif %}
+
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+        
+        {% set log = _AppHelper.log(blogFeeds) %}
+
+
     {% endif %}
 
-    {% if config['page']['index']['blogFeeds'] is defined %}
+    {# {% if config['page']['index']['blogFeeds'] is defined %}
         {% set blogFeeds = config['page']['index']['blogFeeds'] %}
-    {% endif %}
+    {% endif %} #}
 
 
 
