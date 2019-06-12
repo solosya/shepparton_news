@@ -546,10 +546,15 @@
                 {# If a panel has multiple blogs we get the count of items to fetch from iterating
                 over the articleOrder array #}
                 {% for blogName in panel['articleOrder'] %}
+                {# {% set log = _AppHelper.log(blogName) %} #}
                     {% if blogFeeds[blogName] is not defined %}
                         {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : 1} }) %}
                     {% else %}
-                        {% set count = feeds[blogName].limit %}
+                        {# {% set log = _AppHelper.log(blogFeeds[blogName].limit ) %} #}
+
+                        {% set count = blogFeeds[blogName].limit %}
+                        {# {% set log = _AppHelper.log('count', count) %} #}
+
                         {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count + 1} }) %}
                     {% endif %}
                 {% endfor %}
