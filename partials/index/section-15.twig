@@ -170,6 +170,8 @@
 
     {% if site not in five_rowExceptions %}
 
+        {% if five_row is not defined or five_row == true %}
+
 
         {# *****************************************
                     MOBILE AND DESKTOP 
@@ -236,6 +238,7 @@
                             </section>
 
 
+        {% endif %}
     {% endif %}
 
 
