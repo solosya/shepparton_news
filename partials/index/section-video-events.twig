@@ -1,0 +1,49 @@
+{% set articleCount = 0 %}
+{% set date = date() %}
+{% set events = _Event.getEvents({"limit": 8, "start_date": date.date | split(" ")[0]}) %}
+
+
+<section data-template="section-video">
+    <div class="row">
+            <div class="col-sm-9 col-md-6" id='home-video' class='video-section {{site}}'></div>
+
+            <div class="col-sm-9 col-md-3">
+                <hr class="divide15 visible-sm-block space-only">
+
+                
+
+                <div class="events section-header u-desktop-margin-bottom-30 u-mobile-margin-bottom-30">
+                    <p>
+                        <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
+                    </p>
+                    <div class="hk">
+                        <h2>
+                            <a href="{{networkData.defaultBlogUrl}}/@events">EVENTS</a>
+                        </h2>
+                        <p></p>
+                    </div>
+                    {% for i in 0..3 if events[i] %}
+                        {{this.render('../_single-event.twig', {
+                            event: events[i],
+                            imageSize: {width: 90},
+                            site:site,
+                            containerClass: 'card-event card-event-tablet card-event-mobile'
+                        }) | raw}}
+
+                        {% if i < 3 %}
+                            <hr class="divide10">
+                        {% endif %}
+
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    {# the below can be used to debug the live script #}
+    {# {{this.registerJsFile(networkData['templatePath'] ~ '/static/development/js/plugins/ovu_masthead.js?ver=2')}} #}
+
+    {# {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_masthead.js")}} #}
+</section>
