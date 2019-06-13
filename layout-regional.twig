@@ -34,7 +34,7 @@
               (each site can override)
 ******************************************************* #}
 
-{% set pageSections =  {
+{# {% set pageSections =  {
     'shepp': {
         'template'  : 'partials/index/section-11.twig',
         'title'     : 'Shepparton',
@@ -172,7 +172,7 @@
     }
 } 
 
-%}
+%} #}
 
 
 
@@ -186,7 +186,7 @@
 {# *******************************************************
                         COMMON
 ******************************************************* #}
-{% set blogFeeds = {
+{# {% set blogFeeds = {
         "shepp news":          { "limit" : 2},
         "shepp sport":         { "limit" : 1},
         "shepp lifestyle":     { "limit" : 1},
@@ -222,10 +222,10 @@
         "corowa news":          { "limit" : 3},
         "corowa sport":         { "limit" : 1}
     }
-%}
+%} #}
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
-{% set theSections = {
+{# {% set theSections = {
     "shepptest"  : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "shepparton" : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "shepp"      : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
@@ -243,7 +243,7 @@
     "corowa"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour',     'rochester', 'heathcote', 'tatura', 'yarrawonga'],
     
     } 
-%}
+%} #}
 
 
 {% set bannerSpots = [2,5,8] %}   
