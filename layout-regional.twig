@@ -226,6 +226,7 @@
 
 {# MAKE THIS INTO AN ARRAY WHEN WE EXPAND #}
 {% set theSections = {
+    "shepptest"  : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "shepparton" : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "shepp"      : ['echuca_0', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "riverine"   : ['shepp', 'deniliquin_0', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
@@ -235,8 +236,8 @@
     "benalla"    : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "cobram"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
     "seymour"    : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'rochester', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
-    "campaspe"  : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
-    "mcivor"  : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'tatura', 'yarrawonga', 'corowa'],
+    "campaspe"   : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'heathcote', 'tatura', 'yarrawonga', 'corowa'],
+    "mcivor"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'tatura', 'yarrawonga', 'corowa'],
     "tatura"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'yarrawonga', 'corowa'],
     "yarrawonga" : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'corowa'],
     "corowa"     : ['shepp', 'echuca_1', 'deniliquin_1', 'finley', 'kyabram', 'benalla', 'cobram', 'seymour', 'rochester', 'heathcote', 'tatura', 'yarrawonga'],
@@ -246,7 +247,7 @@
 
 
 {% set bannerSpots = [2,5,8] %}   
-{%  set sectionOrder = theSections[site] %}
+{% set sectionOrder = theSections[site] %}
     
 
 
