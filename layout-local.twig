@@ -20,11 +20,11 @@
 {% set sectionOrder = [] %}
 
 {% set regionSelect = {
-        'shepparton': ['section_0', 'section_1'],
+        'shepparton': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7'],
         'shepp': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_6', 'section_7'],
-        'echuca': ['section_0', 'section_1'],
+        'echuca': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_7'],
         'riverine': ['section_0', 'section_1', 'section_2', 'section_3', 'section_4', 'section_5', 'section_7'],
-        'deniliquin': ['section_0', 'section_1'],
+        'deniliquin': ['section_0', 'section_1', 'section_2', 'section_3'],
         'finley': ['section_0', 'section_1'],
         'southern': ['section_0', 'section_1'],
         'kyabram': ['section_0', 'section_1'],
@@ -47,8 +47,8 @@
     {% if homeBlog == 'shepparton' or homeBlog == 'shepp' %}
         {% set theSection = "shepp " %}
         {% set sectionOrder = ['section_0', 'section_1'] %}
-    {% elseif homeBlog == 'echuca' %} 
-        {% set sectionOrder = ['section_0', 'section_1'] %}       
+    {% elseif homeBlog == 'echuca' or homeBlog == 'deniliquin' %} 
+        {% set sectionOrder = ['section_0', 'section_1'] %}   
     {% endif %}
 {% else %}
     {% set theSection = '' %}
@@ -176,7 +176,7 @@
 
 
 
-<main id="main" class="site-main" role="main" data-blog="{{homeBlog}}">
+<main id="main" class="site-main" role="main">
 
 
         <section class="container">
