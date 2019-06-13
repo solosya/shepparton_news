@@ -41,6 +41,10 @@
     }
 %}
 
+
+
+{# A local version of each site can be views from the current site, or from another site.
+There are difference on how some of them are displayed depending on current or other site #}
 {% if homeBlog != 'local' %}
     {% set theSection = homeBlog ~ " " %}
     {% set sectionOrder = regionSelect[homeBlog] %}
