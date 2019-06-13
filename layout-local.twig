@@ -47,8 +47,10 @@
     {% if homeBlog == 'shepparton' or homeBlog == 'shepp' %}
         {% set theSection = "shepp " %}
         {% set sectionOrder = ['section_0', 'section_1'] %}
-    {% elseif homeBlog == 'echuca' or homeBlog == 'deniliquin' %} 
+    {% elseif homeBlog == 'echuca' %} 
         {% set sectionOrder = ['section_0', 'section_1'] %}   
+    {% elseif homeBlog == 'deniliquin' %} 
+        {% set sectionOrder = ['section_0', 'section_1', 'section_3'] %}   
     {% endif %}
 {% else %}
     {% set theSection = '' %}
