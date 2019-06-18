@@ -4,6 +4,7 @@
 
 {% set feedArr = [] %}
 
+{% set blogLink = "" %}
 
 {# If a page section has articles from multiple blogs, assemble here #}
 {% if section.articleOrder is defined and section.articleOrder | length > 0 %}
@@ -15,22 +16,27 @@
         {% endif %}
     {% endfor %}
 
+    {% set blogLink = blogFeeds[section.blogs[0]].link %}
+
 {# else if a page section has articles from a single blog, no assembly required #}
 {% else %}
 
     {% if section.blogs is defined and blogFeeds[section.blogs[0]] is defined %}
         {% set feedArr = blogFeeds[section.blogs[0]].feed.articles %}
+        {% set blogLink = blogFeeds[section.blogs[0]].link %}
+
     {% else %}
         {% set feedArr = blogFeeds[section.blog].feed.articles %}
+        {% set blogLink = blogFeeds[section.blog].link %}
+
     {% endif %}
 {% endif %}
 
- 
 
 {% if section.template != '' %}
     {% set params = {
         articles        : feedArr,
-        link            : blogFeeds[ section.blogs[0] ].link,
+        link            : blogLink,
         title           : section.title is defined ? section.title : '',
         dev             : dev,
         site            : site,
