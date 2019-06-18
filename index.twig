@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 
 
-{# {% cache 'indexCache_1' 300 %} #}
+{% cache 'indexCache_1' 300 %}
 
 
 {% set networkData = _Network.getNetworkData() %}
@@ -18,9 +18,15 @@
 
 {% set sectionOrder = [] %}
 
+
+
 {# *******************************************************
                 GLOBAL SITE SECTIONS
               (each site can override)
+
+
+
+        NO LONGER IN USE - (see theme config)
 
 
 ******************************************************* #}
@@ -717,4 +723,4 @@
 
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
 
-{# {% endcache %} #}
+{% endcache %}
