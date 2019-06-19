@@ -471,3 +471,19 @@
 	}
 	
 }
+
+div#pianoArticleContentLockable > div.tp-container-inner {       
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: -150px;
+    padding-top: 150px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255) 150px);
+}
+
+div#pianoArticleHeader > div.tp-container-inner {
+	margin-bottom: 20px;
+}
+
+div#pianoArticleContentFooter > div.tp-container-inner {
+	margin-top: 20px;
+}

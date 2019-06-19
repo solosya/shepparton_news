@@ -176,6 +176,9 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             tp.push(["setCustomParam", "type", "premium", "content"]);
         }
     }]);
+    tp.push([“addHandler”, “loginSuccess”, function(){
+        location.reload()
+    }]);
 ', 3)}}
 
 
