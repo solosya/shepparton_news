@@ -23322,6 +23322,11 @@ $('document').ready(function() {
         e.preventDefault();
     });
 
+    $(".j-piano__account").on("click", function (e) {
+        $(".j-piano__account").toggleClass("c-piano__account--open");
+        $(".j-piano__dropdown").toggleClass("c-piano__dropdown--hidden");
+    });
+
 
     $(".searchOpen").on("click", function (e) {
         $(".searchPanel").css('display', 'inline-block');
