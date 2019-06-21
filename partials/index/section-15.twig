@@ -116,10 +116,10 @@
                       
 
 
-                    {# CARD 2,3,4, (5) #}
-                    {% for i in 0..3 if articles[i] %}
+                    {# CARD 2,3, (4) #}
+                    {% for i in 0..2 if articles[i] %}
                 
-                        {% set class = ['', '', '', 'visible-sm-block'] %}
+                        {% set class = ['', '', 'visible-sm-block'] %}
                         <div class="col-sm-1 col-md-9 col-xs-9">
                             {{this.render('../_single-article.twig', {
                                 imageSize       : {width:95},
@@ -134,10 +134,10 @@
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             {% set cardIndex = cardIndex + 1 %}
 
-                            {% if i < 2 %}
+                            {% if i < 1 %}
                                 <hr class="divide15 visible-md-block visible-lg-block">
                                 <hr class="divide visible-xs-block"> 
-                            {% elseif i == 2 %}
+                            {% elseif i == 1 %}
                                  <hr class="divide visible-xs-block">                  
                             {% endif %}
                             <hr class="divide10 visible-sm-block">  
