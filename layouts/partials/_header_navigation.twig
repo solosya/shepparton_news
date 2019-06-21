@@ -103,7 +103,7 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
             <div class="container">
-                {# {% if paymeter == true %} #}
+                {% if paymeter == true %}
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
 
@@ -112,13 +112,13 @@
                     {% if not _User.isGuest() %}
                         {% set user = _User.getUser() %}
                         {% if paymeterType == 'piano' %}
-                        <ul class="auth-links">
-                            <li class="c-piano__account j-piano__account"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
-                            <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
-                                <li><a href="{{networkData.defaultBlogUrl}}/my-account">My Account</a></li>
-                                <li><a href="#" id="piano-logout">log Out</a></li>
-                            </ul>
-                        </ul> 
+                            <ul class="auth-links">
+                                <li class="c-piano__account j-piano__account"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
+                                <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
+                                    <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                </ul>
+                            </ul> 
                         {% else %}
                             <ul class="auth-links">
                                 <li><a href="{{ logoutPath }}">LOG OUT</a></li>
@@ -138,7 +138,7 @@
                             {% endif %}
                         </ul>
                     {% endif %}
-                {# {% endif %} #}
+                {% endif %}
 
                 <ul class="auth-links visible-md-block visible-lg-block">
                     <li id="menu-item-search" class="menu-item-search">

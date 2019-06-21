@@ -357,7 +357,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-
+{# {% set paymeter = true %} #}
 
     {# **************************************************************** #}
     {# The following is code for Piano which isn't being used yet #}
@@ -372,6 +372,24 @@ for Oovvuu to use to replicate the menu on the video site. #}
                 var b=document.getElementsByTagName("script")[0];
                 b.parentNode.insertBefore(a,b);
             })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
+
+            {# (function() {
+                tp = window.tp || [];
+                tp.push(['setUsePianoIdUserProvider', true]);
+                tp.push(["init", function() {
+                    tp.pianoId.init({
+                        loggedIn: function(data) {
+                                $([SELECTOR FOR PROFILE DROPDOWN]).style.display = "block";
+                                $([SELECTOR FOR LOGIN LINK]).style.display = "none";
+                            console.log('user ', data.user, ' logged in with token', data.token);
+                        },
+                        loggedOut: function() {
+                            $([SELECTOR FOR LOGIN LINK]).style.display = "block";
+                            $([SELECTOR FOR PROFILE DROPDOWN]).style.display = "none";
+                        }
+                    });
+                }]);
+            }) #}
         </script>
     {% endif %}
 
