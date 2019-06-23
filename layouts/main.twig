@@ -377,15 +377,14 @@ for Oovvuu to use to replicate the menu on the video site. #}
                 tp = window.tp || [];
                 tp.push(['setUsePianoIdUserProvider', true]);
                 tp.push(["init", function() {
-                    tp.pianoId.init({
-                        loggedIn: function(data) {
-                                $('#j-piano-loggedin').style.display = "block";
-                                $('#j-piano-loggedout').style.display = "none";
-                            console.log('user ', data.user, ' logged in with token', data.token);
+                        tp.pianoId.init({
+                            loggedIn: function(data) {
+                            document.getElementById('j-piano-loggedin').style.display = "block";
+                            document.getElementById('j-piano-loggedout').style.display = "none";
                         },
                         loggedOut: function() {
-                            $('#j-piano-loggedout').style.display = "block";
-                            $('#j-piano-loggedin').style.display = "none";
+                            document.getElementById('j-piano-loggedout').style.display = "block";
+                            document.getElementById('j-piano-loggedin').style.display = "none";
                         }
                     });
                 }]);
