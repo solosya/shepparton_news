@@ -207,6 +207,10 @@ $('document').ready(function() {
         $(".j-piano__account").toggleClass("c-piano__account--open");
         $(".j-piano__dropdown").toggleClass("c-piano__dropdown--hidden");
     });
+    $(".j-piano__account--fold").on("click", function (e) {
+        $(".j-piano__account--fold").toggleClass("c-piano__account--open");
+        $(".j-piano__dropdown--fold").toggleClass("c-piano__dropdown--hidden");
+    });
 
 
     $(".searchOpen").on("click", function (e) {

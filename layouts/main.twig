@@ -106,7 +106,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=c0a7be80" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=2ca8d2c4" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -377,14 +377,23 @@ for Oovvuu to use to replicate the menu on the video site. #}
                 tp = window.tp || [];
                 tp.push(['setUsePianoIdUserProvider', true]);
                 tp.push(["init", function() {
-                        tp.pianoId.init({
-                            loggedIn: function(data) {
+                    tp.pianoId.init({
+                        loggedIn: function(data) {
                             document.getElementById('j-piano-loggedin').style.display = "block";
                             document.getElementById('j-piano-loggedout').style.display = "none";
+                            document.getElementById('j-piano-loggedin--fold').style.display = "block";
+                            document.getElementById('j-piano-loggedout--fold').style.display = "none";
+                            document.getElementsByClassName('j-piano__dropdown')[0].className += "c-piano__dropdown--hidden";
+                            document.getElementsByClassName('j-piano__dropdown--fold')[0].className += "c-piano__dropdown--hidden";
+                            
                         },
                         loggedOut: function() {
                             document.getElementById('j-piano-loggedout').style.display = "block";
                             document.getElementById('j-piano-loggedin').style.display = "none";
+                            document.getElementsByClassName('j-piano__dropdown')[0].className += "c-piano__dropdown--hidden";
+                            document.getElementById('j-piano-loggedout--fold').style.display = "block";
+                            document.getElementById('j-piano-loggedin--fold').style.display = "none";
+                            document.getElementsByClassName('j-piano__dropdown--fold')[0].className += "c-piano__dropdown--hidden";
                         }
                     });
                 }]);

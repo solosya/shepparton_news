@@ -117,13 +117,9 @@
                             </ul>
                         </ul> 
                         <ul class="auth-links" id="j-piano-loggedout" style="display:block;">
-                            {% if paymeterType == 'piano' %} 
-                                <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
-                                <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
-                            {% else %}
-                                <li><a  href="{{loginPath}}">LOG IN</a></li>
-                            {% endif %}
-                        </ul>
+                            <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
+                            <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                    </ul>
                     {% else %}
 
                 
@@ -309,41 +305,70 @@
 
 
             <div class="header-bottom {{ visibility }} {{site}}">
-                {% if paymeter == true %}
+                <div class="container" style="height:100%;">
+                    {% if paymeter == true %}
 
-                    {% set loginPath  = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
-                    {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
-                    {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
-                
-                    {% if not _User.isGuest() %}
-                        <ul class="auth-links">
-                            <li><a href="{{ logoutPath }}">LOG OUT</a></li>
-                        </ul>                    
-                    {% else %}
-                        <ul class="auth-links">
-                        {% if paymeterType == 'piano' %}           
-                            <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                        {% set loginPath  = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
+                        {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
+                        {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
+                    
+                        {% if paymeterType == 'piano' %}
+                            <ul class="auth-links" id="j-piano-loggedin--fold" style="display:none;">
+                                <li class="c-piano__account j-piano__account--fold"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
+                                <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown--fold">
+                                    <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                </ul>
+                            </ul> 
+                            <ul class="auth-links" id="j-piano-loggedout--fold" style="display:block;">
+                                <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
+                                <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                            </ul>
                         {% else %}
-                            <li><a  href="{{loginPath}}">LOG IN</a></li>
+
+                    
+                            {% if not _User.isGuest() %}
+                                {% set user = _User.getUser() %}
+                                
+                                    <ul class="auth-links">
+                                        <li><a href="{{ logoutPath }}">LOG OUT</a></li>
+                                        <li><p href="#" class="user__login" id="profile">
+                                        {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
+                                        </p></li>
+                                    </ul> 
+                                    <ul class="auth-links">
+                                    {% if paymeterType == 'piano' %} 
+                                        <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
+                                        <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                                    {% else %}
+                                        <li><a  href="{{loginPath}}">LOG IN</a></li>
+                                    {% endif %}
+                                </ul>
+                                
+                            {% else %}
+                                <ul class="auth-links">
+                                    
+                                        <li><a  href="{{loginPath}}">LOG IN</a></li>
+                                    
+                                </ul>
+                            {% endif %}
                         {% endif %}
-                        </ul>
-                    {% endif %}
-                {% endif %}            
+                    {% endif %}            
 
-                <ul class="auth-links visible-md-block visible-lg-block">
-                    <li id="menu-item-search" class="menu-item-search">
-                        <fieldset class="searchPanel">
-                            <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                                <label for="header-search" class="assistive-text sr-only">Search</label>
-                                <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                <button class="submit {{site}}" type="submit" id="searchsubmit"></button>
-                            </form>
-                        </fieldset>  
+                    <ul class="auth-links visible-md-block visible-lg-block">
+                        <li id="menu-item-search" class="menu-item-search">
+                            <fieldset class="searchPanel">
+                                <form method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                                    <label for="header-search" class="assistive-text sr-only">Search</label>
+                                    <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                    <button class="submit {{site}}" type="submit" id="searchsubmit"></button>
+                                </form>
+                            </fieldset>  
 
-                        <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
-                    </li>  
-                </ul>   
-
+                            <a href="#" class="search-icon" id="searchOpen"><span class="icon-search icon"></span><span class="sr-only">Expand search</span></a>
+                        </li>  
+                    </ul>   
+                </div>
             </div>
         </div> <!-- #foldaway-panel -->
 
