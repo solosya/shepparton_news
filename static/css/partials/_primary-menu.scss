@@ -239,7 +239,9 @@
                 @media screen and (max-width: $header-break){
                     padding: 15px;
                 }
-
+                &.account-item{
+                    background-color: #eaeaea;
+                }
                 &:hover{
                     text-decoration: none;
                     @include colourselect('');

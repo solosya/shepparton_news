@@ -41,11 +41,12 @@
                                         <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
                                     </form>
                                 </fieldset>  
-                            </li>  
-                            <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                            <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
-                            <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
-                                    
+                            </li>
+                            {% if paymeter == true and paymeterType == 'piano' %}  
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                            {% endif %}  
 
                             {% for parentItem in headermenu %}
 
@@ -193,9 +194,11 @@
                     <nav class="sb-custom-menu menu-bar" id="menu-mobile">
                         <div class="menuContainer">
                             <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
+                                {% if paymeter == true and paymeterType == 'piano' %}
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
+                                {% endif %}
                                     {% for parentItem in headermenu  %}
 
                                     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
@@ -268,11 +271,12 @@
                                             <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
                                         </form>
                                     </fieldset>  
-                                </li> 
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
-                                                         
+                                </li>
+                                {% if paymeter == true and paymeterType == 'piano' %}
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                                {% endif %}                    
                                 {% for parentItem in headermenu  %}
 
                                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
