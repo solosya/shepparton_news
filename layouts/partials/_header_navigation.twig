@@ -42,9 +42,9 @@
                                     </form>
                                 </fieldset>  
                             </li>  
-                            <li class="hidden-sm hidden-md hidden-lg  j-piano-loggedin" ><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                            <li class="hidden-sm hidden-md hidden-lg  j-piano-loggedin" ><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
-                            <li class="hidden-sm hidden-md hidden-lg  j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                            <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                            <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                            <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                                     
 
                             {% for parentItem in headermenu %}
@@ -112,14 +112,14 @@
 
                     {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
                     {% if paymeterType == 'piano' %}
-                        <ul class="auth-links hidden-xs j-piano-loggedin" >
+                        <ul class="auth-links hidden-xs j-piano-loggedin" style="display:none;">
                             <li class="c-piano__account j-piano__account"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
                             <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
                                 <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
                                 <li><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
                             </ul>
                         </ul> 
-                        <ul class="auth-links j-piano-loggedout" >
+                        <ul class="auth-links j-piano-loggedout" style="display:block;">
                             <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
                             <li class="hidden-xs"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                         </ul>
@@ -193,9 +193,9 @@
                     <nav class="sb-custom-menu menu-bar" id="menu-mobile">
                         <div class="menuContainer">
                             <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" ><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" ><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" >LOG IN</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
                                     {% for parentItem in headermenu  %}
 
                                     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
@@ -269,8 +269,8 @@
                                         </form>
                                     </fieldset>  
                                 </li> 
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" ><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" ><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
                                 <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                                                          
                                 {% for parentItem in headermenu  %}
@@ -321,14 +321,14 @@
                         {% set signUpPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/Register?returnurl=' ~ networkData.defaultBlogUrl %}
                     
                         {% if paymeterType == 'piano' %}
-                            <ul class="auth-links hidden-xs j-piano-loggedin" >
+                            <ul class="auth-links hidden-xs j-piano-loggedin" style="display:none;">
                                 <li class="c-piano__account  j-piano__account--fold"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
                                 <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown--fold">
                                     <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
                                     <li><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
                                 </ul>
                             </ul> 
-                            <ul class="auth-links j-piano-loggedout" >
+                            <ul class="auth-links j-piano-loggedout" style="display:block;">
                                 <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
                                 <li class="hidden-xs"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                             </ul>
