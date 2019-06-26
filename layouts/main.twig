@@ -106,7 +106,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=9" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=ea0a9054" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -379,25 +379,24 @@ for Oovvuu to use to replicate the menu on the video site. #}
                 tp.push(["init", function() {
                     tp.pianoId.init({
                         loggedIn: function(data) {
-                            document.getElementById('j-piano-loggedin').style.display = "block";
-                            document.getElementById('j-piano-loggedout').style.display = "none";
-                            document.getElementById('j-piano-loggedin--fold').style.display = "block";
-                            document.getElementById('j-piano-loggedout--fold').style.display = "none";
-                            if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
-                                document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
-                                document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
+                            var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                            var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                            for (i=0;i<inLogs.length;i++){
+                                inLogs[i].style.display = "block";
                             }
-                            if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
-                                document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
-                                document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
-                            }
-                            
+                            for (i=0;i<outLogs.length;i++){
+                                outLogs[i].style.display = "none";
+                            }                            
                         },
                         loggedOut: function() {
-                            document.getElementById('j-piano-loggedout').style.display = "block";
-                            document.getElementById('j-piano-loggedin').style.display = "none";
-                            document.getElementById('j-piano-loggedout--fold').style.display = "block";
-                            document.getElementById('j-piano-loggedin--fold').style.display = "none";
+                            var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                            var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                            for (i=0;i<inLogs.length;i++){
+                                inLogs[i].style.display = "none";
+                            }
+                            for (i=0;i<outLogs.length;i++){
+                                outLogs[i].style.display = "block";
+                            }
                             if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
                                 document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
                                 document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");

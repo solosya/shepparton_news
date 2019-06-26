@@ -189,7 +189,9 @@
         @media screen and (max-width: $mmd-break) {
             height:auto;
         }
-
+        @media #{$mobile}{
+            margin-top: 27px;
+        }
 
         ul {
             margin:0;
