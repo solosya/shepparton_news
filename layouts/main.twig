@@ -18,6 +18,8 @@
 {% endif %}
 
 {% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : false %}
+
+{# {% set paymeter = true %} #}
 {% set paymeterType  = config['piano'] is defined and config['piano'] == true ? 'piano' : 'syncronex' %}
 
 {# {% if site == 'dairy' or site == 'shepptest' %} #}
@@ -140,7 +142,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# The following is code for Piano which isn't being used yet #}
     {# **************************************************************** #}
 
-    {% if paymeter == true and paymeterType == 'piano' %}
+    {# {% if paymeter == true and paymeterType == 'piano' %}
         <script>
             document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
             var setNptTechAdblockerCookie = function(adblocker) {
@@ -154,7 +156,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
             script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
             document.getElementsByTagName("head")[0].appendChild(script);
         </script>
-    {% endif %}
+    {% endif %} #}
 
 
 
@@ -362,54 +364,10 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# **************************************************************** #}
     {# The following is code for Piano which isn't being used yet #}
     {# **************************************************************** #}
-    {% if paymeter == true and paymeterType == 'piano' %}
-        <script>
-            (function(src) { 
-                var a=document.createElement("script");
-                a.type="text/javascript";
-                a.async=true;
-                a.src=src;
-                var b=document.getElementsByTagName("script")[0];
-                b.parentNode.insertBefore(a,b);
-            })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
-
-            //(function() {
-                tp = window.tp || [];
-                tp.push(['setUsePianoIdUserProvider', true]);
-                tp.push(["init", function() {
-                    tp.pianoId.init({
-                        loggedIn: function(data) {
-                            var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                            var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                            for (i=0;i<inLogs.length;i++){
-                                inLogs[i].style.display = "block";
-                            }
-                            for (i=0;i<outLogs.length;i++){
-                                outLogs[i].style.display = "none";
-                            }                            
-                        },
-                        loggedOut: function() {
-                            var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                            var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                            for (i=0;i<inLogs.length;i++){
-                                inLogs[i].style.display = "none";
-                            }
-                            for (i=0;i<outLogs.length;i++){
-                                outLogs[i].style.display = "block";
-                            }
-                            if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
-                                document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
-                                document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
-                            }
-                            if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
-                                document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
-                                document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
-                            }
-                        }
-                    });
-                }]);
-            //})
-        </script>
+    {% if paymeter == true and paymeterType == 'piano' and pageTypeClass != 'article' %}
+        {{ this.render('partials/pianoscript.twig', {
+            pageLayout: layout
+        }) | raw }} 
     {% endif %}
 
 

@@ -1,0 +1,82 @@
+<script>
+    (function(src) { 
+        var a=document.createElement("script");
+        a.type="text/javascript";
+        a.async=true;
+        a.src=src;
+        var b=document.getElementsByTagName("script")[0];
+        b.parentNode.insertBefore(a,b);
+    })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
+
+    
+    tp = window.tp || [];
+    tp.push(['setUsePianoIdUserProvider', true]);
+    
+        tp.push(["init", function() {
+            tp.pianoId.init({
+                loggedIn: function(data) {
+                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                    for (i=0;i<inLogs.length;i++){
+                        inLogs[i].style.display = "block";
+                    }
+                    for (i=0;i<outLogs.length;i++){
+                        outLogs[i].style.display = "none";
+                    }                            
+                },
+                loggedOut: function() {
+                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                    for (i=0;i<inLogs.length;i++){
+                        inLogs[i].style.display = "none";
+                    }
+                    for (i=0;i<outLogs.length;i++){
+                        outLogs[i].style.display = "block";
+                    }
+                    if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
+                        document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
+                        document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
+                    }
+                    if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
+                        document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
+                        document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
+                    }
+                }
+            });
+              
+            {% if pageLayout == 'layout-account' %}
+                tp.myaccount.show({
+                    displayMode: "inline",
+                    containerSelector: "#my-account"
+                });
+            {% endif %}
+
+        }]);
+    tp.push(["addHandler", "loginSuccess", function(){
+        location.reload();
+    }]);
+    tp.push(["addHandler", "registrationSuccess", function (event){
+        // Any logic required after a successful login
+        console.log(event);
+        var params = {uid: event.params.uid, offset: 0};
+        console.log(params);
+        tp.api.callApi("/publisher/subscription/stats", params, function(data){
+            //You would put Cloud Marketing's API address here
+            //var url = 'http://localhost:8080/';
+            var userData = {email: event.params.email, userID: event.params.uid}
+            console.log(JSON.stringify(userData));
+            /*
+            fetch(url, {
+                            method: 'POST',
+                            body: JSON.stringify(userData),
+                            headers: {
+                                            'Content-Type': 'application/json'
+                            }
+            }).then(function(response){ return response.json();
+            }).then(function(data){
+                            console.log(data);
+            })  
+            */
+        });
+    }]);
+</script>
