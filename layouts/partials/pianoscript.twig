@@ -79,4 +79,14 @@
             */
         });
     }]);
+    tp.push(["addHandler", "checkoutComplete", function(event){ 
+        // Your code after successful purchase
+        if (event && event.state == "checkoutCompleted") {
+                // Redirect to the url from encoded redirect parameter of an url
+                var url = new URL(window.location.href);
+                var encodedRedirectURL = url.searchParams.get('redirect');
+                var redirectURL = decodeURIComponent(encodedRedirectURL);
+                window.location.href = redirectURL;
+        }
+    }]);
 </script>
