@@ -364,7 +364,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# **************************************************************** #}
     {# The following is code for Piano which isn't being used yet #}
     {# **************************************************************** #}
-    {% if paymeter == true and paymeterType == 'piano' and pageTypeClass != 'article' %}
+    {% if paymeter == true and pageTypeClass != 'article' %}
         {{ this.render('partials/pianoscript.twig', {
             pageLayout: layout
         }) | raw }} 

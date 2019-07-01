@@ -100,7 +100,7 @@
         {% set visibility = '' %}
         <!-- for dairy, only show the header-bottom bar above mobile -->
         {% if 'dairy' in (networkData.title | lower) %}
-        {%   set visibility = ' visible-md-block visible-lg-block' %}
+            {%  set visibility = ' visible-md-block visible-lg-block' %}
         {% endif %}
 
 
@@ -130,26 +130,19 @@
                         {% if not _User.isGuest() %}
                             {% set user = _User.getUser() %}
                             
-                                <ul class="auth-links">
-                                    <li><a href="{{ logoutPath }}">LOG OUT</a></li>
-                                    <li><p href="#" class="user__login" id="profile">
-                                    {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
-                                    </p></li>
-                                </ul> 
-                                <ul class="auth-links">
-                                {% if paymeterType == 'piano' %} 
-                                    <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
-                                    <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
-                                {% else %}
-                                    <li><a  href="{{loginPath}}">LOG IN</a></li>
-                                {% endif %}
+                            <ul class="auth-links">
+                                <li><a href="{{ logoutPath }}">LOG OUT</a></li>
+                                <li><p href="#" class="user__login" id="profile">
+                                {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
+                                </p></li>
+                            </ul> 
+                            <ul class="auth-links">
+                                <li><a  href="{{loginPath}}">LOG IN</a></li>
                             </ul>
                             
                         {% else %}
                             <ul class="auth-links">
-                                
-                                    <li><a  href="{{loginPath}}">LOG IN</a></li>
-                                
+                                <li><a  href="{{loginPath}}">LOG IN</a></li>
                             </ul>
                         {% endif %}
                     {% endif %}
@@ -199,7 +192,7 @@
                                     <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
                                     <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
                                 {% endif %}
-                                    {% for parentItem in headermenu  %}
+                                {% for parentItem in headermenu  %}
 
                                     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                     {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
@@ -273,9 +266,9 @@
                                     </fieldset>  
                                 </li>
                                 {% if paymeter == true and paymeterType == 'piano' %}
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                                 {% endif %}                    
                                 {% for parentItem in headermenu  %}
 
@@ -342,19 +335,14 @@
                             {% if not _User.isGuest() %}
                                 {% set user = _User.getUser() %}
                                 
-                                    <ul class="auth-links">
-                                        <li><a href="{{ logoutPath }}">LOG OUT</a></li>
-                                        <li><p href="#" class="user__login" id="profile">
-                                        {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
-                                        </p></li>
-                                    </ul> 
-                                    <ul class="auth-links">
-                                    {% if paymeterType == 'piano' %} 
-                                        <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
-                                        <li><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
-                                    {% else %}
-                                        <li><a  href="{{loginPath}}">LOG IN</a></li>
-                                    {% endif %}
+                                <ul class="auth-links">
+                                    <li><a href="{{ logoutPath }}">LOG OUT</a></li>
+                                    <li><p href="#" class="user__login" id="profile">
+                                    {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
+                                    </p></li>
+                                </ul> 
+                                <ul class="auth-links">
+                                    <li><a  href="{{loginPath}}">LOG IN</a></li>
                                 </ul>
                                 
                             {% else %}
