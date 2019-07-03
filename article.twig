@@ -491,15 +491,15 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                 */
             });
         }]);
-        tp.push(["addHandler", "checkoutComplete", function(event){ 
-            // Your code after successful purchase
-            if (event && event.state == "checkoutCompleted") {
+        tp.push(["addHandler", "checkoutClose", function (event){
+            //Default behavior is to refresh the page on successful checkout
+            setTimeout(function() {
                     // Redirect to the url from encoded redirect parameter of an url
                     var url = new URL(window.location.href);
                     var encodedRedirectURL = url.searchParams.get('redirect');
                     var redirectURL = decodeURIComponent(encodedRedirectURL);
                     window.location.href = redirectURL;
-            }
+            }, 2000);
         }]);
     }); 
 </script>
