@@ -501,5 +501,13 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     window.location.href = redirectURL;
             }, 2000);
         }]);
-    }); 
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        jQuery(function($) {  
+            Acme.adInsert = new Acme.View.articleFeed();
+            Acme.adInsert.InsertAds();
+        });
+    });
 </script>
