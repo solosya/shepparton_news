@@ -24,6 +24,13 @@
                 > .category{
                     font-size: rem(10);
                     @include colourselectdark('');
+                    &.premium-tag{
+                        &:before{
+                            width: 20px;
+                            background-image: url('../icons/premium-s.svg');
+                            background-size: 20px;
+                        }
+                    }
                 }
                 > h2{
                     font-size: rem(16);

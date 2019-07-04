@@ -10,6 +10,13 @@
                 width:100%;
 
                 > .category{
+                    &.premium-tag{
+                        &:before{
+                            width: 20px;
+                            background-image: url('../icons/premium-s.svg');
+                            background-size: 20px;
+                        }
+                    }
                 }
                 > h2{
                     font-size: rem(14);

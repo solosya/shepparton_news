@@ -124,6 +124,20 @@ a.card {
                 font-size: rem(10.5);
                 text-transform:uppercase;
                 @include colourselectdark('');
+                &.premium-tag{
+                    &:before{
+                        content: '';
+                        height: 20px;
+                        width: 80px;
+                        margin-right: 5px;
+                        background-image: url('../icons/premium-l.svg');
+                        background-repeat: no-repeat;
+                        background-size: 80px;
+                        margin-top: -6px;
+                        display: block;
+                        float: left;
+                    }
+                }
             }
 
             h2{

@@ -6,6 +6,9 @@
 {% set swap          = swap          is defined and swap == 'false'         ? '' : 'swap'  %}
 {% set dev           = dev           is defined and dev == true             ? true : false  %}
 {% set inline        = inline        is defined and inline != ''            ? inline : ''  %}
+{% set config = _Network.getThemeConfig() %}
+
+    
 
 {% set lightbox = ''  %}
 {% set articleImg = '' %}
@@ -55,6 +58,12 @@
     {% if article.titlePreview is defined and article.titlePreview != "" %}
         {% set articleTitle = quotes.smarten(article.titlePreview) %}
     {% endif %}
+    
+    {% set premiumtags = false %}
+    {% if config['Premium Tags'] is defined and article.premiumContent %}
+        {% set premiumtags = config['Premium Tags'] %}
+    {% endif %}
+
 
     {% set params = {
         placeholder:     "https://placeholdit.imgix.net/~text?w=1&h=1",
@@ -69,7 +78,8 @@
         lazyload:        lazyload,
         imgWidth:        imgWidth,
         imgHeight:       imgHeight,
-        site:            site
+        site:            site,
+        premiumtags:     premiumtags
     } %}
 
     
