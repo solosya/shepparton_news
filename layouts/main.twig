@@ -350,7 +350,12 @@ for Oovvuu to use to replicate the menu on the video site. #}
         <script type="text/javascript" src="https://app.native.ai/docs?apiKey=ef82263c-dcac-497b-b4b9-ebc16e3cb5b2" async="async"></script>
     {% endif %}
 
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            Acme.adInsert = new Acme.View.articleFeed();
+            Acme.adInsert.InsertAds();
+        });
+    </script>
 
 
 
