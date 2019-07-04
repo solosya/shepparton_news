@@ -60,7 +60,7 @@
     {% endif %}
     
     {% set premiumtags = false %}
-    {% if config['Premium Tags'] is defined and article.premiumContent %}
+    {% if config['Premium Tags'] is defined and (article.premiumContent or (article.additionalInfo['premium'] is defined and article.additionalInfo['premium'] == 'premium')) %}
         {% set premiumtags = config['Premium Tags'] %}
     {% endif %}
 
@@ -94,7 +94,6 @@
 
 
     <div class="{{containerClass}}" data-title="{{ params.articleTitle | raw }}" {{inline}}>
-        
 
         <a  href                = "{{article.url}}" 
             class               = "{{swap}} card article {{hasArticleMediaClass}}" 
