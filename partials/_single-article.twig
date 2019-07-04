@@ -60,8 +60,12 @@
     {% endif %}
     
     {% set premiumtags = false %}
-    {% if config['Premium Tags'] is defined and (article.premiumContent or (article.additionalInfo['premium'] is defined and article.additionalInfo['premium'] == 'premium')) %}
-        {% set premiumtags = config['Premium Tags'] %}
+    {% if config['Premium Tags'] is defined %}
+        {% if article.premiumContent %}
+            {% set premiumtags = config['Premium Tags'] %}
+        {% elseif article.additionalInfo['premium'] is defined and article.additionalInfo['premium'] == 'Premium' %}
+            {% set premiumtags = config['Premium Tags'] %}
+        {% endif %}
     {% endif %}
 
 
@@ -94,7 +98,7 @@
 
 
     <div class="{{containerClass}}" data-title="{{ params.articleTitle | raw }}" {{inline}}>
-
+       
         <a  href                = "{{article.url}}" 
             class               = "{{swap}} card article {{hasArticleMediaClass}}" 
             data-id             = "{{article.articleId}}" 
