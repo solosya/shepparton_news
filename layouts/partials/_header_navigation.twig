@@ -136,9 +136,6 @@
                                 {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
                                 </p></li>
                             </ul> 
-                            <ul class="auth-links">
-                                <li><a  href="{{loginPath}}">LOG IN</a></li>
-                            </ul>
                             
                         {% else %}
                             <ul class="auth-links">
@@ -341,10 +338,6 @@
                                     {{ (user.firstname ~" "~ user.lastname) | truncate(15) | title}}
                                     </p></li>
                                 </ul> 
-                                <ul class="auth-links">
-                                    <li><a  href="{{loginPath}}">LOG IN</a></li>
-                                </ul>
-                                
                             {% else %}
                                 <ul class="auth-links">
                                     
