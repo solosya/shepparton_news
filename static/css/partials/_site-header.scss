@@ -71,7 +71,7 @@
     max-width:none;
     z-index: 7999;
     @media screen and (max-width: $sm-break-down) {
-        padding-bottom: 90px;
+        padding-bottom: 60px;
     }
 
 
@@ -163,6 +163,9 @@
             margin-top:2px;
             height:25px;
             @include colourselectbackground('');
+            @media #{$mobile}{
+                height: 0;
+            }
 
             ul.auth-links {
                 float:right;

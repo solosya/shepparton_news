@@ -66,12 +66,12 @@
             right: 150px;
         }
         @media #{$mobile}{
-            border: none;
-            margin-top: 3px;
             background: none;
-            left: 59%;
-            padding: 5px;
-            height: unset;
+            left: 68%;
+            height: 30px;
+            padding: 8px 20px;
+            margin-top: -45px;
+            margin-left: -68px;
         }
     }
 }
