@@ -464,42 +464,44 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             }
 
         }]);
-        tp.push(["addHandler", "loginSuccess", function(){
-            location.reload();
+        tp.push(["addHandler", "loginSuccess", function(event){
+            if(event.registration != true){
+                location.reload();
+            }
         }]);
         tp.push(["addHandler", "registrationSuccess", function (event){
-            // Any logic required after a successful login
+            // Any logic required after a successful registration
             console.log(event);
-            var params = {uid: event.params.uid, offset: 0};
-            console.log(params);
-            tp.api.callApi("/publisher/subscription/stats", params, function(data){
-                //You would put Cloud Marketing's API address here
-                //var url = 'http://localhost:8080/';
-                var userData = {email: event.params.email, userID: event.params.uid}
-                console.log(JSON.stringify(userData));
-                /*
-                fetch(url, {
-                                method: 'POST',
-                                body: JSON.stringify(userData),
-                                headers: {
-                                                'Content-Type': 'application/json'
-                                }
-                }).then(function(response){ return response.json();
-                }).then(function(data){
-                                console.log(data);
-                })  
-                */
+            var params = {uid: event.user.sub, email: event.user.email};
+            // You'll need to replace this with your endpoint
+            /*
+            var url = 'http://localhost:8081/‘;
+            var userData = {email: params.email, uid: params.uid}
+
+            fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(userData),
+            headers: {
+            'Content-Type': 'application/json'
+            }
+            }).then(function(response){return response.json();
+            }).then(function(data){
+            //(you will need to play with the responses - if it is not called 'data' for example)
+            console.log(data.email, data.uid);
             });
+            */
         }]);
         tp.push(["addHandler", "checkoutClose", function (event){
             //Default behavior is to refresh the page on successful checkout
-            setTimeout(function() {
+            if (event && event.state == "checkoutCompleted") {
+                setTimeout(function() {
                     // Redirect to the url from encoded redirect parameter of an url
                     var url = new URL(window.location.href);
                     var encodedRedirectURL = url.searchParams.get('redirect');
                     var redirectURL = decodeURIComponent(encodedRedirectURL);
                     window.location.href = redirectURL;
-            }, 2000);
+                }, 2000);
+            }
         }]);
     });
 </script>
