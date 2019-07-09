@@ -121,15 +121,15 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
-{% set premium = 'Premium' %}
+{% set premium = 'Free' %}
 
-{% if blogInfo['additionalInfo']['premium'] is defined %}
+{# {% if blogInfo['additionalInfo']['premium'] is defined %}
     {% if blogInfo['additionalInfo']['premium'] == "Premium" %}
         {% set premium = 'Premium' %}
     {% elseif blogInfo['additionalInfo']['premium'] == "Free" %}
         {% set premium = 'Free' %}
     {% endif %}
-{% endif %}
+{% endif %} #}
 
 {# Override the above is premium content is set directly on the article #}
 {% if article['additionalInfo']['premium'] is defined %}
@@ -140,7 +140,9 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% endif %}
 {% endif %}
 
-
+{% if article['premiumContent'] %}
+    {% set premium = 'Premium' %}
+{% endif %}
 
 
 
@@ -172,7 +174,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 <meta name="__sync_contentCategory" content="{{premium}}">
 
 <main id="main" class="container" role="main">
-
+    {{_AppHelper.printArray(article['premiumContent'])}}
 
     <article id="article-content" class="article-main" data-id="{{article.id}}" data-status="{{article.status}}">
 
@@ -410,7 +412,59 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-        (function(src) { 
+        tp = window.tp || [];
+        tp.push(['setUsePianoIdUserProvider', true]);
+        // START ARTICLE PAGE ONLY
+        tp.push(["setContentCreated", "{{pianoTime}}"]);
+        tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
+        tp.push(["setContentSection", "{{article.label}}"]);
+        tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
+        tp.push(["setContentIsNative", {{articleNative}}]);
+        // END ARTICLE PAGE ONLY
+        tp.push(["init", function() {
+                        
+                        // START ARTICLE PAGE ONL
+                        var splitTags = tp.tags.split(',');
+                        if(splitTags[0] == 'Premium'){
+                            tp.push(["setCustomParam", "type", "premium", "content"]);
+                        }
+                        // END ARTICLE PAGE ONLY
+                        tp.pianoId.init({
+                            loggedIn: function(data) {
+                                var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                                var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                                for (i=0;i<inLogs.length;i++){
+                                    inLogs[i].style.display = "block";
+                                }
+                                for (i=0;i<outLogs.length;i++){
+                                                outLogs[i].style.display = "none";
+                                }                            
+                            },
+                            loggedOut: function() {
+                                var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                                var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                                for (i=0;i<inLogs.length;i++){
+                                                inLogs[i].style.display = "none";
+                                }
+                                for (i=0;i<outLogs.length;i++){
+                                                outLogs[i].style.display = "block";
+                                }
+                                if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
+                                                document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
+                                                document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
+                                }
+                                if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
+                                                document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
+                                                document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
+                                }
+                            }
+                        });
+        }]);
+        tp.push(["addHandler", "loginSuccess", function(event){
+            if(event.registration != true){
+                            location.reload();
+            } else {
+        (function(src){
             var a=document.createElement("script");
             a.type="text/javascript";
             a.async=true;
@@ -418,90 +472,5 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             var b=document.getElementsByTagName("script")[0];
             b.parentNode.insertBefore(a,b);
         })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
-
-        
-        tp = window.tp || [];
-        tp.push(['setUsePianoIdUserProvider', true]);
-        tp.push(["init", function() {
-            tp.pianoId.init({
-                loggedIn: function(data) {
-                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                    for (i=0;i<inLogs.length;i++){
-                        inLogs[i].style.display = "block";
-                    }
-                    for (i=0;i<outLogs.length;i++){
-                        outLogs[i].style.display = "none";
-                    }                            
-                },
-                loggedOut: function() {
-                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                    for (i=0;i<inLogs.length;i++){
-                        inLogs[i].style.display = "none";
-                    }
-                    for (i=0;i<outLogs.length;i++){
-                        outLogs[i].style.display = "block";
-                    }
-                    if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
-                        document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
-                        document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
-                    }
-                    if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
-                        document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
-                        document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
-                    }
-                }
-            });
-              
-            tp.push(["setContentCreated", "{{pianoTime}}"]);
-            tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
-            tp.push(["setContentSection", "{{article.label}}"]);
-            tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
-            tp.push(["setContentIsNative", {{articleNative}}]);
-            if ("{{premium}}" != "Free" ) {
-                tp.push(["setCustomParam", "type", "premium", "content"]);
-            }
-
-        }]);
-        tp.push(["addHandler", "loginSuccess", function(event){
-            if(event.registration != true){
-                location.reload();
-            }
-        }]);
-        tp.push(["addHandler", "registrationSuccess", function (event){
-            // Any logic required after a successful registration
-            console.log(event);
-            var params = {uid: event.user.sub, email: event.user.email};
-            // You'll need to replace this with your endpoint
-            /*
-            var url = 'http://localhost:8081/‘;
-            var userData = {email: params.email, uid: params.uid}
-
-            fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(userData),
-            headers: {
-            'Content-Type': 'application/json'
-            }
-            }).then(function(response){return response.json();
-            }).then(function(data){
-            //(you will need to play with the responses - if it is not called 'data' for example)
-            console.log(data.email, data.uid);
-            });
-            */
-        }]);
-        tp.push(["addHandler", "checkoutClose", function (event){
-            //Default behavior is to refresh the page on successful checkout
-            if (event && event.state == "checkoutCompleted") {
-                setTimeout(function() {
-                    // Redirect to the url from encoded redirect parameter of an url
-                    var url = new URL(window.location.href);
-                    var encodedRedirectURL = url.searchParams.get('redirect');
-                    var redirectURL = decodeURIComponent(encodedRedirectURL);
-                    window.location.href = redirectURL;
-                }, 2000);
-            }
-        }]);
     });
 </script>
