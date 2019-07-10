@@ -410,65 +410,77 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-        tp = window.tp || [];
-        tp.push(['setUsePianoIdUserProvider', true]);
-        // START ARTICLE PAGE ONLY
-        tp.push(["setContentCreated", "{{pianoTime}}"]);
-        tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
-        tp.push(["setContentSection", "{{article.label}}"]);
-        tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
-        tp.push(["setContentIsNative", {{articleNative}}]);
-        // END ARTICLE PAGE ONLY
-        tp.push(["init", function() {
-                        
-                        // START ARTICLE PAGE ONL
-                        var splitTags = tp.tags.split(',');
-                        if(splitTags[0] == 'Premium'){
-                            tp.push(["setCustomParam", "type", "premium", "content"]);
-                        }
-                        // END ARTICLE PAGE ONLY
-                        tp.pianoId.init({
-                            loggedIn: function(data) {
-                                var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                                var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                                for (i=0;i<inLogs.length;i++){
-                                    inLogs[i].style.display = "block";
-                                }
-                                for (i=0;i<outLogs.length;i++){
-                                                outLogs[i].style.display = "none";
-                                }                            
-                            },
-                            loggedOut: function() {
-                                var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                                var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                                for (i=0;i<inLogs.length;i++){
-                                                inLogs[i].style.display = "none";
-                                }
-                                for (i=0;i<outLogs.length;i++){
-                                                outLogs[i].style.display = "block";
-                                }
-                                if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
-                                                document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
-                                                document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
-                                }
-                                if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
-                                                document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
-                                                document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
-                                }
-                            }
-                        });
-        }]);
-        tp.push(["addHandler", "loginSuccess", function(event){
-            if(event.registration != true){
-                            location.reload();
-            } else {
         (function(src){
             var a=document.createElement("script");
             a.type="text/javascript";
             a.async=true;
             a.src=src;
             var b=document.getElementsByTagName("script")[0];
-            b.parentNode.insertBefore(a,b);
+            b.parentNode.insertBefore(a,b)
         })("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");
+    
+        tp = window.tp || [];
+        tp.push(['setUsePianoIdUserProvider', true]);
+    
+        // START OF ARTICLE ONLY SCRIPT 1
+        tp.push(["setContentCreated", "{{pianoTime}}"]);
+        tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
+        tp.push(["setContentSection", "{{article.label}}"]);
+        tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
+        tp.push(["setContentIsNative", {{articleNative}}]);
+        // END OF ARTICLE ONLY SCRIPT 1
+            
+        tp.push(["init", function() {
+    
+            // START OF ARTICLE ONLY SCRIPT 2
+            var splitTags = tp.tags.split(',');
+            if(splitTags[0] == 'Premium'){
+                tp.push(["setCustomParam", "type", "premium", "content"]);
+            }
+            // END OF ARTICLE ONLY SCRIPT 2   
+            tp.pianoId.init({
+                loggedIn: function(data) {
+                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                    for (i=0;i<inLogs.length;i++){
+                        inLogs[i].style.display = "block";
+                    }
+                    for (i=0;i<outLogs.length;i++){
+                        outLogs[i].style.display = "none";
+                    }             
+                            },
+                loggedOut: function() {
+                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                    for (i=0;i<inLogs.length;i++){
+                        inLogs[i].style.display = "none";
+                    }
+                    for (i=0;i<outLogs.length;i++){
+                        outLogs[i].style.display = "block";
+                    }
+                    if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
+                        document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
+                        document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
+                    }
+                    if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
+                        document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
+                        document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
+                    }
+                }
+            });
+        }]);
+    
+        tp.push(["addHandler", "checkoutClose", function (event){
+            //Default behavior is to refresh the page on successful checkout
+            if (event && event.state == "checkoutCompleted") {
+                setTimeout(function() {
+            // Redirect to the url from encoded redirect parameter of an url
+            var url = new URL(window.location.href);
+            var encodedRedirectURL = url.searchParams.get('redirect');
+            var redirectURL = decodeURIComponent(encodedRedirectURL);
+            window.location.href = redirectURL;
+                }, 2000);
+            }
+        }]);
     });
 </script>
