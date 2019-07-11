@@ -131,6 +131,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% endif %}
 {% endif %} #}
 
+{% if config['Premium Tags'] is defined %}
+    {% set premiumtags = config['Premium Tags'] %}
+{% else %}
+    {% set premiumtags = false %}
+{% endif %}
+
 {# Override the above is premium content is set directly on the article #}
 {% if article['additionalInfo']['premium'] is defined %}
     {% if article['additionalInfo']['premium'] == "Premium" %}
@@ -189,7 +195,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     <div id="pianoArticleHeader"></div>
                                     <!-- For articles tagged as premium include premium article identifier HTML here – currently being designed -->
 
-                                    <a href="{{blogInfo.url}}"><p class="category {{site}}" >{{article.label}}</p
+                                    <a href="{{blogInfo.url}}"><p class="category {{site}}{% if premiumtags and premium == 'Premium' %} premium-tag{% endif %}" >{{article.label}}</p
                                     ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                                     
                                     <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>

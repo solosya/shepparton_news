@@ -125,6 +125,20 @@
 					text-transform:uppercase;
 					margin-right:8px;
 					@include colourselect('');
+					&.premium-tag{
+						&:before{
+							content: '';
+							height: 20px;
+							width: 80px;
+							margin-right: 5px;
+							background-image: url('../icons/premium-l.svg');
+							background-repeat: no-repeat;
+							background-size: 80px;
+							margin-top: -2px;
+							display: block;
+							float: left;
+						}
+					}
 				}
 				
 				> time {
