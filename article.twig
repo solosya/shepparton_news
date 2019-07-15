@@ -131,18 +131,15 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% endif %}
 {% endif %} #}
 
+{% set premiumtags = false %}
 {% if config['Premium Tags'] is defined %}
     {% set premiumtags = config['Premium Tags'] %}
-{% else %}
-    {% set premiumtags = false %}
 {% endif %}
 
 {# Override the above is premium content is set directly on the article #}
 {% if article['additionalInfo']['premium'] is defined %}
     {% if article['additionalInfo']['premium'] == "Premium" %}
         {% set premium = 'Premium' %}
-    {% elseif article['additionalInfo']['premium'] == "Free" %}
-        {% set premium = 'Free' %}
     {% endif %}
 {% endif %}
 
