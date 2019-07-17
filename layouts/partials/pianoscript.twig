@@ -11,25 +11,11 @@
     tp = window.tp || [];
     tp.push(['setUsePianoIdUserProvider', true]);
  
-    // START OF ARTICLE ONLY SCRIPT 1
-    tp.push(["setContentCreated", "{{pianoTime}}"]);
-    tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
-    tp.push(["setContentSection", "{{article.label}}"]);
-    tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
-    tp.push(["setContentIsNative", {{articleNative}}]);
- 
-    {# var isIndex = window.location.href.indexOf("index") > 0; #}
-    // END OF ARTICLE ONLY SCRIPT 1
-        
+           
  
     tp.push(["init", function() {
  
-        // START OF ARTICLE ONLY SCRIPT 2
-        var splitTags = tp.tags.split(',');
-        if(splitTags[0] == 'Premium'){
-            tp.push(["setCustomParam", "type", "premium", "content"]);
-        }
-        // END OF ARTICLE ONLY SCRIPT 2
+        
  
         // START OF MY ACCOUNT ONLY SCRIPT
         {% if pageLayout == 'layout-account' %}
