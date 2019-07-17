@@ -215,12 +215,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
         document.getElementsByTagName("head")[0].appendChild(script);
     </script>
 
-    {% if 'article' not in pageTypeClass %}
-        <script>(function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src;var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=ofa0aaBmht");</script>
-    {% endif %}
-
-
-
+    
     {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
