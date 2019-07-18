@@ -19,7 +19,7 @@
 
 {% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : false %}
 
-{% set paymeter = true %}
+{# {% set paymeter = true %} #}
 {% set paymeterType  = config['piano']['paywall'] is defined and config['piano']['paywall'] == true ? 'piano' : 'syncronex' %}
 {% set pianoScripts  = config['piano']['scripts'] is defined and config['piano']['scripts'] == true ? true : false %}
 {# {% if site == 'dairy' or site == 'shepptest' %} #}
