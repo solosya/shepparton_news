@@ -19,9 +19,9 @@
 
 {% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : false %}
 
-{# {% set paymeter = true %} #}
-{% set paymeterType  = config['piano'] is defined and config['piano'] == true ? 'piano' : 'syncronex' %}
-
+{% set paymeter = true %}
+{% set paymeterType  = config['piano']['paywall'] is defined and config['piano']['paywall'] == true ? 'piano' : 'syncronex' %}
+{% set pianoScripts  = config['piano']['scripts'] is defined and config['piano']['scripts'] == true ? true : false %}
 {# {% if site == 'dairy' or site == 'shepptest' %} #}
 {% if site == 'dairy' %}
     {% set paymeter = false %}
@@ -65,6 +65,8 @@ for Oovvuu to use to replicate the menu on the video site. #}
 <!DOCTYPE html>
 <html lang="en-AU" prefix="og: http://ogp.me/ns#">
 <head>
+    <meta pianoscripts="{{pianoScripts}}">
+    <meta pianoscriptsconf="{{pianoScripts}}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
@@ -237,7 +239,8 @@ for Oovvuu to use to replicate the menu on the video site. #}
         site:site,
         networkData: networkData, 
         paymeter: paymeter,
-        paymeterType: paymeterType
+        paymeterType: paymeterType,
+        config: config
     }) | raw }}
 
 
@@ -359,7 +362,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# **************************************************************** #}
     {# The following is code for Piano which isn't being used yet #}
     {# **************************************************************** #}
-    {% if paymeter == true and pageTypeClass != 'article' %}
+    {% if paymeter == true and pageTypeClass != 'article' and pianoScripts == true %}
         {{ this.render('partials/pianoscript.twig', {
             pageLayout: layout
         }) | raw }} 
