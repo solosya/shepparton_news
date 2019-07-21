@@ -19,6 +19,7 @@
  
         // START OF MY ACCOUNT ONLY SCRIPT
         {% if pageLayout == 'layout-account' %}
+            tp.pianoId.init({iframeUrl:"https://id-au.piano.io"}) 
             tp.myaccount.show({
                 displayMode: "inline",
                 containerSelector: "#my-account"
