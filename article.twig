@@ -411,7 +411,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     </article>
 </main><!--site-main-->
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
+
 {% if pianoScripts == true %}
+    {% set pianoScript = "DEFINE ME" %}
+    {% if config['piano']['script-config'] is defined and config['piano']['script-config'] != "" %}
+        {% set pianoScript = config['piano']['script-config'] %}
+    {% endif %}
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) {
             (function(src){
@@ -421,7 +426,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                 a.src=src;
                 var b=document.getElementsByTagName("script")[0];
                 b.parentNode.insertBefore(a,b)
-            })("//experience-au.piano.io/xbuilder/experience/load?aid=CdEwMH3COP");
+            })("{{pianoScript}}");
         
             tp = window.tp || [];
             tp.push(['setUsePianoIdUserProvider', true]);
