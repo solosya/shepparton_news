@@ -22,27 +22,29 @@
     </section>
 </div>
 
-{{this.registerJs('
-    console.log("tp-lets-go");
-    tp = window["tp"] || [];
-    tp.push(["init", function() {
-    // Password can be reset only if user is anonymous
-        if (!tp.user.isUserValid()) {
-            // If URL has reset_token parameter
-            var tokenMatch = location.search.match(/reset_token=([A-Za-z0-9]+)/);
-            if (tokenMatch) {
-                // Get value of the token
-                var token = tokenMatch[1];
-                // Present password reset form with the found token
-                tp.pianoId.show({
-                    displayMode: "inline",
-                    containerSelector: "#reset-password",
-                    "resetPasswordToken": token, loggedIn: function () {
-                        // Once user logs in - refresh the page
-                        location.reload();
-                    }
-                });
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        tp = window["tp"] || [];
+        tp.push(["init", function() {
+            iframeUrl: "https://id-au.piano.io<https://id-au.piano.io/>",
+            // Password can be reset only if user is anonymous
+            if (!tp.user.isUserValid()) {
+                // If URL has reset_token parameter
+                var tokenMatch = location.search.match(/reset_token=([A-Za-z0-9]+)/);
+                if (tokenMatch) {
+                    // Get value of the token
+                    var token = tokenMatch[1];
+                    // Present password reset form with the found token
+                    tp.pianoId.show({
+                        displayMode: "inline",
+                        containerSelector: "#reset-password",
+                        "resetPasswordToken": token, loggedIn: function () {
+                            // Once user logs in - refresh the page
+                            location.reload();
+                        }
+                    });
+                }
             }
-        }
-    }]);
-', 3)}}
+        }]);
+    });
+</script>
