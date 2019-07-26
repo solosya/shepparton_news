@@ -1,3 +1,5 @@
+{% set networkData   = _Network.getNetworkData() %}
+
 <div class="page_section" style="height:100%">
     <section class="container" style="max-width:none;height:100%">
         <!-- Begin Terms -->
@@ -14,7 +16,7 @@
                                 </div>
                             </div>
                         </div>                        
-                        <div id="reset-password"></div>
+                        <div id="reset-password-container" style="text-align: center;"><div id="reset-password" style="max-width: 400px;margin: 0 auto;"></div></div>
                     </div>
                 </div>
             </div>
@@ -40,7 +42,7 @@
                         containerSelector: "#reset-password",
                         "resetPasswordToken": token, loggedIn: function () {
                             // Once user logs in - refresh the page
-                            location.reload();
+                            window.location.href = '{{networkData.defaultBlogUrl}}'
                         }
                     });
                 }
@@ -48,3 +50,4 @@
         }]);
     });
 </script>
+
