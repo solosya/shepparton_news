@@ -87,6 +87,11 @@
 			}
 		}
 
+        > p {
+			&:first-child {
+				font-weight: bold;
+			}
+        }
 
 		p {
 			font-size: rem(17);
@@ -107,9 +112,6 @@
 				font-size: rem(17.5);
 			}
 
-			&:first-child {
-				font-weight: bold;
-			}
 		}
 
 		li {
