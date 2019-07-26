@@ -117,7 +117,7 @@
                     </div>
                       
 
-                    {% if config['newsletter'] is defined and config['newsletter'] %}
+                    {% if config['newsletter'] is defined and config['newsletter'] != "" %}
                         {# CARD 2,3, (4) #}
                         {% for i in 0..2 if articles[i] %}
                     
@@ -153,7 +153,7 @@
                         {% endif %}
                         <div class="col-sm-1 col-md-9 col-xs-9">
                             <div class="newsletter-iframe-container" style="display: flex;width: calc(100% - 30px);height: 95px;flex-direction: column;overflow: hidden;margin: 0 auto;">
-                                <iframe src="https://webhooks.mmg.com.au/FuelSDK/newsletter-subscribe-small.php" class="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;"></iframe>
+                                <iframe src="{{config['newsletter']}}" class="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;"></iframe>
                             </div>
                         </div>
                     </div>
