@@ -152,10 +152,12 @@
                             <hr class="divide15 visible-xs-block">
                         {% endif %}
                         <div class="col-sm-1 col-md-9 col-xs-9">
-                            <div class="newsletter-iframe-container" style="display: flex;width: calc(100% - 30px);height: 95px;flex-direction: column;overflow: hidden;margin: 0 auto;">
-                                <iframe src="{{config['newsletter']}}" class="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;"></iframe>
-                            </div>
+                            <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
+                            <iframe src="{{config['newsletter']}}" class="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
                         </div>
+                        <hr class="divide visible-xs-block">                 
+                        <hr class="divide10 visible-sm-block"> 
+                
                         <script>
                             document.addEventListener("DOMContentLoaded", function(event) {
                                 // Add event listener for messages being passed from the iframe
