@@ -122,7 +122,7 @@
                         {% for i in 0..2 if articles[i] %}
                     
                             {% set class = ['', '', 'visible-sm-block'] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
+                            <div class="col-sm-1 col-md-9 col-xs-9 {{class[i]}}">
                                 {{this.render('../_single-article.twig', {
                                     imageSize       : {width:95},
                                     position        : cardIndex + 1, 
@@ -131,18 +131,12 @@
                                     site            : site,
                                     swap            : false,
                                     dev             :dev,
-                                    containerClass  : 'feature-side feature-side-tablet card-sm-mobile ' ~ class[i]
+                                    containerClass  : 'feature-side feature-side-tablet card-sm-mobile '
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                                {% set cardIndex = cardIndex + 1 %}
-
-                                {% if i < 1 %}
-                                    <hr class="divide15 visible-md-block visible-lg-block">
-                                    <hr class="divide visible-xs-block"> 
-                                {% elseif i == 1 %}
-                                    <hr class="divide visible-xs-block">
-                                    <hr class="divide15 visible-md-block visible-lg-block">                  
-                                {% endif %}
+                                {% set cardIndex = cardIndex + 1 %}                              
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide15 visible-md-block visible-lg-block">                  
                                 <hr class="divide10 visible-sm-block">
                             </div>
                         {% endfor %}
