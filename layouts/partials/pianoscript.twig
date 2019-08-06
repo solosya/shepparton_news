@@ -74,10 +74,12 @@
         //Default behavior is to refresh the page on successful checkout
         if (event && event.state == "checkoutCompleted") {
             setTimeout(function() {
-        // Redirect to the url from encoded redirect parameter of an url
-                var url = new URL({{networkData.defaultBlogUrl}});
-                var encodedRedirectURL = url.searchParams.get('redirect');
-                var redirectURL = decodeURIComponent(encodedRedirectURL);
+                // Redirect to the url from encoded redirect parameter of an url
+                var url = new URL(window.location.href);
+                var redirectURL = new URL({{networkData.defaultBlogUrl}});
+                if(encodedRedirectURL) {
+                    redirectURL = decodeURIComponent(encodedRedirectURL);
+                }
                 window.location.href = redirectURL;
             }, 2000);
         }
