@@ -477,9 +477,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         }
                     }
                 });
+                tp.enableGACrossDomainLinking();
             }]);
         
-            tp.enableGACrossDomainLinking();
+            
  
             tp.push(["addHandler", "checkoutClose", function (event){
                 //Default behavior is to refresh the page on successful checkout

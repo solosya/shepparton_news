@@ -66,9 +66,10 @@
                 }
             }
         });
+        tp.enableGACrossDomainLinking();
     }]);
 
-    tp.enableGACrossDomainLinking();
+    
  
     tp.push(["addHandler", "checkoutClose", function (event){
         //Default behavior is to refresh the page on successful checkout
