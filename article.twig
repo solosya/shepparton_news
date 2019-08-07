@@ -489,6 +489,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         // Redirect to the url from encoded redirect parameter of an url
                         var url = new URL(window.location.href);
                         var redirectURL = '{{networkData.defaultBlogUrl}}';
+                        var encodedRedirectURL = url.searchParams.get('redirect');
                         if(encodedRedirectURL) {
                             redirectURL = decodeURIComponent(encodedRedirectURL);
                         }

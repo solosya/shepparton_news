@@ -78,6 +78,7 @@
                 // Redirect to the url from encoded redirect parameter of an url
                 var url = new URL(window.location.href);
                 var redirectURL = '{{networkData.defaultBlogUrl}}';
+                var encodedRedirectURL = url.searchParams.get('redirect');
                 if(encodedRedirectURL) {
                     redirectURL = decodeURIComponent(encodedRedirectURL);
                 }
