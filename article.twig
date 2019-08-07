@@ -488,7 +488,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     setTimeout(function() {
                         // Redirect to the url from encoded redirect parameter of an url
                         var url = new URL(window.location.href);
-                        var redirectURL = new URL({{networkData.defaultBlogUrl}});
+                        var redirectURL = new URL('{{networkData.defaultBlogUrl}}');
                         if(encodedRedirectURL) {
                             redirectURL = decodeURIComponent(encodedRedirectURL);
                         }
