@@ -72,6 +72,24 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set ArticleContent = ArticleContent | join('<p>') %}
     {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}}
 
+{% elseif site == 'country' %}
+    {% set pianoDivsStart = [
+        "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->"
+    ] %}
+
+    {% set ArticleContent = article.content | split('<p>') %}
+    {% for i in 0..ArticleContent | length %}
+        {% if i == 3 %}
+            {% if config['piano']['paywall'] is defined and config['piano']['paywall'] == true %}
+                {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+                {% set pianoActive = true %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    
+
+    {% set ArticleContent = ArticleContent | join('<p>') %}
+    
 {% endif %}
 {# end Oovvuu #}
   
