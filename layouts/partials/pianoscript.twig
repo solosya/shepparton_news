@@ -35,6 +35,17 @@
             })
         {% endif %}
         // END OF MY ACCOUNT ONLY SCRIPT
+
+         // START OF INITIATE RESET PASSWORD ONLY SCRIPT
+        {% if pageLayout == 'layout-resetpw' %}
+            tp.pianoId.init({iframeUrl:"https://id-au.piano.io"});
+            tp.pianoId.show({
+                displayMode: "inline",
+                containerSelector: "#initiate-reset-password",
+                screen: 'restore'
+            })
+        {% endif %}
+        // END OF INITIATE RESET PASSWORD ONLY SCRIPT
  
         tp.pianoId.init({
             loggedIn: function(data) {
