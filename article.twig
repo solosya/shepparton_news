@@ -11,17 +11,6 @@
     {% set teadsAdSetting = true %}
 {% endif %}
 
-
-{{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
-{% if article['additionalInfo']['teads'] == "teadsOff" %}
-   {{this.registerJs("Acme.articleController.InsertInterstitial(false);")}}
-{% else %}
-    {{this.registerJs("Acme.articleController.InsertInterstitial(true);")}}
-{% endif %}
-
-{{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
-
-
 {% set blogInfo = _Blog.getBlog() %}
 
 {% set networkData = _Network.getNetworkData() %}
@@ -429,6 +418,18 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     </article>
 </main><!--site-main-->
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        Acme.articleController = Acme.ArticleController();
+        {% if article['additionalInfo']['teads'] == "teadsOff" %}
+            Acme.articleController.InsertInterstitial(false);
+        {% else %}
+            Acme.articleController.InsertInterstitial(true);
+        {% endif %}
+        Acme.galleryToggle = new Acme.GalleryToggle();
+    });
+</script>
 
 {% if pianoScripts == true %}
     {% set pianoScript = "DEFINE ME" %}
