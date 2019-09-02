@@ -11,17 +11,6 @@
     {% set teadsAdSetting = true %}
 {% endif %}
 
-
-{{this.registerJs("Acme.articleController = Acme.ArticleController();")}}
-{% if article['additionalInfo']['teads'] == "teadsOff" %}
-   {{this.registerJs("Acme.articleController.InsertInterstitial(false);")}}
-{% else %}
-    {{this.registerJs("Acme.articleController.InsertInterstitial(true);")}}
-{% endif %}
-
-{{this.registerJs("Acme.galleryToggle = new Acme.GalleryToggle();")}}
-
-
 {% set blogInfo = _Blog.getBlog() %}
 
 {% set networkData = _Network.getNetworkData() %}
@@ -72,6 +61,24 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set ArticleContent = ArticleContent | join('<p>') %}
     {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}}
 
+{% elseif site == 'country' %}
+    {% set pianoDivsStart = [
+        "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->"
+    ] %}
+
+    {% set ArticleContent = article.content | split('<p>') %}
+    {% for i in 0..ArticleContent | length %}
+        {% if i == 3 %}
+            {% if config['piano']['paywall'] is defined and config['piano']['paywall'] == true %}
+                {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
+                {% set pianoActive = true %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    
+
+    {% set ArticleContent = ArticleContent | join('<p>') %}
+    
 {% endif %}
 {# end Oovvuu #}
   
@@ -412,15 +419,23 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 </main><!--site-main-->
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
 
-
-<script type="text/javascript">
+<script>
     document.addEventListener("DOMContentLoaded", function(event) {
+
+
         console.log("{{ article.createdBy['displayName'] }}");
         ga('set', 'dimension1', "{{ article.createdBy['displayName'] }}");
+
+
+        Acme.articleController = Acme.ArticleController();
+        {% if article['additionalInfo']['teads'] == "teadsOff" %}
+            Acme.articleController.InsertInterstitial(false);
+        {% else %}
+            Acme.articleController.InsertInterstitial(true);
+        {% endif %}
+        Acme.galleryToggle = new Acme.GalleryToggle();
     });
 </script>
-
-
 
 {% if pianoScripts == true %}
     {% set pianoScript = "DEFINE ME" %}
@@ -487,17 +502,23 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         }
                     }
                 });
+                tp.enableGACrossDomainLinking();
             }]);
         
+            
+ 
             tp.push(["addHandler", "checkoutClose", function (event){
                 //Default behavior is to refresh the page on successful checkout
                 if (event && event.state == "checkoutCompleted") {
                     setTimeout(function() {
-                // Redirect to the url from encoded redirect parameter of an url
-                var url = new URL(window.location.href);
-                var encodedRedirectURL = url.searchParams.get('redirect');
-                var redirectURL = decodeURIComponent(encodedRedirectURL);
-                window.location.href = redirectURL;
+                        // Redirect to the url from encoded redirect parameter of an url
+                        var url = new URL(window.location.href);
+                        var redirectURL = '{{networkData.defaultBlogUrl}}';
+                        var encodedRedirectURL = url.searchParams.get('redirect');
+                        if(encodedRedirectURL) {
+                            redirectURL = decodeURIComponent(encodedRedirectURL);
+                        }
+                        window.location.href = redirectURL;
                     }, 2000);
                 }
             }]);

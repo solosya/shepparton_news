@@ -362,7 +362,8 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# **************************************************************** #}
     {% if paymeter == true and pageTypeClass != 'article' and pianoScripts == true %}
         {{ this.render('partials/pianoscript.twig', {
-            pageLayout: layout
+            pageLayout: layout,
+            networkData: networkData
         }) | raw }} 
     {% endif %}
 

@@ -8,11 +8,11 @@ Acme.article = function() {
 
 
 Acme.article.prototype.InsertInterstitial = function(teads) {
-    if ($('.article_content > p').length >= 8 && teads == true) {
+    if ($('#pianoArticleContentLockable > p').length >= 4 && teads == true) {
         teadsAd = true;       
     }
-    if ($('.article_content > p').length >= 7) {
-        $("<div class='visible-xs-block ad-article' style='position:relative;width:300px;margin: 0 auto;'><div class='advert-mobile' data-adsize='mrec'></div></div>").insertAfter( $('.article_content > p')[6] );
+    if ($('#pianoArticleContentLockable > p').length >= 3) {
+        $("<div class='visible-xs-block ad-article' style='position:relative;width:300px;margin: 0 auto;'><div class='advert-mobile' data-adsize='mrec'></div></div>").insertAfter( $('#pianoArticleContentLockable > p')[1] );
 	}
 }
 Acme.article.prototype.events = function() {

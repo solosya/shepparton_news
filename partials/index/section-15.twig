@@ -122,7 +122,7 @@
                         {% for i in 0..2 if articles[i] %}
                     
                             {% set class = ['', '', 'visible-sm-block'] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
+                            <div class="col-sm-1 col-md-9 col-xs-9 {{class[i]}}">
                                 {{this.render('../_single-article.twig', {
                                     imageSize       : {width:95},
                                     position        : cardIndex + 1, 
@@ -131,33 +131,28 @@
                                     site            : site,
                                     swap            : false,
                                     dev             :dev,
-                                    containerClass  : 'feature-side feature-side-tablet card-sm-mobile ' ~ class[i]
+                                    containerClass  : 'feature-side feature-side-tablet card-sm-mobile '
                                 }) | raw}}
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                                {% set cardIndex = cardIndex + 1 %}
-
-                                {% if i < 2 %}
-                                    <hr class="divide15 visible-md-block visible-lg-block">
-                                    <hr class="divide visible-xs-block"> 
-                                {% elseif i == 2 %}
-                                    <hr class="divide visible-xs-block">                  
-                                {% endif %}
-                                <hr class="divide10 visible-sm-block">  
+                                {% set cardIndex = cardIndex + 1 %}                              
+                                <hr class="divide visible-xs-block">
+                                <hr class="divide15 visible-md-block visible-lg-block">                  
+                                <hr class="divide10 visible-sm-block">
                             </div>
                         {% endfor %}
 
-                        {% if site not in five_rowExceptions %}
+                        {# {% if site not in five_rowExceptions %}
                             <hr class="divide visible-xs-block" style="margin-left:15px;margin-right:15px;">
                         {% else %}
                             <hr class="divide15 visible-xs-block">
-                        {% endif %}
+                        {% endif %} #}
                         <div class="col-sm-1 col-md-9 col-xs-9">
-                            <div class="newsletter-iframe-container" style="display: flex;width: calc(100% - 30px);height: 95px;flex-direction: column;overflow: hidden;margin: 0 auto;">
-                                <iframe src="{{config['newsletter']}}" class="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;"></iframe>
-                            </div>
+                            <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
+                            <iframe src="{{config['newsletter']}}" class="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
                         </div>
-                    </div>
-                {% else %}
+                        <hr class="divide visible-xs-block">
+                        <hr class="divide10 visible-sm-block">
+                    {% else %}
                     {# CARD 2,3, (4), (5) #}
                         {% for i in 0..3 if articles[i] %}
                     
@@ -191,8 +186,9 @@
                         {% else %}
                             <hr class="divide15 visible-xs-block">
                         {% endif %}
-                    </div>
-                {% endif %}
+                        
+                    {% endif %}
+                </div>
             </div>
         {% endif %}
 

@@ -121,7 +121,9 @@
                        
                             <ul class="auth-links j-piano-loggedout" >
                                 {% if pianoSubscribe == true %}
-                                    <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>  
+                                    <a href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                        <div class="c-piano__subscribebutton">SUBSCRIBE</div>
+                                    </a>  
                                 {% endif %}  
                                 <li class="hidden-xs"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                             </ul>
@@ -327,7 +329,9 @@
                             
                                 <ul class="auth-links j-piano-loggedout" style="display:block;">
                                     {% if pianoSubscribe == true %}
-                                        <a href="{{networkData.defaultBlogUrl}}/membership"><div class="c-piano__subscribebutton">SUBSCRIBE</div></a>    
+                                        <a href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                            <div class="c-piano__subscribebutton">SUBSCRIBE</div>
+                                        </a>    
                                     {% endif %}
                                     <li class="hidden-xs"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                                 </ul>
