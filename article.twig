@@ -412,6 +412,16 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 </main><!--site-main-->
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
 
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        console.log("{{ article.createdBy['displayName'] }}");
+        ga('set', 'dimension1', "{{ article.createdBy['displayName'] }}");
+    });
+</script>
+
+
+
 {% if pianoScripts == true %}
     {% set pianoScript = "DEFINE ME" %}
     {% if config['piano']['script-config'] is defined and config['piano']['script-config'] != "" %}
