@@ -422,10 +422,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
 
-
         console.log("{{ article.createdBy['displayName'] }}");
-        ga('set', 'dimension1', "{{ article.createdBy['displayName'] }}");
-
+        ga('send', 'pageview', {
+            'dimension1': "{{ article.createdBy['displayName'] }}"
+        });
 
         Acme.articleController = Acme.ArticleController();
         {% if article['additionalInfo']['teads'] == "teadsOff" %}
