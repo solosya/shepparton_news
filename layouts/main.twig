@@ -11,10 +11,9 @@
 {% set config        = _Network.getThemeConfig() %}
 
 
+{% set pageTypeClass = blogData.type %}
 {% if 'article' in pageClass %}
     {% set pageTypeClass = 'article' %}
-{% else %}
-    {% set pageTypeClass = blogData.type %}
 {% endif %}
 
 {% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : false %}
@@ -31,7 +30,7 @@
 {# This allows a JSON representation of the header menu to be returned
 for Oovvuu to use to replicate the menu on the video site. #}
 {% if blogName | lower == 'menu map' %}
- {{ content | raw }}
+    {{ content | raw }}
 {% else %}
 
 
@@ -193,7 +192,12 @@ for Oovvuu to use to replicate the menu on the video site. #}
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', '{{googleAnalyitcsId}}', 'auto');
-        ga('send', 'pageview');
+
+        // article sends it's own pageview through including author information from article.twig
+        {% if pageTypeClass != 'article' %}
+            ga('send', 'pageview');
+        {% endif %}
+
         </script>
         <!-- End Google Analytics -->
     {% endif %}
@@ -362,8 +366,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {# **************************************************************** #}
     {% if paymeter == true and pageTypeClass != 'article' and pianoScripts == true %}
         {{ this.render('partials/pianoscript.twig', {
-            pageLayout: layout,
-            networkData: networkData
+            pageLayout: layout
         }) | raw }} 
     {% endif %}
 
