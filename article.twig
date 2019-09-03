@@ -419,14 +419,33 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 </main><!--site-main-->
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
 
+
+
+{% set googleAnalyitcsId = ''%}
+{% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
+    {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
+
+        <!-- Google Analytics u -->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{googleAnalyitcsId}}', 'auto');
+        ga('send', 'pageview', {
+            'dimension1': "{{ article.createdBy['displayName'] }}",
+            'dimension2': "{{premium}}"
+        });
+        </script>
+        <!-- End Google Analytics -->
+    
+{% endif %}
+
+
+
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-
-        console.log("{{ article.createdBy['displayName'] }}");
-        ga('send', 'pageview', {
-            'dimension1': "{{ article.createdBy['displayName'] }}"
-        });
-
         Acme.articleController = Acme.ArticleController();
         {% if article['additionalInfo']['teads'] == "teadsOff" %}
             Acme.articleController.InsertInterstitial(false);

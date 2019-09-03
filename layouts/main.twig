@@ -173,35 +173,24 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {% set googleAnalyitcsId = ''%}
     {% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
         {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
-    {% endif %}
 
-
-    {% if site in "riverine shepparton benalla kyabram seymour cobram" %}
-        <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0054/7754.js" async="async"></script>
-    {% endif %}
-
-
-
-
-    {% if googleAnalyitcsId is defined and googleAnalyitcsId is not empty%}
-        <!-- Google Analytics u -->
-        <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', '{{googleAnalyitcsId}}', 'auto');
-
-        // article sends it's own pageview through including author information from article.twig
         {% if pageTypeClass != 'article' %}
-            ga('send', 'pageview');
-        {% endif %}
+            <!-- Google Analytics u -->
+            <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        </script>
-        <!-- End Google Analytics -->
+            ga('create', '{{googleAnalyitcsId}}', 'auto');
+            ga('send', 'pageview');
+            </script>
+            <!-- End Google Analytics -->
+        {% endif %}
+        
     {% endif %}
-    {% if site == 'dairy' %}
+
+    {% if site in "riverine shepparton benalla kyabram seymour cobram dairy" %}
         <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0054/7754.js" async="async"></script>
     {% endif %}
 
