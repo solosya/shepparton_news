@@ -21414,7 +21414,7 @@ Acme.systemCardTemplate =
         {{/if}} \
         \
         <div class="content">\
-                <div class="category {{site}}">{{ labelFix label }}</div>\
+                <div class="category {{site}}{{premiumTag}}">{{ labelFix label }}</div>\
                 <h2 class="j-truncate">{{{ title }}}</h2>\
                 <p class="j-truncate excerpt">{{{ excerpt }}}</p>\
                 <div class="j-truncate author">\
@@ -22211,6 +22211,10 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     if (card.status == "draft") {
         card['articleStatus'] = "draft";
         card['cardClass'] += " draft"; 
+    }
+    card['premiumTag'] = '';
+    if (card.additionalInfo['premium'] == 'premium'){
+        card['premiumTag'] = ' premium-tag';
     }
 
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';

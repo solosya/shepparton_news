@@ -157,7 +157,14 @@ for Oovvuu to use to replicate the menu on the video site. #}
         </script>
     {% endif %} #}
 
-
+    {% if config['Premium Tags'] is defined and config['Premium Tags'] == true %}
+    {% else %}
+        <style type="text/css">
+            .premium-tag::before{
+                display: none !important;
+            }
+        </style>
+    {% endif %}
 
 
     <!-- Google Tag Manager -->

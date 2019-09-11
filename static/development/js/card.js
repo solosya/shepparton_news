@@ -16,6 +16,10 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
         card['articleStatus'] = "draft";
         card['cardClass'] += " draft"; 
     }
+    card['premiumTag'] = '';
+    if (card.additionalInfo['premium'] == 'premium'){
+        card['premiumTag'] = ' premium-tag';
+    }
 
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
