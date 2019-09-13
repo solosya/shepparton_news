@@ -180,10 +180,12 @@ body, body > .section {
 {% endif %}
 
 
-{% if themeColors.headingColor != "" %}
-{%  set iconColour = themeColors.headingColor %}
+{% if site == "country" or site == "campaspe" %}
+    {%  set iconColour = '#8bc833' %}
+{% elseif site == "dairy" or site == "corowa" or site == "kyabram" or site == "mcivor" or site == "yarrawonga" %}
+    {%  set iconColour = '#118ce0' %}
 {% else %}
-{%  set iconColour = '#F03746' %}
+    {%  set iconColour = '#F03746' %}
 {% endif %}
 
 .search-icon-mobile {

@@ -174,7 +174,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-    {{ this.render('partials/_user-styles.twig', {networkData: networkData} ) | raw }}
+    {{ this.render('partials/_user-styles.twig', {networkData: networkData, site:site} ) | raw }}
 
 
     {% set googleAnalyitcsId = ''%}
