@@ -330,21 +330,41 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             <div class="">
                                 {% if recentArticles[0] %}<h2 class="sidebar-header {{site}}">Latest articles</h2>{% endif %}
                                     
-                                
-                                    {% for i in 0..2 if recentArticles[i] %}
-                                        
-                                            {{this.render('partials/_single-article.twig', {
-                                                article: recentArticles[i], 
-                                                imageSuppress: false,
-                                                containerClass: 'feature-side feature-side-tablet card-sm-mobile',
-                                                site:   site
-                                            }) | raw}}
+                                    {% if config['newsletter'] is defined and config['newsletter'] != "" %}
+                                        {% for i in 0..1 if recentArticles[i] %}
                                             
-                                            {% if i < 2 %}
-                                                <hr class="divide15">
-                                            {% endif %}
-                                        
-                                    {% endfor %}
+                                                {{this.render('partials/_single-article.twig', {
+                                                    article: recentArticles[i], 
+                                                    imageSuppress: false,
+                                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile',
+                                                    site:   site
+                                                }) | raw}}
+                                                
+                                                {% if i < 2 %}
+                                                    <hr class="divide15">
+                                                {% endif %}
+                                            
+                                        {% endfor %}
+                                        <div class=" col-sm-4 col-md-9">
+                                            <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
+                                            <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
+                                        </div>
+                                    {% else %}
+                                        {% for i in 0..2 if recentArticles[i] %}
+                                            
+                                                {{this.render('partials/_single-article.twig', {
+                                                    article: recentArticles[i], 
+                                                    imageSuppress: false,
+                                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile',
+                                                    site:   site
+                                                }) | raw}}
+                                                
+                                                {% if i < 2 %}
+                                                    <hr class="divide15">
+                                                {% endif %}
+                                            
+                                        {% endfor %}
+                                    {% endif %}
                                 
                             </div>
                         </div>
