@@ -714,8 +714,19 @@
 
 
 </main><!-- .site-main -->
+{% if config['newsletter'] is defined and config['newsletter'] != "" %}
+    <script>
 
-
+        ga(function(tracker) {
+            // Gets the client ID of the default tracker.
+            var clientId = tracker.get('clientId');
+            // Gets a reference to the window object of the destination iframe.
+            var frameWindow = document.getElementById('newsletter-iframe').contentWindow;
+            // Sends the client ID to the window inside the destination frame.
+            frameWindow.postMessage(clientId, '{{config['newsletter']}}');
+        }); 
+    </script>
+{% endif %}
 
 
 
