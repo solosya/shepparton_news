@@ -10,7 +10,11 @@
         </div>
     </div>
 
+ {% if title == 'Real Estate' %}
+    <div id="real-estate-section" class="col-sm-9">
+{% else %}   
     <div class="col-sm-9">
+{% endif %}
         <div class="row">
 
             {% for i in 0..2 if articles[articleCount] %}
