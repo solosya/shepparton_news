@@ -517,7 +517,16 @@ Acme.Confirm = function(template, parent, layouts) {
                 Acme.server.create('/api/auth/login', formData).done(function(r) {
                     // console.log(r);
                     if (r.success === 1) {
-                        window.location.href = location.origin;
+
+                        // if password reset must return to home page, else 
+                        // get an error when staying on auth endpoint.
+                        if (window.location.pathname === "/auth/reset-thanks") {
+                            window.location.replace(_appJsConfig.appHostName);
+                            return;
+                        }
+
+                        window.location.reload();
+                        
                     } else {
                         self.errorMsg();
                     }
