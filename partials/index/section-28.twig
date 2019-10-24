@@ -1,0 +1,41 @@
+{% set articleCount = 0 %}
+
+
+<section class="row" data-template="section-28">
+    <div class="col-md-9 col-sm-9 section-header">
+        <div class="hk">
+            <h2>{{ title }}</h2>
+
+            <p></p>
+        </div>
+    </div>
+
+ {% if title == 'Real Estate' %}
+    <div id="real-estate-section" class="col-sm-9">
+{% else %}   
+    <div class="col-sm-9">
+{% endif %}
+        <div class="row">
+
+            {% for i in 0..2 if articles[articleCount] %}
+                <div class="col-xs-9 col-sm-3 col-md-3">
+                    {{this.render('../_single-article.twig', {
+                        article: articles[articleCount], 
+                        template: 'property_card',
+                        networkData: networkData,
+                        imageSize: {width: 300, height: 195},
+                        containerClass: 'card-realestate card-realestate-tablet card-realestate-mobile'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? 0 : articleCount + 1 %}
+                    {% if i < 2 %}
+                        <hr class="divide12 visible-xs-block">
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div> 
+
+
+
+</section>
