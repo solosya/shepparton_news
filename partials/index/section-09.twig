@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 5, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
 
 
@@ -45,7 +45,7 @@
         <div class="col-sm-3 mini-events">
             <a class=" {{ site }}" href="{{networkData.defaultBlogUrl}}/@events">View All</a>
                 <a href="{{networkData.defaultBlogUrl}}/@events"><h2 class="">EVENTS</h2></a>
-            {% for i in 0..3 if events[i] %}
+            {% for i in 3..0 if events[i] %}
                 {{this.render('../_single-event.twig', {
                     event: events[i],
                     imageSize: {width: 37, height: 37},
