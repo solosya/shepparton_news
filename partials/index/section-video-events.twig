@@ -22,7 +22,7 @@
                         </h2>
                         <p></p>
                     </div>
-                    {% for i in 3..0 if events[i] %}
+                    {% for i in 0..3 if events[i] %}
                         {{this.render('../_single-event.twig', {
                             event: events[i],
                             imageSize: {width: 90},
