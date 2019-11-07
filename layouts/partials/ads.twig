@@ -1,7 +1,11 @@
 <script  src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <script>
+ 
   var googletag = googletag || {};
   googletag.cmd = googletag.cmd || [];
+  var fn_pageskin = "false";
+  if (screen.width >= 1260) { fn_pageskin = "true"; }
+  googletag.pubads().setTargeting("inskin_yes",fn_pageskin);
 
   var rubicontag = rubicontag || {};
   rubicontag.cmd = rubicontag.cmd || [];

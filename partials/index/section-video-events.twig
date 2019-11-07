@@ -1,6 +1,6 @@
 {% set articleCount = 0 %}
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 8, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
 
 <section data-template="section-video">
@@ -30,7 +30,7 @@
                             containerClass: 'card-event card-event-tablet card-event-mobile'
                         }) | raw}}
 
-                        {% if i < 3 %}
+                        {% if i > 0 %}
                             <hr class="divide10">
                         {% endif %}
 

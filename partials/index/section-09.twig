@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 
 {% set date = date() %}
-{% set events = _Event.getEvents({"limit": 5, "start_date": date.date | split(" ")[0]}) %}
+{% set events = _Event.getEvents({"limit": 4, "start_date": date.date | split(" ")[0]}) %}
 
 
 
