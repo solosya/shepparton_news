@@ -592,9 +592,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                 });
                 tp.enableGACrossDomainLinking();
 
+                var sendGA = false;
                 if ( tp.pianoId.isUserValid() ) {
                     var pianoUser =  tp.pianoId.getUser();
                     if (pianoUser) {
+                        sendGA = true;
                         var data = {
                             "mastheadPrefix" : "{{site}}",
                             "userId" : pianoUser.uid
@@ -609,13 +611,9 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         }).catch(function(e) {
                             sendPageView(false);
                         });
-                    }
-                } else {
-                    sendPageView(false);
+                    } 
                 }
-
-
-
+                !sendGA && sendPageView(false);
 
             }]);
         
