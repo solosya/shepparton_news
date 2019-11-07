@@ -13,7 +13,16 @@
 
 {% set blogInfo = _Blog.getBlog() %}
 
-{% set networkData = _Network.getNetworkData() %}
+{# {% set networkData = _Network.getNetworkData() %} #}
+{% set networkData = getCache("networkData") %}
+{% if (networkData is empty) %}
+    {% set networkData = _Network.getNetworkData() %} 
+    {% set cache = setCache("networkData", networkData, 500) %} 
+{% endif %}
+
+
+
+
 {% set site = networkData.title | lower | split(" ")[0] %}
 
 {% set ArticleContent = article.content %}
@@ -122,13 +131,24 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% set pianoPublishTime = _AppHelper.getDefaultTimezoneDateTime(article.publishedDateTime, 'G:i:s') %}
 {% set pianoTime = pianoPublishDate ~ "T" ~ pianoPublishTime %}
 
-{% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
-{% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %}
+
+{# {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %} #}
+{% set relatedArticles = getCache("articleRelated") %}
+{% if (relatedArticles is empty) %}
+    {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
+    {% set cache = setCache("articleRelated", relatedArticles, 500) %} 
+{% endif %}
+
+{# {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %} #}
+{% set recentArticles = getCache("articleRecent") %}
+{% if (recentArticles is empty) %}
+    {% set recentArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
+    {% set cache = setCache("articleRecent", recentArticles, 500) %} 
+{% endif %}
+
+
 
 {% set testCount = 0 %}
-
-
-
 {% set premium = 'Free' %}
 
 {# {% if blogInfo['additionalInfo']['premium'] is defined %}
