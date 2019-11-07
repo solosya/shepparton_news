@@ -133,16 +133,17 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 {# {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %} #}
-{% set relatedArticles = getCache("articleRelated") %}
+{% set relatedArticles = getCache("articleRelated"~article.blog.id) %}
 {% if (relatedArticles is empty) %}
-    {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
-    {% set cache = setCache("articleRelated", relatedArticles, 500) %} 
+    {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, interval: 168 }) %}
+    {# {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %} #}
+    {% set cache = setCache("articleRelated"~article.blog.id, relatedArticles, 500) %} 
 {% endif %}
 
-{# {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %} #}
 {% set recentArticles = getCache("articleRecent") %}
 {% if (recentArticles is empty) %}
-    {% set recentArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %}
+    {% set recentArticles = _Article.getRecentArticles({ limit: 5 }) %}
+    {# {% set recentArticles = _Article.getRecentArticles({ limit: 5, excludeArticleIds : [article.id] }) %} #}
     {% set cache = setCache("articleRecent", recentArticles, 500) %} 
 {% endif %}
 
