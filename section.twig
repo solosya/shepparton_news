@@ -1,5 +1,13 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
-{% set networkData = _Network.getNetworkData() %}
+{# {% set networkData = _Network.getNetworkData() %} #}
+
+{% set networkData = getCache("networkData") %}
+{% if (networkData is empty) %}
+    {% set networkData = _Network.getNetworkData() %} 
+    {% set cache = setCache("networkData", networkData, 500) %} 
+{% endif %}
+
+
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
 {{this.registerJs("Acme.cards = CardController();")}}
