@@ -132,7 +132,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% set pianoTime = pianoPublishDate ~ "T" ~ pianoPublishTime %}
 
 
-{# {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, excludeArticleIds : [article.id], interval: 168 }) %} #}
 {% set relatedArticles = getCache("articleRelated"~article.blog.id) %}
 {% if (relatedArticles is empty) %}
     {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, interval: 168 }) %}
