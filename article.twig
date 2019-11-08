@@ -494,14 +494,25 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
             // function sends the pageview after user piano status is resolved.
             function sendPageView(user) {
+                if(user) {
+                    var userStatus = user;
+                } else {
+                    var userStatus = "anonymous";
+                }
                 
                 var dimensions = {
                     'dimension1': "{{ article.createdBy['displayName'] }}",
-                    'dimension2': "{{premium}}"
+                    'dimension2': "{{premium}}",
+                    'dimension3': userStatus
                 };
 
                 ga('send', 'pageview', dimensions);
+
+                 if(tp.pianoId.isUserValid()) {
+                    ga('set', 'userId', tp.pianoId.getUser().uid);
+                }
             }
+            
 
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
