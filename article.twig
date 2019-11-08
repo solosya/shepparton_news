@@ -665,26 +665,27 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     }, 2000);
                 }
             }]);
+            tp.push(["addHandler", "loginSuccess", function (data) {
+                if (data.registration === true && data.source === 'PIANOID') {
+                    let currentUser = tp.pianoId.getUser();
+                    $.ajax({
+                        type: "POST",
+                        url: "https://webhooks.mmg.com.au/registerUser.php",
+                        data: { "mastheadPrefix" : "sheppTest", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
+                        cache: false,
+                        crossDomain: true,
+                        dataType: 'jsonp',
+                        success: function(response){
+                            console.log("new user registration completed");
+                        },
+                        error: function(xhr, status, error) {
+                            var err = eval("(" + xhr.responseText + ")");
+                            console.log(err.Message);
+                        }
+                    });
+                }
+            }]);
         });
-        tp.push(["addHandler", "loginSuccess", function (data) {
-            if (data.registration === true && data.source === 'PIANOID') {
-                let currentUser = tp.pianoId.getUser();
-                $.ajax({
-                    type: "POST",
-                    url: "https://webhooks.mmg.com.au/registerUser.php",
-                    data: { "mastheadPrefix" : "sheppTest", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
-                    cache: false,
-                    crossDomain: true,
-                    dataType: 'jsonp',
-                    success: function(response){
-                        console.log("new user registration completed");
-                    },
-                    error: function(xhr, status, error) {
-                        var err = eval("(" + xhr.responseText + ")");
-                        console.log(err.Message);
-                    }
-                });
-            }
-        }]);
+        
     </script>
 {% endif %}
