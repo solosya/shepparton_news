@@ -170,17 +170,17 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
                 // function sends the pageview after user piano status is resolved.
                 function sendPageView(data) {
-                    console.log(data);
+
                     var dimensions = {
                         'dimension1': "author" in data ? data['author'] : null,
                         'dimension2': "articleStatus" in data ? data['articleStatus'] : null,
                         'dimension3': "userStatus" in data ? data['userStatus'] : null,
                     };
-                    console.log(dimensions);
+
                     ga('send', 'pageview', dimensions);
 
                     if ("userId" in data) {
-                        console.log('sending user id', data.userId);
+
                         ga('set', 'userId', data.userId);
                     }
                 }
