@@ -1,8 +1,14 @@
-{% if _AppHelper.getApplicationEnv() == 'PROD'%}
+
+
+{% set headermenu = getCache("headermenu") %}
+{% if (headermenu is empty) %}
     {% set headermenu = _Menu.get({'menuType': 'header'}) %}
-{% else %}
-    {% set headermenu = _Menu.get({'menuType': 'header','menuGroupName':'Default'}) %}
+    {% set cache = setCache("headermenu", headermenu, 500) %} 
 {% endif %}
+
+
+
+
 {% set site       = networkData.title | lower | split(" ")[0]%}
 {% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}
 {% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}

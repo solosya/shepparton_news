@@ -1,10 +1,14 @@
 {% set link = _Blog.getHomeBlogSettings() %}
 
-{% if _AppHelper.getApplicationEnv() == 'PROD'%}
+
+{% set footerMenu = getCache("footerMenu") %}
+{% if (footerMenu is empty) %}
     {% set footerMenu = _Menu.get({'menuType': 'footer'}) %}
-{% else %}
-    {% set footerMenu = _Menu.get({'menuType': 'footer','menuGroupName':'Default'}) %}
+    {% set cache = setCache("footerMenu", footerMenu, 500) %} 
 {% endif %}
+
+
+
 
 <footer class="site-footer">
     <div class="container">        
