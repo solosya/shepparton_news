@@ -485,46 +485,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
-{% set googleAnalyitcsId = ''%}
-{% if networkData.thirdPartyIntegrations['googleAnalytics']['id'] is defined and  networkData.thirdPartyIntegrations['googleAnalytics']['id'] is not empty  %}
-    {% set googleAnalyitcsId = networkData.thirdPartyIntegrations['googleAnalytics']['id'] %}
-
-        <!-- Google Analytics u -->
-        <script>
-
-            // function sends the pageview after user piano status is resolved.
-            function sendPageView(user) {
-                if(user) {
-                    var userStatus = user;
-                } else {
-                    var userStatus = "anonymous";
-                }
-                
-                var dimensions = {
-                    'dimension1': "{{ article.createdBy['displayName'] }}",
-                    'dimension2': "{{premium}}",
-                    'dimension3': userStatus
-                };
-
-                ga('send', 'pageview', dimensions);
-
-                 if(tp.pianoId.isUserValid()) {
-                    ga('set', 'userId', tp.pianoId.getUser().uid);
-                }
-            }
-            
-
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-            ga('create', '{{googleAnalyitcsId}}', 'auto');
-
-        </script>
-        <!-- End Google Analytics -->
-    
-{% endif %}
 
 
 
@@ -554,138 +514,20 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     </script>
 {% endif %}
 
+
+
 {% if pianoScripts == true %}
-    {% set pianoScript = "DEFINE ME" %}
-    {% if config['piano']['script-config'] is defined and config['piano']['script-config'] != "" %}
-        {% set pianoScript = config['piano']['script-config'] %}
-    {% endif %}
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function(event) {
-            (function(src){
-                var a=document.createElement("script");
-                a.type="text/javascript";
-                a.async=true;
-                a.src=src;
-                var b=document.getElementsByTagName("script")[0];
-                b.parentNode.insertBefore(a,b)
-            })("{{pianoScript}}");
-        
-            tp = window.tp || [];
-            tp.push(['setUsePianoIdUserProvider', true]);
+    {{ this.render('layouts/partials/pianoscript.twig', {
+        pageLayout: "article",
+        author: article.createdBy['displayName'],
+        premium:premium,
+    }) | raw }}
 
-            tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
-        
-            // START OF ARTICLE ONLY SCRIPT 1
-            tp.push(["setContentCreated", "{{pianoTime}}"]);
-            tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
-            tp.push(["setContentSection", "{{article.label}}"]);
-            tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
-            tp.push(["setContentIsNative", {{articleNative}}]);
-            // END OF ARTICLE ONLY SCRIPT 1
-                
-            tp.push(["init", function() {
-        
-                // START OF ARTICLE ONLY SCRIPT 2
-                var splitTags = tp.tags.split(',');
-                if(splitTags[0] == 'Premium'){
-                    tp.push(["setCustomParam", "type", "premium", "content"]);
-                }
-                // END OF ARTICLE ONLY SCRIPT 2   
-                tp.pianoId.init({
-                    loggedIn: function(data) {
-                        var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                        var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                        for (i=0;i<inLogs.length;i++){
-                            inLogs[i].style.display = "block";
-                        }
-                        for (i=0;i<outLogs.length;i++){
-                            outLogs[i].style.display = "none";
-                        }             
-                                },
-                    loggedOut: function() {
-                        var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                        var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                        for (i=0;i<inLogs.length;i++){
-                            inLogs[i].style.display = "none";
-                        }
-                        for (i=0;i<outLogs.length;i++){
-                            outLogs[i].style.display = "block";
-                        }
-                        if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
-                            document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
-                            document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
-                        }
-                        if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
-                            document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
-                            document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
-                        }
-                    }
-                });
-                tp.enableGACrossDomainLinking();
-
-                var sendGA = false;
-                if ( tp.pianoId.isUserValid() ) {
-                    var pianoUser =  tp.pianoId.getUser();
-                    if (pianoUser) {
-                        sendGA = true;
-                        var data = {
-                            "mastheadPrefix" : "{{site}}",
-                            "userId" : pianoUser.uid
-                        }
-                        $.ajax({
-                            type: "POST",
-                            url: "https://webhooks.mmg.com.au/testUserSubs.php",
-                            data: data,
-                            dataType: 'json',
-                        }).then(function(r) {
-                            sendPageView(r.status);
-                        }).catch(function(e) {
-                            sendPageView(false);
-                        });
-                    } 
-                }
-                !sendGA && sendPageView(false);
-
-            }]);
-        
-            
- 
-            tp.push(["addHandler", "checkoutClose", function (event){
-                //Default behavior is to refresh the page on successful checkout
-                if (event && event.state == "checkoutCompleted") {
-                    setTimeout(function() {
-                        // Redirect to the url from encoded redirect parameter of an url
-                        var url = new URL(window.location.href);
-                        var redirectURL = '{{networkData.defaultBlogUrl}}';
-                        var encodedRedirectURL = url.searchParams.get('redirect');
-                        if(encodedRedirectURL) {
-                            redirectURL = decodeURIComponent(encodedRedirectURL);
-                        }
-                        window.location.href = redirectURL;
-                    }, 2000);
-                }
-            }]);
-            tp.push(["addHandler", "loginSuccess", function (data) {
-                if (data.registration === true && data.source === 'PIANOID') {
-                    let currentUser = tp.pianoId.getUser();
-                    $.ajax({
-                        type: "POST",
-                        url: "https://webhooks.mmg.com.au/registerUser.php",
-                        data: { "mastheadPrefix" : "sheppTest", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
-                        cache: false,
-                        crossDomain: true,
-                        dataType: 'jsonp',
-                        success: function(response){
-                            console.log("new user registration completed");
-                        },
-                        error: function(xhr, status, error) {
-                            var err = eval("(" + xhr.responseText + ")");
-                            console.log(err.Message);
-                        }
-                    });
-                }
-            }]);
+{% else %}
+    <script>
+        sendPageView({
+            "author": "{{ article.createdBy['displayName'] }}"
+            "article-status" : "{{premium}}"
         });
-        
     </script>
 {% endif %}

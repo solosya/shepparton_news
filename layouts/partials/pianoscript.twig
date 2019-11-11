@@ -4,9 +4,11 @@
 {% if config['piano']['script-config'] is defined and config['piano']['script-config'] != "" %}
     {% set pianoScript = config['piano']['script-config'] %}
 {% endif %}
-    
+
 
 <script>
+
+    var gaData = {};
 
     (function(src){
         var a=document.createElement("script");
@@ -22,9 +24,33 @@
  
     tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
  
+
+    {% if pageLayout == 'article' %}
+        tp.push(["setContentCreated", "{{pianoTime}}"]);
+        tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
+        tp.push(["setContentSection", "{{article.label}}"]);
+        tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
+        tp.push(["setContentIsNative", {{articleNative}}]);
+
+        {% if author is defined %}
+            gaData['author'] = "{{author}}"
+        {% endif %}
+        {% if premium is defined %}
+            gaData['articleStatus'] = "{{premium}}"
+        {% endif %}
+
+    {% endif %}
+
+
+
     tp.push(["init", function() {
- 
-        
+        {% if pageLayout == 'article' %}
+            var splitTags = tp.tags.split(',');
+            if(splitTags[0] == 'Premium'){
+                tp.push(["setCustomParam", "type", "premium", "content"]);
+            }
+        {% endif %}
+
  
         // START OF MY ACCOUNT ONLY SCRIPT
         {% if pageLayout == 'layout-account' %}
@@ -78,6 +104,40 @@
             }
         });
         tp.enableGACrossDomainLinking();
+
+
+        var sendGA = false;
+        if ( tp.pianoId.isUserValid() ) {
+            var pianoUser =  tp.pianoId.getUser();
+            if (pianoUser) {
+                sendGA = true;
+                var data = {
+                    "mastheadPrefix" : "{{site}}",
+                    "userId" : pianoUser.uid
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "https://webhooks.mmg.com.au/testUserSubs.php",
+                    data: data,
+                    dataType: 'json',
+                }).then(function(r) {
+                    gaData['userStatus'] = r.status;
+                    gaData['userId'] = pianoUser.uid;
+                    sendPageView(gaData);
+                }).catch(function(e) {
+                    gaData['userStatus'] = "anonymous";
+                    sendPageView(gaData);
+                });
+            } 
+        }
+        if (!sendGA) {
+            gaData['userStatus'] = "anonymous";
+            sendPageView(gaData);
+        } 
+
+
+
+
     }]);
 
     
