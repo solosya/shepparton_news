@@ -164,7 +164,7 @@
             $.ajax({
                 type: "POST",
                 url: "https://webhooks.mmg.com.au/registerUser.php",
-                data: { "mastheadPrefix" : "sheppTest", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
+                data: { "mastheadPrefix" : "{{site}}", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
                 cache: false,
                 crossDomain: true,
                 dataType: 'jsonp',
