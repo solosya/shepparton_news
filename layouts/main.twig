@@ -177,12 +177,12 @@ for Oovvuu to use to replicate the menu on the video site. #}
                         'dimension3': "userStatus" in data ? data['userStatus'] : null,
                     };
 
-                    ga('send', 'pageview', dimensions);
-
                     if ("userId" in data) {
-
                         ga('set', 'userId', data.userId);
                     }
+
+                    ga('send', 'pageview', dimensions);
+
                 }
 
 

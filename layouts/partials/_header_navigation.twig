@@ -48,7 +48,7 @@
                             </li>
                             {% if paymeter == true and pianoMenu == true %}  
                                 <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
                                 <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                             {% endif %}  
 
@@ -121,7 +121,7 @@
                             <li class="c-piano__account j-piano__account"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
                             <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
                                 <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                <li><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                <li><a onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
                             </ul>
                         </ul> 
                        
@@ -196,7 +196,7 @@
                             <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
                                 {% if paymeter == true and pianoMenu == true %}
                                     <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
                                     <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout" ><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
                                 {% endif %}
                                 {% for parentItem in headermenu  %}
@@ -274,7 +274,7 @@
                                 </li>
                                 {% if paymeter == true and pianoMenu == true %}
                                     <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
                                     <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout" ><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                                 {% endif %}                    
                                 {% for parentItem in headermenu  %}
@@ -329,7 +329,7 @@
                                 <li class="c-piano__account  j-piano__account--fold"><img src="{{networkData.templatePath}}/static/icons/acct.svg"><img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg"></li>
                                 <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown--fold">
                                     <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                    <li><a onclick="javascript: tp.pianoId.logout();" href="javascript:void(0);">log Out</a></li>
+                                    <li><a onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
                                 </ul>
                             </ul>
                             
