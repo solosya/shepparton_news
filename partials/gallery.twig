@@ -63,7 +63,7 @@ with width taken up with borders on the side #}
                     
                     {% set mediaUrl = _Media.getMediaVideoUrl(image, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
 
-                    <video controls class="article-video" poster="{{image.path}}">
+                    <video controls class="article-video" poster="{{articleImg}}">
                         <source src="{{mediaUrl}}" type="video/mp4"/>
                     </video>
                 
