@@ -4,7 +4,6 @@
 {% cache 'indexCache_1' 300 %}
 
 
-{# {% set networkData = _Network.getNetworkData() %} #}
 
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
