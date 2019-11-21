@@ -23,48 +23,6 @@
     <div class="col-sm-9 visible-sm-block"><hr class="divide10"></div>
 </div>
 
-{% if layout == 'breaking news' %}
-<section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40" data-template="section-15">
-    <div class="row">
-
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="breaking-news_header breaking-news_header@md {{site}}">{{sectionLabel}}</h1>
-                </div>
-                <div class="col-md-3 hidden-sm hidden-xs u-desktop-indent-left-20">
-                    <div class="weather j-weather-panel {{site}}"></div>
-                    <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row u-mobile-margin-bottom-20">
-        <div class="col-md-9">
-            {% if articles[articleCount] %}                                                                
-                {{this.render('../_single-article.twig', {
-                    imageSize       : {width:970, height:478},
-                    lazyload        : false,
-                    position        : articleCount + 1, 
-                    article         : articles[articleCount], 
-                    site            : site,
-                    dev             : dev,
-                    containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
-                }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                {% set cardIndex = cardIndex + 1 %}
-
-            {% endif %}
-        </div>
-    </div>
-</section>
-
-{% endif %}
-
-
-
-
 
 
 
