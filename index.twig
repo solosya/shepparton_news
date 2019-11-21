@@ -609,21 +609,23 @@
     {% endif %} 
 
 
-
     {% if layoutTitle == 'minor_breaking_news' %}
+        {% if config['page']['index']['minor-breaking-news'] is defined %}
+            {% set breaking = config['page']['index']['minor-breaking-news'] %}
+            {% set breaking = breaking | merge({'active': true}) %}
 
-        {% if pageSections['minor_breaking_news'] is defined %}
 
-            {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
-            
-            {% set pageSections = pageSections | 
-                merge({ 'index'  : pageSections['minor_breaking_news'] |
-                merge({ 'active' : true})}) 
-            %}
+            {% set blogFeeds = blogFeeds | merge({
+                (breaking.blog) : { 
+                    "limit" : breaking.articleCount
+                    } 
+                }) %}
 
-        {% endif %} 
+            {% set pageSections = [breaking] | merge(pageSections) %}
 
-    {% endif %} 
+
+        {% endif %}
+    {% endif %}
 
 {% endif %}
 
