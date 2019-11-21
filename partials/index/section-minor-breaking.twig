@@ -1,0 +1,36 @@
+{% set articleCount = 0 %}
+
+{% set sectionLabel = blogData['additionalInfo']['sectionlabel'] is defined and 
+                      blogData['additionalInfo']['sectionlabel'] != '' 
+                            ? blogData['additionalInfo']['sectionlabel'] 
+                            : 'Feature' %}
+
+
+
+<section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40" data-template="section-15">
+    <div class="row">
+
+        <div class="col-md-9">
+            <h1 class="breaking-news_header breaking-news_header@md {{site}}">{{sectionLabel}}</h1>
+        </div>
+    </div>
+
+    <div class="row u-mobile-margin-bottom-20">
+        <div class="col-md-9">
+            {% if articles[articleCount] %}                                                                
+                {{this.render('../_single-article.twig', {
+                    imageSize       : {width:970, height:478},
+                    lazyload        : false,
+                    position        : articleCount + 1, 
+                    article         : articles[articleCount], 
+                    site            : site,
+                    dev             : dev,
+                    containerClass  : 'home-feature home-feature-tablet home-feature-mobile index-feature'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+
+            {% endif %}
+        </div>
+    </div>
+</section>
