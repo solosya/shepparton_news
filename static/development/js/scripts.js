@@ -1,3 +1,6 @@
+Acme.articleFeeds = {};
+
+
 $('document').ready(function() {
     // window.Acme = {};
     var isMenuBroken, isMobile;

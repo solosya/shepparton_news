@@ -1,0 +1,218 @@
+$breakpoints: (
+	'xs':  (min-width: 576px),
+	'sm':  (min-width: 768px),
+	'md':  (min-width: 992px),
+	'cmd': (min-width: 1171px),
+	'lg':  (min-width: 1200px)
+);
+
+
+@mixin padding-classifieds($padding) {
+	@if length($padding)==1 {
+			padding: $padding/16 + rem;
+	}
+
+	@if length($padding)==2 {
+			padding: nth($padding, 1)/16 + rem nth($padding, 2)/16 + rem;
+	}
+
+	@if length($padding)==3 {
+			padding: nth($padding, 1)/16 + rem nth($padding, 2)/16 + rem nth($padding, 3)/16 + rem;
+	}
+
+	@if length($padding)==4 {
+			padding: nth($padding, 1)/16 + rem nth($padding, 2)/16 + rem nth($padding, 3)/16 + rem nth($padding, 4)/16 + rem;
+	}
+}
+
+
+@mixin font-size($sizeValue: 16, $line: $sizeValue * 1.2) {
+	font-size: ($sizeValue / 16) + rem;
+	line-height: ($line / 16) + rem;
+}
+
+
+@mixin flex-direction-classifieds($direction, $orient) {
+    -webkit-flex-direction: $direction;
+    -moz-flex-direction: $direction;
+    -ms-flex-direction: $direction;	
+    flex-direction: $direction;
+    -webkit-box-orient: $orient;
+    -moz-box-orient: $orient;
+    -ms-box-orient: $orient;
+    box-orient: $orient;
+}
+
+@mixin flex-height($int) { 
+	height: $int;
+	min-height: $int;
+	max-height: $int;
+}
+@mixin flex-width($int) { 
+	width: $int;
+	min-width: $int;
+	max-width: $int;
+}
+
+
+@mixin flex-wrap($value:nowrap) {
+    -webkit-flex-wrap:$value;
+    -moz-flex-wrap:$value;
+    @if $value == nowrap {
+        -ms-flex-wrap:none;
+    } @else { 
+        -ms-flex-wrap:$value; 
+    }
+    flex-wrap:$value;
+    }
+    
+    
+    @mixin flex-flow($values:(row nowrap)) {
+    -webkit-flex-flow:$values;
+    -moz-flex-flow:$values;
+    -ms-flex-flow:$values;
+    flex-flow:$values;
+    }
+    
+    
+    @mixin order($int:0) {
+    -webkit-box-ordinal-group:$int + 1;
+    -webkit-order:$int;
+    -moz-order:$int;
+    -ms-flex-order:$int;
+    order:$int;
+    }
+    
+    
+    @mixin flex-grow($int:0) {
+    -webkit-box-flex:$int;
+    -webkit-flex-grow:$int;
+    -moz-flex-grow:$int;
+    -ms-flex-positive:$int;
+    flex-grow:$int;
+    }
+    
+    
+    @mixin flex-shrink($int:1) {
+    -webkit-flex-shrink:$int;
+    -moz-flex-shrink:$int;
+    -ms-flex-negative:$int;
+    flex-shrink:$int;
+    }
+    
+    
+    @mixin flex-basis($value:auto) {
+    -webkit-flex-basis:$value;
+    -moz-flex-basis:$value;
+    -ms-flex-preferred-size:$value;
+    flex-basis:$value;
+    }
+    
+    
+    @mixin flex($fg:1, $fs:null, $fb:null) {
+    $fg-boxflex:$fg;
+    @if type-of($fg) == 'list' {
+        $fg-boxflex:nth($fg, 1);
+    }
+    
+}
+
+@mixin justify-content($value:flex-start) {
+    @if $value == flex-start {
+        -webkit-box-pack:start;
+        -ms-flex-pack:start;
+    } @else if $value == flex-end {
+        -webkit-box-pack:end;
+        -ms-flex-pack:end;
+    } @else if $value == space-between {
+        -webkit-box-pack:justify;
+        -ms-flex-pack:justify;
+    } @else if $value == space-around {
+        -ms-flex-pack:distribute;		
+    } @else {
+        -webkit-box-pack:$value;
+        -ms-flex-pack:$value;
+    }
+    -webkit-justify-content:$value;
+    -moz-justify-content:$value;
+    justify-content:$value;
+}
+    
+
+@mixin margin-top($margin-top) {
+    margin-top: $margin-top/16 + rem;
+}
+
+@mixin margin-bottom($margin-bottom) {
+    margin-bottom: $margin-bottom/16 + rem;
+}
+
+@mixin margin-left($margin-left) {
+    margin-left: $margin-left/16 + rem;
+}
+
+@mixin margin-right($margin-right) {
+    margin-right: $margin-right/16 + rem;
+}
+
+
+@mixin respond-to($names: ()) {
+	@each $name in $names {
+			@if map-has-key($breakpoints, $name) {
+					@media #{inspect(map-get($breakpoints, $name))} {
+							@content;
+					}
+			}
+
+			@else {
+					@warn "Unfortunately, no value could be retrieved for `#{$name}`.";
+			}
+	}
+}
+
+
+
+@mixin responsive($names: map-keys($breakpoints)) {
+
+    @each $name in $names {
+            @if map-has-key($breakpoints, $name) {
+                    &-#{$name} {
+                            @media #{inspect(map-get($breakpoints, $name))} {
+                                    @content;
+                            }
+                    }
+            }
+
+            @else {
+                    @warn "Unfortunately, no value could be retrieved for `#{$name}`.";
+            }
+    }
+}
+
+
+@mixin image_background {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+
+@mixin margin($margin) {
+	@if length($margin)==1 {
+			margin: $margin/16 + rem;
+	}
+
+	@if length($margin)==2 {
+			margin: nth($margin, 1)/16 + rem nth($margin, 2)/16 + rem;
+	}
+
+	@if length($margin)==3 {
+			margin: nth($margin, 1)/16 + rem nth($margin, 2)/16 + rem nth($margin, 3)/16 + rem;
+	}
+
+	@if length($margin)==4 {
+			margin: nth($margin, 1)/16 + rem nth($margin, 2)/16 + rem nth($margin, 3)/16 + rem nth($margin, 4)/16 + rem;
+	}
+}
+
+
