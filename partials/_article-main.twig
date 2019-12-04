@@ -19,7 +19,7 @@
             {% if params.lazyload == false %}
                 <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.image}}">
             {% else %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.image}}">
             {% endif %}
         </picture>
     </figure>
