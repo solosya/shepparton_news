@@ -669,27 +669,48 @@ Acme.Validators = {
         Acme.modal.prototype = new Acme.listen();
 
         Acme.modal.prototype.render = function(layout, title, data) {
+            var preRendered = false;
+
+            if (typeof data === 'string') {
+                preRendered = true;
+            } else {
+                this.data = data || this.data;
+            }
+            
             if (title) {
                 this.data['title'] = title;
             }
+
+
             this.data['name'] = this.parentCont;
             var tmp = Handlebars.compile(window.templates[this.template]);
             var tmp = tmp(this.data);
+
             $('body').addClass('active').append(tmp);
+
             if (layout) {
-                this.renderLayout(layout, data);
+                this.renderLayout(layout, this.data);
             }
+
+            if (preRendered) {
+                this.renderPreLayout(data);
+            }
+
             this.events();
+            this.rendered(); // lifecycle hook that can be overriden
             return this.dfd.promise();
         };
         Acme.modal.prototype.renderLayout = function(layout, data) {
             var data = data || {};
-            console.log(data);
+
             var tmp = Handlebars.compile(window.templates[this.layouts[layout]]);
             var layout = tmp(data);
             // var layout = window.templates[this.layouts[layout]];
 
             $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
+        };
+        Acme.modal.prototype.renderPreLayout = function(html) {
+            $('#'+this.parentCont).find('#dialogContent').empty().append(html); 
         };
         Acme.modal.prototype.events = function() 
         {
@@ -698,6 +719,9 @@ Acme.Validators = {
                 self.handle(e);
             });
 
+        };
+        Acme.modal.prototype.rendered = function() {
+            return true;
         };
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);

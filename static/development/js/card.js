@@ -35,7 +35,7 @@ Card.prototype.renderCard = function(card, cardClass, template, type)
     card['readingTime']= self.renderReadingTime(card.readingTime);
     card['blogClass']= '';
     if(card.blog['id'] !== null) {
-       card['blogClass']= 'card--blog_'+card.blog['id'];
+        card['blogClass']= 'card--blog_'+card.blog['id'];
     } 
     
     var width = 500;

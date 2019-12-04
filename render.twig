@@ -56,12 +56,17 @@
     {% if section.background %}
         <div class="section-background {{margin}}">
             {% set margin = '' %}
-
     {% endif %}
 
+    {% if section.wrapper is not defined %}
         <div class="container {{margin}}">
-            {{this.render(section.template, params) | raw}} 
+    {% endif %}
+
+    {{this.render(section.template, params) | raw}} 
+
+    {% if section.wrapper is not defined %}
         </div>
+    {% endif %}
 
     {% if section.background %}
         </div>
