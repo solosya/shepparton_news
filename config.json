@@ -21,6 +21,11 @@
             ],
             "extendedAttributes": [
                 {
+                    "label": "Content Type",
+                    "type": "inputbox",
+                    "name": "contenttype"
+                },
+                {
                     "name": "publishto",
                     "label": "Publish to...",
                     "type": "inputbox"

@@ -5,6 +5,7 @@
 {% set feedArr = [] %}
 
 {% set blogLink = "" %}
+{% set thisBlog = {} %}
 
 {# If a page section has articles from multiple blogs, assemble here #}
 {% if section.articleOrder is defined and section.articleOrder | length > 0 %}
@@ -17,6 +18,7 @@
     {% endfor %}
 
     {% set blogLink = blogFeeds[section.blogs[0]].link %}
+    {% set blogFeedArticleCount = blogFeeds[section.blogs[0]].count %}
 
 {# else if a page section has articles from a single blog, no assembly required #}
 {% else %}
@@ -31,6 +33,7 @@
 
     {% endif %}
 {% endif %}
+
 
 
 {% if section.template != '' %}
@@ -53,12 +56,17 @@
     {% if section.background %}
         <div class="section-background {{margin}}">
             {% set margin = '' %}
-
     {% endif %}
 
+    {% if section.wrapper is not defined %}
         <div class="container {{margin}}">
-            {{this.render(section.template, params) | raw}} 
+    {% endif %}
+
+    {{this.render(section.template, params) | raw}} 
+
+    {% if section.wrapper is not defined %}
         </div>
+    {% endif %}
 
     {% if section.background %}
         </div>

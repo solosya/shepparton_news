@@ -8,13 +8,13 @@
 
 
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
-    <figure class="{{params.figureClass}}">
+    <figure class="{{params.videoClass}}">
         <picture>
-            <source media="(max-width: 620px)" srcset="{{params.articleImgSmall}}">
+            <source media="(max-width: 620px)" srcset="{{params.imageSmall}}">
             {% if params.lazyload == false %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.image}}">
             {% else %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.image}}">
             {% endif %}
         </picture>
     </figure>
@@ -25,7 +25,7 @@
     {% set contractType = (article.additionalInfo.listing_type | lower == 'buy') ? 'For Sale' : 'For Lease'  %}
     <p class="property__attribute property__attribute--contract {{site}}">{{ contractType }} | {{ info.pricerange }}</p>
 
-    <h2 class="j-truncate property__address">{{ params.articleTitle }}</h2>
+    <h2 class="j-truncate property__address">{{ params.title }}</h2>
 
     <ul class="property__spaces">
         {% if info.bedroom_count %}

@@ -1,14 +1,24 @@
 {% import "quotes.twig" as quotes %}
 
+{% set config = getCache("configData") %}
+{% if (config is empty) %}
+    {% set config = _Network.getThemeConfig() %}
+    {% set cache = setCache("configData", config, 500) %} 
+{% endif %}
+
+
+{# {% set config = _Network.getThemeConfig() %} #}
+
 {% set imageSuppress = imageSuppress is defined and imageSuppress == true   ? true : false  %}
 {% set lazyload      = lazyload      is defined and lazyload == false       ? false : true  %}
 {% set template      = (template     is defined and template != '')         ? template : 'main'  %}
 {% set swap          = swap          is defined and swap == 'false'         ? '' : 'swap'  %}
 {% set dev           = dev           is defined and dev == true             ? true : false  %}
 {% set inline        = inline        is defined and inline != ''            ? inline : ''  %}
-{% set config = _Network.getThemeConfig() %}
 
-    
+{# This can add a prefix to the card class to segregate its styles #}
+{% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
+
 
 {% set lightbox = ''  %}
 {% set articleImg = '' %}
@@ -70,20 +80,24 @@
 
 
     {% set params = {
-        placeholder:     "https://placeholdit.imgix.net/~text?w=1&h=1",
-        figureClass:     article.featuredMedia['type'] == 'video' ? 'video' : '',
-        articleImgSmall: _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
-        articleImgMedium:_Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
-        articleImg:      _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
-        publishDate:     publishDate,
-        articleTitle:    articleTitle,
-        profileImg:      profileImg,
-        imageSuppress:   imageSuppress,
-        lazyload:        lazyload,
-        imgWidth:        imgWidth,
-        imgHeight:       imgHeight,
-        site:            site,
-        premiumtags:     premiumtags
+        imageSuppress   : imageSuppress,
+        placeholder     : "https://place-hold.it/1",
+        imageMedium     : _Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
+        imageSmall      : _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
+        publishDate     : publishDate,
+        videoClass      : article.featuredMedia['type'] == 'video' ? 'video' : '',
+        image           : _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
+        category        : article.label,
+        title           : articleTitle,
+        profileImg      : profileImg,
+        cardType        : cardType, 
+        hasMedia        : ((article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress == false) ? true : false,
+        content         : article.excerpt,
+        lazyload        : lazyload,
+        imgHeight       : imgHeight,
+        imgWidth        : imgWidth,
+        site            : site,
+        premiumtags     : premiumtags
     } %}
 
     
@@ -114,7 +128,7 @@
             {% endif %}
             
             {# Article content including image #}
-            <article class="{{lightbox}}">
+            <article class="{{lightbox}} {{contentType}}">
 
                 {{ this.render('_article-'~template~'.twig', {
                     article: article,  

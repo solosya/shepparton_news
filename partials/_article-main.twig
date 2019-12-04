@@ -11,15 +11,15 @@
 
 
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
-    <figure class="{{params.figureClass}}">
+    <figure class="{{params.videoClass}}">
         <picture>
-            <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.articleImgMedium}}">
-            <source media="(max-width: 500px)" srcset="{{params.articleImgSmall}}">
+            <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.imageMedium}}">
+            <source media="(max-width: 500px)" srcset="{{params.imageSmall}}">
 
             {% if params.lazyload == false %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive" src="{{params.image}}">
             {% else %}
-                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.articleImg}}">
+                <img width="{{params.imgWidth}}" height="{{params.imgHeight}}" class="img-responsive lazyload" src="{{params.placeholder}}" data-original="{{params.image}}">
             {% endif %}
         </picture>
     </figure>
@@ -30,7 +30,7 @@
     
     <div class="category {{params.site}}{% if params.premiumtags %} premium-tag{% endif %}">{{label}}</div>
     
-    <h2 class="j-truncate {{params.figureClass}}">{{ params.articleTitle }}</h2>
+    <h2 class="j-truncate {{params.figureClass}}">{{ params.title }}</h2>
     
     <p class="j-truncate excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
    

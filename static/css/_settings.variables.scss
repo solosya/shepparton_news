@@ -10,6 +10,47 @@ $browser-context:           $font-size-base;
 $baseFontSize:				16px; /* ($baseFontSize * 1) + 0px; */
 
 
+
+// Needed for classifieds
+    $primaryFont: "adelle-sans", Helvetica, Arial, sans-serif !default;
+    $secondaryFont: "PT Serif", "Times New Roman", Times, serif;
+    $iconfont: 'FontAwesome';
+    $viewportSize: 100%;
+    $border:        #b5b4b5;
+    $offwhite:      #e7e7e7;
+    $blue_sh1:      #4573cd;
+    $black_sh1:     #333333;
+    $info:          #213f9e;
+    $darkergrey:      #979797;
+    $red:           #ff0000;
+
+    $black_sh2:     lighten($black_sh1,20%); /* color code == #666666 also (0,0,0,0.6) */
+    $black_sh3:     lighten($black_sh1,40%); /* color code == #999999 */
+    $black_sh4:     lighten($black_sh1,60%); /* color code == #cccccc */
+    $black_sh5:     lighten($black_sh1,41%); /* color code == #9c9c9c */
+    $greyish:       #595859;
+    $weightLight: 300;
+    $weightRegular: 400;
+    $weightMedium: 500;
+    $weightSemibold: 600;
+    $weightBold: 700;
+    $weightUltabold: 900;
+    $error:         #c51515;
+    $blackred:      #ac001a;
+    $facebook:      #3b5998;
+    $twitter:       #00aeef;
+    $pinterest:     #bd081c;
+    $googleplus:    #e34829;
+    $youtube:       #d62423;
+    $vimeo:         #5bc7ff;
+    $instagram:     #2c5987;
+    $linkedin:      #1f7bc2;
+// Needed for classifieds
+
+
+
+
+
 // //colors
 $brand-primary:             #2D9DE2; 
 $brand-secondary:           #e22f22;
@@ -70,6 +111,7 @@ $colors: (
 
 	darkcountry:		#0d522e,
 );
+
 
 
 

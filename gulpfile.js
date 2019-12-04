@@ -1,3 +1,11 @@
+// PLEASE NOTE THIS FILE NOW REQUIRES GULP V4
+// https://www.liquidlight.co.uk/blog/how-do-i-update-to-gulp-4/
+
+// to stop npm EACCESS errors install npm this way:
+// https://github.com/nvm-sh/nvm
+
+
+
 var gulp        = require('gulp');
 var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
@@ -8,12 +16,8 @@ var sourcemaps  = require('gulp-sourcemaps');
 var minifyCss   = require("gulp-clean-css");
 var hasher      = require('gulp-hasher');
 var buster      = require('gulp-cache-buster');
-var runSequence = require('run-sequence');
 
 
-gulp.task('styles', function(callback) {
-    runSequence('sass', 'concat', 'minify-css', 'cache', callback);
-});
 
 
 gulp.task('cache',  function() {
@@ -68,6 +72,9 @@ gulp.task('sass', function() {
 });
 
 
+gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache', function(done) {
+    done();
+}));
 
 
 
@@ -139,4 +146,4 @@ gulp.task('watch', function (){
 	gulp.watch('./static/development/js/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', gulp.parallel('scripts', 'styles'));
