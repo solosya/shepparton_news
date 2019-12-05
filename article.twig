@@ -146,6 +146,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set cache = setCache("articleRecent", recentArticles, 500) %} 
 {% endif %}
 
+{% set incites = 'no' %}
+{% if article.additionalInfo is defined and article.additionalInfo.incites is defined and article.additionalInfo.incites != null %} 
+    {% set incites = article.additionalInfo.incites %}
+{% endif %}
+
 
 
 {% set testCount = 0 %}
@@ -521,14 +526,16 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         pageLayout: "article",
         author: article.createdBy['displayName'],
         premium:premium,
+        incites: incites,
         site:site,
     }) | raw }}
 
 {% else %}
     <script>
         sendPageView({
-            "author": "{{ article.createdBy['displayName'] }}"
-            "articleStatus" : "{{premium}}"
+            "author": "{{ article.createdBy['displayName'] }}",
+            "articleStatus" : "{{premium}}",
+            "incites" : "{{incites}}"
         });
     </script>
 {% endif %}
