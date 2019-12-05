@@ -36,6 +36,11 @@
                     "type": "inputbox"
                 },
                 {
+                    "name": "incites",
+                    "label": "Incites",
+                    "type": "inputbox"
+                },
+                {
     				"label": "",
     				"type": "radio",
     				"name": "premium",
