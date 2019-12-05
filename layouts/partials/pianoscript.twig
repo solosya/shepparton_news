@@ -38,6 +38,9 @@
         {% if premium is defined %}
             gaData['articleStatus'] = "{{premium}}"
         {% endif %}
+        {% if incites is defined %}
+            gaData['incites'] = "{{incites}}"
+        {% endif %}
 
     {% endif %}
 
