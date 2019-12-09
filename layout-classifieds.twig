@@ -332,7 +332,7 @@
 
         // override the lightbox handler from the one set in card.js
         Card.prototype.bindLightbox = function() {
-            console.log('adding article lightbox');
+            console.log('adding article lightbox', "{{contentType}}");
             $('article.{{contentType}}').unbind().on('click', function (e) {
                 console.log('clicked');
                 e.preventDefault();
@@ -350,14 +350,11 @@
                 var action = 'POST';
 
                 if (isSocial) {
-                    console.log('getting social card');
                     var url = '/api/social/get-social-post';
                     var blogGuid = $(this).parent().data('blog-guid');
                     var postGuid = $(this).parent().data('guid');
                     var payload = {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken}
                 } else {
-                                        console.log('getting article');
-
                     var url = '/api/article/get-article';
                     var articleId = $(this).parent().data('id');
                     var payload = {articleId: articleId, _csrf: csrfToken}
@@ -385,16 +382,17 @@
                             }
                             
                             data.templatePath = _appJsConfig.templatePath;
-
+                            console.log('calling render card');
                             var article = cardController.renderCard(data, {
                                 cardClass : "acme-card-10-mobile acme-card-10-tablet acme-card-10-desktop",
                                 type : "acme-",
+                                template: "classifiedCardTemplate",
                                 content: "full",
                                 imageWidth: 540,
                                 imageHeight: 0,
                                 imageGravity: 'north',
                             });
-
+                            console.log(article);
                             Acme.LightBox.renderPreLayout(article);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {

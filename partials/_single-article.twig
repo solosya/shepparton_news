@@ -90,6 +90,8 @@
         category        : article.label,
         title           : articleTitle,
         profileImg      : profileImg,
+        blogguid        : article.blog.guid,
+        blogTitle       : article.blog.title,
         cardType        : cardType, 
         hasMedia        : ((article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress == false) ? true : false,
         content         : article.excerpt,
@@ -118,6 +120,8 @@
             data-id             = "{{article.articleId}}" 
             data-guid           = "{{article.guid}}" 
             data-position       = "{{position}}" 
+            data-blog-guid      = "{{params.blogguid}}"
+            data-blog-title     = "{{params.blogTitle}}"
             data-social         = "0"
             data-article-image  = "{{params.articleImg}}" 
             data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
@@ -170,7 +174,7 @@
             class               = "{{swap}} card social {{ socialSource }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
             data-id             = "{{article.socialId}}" 
             data-position       = "{{position}}"
-            data-blog-guid      = "{{social.blog['guid']}}" 
+            data-blog-guid      = "{{social.blog['guid']}}"
             data-guid           = "{{social.guid}}" 
             data-social         = "1" 
             data-article-image  = "{{social.media['path']}}" 

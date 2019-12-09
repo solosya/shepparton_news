@@ -89,7 +89,10 @@ Acme.View.articleFeed.prototype.render = function(data)
                 html.push( self.options.before );
             }
 
-            html.push( self.cardModel.renderCard(data.articles[i], cardClass, template) );
+            html.push( self.cardModel.renderCard(data.articles[i], {
+                cardClass: cardClass,
+                template: template
+            } ));
 
             if (self.options.after) {
                 html.push( self.options.after );
@@ -195,6 +198,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
 
         }
         var siteSection = getSiteSection(effectiveURL,effectiveSection,siteAdSections,effectiveType);
+        
+        if (typeof networkSelect === 'undefined') return;
         var networkSite = networkSelect[effectiveURL];
         if (rubiconAcct != undefined) {
             (function() {
@@ -329,6 +334,8 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
 
     function getSiteSection(site,section,adsections,type) {
 
+        if (typeof adsections === 'undefined') return; 
+        
         if (adsections.length < 0) {
             return section;
         }

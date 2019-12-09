@@ -683,16 +683,20 @@ Acme.Validators = {
 
 
             this.data['name'] = this.parentCont;
-            var tmp = Handlebars.compile(window.templates[this.template]);
+            var tmp = Handlebars.compile(Acme.templates[this.template]);
+            console.log(this.data);
             var tmp = tmp(this.data);
 
-            $('body').addClass('active').append(tmp);
+            $('html').addClass('u-noscroll')
+            $('body').addClass('u-noscroll').append(tmp);
 
             if (layout) {
                 this.renderLayout(layout, this.data);
             }
 
             if (preRendered) {
+                console.log('pre rendering');
+                console.log(data);
                 this.renderPreLayout(data);
             }
 
@@ -703,13 +707,15 @@ Acme.Validators = {
         Acme.modal.prototype.renderLayout = function(layout, data) {
             var data = data || {};
 
-            var tmp = Handlebars.compile(window.templates[this.layouts[layout]]);
+            var tmp = Handlebars.compile(Acme.templates[this.layouts[layout]]);
             var layout = tmp(data);
             // var layout = window.templates[this.layouts[layout]];
 
             $('#'+this.parentCont).find('#dialogContent').empty().append(layout); 
         };
         Acme.modal.prototype.renderPreLayout = function(html) {
+            console.log('finding dialog content');
+            console.log(this.parentCont);
             $('#'+this.parentCont).find('#dialogContent').empty().append(html); 
         };
         Acme.modal.prototype.events = function() 
@@ -725,11 +731,13 @@ Acme.Validators = {
         };
         Acme.modal.prototype.handle = function(e) {
             var $elem = $(e.target);
-
-            if (!$elem.is('input')) {
+            if ( !$elem.is('input') && !$elem.is('a') && !$elem.parent().is('a') ) {
                 e.preventDefault();
             }
-
+            if ($elem.data('behaviour') == 'close') {
+                e.preventDefault();
+                this.closeWindow();
+            }
             if ( $elem.is('button') ) {
                 if ($elem.text().toLowerCase() === "cancel" || $elem.data('role') == 'cancel') {
                     this.dfd.fail();
@@ -738,37 +746,14 @@ Acme.Validators = {
                 } else if ($elem.text().toLowerCase() === "okay" || $elem.data('role') == 'okay') {
                     this.dfd.resolve();
                     this.closeWindow();
-
-
-                    // State can be provided by client external to 'show' call
-                    // if (data === undefined && that.state) {
-                    //     data = that.state;
-                    // // If data is also provided we merge the two
-                    // } else if (that.state) {
-                    //     var keys = Object.keys(that.state)
-                    //     for (var k=0; k<keys.length;k++) {
-                    //         data[keys[k]] = that.state[keys[k]];
-                    //     }
-                    // }
-
-                    // if (self != undefined) {
-                    //     if (data != undefined) {
-                    //         var result = callback.call(self, data);
-                    //         this.dfd.resolve(result);
-                    //     } else {
-                    //         var result = callback.call(self);
-                    //         this.dfd.resolve(result);
-                    //     }
-                    // } else {
-                    //     var result = callback();
-                    //     this.dfd.resolve(result);
-                    // }
                 }
             }
             return $elem;
         };
         Acme.modal.prototype.closeWindow = function() {
-            $('body').removeClass('active');
+            console.log('closing window');
+            $('body').removeClass('u-noscroll');
+            $('html').removeClass('u-noscroll');
             $('#'+this.parentCont).remove();
         };
     

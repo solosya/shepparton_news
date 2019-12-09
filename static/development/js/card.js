@@ -7,59 +7,106 @@ var Card = function() {
 };
 
 
-Card.prototype.renderCard = function(card, cardClass, template, type)
+Card.prototype.renderCard = function(card, options)
 {
-    var self = this;
-    var template = (template) ? Acme[template] : Acme.systemCardTemplate;
-    card['cardClass'] = cardClass;
+    console.log('rendering card');
+    options = options || {};
+    var template = (options.template) ? Acme.templates[options.template] : Acme.templates.systemCardTemplate;
+    card['containerClass'] = options.cardClass || "";
+    card['cardType'] = options.type || "";
+    card['lightbox'] = options.lightbox || "";
+
+
+
     if (card.status == "draft") {
         card['articleStatus'] = "draft";
-        card['cardClass'] += " draft"; 
-    }
-    card['premiumTag'] = ' not-premium';
-    if (card.additionalInfo['premium'] == 'Premium' || card['premiumContent'] == true){
-        card['premiumTag'] = ' premium-tag';
+        card['containerClass'] += " draft"; 
     }
 
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
     card['promotedClass'] = (card.isPromoted == 1)? 'ad_icon' : '';
-    card['hasArticleMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
-    card['site'] = _appJsConfig.site;
-    
+
     // mainly for screen to turn off lazyload and loading background img
-    card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
-    card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?w=1&h=1)"';
+    // card['imgClass'] = (card.lazyloadImage == false) ? '' : 'lazyload';
+    // card['imgBackgroundStyle'] = (card.lazyloadImage == false) ? '' : 'style="background-image:url(https://placeholdit.imgix.net/~text?w=1&h=1)"';
     
 
-    card['readingTime']= self.renderReadingTime(card.readingTime);
-    card['blogClass']= '';
-    if(card.blog['id'] !== null) {
-        card['blogClass']= 'card--blog_'+card.blog['id'];
-    } 
+    // card['readingTime']= self.renderReadingTime(card.readingTime);
     
-    var width = 500;
-    var height = 350;
+    var width = typeof options.imageWidth !== "undefined" ? options.imageWidth : 500;
+    var height = typeof options.imageHeight !== "undefined" ? options.imageHeight : 350;
+    var gravity = typeof options.imageGravity !== "undefined" ? options.imageGravity : null;
+
+    if (options.imageOriginal) {
+        var width = card.featuredMedia.width;
+        var height = card.featuredMedia.height;
+    }
 
     if (card.imageOptions) {
         width = card.imageOptions.width || width;
         height = card.imageOptions.height || height;
     }
-
-    var ImageUrl = $.image({media:card['featuredMedia'], mediaOptions:{width: width ,height:height, crop: 'limit'} });
-    card['imageUrl'] = ImageUrl;
-    var articleId = parseInt(card.articleId);
-    var articleTemplate;
-
-    if (isNaN(articleId) || articleId <= 0) {
-        card['videoClass'] = '';
-        if(card.social.media.type && card.social.media.type == 'video') {
-            card['videoClass'] = 'video_card';
-        }
-        articleTemplate = Handlebars.compile(socialCardTemplate); 
-    } else {
-        articleTemplate = Handlebars.compile(template);
+    var articleContent = card.excerpt;
+    if (typeof options.content != "undefined" && options.content === "full") {
+        articleContent = '<div class="acme-c-cards-view__articleContent"><p>' + card.content + '</p></div>';
     }
+
+
+    card['titleString'] = "";
+    if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
+        var totalstring = "";
+        var totals = (card.total ) ? card.total : false;
+        if ( totals ) {
+            totalstring = "Viewed " + totals.view + " times";
+            totalstring = totalstring + " Published " + card.publishedDateTime;
+        }
+        card['titleString'] = totalstring;
+    }
+
+
+
+
+    var articleId = parseInt(card.articleId);
+
+    if (card.social) {
+        card['hasMediaClass'] = (card.social.hasMedia == 1)? 'withImage__content' : 'without-image';
+
+        card.params = {
+            id          : card.socialId,
+            guid        : card.socialGuid,
+            image       : card.social.media.path,
+            category    : card.social.source,
+            title       : "",
+            content     : card.social.content,
+            author      : card.social.user.name,
+            publishDate : card.publishDate,
+            videoClass  : card.social.media['type'] == 'video' ? 'c-cards-view__media--video' : '',
+            hasMedia    : card.social.hasMedia,
+            social      : 1
+        }
+
+    } else {
+        card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without-image';
+
+        card.params = {
+            id          : articleId,
+            guid        : card.guid,
+            image       : $.image({media : card['featuredMedia'], mediaOptions:{width: width , height: height, crop: 'fill', gravity: gravity} }),
+            category    : card.label,
+            title       : card.title,
+            content     : articleContent,
+            author      : card.createdBy.displayName,
+            publishDate : card.publishDate,
+            videoClass  : card.featuredMedia['type'] == 'video' ? 'c-cards-view__media--video' : '',
+            hasMedia    : card.hasMedia,
+            social      : 0
+
+        };
+    }
+    console.log(card);
+    var articleTemplate = Handlebars.compile(template);
+
     return articleTemplate(card);
 }
 
