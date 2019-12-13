@@ -135,6 +135,8 @@ Acme.View.articleFeed = function(options)
     this.renderType = options.renderType || 'append';
     this.before     = options.before     || false;
     this.after      = options.after      || false;
+    this.beforeEach = options.beforeEach || false;
+    this.afterEach  = options.afterEach  || false;
     this.button_label = options.label    || false;
     this.cardType   = options.cardType   || "";
     this.lightbox   = options.lightbox   || null;
@@ -203,6 +205,12 @@ Acme.View.articleFeed.prototype.render = function(data)
         html = ["<p>" + self.failText + "</p>"];
     } else {
         for (var i in articles) {
+
+            if (self.beforeEach) {
+                html.push( self.beforeEach );
+            }
+
+
             articles[i].imageOptions = {'width': self.imgWidth, 'height': self.imgHeight};
             html.push( self.cardModel.renderCard(articles[i], {
                 cardClass: self.cardClass,
@@ -210,6 +218,13 @@ Acme.View.articleFeed.prototype.render = function(data)
                 type: self.cardType,
                 lightbox: self.lightbox || null
             }));
+
+            if (self.afterEach) {
+                html.push( self.afterEach );
+            }
+
+
+
         }
         if (self.before ) {
             var beforeStr =  self.before.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');

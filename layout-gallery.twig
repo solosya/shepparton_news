@@ -1,9 +1,8 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% set networkData = _Network.getNetworkData() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
+{% set blogData    = _Blog.getBlog() %}
 
-{{this.registerJs("Acme.cards = CardController();")}}
-{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}} #}
 
 
 
@@ -13,14 +12,6 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
-{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}}#}
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
-
-
-
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, sortBy: 'VIEWS', scope: 'blog' }) %}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -91,10 +82,10 @@
 
                 {% for i in 0..1 if articles[articleCount] %}
                     {% set smVis = [' visible-sm-block',''] %} 
-                    <div class="col-sm-1 col-md-3 col-xs-9">
+                    <div class="col-sm-1 col-md-3 col-xs-9" data="what?">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
-                            imageSize: {width:640, height:480},
+                            imageSize: {width:350, height:160},
                             position: articleCount + 1,
                             site: site,
                             containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile' ~ smVis[i]
@@ -182,7 +173,7 @@
                             <div class="col-sm-3 col-xs-9">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
-                                    imageSize: {width:190, height:160},
+                                    imageSize: {width:300, height:160},
                                     position: articleCount + 1,
                                     site: site,                               
                                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
@@ -198,23 +189,46 @@
                 </div>
             </div>
         </section>
-        <section class="loadmore__section">
-            <div class="row">
-                {% if articles|length >= limit %}
-                    {{ this.render('partials/ajaxarticles.twig', {
-                        offset          : limit,
-                        limit           : 12,
-                        name            : "section-load",
-                        non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
-                        container       : "mainAjaxArticlescardClass",
-                        buttonClass     : "infinite",
-                        ads             : "yes",
-                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
-                    }) | raw }}
-                {% endif %}
-               </div>
-        </section>
+
+
+        <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+        
+        <section class="loadmore__section {{site}}">
+
+            {% if articles|length >= limit %}
+                {{ this.render('/partials/ajaxarticles_new.twig', {
+                    name            : "section-load",
+                    label           : "",
+                    buttonClass     : "u-display-none",
+                }) | raw }}
+            {% endif %}
 
     </div>
+
+
 </main><!-- .site-main -->
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        
+        Acme.loadMore = new Acme.View.articleFeed({
+            model           : new Card(),
+            container       : 'loadmore_section',
+            infinite        : true,
+            offset          : {{limit}},
+            limit           : 12,
+            name            : 'section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40',
+            non_pinned      : {{articleCount}},
+            ads             : "yes",
+            after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
+
+        });
+
+
+    });
+</script>
