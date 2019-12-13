@@ -267,22 +267,9 @@
 
                 {{ this.render('/partials/ajaxarticles_new.twig', {
                     name            : "section-load",
-                    label           : "load",
+                    label           : "",
+                    buttonClass     : "u-display-none",
                 }) | raw }}
-                    {# buttonClass     : "u-display-none", #}
-
-
-                    {# {{ this.render('partials/ajaxarticles.twig', {
-                        offset          : limit,
-                        limit           : 12,
-                        name            : "section-load",
-                        non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
-                        container       : "mainAjaxArticles",
-                        buttonClass     : "infinite",
-                        ads             : "yes",
-                        after           : '<hr class="divide18 visible-xs-block">'
-                    }) | raw }} #}
                 {% endif %}
         </section>
 
