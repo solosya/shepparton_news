@@ -1,5 +1,5 @@
 {# {{this.registerJs("CardController();")}} #}
-{{this.registerJs("Acme.cards = CardController();")}}
+{# {{this.registerJs("Acme.cards = CardController();")}} #}
 
 {% set limit = 20 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search, 'sortBy': 'published'}) %}
@@ -10,7 +10,7 @@
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+{# {{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}} #}
 
 
 <!-- used to index each article as we loop over throughout the template -->
@@ -48,16 +48,29 @@
                     </div>
 
                     <div class="col-sm-9 col-md-6">
-                        {% if articles|length >= limit %}
-                        {{ this.render('partials/ajaxarticles.twig', {
-                            offset      : limit,
-                            limit       : 12, 
-                            label       : "Show more",
-                            card_class  : "search search-tablet search-mobile",
-                            container   : "mainAjaxArticles",
-                            loadtype    : "api/search",
-                            searchTerm  : search
-                        }) | raw }}
+
+
+                        <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+
+
+                        {% if articles|length >= 2 %}
+
+                            {{ this.render('/partials/ajaxarticles_new.twig', {
+                                name            : "section-load",
+                                label           : "hello",
+                            }) | raw }}
+
+                                {# buttonClass     : "u-display-none", #}
+
+                            {# {{ this.render('partials/ajaxarticles.twig', {
+                                offset      : limit,
+                                limit       : 12, 
+                                label       : "Show more",
+                                card_class  : "search search-tablet search-mobile",
+                                container   : "mainAjaxArticles",
+                                loadtype    : "api/search",
+                                searchTerm  : search
+                            }) | raw }} #}
                         {% endif %}
                     </div>
 
@@ -69,3 +82,23 @@
         </section><!-- .top-stories-->
     </main><!-- .site-main -->
 
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        
+        Acme.loadMore = new Acme.View.articleFeed({
+            model           : new Card(),
+            container       : 'loadmore_section',
+            infinite        : true,
+            offset          : {{limit}},
+            limit           : 12,
+            loadtype        : "api/search",
+            name            : 'section-load',
+            card_class      : 'search search-tablet search-mobile',
+            non_pinned      : {{articleCount}}
+        });
+
+
+    });
+</script>

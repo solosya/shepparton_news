@@ -1,7 +1,3 @@
-var CardController = function() {
-    return new Card();
-}
-
 var Card = function() {
     this.events();
 };
@@ -22,6 +18,15 @@ Card.prototype.renderCard = function(card, options)
         card['articleStatus'] = "draft";
         card['containerClass'] += " draft"; 
     }
+
+
+    card['premiumTag'] = ' not-premium';
+    if(typeof card.additionalInfo != 'undefined' && typeof card.additionalInfo['premium'] != 'undefined') {
+        if (card.additionalInfo['premium'] == 'Premium' || card['premiumContent'] == true){
+            card['premiumTag'] = ' premium-tag';
+        }
+    }
+
 
     card['pinTitle'] = (card.isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
     card['pinText']  = (card.isPinned == 1) ? 'Un-Pin' : 'Pin';
@@ -104,7 +109,7 @@ Card.prototype.renderCard = function(card, options)
 
         };
     }
-    console.log(card);
+
     var articleTemplate = Handlebars.compile(template);
 
     return articleTemplate(card);
