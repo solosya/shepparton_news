@@ -28,8 +28,11 @@
 
 
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network' }) %}
-
+{% set popularArticles = getCache("popularArticles") %}
+{% if (popularArticles is empty) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network' }) %} 
+    {% set cache = setCache("popularArticles", popularArticles, 500) %} 
+{% endif %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
