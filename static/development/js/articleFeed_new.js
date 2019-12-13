@@ -122,14 +122,13 @@ Acme.Feed.prototype.events = function()
 
 Acme.View.articleFeed = function(options)
 {
-    console.log(options.container);
+    console.log(options);
     this.cardModel  = options.model;
     this.limit      = options.limit      || 10;
     this.offset     = options.offset     || 0;
     this.infinite   = options.infinite   || false;
     this.failText   = options.failText   || null;
     this.container  = $('#' + options.container);
-    console.log(this.container);
 
     this.template   = options.cardTemplate;
     this.cardClass  = options.card_class;

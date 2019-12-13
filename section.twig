@@ -1,17 +1,12 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
-{# {% set networkData = _Network.getNetworkData() %} #}
-
-{% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
     {% set networkData = _Network.getNetworkData() %} 
     {% set cache = setCache("networkData", networkData, 500) %} 
 {% endif %}
 
 
-{% set site        = networkData.title | lower | split(" ")[0]%}
-
-{{this.registerJs("Acme.cards = CardController();")}}
-
+{% set site     = networkData.title | lower | split(" ")[0]%}
+{% set blogData = _Blog.getBlog() %}
 
 
 {% set limit = 18 %}
@@ -20,10 +15,6 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
-{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}}#}
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑             ↑                 ↑            ↑            #}
-{# {{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}} #}
 
 
 
@@ -272,19 +263,7 @@
             {% endif %}
 
 
-                {# {% if articles|length >= limit %}
-                    {{ this.render('partials/ajaxarticles.twig', {
-                        offset          : limit,
-                        limit           : 12,
-                        name            : "section-load",
-                        non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
-                        container       : "mainAjaxArticlescardClass",
-                        buttonClass     : "infinite",
-                        ads             : "yes",
-                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
-                    }) | raw }}
-                {% endif %} #}
+
         </section>
 
     </div>
