@@ -10,7 +10,14 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %}
+
+
+{% set popularArticles = getCache("popularArticlesBlog") %}
+{% if (popularArticles is empty) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %} 
+    {% set cache = setCache("popularArticlesBlog", popularArticles, 500) %} 
+{% endif %}
+
 {# TODO: add interval: 48 back to popularArticles call when in production #}
 
 {% set override = '' %}
@@ -26,13 +33,12 @@
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? true : false %}
 
 
-{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}} #}
+{{this.registerJs("Acme.cards = CardController();")}}
 
                                                      {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
                                                      {#            ↑             ↑                 ↑            ↑            #}
 {# {{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}} #}
 
-{# {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %} #}
 
 
 <main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
@@ -42,29 +48,10 @@
         <section>
             <div class="row header">
                 <div class="col-sm-9" style="height:55px;">
-                   {#  <div class="bloggerImg u-float-left {{site}}">
-                        <div class="logo {{ override }}">
-                            <img src="{{ blogImage }}" style="max-width: 150%;">
-                        </div>                        
-                    </div> #}
 
                     <div class="bloghead-content u-float-left">
                         <h2>{{this.title}}</h2>
                         <p class="blogowner {{site}}">by {{blogInfo.settings.contact.name}}</p>
-
-                        {# <div class="blog-social-icons u-float-right">
-                            {% if blogInfo.settings['social']['facebook'] %}
-                                <a  href="{{ blogInfo.settings['social']['facebook'] }}" 
-                                    class="blog-social-icons__icon blog-social-icons__icon--facebook">  
-                                </a>
-                            {% endif %}
-
-                            {% if blogInfo.settings['social']['twitter'] %}
-                                <a  href="{{ blogInfo.settings['social']['twitter'] }}" 
-                                    class="blog-social-icons__icon blog-social-icons__icon--twitter">
-                                </a>
-                            {% endif %}
-                        </div> #}
 
                     </div>
 
@@ -82,20 +69,6 @@
                         {% endif %}
                     </div>{# <-- bloghead end --> #}
 
-{#                     <div class="blog-social-icons u-clear-both hidden-sm hidden-md hidden-lg">
-                        {% if blogInfo.settings['social']['facebook'] %}
-                            <a  href="{{ blogInfo.settings['social']['facebook'] }}" 
-                                class="blog-social-icons__icon blog-social-icons__icon--facebook">  
-                            </a>
-                        {% endif %}
-
-                        {% if blogInfo.settings['social']['twitter'] %}
-                            <a  href="{{ blogInfo.settings['social']['twitter'] }}" 
-                                class="blog-social-icons__icon blog-social-icons__icon--twitter">
-                            </a>
-                        {% endif %}
-
-                    </div> #}
 
                 </div>
             </div>
@@ -190,22 +163,6 @@
                         </div>
                     </div>
 
-
-                    {# <div class="row two-cols">
-                       <div class="most-popular col-sm-1 col-md-2" style="margin:0;">
-                           <h2>Most popular</h2>
-                           <hr class="divide10">
-                           {% for i in 0..4 if popularArticles[i] %}
-                               {{this.render('partials/_single-article.twig', {
-                                   article: popularArticles[i], 
-                                   imageSuppress: true, 
-                                   containerClass: 'card-popular blog'
-                               }) | raw}}
-                               <hr class="divide10">
-                           {% endfor %}
-
-                        </div>
-                    </div>  #}
 
                 </div>
             </div>
