@@ -21586,7 +21586,7 @@ Acme.templates.systemCardTemplate =
             <p class="{{cardType}}excerpt j-truncate">{{{ params.content }}}</p>\
             <div class="{{cardType}}author j-truncate">\
                 <img src="{{profileImg}}" class="img-circle">\
-                <p class="{{cardType}}">{{ params.author }}</p>\
+                <p class="{{cardType}} {{site}}">{{ params.author }}</p>\
                 <time class="{{cardType}}" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
             </div>\
         </div>'+ 
@@ -22355,7 +22355,7 @@ Acme.Feed.prototype.fetch = function()
 Acme.Feed.prototype.events = function() 
 {
     var self = this;
-    console.log(self.elem);
+
     if (self.elem.length > 0) {
         self.elem.unbind().on('click', function(e) {
             e.preventDefault();
@@ -22372,7 +22372,7 @@ Acme.Feed.prototype.events = function()
         self.elem.show();
     });
 
-    console.log(this.offset, this.limit);
+
     if (this.infinite && this.offset >= this.limit && self.elem.length > 0) {
         self.waypoint = new Waypoint({
             element: self.elem,
@@ -22401,7 +22401,6 @@ Acme.View.articleFeed = function(options)
     this.infinite   = options.infinite   || false;
     this.failText   = options.failText   || null;
     this.container  = $('#' + options.container);
-
     this.template   = options.cardTemplate;
     this.cardClass  = options.card_class;
     this.renderType = options.renderType || 'append';
@@ -22414,6 +22413,7 @@ Acme.View.articleFeed = function(options)
     this.lightbox   = options.lightbox   || null;
     this.imgWidth   = options.imageWidth || null;
     this.imgHeight  = options.imageHeight|| null;
+    this.ads        = options.ads        || false;
     // when clicking less, reset the original offset count
     this.originalCount = options.non_pinned;
     this.options    = {
@@ -22441,7 +22441,6 @@ Acme.View.articleFeed.prototype = new Acme.Feed();
 Acme.View.articleFeed.constructor = Acme.View.articleFeed;
 Acme.View.articleFeed.prototype.render = function(data) 
 {
-    console.log(data);
     var self = this;
     var articles = [];
     if (data.articles) {
@@ -22507,8 +22506,7 @@ Acme.View.articleFeed.prototype.render = function(data)
             html = html.concat([afterStr]);
         }
     }
-    console.log(self.container);
-    console.log(html);
+
     (self.renderType === "write")
         ? self.container.empty().append( html.join('') )
         : self.container.append( html.join('') );
@@ -22527,7 +22525,7 @@ Acme.View.articleFeed.prototype.render = function(data)
             : self.waypoint.enable();
     }
 
-    // $(".card .content > p, .card h2, .card .content .author > p").dotdotdot();     
+
     // $('.video-player').videoPlayer();
     $(".lazyload").lazyload({
         effect: "fadeIn"
@@ -22537,6 +22535,12 @@ Acme.View.articleFeed.prototype.render = function(data)
     });
 
     this.cardModel.events();
+
+    if (ads_on == "yes") {
+        self.InsertAds();
+    }
+ 
+
 };
 
 
