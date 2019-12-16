@@ -152,7 +152,7 @@ Acme.templates.systemCardTemplate =
             <p class="{{cardType}}excerpt j-truncate">{{{ params.content }}}</p>\
             <div class="{{cardType}}author j-truncate">\
                 <img src="{{profileImg}}" class="img-circle">\
-                <p class="{{cardType}}">{{ params.author }}</p>\
+                <p class="{{cardType}} {{site}}">{{ params.author }}</p>\
                 <time class="{{cardType}}" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
             </div>\
         </div>'+ 
