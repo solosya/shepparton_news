@@ -21513,7 +21513,7 @@ var cardTemplateTop =
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="{{cardType}}c-cards-view ">';
+        <article class="{{cardType}}c-cards-view  {{lightbox}}">';
 
 
 var cardTemplateBottom = 
@@ -21555,8 +21555,6 @@ Acme.templates.classifiedCardTemplate =
             <div class="video-icon"></div> \
         </figure>\
     {{/if}} \
-    \
-    <div class="social-icon"></div>\
     \
     <div class="{{cardType}}c-cards-view__container">\
         <div class="{{cardType}}c-cards-view__category">{{ params.category }}</div>\
@@ -22453,7 +22451,7 @@ Acme.View.articleFeed.prototype.render = function(data)
         articles = data.users.users;
     }
 
-
+    console.log(self.cardClass);
     var label = "";
     if (typeof self.button_label != "undefined" || self.button_label != false ) {
         label = self.button_label;
@@ -22883,8 +22881,9 @@ var Card = function() {
 
 Card.prototype.renderCard = function(card, options)
 {
-    console.log('rendering card');
     options = options || {};
+
+
     var template = (options.template) ? Acme.templates[options.template] : Acme.templates.systemCardTemplate;
     card['containerClass'] = options.cardClass || "";
     card['cardType'] = options.type || "";
@@ -23060,7 +23059,7 @@ Card.prototype.bindSocialUpdatePost = function ()
     });
 };
 
-Card.prototype.bindSocialPostPopup = function()
+// Card.prototype.bindSocialPostPopup = function()
 {
     var isRequestSent = false;
     $(document).on('click', 'article.lightbox', function (e) {
@@ -23272,6 +23271,8 @@ Card.prototype.events_refresh = function()
 
 Card.prototype.events = function() 
 {
+    this.bindLightbox();
+
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
         this.initDroppable();
         this.initDraggable();        
@@ -23279,7 +23280,7 @@ Card.prototype.events = function()
         this.bindDeleteHideArticle();
         this.bindSocialUpdatePost();
     }
-    this.bindSocialPostPopup();
+    // this.bindSocialPostPopup();
 };
 
 (function ($) {
@@ -23322,7 +23323,6 @@ ListingForm.constructor = ListingForm;
             return this.deleteImage(data);
         },
         "after" : function(data, topic) {
-            console.log(this.data);
         }
     };
     ListingForm.prototype.render = function() 

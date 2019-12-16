@@ -79,7 +79,7 @@ var cardTemplateTop =
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="{{cardType}}c-cards-view ">';
+        <article class="{{cardType}}c-cards-view  {{lightbox}}">';
 
 
 var cardTemplateBottom = 
@@ -121,8 +121,6 @@ Acme.templates.classifiedCardTemplate =
             <div class="video-icon"></div> \
         </figure>\
     {{/if}} \
-    \
-    <div class="social-icon"></div>\
     \
     <div class="{{cardType}}c-cards-view__container">\
         <div class="{{cardType}}c-cards-view__category">{{ params.category }}</div>\

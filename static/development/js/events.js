@@ -38,7 +38,6 @@ ListingForm.constructor = ListingForm;
             return this.deleteImage(data);
         },
         "after" : function(data, topic) {
-            console.log(this.data);
         }
     };
     ListingForm.prototype.render = function() 

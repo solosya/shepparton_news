@@ -39,7 +39,7 @@
 {% if section.template != '' %}
     {% set params = {
         articles        : feedArr,
-        link            : blogLink,
+        link            : section.link is defined ? section.link : blogLink,
         title           : section.title is defined ? section.title : '',
         dev             : dev,
         site            : site,

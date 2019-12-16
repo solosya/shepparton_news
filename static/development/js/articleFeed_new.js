@@ -181,7 +181,7 @@ Acme.View.articleFeed.prototype.render = function(data)
         articles = data.users.users;
     }
 
-
+    console.log(self.cardClass);
     var label = "";
     if (typeof self.button_label != "undefined" || self.button_label != false ) {
         label = self.button_label;

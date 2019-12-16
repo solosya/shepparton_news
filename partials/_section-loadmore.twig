@@ -4,7 +4,7 @@
 {% endif %}
 
 {# please make sure sectionNumber, loadMoreClass and totalCards are set at the top of this file #}
-<div class="row" id="loadmore_section_{{sectionNumber}}"></div>
+<div class="acme-row" id="loadmore_section_{{sectionNumber}}"></div>
 
 {# {% if articles|length >= cardCount %} #}
 <div class="">
@@ -34,7 +34,7 @@
         Card.prototype.bindLightbox = function() {
 
             $('article.{{contentType}}').unbind().on('click', function (e) {
-                
+
                 e.preventDefault();
                 var csrfToken = $('meta[name="csrf-token"]').attr("content");
                 
@@ -102,10 +102,8 @@
                 }
             });
         }
+
         var cardController = new Card();
-
-
-
 
         var params = {
             model           : cardController,
@@ -116,6 +114,7 @@
             name            : 'section-load-{{sectionNumber}}',
             blogid          : "{{ blogId }}",
             card_class      : "{{cardClass}}",
+            cardTemplate    : "classifiedCardTemplate",
             before          : "{{before}}",
             after           : "{{after}}",
             non_pinned      : {{cardCount}},

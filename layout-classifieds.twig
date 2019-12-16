@@ -332,9 +332,9 @@
 
         // override the lightbox handler from the one set in card.js
         Card.prototype.bindLightbox = function() {
-            console.log('adding article lightbox', "{{contentType}}");
+
             $('article.{{contentType}}').unbind().on('click', function (e) {
-                console.log('clicked');
+
                 e.preventDefault();
                 var csrfToken = $('meta[name="csrf-token"]').attr("content");
                 
@@ -411,7 +411,6 @@
         }
         
         var cardController = new Card();
-        cardController.bindLightbox();
 
 
 
@@ -595,6 +594,8 @@
                 label           : "",
                 limit           : {{limit}},
                 offset          : {{limit}},
+                cardTemplate    : "classifiedCardTemplate",
+
                 blogid          : "{{blogFeeds[blogTitle]['guid']}}",
                 cardType        : "acme-",
                 lightbox        : "{{contentType}}",
