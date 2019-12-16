@@ -3,6 +3,7 @@
  */
 
 window.templates = {};
+Acme.templates = {};
 
 Handlebars.registerHelper('fixPrice', function(text) {
     if (!text) return "";
@@ -68,7 +69,7 @@ var screenArticles_1 =
 
 
 var cardTemplateTop = 
-'<div class="{{cardClass}} "> \
+'<div class="{{cardClass}} {{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
         class="card swap {{articleStatus}} {{hasArticleMediaClass}}" \
@@ -78,7 +79,7 @@ var cardTemplateTop =
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="">';
+        <article class="{{cardType}}c-cards-view ">';
 
 
 var cardTemplateBottom = 
@@ -112,28 +113,48 @@ var cardTemplateBottom =
 </div>';
 
 
+Acme.templates.classifiedCardTemplate = 
+    cardTemplateTop + 
+    '{{#if params.hasMedia}}\
+        <figure class="{{cardType}}c-cards-view__media" {{params.videoClass}}>\
+            <img class="img-fluid lazyload" data-original="{{params.image}}" src="{{params.image}}" style="background-image:url("{{placeholder}}"")>\
+            <div class="video-icon"></div> \
+        </figure>\
+    {{/if}} \
+    \
+    <div class="social-icon"></div>\
+    \
+    <div class="{{cardType}}c-cards-view__container">\
+        <div class="{{cardType}}c-cards-view__category">{{ params.category }}</div>\
+        <h2 class="{{cardType}}c-cards-view__heading j-truncate">{{{ params.title }}}</h2>\
+        <p class="{{cardType}}c-cards-view__description j-truncate">{{{ params.content }}}</p>\
+        <div class="{{cardType}}c-cards-view__author">\
+            <time class="{{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
+        </div>\
+    </div>'+ 
+cardTemplateBottom;
 
 
 
 
 
-Acme.systemCardTemplate = 
+Acme.templates.systemCardTemplate = 
     cardTemplateTop + 
         '{{#if hasMedia}}\
             <figure>\
-                <img class="img-responsive lazyload" data-original="{{imageUrl}}" src="{{imageUrl}}" style="background-image:url("{{placeholder}}"")>\
+                <img class="img-responsive lazyload" data-original="{{params.image}}" src="{{params.image}}" style="background-image:url("{{placeholder}}"")>\
             </figure>\
         {{/if}} \
         \
         <div class="content">\
-                <div class="category {{site}}{{premiumTag}}">{{ labelFix label }}</div>\
-                <h2 class="j-truncate">{{{ title }}}</h2>\
-                <p class="j-truncate excerpt">{{{ excerpt }}}</p>\
-                <div class="j-truncate author">\
-                    <img src="{{profileImg}}" class="img-circle">\
-                    <p>{{ createdBy.displayName }}</p>\
-                    <time datetime="{{publishDate}}">{{publishDate}}</time>\
-                </div>\
+            <div class="{{cardType}}category {{site}} {{premiumTag}}">{{ labelFix params.category }}</div>\
+            <h2 class="j-truncate">{{{ params.title }}}</h2>\
+            <p class="{{cardType}}excerpt j-truncate">{{{ params.content }}}</p>\
+            <div class="{{cardType}}author j-truncate">\
+                <img src="{{profileImg}}" class="img-circle">\
+                <p class="{{cardType}} {{site}}">{{ params.author }}</p>\
+                <time class="{{cardType}}" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
+            </div>\
         </div>'+ 
     cardTemplateBottom;
 
@@ -196,18 +217,34 @@ window.templates.ads_infinite =
 
 
 
-window.templates.modal = 
-'<div id="signin" class="flex_col"> \
-    <div id="dialog"> \
-        <div> \
-            <div class="head"> \
-                <h2>{{title}}</h2> \
-                <a class="close" href="#"></a> \
+Acme.templates.modal = 
+    // style="scrolling == unusable position:fixed element might be fixing login for ios safari
+    // also margin-top:10px
+    '<div id="{{name}}" class="flex_col {{name}}" data-behaviour="close"> \
+        <div id="dialog" class="{{name}}__window"> \
+            <div class="{{name}}__container" style="scrolling == unusable position:fixed element"> \
+                <div class="{{name}}__header"> \
+                    <h2 class="{{name}}__title">{{title}}</h2> \
+                    <a class="{{name}}__close" href="javascript:;" data-behaviour="close"></a> \
+                </div> \
+                <div class="{{name}}__content-window" id="dialogContent" style="scrolling == unusable position:fixed element"></div> \
             </div> \
-            <div id="dialogContent"></div> \
         </div> \
-    </div> \
-</div>';
+    </div>';
+    
+
+// window.templates.modal = 
+// '<div id="signin" class="flex_col"> \
+//     <div id="dialog"> \
+//         <div> \
+//             <div class="head"> \
+//                 <h2>{{title}}</h2> \
+//                 <a class="close" href="#"></a> \
+//             </div> \
+//             <div id="dialogContent"></div> \
+//         </div> \
+//     </div> \
+// </div>';
 
 window.templates.carousel_item = 
 '<div class="carousel-tray__item" style="background-image:url( {{imagePath}} )"> \

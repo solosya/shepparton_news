@@ -3,8 +3,6 @@
     $.image = function (options) {
         var defaults = {
             media : {},
-            height: 500,
-            width: 500,
             mediaOptions: {}
         };
 
@@ -22,11 +20,32 @@
             return;
         }
         
-        var imageOptions = $.extend({},{height: opts.height, width: opts.width}, opts.mediaOptions);
+        var size = {};
+        if (opts.width !== 0) {
+            size.width = opts.width;
+        }
+        if (opts.height !== 0) {
+            size.height = opts.height;
+        } 
+
+        if (opts.mediaOptions.width === 0) {
+            delete opts.mediaOptions.width;
+        }
+
+        if (opts.mediaOptions.height === 0) {
+            delete opts.mediaOptions.height;
+        }
+        if (opts.gravity) {
+            size.gavity = opts.gravity;
+        } 
+
+
+        var imageOptions = $.extend({}, size, opts.mediaOptions);
         var url = $.cloudinary.url(imageId, imageOptions);
-        
+
         return url;
     };
+    
     
     $.video = function (options) {
         var defaults = {

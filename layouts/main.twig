@@ -107,7 +107,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=9d79dbf5" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=560458cc" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -299,12 +299,16 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
 
-    {{this.registerJs("
-        if (typeof window.Acme === 'undefined') {window.Acme = {};}
-        Acme.templatePath = '" ~ networkData.templatePath ~ "';
-        window._appJsConfig['site'] = '" ~ site ~ "';
-        Acme.cards = CardController();"
-    )}}
+    <script>
+        // main script is defered so event listener makes sure
+        // defered script is loaded before this runs
+        document.addEventListener("DOMContentLoaded", function(event) {
+            if (typeof window.Acme === 'undefined') {window.Acme = {};}
+            Acme.templatePath = '{{networkData.templatePath}}';
+            window._appJsConfig['site'] = '{{site}}';
+            new Card();
+        });
+    </script>
 
 
     {% if paymeter == true and paymeterType == 'syncronex' %}
@@ -355,7 +359,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
-            Acme.adInsert = new Acme.View.articleFeed();
+            Acme.adInsert = new Acme.View.articleFeed({model: new Card()});
             Acme.adInsert.InsertAds();
         });
     </script>

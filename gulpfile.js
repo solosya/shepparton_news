@@ -80,8 +80,6 @@ gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache', functio
 
 gulp.task('scripts', function(){
 	return gulp.src([
-		// './bower_components/jquery/dist/jquery.js',
-		// './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 		
         // './static/development/js/plugins/slick.js',
         './static/development/js/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js',

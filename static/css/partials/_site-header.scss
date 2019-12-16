@@ -69,7 +69,7 @@
     position:relative;
     padding:0;
     max-width:none;
-    z-index: 7999;
+    z-index: 1000;
     @media screen and (max-width: $sm-break-down) {
         padding-bottom: 60px;
     }

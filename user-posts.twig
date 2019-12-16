@@ -3,24 +3,10 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
-{% set limit = 20 %}
-
-{% set firstCount = userArticles | length %}
-
-{{this.registerJs("Acme.cards = CardController();")}}
-
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
+{% set limit = 18 %}
 
 
-
-
-
-
-
-{% set profileImage =_Media.getMediaUrl(user.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
-{{this.registerJs("$('.loginModal').loginModal({});")}}
+{% set profileImage =_Media.getMediaUrl(user.media, 220, 190, {crop: 'thumb', gravity: 'face', type:'user'} )%}
 
 <main class="site-main">
 
@@ -31,16 +17,14 @@
             <div class="col-profile-left col-sm-4 col-xs-12">
                 <!-- Begin User Profile Sidebar -->
                 <div class="profile-sidebar">
-                    <div class="userprofile-sidebar-inner">
-                        <img src="{{profileImage}}" class="img-responsive">
-                        <div class="inner-descr">
-                            <h2 class="user-name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h2>
-                            
+                    <img src="{{profileImage}}" class="profile-sidebar__img img-responsive">
+                    <div class="profile-sidebar__bio-container">
+                        <h2 class="profile-sidebar__name">{{Html.encode(user.firstname)}} {{Html.encode(user.lastname)}}</h2>
+                        
 
-                            <p class="bio">{{Html.decode(user.bio) | raw}}</p>
-                            <div class="user-social">
-                                <a href="mailto:{{user.email}}" class="share-icon email-icon" style="padding-left: 12px;"></a>
-                            </div>
+                        <p class="profile-sidebar__bio">{{Html.decode(user.bio) | raw}}</p>
+                        <div class="profile-sidebar__social">
+                            <a href="mailto:{{user.email}}" class="share-icon email-icon" style="padding-left: 12px;"></a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +34,7 @@
 
             <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
                 <div class="row">
-                    <div class="col-sm-9 section-header">
+                    <div id="loadmore_section" class="col-sm-9 section-header">
 
                         {% for i in 0..17 if userArticles[i] %}
 
@@ -65,17 +49,7 @@
                             </div>
                         {% endfor %}
 
-{#                         {% for i in 0..19 %}
-                            {% if userArticles[i] %}                                                                
-                                {{this.render('partials/_single-article.twig', {
-                                    article: userArticles[articleCount], 
-                                    position: (articleCount+1), 
-                                    containerClass: 'col-sm-6 col-md-3 card-vr s360x215 userpost'
-                                }) | raw}}
-                                {% set articleCount = articleCount + 1 %}
-                            {% endif %}
-                        {% endfor %}
- #}                    </div>
+                    </div>
                 </div>
 
 
@@ -83,18 +57,14 @@
                     <div class="row">
                         <div class="col-md-9">
                             {% if userArticles|length >= limit %}
-                                {{ this.render('partials/ajaxarticles.twig', {
-                                    offset          : limit,
-                                    limit           : 12,
+
+                                {{ this.render('partials/ajaxarticles_new.twig', {
                                     name            : "user-load",
-                                    loadtype        : 'user',
-                                    card_class      : "card-sm feature-side-tablet card-sm-wide-mobile",
-                                    container       : "mainAjaxArticlescardClass",
-                                    buttonClass     : "infinite",
-                                    before          : '<div class="col-md-3 col-sm-9">',
-                                    after           : '<hr class="divide18 visible-md-block visible-lg-block space-only"></div>'
+                                    label           : "",
+                                    buttonClass     : "u-display-none",
                                 }) | raw }}
-                            {% endif %}
+
+                            {% endif %} 
                       </div>
                     </div>
                 </section>
@@ -103,3 +73,26 @@
     </section>
     <!-- //End Container -->
 </main>
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs'
+    //var blogLoadmore = true;
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        Acme.loadMore = new Acme.View.articleFeed({
+            model           : new Card(),
+            infinite        : true,
+            container       : 'loadmore_section',
+            offset          : {{limit}},
+            limit           : 12,
+            beforeEach      : '<div class="col-md-3 col-sm-9">',
+            afterEach       : '<hr class="divide18 visible-md-block visible-lg-block space-only"></div>',
+            loadtype        : 'user_articles',
+            name            : 'user-load',
+            card_class      : 'card-sm feature-side-tablet card-sm-wide-mobile'
+        });
+
+    });
+</script>

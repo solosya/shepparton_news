@@ -1,0 +1,30 @@
+.profile-sidebar {
+    &__container {
+
+    }
+    &__img {
+        width: 220px;
+        height:187px;
+    }
+    &__bio-container {
+        padding-top: 23px;
+    }
+    &__name {
+        color:black;
+        font-weight: $weightBold;
+        @include font-size(20);
+        margin-bottom: 12px;
+    }
+    &__bio {
+        font-family: $font-family-serif;
+        font-weight: $weightRegular;
+        @include font-size(14);
+        font-style: italic;
+        color: color(darkgrey);
+        line-height: 1.43;
+    }
+    &__social {
+
+    }
+
+}

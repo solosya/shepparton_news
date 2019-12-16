@@ -171,8 +171,8 @@
                 cache: false,
                 crossDomain: true,
                 dataType: 'jsonp',
-                success: function(response){
-                    console.log("new user registration completed");
+                success: function(response) {
+                    location.reload();
                 },
                 error: function(xhr, status, error) {
                     var err = eval("(" + xhr.responseText + ")");

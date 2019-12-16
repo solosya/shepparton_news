@@ -1,18 +1,12 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
-{# {% set networkData = _Network.getNetworkData() %} #}
-
-{% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
     {% set networkData = _Network.getNetworkData() %} 
     {% set cache = setCache("networkData", networkData, 500) %} 
 {% endif %}
 
 
-{% set site        = networkData.title | lower | split(" ")[0]%}
-
-{{this.registerJs("Acme.cards = CardController();")}}
-{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}} #}
-
+{% set site     = networkData.title | lower | split(" ")[0]%}
+{% set blogData = _Blog.getBlog() %}
 
 
 {% set limit = 18 %}
@@ -21,15 +15,14 @@
 {% set articles = articlesArr.articles %}
 {% set firstCount = articles | length %}
 
-{# {{this.registerJs("Acme.ads = Acme.InsertAds();")}}#}
-                                                     {# renders the card    fetch-limit      fetch-offset    infinite scroll #}
-                                                     {#            ↑             ↑                 ↑            ↑            #}
-{{this.registerJs("Acme.searchFeed = new Acme.View.articleFeed(Acme.cards, " ~ limit ~ ", " ~ firstCount ~ ", true);")}}
 
 
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network' }) %}
-
+{% set popularArticles = getCache("popularArticles") %}
+{% if (popularArticles is empty) %}
+{% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network' }) %} 
+    {% set cache = setCache("popularArticles", popularArticles, 500) %} 
+{% endif %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
@@ -256,23 +249,45 @@
                 </div>
             </div>
         </section>
+
+        <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+        
         <section class="loadmore__section {{site}}">
-            <div class="row">
-                {% if articles|length >= limit %}
-                    {{ this.render('partials/ajaxarticles.twig', {
-                        offset          : limit,
-                        limit           : 12,
-                        name            : "section-load",
-                        non_pinned      : articlesArr.existingNonPinnedCount, 
-                        card_class      : "col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40",
-                        container       : "mainAjaxArticlescardClass",
-                        buttonClass     : "infinite",
-                        ads             : "yes",
-                        after           : '<hr class="divide18 col-xs-9 visible-xs-block">'
-                    }) | raw }}
-                {% endif %}
-               </div>
+
+            {% if articles|length >= limit %}
+                {{ this.render('/partials/ajaxarticles_new.twig', {
+                    name            : "section-load",
+                    label           : "",
+                    buttonClass     : "u-display-none",
+                }) | raw }}
+            {% endif %}
+
+
+
         </section>
 
     </div>
 </main><!-- .site-main -->
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        
+        Acme.loadMore = new Acme.View.articleFeed({
+            model           : new Card(),
+            container       : 'loadmore_section',
+            infinite        : true,
+            offset          : {{limit}},
+            limit           : 12,
+            name            : 'section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40',
+            ads             : true,
+            non_pinned      : {{articleCount}}
+        });
+
+
+    });
+</script>
