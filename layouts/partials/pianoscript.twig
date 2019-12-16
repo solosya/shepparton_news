@@ -171,8 +171,14 @@
                 cache: false,
                 crossDomain: true,
                 dataType: 'jsonp',
+                success: function(response) {
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    console.log(err.Message);
+                }
             });
-            location.reload();
         }
     }]);
 
