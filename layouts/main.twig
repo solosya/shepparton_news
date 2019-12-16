@@ -304,8 +304,8 @@ for Oovvuu to use to replicate the menu on the video site. #}
         // defered script is loaded before this runs
         document.addEventListener("DOMContentLoaded", function(event) {
             if (typeof window.Acme === 'undefined') {window.Acme = {};}
-            Acme.templatePath = '" ~ networkData.templatePath ~ "';
-            window._appJsConfig['site'] = '" ~ site ~ "';
+            Acme.templatePath = '{{networkData.templatePath}}';
+            window._appJsConfig['site'] = '{{site}}';
             new Card();
         });
     </script>
