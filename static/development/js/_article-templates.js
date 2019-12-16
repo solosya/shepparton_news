@@ -147,7 +147,7 @@ Acme.templates.systemCardTemplate =
         {{/if}} \
         \
         <div class="content">\
-            <div class="{{cardType}}category {{site}}{{premiumTag}}">{{ labelFix params.category }}</div>\
+            <div class="{{cardType}}category {{site}} {{premiumTag}}">{{ labelFix params.category }}</div>\
             <h2 class="j-truncate">{{{ params.title }}}</h2>\
             <p class="{{cardType}}excerpt j-truncate">{{{ params.content }}}</p>\
             <div class="{{cardType}}author j-truncate">\
