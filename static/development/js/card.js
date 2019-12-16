@@ -11,6 +11,7 @@ Card.prototype.renderCard = function(card, options)
     card['containerClass'] = options.cardClass || "";
     card['cardType'] = options.type || "";
     card['lightbox'] = options.lightbox || "";
+    card['site'] = _appJsConfig.site;
 
 
 
