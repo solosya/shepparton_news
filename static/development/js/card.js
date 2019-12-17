@@ -383,6 +383,11 @@ Card.prototype.initDroppable = function()
     }); 
 };
 
+Card.prototype.bindLightbox = function() {
+    // override this where needed.
+    return true;
+}
+
 Card.prototype.events_refresh = function() 
 {
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
