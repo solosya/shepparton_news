@@ -12,6 +12,7 @@
 {% set site       = networkData.title | lower | split(" ")[0]%}
 {% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}
 {% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}
+{% set breakingButton  = config['breakingButton'] is defined and config['breakingButton']['active'] == true ? true : false %}
 <header id="masthead" class="site-header container-fluid">
     <div id="mainHeader" class="site-header-main header__navigation showOnScroll">
         
@@ -111,6 +112,11 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
             <div class="container">
+                {% if breakingButton == true %}
+                    <a href="{{networkData.defaultBlogUrl}}{{config['breakingButton']['link']}}">
+                        <div class="c-breakingbutton ">{{config['breakingButton']['label']}}</div>
+                    </a> 
+                {% endif %}
                 {% if paymeter == true %}
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
