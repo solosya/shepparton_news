@@ -32,11 +32,11 @@
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
 and 3rd video at the end if there's been at least 5 paragraphs since the last video #}
 {% if site != 'country' and site != 'dairy' %}
-    {% set videoDivs = [
+    {# {% set videoDivs = [
         "<div id='head-video'></div></p>", 
         "<div id='fourth-par-video'></div></p>", 
         "<div id='foot-video'></div></p>"
-    ] %}
+    ] %} #}
 
     {% set pianoDivsStart = [
         "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->"
@@ -54,21 +54,21 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             {% endif %}
         {% endif %}
 
-        {% if i == 5 %}
+        {# {% if i == 5 %}
             {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
         {% endif %}
 
         {% if i == 9 %}
             {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[1]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-        {% endif %}
+        {% endif %} #}
 
     {% endfor %}
-    {% if lastVideo %}
+    {# {% if lastVideo %}
         {% set ArticleContent = ArticleContent | merge([videoDivs[2]]) %}
-    {% endif %}
+    {% endif %} #}
 
     {% set ArticleContent = ArticleContent | join('<p>') %}
-    {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}}
+    {# {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}} #}
 
 {% elseif site == 'country' %}
     {% set pianoDivsStart = [
