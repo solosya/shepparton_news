@@ -1,5 +1,8 @@
 {
     "compressHtml" : false,
+    "feed" : {
+        "rss_article_syndication" : true
+    },
     "module" : {
         "debug" : {
            "enabled" : true
