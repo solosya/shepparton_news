@@ -41,9 +41,11 @@
         {% if incites is defined %}
             gaData['incites'] = "{{incites}}"
         {% endif %}
+        {% if categories is defined %}
+            gaData['categories'] = "{{categories}}"
+        {% endif %}
 
     {% endif %}
-
 
 
     tp.push(["init", function() {

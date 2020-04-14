@@ -57,6 +57,11 @@
                     "type": "inputbox"
                 },
                 {
+                    "name": "categories",
+                    "label": "Categories",
+                    "type": "inputbox"
+                },
+                {
                     "label": "",
                     "type": "radio",
                     "name": "premium",
