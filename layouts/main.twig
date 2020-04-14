@@ -179,11 +179,12 @@ for Oovvuu to use to replicate the menu on the video site. #}
                         'dimension5': "syndication" in data ? data['syndication'] : null,
                         'dimension7': "categories" in data ? data['categories'] : null,
                     };
+                    
+                    console.log("GA", dimensions);
 
                     if ("userId" in data) {
                         ga('set', 'userId', data.userId);
                     }
-                    console.log("GA", dimensions);
                     ga('send', 'pageview', dimensions);
 
                 }
