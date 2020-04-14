@@ -21,6 +21,20 @@
 {% endif %}
 
 
+{% set syndication = 'Local Content' %}
+{% if article.aap_id != null %}
+    {% set syndication = 'National Syndicated' %}
+{% else %}
+
+    {% set distribution = _Article.getDistributionBlogs(article.id) %}
+    {% set break = false %}
+    {% for blog in distribution if not break %}
+        {% if blog.network_id != networkData.id %}
+            {% set syndication = 'Regional Syndicated' %}
+            {% set break = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
 
 
 {% set site = networkData.title | lower | split(" ")[0] %}
@@ -540,8 +554,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         sendPageView({
             "author": "{{ article.createdBy['displayName'] }}",
             "articleStatus" : "{{premium}}",
-            "incites" : "{{incites}}"
-            "categories" : "{{atexCategories}}"
+            "incites" : "{{incites}}",
+            "categories" : "{{atexCategories}}",
         });
     </script>
 {% endif %}
