@@ -183,7 +183,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
                     if ("userId" in data) {
                         ga('set', 'userId', data.userId);
                     }
-
+                    console.log("GA", dimensions);
                     ga('send', 'pageview', dimensions);
 
                 }
