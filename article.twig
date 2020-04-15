@@ -20,13 +20,15 @@
     {% set cache = setCache("networkData", networkData, 500) %} 
 {% endif %}
 
-
+{# {% set log = _AppHelper.log(article) %} #}
 {% set syndication = 'Local Content' %}
 {% if article.aap_id != null %}
     {% set syndication = 'National Syndicated' %}
-{% else %}
+{% elseif article.networkId != networkData.id %}
+    {% set syndication = 'Regional Syndicated' %}
+{% endif %}
 
-    {% set distribution = _Article.getDistributionBlogs(article.id) %}
+    {# {% set distribution = _Article.getDistributionBlogs(article.id) %}
     {% set break = false %}
     {% for blog in distribution if not break %}
         {% if blog.network_id != networkData.id %}
@@ -34,7 +36,7 @@
             {% set break = true %}
         {% endif %}
     {% endfor %}
-{% endif %}
+{% endif %} #}
 
 
 {% set site = networkData.title | lower | split(" ")[0] %}
