@@ -22,7 +22,7 @@
 
 {# {% set log = _AppHelper.log(article) %} #}
 {% set syndication = 'Local Content' %}
-{% if article.aap_id != null %}
+{% if article.feed_id != null and article.feed_id starts with 'S-' %}
     {% set syndication = 'National Syndicated' %}
 {% elseif article.networkId != networkData.id %}
     {% set syndication = 'Regional Syndicated' %}
