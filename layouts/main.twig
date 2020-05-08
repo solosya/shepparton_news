@@ -226,7 +226,9 @@ for Oovvuu to use to replicate the menu on the video site. #}
     </script>
 
     <script src="https://turbo.spotpass.io/js/piano.js" defer></script>
-    
+    <script>
+        tp.push(["setCustomVariable", "spotpassState", Spotpass.getSpotpassState("DCnDREV5Q8c23MOvebS2Igjc73vB6Zs3wF1GMZfaGAk=")]);
+    </script>
     {{ this.render('partials/ads.twig', {
         networkData: networkData,
         blogData: blogData
