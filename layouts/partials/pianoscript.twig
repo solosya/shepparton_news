@@ -23,7 +23,8 @@
     tp.push(['setUsePianoIdUserProvider', true]);
  
     tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
- 
+    tp.push(["setCustomVariable", "spotpassState", Spotpass.getSpotpassState("DCnDREV5Q8c23MOvebS2Igjc73vB6Zs3wF1GMZfaGAk=")]);
+
 
     {% if pageLayout == 'article' %}
         tp.push(["setContentCreated", "{{pianoTime}}"]);
