@@ -282,14 +282,15 @@ Acme.View.articleFeed.prototype.render = function(data)
 
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var screenWidth = $(window).width();
+    var pageAdSlots = [];
     if (screenWidth >= 300 && screenWidth <= 767) {
-        var pageAdSlots = $('.advert-mobile');
+        pageAdSlots = $('.advert-mobile');
         var mediaSize = 'mobile'; 
     } else if (screenWidth >= 768 && screenWidth <= 991) {
-        var pageAdSlots = $('.advert-tablet');
+        pageAdSlots = $('.advert-tablet');
         var mediaSize = 'tablet';
     } else if (screenWidth >= 992) {
-        var pageAdSlots = $('.advert-desktop');
+        pageAdSlots = $('.advert-desktop');
         var mediaSize = 'desktop';
     } else {
         console.log('screen too small for advertising.');
