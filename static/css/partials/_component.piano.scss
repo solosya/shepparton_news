@@ -47,31 +47,35 @@
         }
     }
     &__subscribebutton{
+        display:inline-block;
         height: 35px;
         padding: 11px 30px;
         font-size: rem(11);
         border-radius: 13px;
         border: solid 1px #ffffff;
-        position: absolute;
-        margin-top: -80px;
-        margin-left: -68px;
+        // position: absolute;
+        // margin-top: -80px;
+        // margin-left: -68px;
         color: $white;
         text-transform: uppercase;
-        background-color: $black;
+        // background-color: $black;
+        background-color: color(red);
+
         &:hover{
             background-color: $hover-color;
+            color: $white;
         }
         @media #{$tablet} {
-            margin-top: -48px;
-            right: 150px;
+            // margin-top: -48px;
+            // right: 150px;
         }
         @media #{$mobile}{
             background: none;
-            left: 68%;
+            // left: 68%;
             height: 30px;
             padding: 8px 20px;
-            margin-top: -45px;
-            margin-left: -68px;
+            // margin-top: -45px;
+            // margin-left: -68px;
         }
     }
 }

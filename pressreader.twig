@@ -1,0 +1,44 @@
+<div id="press-reader-front-page-bg" style="width: 100%; height: auto; overflow: hidden; background-image: url('https://i.prcdn.co/img?file=70702020050500000000001001&amp;page=1&amp;scale=142&amp;layer=bg'); background-size: 100%;">
+    <img id="press-reader-front-page-fg" style="display: block;" src="https://i.prcdn.co/img?file=70702020050500000000001001&amp;page=1&amp;scale=142&amp;layer=fg">
+</div>
+
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        function() {
+
+            var dateOfPublication = new Date();
+
+            if (dateOfPublication.getDay() == 0) {
+                dateOfPublication = dateOfPublication - 2;
+            } else if (dateOfPublication.getDay() == 6) {
+                dateOfPublication = dateOfPublication - 1;
+            }
+
+            var month = '' + (dateOfPublication.getMonth() + 1);
+
+            var day = '' + dateOfPublication.getDate();
+            var year = dateOfPublication.getFullYear();
+
+            if (month.length < 2) {
+                month = '0' + month;
+            }
+
+            if (day.length < 2) {
+                day = '0' + day;
+            }
+
+            var bgUrl = "url('https://i.prcdn.co/img?file=7070"+year+month+day+"00000000001001&page=1&scale=142&layer=bg')";
+            var fgUrl = "https://i.prcdn.co/img?file=7070"+year+month+day+"00000000001001&page=1&scale=142&layer=fg";
+            document.getElementById('press-reader-front-page-bg').style.backgroundImage = bgUrl;
+            document.getElementById('press-reader-front-page-fg').src = fgUrl;
+
+        }();
+
+    });
+
+</script>

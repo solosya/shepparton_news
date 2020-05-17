@@ -5,6 +5,10 @@
     {% set pianoScript = config['piano']['script-config'] %}
 {% endif %}
 
+{% set paperId = "" %}
+{% if config['paperButton'] is defined and config['paperButton']['id'] is defined %}
+    {% set paperId = config['paperButton']['id'] %}
+{% endif %}
 
 <script>
 
@@ -24,6 +28,7 @@
  
     tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
  
+
 
     {% if pageLayout == 'article' %}
         tp.push(["setContentCreated", "{{pianoTime}}"]);
@@ -52,6 +57,24 @@
 
 
     tp.push(["init", function() {
+
+        var params = {
+            rid : "{{paperId}}"
+        };
+
+        var callback = function(response) {
+            if (response.access && response.access.granted) {
+                // the user has access
+            }
+            else {
+                // the user does not have access
+            }
+        }
+        tp.api.callApi("/access/check", params, callback);
+
+
+
+
         {% if pageLayout == 'article' %}
             var splitTags = tp.tags.split(',');
             if(splitTags[0] == 'Premium'){
