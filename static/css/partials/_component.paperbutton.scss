@@ -1,4 +1,4 @@
-.c-breakingbutton{
+.c-paperbutton{
     display:inline-block;
     margin-right:10px;
     height: 35px;
@@ -8,7 +8,7 @@
     border: solid 1px #ffffff;
     // position: absolute;
     // top:29px;
-    // right:310px;
+    // right:510px;
     // margin-top: -80px;
     // margin-left: 300px;
     color: $white;
@@ -16,7 +16,7 @@
     // background-color: color(red);
     &:hover{
         background-color: $hover-color;
-        color:white;
+        color: $white;
     }
     @media #{$tablet} {
         // margin-top: -48px;

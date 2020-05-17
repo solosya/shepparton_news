@@ -5,26 +5,74 @@
     {% set pianoScript = config['piano']['script-config'] %}
 {% endif %}
 
+{% set paperId = "" %}
+{% if config['paperButton'] is defined and config['paperButton']['id'] is defined %}
+    {% set paperId = config['paperButton']['id'] %}
+{% endif %}
 
 <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
 
-        var gaData = {};
+    var gaData = {};
 
-        (function(src){
-            var a=document.createElement("script");
-            a.type="text/javascript";
-            a.async=true;
-            a.src=src;
-            var b=document.getElementsByTagName("script")[0];
-            b.parentNode.insertBefore(a,b)
-        })("{{pianoScript}}");
-    
-        tp = window.tp || [];
-        tp.push(['setUsePianoIdUserProvider', true]);
-    
-        tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
-        tp.push(["setCustomVariable", "spotpassState", Spotpass.getSpotpassState("DCnDREV5Q8c23MOvebS2Igjc73vB6Zs3wF1GMZfaGAk=")]);
+    (function(src){
+        var a=document.createElement("script");
+        a.type="text/javascript";
+        a.async=true;
+        a.src=src;
+        var b=document.getElementsByTagName("script")[0];
+        b.parentNode.insertBefore(a,b)
+    })("{{pianoScript}}");
+ 
+    tp = window.tp || [];
+    tp.push(['setUsePianoIdUserProvider', true]);
+ 
+    tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
+ 
+
+
+    {% if pageLayout == 'article' %}
+        tp.push(["setContentCreated", "{{pianoTime}}"]);
+        tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
+        tp.push(["setContentSection", "{{article.label}}"]);
+        tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
+        tp.push(["setContentIsNative", {{articleNative}}]);
+
+        {% if author is defined %}
+            gaData['author'] = "{{author}}"
+        {% endif %}
+        {% if premium is defined %}
+            gaData['articleStatus'] = "{{premium}}"
+        {% endif %}
+        {% if incites is defined %}
+            gaData['incites'] = "{{incites}}"
+        {% endif %}
+        {% if categories is defined %}
+            gaData['categories'] = "{{categories}}"
+        {% endif %}
+        {% if syndication is defined %}
+            gaData['syndication'] = "{{syndication}}"
+        {% endif %}
+
+    {% endif %}
+
+
+    tp.push(["init", function() {
+
+        var params = {
+            rid : "{{paperId}}"
+        };
+
+        var callback = function(response) {
+            if (response.access && response.access.granted) {
+                // the user has access
+            }
+            else {
+                // the user does not have access
+            }
+        }
+        tp.api.callApi("/access/check", params, callback);
+
+
 
 
         {% if pageLayout == 'article' %}

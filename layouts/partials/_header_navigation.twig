@@ -13,13 +13,13 @@
 {% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}
 {% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}
 {% set breakingButton  = config['breakingButton'] is defined and config['breakingButton']['active'] == true ? true : false %}
+{% set paperButton     = config['paperButton'] is defined and config['paperButton']['active'] == true ? true : false %}
 <header id="masthead" class="site-header container-fluid">
     <div id="mainHeader" class="site-header-main header__navigation showOnScroll">
         
         <div class="header-top">
 
-            <div class="container">
-
+            <div class="container flex_row">
 
                 <div class="navigation-logo {{site}}">
                     <a  class="navbar-brand {{site}}" 
@@ -31,74 +31,98 @@
                     </a>
                 </div>
 
+                <div class="header-top__nav-container">
+                    <div class="header-top__buttons">
+                        {% if paperButton == true and paymeter == true and pianoSubscribe == true %}
+                            <a class="c-paperbutton" id="pressreader" href="#" style="display:none;">
+                                {{config['paperButton']['label']}}
+                            </a> 
+                        {% endif %}
 
-                <nav class="sb-custom-menu menu-bar" id="menu-mobile">
-                    {# <a href="#" class="mobileSearchIcon visible-xs-block visible-sm-block"></a> #}
-                    <a href="#" class="menu-hamburger"></a>
 
-                    <div class="menuContainer">
-                        <ul id="menu-primary-menu" class="menu primary-menu">
-                            <li class="menu-item-search visible-xs-block visible-sm-block">
-                                <fieldset class="searchPanel">
-                                    <form method="get" action="{{networkData.defaultBlogUrl}}/search">
-                                        <label for="header-search" class="assistive-text sr-only">Search</label>
-                                        <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
-                                        <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
-                                    </form>
-                                </fieldset>  
-                            </li>
-                            {% if paymeter == true and pianoMenu == true %}  
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
-                                <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
-                            {% endif %}  
+                        {% if breakingButton == true %}
+                            <a class="c-breakingbutton" href="{{networkData.defaultBlogUrl}}{{config['breakingButton']['link']}}">
+                                {{config['breakingButton']['label']}}
+                            </a> 
+                        {% endif %}
 
-                            {% for parentItem in headermenu %}
+                        {% if paymeter == true and pianoSubscribe == true %}
+                            <a class="c-piano__subscribebutton" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                SUBSCRIBE
+                            </a>  
+                        {% endif %}  
 
-                               {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                               {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                               <li>
-                                    <a {% if "blogs" not in (parentItem.link |raw) and "more" not in (parentItem.link |raw) %}  
-                                                href="{{parentItem.link | raw}}"
-                                        {% endif %} 
-                                        
-                                        class="{{activeClass}} {{externalClass}} {{site}}" 
-                                        
-                                        {% if parentItem.target != "" %} 
-                                            target="{{parentItem.target}}"
-                                        {% endif %} 
-                                            
-                                            style="cursor:pointer;">
-
-                                        {% if parentItem.label != "" %}
-                                            {{parentItem.label}}
-                                        {% elseif parentItem.blogTitle != "" %}
-                                            {{parentItem.blogTitle}}
-                                        {% elseif parentItem.pageTitle != "" %}
-                                            {{parentItem.pageTitle}}
-                                        {% endif %}
-                                    </a>
-
-                                     {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                        <span class="list-arrow"></span>
-
-                                        <ul class="sub-menu">
-                                            {% for childItem in parentItem.children %}
-                                                {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                <li class="{{site}}">
-                                                    <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                     {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                    </a>
-                                                </li>
-                                           {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
                     </div>
-                </nav>
+
+                    <nav class="sb-custom-menu menu-bar" id="menu-mobile">
+                        {# <a href="#" class="mobileSearchIcon visible-xs-block visible-sm-block"></a> #}
+                        <a href="#" class="menu-hamburger"></a>
+
+                        <div class="menuContainer">
+                            <ul id="menu-primary-menu" class="menu primary-menu">
+                                <li class="menu-item-search visible-xs-block visible-sm-block">
+                                    <fieldset class="searchPanel">
+                                        <form method="get" action="{{networkData.defaultBlogUrl}}/search">
+                                            <label for="header-search" class="assistive-text sr-only">Search</label>
+                                            <input type="text" class="field" name="s" id="header-search" placeholder="Search" required="">
+                                            <button class="submit search-icon-mobile {{site}}" type="submit" id="mobileSearchButton"></button>
+                                        </form>
+                                    </fieldset>  
+                                </li>
+                                {% if paymeter == true and pianoMenu == true %}  
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
+                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout"><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
+                                {% endif %}  
+
+                                {% for parentItem in headermenu %}
+
+                                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                                <li>
+                                        <a {% if "blogs" not in (parentItem.link |raw) and "more" not in (parentItem.link |raw) %}  
+                                                    href="{{parentItem.link | raw}}"
+                                            {% endif %} 
+                                            
+                                            class="{{activeClass}} {{externalClass}} {{site}}" 
+                                            
+                                            {% if parentItem.target != "" %} 
+                                                target="{{parentItem.target}}"
+                                            {% endif %} 
+                                                
+                                                style="cursor:pointer;">
+
+                                            {% if parentItem.label != "" %}
+                                                {{parentItem.label}}
+                                            {% elseif parentItem.blogTitle != "" %}
+                                                {{parentItem.blogTitle}}
+                                            {% elseif parentItem.pageTitle != "" %}
+                                                {{parentItem.pageTitle}}
+                                            {% endif %}
+                                        </a>
+
+                                        {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                            <span class="list-arrow"></span>
+
+                                            <ul class="sub-menu">
+                                                {% for childItem in parentItem.children %}
+                                                    {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                    <li class="{{site}}">
+                                                        <a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                        {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                        </a>
+                                                    </li>
+                                            {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div><!-- .container-->  
         </div>
 
@@ -112,11 +136,6 @@
 
         <div class="header-bottom {{ visibility }} {{ site }}">
             <div class="container">
-                {% if breakingButton == true %}
-                    <a href="{{networkData.defaultBlogUrl}}{{config['breakingButton']['link']}}">
-                        <div class="c-breakingbutton ">{{config['breakingButton']['label']}}</div>
-                    </a> 
-                {% endif %}
                 {% if paymeter == true %}
                     {% set loginPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signin&returnurl=' ~ networkData.defaultBlogUrl %}
                     {% set logoutPath = 'https://syncaccess-mmg-sn.syncronex.com/mmg/sn/Account/LogOn?op=signout&returnurl=' ~ networkData.defaultBlogUrl ~ '/auth/logoff' %}
@@ -132,11 +151,11 @@
                         </ul> 
                        
                             <ul class="auth-links j-piano-loggedout" >
-                                {% if pianoSubscribe == true %}
+                                {# {% if pianoSubscribe == true %}
                                     <a href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
                                         <div class="c-piano__subscribebutton">SUBSCRIBE</div>
                                     </a>  
-                                {% endif %}  
+                                {% endif %}   #}
                                 <li class="hidden-xs"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                             </ul>
                         
@@ -197,48 +216,75 @@
                         </a>
                     </div>
 
-                    <nav class="sb-custom-menu menu-bar" id="menu-mobile">
-                        <div class="menuContainer">
-                            <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
-                                {% if paymeter == true and pianoMenu == true %}
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
-                                    <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout" ><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
-                                {% endif %}
-                                {% for parentItem in headermenu  %}
 
-                                    {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
-                                    {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                    <div class="header-top__nav-container">
+                        <div class="header-top__buttons">
+                            {% if paperButton == true and paymeter == true and pianoSubscribe == true %}
+                                <a class="c-paperbutton" id="pressreader" href="#">
+                                    {{config['paperButton']['label']}}
+                                </a> 
+                            {% endif %}
 
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{site}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {% if parentItem.label != "" %}
-                                                {{parentItem.label}}
-                                            {% elseif parentItem.blogTitle != "" %}
-                                                {{parentItem.blogTitle}}
-                                            {% elseif parentItem.pageTitle != "" %}
-                                                {{parentItem.pageTitle}}
-                                            {% endif %}
-                                        </a>
 
-                                         {% if parentItem.children is defined and parentItem.children | length > 0 %}
-                                            <span class="list-arrow"></span>
+                            {% if breakingButton == true %}
+                                <a class="c-breakingbutton" href="{{networkData.defaultBlogUrl}}{{config['breakingButton']['link']}}">
+                                    {{config['breakingButton']['label']}}
+                                </a> 
+                            {% endif %}
 
-                                            <ul class="sub-menu">
-                                                {% for childItem in parentItem.children %}
-                                                    {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
-                                                    <li class="{{site}}">
-                                                        <a class="{{externalClass}} {{site}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
-                                                         {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
-                                                        </a>
-                                                    </li>
-                                               {% endfor %}
-                                            </ul>
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                            {# {% if paymeter == true and pianoSubscribe == true %} #}
+                                <a class="c-piano__subscribebutton" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                    SUBSCRIBE
+                                </a>  
+                            {# {% endif %}   #}
+
+
                         </div>
+
+
+                        <nav class="sb-custom-menu menu-bar" id="menu-mobile">
+                            <div class="menuContainer">
+                                <ul id="menu-primary-menu" class="menu primary-menu foldaway-menu">
+                                    {% if paymeter == true and pianoMenu == true %}
+                                        <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                        <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
+                                        <li class="hidden-sm hidden-md hidden-lg j-piano-loggedout" ><a class="account-item" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);" style="display:block;">LOG IN</a></li>
+                                    {% endif %}
+                                    {% for parentItem in headermenu  %}
+
+                                        {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                                        {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+
+                                        <li>
+                                            <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}} {{site}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                                {% if parentItem.label != "" %}
+                                                    {{parentItem.label}}
+                                                {% elseif parentItem.blogTitle != "" %}
+                                                    {{parentItem.blogTitle}}
+                                                {% elseif parentItem.pageTitle != "" %}
+                                                    {{parentItem.pageTitle}}
+                                                {% endif %}
+                                            </a>
+
+                                            {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                                <span class="list-arrow"></span>
+
+                                                <ul class="sub-menu">
+                                                    {% for childItem in parentItem.children %}
+                                                        {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                                        <li class="{{site}}">
+                                                            <a class="{{externalClass}} {{site}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                                            {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty) ? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                                            </a>
+                                                        </li>
+                                                {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </nav>
                     </nav>
                 </div><!-- .container-->  
             </div>
@@ -340,11 +386,11 @@
                             </ul>
                             
                                 <ul class="auth-links j-piano-loggedout" style="display:block;">
-                                    {% if pianoSubscribe == true %}
+                                    {# {% if pianoSubscribe == true %}
                                         <a href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
                                             <div class="c-piano__subscribebutton">SUBSCRIBE</div>
                                         </a>    
-                                    {% endif %}
+                                    {% endif %} #}
                                     <li class="hidden-xs"><a  onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">LOG IN</a></li>
                                 </ul>
                             
