@@ -64,10 +64,7 @@
 
         var callback = function(response) {
             if (response.access && response.access.granted) {
-                // the user has access
-            }
-            else {
-                // the user does not have access
+                document.getElementById('pressreader-button').href ="http://sheppartonnews.pressreader.com/";
             }
         }
         tp.api.callApi("/access/check", params, callback);
