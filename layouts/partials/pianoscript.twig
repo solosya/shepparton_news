@@ -64,7 +64,11 @@
 
         var callback = function(response) {
             if (response.access && response.access.granted) {
-                document.getElementById('pressreader-button').href ="http://sheppartonnews.pressreader.com/";
+                if( window.location.href.startsWith("http://shepptest.aappublish.com.au/pressreader")) {
+                    window.location.href = "http://sheppartonnews.pressreader.com/shepparton-news";
+                } else {
+                    document.getElementById('pressreader-button').href ="http://sheppartonnews.pressreader.com/";
+                }
             }
         }
         tp.api.callApi("/access/check", params, callback);
