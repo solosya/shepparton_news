@@ -56,196 +56,169 @@
     {% endif %}
 
 
-
-    var params = {
-        rid : "{{paperId}}"
-    };
-
-    var callback = function(response) {
-        if (response.access && response.access.granted) {
-            if( window.location.href.startsWith("http://shepptest.aappublish.com.au/pressreader")) {
-                window.location.href = "http://sheppartonnews.pressreader.com/shepparton-news";
-            } else {
-                document.getElementById('pressreader-button').href ="http://sheppartonnews.pressreader.com/";
-            }
-        }
-    }
-    tp.api.callApi("/access/check", params, callback);
-
-
-
     tp.push(["init", function() {
 
+        var params = {
+            rid : "{{paperId}}"
+        };
+
+        var callback = function(response) {
+            if (response.access && response.access.granted) {
+                if( window.location.href.startsWith("http://shepptest.aappublish.com.au/pressreader")) {
+                    window.location.href = "http://sheppartonnews.pressreader.com/shepparton-news";
+                } else {
+                    document.getElementById('pressreader-button').href ="http://sheppartonnews.pressreader.com/";
+                }
+            }
+        }
+        tp.api.callApi("/access/check", params, callback);
+
+
+
+
         {% if pageLayout == 'article' %}
-            tp.push(["setContentCreated", "{{pianoTime}}"]);
-            tp.push(["setContentAuthor", "{{pianoAuthor}}"]);
-            tp.push(["setContentSection", "{{article.label}}"]);
-            tp.push(["setTags", ["{{premium}}", "{{article.label}}"]]);
-            tp.push(["setContentIsNative", {{articleNative}}]);
-
-            {% if author is defined %}
-                gaData['author'] = "{{author}}"
-            {% endif %}
-            {% if premium is defined %}
-                gaData['articleStatus'] = "{{premium}}"
-            {% endif %}
-            {% if incites is defined %}
-                gaData['incites'] = "{{incites}}"
-            {% endif %}
-            {% if categories is defined %}
-                gaData['categories'] = "{{categories}}"
-            {% endif %}
-            {% if syndication is defined %}
-                gaData['syndication'] = "{{syndication}}"
-            {% endif %}
-
+            var splitTags = tp.tags.split(',');
+            if(splitTags[0] == 'Premium'){
+                tp.push(["setCustomParam", "type", "premium", "content"]);
+            }
         {% endif %}
 
+ 
+        // START OF MY ACCOUNT ONLY SCRIPT
+        {% if pageLayout == 'layout-account' %}
+            tp.pianoId.init({iframeUrl:"https://id-au.piano.io"}) 
+            tp.myaccount.show({
+                displayMode: "inline",
+                containerSelector: "#my-account"
+            })
+        {% endif %}
+        // END OF MY ACCOUNT ONLY SCRIPT
 
-        tp.push(["init", function() {
-            {% if pageLayout == 'article' %}
-                var splitTags = tp.tags.split(',');
-                if(splitTags[0] == 'Premium'){
-                    tp.push(["setCustomParam", "type", "premium", "content"]);
+         // START OF INITIATE RESET PASSWORD ONLY SCRIPT
+        {% if pageLayout == 'layout-init-pass-reset' %}
+            tp.pianoId.init({iframeUrl:"https://id-au.piano.io"});
+            tp.pianoId.show({
+                displayMode: "inline",
+                containerSelector: "#initiate-reset-password",
+                screen: 'restore'
+            })
+        {% endif %}
+        // END OF INITIATE RESET PASSWORD ONLY SCRIPT
+ 
+        tp.pianoId.init({
+            loggedIn: function(data) {
+                var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                for (i=0;i<inLogs.length;i++){
+                    inLogs[i].style.display = "block";
                 }
-            {% endif %}
-
-    
-            // START OF MY ACCOUNT ONLY SCRIPT
-            {% if pageLayout == 'layout-account' %}
-                tp.pianoId.init({iframeUrl:"https://id-au.piano.io"}) 
-                tp.myaccount.show({
-                    displayMode: "inline",
-                    containerSelector: "#my-account"
-                })
-            {% endif %}
-            // END OF MY ACCOUNT ONLY SCRIPT
-
-            // START OF INITIATE RESET PASSWORD ONLY SCRIPT
-            {% if pageLayout == 'layout-init-pass-reset' %}
-                tp.pianoId.init({iframeUrl:"https://id-au.piano.io"});
-                tp.pianoId.show({
-                    displayMode: "inline",
-                    containerSelector: "#initiate-reset-password",
-                    screen: 'restore'
-                })
-            {% endif %}
-            // END OF INITIATE RESET PASSWORD ONLY SCRIPT
-    
-            tp.pianoId.init({
-                loggedIn: function(data) {
-                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                    for (i=0;i<inLogs.length;i++){
-                        inLogs[i].style.display = "block";
-                    }
-                    for (i=0;i<outLogs.length;i++){
-                        outLogs[i].style.display = "none";
-                    }             
-                            },
-                loggedOut: function() {
-                    var inLogs = document.getElementsByClassName('j-piano-loggedin');
-                    var outLogs = document.getElementsByClassName('j-piano-loggedout');
-                    for (i=0;i<inLogs.length;i++){
-                        inLogs[i].style.display = "none";
-                    }
-                    for (i=0;i<outLogs.length;i++){
-                        outLogs[i].style.display = "block";
-                    }
-                    if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
-                        document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
-                        document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
-                    }
-                    if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
-                        document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
-                        document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
-                    }
+                for (i=0;i<outLogs.length;i++){
+                    outLogs[i].style.display = "none";
+                }             
+                        },
+            loggedOut: function() {
+                var inLogs = document.getElementsByClassName('j-piano-loggedin');
+                var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                for (i=0;i<inLogs.length;i++){
+                    inLogs[i].style.display = "none";
                 }
-            });
-            tp.enableGACrossDomainLinking();
-
-
-            var sendGA = false;
-            if ( tp.pianoId.isUserValid() ) {
-                var pianoUser =  tp.pianoId.getUser();
-                if (pianoUser) {
-                    sendGA = true;
-                    var data = {
-                        "mastheadPrefix" : "{{site}}",
-                        "userId" : pianoUser.uid
-                    }
-                    $.ajax({
-                        type: "POST",
-                        url: "https://webhooks.mmg.com.au/getUserStatus.php",
-                        data: data,
-                        dataType: 'json',
-                    }).then(function(r) {
-                        gaData['userStatus'] = r.status;
-                        gaData['userId'] = pianoUser.uid;
-                        sendPageView(gaData);
-                    }).catch(function(e) {
-                        gaData['userStatus'] = "anonymous";
-                        sendPageView(gaData);
-                    });
-                } 
+                for (i=0;i<outLogs.length;i++){
+                    outLogs[i].style.display = "block";
+                }
+                if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
+                    document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
+                    document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
+                }
+                if (!document.getElementsByClassName('j-piano__dropdown--fold')[0].classList.contains('c-piano__dropdown--hidden')){
+                    document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
+                    document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
+                }
             }
-            if (!sendGA) {
-                gaData['userStatus'] = "anonymous";
-                sendPageView(gaData);
-            } 
+        });
+        tp.enableGACrossDomainLinking();
 
 
-
-
-        }]);
-
-        
-    
-        tp.push(["addHandler", "checkoutClose", function (event){
-            //Default behavior is to refresh the page on successful checkout
-            if (event && event.state == "checkoutCompleted") {
-                setTimeout(function() {
-                    // Redirect to the url from encoded redirect parameter of an url
-                    var url = new URL(window.location.href);
-                    var redirectURL = '{{networkData.defaultBlogUrl}}';
-                    var encodedRedirectURL = url.searchParams.get('redirect');
-                    if(encodedRedirectURL) {
-                        redirectURL = decodeURIComponent(encodedRedirectURL);
-                    }
-                    window.location.href = redirectURL;
-                }, 2000);
-            }
-        }]);
-
-        tp.push(["addHandler", "loginSuccess", function (data) {
-            if (data.registration === true && data.source === 'PIANOID') {
-                let currentUser = tp.pianoId.getUser();
+        var sendGA = false;
+        if ( tp.pianoId.isUserValid() ) {
+            var pianoUser =  tp.pianoId.getUser();
+            if (pianoUser) {
+                sendGA = true;
+                var data = {
+                    "mastheadPrefix" : "{{site}}",
+                    "userId" : pianoUser.uid
+                }
                 $.ajax({
                     type: "POST",
-                    url: "https://webhooks.mmg.com.au/registerUser.php",
-                    data: { "mastheadPrefix" : "{{site}}", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
-                    cache: false,
-                    crossDomain: true,
-                    dataType: 'jsonp',
-                    success: function(response) {
-                        location.reload();
-                    },
-                    error: function(xhr, status, error) {
-                        var err = eval("(" + xhr.responseText + ")");
-                        console.log(err.Message);
-                    }
+                    url: "https://webhooks.mmg.com.au/getUserStatus.php",
+                    data: data,
+                    dataType: 'json',
+                }).then(function(r) {
+                    gaData['userStatus'] = r.status;
+                    gaData['userId'] = pianoUser.uid;
+                    sendPageView(gaData);
+                }).catch(function(e) {
+                    gaData['userStatus'] = "anonymous";
+                    sendPageView(gaData);
                 });
-            }
-        }]);
-
-
-        function userLogout() {
-            tp.pianoId.logout();
-            // Ends the current session after sending the logout event
-            ga('send', 'event', ' Authentication', ' Logout ', ' Logged Out ', 0, {'sessionControl': 'end'});
-
+            } 
         }
+        if (!sendGA) {
+            gaData['userStatus'] = "anonymous";
+            sendPageView(gaData);
+        } 
 
-    });
+
+
+
+    }]);
+
+    
+ 
+    tp.push(["addHandler", "checkoutClose", function (event){
+        //Default behavior is to refresh the page on successful checkout
+        if (event && event.state == "checkoutCompleted") {
+            setTimeout(function() {
+                // Redirect to the url from encoded redirect parameter of an url
+                var url = new URL(window.location.href);
+                var redirectURL = '{{networkData.defaultBlogUrl}}';
+                var encodedRedirectURL = url.searchParams.get('redirect');
+                if(encodedRedirectURL) {
+                    redirectURL = decodeURIComponent(encodedRedirectURL);
+                }
+                window.location.href = redirectURL;
+            }, 2000);
+        }
+    }]);
+
+    tp.push(["addHandler", "loginSuccess", function (data) {
+        if (data.registration === true && data.source === 'PIANOID') {
+            let currentUser = tp.pianoId.getUser();
+            $.ajax({
+                type: "POST",
+                url: "https://webhooks.mmg.com.au/registerUser.php",
+                data: { "mastheadPrefix" : "{{site}}", "userId" : currentUser.uid, "firstName" : currentUser.firstName, "lastName" : currentUser.lastName, "email" : currentUser.email },
+                cache: false,
+                crossDomain: true,
+                dataType: 'jsonp',
+                success: function(response) {
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    console.log(err.Message);
+                }
+            });
+        }
+    }]);
+
+
+    function userLogout() {
+        tp.pianoId.logout();
+        // Ends the current session after sending the logout event
+        ga('send', 'event', ' Authentication', ' Logout ', ' Logged Out ', 0, {'sessionControl': 'end'});
+
+    }
+
+
 
 </script>
