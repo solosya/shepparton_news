@@ -67,8 +67,8 @@
                 if( window.location.href.startsWith("http://shepptest.aappublish.com.au/pressreader")) {
                     window.open("https://sheppartonnews.pressreader.com/shepparton-news", "_blank");
                 } else {
-                    document.getElementById('pressreader-button').href ="https://sheppartonnews.pressreader.com/“;
-                    document.getElementById('pressreader-button’).target ="_blank";
+                    document.getElementById('pressreader-button').href ="https://sheppartonnews.pressreader.com/";
+                    document.getElementById('pressreader-button').target ="_blank";
                 }
             }
         }
@@ -135,7 +135,7 @@
                     document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
                 }
                 document.getElementById('pressreader-button').href ="https://shepptest.aappublish.com.au/pressreader";
-                document.getElementById('pressreader-button’).target ="_self";
+                document.getElementById('pressreader-button').target ="_self";
 
             }
         });
@@ -177,7 +177,7 @@
     }]);
 
     
- 
+
     tp.push(["addHandler", "checkoutClose", function (event){
         //Default behavior is to refresh the page on successful checkout
         if (event && event.state == "checkoutCompleted") {
@@ -189,7 +189,7 @@
                 if(encodedRedirectURL) {
                     redirectURL = decodeURIComponent(encodedRedirectURL);
                 }
-                if(redirectURL.startsWith("https://shepptest.aappublish.com.au/”) {
+                if(redirectURL.startsWith("https://shepptest.aappublish.com.au/")) {
                     window.location.href = redirectURL;
                 } else {
                     window.open(redirectURL, "_blank");
