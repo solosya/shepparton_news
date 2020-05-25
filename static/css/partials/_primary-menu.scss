@@ -151,8 +151,8 @@
     margin:0;
     list-style: none;
     color: #fff;
-    height: 65px;
-    padding-top: 47px;
+    // height: 65px;
+    padding-top: 5px;
     white-space:nowrap;
     // float:right;
     // margin-top:19px;
@@ -177,7 +177,7 @@
 
 
     > div.menuContainer {
-        height:40px;
+        height:31px;
         // background:cadetblue;
         // overflow:hidden;
 
@@ -463,11 +463,11 @@ ul.sub-menu a:focus{
         width: 100%;
     }
     .sb-custom-menu{
-        float:right;
+        // float:right;
         margin-top: 5px;
-        padding-left: 50px;
-        position: absolute;
-        right: 25px;
+        // padding-left: 50px;
+        // position: absolute;
+        // right: 25px;
     }
     .menu-hamburger {
         z-index: 999;

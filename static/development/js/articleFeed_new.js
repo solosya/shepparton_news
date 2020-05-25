@@ -463,7 +463,9 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     }
 
     function getSiteSection(site,section,adsections,type) {
-
+        if (typeof adsections === "undefined") {
+            return section;
+        }
         if (adsections.length < 0) {
             return section;
         }

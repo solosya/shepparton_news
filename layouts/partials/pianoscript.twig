@@ -5,6 +5,14 @@
     {% set pianoScript = config['piano']['script-config'] %}
 {% endif %}
 
+{% set paperId = "" %}
+{% set paperLink = "" %}
+{% if config['paperButton'] is defined and config['paperButton']['id'] is defined %}
+    {% set paperId = config['paperButton']['id'] %}
+{% endif %}
+{% if config['paperButton'] is defined and config['paperButton']['link'] is defined %}
+    {% set paperLink = config['paperButton']['link'] %}
+{% endif %}
 
 <script>
 
@@ -24,6 +32,7 @@
  
     tp.push(['setPianoIdUrl', 'https://id-au.piano.io/'])
  
+
 
     {% if pageLayout == 'article' %}
         tp.push(["setContentCreated", "{{pianoTime}}"]);
@@ -52,6 +61,26 @@
 
 
     tp.push(["init", function() {
+
+        var params = {
+            rid : "{{paperId}}"
+        };
+
+        var callback = function(response) {
+            if (response.access && response.access.granted) {
+                if( window.location.href.startsWith("{{paperLink}}")) {
+                    window.open("https://sheppartonnews.pressreader.com/shepparton-news", "_blank");
+                } else {
+                    document.getElementById('pressreader-button').href ="https://sheppartonnews.pressreader.com/";
+                    document.getElementById('pressreader-button').target ="_blank";
+                }
+            }
+        }
+        tp.api.callApi("/access/check", params, callback);
+
+
+
+
         {% if pageLayout == 'article' %}
             var splitTags = tp.tags.split(',');
             if(splitTags[0] == 'Premium'){
@@ -109,6 +138,9 @@
                     document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
                     document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
                 }
+                document.getElementById('pressreader-button').href ="https://shepptest.aappublish.com.au/pressreader";
+                document.getElementById('pressreader-button').target ="_self";
+
             }
         });
         tp.enableGACrossDomainLinking();
@@ -149,7 +181,7 @@
     }]);
 
     
- 
+
     tp.push(["addHandler", "checkoutClose", function (event){
         //Default behavior is to refresh the page on successful checkout
         if (event && event.state == "checkoutCompleted") {
@@ -161,7 +193,12 @@
                 if(encodedRedirectURL) {
                     redirectURL = decodeURIComponent(encodedRedirectURL);
                 }
-                window.location.href = redirectURL;
+                if(redirectURL.startsWith("https://shepptest.aappublish.com.au/")) {
+                    window.location.href = redirectURL;
+                } else {
+                    window.open(redirectURL, "_blank");
+                }
+
             }, 2000);
         }
     }]);

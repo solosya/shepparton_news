@@ -21,6 +21,8 @@
         background:color(dark);
 
         .header-top {
+
+
             h1 {
                 color:white;
             }
@@ -99,7 +101,34 @@
             padding-bottom:22px;
             padding-top:22px;
             background:black;
+            
+            &__nav-container {
+                @include flexbox();
+                @include flex-direction(column);
+                flex:2;
+                @media #{$tablet} {
+                    @include flex-direction(row);
+                }
+                @media #{$mobile} {
+                    @include flex-direction(row);
+                }
+            }
 
+            &__buttons {
+                margin-top:9px;
+                flex:2;
+                @include flexbox();
+                @include flex-direction(row);
+                @include justify-content(flex-end);
+                @media #{$tablet} {
+                    margin-top:0;
+                    margin-right:20px;
+                }
+                @media #{$mobile} {
+                    margin-top:4px;
+                    padding-right:20px;
+                }
+            }
 
             @media screen and (max-width: $mmd-break) {
                 height:60px;
