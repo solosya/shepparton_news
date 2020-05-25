@@ -6,8 +6,12 @@
 {% endif %}
 
 {% set paperId = "" %}
+{% set paperLink = "" %}
 {% if config['paperButton'] is defined and config['paperButton']['id'] is defined %}
     {% set paperId = config['paperButton']['id'] %}
+{% endif %}
+{% if config['paperButton'] is defined and config['paperButton']['link'] is defined %}
+    {% set paperLink = config['paperButton']['link'] %}
 {% endif %}
 
 <script>
@@ -64,7 +68,7 @@
 
         var callback = function(response) {
             if (response.access && response.access.granted) {
-                if( window.location.href.startsWith("http://shepptest.aappublish.com.au/pressreader")) {
+                if( window.location.href.startsWith("{{paperLink}}")) {
                     window.open("https://sheppartonnews.pressreader.com/shepparton-news", "_blank");
                 } else {
                     document.getElementById('pressreader-button').href ="https://sheppartonnews.pressreader.com/";
