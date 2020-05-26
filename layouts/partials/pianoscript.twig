@@ -7,12 +7,22 @@
 
 {% set paperId = "" %}
 {% set paperLink = "" %}
+{% set redirectUrl = "" %}
+{% set readerUrl = "" %}
+
 {% if config['paperButton'] is defined and config['paperButton']['id'] is defined %}
     {% set paperId = config['paperButton']['id'] %}
 {% endif %}
 {% if config['paperButton'] is defined and config['paperButton']['link'] is defined %}
     {% set paperLink = config['paperButton']['link'] %}
 {% endif %}
+{% if config['paperButton'] is defined and config['paperButton']['redirect'] is defined %}
+    {% set redirectUrl = config['paperButton']['redirect'] %}
+{% endif %}
+{% if config['paperButton'] is defined and config['paperButton']['readerurl'] is defined %}
+    {% set readerUrl = config['paperButton']['readerurl'] %}
+{% endif %}
+
 
 <script>
 
@@ -71,7 +81,7 @@
                 if( window.location.href.startsWith("{{paperLink}}")) {
                     window.open("https://sheppartonnews.pressreader.com/shepparton-news", "_blank");
                 } else {
-                    document.getElementById('pressreader-button').href ="https://sheppartonnews.pressreader.com/";
+                    document.getElementById('pressreader-button').href ="{{readerUrl}}";
                     document.getElementById('pressreader-button').target ="_blank";
                 }
             }
@@ -138,7 +148,7 @@
                     document.getElementsByClassName('j-piano__dropdown--fold')[0].className += " c-piano__dropdown--hidden";
                     document.getElementsByClassName('j-piano__account--fold')[0].classList.remove("c-piano__account--open");
                 }
-                document.getElementById('pressreader-button').href ="https://shepptest.aappublish.com.au/pressreader";
+                document.getElementById('pressreader-button').href ="{{paperLink}}";
                 document.getElementById('pressreader-button').target ="_self";
 
             }
@@ -193,7 +203,7 @@
                 if(encodedRedirectURL) {
                     redirectURL = decodeURIComponent(encodedRedirectURL);
                 }
-                if(redirectURL.startsWith("https://shepptest.aappublish.com.au/")) {
+                if(redirectURL.startsWith("{{redirectUrl}}")) {
                     window.location.href = redirectURL;
                 } else {
                     window.open(redirectURL, "_blank");
