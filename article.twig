@@ -563,3 +563,33 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         });
     </script>
 {% endif %}
+
+
+
+<script>
+    var articleCompleted = false;
+
+    $(window).scroll(function() {
+        if(!articleCompleted && $(window).scrollTop() + $(window).height() > document.getElementById('articleContentContainer').offsetTop + document.getElementById('articleContentContainer').offsetHeight) {
+            payWallFound = false;
+            articleContentIFrames = document.getElementById('pianoArticleContentLockable').getElementsByTagName('iFrame');
+            for (let i = 0; i < articleContentIFrames.length; i++) {
+                if (articleContentIFrames[i].getAttribute('src') && articleContentIFrames[i].getAttribute('src').startsWith('https://buy-au.piano.io/')) {
+                    payWallFound = true;
+                }
+            }
+
+            if(!payWallFound) {
+                articleCompleted = true;
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'articleComplete',
+                    eventAction: 'articleScrolledToCompletion'
+                });
+            }
+        }
+    });
+</script>
+
+
+
