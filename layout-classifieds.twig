@@ -330,9 +330,11 @@
         var classifiedSections = [];
         menu = null;
 
+        console.log('override lightbox');
         // override the lightbox handler from the one set in card.js
         Card.prototype.bindLightbox = function() {
-
+            console.log('binding lightbox');
+            console.log('article.{{contentType}}');
             $('article.{{contentType}}').unbind().on('click', function (e) {
 
                 e.preventDefault();
