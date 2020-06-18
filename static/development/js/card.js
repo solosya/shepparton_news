@@ -385,7 +385,6 @@ Card.prototype.initDroppable = function()
 
 Card.prototype.bindLightbox = function() {
     // override this where needed.
-    console.log('WRONG ONE')
     return true;
 }
 
@@ -401,7 +400,6 @@ Card.prototype.events_refresh = function()
 
 Card.prototype.events = function() 
 {
-    console.log('MAIN BIND LIGHTBOX');
     this.bindLightbox();
 
     if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {

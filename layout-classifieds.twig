@@ -325,16 +325,13 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function() {
-            console.log('dom content HAS loaded');
 
         var classifiedSections = [];
         menu = null;
 
-        console.log('override lightbox');
         // override the lightbox handler from the one set in card.js
         Card.prototype.bindLightbox = function() {
-            console.log('binding lightbox');
-            console.log('article.{{contentType}}');
+
             $('article.{{contentType}}').unbind().on('click', function (e) {
 
                 e.preventDefault();
@@ -371,7 +368,6 @@
                         dataType: 'json',
                         data: payload,
                         success: function (data, textStatus, jqXHR) {
-                                        console.log(data);
 
                             data.hasMediaVideo = false;
                             if (data.media['type'] === 'video') {
@@ -384,7 +380,7 @@
                             }
                             
                             data.templatePath = _appJsConfig.templatePath;
-                            console.log('calling render card');
+
                             var article = cardController.renderCard(data, {
                                 cardClass : "acme-card-10-mobile acme-card-10-tablet acme-card-10-desktop",
                                 type : "acme-",
@@ -394,7 +390,7 @@
                                 imageHeight: 0,
                                 imageGravity: 'north',
                             });
-                            console.log(article);
+
                             Acme.LightBox.renderPreLayout(article);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
