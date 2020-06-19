@@ -112,7 +112,7 @@
 
 
 
-<main id="main" class="site-main u-margin-top-60 u-margin-bottom-60" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
+<main id="main" class="site-main u-margin-top-60 u-margin-bottom-60" role="main" data-contentType="{{contentType}}" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
     <div class="acme-container">
         <div class="acme-row">
             <div class="acme-col-12">
@@ -122,9 +122,9 @@
                         <h1 class="c-section-head__title c-section-head__title--40">{{this.title}}</h1>
                     </a>
                 
-                {% if not _User.isGuest() %}
+                {# {% if not _User.isGuest() %}
                     <a href="{{networkData.defaultBlogUrl}}/classified-create" class="c-section-head__button c-button c-button--red">Submit a listing</a>
-                {% endif %}
+                {% endif %} #}
                 
                     <div class="c-section-head__rule"></div>
 
@@ -144,7 +144,7 @@
                         <div id="classySearchDropdown" class="" style="width:100%"></div>
                     </div>
                     <div class="c-filter--search--button">
-                        <button id="search-button" type="submit" class="c-button c-button--red">Search</button>
+                        <button id="search-button" type="submit" class="c-button" style="background:#f03746;color:white">Search</button>
                     </div>
                 </div>
             </div>
@@ -325,7 +325,6 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function() {
-            console.log('dom content HAS loaded');
 
         var classifiedSections = [];
         menu = null;
@@ -369,7 +368,6 @@
                         dataType: 'json',
                         data: payload,
                         success: function (data, textStatus, jqXHR) {
-                                        console.log(data);
 
                             data.hasMediaVideo = false;
                             if (data.media['type'] === 'video') {
@@ -382,7 +380,7 @@
                             }
                             
                             data.templatePath = _appJsConfig.templatePath;
-                            console.log('calling render card');
+
                             var article = cardController.renderCard(data, {
                                 cardClass : "acme-card-10-mobile acme-card-10-tablet acme-card-10-desktop",
                                 type : "acme-",
@@ -392,7 +390,7 @@
                                 imageHeight: 0,
                                 imageGravity: 'north',
                             });
-                            console.log(article);
+
                             Acme.LightBox.renderPreLayout(article);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
@@ -426,7 +424,7 @@
             renderType      : 'write',
             type            : "{{contentType}}",
             before          : '<div class="acme-row">',
-            failText        : '<h2 style="font-size:24px;margin-top:25px;color:#0e215d;font-weight:400;">Sorry, we couldn\'t find what you\'re looking for.</h2>',
+            failText        : '<h2 style="font-size:24px;margin-top:25px;color:black;font-weight:400;">Sorry, we couldn\'t find what you\'re looking for.</h2>',
             after           : '</div>',
             cardType        : "acme-",
             imageWidth      : 294,

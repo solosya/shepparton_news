@@ -4,7 +4,9 @@
     .acme-c-cards-view {
         @include flex-direction-classifieds(row, horizontal);
         @include flex-height(162px);
-
+        box-shadow: 0 2px 10px 6px rgba(89,88,89,.1);
+    
+    
         &__media {
             @include flex-width(100px);
             img {
@@ -24,6 +26,7 @@
             margin-bottom: 5px;
             order: 1;
             flex-grow:0;
+            color:#f03746;
         }
 
         &__heading {
