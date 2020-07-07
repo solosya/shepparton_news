@@ -72,14 +72,14 @@ var cardTemplateTop =
 '<div class="{{cardClass}} {{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap {{articleStatus}} {{hasArticleMediaClass}}" \
+        class="card swap {{articleStatus}} {{hasMediaClass}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="{{cardType}}c-cards-view  {{lightbox}}">';
+        <article class="{{cardType}}c-cards-view  {{hasMediaClass}} {{lightbox}}">';
 
 
 var cardTemplateBottom = 
