@@ -1,0 +1,169 @@
+@mixin card-13-base() {
+    position:relative;
+    a.card {
+        @include card-image-top(auto, 160px);
+        height:250px;
+        margin-bottom: 20px;
+        > article {
+            position:relative;
+            > figure {
+                margin-bottom: 6px;
+            }
+
+            > .content {
+                position:relative;
+                padding: 0;
+
+                > .category{
+                }
+                > h2{
+                    font-weight: bold;
+                    font-size: rem(17);
+                    line-height:1.29;
+                    margin-top:5px;
+                    margin-bottom:10px;
+                    height:45px;
+                }
+                > p.excerpt {
+                    display:none;
+                }
+                .author {
+                    display:none;
+                }
+                
+                > time {
+                }
+            }
+        }
+        &.without__image {
+            background:color(offwhite);
+            .content {
+                padding:43px 20px 5px 20px;
+
+                height:100%;
+
+                h2 {
+                    font-size: rem(17);
+                    line-height: 1.29;
+                    height:70px;
+                }
+                > p.excerpt {
+                    display:block;
+                    font-size: rem(15);
+                    font-weight: 300;
+                    line-height: 1.33;
+                    max-height: 60px;
+                }
+
+                .author {
+                    display:block;
+                    height: 18px;
+                    width: 100%;
+                    bottom: 30px;
+                    &:after {
+                        content:'';
+                        position: absolute;
+                        display:block;
+                        width: 62px;
+                        height:1px;
+                        background:color(lightgrey);
+                        margin-top:10px;
+                    }
+                }
+
+            }
+        }
+        &:after{
+            content: '';
+            width: 42px;
+            height: 42px;
+            z-index: 10;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-image: url(../icons/podcast-icon.svg);
+            background-repeat: no-repeat;
+            background-size: 42px;
+            border-radius: 24px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+
+
+.card-13{
+    &-desktop{
+        @media screen and (min-width: $mmd-break){
+            @include card-13-base();
+
+            a.card {
+                height:318px;
+                margin-bottom: 40px;
+       
+                > article {
+                    > .content {
+                        height: 158px;
+                        > p.excerpt {
+                            display:block;
+                            font-size: rem(15);
+                            font-weight: 300;
+                            line-height: 1.33;
+                            max-height: 60px;
+                        }
+                        .author {
+                            display: block;
+                            height: 18px;
+                            width: 100%;
+                        }
+                    }
+                }               
+                &.without__image{
+                    .content {
+                        padding: 73px 20px 5px 20px;
+                    }
+                } 
+                       
+            }
+        }
+    }
+    &-tablet{
+        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+            @include card-13-base();
+    
+            a.card {
+                height:250px;
+                margin-bottom: 30px;
+       
+                > article {
+    
+                    > figure{
+                        margin-bottom:6px;
+                    }
+                    > .content{
+                        h2 {
+                            height: 60px;
+                            margin-bottom: 0;
+                        }
+                        .author {
+                            display: block;
+                            height: 18px;
+                            width: 100%;
+                        }
+                    }
+                }   
+            }
+        }
+    }
+    &-mobile{
+        @media screen and (max-width: $sm-break-down){
+            @include card-13-base();
+        }
+    }
+}
+
+
+
+
+
+

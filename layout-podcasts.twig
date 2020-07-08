@@ -1,0 +1,161 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% if (networkData is empty) %}
+    {% set networkData = _Network.getNetworkData() %} 
+    {% set cache = setCache("networkData", networkData, 500) %} 
+{% endif %}
+
+
+{% set site     = networkData.title | lower | split(" ")[0]%}
+{% set blogData = _Blog.getBlog() %}
+
+
+{% set limit = 9 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+{% set firstCount = articles | length %}
+
+
+
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+
+{# Remove "AAP" from the section title unless "AAP" is the only word #}
+{% set title = this.title %}
+
+
+
+
+<main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
+    
+    <div class="container">
+
+        <section>
+            <div class="row">
+                <div class="col-sm-9 header">
+                    <div class="hk">
+                        <h2 class="{{site}}">{{title}}</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-9 col-xs-9">
+                   {% if articles[articleCount] %}
+                       {{this.render('partials/_single-article.twig', {
+                           article: articles[articleCount],
+                           position: articleCount + 1,
+                           imageSize: {width:1050, height:600},
+                           site: site,
+                           containerClass: 'card-12-mobile card-12-tablet card-12-desktop'
+                       }) | raw}}
+                       {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                   {% endif %}
+                </div>
+                {% for i in 0..2 if articles[articleCount] %}
+                    <div class="col-sm-3 col-xs-9">
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            imageSize: {width:450, height:240},
+                            position: articleCount + 1,
+                            site: site,
+                            containerClass: 'card-13-mobile card-13-tablet card-13-desktop'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% if i < 2 %}<hr class="divide visible-xs-block">{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        <div class="ad-container hidden-xs">
+            <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+            
+        </div>
+        <div class="row visible-xs-block">
+                <div class="ad-square col-xs-9">
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                    <div class='advert-mobile' data-adsize="mrec"></div>
+                    <div class="row">
+                        <hr class="divide">
+                    </div>
+                </div>
+                
+         </div>
+            <div class="row">
+                {% for i in 0..4 if articles[articleCount] %}
+                    <div class="col-sm-3 col-xs-9">
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount], 
+                            imageSize: {width:450, height:240},
+                            position: articleCount + 1,
+                            site: site,
+                            containerClass: 'card-13-mobile card-13-tablet card-13-desktop'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% if i < 4 %}<hr class="divide visible-xs-block">{% endif %}
+                    </div>
+                {% endfor %}
+                <div class="ad-square col-sm-3 visible-xs-block visible-lg-block col-xs-9">
+                    <div class="row visible-xs-block">
+                        <hr class="divide">
+                    </div>
+                    <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
+                    <div class="row visible-xs-block">
+                        <hr class="divide">
+                    </div>
+                </div>
+            </div>
+            <div class="ad-container hidden-xs">
+                <div class='advert-tablet' data-adsize="banner"></div>
+                
+            </div>
+        </section>
+
+        <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
+        
+        <section class="loadmore__section {{site}}">
+
+            {% if articles|length >= limit %}
+                {{ this.render('/partials/ajaxarticles_new.twig', {
+                    name            : "section-load",
+                    label           : "",
+                    buttonClass     : "u-display-none",
+                }) | raw }}
+            {% endif %}
+
+
+
+        </section>
+
+    </div>
+</main><!-- .site-main -->
+
+
+<script>
+    // main script is defered so event listener makes sure
+    // defered script is loaded before this runs
+    document.addEventListener("DOMContentLoaded", function(event) {
+        
+        Acme.loadMore = new Acme.View.articleFeed({
+            model           : new Card(),
+            container       : 'loadmore_section',
+            infinite        : true,
+            offset          : {{limit}},
+            limit           : 12,
+            name            : 'section-load',
+            blogid          : "{{ blogData['guid'] }}",
+            card_class      : 'col-sm-3 col-xs-9 card-13-mobile card-13-tablet card-13-desktop',
+            ads             : true,
+            non_pinned      : {{articleCount}}
+        });
+
+
+    });
+</script>
