@@ -21506,14 +21506,14 @@ var cardTemplateTop =
 '<div class="{{cardClass}} {{containerClass}}"> \
     <a  itemprop="url" \
         href="{{url}}" \
-        class="card swap {{articleStatus}} {{hasArticleMediaClass}}" \
+        class="card swap {{articleStatus}} {{hasMediaClass}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
         data-social="0" \
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
         \
-        <article class="{{cardType}}c-cards-view  {{lightbox}}">';
+        <article class="{{cardType}}c-cards-view  {{hasMediaClass}} {{lightbox}}">';
 
 
 var cardTemplateBottom = 
@@ -22956,7 +22956,7 @@ Card.prototype.renderCard = function(card, options)
     var articleId = parseInt(card.articleId);
 
     if (card.social) {
-        card['hasMediaClass'] = (card.social.hasMedia == 1)? 'withImage__content' : 'without-image';
+        card['hasMediaClass'] = (card.social.hasMedia == 1)? 'withImage__content' : 'without__image';
 
         card.params = {
             id          : card.socialId,
@@ -22973,7 +22973,7 @@ Card.prototype.renderCard = function(card, options)
         }
 
     } else {
-        card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without-image';
+        card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
 
         card.params = {
             id          : articleId,

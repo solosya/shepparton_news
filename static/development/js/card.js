@@ -77,7 +77,7 @@ Card.prototype.renderCard = function(card, options)
     var articleId = parseInt(card.articleId);
 
     if (card.social) {
-        card['hasMediaClass'] = (card.social.hasMedia == 1)? 'withImage__content' : 'without-image';
+        card['hasMediaClass'] = (card.social.hasMedia == 1)? 'withImage__content' : 'without__image';
 
         card.params = {
             id          : card.socialId,
@@ -94,7 +94,7 @@ Card.prototype.renderCard = function(card, options)
         }
 
     } else {
-        card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without-image';
+        card['hasMediaClass'] = (card.hasMedia == 1)? 'withImage__content' : 'without__image';
 
         card.params = {
             id          : articleId,
