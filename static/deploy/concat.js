@@ -22079,7 +22079,7 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
             var slotSize = thisSlot.data('adsize');
             
             if (slotSize == 'interstitial') { 
-                newID = 'ad-'+mediaSize+'-interstitial';
+                newID = generateNextAdName('ad-'+mediaSize+'-interstitial'+'-');
                 thisSlot = pageAdSlots[i];
                 thisSlot.id = newID;
             };
