@@ -28,6 +28,12 @@
     {% set syndication = 'Regional Syndicated' %}
 {% endif %}
 
+
+
+{% set feedId = article.feed_id ? article.feed_id : article.aap_id ? article.aap_id : "" %}
+
+
+
     {# {% set distribution = _Article.getDistributionBlogs(article.id) %}
     {% set break = false %}
     {% for blog in distribution if not break %}
@@ -247,7 +253,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
                                     <a href="{{blogInfo.url}}"><p class="category {{site}}{% if premiumtags and premium == 'Premium' %} premium-tag{% endif %}" >{{article.label}}</p
                                     ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
-                                    
+                                    {% if _User.isAdminUser() %}
+                                        <span style="float:right;color:#a9a9a9;font-size:13px;position:relative;top:6px;">Article id: {{feedId}}</span>
+                                    {% endif %}
+
                                     <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>
                                     
                                     <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
