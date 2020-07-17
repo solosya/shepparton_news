@@ -246,7 +246,7 @@
 
 
 {% if site not in popularExceptions %}
-    {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 168 }) %}
+    {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
 
     <section  data-template="section-15">
         <div class="row u-tablet-margin-top-30 u-desktop-margin-top-50 u-mobile-no-margin-top">
