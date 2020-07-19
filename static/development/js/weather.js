@@ -245,7 +245,7 @@
             dataType: "json",
             type: 'GET',
             success: function(res) {
-                console.log(res);
+                // console.log(res);
                 var local = res.data[0];
                 var name = local.location.split('/')[1];
 

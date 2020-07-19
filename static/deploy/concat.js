@@ -22392,7 +22392,7 @@ Acme.Feed.prototype.events = function()
 
 Acme.View.articleFeed = function(options)
 {
-    console.log(options);
+    // console.log(options);
     this.cardModel  = options.model;
     this.limit      = options.limit      || 10;
     this.offset     = options.offset     || 0;
@@ -22451,7 +22451,7 @@ Acme.View.articleFeed.prototype.render = function(data)
         articles = data.users.users;
     }
 
-    console.log(self.cardClass);
+    // console.log(self.cardClass);
     var label = "";
     if (typeof self.button_label != "undefined" || self.button_label != false ) {
         label = self.button_label;
@@ -24566,7 +24566,7 @@ SearchController.Listing = (function ($) {
             dataType: "json",
             type: 'GET',
             success: function(res) {
-                console.log(res);
+                // console.log(res);
                 var local = res.data[0];
                 var name = local.location.split('/')[1];
 
