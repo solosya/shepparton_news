@@ -12,7 +12,7 @@
     {% set countTerm = "listing" %}
 {% endif %}
 
-
+{% if blogData.count > 0 %}
 <div class="acme-row c-section-head" data-buid={{blog_guid}}>
     <div class="acme-col-12">
         <a href="{{link}}" style="display:flex">
@@ -56,3 +56,5 @@
 {% endif %}
 
 <div class="u-margin-bottom-60"></div>
+
+{% endif %}
