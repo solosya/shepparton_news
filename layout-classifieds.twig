@@ -224,18 +224,14 @@
 
                         </div>
 
+                    </div>
 
-                        <div id="classified_more" class="acme-row"> </div>
+                    <div id="loadmorecontainer">
+                        <div id="classified_more" class="acme-row" style="width:100%"> </div>
 
                         <div class="acme-row"> 
                             <div class="acme-col-12">
-
-                                {{ this.render('/partials/ajaxarticles_new.twig', {
-                                    name            : "section-load",
-                                    label           : "",
-                                    buttonClass     : "u-display-none",
-                                }) | raw }}
-
+                                <a href="#" id="section-load" class=""></a>
                             </div>
                         </div>
                     </div>
@@ -416,14 +412,14 @@
 
         Acme.search = new Acme.View.articleFeed({
             model           : cardController,
-            container       : 'results',
-            limit           : 30,
+            container       : 'classified_more',
+            limit           : 6,
             offset          : offset,
+            label           : "Show more results",
             loadtype        : 'api/search',
-            name            : 'fd', //name of the loadmore button
-            renderType      : 'write',
+            name            : 'search-load', //name of the loadmore button
             type            : "{{contentType}}",
-            before          : '<div class="acme-row">',
+            before          : '<div class="acme-row" style="width:100%">',
             failText        : '<h2 style="font-size:24px;margin-top:25px;color:black;font-weight:400;">Sorry, we couldn\'t find what you\'re looking for.</h2>',
             after           : '</div>',
             cardType        : "acme-",
@@ -550,15 +546,29 @@
 
             if (!searchTerm) return;
             var results = $('#results');
+            
+            var loadTrigger = $('#loadmorecontainer');
+            loadTrigger.empty();
+            var triggerHTML = 
+                '<div id="search_more" class="acme-row"> </div> \
+                <div class="acme-row"> \
+                    <div class="acme-col-12"> \
+                        <a href="#" id="search-load" class="">load more</a> \
+                    </div> \
+                </div>';
+            loadTrigger.append(triggerHTML);
+            Acme.search.elem = $('#search-load');
+            Acme.search.container = $('#search_more');
+            Acme.search.events();
+            Acme.search.addWayPoint();
+
             var spinner = $('#searchSpinner');
-            //results.fadeOut(1000);
             spinner.show();
             Acme.search.options.search = searchTerm;
             Acme.search.options.offset = 0;
             Acme.search.fetch().done(function() {
-                //results.show();
+                results.empty();
                 spinner.hide();
-
             });
         };
 

@@ -1,163 +1,300 @@
-Acme.View.articleFeed = function(cardModel, limit, offset, infinite, failText, loadmax) {
-    this.cardModel = cardModel;
-    this.offset    = offset || 0;
-    this.limit     = limit || 10;
-    this.infinite  = infinite || false;
-    this.waypoint  = false;
-    this.options   = {};
-    this.loadcount = 0;
-    this.loadmax   = loadmax || null;
-    this.elem      = $('.loadMoreArticles');
-    this.failText  = failText || null;
-    this.events();
+Acme.Feed = function() {
+    this.domain = _appJsConfig.appHostName;
+    this.requestType = 'post';
+    this.csrf = $('meta[name="csrf-token"]').attr("content");
+    this.dataType = 'json';
 };
 
-Acme.View.articleFeed.prototype.fetch = function()
+Acme.Feed.prototype.fetch = function()
 {
 
     var self = this;
-    self.elem.html("Please wait...");
-
-    var container = $('#'+self.elem.data('container'));
-
+    // self.elem.html("Please wait...");
     // blogfeed makes 2 sql calls.  
     //      Offset is to get pinned contect 
     //      nonPinnedOffset gets the rest
     //      They're combined to return full result
-    self.options = {
-        'container'         :   container,
-        'limit'             :   self.elem.data('limit'),
-        'offset'            :   self.elem.data('offset') || self.elem.data('limit'),
-        'nonPinnedOffset'   :   self.elem.data('non-pinned-offset') || -1,
-        'blogid'            :   self.elem.data('blogguid'),
-        'loadtype'          :   self.elem.data('loadtype')      || "home",
-        'search'            :   self.elem.data('searchterm')    || null,
-        'after'             :   self.elem.data('after')  || null,
-        'before'            :   self.elem.data('before')  || null,
+
+    // if (this.options.search != null) {
+    //     this.options.blogid = this.options.blogid; // search takes an id instead of a guid
+    // }
+    this.url = this.domain + '/home/load-articles';
+
+    this.requestData = { 
+        offset      : this.options.offset, 
+        limit       : this.options.limit, 
+        _csrf       : this.csrf, 
+        dateFormat  : 'SHORT',
+        existingNonPinnedCount: this.options.nonPinnedOffset
     };
 
-    if (self.options.search != null) {
-        self.options.blogid = self.elem.data("blogid"); // search takes an id instead of a guid
+    if (this.options.blogid) {
+        this.requestData['blogGuid'] = this.options.blogid;
     }
 
-    $.fn.Ajax_LoadBlogArticles(self.options).done(function(data) {
+    if (this.options.type) {
+        this.requestData['type'] = this.options.type;
+    }
 
+
+
+    if (this.options.loadtype == 'user') {
+        this.url = this.domain + '/api/'+options.loadtype+'/load-more-managed';
+        this.requestType = 'get';
+    }
+    
+    if (this.options.loadtype == 'user_articles') {
+        var urlArr = window.location.href.split('/');
+        var username = decodeURIComponent(urlArr[urlArr.length - 2]);
+        this.url = this.domain + '/profile/'+ username + '/posts';
+    }
+
+    if (this.options.search) {
+        var refinedSearch = this.options.search;
+        if (this.options.blogid) {
+            this.requestData['blogguid'] = this.options.blogid;
+        }
+        if (refinedSearch.indexOf(",listingquery") >= 0) {
+            refinedSearch = refinedSearch.replace(",listingquery","");
+            this.requestData['meta_info'] = refinedSearch;
+        } else{
+            this.requestData['s'] = refinedSearch;
+        }
+        this.url = this.domain + '/'+ this.options.loadtype;
+        this.requestType = 'get';
+    }
+
+
+    return $.ajax({
+        url      : this.url,
+        data     : this.requestData,
+        type     : this.requestType,
+        dataType : this.dataType,
+    }).done(function(data) {
         if (data.success == 1) {
-            self.loadcount++;
-
-            if ( self.loadmax !== null && self.loadcount >= self.loadmax ) {
-                self.waypoint.destroy();
-            }
-
             self.render(data);
         }
-    });
+    });       
+
 };
 
 
-Acme.View.articleFeed.prototype.render = function(data) 
+
+
+Acme.Feed.prototype.events = function() 
 {
     var self = this;
 
-    var cardClass  =   self.elem.data('card-class'),
-        template   =   self.elem.data('card-template') || null,
-        label      =   self.elem.data('button-label')  || "Load more",
-        ads_on     =   self.elem.data('ads')           || null,
-        rendertype =   self.elem.data('rendertype')    || null;
+    if (self.elem.length > 0) {
+        self.elem.unbind().on('click', function(e) {
+            e.preventDefault();
+            self.fetch();
+        });
+    }
+
+
+    self.lessElem.on('click', function(e) {
+        var section = $(this).data('section');
+        $('#' + section).empty();
+        $(this).hide();
+        self.options.nonPinnedOffset = self.originalCount;
+        self.elem.show();
+    });
+
+    if (this.infinite && this.offset >= this.limit && self.elem.length > 0) {
+        self.addWayPoint.call(self);
+    }
+};
+
+Acme.Feed.prototype.addWayPoint = function()
+{
+    var self = this;
+    self.waypoint = new Waypoint({
+        element: self.elem,
+        offset: '80%',
+        handler: function (direction) {
+            if (direction == 'down') {
+                self.fetch();
+            }
+        }
+    });
+}
+
+
+
+
+Acme.View.articleFeed = function(options)
+{
+    // console.log(options);
+    this.cardModel  = options.model;
+    this.limit      = options.limit      || 10;
+    this.offset     = options.offset     || 0;
+    this.infinite   = options.infinite   || false;
+    this.failText   = options.failText   || null;
+    this.container  = $('#' + options.container);
+    this.template   = options.cardTemplate;
+    this.cardClass  = options.card_class;
+    this.renderType = options.renderType || 'append';
+    this.before     = options.before     || false;
+    this.after      = options.after      || false;
+    this.beforeEach = options.beforeEach || false;
+    this.afterEach  = options.afterEach  || false;
+    this.button_label = options.label    || false;
+    this.cardType   = options.cardType   || "";
+    this.lightbox   = options.lightbox   || null;
+    this.imgWidth   = options.imageWidth || null;
+    this.imgHeight  = options.imageHeight|| null;
+    this.ads        = options.ads        || false;
+    // when clicking less, reset the original offset count
+    this.originalCount = options.non_pinned;
+    this.options    = {
+        'nonPinnedOffset'   :   options.non_pinned  || -1,
+        'search'            :   options.searchterm  || null,
+        'loadtype'          :   options.loadtype    || "home",
+        'offset'            :   options.offset      || 0,
+        'blogid'            :   options.blogid,
+        'limit'             :   options.limit,
+        'type'              :   options.type        || null
+        // 'page'              :   self.elem.data('page') || 1, // page is used for user articles
+    };
+
+    this.waypoint  = false;
+    
+    // This is the load more button
+    this.elem      = $('#' + options.name);
+    // This is the load LESS button if you have one
+    this.lessElem  = $('#less-' + options.name);
+    this.failText  = options.failText || null;
+    this.events();
+};
+
+Acme.View.articleFeed.prototype = new Acme.Feed();
+Acme.View.articleFeed.constructor = Acme.View.articleFeed;
+Acme.View.articleFeed.prototype.render = function(data) 
+{
+
+    var self = this;
+    var articles = [];
+    if (data.articles) {
+        articles = data.articles;
+    }
+    if (data.userArticles) {
+        articles = data.userArticles;
+    }
+    if (data.users) {
+        articles = data.users.users;
+    }
+
+    // console.log(self.cardClass);
+    var label = "";
+    if (typeof self.button_label != "undefined" || self.button_label != false ) {
+        label = self.button_label;
+    }
+    var ads_on =   self.ads || null;
 
     self.elem.html(label);
-
-    (data.articles.length < self.options.limit) 
-        ? self.elem.css('display', 'none')
-        : self.elem.show();
+    self.lessElem.show();
 
     // add counts to the dom for next request
-    self.elem.data('non-pinned-offset', data.existingNonPinnedCount);
-    self.elem.data('offset', (self.options.offset + self.options.limit));
+    self.options.offset += self.options.limit;
+    self.options.nonPinnedOffset = data.existingNonPinnedCount;
 
     var html = [];
     if (ads_on == "yes") {
         html.push( window.templates.ads_infinite );
     }
 
-
-    if (data.articles.length === 0 && self.failText) {
+    if (articles.length === 0 && self.failText) {
         html = ["<p>" + self.failText + "</p>"];
     } else {
-        for (var i in data.articles) {
-            if (self.options.before) {
-                html.push( self.options.before );
+        for (var i in articles) {
+
+            if (self.beforeEach) {
+                html.push( self.beforeEach );
             }
 
-            html.push( self.cardModel.renderCard(data.articles[i], {
-                cardClass: cardClass,
-                template: template
-            } ));
 
-            if (self.options.after) {
-                html.push( self.options.after );
+            articles[i].imageOptions = {'width': self.imgWidth, 'height': self.imgHeight};
+            html.push( self.cardModel.renderCard(articles[i], {
+                cardClass: self.cardClass,
+                template: self.template,
+                type: self.cardType,
+                lightbox: self.lightbox || null
+            }));
+
+            if (self.afterEach) {
+                html.push( self.afterEach );
             }
+
+
+
+        }
+        if (self.before ) {
+            var beforeStr =  self.before.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+            html = [beforeStr].concat(html);
+        }
+        if (self.after) {
+            var afterStr =  self.after.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+            html = html.concat([afterStr]);
         }
     }
-    (rendertype === "write")
-        ? self.options.container.empty().append( html.join('') )
-        : self.options.container.append( html.join('') );
-        
+
+    (self.renderType === "write")
+        ? self.container.empty().append( html.join('') )
+        : self.container.append( html.join('') );
+    
+
+    // show or hide the load more button depending on article count
+    (articles.length < self.options.limit && !this.infinite) 
+        ? self.elem.css('display', 'none')
+        : self.elem.show();
+
+    // reset infinite load depending on article count
+
     if (self.waypoint) {
-        (data.articles.length < self.options.limit)
+        (articles.length < self.options.limit)
             ? self.waypoint.disable()
             : self.waypoint.enable();
     }
 
-    $(".card .content > p, .card h2").dotdotdot();     
+
     // $('.video-player').videoPlayer();
-    $("div.lazyload").lazyload({
+    $(".lazyload").lazyload({
         effect: "fadeIn"
     });
-
-    this.cardModel.events_refresh();
-
-
-    self.elem.data('rendertype', '');
-
-    if (ads_on == "yes") {
-       self.InsertAds();
-    }
-};
-
-
-Acme.View.articleFeed.prototype.events = function() 
-{
-    var self = this;
-    self.elem.unbind().on('click', function(e) {
-        e.preventDefault();
-        self.fetch();
+    $('.j-truncate').dotdotdot({
+        watch: true
     });
 
-    if (this.infinite && this.offset >= this.limit) {
+    this.cardModel.events();
 
-        self.waypoint = new Waypoint({
-            element: self.elem,
-            offset: '100%',
-            handler: function (direction) {
-                if (direction == 'down') {
-                    self.fetch();
-                }
-            }
-        });
+    if (ads_on == "yes") {
+        self.InsertAds();
     }
+
+
 };
+
+
+
+
+
+
+
+
+
 
 Acme.View.articleFeed.prototype.InsertAds = function() {
     var screenWidth = $(window).width();
+    var pageAdSlots = [];
     if (screenWidth >= 300 && screenWidth <= 767) {
-        var pageAdSlots = $('.advert-mobile');
+        pageAdSlots = $('.advert-mobile');
         var mediaSize = 'mobile'; 
     } else if (screenWidth >= 768 && screenWidth <= 991) {
-        var pageAdSlots = $('.advert-tablet');
+        pageAdSlots = $('.advert-tablet');
         var mediaSize = 'tablet';
     } else if (screenWidth >= 992) {
-        var pageAdSlots = $('.advert-desktop');
+        pageAdSlots = $('.advert-desktop');
         var mediaSize = 'desktop';
     } else {
         console.log('screen too small for advertising.');
@@ -198,8 +335,6 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
 
         }
         var siteSection = getSiteSection(effectiveURL,effectiveSection,siteAdSections,effectiveType);
-        
-        if (typeof networkSelect === 'undefined') return;
         var networkSite = networkSelect[effectiveURL];
         if (rubiconAcct != undefined) {
             (function() {
@@ -333,9 +468,9 @@ Acme.View.articleFeed.prototype.InsertAds = function() {
     }
 
     function getSiteSection(site,section,adsections,type) {
-
-        if (typeof adsections === 'undefined') return; 
-        
+        if (typeof adsections === "undefined") {
+            return section;
+        }
         if (adsections.length < 0) {
             return section;
         }
