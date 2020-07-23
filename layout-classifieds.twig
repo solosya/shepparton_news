@@ -224,9 +224,6 @@
 
                         </div>
 
-                    </div>
-
-                    <div id="loadmorecontainer">
                         <div id="classified_more" class="acme-row" style="width:100%"> </div>
 
                         <div class="acme-row"> 
@@ -412,8 +409,8 @@
 
         Acme.search = new Acme.View.articleFeed({
             model           : cardController,
-            container       : 'classified_more',
-            limit           : 6,
+            container       : 'results',
+            limit           : 30,
             offset          : offset,
             label           : "Show more results",
             loadtype        : 'api/search',
@@ -547,27 +544,22 @@
             if (!searchTerm) return;
             var results = $('#results');
             
-            var loadTrigger = $('#loadmorecontainer');
-            loadTrigger.empty();
             var triggerHTML = 
-                '<div id="search_more" class="acme-row"> </div> \
-                <div class="acme-row"> \
+                '<div class="acme-row"> \
                     <div class="acme-col-12"> \
-                        <a href="#" id="search-load" class="">load more</a> \
+                        <a href="#" id="search-load" class=""></a> \
                     </div> \
                 </div>';
-            loadTrigger.append(triggerHTML);
+            results.after(triggerHTML);
+            results.empty();
             Acme.search.elem = $('#search-load');
-            Acme.search.container = $('#search_more');
             Acme.search.events();
-            Acme.search.addWayPoint();
 
             var spinner = $('#searchSpinner');
             spinner.show();
             Acme.search.options.search = searchTerm;
             Acme.search.options.offset = 0;
             Acme.search.fetch().done(function() {
-                results.empty();
                 spinner.hide();
             });
         };
