@@ -68,6 +68,15 @@
 
     }
 
+    &__count {
+        margin-left:auto;
+        @include font-size(13);
+        color:#595859;
+        position: absolute;
+        right: 5px;
+        top: 11px;
+        opacity: 0.8;
+    }
 
     @media #{$mobile} {
         display:none;
@@ -93,6 +102,7 @@
     }
 
     &__item {
+        
         @include margin(0);
         @include padding-classifieds(0);
         position:relative;
