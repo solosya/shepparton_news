@@ -24,11 +24,12 @@
         border-radius: 5px 5px 0 0;
         text-transform: uppercase;
         position: absolute;
-        right: -72px;
-        top: 45%;
+        right: -76px;
+        top: 55%;
         // width: 116px;
         padding: 7px 10px 5px 10px;
         cursor:pointer;
+        box-shadow: 1px -1px 9px rgba(0,0,0,0.3);
 
 
         @media #{$mobile} {
