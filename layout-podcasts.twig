@@ -125,8 +125,8 @@
             {% if articles|length >= limit %}
                 {{ this.render('/partials/ajaxarticles_new.twig', {
                     name            : "section-load",
-                    label           : "Load more",
-                    buttonClass     : "c-loadmore",
+                    label           : "",
+                    buttonClass     : "u-display-none",
                 }) | raw }}
             {% endif %}
 
