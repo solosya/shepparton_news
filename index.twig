@@ -251,7 +251,7 @@
 
     
 
-    {% set blogFeeds = blogFeeds | merge({
+    {# {% set blogFeeds = blogFeeds | merge({
             (homeBlog):             { "limit" : 1},
                            
             "aap":                  { "limit" : 5},
@@ -276,12 +276,12 @@
             'aap entertainment':    { "limit" : 1},
             
         })
-    %}
+    %} #}
     {# *******************************************************
                     SHEPPARTON & RIVERINE
     ******************************************************* #}
    
-
+{# 
     {% for key in regionalSelect[site]['regional'] %}
         {% set blogFeeds = blogFeeds | merge({ 
                 (key) : {"limit" : 1 }
@@ -347,7 +347,7 @@
 
     {% set sectionOrder = regionalSelect[site]['sections'] %}
 
-
+ #}
 
 
 
