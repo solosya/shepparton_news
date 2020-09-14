@@ -3,15 +3,11 @@
 
 {% cache 'indexCache_1' 300 %}
 
-
-
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
     {% set networkData = _Network.getNetworkData() %} 
     {% set cache = setCache("networkData", networkData, 500) %} 
 {% endif %}
-
-
 
 
 {% set blogData    = _Blog.getBlog() %}
@@ -27,23 +23,10 @@
 
 {% set sectionOrder = [] %}
 
-
-
-{# *******************************************************
-                GLOBAL SITE SECTIONS
-              (each site can override)
-
-
-
-        NO LONGER IN USE - (see theme config)
-
-
-******************************************************* #}
-
-{% set regionalSelect = {
+{# {% set regionalSelect = {
     
 
-} %}
+} %} #}
 
     {# 'shepparton': {
         'regional'   :  ['echuca news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','echuca sport'],
@@ -63,8 +46,8 @@
     },
  #}
 
-{% set pageSections =  {
-    'breaking_news' : {
+
+  {# 'breaking_news' : {
         'template': 'partials/index/section-00.twig',
         'blogs' : ['breaking news'],
         'background': true
@@ -93,11 +76,6 @@
         'blogs'     : ['real estate'],
         'background': true,
         'template'  : 'partials/index/section-05.twig' 
-    },
-    "opinion": {
-        'title'     : "Opinion",
-        'blogs'     : ['opinion'],
-        'template'  : 'partials/index/section-07.twig',
     },
     "videos": {
         'title'     : "Videos",
@@ -141,14 +119,26 @@
             'link' : '/@national--world'
         }
     },
+ #}
 
 
 
+
+
+
+{% set pageSections =  {
+  
 
     'index-country': {
         'template': 'partials/index/section-15.twig',
         'blogs'     : [(homeBlog)]
     },
+    "opinion": {
+        'title'     : "Opinion",
+        'blogs'     : ['opinion'],
+        'template'  : 'partials/index/section-07.twig',
+    },
+
     'dairy': {
         'title'     : "Dairy",
         'template'  : 'partials/index/section-26.twig',
@@ -397,7 +387,7 @@
 {% endif %}
 
 
-{% if layoutTitle == 'major_breaking_news' %}
+{# {% if layoutTitle == 'major_breaking_news' %}
     {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
     {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
 {% endif %} 
@@ -418,7 +408,7 @@
     }) %}
 
 {% endif %} 
-
+ #}
 
 
 
@@ -587,8 +577,8 @@
     
     {% for pagesection in sectionOrder %}
 
-       {% if pageSections[pagesection]['active'] is not defined or pageSections[pagesection]['active'] == true %}
-       
+        {% if pageSections[pagesection]['active'] is not defined or pageSections[pagesection]['active'] == true %}
+
             {% set params = {
                 'section'     : pageSections[pagesection],
                 'blogFeeds'   : blogFeeds,
