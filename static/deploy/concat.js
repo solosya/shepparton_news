@@ -21509,6 +21509,7 @@ var cardTemplateTop =
         class="card swap {{articleStatus}} {{hasMediaClass}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
+        data-blog-title="{{params.blogTitle}}" \
         data-social="0" \
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \
@@ -22623,6 +22624,7 @@ Card.prototype.renderCard = function(card, options)
             title       : card.title,
             content     : articleContent,
             author      : card.createdBy.displayName,
+            blogTitle   : card.blogTitle,
             publishDate : card.publishDate,
             videoClass  : card.featuredMedia['type'] == 'video' ? 'c-cards-view__media--video' : '',
             hasMedia    : card.hasMedia,

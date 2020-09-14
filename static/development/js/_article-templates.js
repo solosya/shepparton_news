@@ -75,6 +75,7 @@ var cardTemplateTop =
         class="card swap {{articleStatus}} {{hasMediaClass}}" \
         data-id="{{articleId}}" \
         data-position="{{position}}" \
+        data-blog-title="{{params.blogTitle}}" \
         data-social="0" \
         data-article-image="{{{imageUrl}}}" \
         data-article-text="{{title}}"> \

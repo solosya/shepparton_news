@@ -23,107 +23,6 @@
 
 {% set sectionOrder = [] %}
 
-{# {% set regionalSelect = {
-    
-
-} %} #}
-
-    {# 'shepparton': {
-        'regional'   :  ['echuca news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','echuca sport'],
-        'editors'    :  ['deniliquin news','echuca news','galleries'],
-        'sections'   :  ['index', 'local', 'real estate', 'opinion', 'videos', 'galleries', 'contributed photos', 'regional news', 'rural news', 'national'],
-        'localpart'  :  ['partials/index/section-01.twig'],
-        'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
-        'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
-    },
-    'riverine': {
-        'regional'   :  ['shepp news','kyabram news','benalla news','deniliquin news','finley news','cobram news','seymour news','rochester news','heathcote news','tatura news','yarrawonga news','corowa news','shepp sport'],
-        'editors'    :  ['deniliquin news','shepp news','galleries'],
-        'sections'   :  ['local', 'real estate', 'opinion', 'videos', 'galleries', 'regional news', 'rural news', 'national'],
-        'localpart'  :  ['partials/index/section-01.twig'],
-        'localBlogs' :  ['news', 'sport', 'education', 'lifestyle', 'entertainment'],
-        'localOrder' :  ['news', 'news', 'sport', 'news', 'education', 'entertainment', 'news', 'sport', 'news', 'news', 'sport', 'lifestyle']
-    },
- #}
-
-
-  {# 'breaking_news' : {
-        'template': 'partials/index/section-00.twig',
-        'blogs' : ['breaking news'],
-        'background': true
-    },
-    'featured_news' : {
-        'template': 'partials/index/section-00.twig',
-        'blogs' : ['feature story'],
-        'background': true
-    },
-    'index': {
-        'template': 'partials/index/section-15.twig',
-        'blogs' : [(homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'national', regionalSelect[site]['editors'][1], regionalSelect[site]['editors'][2], 'dairy', 'world','aap finance'],
-        'articleOrder' : [(homeBlog), 'national', 'sport', regionalSelect[site]['editors'][0], 'news', 'world', 'news', 'rural news', 'aap finance', regionalSelect[site]['editors'][1], 'news', 'national', regionalSelect[site]['editors'][2], 'world', 'dairy']
-    },
-    "local": {
-        "template": regionalSelect[site]['localpart'][0],
-        "title" : "Local",
-        "blogs": regionalSelect[site]['localBlogs'],
-        "articleOrder" : regionalSelect[site]['localOrder'],
-        "template_params" : {
-            "link" : "/@local"
-        }
-    },
-    "real estate": {
-        'title'     : "Real Estate",
-        'blogs'     : ['real estate'],
-        'background': true,
-        'template'  : 'partials/index/section-05.twig' 
-    },
-    "videos": {
-        'title'     : "Videos",
-        'background': true,
-        'template'  : 'partials/index/section-video.twig',
-    },
-    "galleries": {
-        'title'     : "Galleries",
-        'blogs'     : ['galleries'],
-        'template'  : 'partials/index/section-09.twig'
-    },
-    "contributed photos": {
-        'title'     : "Contributed Photos",
-        'blogs'     : ['contributed photos'],
-        'template'  : 'partials/index/section-08.twig'
-    }, 
-    "regional news": {
-        "title"     : "Regional",
-        "blogs"     : regionalSelect[site]["regional"],
-        "articleOrder" : regionalSelect[site]["regional"],
-        "template"  : "partials/index/section-02.twig",
-        "template_params" : {
-            "link" : "/@regional"
-        }
-    },
-    "rural news": {
-        'title'     : "Rural",
-        'blogs'     : ['rural news', 'water', 'animal health', 'dairy', 'livestock', 'rural markets', 'rural news', 'horticulture', 'machinery & products', 'cropping', 'rural management', 'from the experts'],
-        "articleOrder" : ["rural news", "water", "animal health", "dairy", "livestock", "rural markets", "rural news", "horticulture", "dairy", "rural news", "machinery & products", "rural management", "water", "cropping", "from the experts", "rural news"],
-        'template'  : 'partials/index/section-03.twig',
-        'template_params' : {
-            'link' : '/@rural'
-        }
-    },
-    "national": {
-        'title'     : "National & World",
-        'blogs'     : ["national", "aap finance", "world", "national & world sport", "aap horse racing", "national", "aap entertainment"],
-        "articleOrder" : ["national", "aap finance", "world", "world", "aap horse racing", "aap afl", "national", "aap entertainment", "national"],
-        'template'  : 'partials/index/section-04.twig',
-        'template_params' : {
-            'link' : '/@national--world'
-        }
-    },
- #}
-
-
-
-
 
 
 {% set pageSections =  {
@@ -222,130 +121,9 @@
 
 
 
-
-
-
-
-
-
-
-{# The following list of blogs are required for each site to load the feeds #}
-
-
 {% set blogFeeds =  {} %}
 
-{# *******************************************************
-                MASTHEADS & REGIONAL SITES
-******************************************************* #}
-{% if site != 'dairy' and site != 'country' %}
-
-    
-
-    {# {% set blogFeeds = blogFeeds | merge({
-            (homeBlog):             { "limit" : 1},
-                           
-            "aap":                  { "limit" : 5},
-            "rural news":           { "limit" : 4},
-            'dairy':                { "limit" : 2},
-
-            'water':                { "limit" : 2},
-            'animal health':        { "limit" : 1},
-            'livestock':            { "limit" : 1},
-            'rural markets':        { "limit" : 1},
-            'horticulture':         { "limit" : 1},
-            'machinery & products': { "limit" : 1},
-            'cropping':             { "limit" : 1},
-            'rural management':     { "limit" : 1},
-            'from the experts':     { "limit" : 1},
-
-            'national':             { "limit" : 3},
-            'world':                { "limit" : 2},
-            'aap finance':          { "limit" : 1},
-            'aap horse racing':     { "limit" : 1},
-            'aap afl':              { "limit" : 1},
-            'aap entertainment':    { "limit" : 1},
-            
-        })
-    %} #}
-    {# *******************************************************
-                    SHEPPARTON & RIVERINE
-    ******************************************************* #}
-   
-{# 
-    {% for key in regionalSelect[site]['regional'] %}
-        {% set blogFeeds = blogFeeds | merge({ 
-                (key) : {"limit" : 1 }
-            })
-        %}
-    {% endfor %}
-
-    {% if site == 'shepparton' or site == 'shepp' %}
-        {% set blogFeeds = blogFeeds | merge({ 
-            "opinion":              { "limit" : 4},
-            "real estate":          { "limit" : 3},
-            "galleries":            { "limit" : 3},
-            "contributed photos":   { "limit" : 3},
-            "news":                 { "limit" : 6},
-            "sport":                { "limit" : 3},
-            "education":            { "limit" : 1},
-            "lifestyle":            { "limit" : 1},
-            "entertainment":        { "limit" : 1},
-
-            })
-        %}
-    {% elseif site == 'riverine' %}
-        {% set blogFeeds = blogFeeds | merge({ 
-            "opinion":              { "limit" : 4},
-            "real estate":          { "limit" : 3},
-            "galleries":            { "limit" : 3},
-            "news":                 { "limit" : 6},
-            "sport":                { "limit" : 3},
-            "education":            { "limit" : 1},
-            "lifestyle":            { "limit" : 1},
-            "entertainment":        { "limit" : 1},
-
-            })
-        %}
-    {% elseif site == 'deniliquin' %}
-        {% set blogFeeds = blogFeeds | merge({ 
-            "opinion":              { "limit" : 4},
-            "news":                 { "limit" : 7},
-            "sport":                { "limit" : 4},
-            "entertainment":        { "limit" : 1},
-
-            })
-        %}
-
-    {% elseif site == 'yarrawonga' %}
-        {% set blogFeeds = blogFeeds | merge({ 
-            "news":                 { "limit" : 8},
-            "sport":                { "limit" : 4},
-            "real estate":          { "limit" : 3},
-
-            })
-        %}
-
-    {% else %}
-        {% set blogFeeds = blogFeeds | merge({ 
-            "news":                 { "limit" : 8},
-            "sport":                { "limit" : 4},
-
-            })
-        %}
-    {% endif %}
-
-
-    {% set sectionOrder = regionalSelect[site]['sections'] %}
-
- #}
-
-
-
-{# *******************************************************
-                    COUNTRY
-******************************************************* #}
-
-{% elseif site == 'country' %}
+{% if site == 'country' %}
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):         { "limit" : 15},
@@ -362,15 +140,10 @@
 
     {% set sectionOrder = ['index-country', 'opinion', 'dairy', 'bloggers', 'water', 'horticulture', 'viticulture', 'livestock', 'cropping'] %}
 
+{% endif %}
 
 
-
-
-{# *******************************************************
-                    DAIRY
-******************************************************* #}
-
-{% elseif site == 'dairy' %}
+{% if site == 'dairy' %}
 
     {% set blogFeeds = blogFeeds | merge({
             (homeBlog):             { "limit" : 15},
@@ -386,29 +159,6 @@
 
 {% endif %}
 
-
-{# {% if layoutTitle == 'major_breaking_news' %}
-    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 6} }) %}
-    {% set sectionOrder = ['breaking_news'] | merge(sectionOrder) %}
-{% endif %} 
-
-{% if layoutTitle == 'minor_breaking_news' %}
-    {% set blogFeeds = blogFeeds | merge({ 'breaking news': { "limit" : 1} }) %}
-    
-    {% set pageSections = pageSections | merge({ 'index' : 
-        {
-            'template': 'partials/index/section-15.twig',
-            'template_params' : {
-                'layout': 'breaking news',
-                'blogData': blogData
-            },
-            'blogs' : ['breaking news', (homeBlog), 'news', 'sport', 'rural news', 'entertainment', regionalSelect[site]['editors'][0], 'aap', regionalSelect[site]['editors'][1], 'galleries', 'dairy'],
-            'articleOrder' : ['breaking news', (homeBlog), 'aap', 'sport', regionalSelect[site]['editors'][0], 'news', 'aap', 'news', 'rural news', 'aap', regionalSelect[site]['editors'][1], 'news', 'aap', 'galleries', 'aap', 'dairy'],
-        }
-    }) %}
-
-{% endif %} 
- #}
 
 
 
@@ -474,15 +224,7 @@
             {% endif %}
 
         {% endfor %}
-        
-
-
     {% endif %}
-    {# {% set log = _AppHelper.log(blogFeeds) %} #}
-
-    {# {% if config['page']['index']['blogFeeds'] is defined %}
-        {% set blogFeeds = config['page']['index']['blogFeeds'] %}
-    {% endif %} #}
 
 
 
