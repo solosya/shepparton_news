@@ -338,6 +338,12 @@
   }
 }
 
+@mixin opacity($opacity) {
+    opacity:$opacity;
+    $opacity-ie:$opacity * 100;
+    filter:alpha(opacity=$opacity-ie);
+}
+
 
 
 
@@ -631,4 +637,12 @@
 		-ms-flex-line-pack:$value;
 	}
 	align-content:$value;
+}
+
+
+
+@mixin calc($property, $expression) {
+	#{$property}: -moz-calc(#{$expression});
+	#{$property}: -webkit-calc(#{$expression});
+	#{$property}: calc(#{$expression});
 }

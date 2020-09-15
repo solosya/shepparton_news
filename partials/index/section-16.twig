@@ -3,7 +3,7 @@
 
 <section class="home-main-stories">
     <div class="row">
-        <div class="col-xs-9 col-md-6 col-sm-9">
+        <div class="col-xs-12 col-md-6 col-sm-12">
 
             {% if articles[articleCount] %}                                                                
                 {{this.render('../_single-article.twig', {
@@ -18,14 +18,14 @@
             {% endif %}
         </div>
 
-        <div class="col-xs-9 col-sm-9 visible-sm-block visible-xs-block">
+        <div class="col-xs-12 col-sm-12 visible-sm-block visible-xs-block">
             <hr class="divide10 space-only">
         </div>
 
-        <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols ">
+        <div class="col-xs-12 col-sm-12 col-md-3 sm-two-cols ">
             <div class="row sm-flex">
 
-                <div class="col-sm-1 col-md-9"  style="order: 2;">                    
+                <div class="col-sm-1 col-md-12"  style="order: 2;">                    
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             article: articles[articleCount], 
@@ -38,7 +38,7 @@
                     {% endif %}
                 </div>
 
-                <div class="col-sm-1 col-md-9"  style="order: 3;">                    
+                <div class="col-sm-1 col-md-12"  style="order: 3;">                    
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             article: articles[articleCount], 
@@ -51,7 +51,7 @@
                     {% endif %}
                 </div> 
 
-                <div class="col-sm-1 col-md-9"  style="order: 1;">
+                <div class="col-sm-1 col-md-12"  style="order: 1;">
                     <div class="current-issue-card {{site}}">
                         <a class="download-current" href="https://issuu.com/dairynewsaustralia">View the current publication</a>
                     </div>
@@ -60,7 +60,7 @@
                     <hr class="divide10 visible-xs-block visible-sm-block space-only">
                 </div>
 
-                <div class="col-sm-1 col-md-9" style="order: 0;">                    
+                <div class="col-sm-1 col-md-12" style="order: 0;">                    
                     {{ this.render('../subscribe.twig') | raw }}
                     <hr class="divide10 visible-xs-block visible-sm-block space-only">                            
                 </div>
@@ -111,7 +111,7 @@
 <section class="row sm-two-cols visible-sm-block">
 
     {% for i in 0..3 if articles[articleCount] %}
-        <div class="col-sm-1 col-xs-9">
+        <div class="col-sm-1 col-xs-12">
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
                 position        : cardIndex + 1, 

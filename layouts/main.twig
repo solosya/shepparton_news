@@ -107,7 +107,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=2cd131c1" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=de9473c3" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -243,9 +243,14 @@ for Oovvuu to use to replicate the menu on the video site. #}
 <body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-class="{{ pageClass | split(' ')[0] }}" data-site="{{site}}" data-networkid="{{networkData['id']}}" data-v="42">
 
 {{ this.beginBody() }}
-      
 
-    {{ this.render('partials/_header_navigation.twig', {
+
+    {% set headerStyle = '' %}
+    {% if config['header-style'] is defined %}
+        {% set headerStyle = config['header-style'] %}
+    {% endif %}
+
+    {{ this.render('partials/_header_navigation' ~ headerStyle ~ '.twig', {
         site:site,
         networkData: networkData, 
         paymeter: paymeter,

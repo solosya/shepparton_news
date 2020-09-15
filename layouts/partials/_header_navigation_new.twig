@@ -1,0 +1,238 @@
+{% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
+{% set miniMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'header-mini'}) %}
+
+{% set loggedin = _User.isGuest() ? false : true %}
+{% set user = loggedin ? _User.getUser() : null %}
+
+{% set logo = networkData.templatePath~'/static/images/shepp-logo.svg'%}
+
+{% set logoWidth = 650 %}
+{% set logoHeight = 144 %}
+
+{% if config['logo'] is defined %}
+    {% if config['logo']['width'] is defined %}
+        {% set logoWidth = config['logo']['width'] %}
+
+        {% if config['logo']['height'] is not defined %}
+            {% set logoHeight = 0 %}
+        {% endif %}
+    {% endif %}
+
+    {% if config['logo']['height'] is defined %}
+        {% set logoHeight = config['logo']['height'] %}
+
+        {% if config['logo']['width'] is not defined %}
+            {% set logoWidth = 0 %}
+        {% endif %}
+
+    {% endif %}
+{% endif %}
+
+{% set paywall = true %}
+
+{% if config['paywall'] is defined and config['paywall'] == false %}
+    {% set paywall = false %}
+{% endif %}
+
+{% if networkData.logoMedia | length > 0 %}
+    {% set logo = _Media.getMediaUrl(networkData.logoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
+{% endif %}
+
+
+{% set dateFormat = "l, j F Y" %}
+{% if config['dateFormat'] is defined and config['dateFormat'] != "" %}
+    {% set dateFormat = config['dateFormat'] %}
+{% endif %}
+{% set theDate = _AppHelper.getCurrentTimestampBasedOnTimezone() %}
+{% set date = _AppHelper.getDefaultTimezoneDateTime(theDate, dateFormat) %}
+
+
+<header class="c-header-new u-mobile-margin-bottom-70" data-header="0">
+    <div class="container">
+        <div class="row">
+            
+            
+            
+            {# ******************************************************
+                                 MINI MENU
+            ****************************************************** #}
+            <div class="col-sm-12 c-header-new__container">
+                <div class="c-header-new-top-bar">
+                    {# {{this.render('../_submenu_navigation.twig', {
+                        items: miniMenu,
+                        class: 'c-header-new-top-bar__link',
+                    }) | raw}} #}
+                </div>
+            </div>  
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="c-header-new__main-info" style="background:cyan">
+
+
+                    <div class="c-header-new__weather-info" style="background:purple">
+                        <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
+                    </div>
+
+                    <a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo">
+                        <figure class="c-header-new__main-info__figure">
+                            <img src="{{logo}}" class="image-fluid" />
+                        </figure>
+                    </a>
+                    
+                    <div class="c-header-new__login-info" style="background:green">
+                        {# {% if paymeter == true and pianoSubscribe == true %} #}
+                            <a class="c-header-new__subscribebutton" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                SUBSCRIBE
+                            </a>  
+                        {# {% endif %}   #}
+                    </div>
+                </div>
+
+                <div class="c-header-new__sub-info" style="background:cyan">
+                    <a class="c-header-new__read-link" href="">Read paper</a>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+        {# ******************************************************
+                                MAIN NAV
+        ****************************************************** #}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="background:yellow">       
+                <div class="c-navigation-new c-navigation-new-md">
+                    <div class="c-navigation-new__weather">
+                        <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
+                        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                    </div>
+
+
+                    <ul class="c-navigation-new__list">
+                        {{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}
+                    </ul>
+                    
+
+                    {# Only shows on Mobile #}
+                    <div class="c-navigation-new__mobile_auth">
+                        {# {% if paymeter == true and pianoMenu == true %}   #}
+                            <a class="c-header-new__subscribebutton" 
+                                href="javascript:void(0);" 
+                                onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                SUBSCRIBE
+                            </a>  
+                            <a class="c-header-new__login" 
+                                onclick="javascript:tp.pianoId.show({screen: 'login'});" 
+                                href="javascript:void(0);">Sign in
+                            </a>
+                        {# {% endif %}   #}
+
+                    </div>
+
+
+
+                    <div class="c-navigation-new__icons">
+                        {# {% if paymeter == true and pianoMenu == true %}   #}
+                            {# <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li> #}
+                            <div class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;">
+                                <a class="c-header-new__login" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a>
+                            </div>
+                            <div class="d-flex j-piano-loggedout">
+                                <a class="c-header-new__login" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">Sign in</a>
+                                <img class="c-header-new__login-profile" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
+                            </div>
+                        {# {% endif %}   #}
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    {# ******************************************************
+                        FIXED HEADER
+    ****************************************************** #}
+    <div class="c-header-new__fixed c-header-new__fixed--off" id="j-menu-fixed">
+        <div class="c-header-new__main-info c-header-new__fixed-block" >
+            <a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo" >
+                <figure class="c-header-new__main-info__figure">
+                    <img src="{{logo}}" class="image-fluid" />
+                </figure>
+            </a>
+            <div class="c-navigation-new c-navigation-new-md c-navigation-new__fixed u-margin-top-10" >
+                <ul class="c-navigation-new__list d-none d-lg-flex">
+                    {{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}
+                </ul>
+
+                <div class="c-navigation-new__icons d-lg-none">
+                    <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="responsive-standalone">
+    
+    <ul class="standalone-menu">
+        <li class="c-search-bar d-block d-md-none">
+            <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+                {# <div class="c-search-bar__icon">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div> #}
+                <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
+                <button class="c-search-bar__button c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
+            </form>
+        </li>
+        {{ this.render('../../partials/_menu.twig', {
+            'menu': headermenu
+            }) | raw }}
+    </ul>
+    
+    <div class="responsive-standalone-close">
+        <div class="responsive-standalone-close-menu">Menu</div>
+        <div class="responsive-standalone-close-close o-close o-close--dark"></div>
+    </div>
+
+</div>
+
+<div class="responsive-standalone-overlay"></div>

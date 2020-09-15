@@ -1,5 +1,8 @@
 //Bootstrap
+// @import 'vendor/bootstrap/bootstrap';
+
 @import "_settings.variables";
+
 @import "bootstrap";
 @import "datetimepicker";
 @import "font-awesome-4.7.0/scss/font-awesome";
@@ -21,6 +24,7 @@
 
 
 @import "object.arrow";
+@import "object.hamburger";
 
 
 
@@ -57,6 +61,9 @@
 @import 'component.lightbox-modal';
 @import 'component.profile-sidebar';
 
+@import "component.header-new";
+@import "component.navigation-new";
+@import "component.responsiveNav";
 
 
 // article page
