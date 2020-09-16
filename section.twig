@@ -45,7 +45,7 @@
 
         <section>
             <div class="row">
-                <div class="col-sm-9 header">
+                <div class="col-sm-12 header">
                     <div class="hk">
                         <h2 class="{{site}}">{{title}}</h2>
                         <p></p>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-sm-9 col-xs-9">
+                <div class="col-md-8 col-sm-12 col-xs-12">
                    {% if articles[articleCount] %}
                        {{this.render('partials/_single-article.twig', {
                            article: articles[articleCount],
@@ -73,7 +73,7 @@
 
                 
 
-                <div class="col-md-3 sm-two-cols">
+                <div class="col-md-4 sm-two-cols">
                     <div class="row">
                 
                         <div class="ad-square u-margin-bottom-15 hidden-xs hidden-sm" style="position:relative;">
@@ -81,7 +81,7 @@
                         </div>                      
 
                      {% if articles[articleCount] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
+                            <div class="col-sm-1 col-md-12 col-xs-12">
                                 <hr class="divide12 visible-md-block visible-lg-block space-only">                            
                                  {{this.render('partials/_single-article.twig', {
                                      article: articles[articleCount], 
@@ -117,7 +117,7 @@
 
                 {% for i in 0..3 if articles[articleCount] %}
                     {% set visibleClass = [' hidden-sm','','',''] %}
-                    <div class="col-sm-3 col-md-1 col-xs-9">
+                    <div class="col-sm-3 col-md-1 col-xs-12">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount], 
                             imageSize: {width:220, height:160},
@@ -138,7 +138,7 @@
             
         </div>
         <div class="row visible-xs-block">
-                <div class="ad-square col-xs-9">
+                <div class="ad-square col-xs-12">
                     <div class="row">
                         <hr class="divide">
                     </div>
@@ -154,7 +154,7 @@
         <section class="">
                 <div class="row">
                         {% for i in 0..2 if articles[articleCount] %}
-                            <div class="col-md-3 col-sm-3 col-xs-9 ">
+                            <div class="col-md-4 col-sm-3 col-xs-12 ">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:600, height:320},
@@ -177,11 +177,11 @@
     <div class="container u-desktop-margin-top-40 u-tablet-margin-top-20">
         <section>
             <div class="row">
-                <div class="col-md-6 col-sm-9">
+                <div class="col-md-8 col-sm-12">
                     <div class="row">
                         {% for i in 0..8 if articles[articleCount] %}
 
-                            <div class="col-md-3 col-sm-3">
+                            <div class="col-md-4 col-sm-3">
                                 {{this.render('partials/_single-article.twig', {
                                     article: articles[articleCount], 
                                     imageSize: {width:190, height:160},
@@ -202,25 +202,25 @@
                     </div>
                 </div>
 
-                <div class="col-sm-9 visible-sm-block">
+                <div class="col-sm-12 visible-sm-block">
                     <div class="ad-container">
                         <div class='advert-tablet' data-adsize="banner"></div>
                         <div class='advert-mobile' data-adsize="mrec"></div>
                     </div>
                 </div>
 
-                <div class="col-md-3 visible-md-block visible-lg-block">
+                <div class="col-md-4 visible-md-block visible-lg-block">
                     <div class="ad-square clearfixed">
                         <div class='advert-desktop' data-adsize="mrec"></div>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-9 sm-two-cols {{ site }} u-desktop-margin-top-30">
+                <div class="col-md-4 col-sm-12 sm-two-cols {{ site }} u-desktop-margin-top-30">
                     <div class="row trending {{ site }} ">
-                       <h2 class="col-sm-9 {{site}}">Trending stories</h2>
+                       <h2 class="col-sm-12 {{site}}">Trending stories</h2>
 
                         {% for i in 0..3 if popularArticles[popCount] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
+                            <div class="col-sm-1 col-md-12 col-xs-12">
                                 {{this.render('partials/_single-article.twig', {
                                     article: popularArticles[popCount], 
                                     imageSize: {width:190, height:160},
@@ -283,7 +283,7 @@
             limit           : 12,
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
-            card_class      : 'col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40',
+            card_class      : 'col-sm-3 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40',
             ads             : true,
             non_pinned      : {{articleCount}}
         });
