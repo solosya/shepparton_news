@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="col-md-2 col-sm-12 col-xs-12 sm-two-cols">
+    <div class="col-md-3 col-sm-12 col-xs-12 sm-two-cols">
         <div class="row">
             {% if articles[articleCount] %}
                     {{this.render('../_single-article.twig', {
@@ -19,7 +19,7 @@
                     site: site,
                     containerClass: 'col-sm-1 col-md-12 card-sm card-sm-wide-tablet card-sm-mobile'
                 }) | raw}}
-                         <div class="col-xs-12 visible-xs-block"><hr class="divide"></div>
+                <div class="col-xs-12 visible-xs-block"><hr class="divide"></div>
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             {% endif %}
             <div class="col-sm-1 visible-sm-block">
@@ -31,7 +31,7 @@
     </div>
 
 
-    <div class="col-sm-12 col-md-4 col-xs-12 two-cols u-tablet-margin-top-30">
+    <div class="col-sm-12 col-md-6 col-xs-12 two-cols u-tablet-margin-top-30">
         <div class="row">
             {% if articles[articleCount] %}
                 <div class="col-md-1 col-sm-1 col-xs-12">
