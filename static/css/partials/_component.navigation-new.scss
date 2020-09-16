@@ -10,16 +10,22 @@
     padding-top: 15px;
     border-bottom: 1px solid #979797;
     border-top: 1px solid #979797;
-
-
     width: 100%;
-    @media #{$tablet-up}{
-        margin-top: 12px;
+
+    @media #{$mobile}{
+        margin-top:16px;
+        padding-bottom: 6px;
+        padding-top: 9px;
     }
+
     @media #{$tablet}{
         padding-bottom: 6px;
         padding-top: 9px;
-        }
+    }
+
+    @media #{$tablet-up}{
+        margin-top: 12px;
+    }
 
 
     &__list {
@@ -150,15 +156,6 @@
             display:none;
         }
 
-    }
-
-    &__mobile-auth {
-        @include flexbox();
-        @include justify-contents(center);
-
-        @media #{$tablet-up} {
-            display:none;
-        }
     }
 
 

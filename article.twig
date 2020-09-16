@@ -76,21 +76,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             {% endif %}
         {% endif %}
 
-        {# {% if i == 5 %}
-            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-        {% endif %}
-
-        {% if i == 9 %}
-            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[1]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-        {% endif %} #}
-
     {% endfor %}
-    {# {% if lastVideo %}
-        {% set ArticleContent = ArticleContent | merge([videoDivs[2]]) %}
-    {% endif %} #}
 
     {% set ArticleContent = ArticleContent | join('<p>') %}
-    {# {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}} #}
+
+
+
 
 {% elseif site == 'country' %}
     {% set pianoDivsStart = [
@@ -241,11 +232,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
             <div class="page-content">
                 <div class="row" >
-                    <div class="col-md-6" id="articleContentContainer">
+                    <div class="col-md-8" id="articleContentContainer">
 
                         <div class="row">
 
-                            <div class="col-md-9">
+                            <div class="col-md-12">
 
                                 <div class="content-block-top">
                                     <div id="pianoArticleHeader"></div>
@@ -291,7 +282,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             </div>  
                             
                             {% if articleImg %} 
-                                <div class="col-md-9">
+                                <div class="col-md-12">
                                     {% if imageToggle %}
                                         <div id="gallery-toggle" class="gallery-toggle">
                                             <ul class="gallery-toggle__list">
@@ -355,7 +346,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             </div>
                             
 
-                            <div class="col-md-9 u-margin-top-40 u-mobile-margin-top-20">
+                            <div class="col-md-12 u-margin-top-40 u-mobile-margin-top-20">
 
                                 <div class="hidden" id="oovvuu"> {{oovvuu}}</div>
                                 <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
@@ -373,7 +364,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     </div>               
                 
 
-                    <div class="col-md-3 visible-md-block visible-lg-block" style="min-height:1px;" id="adScrollContainer">
+                    <div class="col-md-4 visible-md-block visible-lg-block" style="min-height:1px;" id="adScrollContainer">
                         <div class="article-sidebar lockad-top u-left-unset u-fix-width-300" id="articleAdScroll">
                             <div class="">
                             
@@ -426,7 +417,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     </div>               
                 
 
-                    <div class="col-sm-9 visible-xs-block visible-sm-block u-margin-top-30">
+                    <div class="col-sm-12 visible-xs-block visible-sm-block u-margin-top-30">
                         <div class="article-sidebar-device">
 
                             
@@ -490,21 +481,23 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
             <div class="row related-articles">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <h1>MOST POPULAR</h1>
                 </div>
                 
-                <div>
-                    {% for i in 0..2 if relatedArticles[i] %}
-                        <div class="col-sm-3">
-                            {{this.render('partials/_single-article.twig', {
-                                article: relatedArticles[i], 
-                                imageSize: {width: 300, height: 180},
-                                containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile',
-                                site:   site
-                            }) | raw}}
-                        </div>
-                    {% endfor %}
+                <div class="col-md-offset-2">
+                    <div class="row">
+                        {% for i in 0..2 if relatedArticles[i] %}
+                            <div class="col-sm-3">
+                                {{this.render('partials/_single-article.twig', {
+                                    article: relatedArticles[i], 
+                                    imageSize: {width: 300, height: 180},
+                                    containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile',
+                                    site:   site
+                                }) | raw}}
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
 

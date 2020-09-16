@@ -69,10 +69,10 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <div class="c-header-new__main-info" style="background:cyan">
+                <div class="c-header-new__main-info" style="background:white">
 
 
-                    <div class="c-header-new__weather-info" style="background:purple">
+                    <div class="c-header-new__weather-info" style="background:white">
                         <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
                     </div>
 
@@ -82,7 +82,7 @@
                         </figure>
                     </a>
                     
-                    <div class="c-header-new__login-info" style="background:green">
+                    <div class="c-header-new__login-info" style="background:white">
                         {# {% if paymeter == true and pianoSubscribe == true %} #}
                             <a class="c-header-new__subscribebutton" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
                                 SUBSCRIBE
@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <div class="c-header-new__sub-info" style="background:cyan">
+                <div class="c-header-new__sub-info" style="background:white">
                     <a class="c-header-new__read-link" href="">Read paper</a>
                 </div>
 
@@ -110,7 +110,7 @@
         ****************************************************** #}
     <div class="container">
         <div class="row">
-            <div class="col-sm-12" style="background:yellow">       
+            <div class="col-sm-12" style="background:white">       
                 <div class="c-navigation-new c-navigation-new-md">
                     <div class="c-navigation-new__weather">
                         <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
@@ -124,14 +124,14 @@
                     
 
                     {# Only shows on Mobile #}
-                    <div class="c-navigation-new__mobile_auth">
+                    <div class="c-header-new__mobile-auth">
                         {# {% if paymeter == true and pianoMenu == true %}   #}
                             <a class="c-header-new__subscribebutton" 
                                 href="javascript:void(0);" 
                                 onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
-                                SUBSCRIBE
+                                Subscribe
                             </a>  
-                            <a class="c-header-new__login" 
+                            <a class="c-header-new__signinbutton" 
                                 onclick="javascript:tp.pianoId.show({screen: 'login'});" 
                                 href="javascript:void(0);">Sign in
                             </a>

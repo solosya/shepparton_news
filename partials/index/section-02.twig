@@ -17,7 +17,7 @@
     {# ***********  ROW 1 COL 1  *************** #}
 
     {# Card 1 #}
-    <div class="col-md-4 col-sm-12">
+    <div class="col-sm-12 col-md-5">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 imageSize       : {width:409, height:530},
@@ -39,7 +39,7 @@
 {# ***********  ROW 1 COL 2  *************** #}
 
     {# Card 2,3 #}
-    <div class="col-md-2 col-sm-4 u-tablet-margin-top-30">
+    <div class="col-sm-6 col-md-3 u-tablet-margin-top-30">
         {% set cardspace = ['', 'row-space'] %}
         {% for i in 0..1 if articles[articleCount] %}
 
@@ -68,7 +68,7 @@
 
 
 {# ***********  ROW 1 COL 3  *************** #}
-    <div class="col-md-3 col-sm-5 u-tablet-margin-top-30">
+    <div class="col-sm-6 col-md-4 u-tablet-margin-top-30">
 
         <div class="ad-square hidden-sm">
             <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
@@ -120,7 +120,7 @@
     {# ***********  ROW 2 COL 1  *************** #}
 
     {# Card 5 #}
-    <div class="col-xs-12 col-sm-3 col-md-4">
+    <div class="col-xs-12 col-sm-4 col-md-5">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 imageSize       : {width:414, height:255},
@@ -143,7 +143,7 @@
     {# ***********  ROW 2 COL 2  *************** #}
 
     {# Card 6 #}
-    <div class="col-md-2 col-sm-3 col-xs-12">
+    <div class="col-xs-12 col-sm-4 col-md-3">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 imageSize       : {width:195},
@@ -165,7 +165,7 @@
     {# ***********  ROW 2 COL 3  *************** #}
 
     {# Card 7 #}
-    <div class="col-sm-3 col-md-3 col-xs-12">
+    <div class="col-xs-12 col-sm-4 col-md-4">
     
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
@@ -204,7 +204,7 @@
     {% for i in 0..5 if articles[articleCount] %}
         {% set theDivider = [' divideright-desk',' divideright-desk','',' divideright-desk',' divideright-desk after-display',''] %}
        
-        <div class="col-sm-1 col-md-3 col-xs-12 {{offset[i]}}">
+        <div class="col-sm-1 col-md-4 col-xs-12 {{offset[i]}}">
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
                 imageSize       : {width:80, height:90},
