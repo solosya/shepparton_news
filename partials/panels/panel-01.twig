@@ -11,9 +11,6 @@
                             : 'Feature' %}
 {% set dev = true %}
 
-{# {% set five_rowExceptions = ['country'] %}
-{% set popularExceptions  = ['dairy'] %}
-{% set bottomExceptions   = ['country', 'dairy'] %} #}
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
 
 <div class="row">
@@ -202,6 +199,14 @@
 
         {# COLUMN 3 #}
         <div class="col-xs-12 col-sm-12 col-md-3">
+            <div class="row u-margin-bottom-30">
+                <div class="col-sm-1 col-md-12 hidden-xs hidden-sm u-desktop-indent-left-20">
+                    <div class="weather j-weather-panel {{site}}"></div>
+                    <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
+                    <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
+                </div>
+            </div>
+
 
             {% for i in 0..2 if articles[i] %}
                 {{this.render('../_single-article.twig', {
