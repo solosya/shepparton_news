@@ -208,7 +208,7 @@
             </div>
 
 
-            {% for i in 0..2 if articles[i] %}
+            {% for i in 0..1 if articles[i] %}
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:95},
                     position        : cardIndex + 1, 
@@ -227,6 +227,32 @@
                 <hr class="divide25-40 visible-md-block visible-lg-block">
 
             {% endfor %}
+
+            <div class="ad-square u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
+                <div class='advert-desktop' data-adsize="mrec"></div>
+                {#<script async id="soft-point-banner" src="https://viztrade.com/api/banner.js?inventory=59"></script> #}
+                <div class='advert-tablet' data-adsize="banner"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+            </div>
+
+
+            {{this.render('../_single-article.twig', {
+                imageSize       : {width:95},
+                position        : cardIndex + 1, 
+                lazyload        : false,
+                article         : articles[articleCount],
+                template        : "altimage",
+                site            : site,
+                swap            : false,
+                dev             : dev,
+                containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+            }) | raw}}
+
+
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            {% set cardIndex = cardIndex + 1 %}
+            <hr class="divide25-40 visible-md-block visible-lg-block">
+
 
 
         </div>
