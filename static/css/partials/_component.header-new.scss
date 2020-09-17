@@ -178,12 +178,18 @@ $mainColor : red;
         @include align-items(center);
         @include justify-content(center);
         flex-grow:1;
-        // margin-right:16px;
+        padding-top:3px;
         background:#f6ae42;
         border-radius: 5px;
         color:white;
         width:134px;
         height:34px;
+
+        @media #{$mobile} {
+            margin-right:16px;
+        }
+
+        
     }
 
     &__signinbutton {
