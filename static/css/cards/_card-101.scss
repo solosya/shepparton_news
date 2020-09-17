@@ -50,6 +50,7 @@
 
         &__author-name {
             font-family: $base-font-family;
+            font-weight:400;
             color: #6e6e6e;
             border:none;
             @include font-size(12);
