@@ -34,9 +34,9 @@
     {% set paywall = false %}
 {% endif %}
 
-{% if networkData.logoMedia | length > 0 %}
+{# {% if networkData.logoMedia | length > 0 %}
     {% set logo = _Media.getMediaUrl(networkData.logoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
-{% endif %}
+{% endif %} #}
 
 
 {% set dateFormat = "l, j F Y" %}
