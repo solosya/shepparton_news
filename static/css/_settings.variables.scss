@@ -151,5 +151,12 @@ $tablet: 				"screen and (min-width : 768px)  and (max-width : 991px)";
 $up-to-desktop: 		"screen and (max-width : 991px)";
 $mobile: 				"screen and (max-width : 767px)";
 
+
+
+$desktop-lg:            "screen and (min-width : 1350px)";
+$desktop-sm:            "screen and (min-width : 992px) and (max-width : 1349px)";
+$mobile-lg:             "screen and (min-width : 576px) and (max-width : 767px)";
+$mobile-sm:             "screen and (max-width : 575px)";
+
 // Standard transition speed
 $transition: 0.4s;

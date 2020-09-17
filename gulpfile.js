@@ -66,6 +66,7 @@ gulp.task('sass', function() {
         .pipe(sourcemaps.init())
         .pipe(sass({includePaths: [
             './static/css/partials', 
+            './static/css/cards', 
         ]}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./static/css'));

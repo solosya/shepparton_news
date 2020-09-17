@@ -11,7 +11,7 @@
 
 
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
-    <figure class="{{params.videoClass}}">
+    <figure class="{{params.cardType}}c-cards-view__media {{params.videoClass}}">
         <picture>
             <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.imageMedium}}">
             <source media="(max-width: 500px)" srcset="{{params.imageSmall}}">
@@ -26,22 +26,22 @@
 {% endif %}
 
 
-<div class="content">
+<div class="{{params.cardType}}c-cards-view__container content">
     
-    <div class="category {{params.site}} {% if params.premiumtags %} premium-tag{% endif %}">{{label}}</div>
+    <div class="{{params.cardType}}c-cards-view__category category {{params.site}} {% if params.premiumtags %} premium-tag{% endif %}">{{label}}</div>
     
-    <h2 class="j-truncate {{params.figureClass}}">{{ params.title }}</h2>
+    <h2 class="{{params.cardType}}c-cards-view__heading j-truncate {{params.figureClass}}">{{ params.title }}</h2>
     
-    <p class="j-truncate excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
+    <p class="{{params.cardType}}c-cards-view__description j-truncate excerpt">{{ quotes.smarten(article.excerpt | raw) }}</p>
    
-    <div class="j-truncate author">
+    <div class="{{params.cardType}}c-cards-view__author author">
         {% if params.profileImg != false %}
             <img src="{{params.profileImg}}" class="img-circle">
         {% endif %}
-        <p class="{{params.site}}">{{ article.createdBy['displayName'] }}</p>
-        <time datetime="{{publishDate}}">{{params.publishDate}}</time>
+        <p class="{{params.cardType}}c-cards-view__author-name {{params.site}}">{{ article.createdBy['displayName'] }}</p>
+        <time class="{{params.cardType}}c-cards-view__author-time" datetime="{{publishDate}}">{{params.publishDate}}</time>
     </div>
 
-    <time datetime="{{publishDate}}">{{params.publishDate}}</time>
+    <time class="{{params.cardType}}c-cards-view__time" datetime="{{publishDate}}">{{params.publishDate}}</time>
 
 </div>

@@ -348,18 +348,20 @@
 
 
 @mixin card-name($name) {
-	// .acme-cards-view, .c-cards-view {
-	// 	&:before {
-	// 		content:$name;
-	// 		position:absolute;
-	// 		display:block;
-	// 		color: white;
-	// 		z-index: 12;
-	// 		background: red;
-	// 		padding: 3px;
-	// 		font-size:13px;
-	// 	}
-	// }
+	.acme-cards-view, .c-cards-view {
+		&:before {
+			content:$name;
+            position:absolute;
+            top:-30px;
+			display:block;
+			color: white;
+			z-index: 12;
+			background: #5ebfbc;
+			padding: 3px;
+            font-size:13px;
+            box-shadow: 2px 3px 5px #8e8e8e;
+		}
+	}
 }
 
 
@@ -513,6 +515,16 @@
 }
 
 %flexbox { @include flexbox; }
+
+@mixin flex-height($int) { 
+	min-height: $int;
+	max-height: $int;
+}
+@mixin flex-width($int) { 
+	min-width: $int;
+	max-width: $int;
+}
+
 
 // //----------------------------------
 

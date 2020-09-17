@@ -1,0 +1,125 @@
+// this card uses the altimage template
+
+@mixin card-101-base() {
+    @include card-name("101 mobile");
+    // border-bottom: solid 1px #979797;
+    // margin-bottom:40px;
+
+
+    .c-cards-view {
+        @include flex-direction(column);
+        // min-height: 326px;
+
+        &__media {
+            @include flex-width(95px);
+            @include flex-height(95px);
+            margin-left:15px;
+        }
+
+        &__container {
+            @include flexbox();
+            @include flex-direction(row);
+            margin-top:10px;
+            // margin-bottom: 26px;
+        }
+
+        &__text-container {
+            @include flexbox();
+            @include flex-direction(column);
+        }
+        &__heading {
+            font-family: $font-family-serif;
+            @include font-size(20);
+            font-weight:600;
+            color: #2b2a2a;
+        }
+        &__description {
+            font-family: $base-font-family;
+            color: #565656;
+            @include font-size(14);
+            line-height: 1.25rem;
+            font-weight:300;
+            @include flex-height(100px);
+        }
+
+        &__author {
+            display:flex;
+            position:relative;
+            margin-top:10px;
+        }
+
+        &__author-name {
+            font-family: $base-font-family;
+            color: #6e6e6e;
+            border:none;
+            @include font-size(12);
+            &:before {
+                content: "By ";
+            }
+        }
+        &__author-time {
+            display:none;
+        }
+        &__time {
+            display:none;
+        }
+
+
+        &.without-image {
+            .c-cards-view {
+                &__container {
+                    width: 100%;
+                    margin-left: 0px;
+                    padding: 0px 20px 0;
+                }
+                &__category {
+                    margin-top: 36px;
+                    margin-bottom: 24px;
+                }
+                &__heading {
+                    height: 55px;
+                }
+                &__description {
+                    margin-bottom: 15px;
+                    display: block;
+                    height:100px;
+                    max-height: 100px;
+                    overflow: hidden;
+                }
+                &__author {
+                    margin-top:55px;
+                }
+            }
+        }   
+    }
+}
+
+.card-101-mobile {
+    @media #{$mobile} {
+        @include card-101-base();
+    }
+}
+
+
+.card-101-tablet {
+    @media #{$tablet} {
+        @include card-101-base();
+        @include card-name("101 tablet");
+    }
+}
+
+
+
+.card-101-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-101-base();
+        @include card-name("101 desktop");
+    }
+}
+
+.card-101-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-101-base();
+        @include card-name("101 desktop lg");
+    }
+}

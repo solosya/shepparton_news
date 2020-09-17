@@ -1,0 +1,111 @@
+@mixin card-102-base() {
+    @include card-name("102 mobile");
+
+    .c-cards-view {
+        @include flex-direction(column);
+
+        &__media {
+            width: 100%;
+            height: 235px;
+        }
+
+        &__container {
+        }
+
+        &__heading {
+            font-family: $font-family-serif;
+            @include font-size(24);
+            font-weight:600;
+            color: #2b2a2a;
+
+        }
+        &__description {
+            display:none;
+        }
+        &__author {
+            display:flex;
+            position:relative;
+            margin-top:7px;
+        }
+
+        &__author-name {
+            margin-top: 3px;
+            font-family: $base-font-family;
+            color: #6e6e6e;
+            border:none;
+            @include font-size(12);
+            &:before {
+                content: "By ";
+            }
+        }
+        &__author-time {
+            display:none;
+        }
+
+
+        &__time {
+            display:none;
+        }
+
+
+        &.without-image {
+            .c-cards-view {
+                &__container {
+                    width: 100%;
+                    margin-left: 0px;
+                    padding: 0px 20px 0;
+                }
+                &__category {
+                    margin-top: 36px;
+                    margin-bottom: 24px;
+                }
+                &__heading {
+                    height: 55px;
+                }
+                &__description {
+                    margin-bottom: 15px;
+                    display: block;
+                    height:100px;
+                    max-height: 100px;
+                    overflow: hidden;
+                }
+                &__author {
+                    margin-top:55px;
+                }
+            }
+        }
+    }
+}
+
+.card-102-mobile {
+    @media #{$mobile} {
+        @include card-102-base();
+    }
+}
+
+
+.card-102-tablet {
+
+    @media #{$tablet} {
+        
+        @include card-102-base();
+        @include card-name("102 tablet");
+    }
+}
+
+
+
+.card-102-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-102-base();
+        @include card-name("102 desktop");
+    }
+}
+
+.card-102-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-102-base();
+        @include card-name("102 desktop lg");
+    }
+}
+

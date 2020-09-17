@@ -1,0 +1,134 @@
+@mixin card-100-base() {
+    @include card-name("100 mobile");
+
+    .c-cards-view {
+        @include flex-direction(column);
+        // min-height: 326px;
+
+        &__media {
+            width: 100%;
+            height: 445px;
+            &--video {
+                &:before {
+                    @include size(55px);
+                }
+            }
+        }
+
+        &__container {
+        }
+
+        &__category {
+            display: flex;
+            align-items: center;
+            margin-top: 14px;
+            @include font-size(17);
+            line-height: 1.12;
+            letter-spacing: 0.31px;
+            color: #ed3a4b;
+            margin-bottom: 7px;
+        }
+
+
+        &__heading {
+            font-family: $font-family-serif;
+            @include font-size(28);
+            font-weight:600;
+            line-height:1.3;
+            color: #2b2a2a;
+            letter-spacing: 0.51px;
+        }
+
+        &__description {
+            @include font-size(14);
+            line-height:1.4;
+            font-weight:300;
+            color: #565656;
+            @include flex-height(42px);
+            margin-top:10px;
+        }
+
+        &__author {
+            display:flex;
+            position:relative;
+            margin-top:7px;
+        }
+
+        &__author-name {
+            margin-top: 3px;
+            font-family: $base-font-family;
+            color: #6e6e6e;
+            border:none;
+            @include font-size(12);
+            &:before {
+                content: "By ";
+            }
+        }
+        &__author-time {
+            display:none;
+        }
+
+
+        &__time {
+            display:none;
+        }
+
+        &.without-image {
+            .c-cards-view {
+                &__container {
+                    width: 100%;
+                    margin-left: 0px;
+                    padding: 0px 20px 0;
+                }
+                &__category {
+                    margin-top: 36px;
+                    margin-bottom: 24px;
+                }
+                &__heading {
+                    height: 55px;
+                }
+                &__description {
+                    margin-bottom: 15px;
+                    display: block;
+                    height:100px;
+                    max-height: 100px;
+                    overflow: hidden;
+                }
+                &__author {
+                    margin-top:55px;
+                }
+            }
+        }
+    }
+}
+
+.card-100-mobile {
+    @media #{$mobile} {
+        @include card-100-base();
+    }
+}
+
+
+.card-100-tablet {
+
+    @media #{$tablet} {
+        
+        @include card-100-base();
+        @include card-name("100 tablet");
+    }
+}
+
+
+.card-100-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-100-base();
+        @include card-name("100 desktop");
+    }
+}
+
+.card-100-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-100-base();
+        @include card-name("100 desktop lg");
+    }
+}
