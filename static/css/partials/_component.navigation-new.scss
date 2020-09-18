@@ -12,10 +12,9 @@
     padding-top: 15px;
     border-bottom: 1px solid #979797;
     border-top: 1px solid #979797;
-    width: 80%;
-    max-width:80%;
+    width: 100%;
 
-    
+
     @media #{$mobile}{
         margin-top:16px;
         padding-bottom: 6px;
@@ -35,10 +34,13 @@
     &__list {
         display: none;
         @include align-items(center);
+        flex-wrap: wrap;
         padding: 0px;
         margin: 0px;
         margin-left: auto;
         margin-right: auto;
+        max-width:80%;
+
         li {
             position: relative;
             margin: 0 15px;
