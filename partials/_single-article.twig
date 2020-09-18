@@ -15,6 +15,9 @@
 {% set swap          = swap          is defined and swap == 'false'         ? '' : 'swap'  %}
 {% set dev           = dev           is defined and dev == true             ? true : false  %}
 {% set inline        = inline        is defined and inline != ''            ? inline : ''  %}
+{% set styleType     = styleType     is defined and styleType != ''         ? styleType : ''  %}
+
+
 
 {# This can add a prefix to the card class to segregate its styles #}
 {% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
@@ -127,9 +130,9 @@
             data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             title               = "{{totalstring}}">
 
-            {% if dev %}
+            {# {% if dev %} #}
                 <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
-            {% endif %}
+            {# {% endif %} #}
             
             {# Article content including image #}
             <article class="{{cardType}}c-cards-view {{lightbox}} {{contentType}} {{hasArticleMediaClass}}">
@@ -137,7 +140,8 @@
                 {{ this.render('_article-' ~ template ~ '.twig', {
                     article: article,  
                     params:params, 
-                    networkData: networkData
+                    networkData: networkData,
+                    styleType: styleType
                 } ) | raw }}
             </article>
 

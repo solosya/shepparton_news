@@ -65,7 +65,7 @@ a.card {
     }
     
 
-    &__media {
+    &__media, &__media-bottom {
         position:relative;
 
         &.video {
@@ -103,12 +103,12 @@ a.card {
             height:100%;
             object-fit: cover;
         }
-
-
     }
 
 
-
+    &__media-bottom {
+        display:none;
+    }
 
 
     &__container {
@@ -121,7 +121,9 @@ a.card {
         overflow:hidden;
     }
 
-    &__category{
+
+
+    &__category, &__category-top{
         font-size: rem(10.5);
         text-transform:uppercase;
         @include colourselectdark('');
@@ -139,6 +141,15 @@ a.card {
                 float: left;
             }
         }
+    }
+
+    &__category-top{
+        display:none;
+    }
+
+
+    &__heading-top{
+        display:none;
     }
 
     &__heading {

@@ -9,8 +9,12 @@
     .c-cards-view {
         @include flex-direction(column);
         // min-height: 326px;
-
         &__media {
+            display:none;
+        }
+
+        &__media-bottom {
+            display:block;
             @include flex-width(95px);
             @include flex-height(95px);
             margin-left:15px;
@@ -27,7 +31,21 @@
             @include flexbox();
             @include flex-direction(column);
         }
+
+        &__category {
+            display:none;
+        }
         &__heading {
+            display:none;
+        }
+        
+        &__category-top {
+            @include flexbox();
+
+        }
+
+        &__heading-top {
+            display:block;
             font-family: $font-family-serif;
             @include font-size(20);
             font-weight:600;
