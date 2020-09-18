@@ -9,7 +9,7 @@
                       blogData['additionalInfo']['sectionlabel'] != '' 
                             ? blogData['additionalInfo']['sectionlabel'] 
                             : 'Feature' %}
-{% set dev = true %}
+{% set dev = false %}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
 
@@ -50,21 +50,24 @@
 
 
             {# ************ MOST POPULAR ************   #}
-            <h2 class="{{site}}">Most popular</h2>
-
+            <div class="c-section-header">
+                <h2 class="c-section-header__h2 {{site}}">Most popular</h2>
+            </div>
+            <div class="leaderboard u-margin-top-13">
             {% for i in 0..4 if popularArticles[i] %}
                 {{this.render('../_single-article.twig', {
                     article         : popularArticles[i], 
                     imageSuppress   : true,
                     swap            : false,
-                    containerClass  : 'card-popular ' ~ site,
+                    containerClass  : 'card-109-mobile card-109-tablet card-109-desktop-sm card-109-desktop-lg ' ~ site,
                     site            : site
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
-                <hr class="divide25-40 visible-md-block visible-lg-block">
+                <hr class="divide11-11 visible-md-block visible-lg-block">
 
             {% endfor %} 
+            </div>
             {# ************ END ************   #}
         </div>
 

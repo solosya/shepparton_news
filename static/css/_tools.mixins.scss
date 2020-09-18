@@ -239,6 +239,12 @@
 }
 
 
+@mixin font-size($sizeValue: 16, $line: $sizeValue * 1.2) {
+	font-size: ($sizeValue / 16) + rem;
+	line-height: ($line / 16) + rem;
+}
+
+
 @mixin card-image-size($width, $height) {
 	width: $width;
     height: $height;
@@ -349,18 +355,20 @@
 
 @mixin card-name($name) {
 	.acme-cards-view, .c-cards-view {
-		&:before {
-			content:$name;
-            position:absolute;
-            top:-30px;
-			display:block;
-			color: white;
-			z-index: 12;
-			background: #5ebfbc;
-			padding: 3px;
-            font-size:13px;
-            box-shadow: 2px 3px 5px #8e8e8e;
-		}
+        &:hover {
+            &:before {
+                content:$name;
+                position:absolute;
+                top:-30px;
+                display:block;
+                color: white;
+                z-index: 12;
+                background: #5ebfbc;
+                padding: 3px;
+                font-size:13px;
+                box-shadow: 2px 3px 5px #8e8e8e;
+            }
+        }
 	}
 }
 
