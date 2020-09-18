@@ -9,7 +9,7 @@
                       blogData['additionalInfo']['sectionlabel'] != '' 
                             ? blogData['additionalInfo']['sectionlabel'] 
                             : 'Feature' %}
-{% set dev = false %}
+{% set dev = true %}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
 
@@ -26,31 +26,161 @@
 <section class=""  data-template="panel 01">
     <div class="row">
 
-        {# COLUMN 1 #}
-        <div class="col-xs-12 col-sm-12 col-md-3">
+        {# COLUMN 1  --  THE CENTER COLUMN ON DESKTOP #}
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    {% if articles[0] %}                                                                
+                        {{this.render('../_single-article.twig', {
+                            imageSize       : {width:640, height:400},
+                            position        : 1, 
+                            lazyload        : false,
+                            article         : articles[0], 
+                            site            : site,
+                            swap            : false,
+                            dev             : dev,
+                            containerClass  : 'card-100-mobile card-100-tablet card-100-desktop-sm card-100-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+                        <hr class="divide25-40 visible-md-block visible-lg-block">
 
-            {% for i in 0..2 if articles[i] %}
+                    {% endif %}
+                </div>
+
+                {# COLUMN 1#} 
+                <div class="col-xs-6 col-sm-4">
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:235},
+                        position        : 2, 
+                        lazyload        : false,
+                        article         : articles[1],
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                    }) | raw}}
+
+                    {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %} #}
+                    {# {% set cardIndex = cardIndex + 1 %} #}
+                    <hr class="divide25-40 visible-md-block visible-lg-block">
+
+
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:95},
+                        position        : 4, 
+                        lazyload        : false,
+                        article         : articles[4],
+                        template        : "altimage",
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        containerClass  : 'card-101-mobile card-102-tablet card-101-desktop-sm card-101-desktop-lg'
+                    }) | raw}}
+
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% set cardIndex = cardIndex + 1 %}
+                    <hr class="divide25-40 visible-md-block visible-lg-block">
+
+                </div>
+
+
+                {# COLUMN 2 #}
+                <div class="col-xs-6">
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            imageSize       : {width:235},
+                            position        : 3, 
+                            lazyload        : false,
+                            article         : articles[3],
+                            site            : site,
+                            swap            : false,
+                            dev             : dev,
+                            containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                        }) | raw}}
+
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+                        <hr class="divide25-40 visible-md-block visible-lg-block">
+                    {% endif %}
+
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            imageSize       : {width:95},
+                            position        : 5, 
+                            lazyload        : false,
+                            article         : articles[5],
+                            template        : "altimage",
+                            site            : site,
+                            swap            : false,
+                            dev             : dev,
+                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                        }) | raw}}
+
+                        {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %} #}
+                        <hr class="divide25-40 visible-md-block visible-lg-block">
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {# COLUMN 2 -- COLUMN 1 ON DESKTOP #}
+        <div class="col-xs-12 col-sm-12 col-md-3 col-md-pull-6">
+
+            {% for i in 6..8 if articles[i] %}
 
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:95},
-                    position        : cardIndex + 1, 
+                    position        : i, 
                     lazyload        : false,
-                    article         : articles[articleCount],
+                    article         : articles[i],
                     template        : "altimage",
                     site            : site,
                     swap            : false,
                     dev             : dev,
                     containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                 }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                {% set cardIndex = cardIndex + 1 %}
-                <hr class="divide25-40 visible-md-block visible-lg-block">
+                {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %} #}
+                {% if loop.index != 3  %}
+                    <hr class="divide25-40 visible-md-block visible-lg-block">
+                {% endif %}
 
             {% endfor %}
 
 
             {# ************ MOST POPULAR ************   #}
-            <div class="c-section-header">
+            <div class="c-section-header u-margin-top-30">
                 <h2 class="c-section-header__h2 {{site}}">Most popular</h2>
             </div>
             <div class="leaderboard u-margin-top-13">
@@ -82,110 +212,6 @@
 
 
 
-        {# COLUMN 2 #}
-        <div class="col-xs-12 col-sm-12 col-md-6">
-            <div class="row">
-                <div class="col-xs-12">
-                    {% if articles[articleCount] %}                                                                
-                        {{this.render('../_single-article.twig', {
-                            imageSize       : {width:640, height:400},
-                            position        : cardIndex + 1, 
-                            lazyload        : false,
-                            article         : articles[articleCount], 
-                            site            : site,
-                            swap            : false,
-                            dev             : dev,
-                            containerClass  : 'card-100-mobile card-100-tablet card-100-desktop-sm card-100-desktop-lg'
-                        }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide25-40 visible-md-block visible-lg-block">
-
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="row">
-
-                {# COLUMN 1 #}
-                <div class="col-xs-6">
-                    {{this.render('../_single-article.twig', {
-                        imageSize       : {width:235},
-                        position        : cardIndex + 1, 
-                        lazyload        : false,
-                        article         : articles[articleCount],
-                        site            : site,
-                        swap            : false,
-                        dev             : dev,
-                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
-                    }) | raw}}
-
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% set cardIndex = cardIndex + 1 %}
-                    <hr class="divide25-40 visible-md-block visible-lg-block">
-
-
-                    {{this.render('../_single-article.twig', {
-                        imageSize       : {width:95},
-                        position        : cardIndex + 1, 
-                        lazyload        : false,
-                        article         : articles[articleCount],
-                        template        : "altimage",
-                        site            : site,
-                        swap            : false,
-                        dev             : dev,
-                        containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-                    }) | raw}}
-
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% set cardIndex = cardIndex + 1 %}
-                    <hr class="divide25-40 visible-md-block visible-lg-block">
-
-                </div>
-
-
-                {# COLUMN 2 #}
-                <div class="col-xs-6">
-
-                        {{this.render('../_single-article.twig', {
-                            imageSize       : {width:235},
-                            position        : cardIndex + 1, 
-                            lazyload        : false,
-                            article         : articles[articleCount],
-                            site            : site,
-                            swap            : false,
-                            dev             : dev,
-                            containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
-                        }) | raw}}
-
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide25-40 visible-md-block visible-lg-block">
-
-
-                        {{this.render('../_single-article.twig', {
-                            imageSize       : {width:95},
-                            position        : cardIndex + 1, 
-                            lazyload        : false,
-                            article         : articles[articleCount],
-                            template        : "altimage",
-                            site            : site,
-                            swap            : false,
-                            dev             : dev,
-                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-                        }) | raw}}
-
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide25-40 visible-md-block visible-lg-block">
-
-
-                </div>
-
-            </div>
-
-
-        </div>
 
 
 
@@ -211,12 +237,12 @@
             </div>
 
 
-            {% for i in 0..1 if articles[i] %}
+            {% for i in 9..10 if articles[i] %}
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:95},
-                    position        : cardIndex + 1, 
+                    position        : i, 
                     lazyload        : false,
-                    article         : articles[articleCount],
+                    article         : articles[i],
                     template        : "altimage",
                     site            : site,
                     swap            : false,
@@ -228,7 +254,6 @@
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
                 <hr class="divide25-40 visible-md-block visible-lg-block">
-
             {% endfor %}
 
             <div class="ad-square u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
@@ -239,24 +264,25 @@
             </div>
             <hr class="divide25-40 visible-md-block visible-lg-block">
 
+            {% if articles[11] %}
 
-            {{this.render('../_single-article.twig', {
-                imageSize       : {width:95},
-                position        : cardIndex + 1, 
-                lazyload        : false,
-                article         : articles[articleCount],
-                template        : "altimage",
-                site            : site,
-                swap            : false,
-                dev             : dev,
-                containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-            }) | raw}}
+                {{this.render('../_single-article.twig', {
+                    imageSize       : {width:95},
+                    position        : 11, 
+                    lazyload        : false,
+                    article         : articles[11],
+                    template        : "altimage",
+                    site            : site,
+                    swap            : false,
+                    dev             : dev,
+                    containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                }) | raw}}
 
 
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            {% set cardIndex = cardIndex + 1 %}
-            <hr class="divide25-40 visible-md-block visible-lg-block">
-
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+                <hr class="divide25-40 visible-md-block visible-lg-block">
+            {% endif %}
 
 
         </div>

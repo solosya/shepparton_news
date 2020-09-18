@@ -116,6 +116,17 @@
         
         @include card-100-base();
         @include card-name("100 tablet");
+
+        .c-cards-view {
+
+            &__media {
+                width: 100%;
+                height: 358px;
+            }
+        }
+    
+
+
     }
 }
 
