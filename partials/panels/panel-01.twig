@@ -24,12 +24,12 @@
 
 
 <section class=""  data-template="panel 01">
-    <div class="row u-border-blue">
+    <div class="row">
 
         {# COLUMN 1  --  THE CENTER COLUMN ON DESKTOP #}
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3">
-            <div class="row u-border-blue">
-                <div class="col-xs-12 col-sm-8 col-md-12 u-border-red">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-12 ">
                     {% if articles[0] %}                                                                
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:640, height:400},
@@ -43,54 +43,59 @@
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide25-40 visible-md-block visible-lg-block">
+                        <hr class="divide25-40">
 
                     {% endif %}
                 </div>
 
                 {# COLUMN 1#} 
-                <div class="col-xs-6 col-sm-4 col-md-6 u-border-red">
-                    {{this.render('../_single-article.twig', {
-                        imageSize       : {width:235},
-                        position        : 2, 
-                        lazyload        : false,
-                        article         : articles[1],
-                        site            : site,
-                        swap            : false,
-                        dev             : dev,
-                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
-                    }) | raw}}
+                <div class="col-xs-12 col-sm-4 col-md-6 ">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            {{this.render('../_single-article.twig', {
+                                imageSize       : {width:235},
+                                position        : 2, 
+                                lazyload        : false,
+                                article         : articles[1],
+                                site            : site,
+                                swap            : false,
+                                dev             : dev,
+                                containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
 
-                    {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %} #}
-                    {# {% set cardIndex = cardIndex + 1 %} #}
-                    <hr class="divide25-40 visible-md-block visible-lg-block">
+                            {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %} #}
+                            {# {% set cardIndex = cardIndex + 1 %} #}
+                            <hr class="divide25-40">
+                        </div>
 
+                        <div class="col-xs-6">
 
-                    {{this.render('../_single-article.twig', {
-                        imageSize       : {width:95},
-                        position        : 4, 
-                        lazyload        : false,
-                        article         : articles[4],
-                        template        : "altimage",
-                        site            : site,
-                        swap            : false,
-                        dev             : dev,
-                        containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-                    }) | raw}}
+                            {{this.render('../_single-article.twig', {
+                                imageSize       : {width:95},
+                                position        : 3, 
+                                lazyload        : false,
+                                article         : articles[4],
+                                template        : "altimage",
+                                site            : site,
+                                swap            : false,
+                                dev             : dev,
+                                containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                            }) | raw}}
 
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% set cardIndex = cardIndex + 1 %}
-                    <hr class="divide25-40 visible-md-block visible-lg-block">
-
+                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set cardIndex = cardIndex + 1 %}
+                            <hr class="divide25-40">
+                        </div>
+                    </div>
                 </div>
 
 
                 {# COLUMN 2 #}
-                <div class="col-xs-6 col-md-6 u-border-red">
+                <div class="col-xs-12 col-md-6 ">
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:235},
-                            position        : 3, 
+                            position        : 4, 
                             lazyload        : false,
                             article         : articles[3],
                             site            : site,
@@ -101,7 +106,7 @@
 
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide25-40 visible-md-block visible-lg-block">
+                        <hr class="divide25-40">
                     {% endif %}
 
                     {% if articles[articleCount] %}
@@ -119,7 +124,7 @@
 
                         {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %} #}
-                        <hr class="divide25-40 visible-md-block visible-lg-block">
+                        <hr class="divide25-40">
                     {% endif %}
 
 
@@ -155,7 +160,7 @@
 
 
         {# COLUMN 2 -- COLUMN 1 ON DESKTOP #}
-        <div class="col-xs-12 col-sm-12 col-md-3 col-md-pull-6 u-border-red">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-md-pull-6 ">
 
             {% for i in 6..8 if articles[i] %}
 
@@ -173,7 +178,7 @@
                 {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %} #}
                 {% if loop.index != 3  %}
-                    <hr class="divide25-40 visible-md-block visible-lg-block">
+                    <hr class="divide25-40">
                 {% endif %}
 
             {% endfor %}
@@ -194,7 +199,7 @@
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
-                <hr class="divide11-11 visible-md-block visible-lg-block">
+                <hr class="divide11-11">
 
             {% endfor %} 
             </div>
@@ -228,7 +233,7 @@
 
         {# COLUMN 3 #}
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <div class="row u-margin-bottom-30 u-border-blue">
+            <div class="row u-margin-bottom-30">
                 <div class="col-sm-1 col-md-12 hidden-xs hidden-sm u-desktop-indent-left-20">
                     <div class="weather j-weather-panel {{site}}"></div>
                     <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
@@ -253,7 +258,7 @@
 
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
-                <hr class="divide25-40 visible-md-block visible-lg-block">
+                <hr class="divide25-40">
             {% endfor %}
 
             <div class="ad-square u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
@@ -262,7 +267,7 @@
                 <div class='advert-tablet' data-adsize="banner"></div>
                 <div class='advert-mobile' data-adsize="mrec"></div>
             </div>
-            <hr class="divide25-40 visible-md-block visible-lg-block">
+            <hr class="divide25-40">
 
             {% if articles[11] %}
 
@@ -281,7 +286,7 @@
 
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
-                <hr class="divide25-40 visible-md-block visible-lg-block">
+                <hr class="divide25-40">
             {% endif %}
 
 
