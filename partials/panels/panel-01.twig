@@ -75,6 +75,7 @@
                             {# CARD 4 #}
                             {{this.render('../_single-article.twig', {
                                 imageSize       : {width:95},
+                                styleType       : "image-bottom",
                                 position        : cardIndex + 1, 
                                 lazyload        : false,
                                 article         : articles[articleCount +1], 
@@ -141,6 +142,8 @@
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:95},
+                            styleType       : "image-bottom",
+                            styleType       : "image-bottom",
                             position        : cardIndex - 1, 
                             lazyload        : false,
                             article         : articles[articleCount -1], 
@@ -157,6 +160,7 @@
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:95},
+                            styleType       : "image-bottom",
                             position        : cardIndex, 
                             lazyload        : false,
                             article         : articles[articleCount], 
@@ -210,6 +214,7 @@
                 {# CARDS 6,7,8 #}
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:95},
+                    styleType       : "image-bottom",
                     position        : cardIndex, 
                     lazyload        : false,
                     article         : articles[articleCount],
@@ -287,6 +292,7 @@
                 {# CARDS 9, 10 #}
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:95},
+                    styleType       : "image-bottom",
                     position        : cardIndex, 
                     lazyload        : false,
                     article         : articles[articleCount],
@@ -314,6 +320,7 @@
                 {# CARD 11 #}
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:95},
+                    styleType       : "image-bottom",
                     position        : cardIndex, 
                     lazyload        : false,
                     article         : articles[articleCount],
