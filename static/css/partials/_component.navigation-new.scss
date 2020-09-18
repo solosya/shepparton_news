@@ -5,13 +5,17 @@
 .c-navigation-new {
     @include flexbox();
     @include align-items(center);
+    @include justify-content(center);
+    
     position:relative;
     padding-bottom: 13px;
     padding-top: 15px;
     border-bottom: 1px solid #979797;
     border-top: 1px solid #979797;
-    width: 100%;
+    width: 80%;
+    max-width:80%;
 
+    
     @media #{$mobile}{
         margin-top:16px;
         padding-bottom: 6px;
