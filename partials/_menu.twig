@@ -5,7 +5,7 @@
     {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
     {% set children = parentItem.children is defined and parentItem.children | length > 0  %}
 
-    <li class="dropdown">
+    <li class="standalone-menu__dropdown">
         <a  class="{{activeClass}} {{externalClass}} "
             href="{{parentItem.link | raw}}"
             {% if parentItem.target != "" %} 

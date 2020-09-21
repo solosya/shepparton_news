@@ -453,6 +453,44 @@
 
 
 
+/* rotate */
+@mixin rotate ($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+/* scale */
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}
+
+/* translate */
+@mixin translate ($x, $y) {
+	@include transform(translate($x, $y));
+}
+
+@mixin translateY ($y) {
+	@include transform(translateY($y));
+}
+
+/* skew */
+@mixin skew ($x, $y) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+/* transform origin */
+@mixin transform-origin ($origin) {
+	-webkit-transform-origin: $origin;
+	/* Chrome, Safari, Opera */
+	-moz-transform-origin: $origin;
+	/* Mozilla Firefox */
+	-o-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	/* IE 9 */
+	transform-origin: $origin;
+}
+
+
+
 // // Flexbox Mixins
 // // http://philipwalton.github.io/solved-by-flexbox/
 // // https://github.com/philipwalton/solved-by-flexbox
@@ -609,7 +647,26 @@
 	-moz-align-items:$value;
 	align-items:$value;
 }
-
+@mixin justify-content($value:flex-start) {
+    @if $value == flex-start {
+        -webkit-box-pack:start;
+        -ms-flex-pack:start;
+    } @else if $value == flex-end {
+        -webkit-box-pack:end;
+        -ms-flex-pack:end;
+    } @else if $value == space-between {
+        -webkit-box-pack:justify;
+        -ms-flex-pack:justify;
+    } @else if $value == space-around {
+        -ms-flex-pack:distribute;		
+    } @else {
+        -webkit-box-pack:$value;
+        -ms-flex-pack:$value;
+    }
+    -webkit-justify-content:$value;
+    -moz-justify-content:$value;
+    justify-content:$value;
+    }
 // //----------------------------------
 
 // // Flexbox Align Self

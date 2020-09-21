@@ -1,5 +1,6 @@
 {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
-{% set miniMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'header-mini'}) %}
+{% set sectionMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'section-menu'}) %}
+{% set networkMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'network-menu'}) %}
 
 {% set loggedin = _User.isGuest() ? false : true %}
 {% set user = loggedin ? _User.getUser() : null %}
@@ -215,24 +216,41 @@
 
 <div class="responsive-standalone">
     
-    <ul class="standalone-menu">
-        <li class="c-search-bar d-block d-md-none">
-            <form class="c-search-bar__form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
-                {# <div class="c-search-bar__icon">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div> #}
-                <input class="c-search-bar__input" type="text" name="s" placeholder="Search"/>
-                <button class="c-search-bar__button c-button c-button--rounded c-button--blue" type="submit" id="searchsubmit">Go</button>
-            </form>
-        </li>
-        {{ this.render('../../partials/_menu.twig', {
-            'menu': headermenu
-            }) | raw }}
-    </ul>
-    
     <div class="responsive-standalone-close">
-        <div class="responsive-standalone-close-menu">Menu</div>
-        <div class="responsive-standalone-close-close o-close o-close--dark"></div>
+        <div class="responsive-standalone-close-close o-close "></div>
     </div>
+
+    <form class="standalone-menu__search-form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+        {# <div class="c-search-bar__icon">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div> #}
+        <input class="standalone-menu__search-bar" type="text" name="s" placeholder="Search"/>
+        <button class="standalone-menu__search-button o-glass" type="submit" id="searchsubmit"></button>
+    </form>
+
+    <div class="standalone-menu__menu-toggle u-margin-top-30 j-menu-toggle">
+        <button class="standalone-menu__toggle standalone-menu__toggle--active" data-value="section">Sections</button>
+        <button class="standalone-menu__toggle" data-value="network">Network</button>
+    </div>
+
+    <ul class="standalone-menu u-margin-top-30">
+        <div class="standalone-menu__tab standalone-menu__tab--active j-tab" data-tab="section">
+        {{ this.render('../../partials/_menu.twig', {
+            'menu': sectionMenu
+            }) | raw }}
+        </div>
+
+        <div class="standalone-menu__tab j-tab" data-tab="network">
+        {{ this.render('../../partials/_menu.twig', {
+            'menu': networkMenu
+            }) | raw }}
+        </div>
+    </ul>
+
+    <div class="side-menu-subscribe">
+        <h4 class="side-menu-subscribe__title">Stories about people you <br />know told by people you trust</h4>
+        <p class="side-menu-subscribe__p">Subscribe to the news that matters to you</p>
+        <button class="side-menu-subscribe__button">Subscribe now</button>
+    </div> 
 
 </div>
 
-<div class="responsive-standalone-overlay"></div>
+<!-- <div class="responsive-standalone-overlay"></div> -->
