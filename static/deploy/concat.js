@@ -23699,8 +23699,72 @@ $('document').ready(function() {
     //     // console.log(scrollMetric);
     // });
 
+    $('.js-menu').on('click', function (event) {
+        console.log('clicked');
+        event.preventDefault();
+        // $('body').addClass('u-noscroll');
+        $('.responsive-standalone').addClass('navigation-active');
+        $('.responsive-standalone-close').addClass('open');
+        $(".responsive-standalone-overlay").animate({
+            "opacity": "toggle"
+        }, {
+            duration: 500
+        }, function () {
+            $(".responsive-standalone-overlay").fadeIn();
+        });
+        return false;
+    });
+
+    function closeMobileMenu() {
+        // $('body').removeClass('u-noscroll');
+        $('.responsive-standalone-close').removeClass('open');
+        $('.responsive-standalone').removeClass('navigation-active');
+        $(".responsive-standalone-overlay").hide();
+    }
+    $('.responsive-standalone-close').on('click', function (event) {
+        event.preventDefault();
+        closeMobileMenu();
+        return false;
+    });
+    $(".responsive-standalone-overlay").on('click', function () {
+        closeMobileMenu();
+    });
 
 
+    $('.j-menu-toggle').on('click', function (e) {
+        var tab = $(e.target).data('value');
+        $('.j-tab').each(function() {
+            var elem = $(this);
+            elem.removeClass('standalone-menu__tab--active');
+            if (elem.data('tab') === tab) {
+                elem.addClass('standalone-menu__tab--active');
+            }
+        });
+
+        $('.standalone-menu__toggle').each(function(e) {
+            var elem = $(this);
+            elem.removeClass('standalone-menu__toggle--active');
+            if (elem.data('value') === tab) {
+                elem.addClass('standalone-menu__toggle--active');
+            }
+
+        });
+    });
+
+    $(".list-arrow-container").on('click', function(e) {
+        console.log('clicked menu arrow');
+        $parent = $(this).parent();
+        var isActive = $parent.hasClass('active');
+        $('.standalone-menu__dropdown').each(function() {
+            var elem = $(this);
+            elem.removeClass('active');
+            elem.find('.custom-menu').removeClass('custom-menu--active');
+        });
+        if (!isActive) {
+            $parent.addClass('active');
+            $(this).siblings('.custom-menu').addClass('custom-menu--active');
+        }
+    });
 
     $("#menu-foldaway").on("click", function (e) {
         menu_top_foldaway.toggleClass('hide');
