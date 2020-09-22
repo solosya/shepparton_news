@@ -2,35 +2,36 @@
     @include card-name("104 mobile");
 
     .c-cards-view {
-        @include flex-direction(column);
+        @include flexbox();
+        @include flex-direction(row);
 
         &__media {
-            width: 98px;
-            height: 130px;
+            min-width: 190px;
+            height: 112px;
+            margin-right:20px;
         }
 
         &__container {
         }
 
+        &__category {
+            @include font-size(17);
+        }
         &__heading {
             font-family: $font-family-serif;
-            @include font-size(20);
+            margin-top:7px;
+            @include font-size(17);
             font-weight:600;
             color: #2b2a2a;
         }
 
         &__description {
-            font-family: $base-font-family;
-            color: #565656;
-            @include font-size(14);
-            line-height: 1.25rem;
-            font-weight:300;
-            @include flex-height(100px);
+            display:none;
         }
 
         &__author {
             display:flex;
-            position:relative;
+            position: absolute;
             margin-top:7px;
         }
 

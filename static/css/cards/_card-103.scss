@@ -2,6 +2,7 @@
     @include card-name("103 mobile");
 
     .c-cards-view {
+        @include flexbox();
         @include flex-direction(column);
         min-height: 326px;
 
@@ -11,6 +12,10 @@
         }
 
         &__container {
+        }
+
+        &__category {
+            @include font-size(17);
         }
 
         &__heading {

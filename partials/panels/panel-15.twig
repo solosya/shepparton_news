@@ -1,0 +1,31 @@
+{% set articleCount = 0 %}
+
+<div class="col-sm-6">
+
+    <div class="row u-margin-bottom-30" data-template="panel-11">
+    
+        <div class="col-sm-12">
+            <div class="c-section-header  u-margin-top-30">
+                <a class="{{site}}" href="{{link}}">
+                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" data-template="panel-15">
+
+        {% for i in 0..1 if articles[articleCount] %}
+            {{this.render('../_single-article.twig', {
+                article         : articles[articleCount], 
+                imageSize       : {width:300, height:160},
+                site            : site,
+                containerClass  : 'col-sm-6 col-md-6 card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'
+            }) | raw}}
+            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            
+            
+        {% endfor %}
+
+    </div>
+</div>

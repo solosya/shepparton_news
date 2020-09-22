@@ -22,7 +22,7 @@
             <div class="row sm-two-cols">
                 {% for i in 0..2 if articles[articleCount] %}
                     {% set tabCard = [' card-sm-tablet',' feature-side-tablet',' feature-side-tablet'] %}
-                    <div class="col-md-3 col-sm-1">
+                    <div class="col-md-4 col-sm-1">
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         imageSize: {width:192, height: 160},

@@ -5,8 +5,7 @@
         @include flex-direction(column);
 
         &__media {
-            width: 98px;
-            height: 130px;
+            display:none;
         }
 
         &__container {

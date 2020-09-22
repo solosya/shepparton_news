@@ -56,15 +56,23 @@
             {% set margin = '' %}
     {% endif %}
 
-    {% if section.wrapper is not defined %}
-        <div class="container {{margin}}">
-    {% endif %}
+        {% if (section.wrapper is not defined and section.startWrapper is not defined) or section.startWrapper is defined and section.startWrapper == true %}
+            <div class="container {{section.title}} {{margin}}">
+        {% endif %}
 
-    {{this.render(section.template, params) | raw}} 
+        {% if section.startRow is defined and section.startRow == true %}
+            <div class="row">
+        {% endif %}
 
-    {% if section.wrapper is not defined %}
-        </div>
-    {% endif %}
+            {{this.render(section.template, params) | raw}} 
+
+        {% if section.endRow is defined and section.endRow == true %}
+            </div>
+        {% endif %}
+
+        {% if (section.wrapper is not defined and section.endWrapper is not defined) or section.endWrapper is defined and section.endWrapper == true %}
+            </div>
+        {% endif %}
 
     {% if section.background %}
         </div>

@@ -41,7 +41,7 @@
         
         &__category-top {
             @include flexbox();
-
+            @include font-size(17);
         }
 
         &__heading-top {
