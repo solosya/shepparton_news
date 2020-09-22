@@ -19,9 +19,9 @@
         {% for i in 0..3 if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
-                imageSize       : {width:300, height:160},
+                imageSize       : {width:300, height:197},
                 site            : site,
-                containerClass  : 'col-sm-3 col-md-3 card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'
+                containerClass  : 'col-sm-3 col-md-3 card-107-mobile card-107-tablet card-107-desktop-sm card-107-desktop-lg'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             

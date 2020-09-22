@@ -1,0 +1,63 @@
+@mixin card-110-base() {
+    @include card-name("110 mobile");
+
+    .c-cards-view {
+
+        &__media {
+            height:189px;
+            width:142px;
+        }
+
+        &__container {
+            display:none;
+        }
+
+        &__heading {
+            display:none;
+        }
+        &__category {
+            display:none;
+        }
+
+        &__description {
+            display:none;
+        }
+
+        &__author {
+            display:none;
+        }
+
+        &__time {
+            display:none;
+        }
+    }
+}
+
+.card-110-mobile {
+    @media #{$mobile} {
+        @include card-110-base();
+    }
+}
+
+
+.card-110-tablet {
+    @media #{$tablet} {
+        @include card-110-base();
+        @include card-name("110 tablet");
+    }
+}
+
+.card-110-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-110-base();
+        @include card-name("110 desktop");
+    }
+}
+
+.card-110-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-110-base();
+        @include card-name("110 desktop lg");
+    }
+}
+

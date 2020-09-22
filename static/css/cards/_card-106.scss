@@ -2,19 +2,32 @@
     @include card-name("106 mobile");
 
     .c-cards-view {
-        @include flex-direction(column);
+        @include flexbox();
+        @include flex-direction(row);
 
         &__media {
-            display:none;
+            flex-shrink:0;
+            width: 90px;
+            height: 90px;
+            margin-right:22px;
+            img {
+                border-radius: 50%;
+            }
         }
 
         &__container {
         }
-
+        &__category {
+            font-family: $font-family-serif;
+            @include font-size(20);
+            color: #2b2a2a;
+            margin-bottom:10px;
+        }
         &__heading {
             font-family: $font-family-serif;
             @include font-size(20);
             font-weight:600;
+            font-style:italic;
             color: #2b2a2a;
         }
 
@@ -24,30 +37,17 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
-            @include flex-height(100px);
+            @include flex-height(55px);
         }
 
         &__author {
-            display:flex;
-            position:relative;
-            margin-top:7px;
+            display:none;
         }
-
         &__author-name {
-            margin-top: 3px;
-            font-family: $base-font-family;
-            font-weight:400;
-            color: #6e6e6e;
-            border:none;
-            @include font-size(12);
-            &:before {
-                content: "By ";
-            }
         }
         &__author-time {
             display:none;
         }
-
         &__time {
             display:none;
         }

@@ -1,3 +1,4 @@
+
 @mixin card-108-base() {
     @include card-name("108 mobile");
 
@@ -5,29 +6,27 @@
         @include flex-direction(column);
 
         &__media {
-            width: 98px;
-            height: 130px;
+            width: 100%;
+            height: 235px;
         }
 
         &__container {
         }
+        &__category {
+            @include font-size(17);
+        }
 
         &__heading {
             font-family: $font-family-serif;
-            @include font-size(20);
+            @include font-size(24);
             font-weight:600;
             color: #2b2a2a;
-        }
+            overflow:visible;
 
+        }
         &__description {
-            font-family: $base-font-family;
-            color: #565656;
-            @include font-size(14);
-            line-height: 1.25rem;
-            font-weight:300;
-            @include flex-height(100px);
+            display:none;
         }
-
         &__author {
             display:flex;
             position:relative;
@@ -49,11 +48,10 @@
             display:none;
         }
 
+
         &__time {
             display:none;
         }
-
-
 
 
         &.without-image {
@@ -93,11 +91,23 @@
 
 
 .card-108-tablet {
+
     @media #{$tablet} {
+        
         @include card-108-base();
         @include card-name("108 tablet");
+        .c-cards-view {
+
+            &__media {
+                width: 100%;
+                height: 152px;
+            }
+        }
+
     }
 }
+
+
 
 .card-108-desktop-sm {
     @media #{$desktop-sm} {

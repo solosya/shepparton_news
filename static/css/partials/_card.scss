@@ -124,6 +124,8 @@ a.card {
 
 
     &__category, &__category-top{
+        @include flexbox();
+        @include align-items(center);
         font-size: rem(10.5);
         text-transform:uppercase;
         @include colourselectdark('');

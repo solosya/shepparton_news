@@ -12,6 +12,7 @@
         &__container {
         }
         &__category {
+            margin-top:15px;
             @include font-size(17);
         }
 

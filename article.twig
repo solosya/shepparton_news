@@ -69,7 +69,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% for i in 0..ArticleContent | length %}
         
        
-        {% if i == 3 %}
+        {% if i == 2 %}
             {% if config['piano']['paywall'] is defined and config['piano']['paywall'] == true %}
                 {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
                 {% set pianoActive = true %}

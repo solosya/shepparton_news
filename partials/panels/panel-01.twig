@@ -34,7 +34,7 @@
                     {# CARD 1 #}
                     {% if articles[articleCount] %}                                                                
                         {{this.render('../_single-article.twig', {
-                            imageSize       : {width:640, height:400},
+                            imageSize       : {width:640, height:445},
                             position        : cardIndex, 
                             lazyload        : false,
                             article         : articles[articleCount], 
@@ -96,7 +96,7 @@
                             {# CARD 3 TABLET #}
                             {% if articles[articleCount] %}
                                 {{this.render('../_single-article.twig', {
-                                    imageSize       : {width:235},
+                                    imageSize       : {height:235},
                                     position        : cardIndex, 
                                     lazyload        : false,
                                     article         : articles[articleCount], 
@@ -122,7 +122,7 @@
                     {# CARD 3  DESKTOP #}
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
-                            imageSize       : {width:235},
+                            imageSize       : {height:235},
                             position        : cardIndex, 
                             lazyload        : false,
                             article         : articles[articleCount], 
@@ -347,7 +347,7 @@
             <div class="col-sm-4">
                 {# CARDS 9, 10 #}
                 {{this.render('../_single-article.twig', {
-                    imageSize       : {width:95},
+                    imageSize       : {height: 112, width:190},
                     position        : cardIndex, 
                     lazyload        : false,
                     article         : articles[articleCount],

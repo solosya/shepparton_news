@@ -4,24 +4,23 @@
     .c-cards-view {
         @include flexbox();
         @include flex-direction(column);
-        min-height: 326px;
 
         &__media {
-            width: 98px;
-            height: 130px;
+            display:none;
         }
 
         &__container {
         }
 
         &__category {
-            @include font-size(17);
+            display:none;
         }
 
         &__heading {
             font-family: $font-family-serif;
             @include font-size(20);
             font-weight:600;
+            font-style:italic;
             color: #2b2a2a;
         }
 
@@ -31,7 +30,7 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
-            @include flex-height(100px);
+            @include flex-height(80px);
         }
 
         &__author {
