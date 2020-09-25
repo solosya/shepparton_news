@@ -42,7 +42,7 @@
     <div class="visible-sm-block">
         {% for i in 0..2 if articles[tabletCount] %}
             {% set finalClass = (i == 2) ? 'final' : '' %}
-            <div class="col-sm-3">
+            <div class="col-sm-4">
 
                 {{this.render('../_single-article.twig', {
                     article:        articles[tabletCount], 

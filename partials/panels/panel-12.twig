@@ -3,7 +3,7 @@
 
 
 
-<div class="col-sm-3" data-panel="panel-12">
+<div class="col-sm-12 col-md-3" data-panel="panel-12">
     <div class="row u-margin-bottom-30">
         <div class="col-sm-12">
             <div class="c-section-header  u-margin-top-30">
@@ -14,18 +14,32 @@
         </div>
     </div>
     <div class="row ">
+        <div class="col-xs-12 col-sm-6 col-md-12">
+            <div class="row">
+            {% for i in 0..1 if articles[articleCount] %}
+                <div class="col-xs-6 col-sm-6 col-md-6">
 
-        {% for i in 0..1 if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-                article         : articles[articleCount], 
-                imageSize       : {width:300, height:160},
-                site            : site,
-                containerClass  : 'col-sm-6 card-110-mobile card-110-tablet card-110-desktop-sm card-110-desktop-lg'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            
-        {% endfor %}
+                    {{this.render('../_single-article.twig', {
+                        article         : articles[articleCount], 
+                        imageSize       : {width:300, height:160},
+                        site            : site,
+                        containerClass  : 'card-110-mobile card-110-tablet card-110-desktop-sm card-110-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
 
+
+
+        <div class="col-xs-12 col-sm-6 col-md-12">
+            <div class="click-subscribe" data-view="all">
+                <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
+                <p class="click-subscribe__p">Subscribe to the news that matters to you</p>
+                <button class="click-subscribe__button">Subscribe now</button>
+            </div> 
+        </div>
     </div>
 
 </div>

@@ -14,15 +14,18 @@
     <div class="row u-margin-top-30">
 
         {% for i in 0..3 if articles[articleCount] %}
+            <div class="col-sm-6 col-md-3">
             {{this.render('../_single-article.twig', {
                 article         : articles[articleCount], 
                 imageSize       : {width:300, height:160},
                 site            : site,
-                containerClass  : 'col-sm-3 col-md-3 card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
+                containerClass  : 'card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
             }) | raw}}
             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            
-            
+            {% if i < 2 %}
+                <hr class="divide25-40 visible-sm-block">
+            {% endif %}
+           </div> 
         {% endfor %}
 
     </div>

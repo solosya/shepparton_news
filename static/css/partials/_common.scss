@@ -69,6 +69,7 @@
 
 
 .google_ad {
+    background-color:#e7e7e7;
     &:after {
         content: "Advertisement";
         font-size: rem(10);
@@ -83,7 +84,7 @@
     &.tablet-teads,
     &.desktop-teads,
     &.tablet-interstitial,
-    &.desktop-interstitial, {
+    &.desktop-interstitial {
         &:after {
             display:none;
         }
@@ -109,11 +110,15 @@
         margin-left: auto;
         margin-right: auto;
     }
+    &.mobile-banner {
+        height:40px;
+    }
 }
 
 .ad-square {
     // @include adtext;
-
+    // background:orange;
+    
     > .dairy {
         @media screen and (max-width: $sm-break){        
             margin: 30px auto 30px auto;

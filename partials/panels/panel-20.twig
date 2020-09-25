@@ -1,4 +1,5 @@
 {% set articleCount = 0 %}
+{% set cardIndex = 1 %}
 <div class="row">
 
 <div class="col-sm-12">
@@ -17,15 +18,17 @@
     <div class="row" data-template="panel-20">
 
         {% for i in 0..3 if articles[articleCount] %}
-            <div class="col-sm-3 col-md-3"> 
-            {{this.render('../_single-article.twig', {
-                article         : articles[articleCount], 
-                imageSize       : {width:300, height:160},
-                site            : site,
-                containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            <hr class="divide25-40">
+            <div class="col-sm-6 col-md-3"> 
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : cardIndex,
+                    imageSize       : {width:300, height:160},
+                    site            : site,
+                    containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+                <hr class="divide25-40">
             </div> 
             
         {% endfor %}
@@ -35,16 +38,21 @@
     <div class="row" data-template="panel-20">
 
         {% for i in 0..3 if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-                article         : articles[articleCount], 
-                styleType       : "image-bottom",
-                imageSize       : {width:300, height:160},
-                site            : site,
-                containerClass  : 'col-sm-3 col-md-3 card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            
-            
+            <div class="col-sm-6 col-md-3">
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    position        : cardIndex,
+                    styleType       : "image-bottom",
+                    imageSize       : {width:300, height:160},
+                    site            : site,
+                    containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set cardIndex = cardIndex + 1 %}
+                {% if i < 2 %} 
+                    <hr class="divide25-40 visible-sm-block">
+                {% endif %}
+            </div>
         {% endfor %}
 
     </div>

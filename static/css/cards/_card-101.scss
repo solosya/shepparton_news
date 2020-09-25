@@ -84,7 +84,9 @@
         }
 
 
-        &.without-image {
+        &.without__image {
+            min-height: 260px;
+            background:#e7e7e7;
             .c-cards-view {
                 &__container {
                     width: 100%;
@@ -124,6 +126,12 @@
     @media #{$tablet} {
         @include card-101-base();
         @include card-name("101 tablet");
+        .c-cards-view {
+
+            &.without__imae {
+                min-height: 260px;
+            }
+        }
     }
 }
 

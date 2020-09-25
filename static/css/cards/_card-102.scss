@@ -54,7 +54,10 @@
         }
 
 
-        &.without-image {
+        &.without__image {
+            min-height:382px;
+            background-color: #f7f7f7;
+            
             .c-cards-view {
                 &__container {
                     width: 100%;

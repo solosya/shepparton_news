@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 
 
-<div class="col-sm-9">
+<div class="col-sm-12 col-md-9">
     <div class="row u-margin-bottom-30 " data-template="panel-11">
     
         <div class="col-sm-12">
@@ -16,20 +16,38 @@
     <div class="row">
 
         {% for i in 0..2 if articles[articleCount] %}
-            {{this.render('../_single-article.twig', {
-                article         : articles[articleCount], 
-                imageSize       : {width:300, height:160},
-                site            : site,
-                containerClass  : 'col-sm-4 col-md-4 card-103-mobile card-103-tablet card-103-desktop-sm card-103-desktop-lg'
-            }) | raw}}
-            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-            
+            <div class="col-sm-4 col-md-4">
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    site            : site,
+                    containerClass  : 'card-103-mobile card-103-tablet card-103-desktop-sm card-103-desktop-lg'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div> 
+        {% endfor %}
+    </div>
+
+
+    <div class="col-sm-12">
+        <hr class="divide25-40">
+    </div>
+
+
+    <div class="row">
+        {% for i in 0..1 if articles[articleCount] %}
+            <div class="col-sm-6">
+                {{this.render('../_single-article.twig', {
+                    article         : articles[articleCount], 
+                    imageSize       : {width:300, height:160},
+                    site            : site,
+                    containerClass  : 'card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'
+                }) | raw}}
+                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+            </div> 
+        
         {% endfor %}
 
     </div>
-
-    <hr class="divide25-40">
-
 </div>
 
 

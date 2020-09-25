@@ -74,7 +74,10 @@
             display:none;
         }
 
-        &.without-image {
+        &.without__image {
+            min-height: 628px;
+            background-color:#f7f7f7;
+
             .c-cards-view {
                 &__container {
                     width: 100%;
@@ -82,8 +85,6 @@
                     padding: 0px 20px 0;
                 }
                 &__category {
-                    margin-top: 36px;
-                    margin-bottom: 24px;
                 }
                 &__heading {
                     height: 55px;
@@ -106,6 +107,12 @@
 .card-100-mobile {
     @media #{$mobile} {
         @include card-100-base();
+        .c-cards-view {
+            &.without__image {
+                min-height: 628px;
+            }
+        }
+
     }
 }
 
