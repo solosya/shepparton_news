@@ -373,6 +373,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     </div>               
                 
 
+
+                    {% cache 'recentLeader' 500 %}
                     <div class="col-md-3 visible-md-block visible-lg-block" style="min-height:1px;" id="adScrollContainer">
                         <div class="article-sidebar lockad-top u-left-unset u-fix-width-300" id="articleAdScroll">
                             <div class="">
@@ -383,9 +385,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             </div>
 
 
-                            {% cache 'recentLeader' 500 %}
                             <div class="">
-                                {% if recentArticles[0] %}<h2 class="sidebar-header {{site}}">Latest articles</h2>{% endif %}
+                                {% if recentArticles[0] %}
+                                    <h2 class="sidebar-header {{site}}">Latest articles</h2>
+                                {% endif %}
                                     
                                 {% if config['newsletter'] is defined and config['newsletter'] != "" %}
                                     {% for i in 0..1 if recentArticles[i] %}
@@ -425,22 +428,23 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                 {% endif %}
                                 
                             </div>
-                            {% endcache %}
                         </div>
                     </div>               
-                
+
+
 
                     <div class="col-sm-9 visible-xs-block visible-sm-block u-margin-top-30">
                         <div class="article-sidebar-device">
 
-                            {% cache 'recentLeader2' 500 %}
         
                             <div class="ad-side-container hidden-sm u-mobile-margin-top-15" style="height:250px;position:relative;width:300px;margin: 0 auto;">
                                 <div class='advert-mobile' data-adsize="mrec"></div>
                             </div>
                             <div class='advert-tablet visible-sm-block u-tablet-margin-top-30' data-adsize="banner"></div>
 
-                            {% if recentArticles[0] %}<h2 class="sidebar-header {{site}}">Latest articles</h2>{% endif %}
+                            {% if recentArticles[0] %}
+                                <h2 class="sidebar-header {{site}}">Latest articles</h2>
+                            {% endif %}
                                 
                             {% if config['newsletter'] is defined and config['newsletter'] != "" %}
                                 {% for i in 0..2 if recentArticles[i] %}
@@ -479,11 +483,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                 {% endfor %}
                             {% endif %}
 
-                            {% endcache %}
 
                         </div>
 
                     </div><!-- .article-sidebar-->
+                    {% endcache %}
 
                 </div>
 
