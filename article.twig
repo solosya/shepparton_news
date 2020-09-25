@@ -433,7 +433,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     <div class="col-sm-9 visible-xs-block visible-sm-block u-margin-top-30">
                         <div class="article-sidebar-device">
 
-                            
+                            {% cache 'recentLeader2' 300 %}
+        
                             <div class="ad-side-container hidden-sm u-mobile-margin-top-15" style="height:250px;position:relative;width:300px;margin: 0 auto;">
                                 <div class='advert-mobile' data-adsize="mrec"></div>
                             </div>
@@ -478,7 +479,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                 {% endfor %}
                             {% endif %}
 
-                            
+                            {% endcache %}
+
                         </div>
 
                     </div><!-- .article-sidebar-->
