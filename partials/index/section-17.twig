@@ -262,7 +262,11 @@
 
 
 
-    {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
+    {% set popularArticles = getCache("indexPopular") %}
+    {% if (popularArticles is empty) %}
+        {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
+        {% set cache = setCache("indexPopular", popularArticles, 600) %} 
+    {% endif %}
 
 <section data-template="section-17">
 
