@@ -381,6 +381,9 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     <div class='advert-desktop u-fix-adsize' data-adsize="mrec"></div>
                                 </div>
                             </div>
+
+
+                            {% cache 'recentLeader' 300 %}
                             <div class="">
                                 {% if recentArticles[0] %}<h2 class="sidebar-header {{site}}">Latest articles</h2>{% endif %}
                                     
@@ -422,6 +425,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                 {% endif %}
                                 
                             </div>
+                            {% endcache %}
                         </div>
                     </div>               
                 
@@ -488,6 +492,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                 {{this.render("partials/article/_disqus_comments.twig", {disqus: networkData.thirdPartyIntegrations['disqus'], userId: article.createdBy['id'], url:article.url, articleId: article.id}) | raw}}
             {% endif %}
 
+            {% cache 'popularLeader'~article.blog.id 300 %}
 
             <div class="row related-articles">
                 <div class="col-md-9">
@@ -507,7 +512,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     {% endfor %}
                 </div>
             </div>
-
+            {% endcache %}
 
             {# <iframe allowfullscreen="" mozallowfullscreen="" src="//players.brightcove.net/5370537724001/HkEx1WOvW_default/index.html?videoId=5741664695001" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;" webkitallowfullscreen=""></iframe> #}
 
