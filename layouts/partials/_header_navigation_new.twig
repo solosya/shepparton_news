@@ -51,9 +51,9 @@
 <header class="c-header-new u-mobile-margin-bottom-70" data-header="0">
     <div class="container">
         <div class="row">
-            
-            
-            
+
+
+
             {# ******************************************************
                                  MINI MENU
             ****************************************************** #}
@@ -64,7 +64,7 @@
                         class: 'c-header-new-top-bar__link',
                     }) | raw}} #}
                 </div>
-            </div>  
+            </div>
         </div>
 
 
@@ -82,12 +82,12 @@
                             <img src="{{logo}}" class="image-fluid" />
                         </figure>
                     </a>
-                    
+
                     <div class="c-header-new__login-info" style="background:white">
                         {# {% if paymeter == true and pianoSubscribe == true %} #}
                             <a class="c-header-new__subscribebutton" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
                                 SUBSCRIBE
-                            </a>  
+                            </a>
                         {# {% endif %}   #}
                     </div>
                 </div>
@@ -111,7 +111,7 @@
         ****************************************************** #}
     <div class="container">
         <div class="row">
-            <div class="col-sm-12" style="background:white">       
+            <div class="col-sm-12" style="background:white">
                 <div class="c-navigation-new c-navigation-new-md">
                     <div class="c-navigation-new__weather">
                         <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
@@ -122,18 +122,18 @@
                     <ul class="c-navigation-new__list">
                         {{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}
                     </ul>
-                    
+
 
                     {# Only shows on Mobile #}
                     <div class="c-header-new__mobile-auth">
                         {# {% if paymeter == true and pianoMenu == true %}   #}
-                            <a class="c-header-new__subscribebutton" 
-                                href="javascript:void(0);" 
+                            <a class="c-header-new__subscribebutton"
+                                href="javascript:void(0);"
                                 onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
                                 Subscribe
-                            </a>  
-                            <a class="c-header-new__signinbutton" 
-                                onclick="javascript:tp.pianoId.show({screen: 'login'});" 
+                            </a>
+                            <a class="c-header-new__signinbutton"
+                                onclick="javascript:tp.pianoId.show({screen: 'login'});"
                                 href="javascript:void(0);">Sign in
                             </a>
                         {# {% endif %}   #}
@@ -174,24 +174,24 @@
     {# ******************************************************
                         FIXED HEADER
     ****************************************************** #}
-    <div class="c-header-new__fixed c-header-new__fixed--off" id="j-menu-fixed">
-        <div class="c-header-new__main-info c-header-new__fixed-block" >
-            <a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo" >
-                <figure class="c-header-new__main-info__figure">
-                    <img src="{{logo}}" class="image-fluid" />
-                </figure>
-            </a>
-            <div class="c-navigation-new c-navigation-new-md c-navigation-new__fixed u-margin-top-10" >
-                <ul class="c-navigation-new__list d-none d-lg-flex">
-                    {{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}
-                </ul>
+    {#<div class="c-header-new__fixed c-header-new__fixed--off" id="j-menu-fixed">#}
+        {#<div class="c-header-new__main-info c-header-new__fixed-block" >#}
+            {#<a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo" >#}
+                {#<figure class="c-header-new__main-info__figure">#}
+                    {#<img src="{{logo}}" class="image-fluid" />#}
+                {#</figure>#}
+            {#</a>#}
+            {#<div class="c-navigation-new c-navigation-new-md c-navigation-new__fixed u-margin-top-10" >#}
+                {#<ul class="c-navigation-new__list d-none d-lg-flex">#}
+                    {#{{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}#}
+                {#</ul>#}
 
-                <div class="c-navigation-new__icons d-lg-none">
-                    <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+                {#<div class="c-navigation-new__icons d-lg-none">#}
+                    {#<div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
 
 
 
@@ -215,7 +215,7 @@
 
 
 <div class="responsive-standalone">
-    
+
     <div class="responsive-standalone-close">
         <div class="responsive-standalone-close-close o-close "></div>
     </div>
@@ -249,7 +249,7 @@
         <h4 class="side-menu-subscribe__title">Stories about people you <br />know told by people you trust</h4>
         <p class="side-menu-subscribe__p">Subscribe to the news that matters to you</p>
         <button class="side-menu-subscribe__button">Subscribe now</button>
-    </div> 
+    </div>
 
 </div>
 
