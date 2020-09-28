@@ -112,7 +112,7 @@
                 &__description {
                     margin-bottom: 0;
                     display: block;
-                    height:100px;
+                    min-height:auto;
                     max-height: 100px;
                     overflow: hidden;
                 }
