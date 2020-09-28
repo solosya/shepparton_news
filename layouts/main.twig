@@ -85,7 +85,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-57px.png" sizes="57x57" id="apple-icon-sm" />
     <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-72px.png" sizes="72x72" id="apple-icon-md" />
     <link rel="apple-touch-icon" href="{{networkData.templatePath}}/static/icons/apple/{{site}}-mobile-homescreen-144px.png" sizes="144x144" id="apple-icon-lg" />
-    
+
 
 
     {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
@@ -97,7 +97,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     {% if secFont != "" %}
         <link href='https://fonts.googleapis.com/css?family={{secFont}}' rel='stylesheet' type='text/css'>
     {% endif %}
-    
+
     <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
 
 
@@ -107,7 +107,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=af90198a" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=de6fe9d7" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -126,7 +126,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
     <!--
     <script src="https://use.typekit.net/mwx4nhf.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script> 
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     -->
 
 <!--[if lt IE 9]>
@@ -179,7 +179,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
                         'dimension6': "publishedDateTime" in data ? data['publishedDateTime'] : null,
                         'dimension7': "categories" in data ? data['categories'] : null,
                     };
-                    
+
                     console.log("GA", dimensions);
 
                     if ("userId" in data) {
@@ -251,7 +251,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
     {{ this.render('partials/_header_navigation' ~ headerStyle ~ '.twig', {
         site:site,
-        networkData: networkData, 
+        networkData: networkData,
         paymeter: paymeter,
         paymeterType: paymeterType,
         config: config
@@ -281,7 +281,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
     {{ this.render('partials/footer.twig', {
         site :site,
-        networkData : networkData, 
+        networkData : networkData,
     }) | raw }}
 
 
@@ -294,7 +294,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
     </div>
 
 
-    <script defer type="text/javascript"> 
+    <script defer type="text/javascript">
         var effectiveURL = '{{site}}';
         var effectiveSection = '{{blogData.title | lower}}';
         var effectiveType = '{{pageTypeClass}}';
@@ -322,7 +322,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
     {% if paymeter == true and paymeterType == 'syncronex' %}
         <script type="text/javascript" src="https://syncaccess-mmg-sn.syncronex.com/mmg/sn/api/scripts/syncwall"></script>
-        <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>  
+        <script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusSSO.js" type="text/javascript"></script>
         <script src="//gauge.lrcontent.com/v1/anonymousAuth.min.js"></script>
         <script src="//hosted-pages.lrcontent.com/mcmedia/LoginRadiusSDK.2.0.1.min.js"></script>
 

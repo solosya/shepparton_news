@@ -1,9 +1,12 @@
+
 {% import "quotes.twig" as quotes %}
+
+{% set url = _AppHelper.getParsedUrl %}
 
 {% set config = getCache("configData") %}
 {% if (config is empty) %}
     {% set config = _Network.getThemeConfig() %}
-    {% set cache = setCache("configData", config, 500) %} 
+    {% set cache = setCache("configData", config, 500) %}
 {% endif %}
 
 
@@ -18,15 +21,27 @@
 {% set styleType     = styleType     is defined and styleType != ''         ? styleType : ''  %}
 
 
-
 {# This can add a prefix to the card class to segregate its styles #}
 {% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
+
+
+{% set params = url['query'] %}
+
+{#remove all images if url param set#}
+{% for k, p in params %}
+    {% if k == 'images' %}
+        {% if p == 'false' %}
+            {% set imageSuppress = true %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
 
 
 {% set lightbox = ''  %}
 {% set articleImg = '' %}
 
-{% if behaviour is defined %} 
+{% if behaviour is defined %}
     {% if behaviour == 'noclick' %}
         {% set article = article | merge({'url' : 'javascript: void(0)'}) %}
     {% elseif behaviour == 'lightbox' %}
@@ -58,7 +73,7 @@
     {% set publishDateTime = (article.publishDateTime is defined) ? article.publishDateTime : article.publishedDateTime %}
     {% set publishDate  = _AppHelper.getDefaultTimezoneDateTime(publishDate, 'd M Y') %}
     {% set publishedAgo = _AppHelper.getSecondsSincePublished(publishDateTime) %}
-    
+
     {% if publishedAgo < 86400 %}
         {% set publishDate = _AppHelper.getRelativeTime(publishDateTime) ~ " ago" %}
     {% endif %}
@@ -66,12 +81,12 @@
 
 
 
-    
+
     {% set articleTitle = quotes.smarten(article.title)  %}
     {% if article.titlePreview is defined and article.titlePreview != "" %}
         {% set articleTitle = quotes.smarten(article.titlePreview) %}
     {% endif %}
-    
+
     {% set premiumtags = false %}
     {% if config['Premium Tags'] is defined %}
         {% if article.premiumContent %}
@@ -95,7 +110,7 @@
         profileImg      : profileImg,
         blogguid        : article.blog.guid,
         blogTitle       : article.blog.title,
-        cardType        : cardType, 
+        cardType        : cardType,
         hasMedia        : ((article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress == false) ? true : false,
         content         : article.excerpt,
         lazyload        : lazyload,
@@ -105,7 +120,7 @@
         premiumtags     : premiumtags
     } %}
 
-    
+
     {% set totalstring = "" %}
     {% set totals = (article.total is defined) ? article.total : false %}
     {% if totals and _User.isAdminUser() %}
@@ -117,29 +132,29 @@
 
 
     <div class="{{containerClass}}" data-title="{{ params.articleTitle | raw }}" {{inline}}>
-       
-        <a  href                = "{{article.url}}" 
-            class               = "{{swap}} card article {{hasArticleMediaClass}}" 
-            data-id             = "{{article.articleId}}" 
-            data-guid           = "{{article.guid}}" 
-            data-position       = "{{position}}" 
+
+        <a  href                = "{{article.url}}"
+            class               = "{{swap}} card article {{hasArticleMediaClass}}"
+            data-id             = "{{article.articleId}}"
+            data-guid           = "{{article.guid}}"
+            data-position       = "{{position}}"
             data-blog-guid      = "{{params.blogguid}}"
             data-blog-title     = "{{params.blogTitle}}"
             data-social         = "0"
-            data-article-image  = "{{params.articleImg}}" 
+            data-article-image  = "{{params.articleImg}}"
             data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             title               = "{{totalstring}}">
 
             {# {% if dev %} #}
                 <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
             {# {% endif %} #}
-            
+
             {# Article content including image #}
             <article class="{{cardType}}c-cards-view {{lightbox}} {{contentType}} {{hasArticleMediaClass}}">
 
                 {{ this.render('_article-' ~ template ~ '.twig', {
-                    article: article,  
-                    params:params, 
+                    article: article,
+                    params:params,
                     networkData: networkData,
                     styleType: styleType
                 } ) | raw }}
@@ -170,22 +185,22 @@
     {% set videoClass = (social.media['type'] == 'video') ? 'video' : '' %}
     {% set hasArticleMediaClass = (social.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set hasArticleContentClass = (social.content) ? '': 'without__content' %}
-    {% set socialSource = social.source %} 
+    {% set socialSource = social.source %}
 
     <div class="{{containerClass}}">
         <a  href                = "{{social.url}}"
             target              = "_blank"
-            class               = "{{swap}} card social {{ socialSource }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
-            data-id             = "{{article.socialId}}" 
+            class               = "{{swap}} card social {{ socialSource }} {{hasArticleContentClass}} {{hasArticleMediaClass}}"
+            data-id             = "{{article.socialId}}"
             data-position       = "{{position}}"
             data-blog-guid      = "{{social.blog['guid']}}"
-            data-guid           = "{{social.guid}}" 
-            data-social         = "1" 
-            data-article-image  = "{{social.media['path']}}" 
+            data-guid           = "{{social.guid}}"
+            data-social         = "1"
+            data-article-image  = "{{social.media['path']}}"
             data-article-text   = "{{Helper.htmlToText(social.content, -1) | raw | escape('html')}}">
 
             <article class="socialarticle {{ socialSource }} lightbox">
-                {% if social.hasMedia == 'TRUE' and imageSuppress == false %}  
+                {% if social.hasMedia == 'TRUE' and imageSuppress == false %}
                     <figure class="{{videoClass}}">
 
                         {% if lazyload == false %}
@@ -205,12 +220,12 @@
                     <div class="icon {{site}}"></div>
 
                     <div class="category {{socialSource}} {{site}}">{{socialSource}}</div>
-                    
+
                     <p id="updateSocial{{article.socialId}}" data-update="0" class="j-truncate">
                              {{ quotes.smarten(social.content  | raw) }}
                     </p>
 
-                    
+
                     <div class="j-truncate author">
                         <img src="{{social.user.media.path}}" class="img-circle">
                         <p class="">{{ (socialSource == _Article.socialArticleSourceTwitter()) ? '@' : ''}}{{ social.user['name'] | lower }}</p>

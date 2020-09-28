@@ -52,34 +52,6 @@
         &__time {
             display:none;
         }
-
-
-        &.without__image {
-            .c-cards-view {
-                &__container {
-                    width: 100%;
-                    margin-left: 0px;
-                    padding: 0px 20px 0;
-                }
-                &__category {
-                    margin-top: 36px;
-                    margin-bottom: 24px;
-                }
-                &__heading {
-                    height: 55px;
-                }
-                &__description {
-                    margin-bottom: 15px;
-                    display: block;
-                    height:100px;
-                    max-height: 100px;
-                    overflow: hidden;
-                }
-                &__author {
-                    margin-top:55px;
-                }
-            }
-        }
     }
 }
 
@@ -93,7 +65,7 @@
 .card-108-tablet {
 
     @media #{$tablet} {
-        
+
         @include card-108-base();
         @include card-name("108 tablet");
         .c-cards-view {

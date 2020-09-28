@@ -59,28 +59,29 @@
 
 
         &.without__image {
+
             .c-cards-view {
                 &__container {
                     width: 100%;
                     margin-left: 0px;
-                    padding: 0px 20px 0;
+                    padding: 0px;
                 }
                 &__category {
-                    margin-top: 36px;
-                    margin-bottom: 24px;
+                    margin-top: 0;
+                    margin-bottom: 0px;
                 }
                 &__heading {
-                    height: 55px;
+                    @include font-size(26);
+                    margin-top:5px;
+                    margin-bottom:0;
+                    line-height: 2.10rem;
                 }
                 &__description {
-                    margin-bottom: 15px;
-                    display: block;
-                    height:100px;
-                    max-height: 100px;
-                    overflow: hidden;
+                    display:none;
                 }
                 &__author {
-                    margin-top:55px;
+                    position:relative;
+                    margin-top:10px;
                 }
             }
         }

@@ -38,7 +38,7 @@
         &__heading {
             display:none;
         }
-        
+
         &__category-top {
             @include flexbox();
             @include font-size(17);
@@ -85,33 +85,42 @@
 
 
         &.without__image {
-            min-height: 260px;
-            background:#e7e7e7;
+            min-height: auto;
+
             .c-cards-view {
                 &__container {
                     width: 100%;
                     margin-left: 0px;
-                    padding: 0px 20px 0;
+                    padding: 0px;
                 }
-                &__category {
-                    margin-top: 36px;
-                    margin-bottom: 24px;
+                &__text-container {
+
                 }
-                &__heading {
+                //&__category {
+                    //margin-top: 36px;
+                    //margin-bottom: 24px;
+                //}
+                //&__heading {
                     height: 55px;
+                //}
+                &__category-top {
+                    margin-bottom:10px
+                }
+
+                &__heading-top {
                 }
                 &__description {
-                    margin-bottom: 15px;
+                    margin-bottom: 0;
                     display: block;
                     height:100px;
                     max-height: 100px;
                     overflow: hidden;
                 }
                 &__author {
-                    margin-top:55px;
+                    margin-top:10px;
                 }
             }
-        }   
+        }
     }
 }
 

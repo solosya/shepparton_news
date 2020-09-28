@@ -1,3 +1,4 @@
+
 @mixin card-100-base() {
     @include card-name("100 mobile");
 
@@ -78,22 +79,28 @@
             min-height: 628px;
             background-color:#f7f7f7;
 
+
             .c-cards-view {
                 &__container {
                     width: 100%;
                     margin-left: 0px;
-                    padding: 0px 20px 0;
+                    padding: 191px 20px 0 30px;
                 }
                 &__category {
+                    margin-top:0;
+                    margin-bottom:8px;
                 }
                 &__heading {
-                    height: 55px;
+                    @include font-size(40);
+                    line-height: 3.2rem;
                 }
                 &__description {
-                    margin-bottom: 15px;
+                    @include font-size(18);
+                    font-weight: 300;
                     display: block;
-                    height:100px;
-                    max-height: 100px;
+                    line-height:1.5;
+                    min-height: 85px;
+                    max-height: 85px;
                     overflow: hidden;
                 }
                 &__author {
@@ -107,12 +114,41 @@
 .card-100-mobile {
     @media #{$mobile} {
         @include card-100-base();
+
+
         .c-cards-view {
+
+
             &.without__image {
-                min-height: 628px;
+
+                min-height:auto;
+                //min-height: 449px;
+                .c-cards-view {
+                    &__container {
+                        width: 100%;
+                        margin-left: 0px;
+                        padding: 100px 20px 100px 25px;
+                    }
+                    &__category {
+                    //margin-top:0;
+                    //margin-bottom:8px;
+                    }
+                    &__heading {
+                        @include font-size(24);
+                    //line-height: 3.2rem;
+                    }
+                    &__description {
+                        @include font-size(14);
+                        line-height:1.25rem;
+                        //min-height: 100px;
+                        max-height: 100px;
+                    }
+                    &__author {
+                        margin-top:7px;
+                    }
+                }
             }
         }
-
     }
 }
 
@@ -120,7 +156,7 @@
 .card-100-tablet {
 
     @media #{$tablet} {
-        
+
         @include card-100-base();
         @include card-name("100 tablet");
 
@@ -130,10 +166,31 @@
                 width: 100%;
                 height: 358px;
             }
-        }
-    
 
-
+            &.without__image {
+                min-height: 562px;
+                .c-cards-view {
+                    &__container {
+                        padding: 187px 20px 0 25px;
+                    }
+                    &__category {
+                    }
+                    &__heading {
+                        @include font-size(28);
+                    }
+                    &__description {
+                        @include font-size(14);
+                        line-height:1.25rem;
+                        min-height: 60px;
+                        max-height: 60px;
+                        margin-top:10px;
+                    }
+                    &__author {
+                        margin-top:7px;
+                    }
+                }
+                }
+            }
     }
 }
 
