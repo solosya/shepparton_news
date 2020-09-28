@@ -162,12 +162,12 @@ a.card {
         &.premium-tag{
             &:before{
                 content: '';
+                width: 20px;
                 height: 20px;
-                width: 80px;
                 margin-right: 5px;
-                background-image: url('../icons/premium-l.svg');
+                background-image: url('../icons/premium-s.svg');
                 background-repeat: no-repeat;
-                background-size: 80px;
+                background-size: 20px;
                 margin-top: -6px;
                 display: block;
                 float: left;

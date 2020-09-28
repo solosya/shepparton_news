@@ -28,6 +28,20 @@
             letter-spacing: 0.31px;
             color: #ed3a4b;
             margin-bottom: 7px;
+            &.premium-tag{
+                &:before{
+                    content: '';
+                    height: 20px;
+                    width: 80px;
+                    margin-right: 5px;
+                    background-repeat: no-repeat;
+                    background-size: 80px;
+                    margin-top: -6px;
+                    display: block;
+                    float: left;
+                    background-image: url('../icons/premium-l.svg');
+                }
+            }
         }
 
 
