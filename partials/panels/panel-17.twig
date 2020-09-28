@@ -2,9 +2,9 @@
 <div class="row">
 
     <div class="col-sm-12">
-        
+
         <div class="row u-margin-bottom-30" data-template="panel-17">
-        
+
             <div class="col-sm-12">
                 <div class="c-section-header  u-margin-top-30">
                     <a class="{{site}}" href="{{link}}">
@@ -20,17 +20,19 @@
                     {% for i in 0..1 if articles[articleCount] %}
                             <div class="col-xs-6 col-md-6">
                             {{this.render('../_single-article.twig', {
-                                article         : articles[articleCount], 
+                                article         : articles[articleCount],
+                                template        : 'property_card',
                                 imageSize       : {width:300, height:197},
+                                networkData     : networkData,
                                 site            : site,
-                                containerClass  : 'card-107-mobile card-107-tablet card-107-desktop-sm card-107-desktop-lg'
+                                containerClass  : 'card-108-mobile card-108-tablet card-108-desktop-sm card-108-desktop-lg'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                             {% if i < 2 %}
                                 <hr class="divide25-40 visible-sm-block">
                             {% endif %}
-                        </div> 
-                        
+                        </div>
+
                     {% endfor %}
                     <hr class="divide25-40 visible-xs-block">
                 </div>
@@ -42,13 +44,15 @@
                     {% for i in 0..1 if articles[articleCount] %}
                         <div class="col-xs-6 col-md-6">
                             {{this.render('../_single-article.twig', {
-                                article         : articles[articleCount], 
+                                article         : articles[articleCount],
+                                template        : 'property_card',
                                 imageSize       : {width:300, height:197},
+                                networkData     : networkData,
                                 site            : site,
-                                containerClass  : 'card-107-mobile card-107-tablet card-107-desktop-sm card-107-desktop-lg'
+                                containerClass  : 'card-108-mobile card-108-tablet card-108-desktop-sm card-108-desktop-lg'
                             }) | raw}}
                             {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        </div> 
+                        </div>
                     {% endfor %}
                 </div>
             </div>

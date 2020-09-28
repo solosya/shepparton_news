@@ -31,7 +31,7 @@
                                 {% endif %}
                                 <div class="col-sm-12">
                                     {{this.render('../_single-article.twig', {
-                                        article         : articles[articleCount], 
+                                        article         : articles[articleCount],
                                         styleType       : "image-bottom",
                                         position        : cardIndex,
                                         imageSize       : {width:95, height:95},
@@ -41,9 +41,12 @@
                                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
 
-                                    {# {% if loop.index != 3  %} #}
-                                        <hr class="divide25-40">
-                                    {# {% endif %} #}
+                                     {% if loop.index != 3  %}
+                                        <hr class="divide25-30">
+                                     {% endif %}
+                                     {% if loop.index == 3  %}
+                                        <hr class="divide25-30 visible-sm-block">
+                                     {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
@@ -54,7 +57,7 @@
                             {% for i in 0..2 if articles[articleCount] %}
                                 <div class="col-sm-12">
                                     {{this.render('../_single-article.twig', {
-                                        article         : articles[articleCount], 
+                                        article         : articles[articleCount],
                                         position        : cardIndex,
                                         styleType       : "image-bottom",
                                         imageSize       : {width:95, height:95},
@@ -63,7 +66,12 @@
                                     }) | raw}}
                                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
-                                        <hr class="divide25-40">
+                                    {% if loop.index != 3  %}
+                                        <hr class="divide25-30">
+                                    {% endif %}
+                                    {% if loop.index == 3  %}
+                                        <hr class="divide25-30 visible-sm-block">
+                                    {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
@@ -92,7 +100,7 @@
                             {% for i in 0..2 if articles[articleCount] %}
                                 <div class="col-sm-12">
                                     {{this.render('../_single-article.twig', {
-                                        article         : articles[articleCount], 
+                                        article         : articles[articleCount],
                                         styleType       : "image-bottom",
                                         position        : cardIndex,
                                         imageSize       : {width:95, height:95},
@@ -102,12 +110,12 @@
                                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
                                     {% if loop.index != 3  %}
-                                        <hr class="divide25-40">
+                                        <hr class="divide25-30">
                                     {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
-                    </div>    
+                    </div>
 
 
 
@@ -116,7 +124,7 @@
                             {% for i in 0..2 if articles[articleCount] %}
                                 <div class="col-sm-12">
                                     {{this.render('../_single-article.twig', {
-                                        article         : articles[articleCount], 
+                                        article         : articles[articleCount],
                                         styleType       : "image-bottom",
                                         position        : cardIndex,
                                         imageSize       : {width:95, height:95},
@@ -126,12 +134,12 @@
                                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
                                     {% if loop.index != 3  %}
-                                        <hr class="divide25-40">
+                                        <hr class="divide25-30">
                                     {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>

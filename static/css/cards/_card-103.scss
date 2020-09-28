@@ -19,9 +19,11 @@
         &__heading {
             font-family: $font-family-serif;
             @include font-size(20);
+            line-height:1.6rem;
             font-weight:600;
             font-style:italic;
             color: #2b2a2a;
+            margin-bottom:7px;
         }
 
         &__description {
@@ -30,7 +32,8 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
-            @include flex-height(80px);
+            max-height:80px;
+            //@include flex-height(80px);
         }
 
         &__author {
@@ -63,6 +66,11 @@
 .card-103-mobile {
     @media #{$mobile} {
         @include card-103-base();
+        .c-cards-view {
+            &__description {
+                display:none;
+            }
+        }
     }
 }
 
@@ -71,6 +79,13 @@
     @media #{$tablet} {
         @include card-103-base();
         @include card-name("103 tablet");
+
+        .c-cards-view {
+            &__description {
+                max-height:120px;
+            }
+        }
+
     }
 }
 

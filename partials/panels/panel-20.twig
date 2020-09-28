@@ -3,9 +3,9 @@
 <div class="row">
 
 <div class="col-sm-12">
-    
+
     <div class="row u-margin-bottom-30" data-template="panel-20">
-    
+
         <div class="col-sm-12">
             <div class="c-section-header  u-margin-top-30">
                 <a class="{{site}}" href="{{link}}">
@@ -18,9 +18,9 @@
     <div class="row" data-template="panel-20">
 
         {% for i in 0..3 if articles[articleCount] %}
-            <div class="col-sm-6 col-md-3"> 
+            <div class="col-sm-6 col-md-3">
                 {{this.render('../_single-article.twig', {
-                    article         : articles[articleCount], 
+                    article         : articles[articleCount],
                     position        : cardIndex,
                     imageSize       : {width:300, height:160},
                     site            : site,
@@ -28,9 +28,9 @@
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
-                <hr class="divide25-40">
-            </div> 
-            
+                <hr class="divide25-30">
+            </div>
+
         {% endfor %}
 
     </div>
@@ -40,7 +40,7 @@
         {% for i in 0..3 if articles[articleCount] %}
             <div class="col-sm-6 col-md-3">
                 {{this.render('../_single-article.twig', {
-                    article         : articles[articleCount], 
+                    article         : articles[articleCount],
                     position        : cardIndex,
                     styleType       : "image-bottom",
                     imageSize       : {width:300, height:160},
@@ -49,14 +49,14 @@
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                 {% set cardIndex = cardIndex + 1 %}
-                {% if i < 2 %} 
-                    <hr class="divide25-40 visible-sm-block">
+                {% if i < 2 %}
+                    <hr class="divide25-30 visible-sm-block">
                 {% endif %}
             </div>
         {% endfor %}
 
     </div>
 
-    <hr class="divide25-40">
+    <hr class="divide25-30">
 </div>
 </div>

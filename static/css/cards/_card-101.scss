@@ -42,6 +42,7 @@
         &__category-top {
             @include flexbox();
             @include font-size(17);
+            margin-bottom:7px;
         }
 
         &__heading-top {
@@ -112,6 +113,7 @@
                 &__description {
                     margin-bottom: 0;
                     display: block;
+                    height:auto;
                     min-height:auto;
                     max-height: 100px;
                     overflow: hidden;

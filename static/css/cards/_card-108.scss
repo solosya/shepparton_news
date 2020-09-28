@@ -1,97 +1,121 @@
-
 @mixin card-108-base() {
     @include card-name("108 mobile");
 
+    position:relative;
     .c-cards-view {
         @include flex-direction(column);
 
+        position:relative;
         &__media {
-            width: 100%;
-            height: 235px;
         }
-
         &__container {
-        }
-        &__category {
-            @include font-size(17);
-        }
-
-        &__heading {
-            font-family: $font-family-serif;
-            @include font-size(24);
-            font-weight:600;
-            color: #2b2a2a;
-            overflow:visible;
-
-        }
-        &__description {
-            display:none;
-        }
-        &__author {
-            display:flex;
+            height: 100%;
+            padding: 0;
             position:relative;
-            margin-top:7px;
         }
 
-        &__author-name {
-            margin-top: 3px;
-            font-family: $base-font-family;
-            font-weight:400;
-            color: #6e6e6e;
-            border:none;
-            @include font-size(12);
-            &:before {
-                content: "By ";
+
+        .property-page-attributes {
+            &__contract {
+                margin-top:15px;
+                color:black;
+                text-transform:uppercase;
+                @include font-size(14);
+            }
+            &__price {
+
+            }
+            &__address {
+                color:black;
+                font-family: $font-family-serif;
+                font-size:rem(20);
+                margin-top: 5px;
+                color:#2b2a2a;
+            }
+            &__spaces {
+                @include flexbox();
+                padding:0;
+                margin:0;
+                overflow:auto;
+                margin-bottom:12px;
+                margin-top:5px;
+
+                &--item {
+                    list-style:none;
+                    margin-right:20px;
+                }
+                &--count {
+                    @include font-size(14);
+                }
+            }
+            &__auction {
+
             }
         }
-        &__author-time {
-            display:none;
+
+
+
+        .cat-time {
+            line-height: 0;
+            padding-bottom: 8px;
+            margin-top: 15px;
+            time {
+                font-family: $font-family-serif;
+                font-size: rem(11);
+                color: color(darkgrey60pc);
+            }
         }
 
 
-        &__time {
-            display:none;
-        }
     }
 }
 
-.card-108-mobile {
+
+.card-108-mobile{
     @media #{$mobile} {
         @include card-108-base();
-    }
-}
 
-
-.card-108-tablet {
-
-    @media #{$tablet} {
-
-        @include card-108-base();
-        @include card-name("108 tablet");
         .c-cards-view {
 
-            &__media {
-                width: 100%;
-                height: 152px;
-            }
         }
-
     }
 }
 
 
 
-.card-108-desktop-sm {
+.card-108-tablet{
+    @media #{$tablet} {
+        @include card-108-base();
+        @include card-name("108 tablet");
+
+        .c-cards-view {
+        }
+    }
+}
+
+
+
+
+.card-108-desktop-sm{
     @media #{$desktop-sm} {
         @include card-108-base();
         @include card-name("108 desktop");
+
+        .c-cards-view {
+
+        }
     }
 }
 
-.card-108-desktop-lg {
+.card-108-desktop-lg{
     @media #{$desktop-lg} {
         @include card-108-base();
-        @include card-name("108 desktop lg");
+        @include card-name("108 desktop-lg");
+
+        .c-cards-view {
+
+        }
     }
 }
+
 

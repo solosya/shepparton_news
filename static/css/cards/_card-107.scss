@@ -7,23 +7,22 @@
 
         &__media {
             width: 100%;
-            height: 235px;
+            height: 197px;
         }
 
         &__container {
         }
         &__category {
-            margin-top:15px;
-            @include font-size(17);
+            display:none;
         }
 
         &__heading {
+            margin-top:15px;
             font-family: $font-family-serif;
-            @include font-size(24);
+            @include font-size(20);
             font-weight:600;
             color: #2b2a2a;
             overflow:visible;
-
         }
         &__description {
             display:none;
@@ -35,7 +34,6 @@
         }
 
         &__author-name {
-            margin-top: 3px;
             font-family: $base-font-family;
             font-weight:400;
             color: #6e6e6e;
@@ -94,14 +92,14 @@
 .card-107-tablet {
 
     @media #{$tablet} {
-        
+
         @include card-107-base();
         @include card-name("107 tablet");
         .c-cards-view {
 
             &__media {
                 width: 100%;
-                height: 152px;
+                //height: 152px;
             }
         }
 

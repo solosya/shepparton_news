@@ -375,6 +375,23 @@ div.space40 {
     }
 }
 
+
+.u-desktop-borderElem {
+    @media #{$desktop-up} {
+        &--right {
+            &:after {
+                content: "";
+                display:block;
+                height:100%;
+                width:1px;
+                background-color:#979797;
+                position:absolute;
+                right:-30px;
+                top:0;
+            }
+        }
+    }
+}
 .u-border {
     &-red {
         border: 1px solid red;
@@ -418,6 +435,14 @@ hr.divide15-10 {
 
 hr.divide25-40 {
     margin:25px 0 40px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+    padding: 0;
+    width: 100%;
+}
+
+hr.divide25-30 {
+    margin:25px 0 30px 0;
     border: 0;
     border-top: 1px solid color(lightgrey);
     padding: 0;
@@ -506,7 +531,7 @@ hr.divide10 {
             width: 300px;
             height: 75px;
         }
-        
+
     }
 }
 

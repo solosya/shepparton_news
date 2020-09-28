@@ -65,6 +65,11 @@
     @media #{$tablet} {
         @include card-106-base();
         @include card-name("106 tablet");
+        .c-cards-view {
+            &__description {
+                display:none;
+            }
+        }
     }
 }
 

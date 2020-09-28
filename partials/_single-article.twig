@@ -25,6 +25,7 @@
 {% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
 
 
+{% set forceVideo = false %}
 {% set params = url['query'] %}
 
 {#remove all images if url param set#}
@@ -32,6 +33,9 @@
     {% if k == 'images' %}
         {% if p == 'false' %}
             {% set imageSuppress = true %}
+        {% endif %}
+        {% if p == 'video' %}
+            {% set forceVideo = true %}
         {% endif %}
     {% endif %}
 {% endfor %}
@@ -78,7 +82,8 @@
         {% set publishDate = _AppHelper.getRelativeTime(publishDateTime) ~ " ago" %}
     {% endif %}
 
-
+    {% set videoCard = article.featuredMedia['type'] == 'video' ? 'video' : '' %}
+    {% set videoCard = forceVideo ? 'video' : videoCard %}
 
 
 
@@ -103,7 +108,7 @@
         imageMedium     : _Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
         imageSmall      : _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
         publishDate     : publishDate,
-        videoClass      : article.featuredMedia['type'] == 'video' ? 'video' : '',
+        videoClass      : videoCard,
         image           : _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
         category        : article.label,
         title           : articleTitle,

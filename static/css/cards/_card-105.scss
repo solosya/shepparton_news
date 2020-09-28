@@ -3,7 +3,6 @@
 
     .c-cards-view {
         @include flex-direction(column);
-        min-height: 326px;
 
         &__media {
             width: 100%;
@@ -20,7 +19,7 @@
             margin-top:10px;
             @include flexbox();
             font-family: $font-family-serif;
-            @include font-size(20);
+            @include font-size(16);
             font-weight:600;
             color: #2b2a2a;
 
@@ -43,7 +42,8 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
-            @include flex-height(80px);
+            margin-top:15px;
+            max-height:80px;
         }
 
         &__author {
@@ -53,18 +53,20 @@
         }
 
         &__author-name {
-            margin-top: 3px;
-            font-family: $base-font-family;
-            font-weight:400;
-            color: #6e6e6e;
-            border:none;
-            @include font-size(12);
-            &:before {
-                content: "By ";
-            }
+            display:none;
+            //margin-top: 3px;
+            //font-family: $base-font-family;
+            //font-weight:400;
+            //color: #6e6e6e;
+            //border:none;
+            //@include font-size(12);
+            //&:before {
+                //content: "By ";
+            //}
         }
         &__author-time {
-            display:none;
+            @include font-size(12);
+            margin-top:6px;
         }
 
         &__time {
@@ -84,6 +86,15 @@
     @media #{$tablet} {
         @include card-105-base();
         @include card-name("105 tablet");
+
+        .c-cards-view {
+            &__description{
+                display:none;
+            }
+            &__author {
+                display:none;
+            }
+        }
     }
 }
 
