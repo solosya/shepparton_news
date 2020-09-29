@@ -398,7 +398,7 @@
                     <div class="c-section-header u-tablet-margin-top-30 visible-sm-block">
                         <h2 class="c-section-header__h2 {{site}}">Most popular</h2>
                     </div>
-                    <div class="leaderboard u-margin-top-13 u-tablet-margin-bottom-20 visible-sm-block">
+                    <div class="leaderboard u-margin-top-13 u-tablet-margin-bottom-30 visible-sm-block">
                     {% for i in 0..4 if popularArticles[i] %}
                         {{this.render('../_single-article.twig', {
                             article         : popularArticles[i],
@@ -463,7 +463,7 @@
                     }) | raw}}
 
                     {% if i < 2 %}
-                        <hr class="divide25-30">
+                        <hr class="divide25-30 visible-xs-block">
                     {% endif %}
 
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
