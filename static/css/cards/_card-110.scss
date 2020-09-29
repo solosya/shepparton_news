@@ -44,6 +44,12 @@
     @media #{$tablet} {
         @include card-110-base();
         @include card-name("110 tablet");
+        .c-cards-view {
+            &__media {
+                height:222px;
+                width:167px;
+            }
+        }
     }
 }
 
@@ -51,6 +57,12 @@
     @media #{$desktop-sm} {
         @include card-110-base();
         @include card-name("110 desktop");
+        .c-cards-view {
+            &__media {
+                height:137px;
+                width:103px;
+            }
+        }
     }
 }
 

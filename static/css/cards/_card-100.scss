@@ -213,6 +213,14 @@
     @media #{$desktop-sm} {
         @include card-100-base();
         @include card-name("100 desktop");
+        .c-cards-view {
+            &__media {
+                height:425px;
+            }
+            &__description() {
+                max-height:60px;
+            }
+        }
     }
 }
 

@@ -8,7 +8,7 @@
 
 
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
-    <figure class="{{params.videoClass}}">
+    <figure class="c-cards-view__media {{params.videoClass}}">
         <picture>
             <source media="(max-width: 620px)" srcset="{{params.imageSmall}}">
             {% if params.lazyload == false %}

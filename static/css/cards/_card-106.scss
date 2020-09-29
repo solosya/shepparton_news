@@ -20,7 +20,8 @@
         &__category {
             font-family: $font-family-serif;
             @include font-size(20);
-            color: #2b2a2a;
+            color: #2b2a2a !important;
+            font-weight:600;
             margin-bottom:10px;
         }
         &__heading {
@@ -37,7 +38,9 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
-            @include flex-height(55px);
+            margin-top:10px;
+            max-height:55px;
+            //@include flex-height(55px);
         }
 
         &__author {
@@ -77,6 +80,11 @@
     @media #{$desktop-sm} {
         @include card-106-base();
         @include card-name("106 desktop");
+        .c-cards-view {
+            &__description {
+                max-height:40px;
+            }
+        }
     }
 }
 

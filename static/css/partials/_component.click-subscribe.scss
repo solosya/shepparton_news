@@ -1,7 +1,11 @@
 
 .click-subscribe {
-    border-top: solid 1px #979797;
-    padding-top:10px;
+    //border-top: solid 1px #979797;
+    //@include flexbox();
+    //display: flex !important;
+    //@include flex-direction(column);
+    //@include align-items(center);
+    padding:22px 13px;
     background-color:#f7f7f7;
     text-align:center;
 
@@ -9,15 +13,24 @@
         font-family: $font-family-serif;
         color:black;
         @include font-size(15);
-        font-weight:500;
+        font-weight:600;
         letter-spacing: 0.27px;
+        margin-top:0;
+        text-align:center;
+
+        @media #{$desktop-sm} {
+            @include font-size(13);
+            line-height:1.2rem;
+        }
     }
+
 
     &__p {
         font-family:$base-font-family;
         color:#6e6e6e;
         @include font-size(12);
         font-weight:400;
+        text-align:center;
 
     }
 
@@ -32,12 +45,16 @@
         background:#f6ae42;
         border-radius: 5px;
         border:none;
-        margin-top:23px;
+        margin: 23px auto 0 auto;
         color:white;
-        width:175px;
+        width:224px;
         height:38px;
         &:focus {
             outline:none;
+        }
+
+        @media #{$desktop-sm} {
+            width: 136px;
         }
     }
 }

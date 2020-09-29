@@ -32,33 +32,33 @@
     }
 }
 @mixin videoIconNew {
-    .play {
-            position: relative;
-            background-color: white;
-            text-align: left;
+    .video {
+        position: relative;
+        background-color: white;
+        text-align: left;
     }
-    .play:before,
-    .play:after {
-            content: '';
-            position: absolute;
-            background-color: inherit;
+    .video:before,
+    .video:after {
+        content: '';
+        position: absolute;
+        background-color: inherit;
     }
-    .play,
-    .play:before,
-    .play:after {
-            width:  10em;
-            height: 10em;
-            border-top-right-radius: 10%;
+    .video,
+    .video:before,
+    .video:after {
+        width:  10em;
+        height: 10em;
+        border-top-right-radius: 10%;
     }
 
-    .play {
-            transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
+    .video {
+        transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
     }
-    .play:before {
-            transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+    .video:before {
+        transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
     }
-    .play:after {
-            transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+    .video:after {
+        transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
     }
 }
 
@@ -100,7 +100,8 @@ a.card {
 
         &.video {
             &:before{
-                @include videoIcon();
+                //@include videoIcon();
+                @include videoIconNew();
             }
         }
 

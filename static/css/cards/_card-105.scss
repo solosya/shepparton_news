@@ -102,7 +102,16 @@
     @media #{$desktop-sm} {
         @include card-105-base();
         @include card-name("105 desktop");
+        .c-cards-view {
+            &__media {
+                height: 171px;
+            }
+            &__description {
+                max-height:100px;
+            }
+        }
     }
+
 }
 
 .card-105-desktop-lg {

@@ -112,6 +112,12 @@
     @media #{$desktop-sm} {
         @include card-107-base();
         @include card-name("107 desktop");
+        .c-cards-view {
+
+            &__media {
+                height: 171px;
+            }
+        }
     }
 }
 

@@ -74,6 +74,11 @@
     @media #{$desktop-sm} {
         @include card-109-base();
         @include card-name("109 desktop");
+        .c-cards-view {
+            &__heading {
+                @include font-size(12);
+            }
+        }
     }
 }
 

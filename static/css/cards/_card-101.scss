@@ -58,7 +58,8 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
-            @include flex-height(100px);
+            max-height: 100px;
+            //@include flex-height(100px);
         }
 
         &__author {
@@ -152,6 +153,16 @@
     @media #{$desktop-sm} {
         @include card-101-base();
         @include card-name("101 desktop");
+        .c-cards-view {
+            &__media-bottom {
+                @include flex-width(64px);
+                @include flex-height(64px);
+                margin-left:10px;
+            }
+            &__description {
+                max-height: 61px;
+            }
+        }
     }
 }
 

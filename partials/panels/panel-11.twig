@@ -37,18 +37,21 @@
     <div class="row">
         {% for i in 0..1 if articles[articleCount] %}
             {% set pushClass = '' %}
+            {% set marginClass = '' %}
             {% if i == 0 %}
                 {% set pushClass = "u-desktop-borderElem--right" %}
+                {% set marginClass = "u-desktop-padding-right-20" %}
             {% endif %}
-            {#{% if i == 1 %}#}
+            {% if i == 1 %}
                 {#{% set pushClass="col-sm-offset-1" %}#}
-            {#{% endif %}#}
-            <div class="col-sm-6 {{pushClass}}">
+                {% set marginClass = "u-desktop-padding-left-30" %}
+            {% endif %}
+            <div class="col-sm-6 {{pushClass}} {{marginClass}}">
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
                     imageSize       : {width:300, height:160},
                     site            : site,
-                    containerClass  : 'card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg }'
+                    containerClass  : 'card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
             </div>
