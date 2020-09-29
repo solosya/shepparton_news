@@ -91,6 +91,12 @@
 
         .c-cards-view {
 
+            &__media {
+                height: 134px;
+            }
+            &__heading {
+                @include font-size(16);
+            }
             &.without__image {
                 background-color: #f7f7f7;
                 min-height: 255px;

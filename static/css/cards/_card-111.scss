@@ -1,43 +1,40 @@
-@mixin card-104-base() {
-    @include card-name("104 mobile");
+
+@mixin card-111-base() {
+    @include card-name("111 mobile");
 
     .c-cards-view {
-        @include flexbox();
-        @include flex-direction(row);
+        @include flex-direction(column);
 
         &__media {
-            @include flex-width(190px);
-            height: 112px;
-            margin-right:20px;
+            width: 100%;
+            height: 197px;
         }
 
         &__container {
         }
-
         &__category {
-            @include font-size(17);
-        }
-        &__heading {
-            font-family: $font-family-serif;
-            margin-top:7px;
-            @include font-size(17);
-            font-weight:600;
-            color: #2b2a2a;
-            margin-bottom: 20px;
-        }
-
-        &__description {
             display:none;
         }
 
+        &__heading {
+            margin-top:15px;
+            font-family: $font-family-serif;
+            @include font-size(20);
+            font-weight:600;
+            color: #2b2a2a;
+            overflow:visible;
+        }
+        &__description {
+            display:none;
+        }
         &__author {
+            //display:none;
             display:flex;
-            position: absolute;
-            margin-top:7px;
+            position:relative;
+            margin-top:10px;
         }
 
         &__author-name {
-            margin-top: 3px;
             font-family: $base-font-family;
             font-weight:400;
             color: #6e6e6e;
@@ -51,85 +48,92 @@
             display:none;
         }
 
+
         &__time {
             display:none;
         }
 
 
-
-
         &.without__image {
-
             .c-cards-view {
                 &__container {
                     width: 100%;
                     margin-left: 0px;
-                    padding: 0px;
+                    padding: 0px 20px 0;
                 }
                 &__category {
-                    margin-top: 0;
-                    margin-bottom: 0px;
+                    margin-top: 36px;
+                    margin-bottom: 24px;
                 }
                 &__heading {
-                    @include font-size(26);
-                    margin-top:5px;
-                    margin-bottom:0;
-                    line-height: 2.10rem;
+                    height: 55px;
                 }
                 &__description {
-                    display:none;
+                    margin-bottom: 15px;
+                    display: block;
+                    height:100px;
+                    max-height: 100px;
+                    overflow: hidden;
                 }
                 &__author {
-                    position:relative;
-                    margin-top:10px;
+                    margin-top:55px;
                 }
             }
         }
     }
 }
 
-.card-104-mobile {
+.card-111-mobile {
     @media #{$mobile} {
-        @include card-104-base();
+        @include card-111-base();
         .c-cards-view {
             &__media {
-                @include flex-width(156px);
-                height: 100px;
-                margin-right:15px;
+                height: 107px;
             }
             &__heading {
-                @include font-size(14);
+                @include font-size(16);
             }
-
         }
     }
 }
 
 
-.card-104-tablet {
+.card-111-tablet {
+
     @media #{$tablet} {
-        @include card-104-base();
-        @include card-name("104 tablet");
+
+        @include card-111-base();
+        @include card-name("111 tablet");
+        .c-cards-view {
+
+            &__media {
+                width: 100%;
+                //height: 152px;
+            }
+        }
+
     }
 }
 
-.card-104-desktop-sm {
+
+
+.card-111-desktop-sm {
     @media #{$desktop-sm} {
-        @include card-104-base();
-        @include card-name("104 desktop");
+        @include card-111-base();
+        @include card-name("111 desktop");
         .c-cards-view {
+
             &__media {
-                @include flex-width(128px);
-                height: 112px;
+                height: 171px;
             }
         }
     }
 }
 
-.card-104-desktop-lg {
+.card-111-desktop-lg {
     @media #{$desktop-lg} {
-        @include card-104-base();
-        @include card-name("104 desktop lg");
+        @include card-111-base();
+        @include card-name("111 desktop lg");
     }
 }
 

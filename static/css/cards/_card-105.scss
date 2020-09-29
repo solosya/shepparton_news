@@ -78,6 +78,17 @@
 .card-105-mobile {
     @media #{$mobile} {
         @include card-105-base();
+        .c-cards-view {
+            &__media {
+                display:none;
+            }
+            &__description {
+                display:none;
+            }
+            &__author {
+                display:none;
+            }
+        }
     }
 }
 

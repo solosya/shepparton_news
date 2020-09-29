@@ -60,6 +60,21 @@
 .card-106-mobile {
     @media #{$mobile} {
         @include card-106-base();
+        .c-cards-view {
+            &__media {
+                width: 77px;
+                height: 77px;
+            }
+            &__category {
+                @include font-size(16);
+            }
+            &__heading {
+                @include font-size(18);
+            }
+            &__description {
+                display:none;
+            }
+        }
     }
 }
 

@@ -132,6 +132,15 @@
 
         .c-cards-view {
 
+            &__media {
+                height: 60vw;
+            }
+            &__heading {
+                @include font-size(24);
+            }
+
+
+
 
             &.without__image {
 

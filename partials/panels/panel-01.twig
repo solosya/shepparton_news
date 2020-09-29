@@ -122,7 +122,7 @@
 
                 </div>
 
-                <div class="col-xs-12 visible-xs-block">
+                <div class="col-xs-12 u-mobile-margin-top-30 u-mobile-margin-bottom-30 visible-xs-block">
                     <div class="ad-square" data-view="mobile-banner">
                         <div class='advert-mobile  mobile-banner' data-adsize="banner"></div>
                     </div>
@@ -290,7 +290,15 @@
                     </div>
                     {# ************ END ************   #}
 
-                    <div class="click-subscribe  visible-xs-block visible-md-block visible-lg-block u-desktop-margin-top-30" data-view="desktop/mobile">
+                    <div class="click-subscribe
+                        visible-xs-block
+                        visible-md-block
+                        visible-lg-block
+                        u-mobile-margin-top-30
+                        u-mobile-margin-bottom-30
+                        u-desktop-margin-top-30"
+                        data-view="desktop/mobile">
+
                         <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
                         <p class="click-subscribe__p">Subscribe to the news that <br class="visible-md-block" /> matters to you</p>
                         <button class="click-subscribe__button">Subscribe now</button>
@@ -454,6 +462,9 @@
                         containerClass  : 'card-104-mobile card-101-tablet card-104-desktop-sm card-104-desktop-lg ' ~ hidden
                     }) | raw}}
 
+                    {% if i < 2 %}
+                        <hr class="divide25-30">
+                    {% endif %}
 
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}

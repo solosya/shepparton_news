@@ -2,7 +2,7 @@
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
- 
+
 .spinner:before {
   content: '';
   box-sizing: border-box;
@@ -79,7 +79,7 @@
         height:0;
         @media screen and (max-width: $sm-break-down){
             display:none;
-        }   
+        }
     }
     &.tablet-teads,
     &.desktop-teads,
@@ -89,7 +89,7 @@
             display:none;
         }
     }
-    
+
     &.tablet-banner{
         height: 90px;
         width: 728px;
@@ -118,9 +118,10 @@
 .ad-square {
     // @include adtext;
     // background:orange;
-    
+    height:50px;
+    //background:gray;
     > .dairy {
-        @media screen and (max-width: $sm-break){        
+        @media screen and (max-width: $sm-break){
             margin: 30px auto 30px auto;
         }
     }
@@ -146,20 +147,20 @@
 
 .ad-container {
     text-align: center;
-    margin: 30px auto 30px auto;  
+    margin: 30px auto 30px auto;
 
     @media screen and (min-width: $mmd-break) {
-        width: 970px;       
+        width: 970px;
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
         width: 728px;
-    }    
+    }
 
     @media screen and (max-width: $sm-break-down){
         margin: 0px auto;
-    } 
-    
+    }
+
     // @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
@@ -168,7 +169,7 @@
 
 
 #mainAjaxArticlescardClass, #mainAjaxArticles {
-    .ad-container {  
+    .ad-container {
         .google_ad div iframe{
             margin-top: 40px;
             @media screen and (max-width: $sm-break-down) {
@@ -208,19 +209,19 @@
     font-size: rem(19);
     font-weight: bold;
     border: 0;
-    border-right: 1px solid color(lightgrey);       
+    border-right: 1px solid color(lightgrey);
     margin-left: 15px;
     &:hover {
         color: transparent;
     }
-    
+
     &.facebook-icon {
         margin-left: 0px;
     }
 
     &:last-child {
         border-right: none;
-    }       
+    }
 }
 
 .page_section {
@@ -240,7 +241,7 @@
             // width: 26%;
         }
     }
-    
+
     a h2 {
         font-size: rem(20);
         font-family:$font-family-sans-serif;
@@ -249,7 +250,7 @@
         font-style: normal;
     }
     > a {
-        
+
         margin-right: 15px;
         font-family: $font-family-serif;
         font-style: italic;
@@ -280,7 +281,7 @@
         font-style: normal;
     }
     > a {
-        
+
         margin-right: 15px;
         font-family: $font-family-serif;
         font-style: italic;
@@ -323,7 +324,7 @@
 .search-icon{
     @include searchIcon;
     height: 19px;
-    width: 20px;  
+    width: 20px;
 }
 
 .search-icon-mobile {
@@ -355,11 +356,11 @@ div.fancybox-title {
 }
 
 .mainAjaxArticles {
-    &:after { 
-       content: "."; 
-       visibility: hidden; 
-       display: block; 
-       height: 0; 
+    &:after {
+       content: ".";
+       visibility: hidden;
+       display: block;
+       height: 0;
        clear: both;
     }
 }
@@ -433,7 +434,7 @@ h4.modal-title {
 //     font-weight: 600;
 //     border-radius: 0;
 //     padding: 10px 9px;
-//     border-bottom: 2px solid $brand-secondary;  
+//     border-bottom: 2px solid $brand-secondary;
 // }
 
 
@@ -445,7 +446,7 @@ figcaption{
         float: left;
         margin-bottom: 30px;
     }
-    
+
     > p {
         font-size: rem(12.5);
         color: #6c6c6c;
@@ -459,7 +460,7 @@ figcaption{
             margin-bottom:15px;
             width: 100%;
         }
-    
+
 
         &.credit{
             font-style: normal;
@@ -545,7 +546,7 @@ span.leadsentence{
     }
     .col-profile-left {
         width: 25%;
-        padding-right: 30px;        
+        padding-right: 30px;
     }
     .col-profile-right {
         width: 75%;
@@ -565,7 +566,7 @@ span.leadsentence{
 
         > div {
             position:relative;top:10%;margin:auto;
-        
+
             .head {
                 overflow:auto;
                 padding-bottom:11px;
@@ -650,7 +651,7 @@ span.leadsentence{
                         font-size:rem(12);
                         color:color(lightgrey);
                         font-style:italic;
-                        
+
                         @media screen and (max-width: $sm-break-down) {
                             float:none
                         }

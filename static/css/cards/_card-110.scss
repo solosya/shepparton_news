@@ -36,6 +36,12 @@
 .card-110-mobile {
     @media #{$mobile} {
         @include card-110-base();
+        .c-cards-view {
+            &__media {
+                width:100%;
+                height:210px;
+            }
+        }
     }
 }
 

@@ -90,6 +90,39 @@
 
         .c-cards-view {
 
+            .property-page-attributes {
+                &__contract {
+                    //margin-top:15px;
+                    //color:black;
+                    //text-transform:uppercase;
+                    //@include font-size(14);
+                }
+                &__price {
+
+                }
+                &__address {
+                    //color:black;
+                    //font-family: $font-family-serif;
+                    font-size:rem(16);
+                    //margin-top: 5px;
+                    //color:#2b2a2a;
+                }
+                &__spaces {
+
+                    &--item {
+                        img {
+                        }
+                        span {
+                        }
+                    }
+                    &--count {
+                        @include font-size(14);
+                    }
+                }
+                &__auction {
+
+                }
+            }
         }
     }
 }

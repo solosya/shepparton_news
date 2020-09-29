@@ -23,6 +23,9 @@
                     containerClass  : 'card-103-mobile card-103-tablet card-103-desktop-sm card-103-desktop-lg'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% if i < 2 %}
+                    <hr class="divide25-30 xs-visible-block">
+                {% endif %}
             </div>
         {% endfor %}
     </div>
@@ -30,7 +33,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <hr class="divide25-40">
+            <hr class="divide25-30">
         </div>
     </div>
 
@@ -55,6 +58,9 @@
                     containerClass  : 'card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% if i < 1 %}
+                    <hr class="divide25-30 visible-xs-block">
+                {% endif %}
             </div>
 
         {% endfor %}
