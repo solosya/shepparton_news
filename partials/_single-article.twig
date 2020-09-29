@@ -20,6 +20,9 @@
 {% set inline        = inline        is defined and inline != ''            ? inline : ''  %}
 {% set styleType     = styleType     is defined and styleType != ''         ? styleType : ''  %}
 
+{#change the image source to either article or author#}
+{% set imageSource   = imageSource   is defined and imageSource != ''       ? imageSource : 'article'  %}
+
 
 {# This can add a prefix to the card class to segregate its styles #}
 {% set cardType      = cardType      is defined and cardType != ''          ? cardType  : ''      %}
@@ -101,15 +104,19 @@
         {% endif %}
     {% endif %}
 
+    {% set imageSource = imageSource == 'article' ? article.featuredMedia : article.createdBy['media'] %}
+
+
+
 
     {% set params = {
         imageSuppress   : imageSuppress,
         placeholder     : "https://place-hold.it/1",
-        imageMedium     : _Media.getMediaUrl(article.featuredMedia,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
-        imageSmall      : _Media.getMediaUrl(article.featuredMedia,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
+        imageMedium     : _Media.getMediaUrl(imageSource,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
+        imageSmall      : _Media.getMediaUrl(imageSource,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
+        image           : _Media.getMediaUrl(imageSource,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
         publishDate     : publishDate,
         videoClass      : videoCard,
-        image           : _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
         category        : article.label,
         title           : articleTitle,
         profileImg      : profileImg,
@@ -152,6 +159,7 @@
 
             {# {% if dev %} #}
                 <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
+                <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
             {# {% endif %} #}
 
             {# Article content including image #}
