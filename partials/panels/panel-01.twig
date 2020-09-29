@@ -395,10 +395,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-12">
 
                 {# ************ MOST POPULAR TABLET ************   #}
-                    <div class="c-section-header visible-sm-block">
+                    <div class="c-section-header u-tablet-margin-top-30 visible-sm-block">
                         <h2 class="c-section-header__h2 {{site}}">Most popular</h2>
                     </div>
-                    <div class="leaderboard u-margin-top-13 visible-sm-block">
+                    <div class="leaderboard u-margin-top-13 u-tablet-margin-bottom-20 visible-sm-block">
                     {% for i in 0..4 if popularArticles[i] %}
                         {{this.render('../_single-article.twig', {
                             article         : popularArticles[i],
