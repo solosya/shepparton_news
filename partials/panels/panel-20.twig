@@ -18,6 +18,10 @@
     <div class="row" data-template="panel-20">
 
         {% for i in 0..3 if articles[articleCount] %}
+            {#Below div clears the float on tablet#}
+            {% if i == 2 %}
+                <div class="visible-sm-block" style="clear:both"></div>
+            {% endif %}
             <div class="col-sm-6 col-md-3">
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
@@ -38,6 +42,9 @@
     <div class="row" data-template="panel-20">
 
         {% for i in 0..3 if articles[articleCount] %}
+            {% if i == 2 %}
+                <div class="visible-sm-block" style="clear:both"></div>
+            {% endif %}
             <div class="col-sm-6 col-md-3">
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
