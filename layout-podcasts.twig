@@ -1,7 +1,7 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
 {% if (networkData is empty) %}
-    {% set networkData = _Network.getNetworkData() %} 
-    {% set cache = setCache("networkData", networkData, 500) %} 
+    {% set networkData = _Network.getNetworkData() %}
+    {% set cache = setCache("networkData", networkData, 500) %}
 {% endif %}
 
 
@@ -32,12 +32,12 @@
 
 
 <main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
-    
+
     <div class="container">
 
         <section>
             <div class="row">
-                <div class="col-sm-9 header">
+                <div class="col-sm-12 header">
                     <div class="hk">
                         <h2 class="{{site}}">{{title}}</h2>
                         <p></p>
@@ -46,7 +46,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-9 col-xs-9">
+                <div class="col-sm-12 col-xs-12">
                    {% if articles[articleCount] %}
                        {{this.render('partials/_single-article.twig', {
                            article: articles[articleCount],
@@ -59,9 +59,9 @@
                    {% endif %}
                 </div>
                 {% for i in 0..2 if articles[articleCount] %}
-                    <div class="col-sm-3 col-xs-9">
+                    <div class="col-sm-4 col-xs-12">
                         {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
+                            article: articles[articleCount],
                             imageSize: {width:450, height:240},
                             position: articleCount + 1,
                             site: site,
@@ -74,10 +74,10 @@
             </div>
         <div class="ad-container hidden-xs">
             <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-            
+
         </div>
         <div class="row visible-xs-block">
-                <div class="ad-square col-xs-9">
+                <div class="ad-square col-xs-12">
                     <div class="row">
                         <hr class="divide">
                     </div>
@@ -86,13 +86,13 @@
                         <hr class="divide">
                     </div>
                 </div>
-                
+
          </div>
             <div class="row">
                 {% for i in 0..4 if articles[articleCount] %}
-                    <div class="col-sm-3 col-xs-9">
+                    <div class="col-sm-4 col-xs-12">
                         {{this.render('partials/_single-article.twig', {
-                            article: articles[articleCount], 
+                            article: articles[articleCount],
                             imageSize: {width:450, height:240},
                             position: articleCount + 1,
                             site: site,
@@ -102,7 +102,7 @@
                         {% if i < 4 %}<hr class="divide visible-xs-block">{% endif %}
                     </div>
                 {% endfor %}
-                <div class="ad-square col-sm-3 visible-xs-block visible-lg-block col-xs-9">
+                <div class="ad-square col-sm-4 visible-xs-block visible-lg-block col-xs-9">
                     <div class="row visible-xs-block">
                         <hr class="divide">
                     </div>
@@ -114,12 +114,12 @@
             </div>
             <div class="ad-container hidden-xs">
                 <div class='advert-tablet' data-adsize="banner"></div>
-                
+
             </div>
         </section>
 
         <section class="row" id="loadmore_section" class="loadmore__section {{site}}"></section>
-        
+
         <section class="loadmore__section {{site}}">
 
             {% if articles|length >= limit %}
@@ -142,7 +142,7 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
-        
+
         Acme.loadMore = new Acme.View.articleFeed({
             model           : new Card(),
             container       : 'loadmore_section',
@@ -151,7 +151,7 @@
             limit           : 9,
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
-            card_class      : 'col-sm-3 col-xs-9 card-13-mobile card-13-tablet card-13-desktop',
+            card_class      : 'col-sm-4 col-xs-12 card-13-mobile card-13-tablet card-13-desktop',
             ads             : true,
             non_pinned      : {{articleCount}}
         });
