@@ -165,22 +165,21 @@ a.card {
 
     &__category, &__category-top{
         @include flexbox();
-        @include align-items(center);
+        @include align-items(flex-start);
         font-size: rem(10.5);
         text-transform:uppercase;
         @include colourselectdark('');
         &.premium-tag{
             &:before{
                 content: '';
-                width: 20px;
-                height: 20px;
-                margin-right: 5px;
-                background-image: url('../icons/premium-s.svg');
+                width: 22px;
+                height: 16px;
+                margin-right: 10px;
+                background-image: url('../icons/premium-s2.svg');
                 background-repeat: no-repeat;
-                background-size: 20px;
-                margin-top: -6px;
+                background-size: contain;
+                margin-top: 2px;
                 display: block;
-                float: left;
             }
         }
     }

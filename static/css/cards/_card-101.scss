@@ -58,6 +58,7 @@
             @include font-size(14);
             line-height: 1.25rem;
             font-weight:300;
+            letter-spacing: 0.25px;
             max-height: 100px;
             //@include flex-height(100px);
         }

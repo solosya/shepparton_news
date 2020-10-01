@@ -30,11 +30,14 @@
 
 {% set forceVideo = false %}
 {% set params = url['query'] %}
-
+{% set log = _AppHelper.log(url) %}
 {#remove all images if url param set#}
+
+{% set log = _AppHelper.log(params) %}
 {% for k, p in params %}
     {% if k == 'images' %}
         {% if p == 'false' %}
+{% set log = _AppHelper.log('images suppres being turned on') %}
             {% set imageSuppress = true %}
         {% endif %}
         {% if p == 'video' %}
@@ -95,7 +98,7 @@
         {% set articleTitle = quotes.smarten(article.titlePreview) %}
     {% endif %}
 
-    {% set premiumtags = false %}
+    {% set premiumtags = true %}
     {% if config['Premium Tags'] is defined %}
         {% if article.premiumContent %}
             {% set premiumtags = config['Premium Tags'] %}

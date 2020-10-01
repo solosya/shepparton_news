@@ -55,28 +55,22 @@
 
 
         &.without__image {
+            background-color: #f7f7f7;
             .c-cards-view {
                 &__container {
                     width: 100%;
                     margin-left: 0px;
-                    padding: 0px 20px 0;
+                    padding: 50px 10px;
                 }
                 &__category {
-                    margin-top: 36px;
-                    margin-bottom: 24px;
                 }
                 &__heading {
-                    height: 55px;
                 }
                 &__description {
-                    margin-bottom: 15px;
-                    display: block;
-                    height:100px;
-                    max-height: 100px;
-                    overflow: hidden;
+                    display:none;
                 }
                 &__author {
-                    margin-top:55px;
+                    margin-top:7px;
                 }
             }
         }

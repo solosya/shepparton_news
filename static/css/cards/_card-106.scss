@@ -23,6 +23,7 @@
             color: #2b2a2a !important;
             font-weight:600;
             margin-bottom:10px;
+            text-transform:none;
         }
         &__heading {
             font-family: $font-family-serif;
@@ -39,7 +40,9 @@
             line-height: 1.25rem;
             font-weight:300;
             margin-top:10px;
-            max-height:55px;
+            max-height:60px;
+            height:auto;
+            letter-spacing: 0.25px;
             //@include flex-height(55px);
         }
 

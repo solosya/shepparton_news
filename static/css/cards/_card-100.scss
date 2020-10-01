@@ -34,12 +34,9 @@
                     height: 20px;
                     width: 80px;
                     margin-right: 5px;
-                    background-repeat: no-repeat;
-                    background-size: 80px;
-                    margin-top: -6px;
-                    display: block;
-                    float: left;
+                    margin-top:-6px;
                     background-image: url('../icons/premium-l.svg');
+                    background-size: cover;
                 }
             }
         }
@@ -57,12 +54,12 @@
         &__description {
             @include font-size(14);
             line-height:1.4;
+            letter-spacing: 0.25px;
             font-weight:300;
             color: #565656;
             @include flex-height(42px);
             margin-top:10px;
         }
-
         &__author {
             display:flex;
             position:relative;
@@ -139,6 +136,12 @@
                 @include font-size(24);
             }
 
+            &__description {
+                height:auto;
+                min-height:none;
+                max-height:105px;
+
+            }
 
 
 
@@ -164,7 +167,8 @@
                         @include font-size(14);
                         line-height:1.25rem;
                         //min-height: 100px;
-                        max-height: 100px;
+                        height:auto;
+                        max-height: 105px;
                     }
                     &__author {
                         margin-top:7px;

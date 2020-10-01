@@ -21,6 +21,7 @@
             font-family: $font-family-serif;
             margin-top:7px;
             @include font-size(17);
+            line-height: 1.29;
             font-weight:600;
             color: #2b2a2a;
             margin-bottom: 20px;
