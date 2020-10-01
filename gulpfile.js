@@ -77,9 +77,18 @@ gulp.task('styles', gulp.series('sass', 'concat', 'minify-css', 'cache', functio
     done();
 }));
 
+gulp.task('jscache',  function() {
+    return gulp.src('layouts/partials/_javascript.twig')
+    .pipe(buster({
+        tokenRegExp: /\/(deploy\/scripts\.js)\?v=[0-9a-z]+/,
+        assetRoot: __dirname + '/static/',
+        hashes: hasher.hashes,
+    }))
+    .pipe(gulp.dest('layouts/partials/'));
+});
 
 
-gulp.task('scripts', function(){
+gulp.task('scripts-concat', function(){
 	return gulp.src([
 		
         // './static/development/js/plugins/slick.js',
@@ -137,6 +146,10 @@ gulp.task('scripts', function(){
         .pipe(gulp.dest('./static/deploy'));
 
 });
+
+gulp.task('scripts', gulp.series('scripts-concat', 'jscache', function (done) {
+    done();
+}));
 
 
 
