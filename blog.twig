@@ -14,8 +14,8 @@
 
 {% set popularArticles = getCache("popularArticlesBlog") %}
 {% if (popularArticles is empty) %}
-{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %} 
-    {% set cache = setCache("popularArticlesBlog", popularArticles, 500) %} 
+{% set popularArticles = _Article.getPopularArticles({ limit: 5, sortBy: 'VIEWS', scope: 'blog' }) %}
+    {% set cache = setCache("popularArticlesBlog", popularArticles, 500) %}
 {% endif %}
 
 {# TODO: add interval: 48 back to popularArticles call when in production #}
@@ -24,8 +24,8 @@
 {% set blogImage = networkData.templatePath ~ "/static/images/megaphone.svg" %}
 {% if blogInfo.media['thumb']['path'] is not empty %}
     {% set blogImage = blogInfo.media['thumb']['path'] %}
-    {% set override = override ~ ' override' %}    
-{% endif %}    
+    {% set override = override ~ ' override' %}
+{% endif %}
 
 <!-- used to index each article as we loop over throughout the template -->
 {% set articleCount = 0 %}
@@ -37,12 +37,12 @@
 
 
 <main id="main" class="site-main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
-    
+
     <div class="container">
 
         <section>
             <div class="row header">
-                <div class="col-sm-9" style="height:55px;">
+                <div class="col-sm-12" style="height:55px;">
 
                     <div class="bloghead-content u-float-left">
                         <h2>{{this.title}}</h2>
@@ -52,13 +52,13 @@
 
                     <div class="blog-social-icons u-float-right" style="position:absolute;bottom:0;right:0;">
                         {% if blogInfo.settings['social']['facebook'] %}
-                            <a  href="{{ blogInfo.settings['social']['facebook'] }}" 
-                                class="blog-social-icons__icon blog-social-icons__icon--facebook">  
+                            <a  href="{{ blogInfo.settings['social']['facebook'] }}"
+                                class="blog-social-icons__icon blog-social-icons__icon--facebook">
                             </a>
                         {% endif %}
 
                         {% if blogInfo.settings['social']['twitter'] %}
-                            <a  href="{{ blogInfo.settings['social']['twitter'] }}" 
+                            <a  href="{{ blogInfo.settings['social']['twitter'] }}"
                                 class="blog-social-icons__icon blog-social-icons__icon--twitter">
                             </a>
                         {% endif %}
@@ -69,8 +69,8 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-9 col-md-6">
-                    
+                <div class="col-sm-12 col-md-8">
+
                     {% if articles[articleCount] %}
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount],
@@ -101,8 +101,8 @@
 
 
 
-                <div class="col-sm-9 col-md-3">
-                
+                <div class="col-sm-12 col-md-4">
+
                     <div class="u-margin-bottom-30 u-mobile-no-margin-bottom hidden-sm">
                         <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                     </div>
@@ -117,9 +117,9 @@
                     <div class="row two-cols">
                         <div class="col-sm-1 col-md-2">
                         {% for i in 0..1 if articles[articleCount] %}
-                            
+
                                 {{this.render('partials/_single-article.twig', {
-                                    article: articles[articleCount], 
+                                    article: articles[articleCount],
                                     imageSize: {width:160},
                                     position: articleCount + 1,
                                     site: site,
@@ -131,7 +131,7 @@
                                 <hr class="divide25 visible-sm-block">
 
                                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                            
+
                         {% endfor %}
                         </div>
                         <div class="most-popular col-sm-1 col-md-2" style="margin:0;">
@@ -139,18 +139,18 @@
                            <hr class="divide10">
                            {% for i in 0..4 if popularArticles[i] %}
                                {{this.render('partials/_single-article.twig', {
-                                   article: popularArticles[i], 
-                                   imageSuppress: true, 
+                                   article: popularArticles[i],
+                                   imageSuppress: true,
                                    containerClass: 'card-popular blog '~ site
                                }) | raw}}
                                 {% if i < 4 %}
                                    <hr class="divide10">
                                 {% else %}
                                     <hr class="divide10 hidden-xs">
-                                      
+
                                 {% endif %}
                            {% endfor %}
-                        
+
 
                         </div>
                         <div class="row visible-xs-block">
@@ -179,11 +179,11 @@
 
                 {% for i in 0..2 if articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
-                        article: articles[articleCount], 
+                        article: articles[articleCount],
                         imageSize: {width:300, height:160},
                         position: articleCount + 1,
                         site: site,
-                        containerClass: 'col-sm-3 card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
+                        containerClass: 'col-sm-4 card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                     }) | raw}}
                     {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 2 %}
@@ -200,12 +200,12 @@
         <section>
 
             <div class="row u-desktop-margin-top-40">
-                <div class="col-sm-9 col-md-6">
+                <div class="col-sm-12 col-md-6">
 
                     <div class="row">
                         {% for i in 0..8 if articles[articleCount] %}
                             {% if i < 3 %}
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount],
                                         position: articleCount + 1,
@@ -216,7 +216,7 @@
                                     <hr class="divide18 visible-xs-block">
                                 </div>
                             {% elseif i < 8 %}
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount],
                                         position: articleCount + 1,
@@ -227,7 +227,7 @@
                                     <hr class="divide18 visible-xs-block">
                                 </div>
                             {% else %}
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     {{this.render('partials/_single-article.twig', {
                                         article: articles[articleCount],
                                         position: articleCount + 1,
@@ -248,10 +248,10 @@
 
 
 
-                <div class="col-sm-3 addSpaceMobile visible-md-block visible-lg-block">
-                
+                <div class="col-sm-4 addSpaceMobile visible-md-block visible-lg-block">
+
                     <div class="ad-square" style="margin-bottom:30px;">
-                        <div class='advert-desktop' data-adsize="mrec"></div> 
+                        <div class='advert-desktop' data-adsize="mrec"></div>
                     </div>
 
                 </div>
@@ -281,7 +281,7 @@
     // main script is defered so event listener makes sure
     // defered script is loaded before this runs
     document.addEventListener("DOMContentLoaded", function(event) {
-        
+
         Acme.loadMore = new Acme.View.articleFeed({
             model           : new Card(),
             container       : 'loadmore_section',
@@ -290,7 +290,7 @@
             limit           : 12,
             name            : 'section-load',
             blogid          : "{{ blogInfo['guid'] }}",
-            card_class      : 'col-sm-3 col-xs-9 card-sm card-sm-tablet card-sm-mobile row-space40',
+            card_class      : 'col-sm-4 col-xs-12 card-sm card-sm-tablet card-sm-mobile row-space40',
             ads             : "yes",
             after           : '<hr class="divide18 visible-xs-block">',
             non_pinned      : {{articleCount}}
