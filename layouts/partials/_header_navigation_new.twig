@@ -1,6 +1,24 @@
-{% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
-{% set sectionMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'section-menu'}) %}
-{% set networkMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'network-menu'}) %}
+{% set headermenu = getCache("footerMenu") %}
+{% if (headermenu is empty) %}
+    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
+    {% set cache = setCache("headermenu", footerMenu, 500) %}
+{% endif %}
+
+
+{% set sectionMenu = getCache("sectionMenu") %}
+{% if (sectionMenu is empty) %}
+    {% set sectionMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'section-menu'}) %}
+    {% set cache = setCache("sectionMenu", sectionMenu, 500) %}
+{% endif %}
+
+
+{% set networkMenu = getCache("networkMenu") %}
+{% if (networkMenu is empty) %}
+    {% set networkMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'network-menu'}) %}
+    {% set cache = setCache("networkMenu", networkMenu, 500) %}
+{% endif %}
+
+
 
 {% set loggedin = _User.isGuest() ? false : true %}
 {% set user = loggedin ? _User.getUser() : null %}
