@@ -98,7 +98,7 @@
         {% set articleTitle = quotes.smarten(article.titlePreview) %}
     {% endif %}
 
-    {% set premiumtags = true %}
+    {% set premiumtags = false %}
     {% if config['Premium Tags'] is defined %}
         {% if article.premiumContent %}
             {% set premiumtags = config['Premium Tags'] %}
