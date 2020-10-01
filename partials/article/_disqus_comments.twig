@@ -2,7 +2,7 @@
 {% if disqusArr.token != FALSE and disqusArr.token != '' %}
 {% set disqusJsParams = {articleId: articleId, url: url, userId:userId, token: disqusArr.token, networkName: disqusArr.networkName, shortName:disqus.shortName, apiKey: disqus.apiKey  }  %}
 {{this.registerJs('$.fn.Disqus({params:'~ disqusJsParams|json_encode|raw ~'})')}}
-<div class="panel-group col-sm-9" id="accordion3">
+<div class="panel-group col-sm-12" id="accordion3">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#FBComment"><i class="fa fa-comments"></i>Comments(<span class="disqus-comment-count" data-disqus-identifier="{{articleId}}">0</span>)</a></h4>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div class="ad-large-vert visible-sm-block" style="position:absolute;">
             <div id='div-gpt-ad-halfpage-ss' class="google_ad">
                 <script type='text/javascript'>
@@ -37,14 +37,14 @@
 
 <div class="container">
     <div class="row row-eq-height-desk">
-        <div class="DisqusCommentArea col-sm-6 col-md-6" style="">
+        <div class="DisqusCommentArea col-sm-6 col-md-8" style="">
             <div id="disqus_thread" class="DisqusPlaceholder"></div>
         </div>
 
-        <div class="col-sm-3" style="position:relative;">
+        <div class="col-sm-4" style="position:relative;">
             <div class="ad-large-vert bottom hidden-sm hidden-xs">
                 <div class='advert-desktop' data-adsize="hpage"></div>
-            </div>        
+            </div>
         </div>
     </div>
 </div>
