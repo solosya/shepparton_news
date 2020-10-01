@@ -21586,7 +21586,7 @@ Acme.templates.systemCardTemplate =
             <div class="{{cardType}}author {{cardType}}c-cards-view__author j-truncate">\
                 <img src="{{profileImg}}" class="img-circle">\
                 <p class="{{cardType}} {{cardType}}c-cards-view__author-name {{site}}">{{ params.author }}</p>\
-                <time class="{{cardType}} {{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
+                <time class="{{cardType}} {{cardType}}c-cards-view__author-time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
             </div>\
         </div>'+ 
     cardTemplateBottom;
