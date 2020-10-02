@@ -5,7 +5,7 @@
 .c-navigation-new {
     @include flexbox();
     @include align-items(center);
-    @include justify-content(center);
+    @include justify-content(flex-start);
 
     position:relative;
     padding-bottom: 13px;

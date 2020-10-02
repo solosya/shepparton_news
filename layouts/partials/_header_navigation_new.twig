@@ -1,7 +1,7 @@
-{% set headermenu = getCache("footerMenu") %}
+{% set headermenu = getCache("headermenu") %}
 {% if (headermenu is empty) %}
     {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
-    {% set cache = setCache("headermenu", footerMenu, 500) %}
+    {% set cache = setCache("headermenu", headermenu, 500) %}
 {% endif %}
 
 
@@ -91,9 +91,7 @@
                 <div class="c-header-new__main-info" style="background:white">
 
 
-                    <div class="c-header-new__weather-info" style="background:white">
-                        <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
-                    </div>
+                    <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
 
                     <a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo">
                         <figure class="c-header-new__main-info__figure">
@@ -131,8 +129,8 @@
         <div class="row">
             <div class="col-sm-12" style="background:white">
                 <div class="c-navigation-new c-navigation-new-md">
-                    <div class="c-navigation-new__weather">
-                        <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
+                    <div class="c-navigation-new__weather visible-s visible-sm">
+                        <div class="weather j-weather-panel  {{site}}"></div>
                         <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
                     </div>
 
@@ -177,6 +175,15 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="c-navigation-new__weather u-mobile-margin-top-10 visible-xs">
+                        <div class="weather j-weather-panel  {{site}}"></div>
+                        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
