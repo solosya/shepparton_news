@@ -1,36 +1,37 @@
 (function ($) {
-
+console.log('in the weather script');
     $(document).ready(function() {
         var dropdown = function(date) {
-            return '<div class="weather-date">' + 
-                        '<h1>Weather</h1>' + 
-                        '<p>' + date + '</p>' + 
-                    '</div>' + 
+            return '<div class="weather-date">' +
+                        '<h1>Weather</h1>' +
+                        '<p>' + date + '</p>' +
+                    '</div>' +
                     '<div id="weather-panels"></div>';
         }
 
-        var weatherPanel = function(data) {
-            var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
+        //var weatherPanel = function(data) {
+            //var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
 
-            var icon = weatherIcons(data.icon);
+            //var icon = weatherIcons(data.icon);
 
-            return '<div class="panel">' +
-                        '<div style="width: 180px;">' +
-                            '<p class="date">' + data.date + '</p>' + 
-                            '<p class="location">'+data.location.split('/')[1]+'</p>' + 
-                            '<div class="show-weather">' +
-                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            '</div>' +
-                        '</div>' + 
-                        '<div style="width: 48px;">' +
-                            '<div class="icon">' + icon + '</div>' + 
-                        '</div>' + 
-                        '<div style="width: 120px;">' +
-                            '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + data.description + '</div>' + 
-                            '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
-                        '</div>' + 
-                    '</div>';
-            }
+            //console.log('building weather panel');
+            //return '<div class="panel">' +
+                        //'<div class="weather-panels__date-loc" >' +
+                            //'<p class="date">' + data.date + '</p>' +
+                            //'<p class="location">'+data.location.split('/')[1]+'</p>' +
+                            //'<div class="show-weather">' +
+                                //'<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
+                            //'</div>' +
+                        //'</div>' +
+                        //'<div style="width: 48px;">' +
+                            //'<div class="icon">' + icon + '</div>' +
+                        //'</div>' +
+                        //'<div style="width: 120px;">' +
+                            //'<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + data.description + '</div>' +
+                            //'<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' +
+                        //'</div>' +
+                    //'</div>';
+            //}
 
         var weatherPanel = function(location, showArrow) {
             return function(data) {
@@ -50,18 +51,22 @@
                     description = weatherStatus(data.icon);
                 };
 
-                return '<div class="panel">' +
-                            '<div style="width: 180px;">' +
-                                '<p class="date">' + data.date + '</p>' + 
+                var mainClass = "";
+                if (showArrow) {
+                    mainClass = "weather-panels-main";
+                }
+                return '<div class="' + mainClass + ' panel">' +
+                            '<div class="weather-panels__date-loc" >' +
+                                '<p class="date">' + data.date + '</p>' +
                                 '<p class="location">' + location + '</p>' + arrow +
-                            '</div>' + 
-                            '<div style="width: 48px;">' +
-                                '<div class="icon">' + icon + '</div>' + 
-                            '</div>' + 
-                            '<div style="width: 120px;">' +
-                                '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + description + '</div>' + 
-                                '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
-                            '</div>' + 
+                            '</div>' +
+                            '<div class="weather-panels__icon-cont">' +
+                                '<div class="icon">' + icon + '</div>' +
+                            '</div>' +
+                            '<div class="weather-panels__temp">' +
+                                '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + description + '</div>' +
+                                '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' +
+                            '</div>' +
                         '</div>';
             }
         }

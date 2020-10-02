@@ -30,20 +30,32 @@
 
 {% set forceVideo = false %}
 {% set params = url['query'] %}
-{% set log = _AppHelper.log(url) %}
+
 {#remove all images if url param set#}
 
-{% set log = _AppHelper.log(params) %}
+{% set premiumSuppress = false %}
+{% set forcePremium = false %}
+
 {% for k, p in params %}
     {% if k == 'images' %}
         {% if p == 'false' %}
-{% set log = _AppHelper.log('images suppres being turned on') %}
             {% set imageSuppress = true %}
         {% endif %}
         {% if p == 'video' %}
             {% set forceVideo = true %}
         {% endif %}
     {% endif %}
+    {% if k == 'premium' %}
+        {% if p == 'false' %}
+            {% set premiumSuppress = true %}
+        {% endif %}
+
+        {% if p == 'true' %}
+            {% set forcePremium = true %}
+        {% endif %}
+
+    {% endif %}
+
 {% endfor %}
 
 
@@ -107,6 +119,19 @@
         {% endif %}
     {% endif %}
 
+{% if premiumSuppress == true %}
+    {% set premiumtags = false %}
+{% endif %}
+{% if forcePremium == true %}
+    {% set premiumtags = true %}
+{% endif %}
+
+
+
+
+
+
+
     {% set imageSource = imageSource == 'article' ? article.featuredMedia : article.createdBy['media'] %}
 
 
@@ -160,10 +185,10 @@
             data-article-text   = "{{Helper.htmlToText(article.title, -1) | raw | escape('html')}}"
             title               = "{{totalstring}}">
 
-            {# {% if dev %} #}
+            {% if dev %}
                 <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
                 <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
-            {# {% endif %} #}
+            {% endif %}
 
             {# Article content including image #}
             <article class="{{cardType}}c-cards-view {{lightbox}} {{contentType}} {{hasArticleMediaClass}}">
