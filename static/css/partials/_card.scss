@@ -14,52 +14,25 @@
 }
 
 @mixin videoIcon() {
-    position:absolute;
     content: '';
-    width: 42px;
-    height: 42px;
-    background-image: url(../icons/play-icon.svg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include translate(-50%, -50%);
+    display: block;
+    // @include size(70px);
+    width:38px;
+    height:44px;
+    background-image: url('../icons/video-icon.svg');
     background-repeat: no-repeat;
-    background-size: cover;
-    top: 20px;
-    right: 23px;
+    background-size:cover;
     z-index: 100;
-    @media #{$mobile} {
-        width: 35px;
-        height: 35px;
-        top: 26px;
-        right: 26px;
-    }
-}
-@mixin videoIconNew {
-    .video {
-        position: relative;
-        background-color: white;
-        text-align: left;
-    }
-    .video:before,
-    .video:after {
-        content: '';
-        position: absolute;
-        background-color: inherit;
-    }
-    .video,
-    .video:before,
-    .video:after {
-        width:  10em;
-        height: 10em;
-        border-top-right-radius: 10%;
-    }
-
-    .video {
-        transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
-    }
-    .video:before {
-        transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
-    }
-    .video:after {
-        transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
-    }
+    // @media #{$mobile} {
+    //     width: 35px;
+    //     height: 35px;
+    //     top: 26px;
+    //     right: 26px;
+    // }
 }
 
 a.card {
@@ -109,33 +82,33 @@ a.card {
 
         &.video {
             &:before{
-                //@include videoIcon();
-                @include videoIconNew();
+                @include videoIcon();
+                // @include videoIconNew();
             }
         }
 
 
-            // IE10+ HACK
-            _:-ms-lang(x) {
+        // IE10+ HACK
+        _:-ms-lang(x) {
             overflow:hidden !important;
+        }
 
-            }
         // IE9 HACK
-            :root img {
-                height:auto;
-                width:auto;
-                max-width:none;
-            }
+        :root img {
+            height:auto;
+            width:auto;
+            max-width:none;
+        }
 
-            // IE10+ HACK
-            _:-ms-lang(x), img {
-                height:auto !important;
-                width:auto !important;
-                min-width:100% !important;
-                max-width:100% !important;
-                min-height:100% !important;
-                max-height:100% !important;
-            }
+        // IE10+ HACK
+        _:-ms-lang(x), img {
+            height:auto !important;
+            width:auto !important;
+            min-width:100% !important;
+            max-width:100% !important;
+            min-height:100% !important;
+            max-height:100% !important;
+        }
 
 
         img {
