@@ -165,7 +165,14 @@
 
     }
 
+    &__menu-bar-containter {
+        width:150px;
+        @media #{$mobile} {
+            width:auto;
+            float:left;
+        }
 
+    }
 
     &__icons {
         @include flexbox();
