@@ -53,6 +53,11 @@
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
                     imageSize       : {width:90, height:90},
+                    imageSizes      : {
+                        "mobile"  : {width:75, height:75},
+                        "tablet"  : {width:90, height:90},
+                        "desktop" : {width:90, height:90},
+                    },
                     imageSource     : 'author',
                     site            : site,
                     containerClass  : 'card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'

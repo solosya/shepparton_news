@@ -80,6 +80,24 @@
 {% endif %}
 
 
+
+
+{% set imgHeight = 0 %}
+{% set imgWidth = 0 %}
+{% if imageSize is defined %}
+    {% set imgWidth  = (imageSize.width is defined) ? imageSize.width : imgWidth %}
+    {% set imgHeight = (imageSize.height is defined) ? imageSize.height : imgWidth %}
+{% endif %}
+
+{% set imgSizes = {
+    "mobile"  : imageSizes is defined and imagesSizes.mobile is defined  ? imagesSizes.mobile  : {width:500, height:375},
+    "tablet"  : imageSizes is defined and imagesSizes.tablet is defined  ? imagesSizes.tablet  : {width:768, height:500},
+    "desktop" : imageSizes is defined and imagesSizes.desktop is defined ? imagesSizes.desktop : {width:imgWidth, height:imgHeight},
+} %}
+
+
+
+
 {% set profileImg = false %}
 {% if authorImg is defined and authorImg == true %}
     {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 34, 34, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
@@ -134,15 +152,18 @@
 
     {% set imageSource = imageSource == 'article' ? article.featuredMedia : article.createdBy['media'] %}
 
+    {% set imageSmall     = _Media.getMediaUrl(imageSource,500, 325, {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set imageMedium    = _Media.getMediaUrl(imageSource,768, 500, {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set imageLarge     = _Media.getMediaUrl(imageSource,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 
 
 
     {% set params = {
         imageSuppress   : imageSuppress,
         placeholder     : "https://place-hold.it/1",
-        imageMedium     : _Media.getMediaUrl(imageSource,768, 500, {'crop': 'fill', 'gravity': 'faces'} ),
-        imageSmall      : _Media.getMediaUrl(imageSource,500, 325, {'crop': 'fill', 'gravity': 'faces'} ),
-        image           : _Media.getMediaUrl(imageSource,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ),
+        imageSmall      : imageSmall,
+        imageMedium     : imageMedium,
+        image           : imageLarge,
         publishDate     : publishDate,
         videoClass      : videoCard,
         category        : article.label,
