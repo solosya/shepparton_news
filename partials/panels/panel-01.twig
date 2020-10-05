@@ -317,11 +317,21 @@
                     </div>
                         {# {% endif %}   #}
 
-                    <div class="ad-square  visible-sm-block u-mobile-no-margin-top u-desktop-no-margin-top" data-view="tablet-mrec">
-                        <div class='advert-desktop  desktop-mrec' data-adsize="mrec"></div>
-                        <div class='advert-tablet  tablet-mrec' data-adsize="mrec"></div>
-                        <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>
+
+                    <div class="row visible-xs-block">
+                        <div class="col-xs-12">
+                            {{this.render('../../partials/buylocal.twig', {
+                                networkData: networkData
+                            }) | raw}}
+                        </div>
                     </div>
+
+
+                    {#<div class="ad-square  visible-sm-block u-mobile-no-margin-top u-desktop-no-margin-top" data-view="tablet-mrec">#}
+                        {#<div class='advert-desktop  desktop-mrec' data-adsize="mrec"></div>#}
+                        {#<div class='advert-tablet  tablet-mrec' data-adsize="mrec"></div>#}
+                        {#<div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>#}
+                    {#</div>#}
                     {# <hr class="divide25-30 visible-sm-block"> #}
 
 
