@@ -134,6 +134,7 @@
             }
             &__heading {
                 @include font-size(24);
+                letter-spacing: 0.44px;
             }
 
             &__description {
