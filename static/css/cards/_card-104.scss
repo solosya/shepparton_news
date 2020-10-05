@@ -15,7 +15,7 @@
         }
 
         &__category {
-            @include font-size(17);
+            @include font-size(15);
         }
         &__heading {
             font-family: $font-family-serif;
@@ -100,6 +100,7 @@
             }
             &__heading {
                 @include font-size(14);
+                letter-spacing: 0.25px;
             }
 
         }

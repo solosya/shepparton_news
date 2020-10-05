@@ -73,6 +73,7 @@
             }
             &__heading {
                 @include font-size(18);
+                letter-spacing: 0.33px;
             }
             &__description {
                 display:none;

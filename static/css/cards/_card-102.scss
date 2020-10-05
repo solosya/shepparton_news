@@ -14,7 +14,7 @@
         &__category {
             margin-top:15px;
             margin-bottom:7px;
-            @include font-size(17);
+            @include font-size(15);
         }
 
         &__heading {
@@ -96,6 +96,7 @@
             }
             &__heading {
                 @include font-size(16);
+                letter-spacing: 0.29px;
             }
             &.without__image {
                 background-color: #f7f7f7;

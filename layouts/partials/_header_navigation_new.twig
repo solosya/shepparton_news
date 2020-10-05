@@ -18,6 +18,19 @@
     {% set cache = setCache("networkMenu", networkMenu, 500) %}
 {% endif %}
 
+{#{% set breakingButton  = config['breakingButton'] is defined and config['breakingButton']['active'] == true ? true : false %}#}
+{#{% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}#}
+
+{% set site       = networkData.title | lower | split(" ")[0]%}
+{% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}
+{% set paperButton     = config['paperButton'] is defined and config['paperButton']['active'] == true ? true : false %}
+{% set paperLink = "" %}
+
+{% if config['paperButton'] is defined and config['paperButton']['link'] is defined %}
+    {% set paperLink = config['paperButton']['link'] %}
+{% endif %}
+
+
 
 
 {% set loggedin = _User.isGuest() ? false : true %}
@@ -47,6 +60,10 @@
     {% endif %}
 {% endif %}
 
+
+
+
+
 {% set paywall = true %}
 
 {% if config['paywall'] is defined and config['paywall'] == false %}
@@ -58,12 +75,10 @@
 {% endif %} #}
 
 
-{% set dateFormat = "l, j F Y" %}
-{% if config['dateFormat'] is defined and config['dateFormat'] != "" %}
-    {% set dateFormat = config['dateFormat'] %}
-{% endif %}
-{% set theDate = _AppHelper.getCurrentTimestampBasedOnTimezone() %}
-{% set date = _AppHelper.getDefaultTimezoneDateTime(theDate, dateFormat) %}
+
+
+
+
 
 
 <header class="c-header-new u-mobile-margin-bottom-70" data-header="0">
@@ -110,7 +125,12 @@
                 </div>
 
                 <div class="c-header-new__sub-info" style="background:white">
-                    <a class="c-header-new__read-link" href="">Read paper</a>
+                        {% if paperButton == true and paymeter == true and pianoSubscribe == true %}
+                            <a class="c-header-new__read-link" id="pressreader-button" href="{{paperLink}}">
+                                {{config['paperButton']['label']}}
+                            </a>
+                        {% endif %}
+                    {#<a class="c-header-new__read-link" href="">Read paper</a>#}
                 </div>
 
 

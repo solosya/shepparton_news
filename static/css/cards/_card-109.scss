@@ -60,6 +60,11 @@
 .card-109-mobile {
     @media #{$mobile} {
         @include card-109-base();
+        .c-cards-view {
+            &__heading {
+                letter-spacing: 0.27px;
+            }
+        }
     }
 }
 
