@@ -22,10 +22,11 @@
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount],
                         imageSizes      : {
-                            "mobile"  : {height:210},
-                            "tablet"  : {height:222},
-                            "desktop" : {height:190},
+                            "mobile"  : {height:210, width:0},
+                            "tablet"  : {height:222, width:0},
+                            "desktop" : {height:190, width:0},
                         },
+                        logs: true,
                         site            : site,
                         containerClass  : 'card-110-mobile card-110-tablet card-110-desktop-sm card-110-desktop-lg'
                     }) | raw}}

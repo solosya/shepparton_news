@@ -90,12 +90,10 @@
 {% endif %}
 
 {% set imgSizes = {
-    "mobile"  : imageSizes is defined and imagesSizes.mobile is defined  ? imagesSizes.mobile  : {width:500, height:375},
-    "tablet"  : imageSizes is defined and imagesSizes.tablet is defined  ? imagesSizes.tablet  : {width:768, height:500},
-    "desktop" : imageSizes is defined and imagesSizes.desktop is defined ? imagesSizes.desktop : {width:imgWidth, height:imgHeight},
+    "mobile"  : imageSizes is defined and imageSizes.mobile is defined  ? imageSizes.mobile  : {width:500, height:375},
+    "tablet"  : imageSizes is defined and imageSizes.tablet is defined  ? imageSizes.tablet  : {width:768, height:500},
+    "desktop" : imageSizes is defined and imageSizes.desktop is defined ? imageSizes.desktop : {width:imgWidth, height:imgHeight},
 } %}
-
-
 
 
 {% set profileImg = false %}
@@ -152,9 +150,9 @@
 
     {% set imageSource = imageSource == 'article' ? article.featuredMedia : article.createdBy['media'] %}
 
-    {% set imageSmall     = _Media.getMediaUrl(imageSource,imgSizes.mobile.width, imgSizes.mobile.width,   {'crop': 'fill', 'gravity': 'faces'} ) %}
-    {% set imageMedium    = _Media.getMediaUrl(imageSource,imgSizes.tablet.width, imgSizes.tablet.width,   {'crop': 'fill', 'gravity': 'faces'} ) %}
-    {% set imageLarge     = _Media.getMediaUrl(imageSource,imgSizes.desktop.width, imgSizes.desktop.width, {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set imageSmall     = _Media.getMediaUrl(imageSource,imgSizes.mobile.width, imgSizes.mobile.height,   {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set imageMedium    = _Media.getMediaUrl(imageSource,imgSizes.tablet.width, imgSizes.tablet.height,   {'crop': 'fill', 'gravity': 'faces'} ) %}
+    {% set imageLarge     = _Media.getMediaUrl(imageSource,imgSizes.desktop.width, imgSizes.desktop.height, {'crop': 'fill', 'gravity': 'faces'} ) %}
 
 
 
