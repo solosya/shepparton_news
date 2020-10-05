@@ -29,6 +29,15 @@
         {# COLUMN 1  --  THE CENTER COLUMN ON DESKTOP #}
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3">
             <div class="row">
+
+
+                <div class="col-xs-12 visible-sm-block">
+                    {{this.render('../../partials/buylocal.twig', {
+                        networkData: networkData
+                    }) | raw}}
+                </div>
+
+
                 <div class="col-xs-12 col-sm-8 col-md-12 ">
 
                     {# CARD 1 #}
@@ -358,10 +367,9 @@
             <div class="row">
 
 
-                <div class="col-xs-12">
+                <div class="col-xs-12 visible-md-block visible-lg-block">
                     {{this.render('../../partials/buylocal.twig', {
                         networkData: networkData
-
                     }) | raw}}
                 </div>
 

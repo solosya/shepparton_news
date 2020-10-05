@@ -1,7 +1,20 @@
 .buylocal {
-
+    @include flexbox();
+    @include flex-direction(column);
     padding-bottom:30px;
     border-bottom: 1px solid #979797;
+
+
+
+
+    @media #{$tablet} {
+        @include flex-direction(row);
+        @include align-items(center);
+        border-top: 1px solid #979797;
+        margin-top:30px;
+        padding-bottom:0;
+        justify-content: space-between;
+    }
 
     &__heading {
         @include font-size(12);
@@ -12,5 +25,15 @@
         border-bottom: 1px solid #979797;
         text-transform: uppercase;
         margin-bottom:40px;
+
+        @media #{$desktop-sm} {
+            margin-bottom:30px;
+        }
+        @media #{$tablet} {
+            border-bottom:none;
+            padding:0;
+            margin:0;
+
+        }
     }
 }
