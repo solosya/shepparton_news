@@ -21,7 +21,11 @@
 
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount],
-                        imageSize       : {height:190},
+                        imageSizes      : {
+                            "mobile"  : {height:210},
+                            "tablet"  : {height:222},
+                            "desktop" : {height:190},
+                        },
                         site            : site,
                         containerClass  : 'card-110-mobile card-110-tablet card-110-desktop-sm card-110-desktop-lg'
                     }) | raw}}
