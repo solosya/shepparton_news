@@ -430,7 +430,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
                             {% if config['newsletter'] is defined and config['newsletter'] != "" %}
                                 {% for i in 0..2 if recentArticles[i] %}
-                                    <div class="col-md-9 col-sm-4">
+                                    <div class="col-md-9 col-sm-6">
                                         {{this.render('partials/_single-article.twig', {
                                             article: recentArticles[i],
                                             imageSuppress: false,
@@ -443,14 +443,14 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                         {% endif %}
                                     </div>
                                 {% endfor %}
-                                <div class="col-sm-4 col-md-9 col-xs-9">
+                                <div class="col-sm-6 col-md-12 col-xs-12">
                                     <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
                                         <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
                                     </div>
                                 </div>
                             {% else %}
                                 {% for i in 0..3 if recentArticles[i] %}
-                                    <div class="col-md-9 col-sm-4">
+                                    <div class="col-md-12 col-sm-6">
                                         {{this.render('partials/_single-article.twig', {
                                             article: recentArticles[i],
                                             imageSuppress: false,
@@ -485,10 +485,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     <h1>MOST POPULAR</h1>
                 </div>
 
-                <div class="col-md-offset-2">
+                <div class="">
                     <div class="row">
                         {% for i in 0..2 if relatedArticles[i] %}
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 {{this.render('partials/_single-article.twig', {
                                     article: relatedArticles[i],
                                     imageSize: {width: 300, height: 180},
