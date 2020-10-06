@@ -12,6 +12,9 @@
         }
         &__icon-cont {
             width:48px;
+            @media #{$mobile} {
+                margin-left:auto;
+            }
         }
         &__temp {
             //width:120px;
