@@ -205,6 +205,11 @@
         height: 40px;
         border-bottom: 1px solid color(lightgrey);
         margin-bottom: 15px;
+
+        @media #{$mobile}{
+            padding-right:10px;
+        }
+
     }
 
     @include colourselectstroke('>.panel>div>.icon>.svg-fill');
