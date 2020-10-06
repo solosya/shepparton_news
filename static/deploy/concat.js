@@ -24036,29 +24036,6 @@ console.log('in the weather script');
                     '<div id="weather-panels"></div>';
         }
 
-        //var weatherPanel = function(data) {
-            //var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
-
-            //var icon = weatherIcons(data.icon);
-
-            //console.log('building weather panel');
-            //return '<div class="panel">' +
-                        //'<div class="weather-panels__date-loc" >' +
-                            //'<p class="date">' + data.date + '</p>' +
-                            //'<p class="location">'+data.location.split('/')[1]+'</p>' +
-                            //'<div class="show-weather">' +
-                                //'<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            //'</div>' +
-                        //'</div>' +
-                        //'<div style="width: 48px;">' +
-                            //'<div class="icon">' + icon + '</div>' +
-                        //'</div>' +
-                        //'<div style="width: 120px;">' +
-                            //'<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + data.description + '</div>' +
-                            //'<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' +
-                        //'</div>' +
-                    //'</div>';
-            //}
 
         var weatherPanel = function(location, showArrow) {
             return function(data) {
@@ -24070,22 +24047,23 @@ console.log('in the weather script');
                 var description = data.description;
 
                 if (showArrow) {
-                    arrow = '<div class="show-weather">' +
-                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            '</div>';
+                    arrow = '<div class="show-weather"></div>';
                 } else {
                     // if we're not showing the arrow, this must be a future forecast
                     description = weatherStatus(data.icon);
                 };
 
-                var mainClass = "";
+                var mainClass = "weather-panels-all";
                 if (showArrow) {
                     mainClass = "weather-panels-main";
                 }
-                return '<div class="' + mainClass + ' panel">' +
-                            '<div class="weather-panels__date-loc" >' +
-                                '<p class="date">' + data.date + '</p>' +
-                                '<p class="location">' + location + '</p>' + arrow +
+                var html = '<div class="' + mainClass + ' panel">' +
+                            '<div class="weather-panels-main__cont">' +
+                                '<div class="weather-panels__date-loc" >' +
+                                    '<p class="date">' + data.date + '</p>' +
+                                    '<p class="location">' + location + '</p>' +
+                                '</div>' +
+                                arrow +
                             '</div>' +
                             '<div class="weather-panels__icon-cont">' +
                                 '<div class="icon">' + icon + '</div>' +
@@ -24095,6 +24073,8 @@ console.log('in the weather script');
                                 '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' +
                             '</div>' +
                         '</div>';
+                         //console.log(html);
+                return html;
             }
         }
 
