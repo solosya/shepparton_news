@@ -16,7 +16,7 @@
     {% set pageTypeClass = 'article' %}
 {% endif %}
 
-{% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : false %}
+{% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : true %}
 
 {# {% set paymeter = true %} #}
 {% set paymeterType  = config['piano']['paywall'] is defined and config['piano']['paywall'] == true ? 'piano' : 'syncronex' %}
@@ -107,7 +107,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=fb90d057" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=12d3e706" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
