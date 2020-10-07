@@ -9,9 +9,10 @@
     .weather-panels{
         &__date-loc {
             //width:180px;
+            flex-shrink:0;
         }
         &__icon-cont {
-            width:48px;
+            // width:48px;
             @media #{$mobile} {
                 margin-left:auto;
             }
