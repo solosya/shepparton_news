@@ -44,6 +44,12 @@
 
         .weather-panels__temp {
             text-align:right;
+
+            @media #{$tablet} {
+                margin-left: 10px;
+            }
+
+
             @media #{$desktop-sm} {
                 margin-left: auto;
             }
