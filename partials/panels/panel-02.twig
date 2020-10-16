@@ -9,7 +9,7 @@
                       blogData['additionalInfo']['sectionlabel'] != ''
                             ? blogData['additionalInfo']['sectionlabel']
                             : 'Feature' %}
-{% set dev = true %}
+{# {% set dev = true %} #}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
 
