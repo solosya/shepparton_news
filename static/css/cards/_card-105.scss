@@ -16,7 +16,7 @@
             display:none;
         }
         &__heading {
-            margin-top:10px;
+            margin-top:14px;
             @include flexbox();
             font-family: $font-family-serif;
             @include font-size(16);
