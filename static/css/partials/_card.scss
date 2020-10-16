@@ -46,6 +46,17 @@ a.card {
 .c-cards-view {
     height:100%;
 
+
+    &__cardId {
+        position: absolute;
+        top: 0;
+        font-size: 12px;
+        padding: 0px 5px;
+        background-color: #0b2a98;
+        color: white;
+        border-radius: 5px;
+    }
+
     &__image_size {
         position: absolute;
         top: -20px;
@@ -145,7 +156,7 @@ a.card {
         &.premium-tag{
             &:before{
                 content: '';
-                width: 22px;
+                width: 19px;
                 height: 16px;
                 margin-right: 10px;
                 background-image: url('../icons/premium-s2.svg');

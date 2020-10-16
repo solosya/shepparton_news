@@ -20,6 +20,9 @@
 {% set inline        = inline        is defined and inline != ''            ? inline : ''  %}
 {% set styleType     = styleType     is defined and styleType != ''         ? styleType : ''  %}
 
+{# cardId can be used for dev to tag a card and make it easier to find in complex panels #}
+{% set cardId        = cardId        is defined and cardId != ''            ? cardId : ''  %}
+
 {#change the image source to either article or author#}
 {% set imageSource   = imageSource   is defined and imageSource != ''       ? imageSource : 'article'  %}
 
@@ -207,6 +210,7 @@
             {% if dev %}
                 <div class="{{cardType}}c-cards-view__article_number">{{position}}</div>
                 <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
+                <div class="{{cardType}}c-cards-view__cardId">{{cardId}}</div>
             {% endif %}
 
             {# Article content including image #}
