@@ -19,7 +19,7 @@
 {% endif %}
 
 {#{% set breakingButton  = config['breakingButton'] is defined and config['breakingButton']['active'] == true ? true : false %}#}
-{#{% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}#}
+{% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}
 
 {% set site       = networkData.title | lower | split(" ")[0]%}
 {% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}
@@ -135,8 +135,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12" style="background:white">
-                <div class="c-navigation-new c-navigation-new-md">
-                    <div class="c-navigation-new__weather visible-s visible-sm">
+                <div class="c-navigation-new">
+                    <div class="c-navigation-new__weather visible-sm">
                         <div class="weather j-weather-panel  {{site}}"></div>
                         <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
                     </div>
@@ -148,9 +148,9 @@
 
 
                     {# Only shows on Mobile #}
-                    <div class="c-header-new__mobile-auth">
+                {% if paymeter == true and pianoMenu == true %}  
+                        <div class="c-header-new__mobile-auth">
 
-                        {% if paymeter == true and pianoMenu == true %}  
                             <a class="c-header-new__subscribebutton"
                                 href="javascript:void(0);"
                                 onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
@@ -160,14 +160,14 @@
                                 onclick="javascript:tp.pianoId.show({screen: 'login'});"
                                 href="javascript:void(0);">Sign in
                             </a>
-                        {% endif %}  
 
-                    </div>
+                        </div>
+                    {% endif %}  
 
 
 
                     <div class="c-navigation-new__icons">
-                        {# {% if paymeter == true and pianoMenu == true %}   #}
+                        {% if paymeter == true and pianoMenu == true %}  
                             {# <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li> #}
                             <div class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;">
                                 <a class="c-header-new__login" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a>
@@ -176,7 +176,7 @@
                                 <a class="c-header-new__login" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">Sign in</a>
                                 <img class="c-header-new__login-profile" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
                             </div>
-                        {# {% endif %}   #}
+                        {% endif %}  
 
 
                         </div>
@@ -278,7 +278,7 @@
         </div>
     </ul>
 
-    {# {% if paymeter == true and pianoMenu == true %}   #}
+    {% if paymeter == true and pianoMenu == true %}  
     <div class="side-menu-subscribe">
         <h4 class="side-menu-subscribe__title">Stories about people you <br />know told by people you trust</h4>
         <p class="side-menu-subscribe__p">Subscribe to the news that matters to you</p>
@@ -286,7 +286,7 @@
             Subscribe now
         </a>
     </div>
-    {# {% endif %} #}
+    {% endif %}
 </div>
 
 <!-- <div class="responsive-standalone-overlay"></div> -->
