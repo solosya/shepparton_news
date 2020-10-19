@@ -119,7 +119,7 @@ $mainColor : red;
         @include flexbox();
         @include align-items(flex-end);
         @include justify-content(flex-end);
-        margin-top:7px;
+        // margin-top:7px;
         @media #{$mobile} {
             display:none;
         }
@@ -240,7 +240,7 @@ $mainColor : red;
         @include flexbox();
         @include align-items(center);
         @include justify-content(space-between);
-        margin-top: 33px;
+        margin-top: 23px;
         order:4;
         position: relative;
         // height:82px;
