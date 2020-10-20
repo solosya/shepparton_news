@@ -117,8 +117,8 @@
 
 .ad-square {
     // @include adtext;
-    // background:orange;
-    //height:50px;
+    background:#f9f9f9;
+    min-height:50px;
     //background:gray;
     > .dairy {
         @media screen and (max-width: $sm-break){

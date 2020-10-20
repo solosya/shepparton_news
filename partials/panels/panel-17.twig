@@ -18,7 +18,9 @@
             <div class="col-sm-12 col-md-6">
                 <div class="row">
                     {% for i in 0..1 if articles[articleCount] %}
-                            <div class="col-xs-6 col-md-6">
+                            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+
+                            <div class="col-xs-6 col-md-6 {{mobilePadding[i]}}">
                             {{this.render('../_single-article.twig', {
                                 article         : articles[articleCount],
                                 template        : 'property_card',
@@ -42,7 +44,9 @@
             <div class="cols-sm-12 col-md-6">
                 <div class="row">
                     {% for i in 0..1 if articles[articleCount] %}
-                        <div class="col-xs-6 col-md-6">
+                        {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+
+                        <div class="col-xs-6 col-md-6 {{mobilePadding[i]}}">
                             {{this.render('../_single-article.twig', {
                                 article         : articles[articleCount],
                                 template        : 'property_card',

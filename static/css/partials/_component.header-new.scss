@@ -177,6 +177,7 @@ $mainColor : red;
         @include flexbox();
         @include align-items(center);
         @include justify-content(center);
+        @include font-size(15);
         flex-grow:1;
         // padding-top:3px;
         background:#f6ae42;

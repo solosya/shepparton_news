@@ -55,6 +55,7 @@ a.card {
         background-color: #0b2a98;
         color: white;
         border-radius: 5px;
+        z-index: 99999;
     }
 
     &__image_size {

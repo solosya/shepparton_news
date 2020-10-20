@@ -1,5 +1,7 @@
 {% set articleCount = 0 %}
 {% set cardIndex = 1 %}
+{% set dev = true %}
+{% set articlelock = false %}
 
 <div class="row">
     <div class="col-sm-12">
@@ -47,9 +49,11 @@
                                         position        : cardIndex,
                                         imageSize       : {width:95, height:95},
                                         site            : site,
+                                        dev             : dev,
+                                        cardId          : "one" ~ i,
                                         containerClass  : mobileCard ~ ' card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                                     }) | raw}}
-                                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
 
                                     {% if loop.index != 3  %}
@@ -81,6 +85,8 @@
                         <div class="row">
                             {# Cards 4,5,6 #}
                             {% for i in 0..2 if articles[articleCount] %}
+                                {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7", ""] %}
+
                                 {% set dividerClass = "" %}
                                 {% set mobileColumn = "" %}
                                 {% set mobileCard = "card-101-mobile" %}
@@ -93,16 +99,18 @@
                                     {% set mobileCard = "card-102-mobile "%}
                                 {% endif %}
 
-                                <div class="{{mobileColumn}} {{dividerClass}} col-sm-12">
+                                <div class="{{mobileColumn}} {{dividerClass}} col-sm-12 {{mobilePadding[i]}}">
                                     {{this.render('../_single-article.twig', {
                                         article         : articles[articleCount],
                                         position        : cardIndex,
                                         styleType       : "image-bottom",
                                         imageSize       : {width:95, height:95},
                                         site            : site,
+                                        dev             : dev,
+                                        cardId          : "two" ~ i,
                                         containerClass  : mobileCard ~ ' card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                                     }) | raw}}
-                                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
 
                                     {% if loop.index != 3  %}
@@ -145,6 +153,8 @@
                         <div class="row">
                             {# Cards 7,8,9 #}
                             {% for i in 0..2 if articles[articleCount] %}
+                                {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7", ""] %}
+
                                 {% set dividerClass = "" %}
                                 {% set mobileColumn = "" %}
                                 {% set mobileCard = "card-101-mobile" %}
@@ -157,16 +167,18 @@
                                     {% set mobileCard = "card-102-mobile "%}
                                 {% endif %}
 
-                                <div class="{{mobileColumn}} {{dividerClass}} col-sm-12">
+                                <div class="{{mobileColumn}} {{dividerClass}} col-sm-12 {{mobilePadding[i]}}">
                                     {{this.render('../_single-article.twig', {
                                         article         : articles[articleCount],
                                         styleType       : "image-bottom",
                                         position        : cardIndex,
                                         imageSize       : {width:95, height:95},
                                         site            : site,
+                                        dev             : dev,
+                                        cardId          : "three" ~ i,
                                         containerClass  : mobileCard ~ ' card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                                     }) | raw}}
-                                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
 
                                     {% if loop.index != 3  %}
@@ -193,6 +205,7 @@
                         <div class="row">
                             {# Cards 10, 11, 12 #}
                             {% for i in 0..2 if articles[articleCount] %}
+                                {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7", ""] %}
                                 {% set dividerClass = "" %}
                                 {% set mobileColumn = "" %}
                                 {% set mobileCard = "card-101-mobile" %}
@@ -205,16 +218,18 @@
                                     {% set mobileCard = "card-102-mobile "%}
                                 {% endif %}
 
-                                <div class="{{mobileColumn}} {{dividerClass}} col-sm-12">
+                                <div class="{{mobileColumn}} {{dividerClass}} col-sm-12 {{mobilePadding[i]}}">
                                     {{this.render('../_single-article.twig', {
                                         article         : articles[articleCount],
                                         styleType       : "image-bottom",
                                         position        : cardIndex,
                                         imageSize       : {width:95, height:95},
                                         site            : site,
+                                        dev             : dev,
+                                        cardId          : "four" ~ i,
                                         containerClass  : mobileCard ~ ' card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                                     }) | raw}}
-                                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                                     {% set cardIndex = cardIndex + 1 %}
 
                                     {% if loop.index != 3  %}

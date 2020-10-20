@@ -1,3 +1,7 @@
+{% set dev = true %}
+{% set articlelock = false %}
+
+
 <div class="row">
 
     <div class="col-sm-12">
@@ -19,12 +23,14 @@
             <div class="col-sm-6 col-md-3">
                 <div class="row">
 
-                    <div class="col-xs-6 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-12 u-mobile-padding-right-7">
                         {{this.render('../_single-article.twig', {
                             article         : articles[0],
                             position        : 1,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "one",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
@@ -32,12 +38,14 @@
 
 
                     {# card 2 on MOBILE #}
-                    <div class="col-xs-6 col-sm-12 col-md-12 visible-xs-block">
+                    <div class="col-xs-6 col-sm-12 col-md-12 visible-xs-block u-mobile-padding-left-7">
                         {{this.render('../_single-article.twig', {
                             article         : articles[1],
                             position        : 2,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "two",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
@@ -52,6 +60,8 @@
                             position        : 3,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "three",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
 
@@ -66,6 +76,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "four",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
 
@@ -81,6 +93,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "five",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                     </div>
@@ -94,6 +108,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "six",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                     </div>
@@ -122,29 +138,35 @@
                             position        : 2,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "seven",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
                     </div>
                     
                     {# card 3 on MOBILE #}
-                    <div class="col-xs-6 col-sm-12 col-md-12 visible-xs-block" data-wtd="fuck">
+                    <div class="col-xs-6 col-sm-12 col-md-12 visible-xs-block u-mobile-padding-right-7">
                         {{this.render('../_single-article.twig', {
                             article         : articles[2],
                             position        : 3,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "eight",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
                     </div>
 
                     {# cards 4 on MOBILE/TABLET #}
-                    <div class="col-xs-6 col-sm-12 col-md-12 hidden-md hidden-lg">
+                    <div class="col-xs-6 col-sm-12 col-md-12 hidden-md hidden-lg u-mobile-padding-left-7">
                         {{this.render('../_single-article.twig', {
                             article         : articles[3],
                             position        : 4,
                             site            : site,
+                            dev             : dev,
+                            cardId          : "nine",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
@@ -160,6 +182,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "ten",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
@@ -173,6 +197,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "eleven",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                     </div>
@@ -187,6 +213,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "twelve",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                     </div>
@@ -218,6 +246,8 @@
                             position        : 3,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "thirteen",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
@@ -230,6 +260,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "fouteen",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25">
@@ -243,6 +275,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "fifteen",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25">
@@ -257,6 +291,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "sixteen",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 visible-xs-block">
@@ -281,6 +317,8 @@
                             position        : 4,
                             imageSize       : {width:300, height:235},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "seventeen",
                             containerClass  : "card-102-mobile card-112-tablet card-102-desktop-sm card-102-desktop-lg"
                         }) | raw}}
                         <hr class="divide20-25 hidden-xs">
@@ -293,6 +331,8 @@
                             styleType       : "image-bottom",
                             imageSize       : {width:95, height:95},
                             site            : site,
+                            dev             : dev,
+                            cardId          : "eighteen",
                             containerClass  : "card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg"
                         }) | raw}}
                     </div>

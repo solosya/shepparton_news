@@ -122,6 +122,11 @@ div[class*="col-sm"] {
 
 
 @media #{$mobile} {
+
+
+    .u-mobile-padding-right-7 {padding-right: 7px !important}
+    .u-mobile-padding-left-7 {padding-left: 7px !important}
+
     .u-mobile-float-left { float:left; }
     .u-mobile-float-right { float:right; }
     .u-mobile-clear-both { clear:both; }
