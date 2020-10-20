@@ -54,7 +54,7 @@
 
 .site-footer-links__menu-item {
     list-style:none;
-    margin-bottom:17px;
+    margin-bottom:14px;
     @media screen and (min-width: $sm-break) and (max-width: $md-break){
         margin-bottom:10px;
     }
@@ -69,6 +69,9 @@
     letter-spacing: 0.29px;
     color:white;
     text-transform:uppercase;
+    &:hover {
+        color:#d4d4d4;
+    }
 
     @media screen and (max-width: $sm-break-down) {
         @include font-size(14);

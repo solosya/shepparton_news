@@ -12,7 +12,11 @@
 
 .property-page-attributes {
     // margin-top: 30px;
-    margin-bottom:27px;
+    // @media #{$up-to-desktop} {
+    //     padding-right:0;
+    // }
+
+    // margin-bottom:27px;
 }
 
 .property-page-attributes__contract {
