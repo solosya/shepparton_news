@@ -9,7 +9,8 @@
                       blogData['additionalInfo']['sectionlabel'] != ''
                             ? blogData['additionalInfo']['sectionlabel']
                             : 'Feature' %}
-{# {% set dev = true %} #}
+{% set dev = true %}
+{% set articleLock = false %}
 
 {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
 
@@ -52,7 +53,7 @@
                             cardId          : "one",
                             containerClass  : 'card-100-mobile card-100-tablet card-100-desktop-sm card-100-desktop-lg'
                         }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
                         <hr class="divide20-25 hidden-sm" data-tag="malcom">
 
@@ -76,7 +77,7 @@
                                 cardId          : "two",
                                 containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
                             }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                             {% set cardIndex = cardIndex + 1 %}
                             <hr class="divide20-25 hidden-xs hidden-md hidden-lg" data-tag="princton">
                         </div>
@@ -96,7 +97,7 @@
                                 containerClass  : 'card-101-mobile card-102-tablet card-101-desktop-sm card-101-desktop-lg'
                             }) | raw}} #}
 
-                            {# {% set articleCount = (dev) ? articleCount : articleCount + 1 %} #}
+                            {# {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %} #}
                             {# {% set cardIndex = cardIndex + 1 %} #}
                             {# <hr class="divide20-25"> #}
                         {# </div> #}
@@ -118,7 +119,7 @@
                                     containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
                                 }) | raw}}
 
-                                {# {% set articleCount = (dev) ? articleCount : articleCount %} #}
+                                {# {% set articleCount = (articleLock) ? articleCount : articleCount %} #}
                                 {# {% set cardIndex = cardIndex + 1 %} #}
                                 <hr class="divide20-25 hidden-xs hidden-sm" data-tag="jb">
                             {% endif %}
@@ -164,7 +165,7 @@
                             containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg hidden-xs hidden-sm'
                         }) | raw}}
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 2 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 2 %}
                         {% set cardIndex = cardIndex + 2 %}
                         {# <hr class="divide20-25 hidden-xs hidden-sm"> #}
                     {% endif %}
@@ -205,7 +206,7 @@
                             containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                         }) | raw}}
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
                         <hr class="divide20-25 visible-xs-block visible-sm-block">
                     {% endif %}
@@ -259,7 +260,7 @@
                             cardId          : "eight "~ i,
                             containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                         }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
                         <hr class="divide20-25" data-tag="harold">
                     </div>
@@ -278,7 +279,7 @@
                             cardId          : "eight "~ i,
                             containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                         }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
                         <hr class="hidden-xs hidden-md hidden-lg divide20-25" data-tag="price">
                     </div>
@@ -301,7 +302,7 @@
                         cardId          : "nine",
                         containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                     }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
                     <hr class="divide20-25 visible-sm-block">
                 </div> #}
@@ -421,7 +422,7 @@
                     }) | raw}}
 
 
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
                     {% if i == 0 %}
                         <hr class="divide20-25" data-tag="andy">
@@ -493,7 +494,7 @@
                         }) | raw}}
 
 
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
                     {% endif %} #}
 
@@ -530,7 +531,7 @@
                         <hr class="divide20-25 visible-xs-block"  data-tag="kelsi">
                     {% endif %}
 
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
                 </div>
             {% endfor %}
