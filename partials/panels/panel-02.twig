@@ -82,9 +82,9 @@
                             <hr class="divide20-25 hidden-xs hidden-md hidden-lg" data-tag="princton">
                         </div>
 
-                        {# <div class="col-xs-6 col-sm-12 visible-md-block visible-lg-block"> #}
-                            {# CARD 4 desktop #}
-                            {# {{this.render('../_single-article.twig', {
+                        {# CARD 4 desktop #}
+                        {# <div class="col-xs-6 col-sm-12 visible-md-block visible-lg-block">
+                            {{this.render('../_single-article.twig', {
                                 imageSize       : {width:95},
                                 styleType       : "image-bottom",
                                 position        : cardIndex + 1,
@@ -95,12 +95,12 @@
                                 dev             : dev,
                                 cardId          : "three",
                                 containerClass  : 'card-101-mobile card-102-tablet card-101-desktop-sm card-101-desktop-lg'
-                            }) | raw}} #}
+                            }) | raw}}
 
-                            {# {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %} #}
-                            {# {% set cardIndex = cardIndex + 1 %} #}
-                            {# <hr class="divide20-25"> #}
-                        {# </div> #}
+                            {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
+                            {% set cardIndex = cardIndex + 1 %}
+                            <hr class="divide20-25">
+                        </div> #}
 
 
 
@@ -165,14 +165,14 @@
                             containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg hidden-xs hidden-sm'
                         }) | raw}}
 
-                        {% set articleCount = (articleLock) ? articleCount : articleCount + 2 %}
-                        {% set cardIndex = cardIndex + 2 %}
+                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
                         {# <hr class="divide20-25 hidden-xs hidden-sm"> #}
                     {% endif %}
 
 
                     {# CARD 4 TABLET #}
-                    {% if articles[articleCount] %}
+                    {# {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:95},
                             styleType       : "image-bottom",
@@ -187,7 +187,7 @@
                             containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg visible-xs-block visible-sm-block'
                         }) | raw}}
                         <hr class="divide20-25 hidden-sm hidden-md hidden-lg" data-tag="jude">
-                    {% endif %}
+                    {% endif %} #}
 
                 </div>
                 {# <div class="col-xs-12 col-sm-6"> #}
