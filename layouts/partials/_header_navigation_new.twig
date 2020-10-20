@@ -1,10 +1,9 @@
 {# {% set headermenu = getCache("headermenu") %}
 {% if (headermenu is empty) %} #}
-    {# {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %} #}
+    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
     {# {% set cache = setCache("headermenu", headermenu, 500) %}
 {% endif %} #}
 
-    {% set headermenu = [] %}
 
 {% set sectionMenu = getCache("sectionMenu") %}
 {% if (sectionMenu is empty) %}
