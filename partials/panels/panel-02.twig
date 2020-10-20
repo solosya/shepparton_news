@@ -3,16 +3,17 @@
 
 {% set config = _Network.getThemeConfig() %}
 
-{% set layout = layout is defined ? layout : false %}
-
-{% set sectionLabel = blogData['additionalInfo']['sectionlabel'] is defined and
-                      blogData['additionalInfo']['sectionlabel'] != ''
-                            ? blogData['additionalInfo']['sectionlabel']
-                            : 'Feature' %}
-{% set dev = true %}
+{% set dev = false %}
 {% set articleLock = false %}
 
-{% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
+
+{% set popularArticles = getCache("popularArticles") %}
+{% if (popularArticles is empty) %}
+    {% set popularArticles = _Article.getPopularArticles({ limit: 5, scope: 'network', interval: 24 }) %}
+    {% set cache = setCache("popularArticles", popularArticles, 500) %}
+{% endif %}
+
+
 
 {# <div class="row">
     <div class="container hidden-md hidden-lg u-tablet-margin-top-10 ">
