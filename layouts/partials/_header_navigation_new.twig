@@ -1,6 +1,6 @@
 {# {% set headermenu = getCache("headermenu") %}
 {% if (headermenu is empty) %} #}
-    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-test"}) %}
+    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
     {# {% set cache = setCache("headermenu", headermenu, 500) %}
 {% endif %} #}
 
@@ -65,15 +65,6 @@
 
 {% if networkData.logoMedia | length > 0 %}
     {% set logo = _Media.getMediaUrl(networkData.logoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
-{% endif %}
-
-
-
-
-{% set paywall = true %}
-
-{% if config['paywall'] is defined and config['paywall'] == false %}
-    {% set paywall = false %}
 {% endif %}
 
 
