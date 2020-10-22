@@ -1,6 +1,6 @@
 {# {% set headermenu = getCache("headermenu") %}
 {% if (headermenu is empty) %} #}
-    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
+    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-test"}) %}
     {# {% set cache = setCache("headermenu", headermenu, 500) %}
 {% endif %} #}
 
@@ -196,36 +196,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-    {# ******************************************************
-                        FIXED HEADER
-    ****************************************************** #}
-    {#<div class="c-header-new__fixed c-header-new__fixed--off" id="j-menu-fixed">#}
-        {#<div class="c-header-new__main-info c-header-new__fixed-block" >#}
-            {#<a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo" >#}
-                {#<figure class="c-header-new__main-info__figure">#}
-                    {#<img src="{{logo}}" class="image-fluid" />#}
-                {#</figure>#}
-            {#</a>#}
-            {#<div class="c-navigation-new c-navigation-new-md c-navigation-new__fixed u-margin-top-10" >#}
-                {#<ul class="c-navigation-new__list d-none d-lg-flex">#}
-                    {#{{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}#}
-                {#</ul>#}
-
-                {#<div class="c-navigation-new__icons d-lg-none">#}
-                    {#<div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
 
 
 
