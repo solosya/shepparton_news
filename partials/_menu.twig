@@ -4,9 +4,10 @@
     {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
     {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
     {% set children = parentItem.children is defined and parentItem.children | length > 0  %}
+    {% set site = site is defined ? site : ""  %}
 
     <li class="standalone-menu__dropdown">
-        <a  class="{{activeClass}} {{externalClass}} "
+        <a  class="{{activeClass}} {{externalClass}} {{site}}"
             href="{{parentItem.link | raw}}"
             {% if parentItem.target != "" %} 
                 target="{{parentItem.target}}"

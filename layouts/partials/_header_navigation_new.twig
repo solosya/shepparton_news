@@ -21,7 +21,7 @@
 {#{% set breakingButton  = config['breakingButton'] is defined and config['breakingButton']['active'] == true ? true : false %}#}
 {% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}
 
-{% set site       = networkData.title | lower | split(" ")[0]%}
+{% set site            = networkData.title | lower | split(" ")[0]%}
 {% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}
 {% set paperButton     = config['paperButton'] is defined and config['paperButton']['active'] == true ? true : false %}
 {% set paperLink = "" %}
@@ -135,7 +135,7 @@
 
 
                     <ul class="c-navigation-new__list">
-                        {{ this.render('../../partials/_menu.twig', {'menu': headermenu}) | raw }}
+                        {{ this.render('../../partials/_menu.twig', {'menu': headermenu, 'site': site}) | raw }}
                     </ul>
 
 
