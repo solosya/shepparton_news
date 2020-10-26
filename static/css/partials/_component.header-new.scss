@@ -290,7 +290,7 @@ $mainColor : red;
                 // height: 54px;
                 display: block;
                 margin: auto;
-                max-width: max-content;
+                max-width: 100%;
                 @media #{$mobile}{
                     height: 43px;
                 }
