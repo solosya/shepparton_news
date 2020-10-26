@@ -439,39 +439,39 @@ h4.modal-title {
 
 
 
-figcaption{
-    margin-top: 10px;
+// figcaption{
+//     margin-top: 10px;
 
-    @media screen and (max-width: $sm-break){
-        float: left;
-        margin-bottom: 30px;
-    }
+//     @media screen and (max-width: $sm-break){
+//         float: left;
+//         margin-bottom: 30px;
+//     }
 
-    > p {
-        font-size: rem(12.5);
-        color: #6c6c6c;
-        font-style: italic;
-        font-family: $font-family-serif;
-        float: left;
+//     > p {
+//         font-size: rem(12.5);
+//         color: #6c6c6c;
+//         font-style: italic;
+//         font-family: $font-family-serif;
+//         float: left;
 
-        @media screen and (max-width: $sm-break){
-            font-size: rem(11);
-            line-height: rem(15);
-            margin-bottom:15px;
-            width: 100%;
-        }
+//         @media screen and (max-width: $sm-break){
+//             font-size: rem(11);
+//             line-height: rem(15);
+//             margin-bottom:15px;
+//             width: 100%;
+//         }
 
 
-        &.credit{
-            font-style: normal;
-            float: right;
+//         &.credit{
+//             font-style: normal;
+//             float: right;
 
-            @media screen and (max-width: $sm-break){
-                float: left;
-            }
-        }
-    }
-}
+//             @media screen and (max-width: $sm-break){
+//                 float: left;
+//             }
+//         }
+//     }
+// }
 
 
 p.lead{

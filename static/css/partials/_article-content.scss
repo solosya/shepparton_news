@@ -94,19 +94,18 @@
         }
 
 		p {
-			font-size: rem(17);
+			font-size: rem(18);
 			font-weight: 300;
 			font-family: $font-family-sans-serif;
 			font-style: normal;
 			font-stretch: normal;
 			line-height: 1.8;
-			letter-spacing: normal;
-			color: color(darkgrey);
+			letter-spacing: 0.33px;;
+			color: #2b2a2a;
 			padding-right: 10px;
 			clear: none;
 			margin-bottom: 20px;
 			@media screen and (max-width: $sm-break) {
-				// font-size: rem(14);
 				line-height: 1.62;
 				margin-bottom:0;
 				font-size: rem(17.5);

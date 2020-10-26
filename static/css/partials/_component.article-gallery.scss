@@ -71,19 +71,20 @@
 
 .article-gallery__caption {
     margin-top: 10px;
-    font-size: rem(14);
-    color: color(lightgrey);
+    font-size: rem(14) !important;
+    color: #979797;
+    font-style: italic;
     font-family: $font-family-serif;
-
-    @media screen and (max-width: $sm-break) {
-        font-size: rem(11);
-        line-height: 1.45;
-
-    }
+    float:left;
+    margin-bottom:15px;
+    // @media #{$mobile}{
+    //     height: 250px;
+    //     font-size: rem(14) !important;
+    // }
 }
 .owl-carousel__base .owl-stage-outer .owl-stage .owl-item figure figcaption{
     margin-bottom:0;
-     p {
+    p {
         @media screen and (max-width: $sm-break-down) {
             font-size:rem(12);
             line-height: rem(14);
