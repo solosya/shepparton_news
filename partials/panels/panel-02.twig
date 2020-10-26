@@ -3,7 +3,7 @@
 
 {% set config = _Network.getThemeConfig() %}
 
-{% set dev = false %}
+{% set dev = true %}
 {% set articleLock = false %}
 
 
@@ -13,6 +13,11 @@
     {% set cache = setCache("popularArticles", popularArticles, 500) %}
 {% endif %}
 
+{% set Newsletter = "" %}
+{% set Cblock = _ContentBlock.get({"title" : "Newsletter"}) %}
+{% if Cblock %}
+    {% set Newsletter = Cblock['content'] %}
+{% endif %}
 
 
 {# <div class="row">
@@ -508,13 +513,13 @@
     <hr class="divide20-25">
 
     <div class="row">
-            {% for i in 0..2 if articles[i] %}
+            {% for i in 0..1 if articles[i] %}
                 {% set hidden = "" %}
                 {% if i == 2 %}
                     {% set hidden = 'hidden-sm' %}
                 {% endif %}
                 <div class="col-sm-6 col-md-4">
-                    {# CARDS 12, 13, 14 #}
+                    {# CARDS 8, 9 #}
                     {{this.render('../_single-article.twig', {
                         imageSize       : {height: 112, width:190},
                         position        : cardIndex,
@@ -528,14 +533,21 @@
                         containerClass  : 'card-104-mobile card-101-tablet card-104-desktop-sm card-104-desktop-lg ' ~ hidden
                     }) | raw}}
 
-                    {% if i < 2 %}
-                        <hr class="divide20-25 visible-xs-block"  data-tag="kelsi">
-                    {% endif %}
+                    <hr class="divide20-25 visible-xs-block"  data-tag="kelsi">
 
                     {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
                 </div>
             {% endfor %}
+
+
+
+            <div class="col-sm-6 col-md-4">
+                {# CARD 10 #}
+                {{Newsletter | raw}}
+            </div>
+
+
 
     </div>
     <hr class="hidden-xs hidden-sm divide20-25" data-tag="fulla">
