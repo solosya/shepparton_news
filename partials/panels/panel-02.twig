@@ -412,7 +412,6 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-12">
-                {% for i in 0..1 if articles[i] %}
                     {# CARDS 9, 10 #}
                     {{this.render('../_single-article.twig', {
                         imageSize       : {width:95},
@@ -423,27 +422,42 @@
                         site            : site,
                         swap            : false,
                         dev             : dev,
-                        cardId          : "ten "~ i,
+                        cardId          : "ten" ~ 1,
                         containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                     }) | raw}}
-
-
-                    {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
-                    {% if i == 0 %}
-                        <hr class="divide20-25" data-tag="andy">
-                    {% else %}
-                        <hr class="divide20-25 hidden-sm" data-tag="laten">
-                    {% endif %}
-                {% endfor %}
 
+                    <hr class="divide20-25">
 
-                    <div class="ad-square  hidden-sm u-mobile-no-margin-top u-desktop-margin-top-30" data-view="desktop-mrec">
+                    <div class="ad-square mrec-min-height hidden-sm u-mobile-no-margin-top u-desktop-margin-top-30 u-desktop-margin-bottom-30" data-view="desktop-mrec">
                         <div class='advert-desktop  desktop-mrec' data-adsize="mrec"></div>
                         <div class='advert-tablet  tablet-mrec' data-adsize="mrec"></div>
                         <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>
                     </div>
+
+                    <hr class="divide20-25 hidden-sm">
+
+
+
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:95},
+                        styleType       : "image-bottom",
+                        position        : cardIndex,
+                        lazyload        : false,
+                        article         : articles[articleCount],
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        cardId          : "ten" ~ 2,
+                        containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% set cardIndex = cardIndex + 1 %}
+
                     {# <hr class="divide20-25 hidden-sm"> #}
+
+
 
                     <div class="click-subscribe u-tablet-margin-top-30 visible-sm-block" data-view="tablet">
                         <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
