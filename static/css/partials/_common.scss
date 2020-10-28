@@ -117,7 +117,6 @@
 
 .ad-square {
     // @include adtext;
-    // background:#f9f9f9;
     // min-height:50px;
     //background:gray;
     > .dairy {
@@ -125,6 +124,18 @@
             margin: 30px auto 30px auto;
         }
     }
+
+    &.mrec-min-height {
+        background:#f9f9f9;
+        min-height: 250px;
+    }
+    &.banner-min-height {
+        background:#f9f9f9;
+        max-width:730px;
+        min-height: 90px;
+        margin:auto;
+    }
+
     &.ad-square__left {
         @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
             left: 15px;

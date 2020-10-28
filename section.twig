@@ -20,7 +20,7 @@
 
 {% set popularArticles = getCache("popularArticles") %}
 {% if (popularArticles is empty) %}
-{% set popularArticles = _Article.getPopularArticles({ limit: 10, scope: 'network' }) %} 
+{% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network' }) %} 
     {% set cache = setCache("popularArticles", popularArticles, 500) %} 
 {% endif %}
 
@@ -37,6 +37,9 @@
     {% set title = splitTitle | slice(1, length) | join(" ") %}
 {% endif %}
 
+{% set dev = true %}
+{% set articlelock = true %}
+
 
 
 <main id="main" class="site-main section-page__main" role="main" data-article-limit="{{limit}}" data-article-count="{{articles | length}}">
@@ -45,31 +48,403 @@
 
         <section>
             <div class="row">
-                <div class="col-sm-12 header">
-                    <div class="hk">
-                        <h2 class="{{site}}">{{title}}</h2>
+                <div class="col-sm-12 u-margin-bottom-30">
+                    {# <div class="hk"> #}
+                        <h2 class="section-heading {{site}}">{{title}}</h2>
                         <p></p>
-                    </div>
+                    {# </div> #}
                 </div>
             </div>
 
+
+
             <div class="row">
-                <div class="col-md-8 col-sm-12 col-xs-12">
-                   {% if articles[articleCount] %}
-                       {{this.render('partials/_single-article.twig', {
-                           article: articles[articleCount],
-                           position: articleCount + 1,
-                           imageSize: {width:640, height:400},
-                           site: site,
-                           containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
-                       }) | raw}}
-                       {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                   {% endif %}
-                   
+                <div class="col-sm-12 col-md-9">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-8">
+
+                            {% if articles[articleCount] %}
+                                {{this.render('partials/_single-article.twig', {
+                                    imageSize       : {width:640, height:445},
+                                    position        : articleCount + 1,
+                                    lazyload        : false,
+                                    article         : articles[articleCount],
+                                    site            : site,
+                                    dev             : dev,
+                                    cardId          : "one",
+                                    containerClass  : 'card-100-mobile card-100-tablet card-100-desktop-sm card-100-desktop-lg'
+                                }) | raw}}
+                                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                            {% endif %}
+
+                            <hr class="divide20-25 visible-sm-block" data-tag="pawn">
+
+                        </div>
+
+                        <div class="col-sm-4 col-md-4">
+                            {{this.render('partials/_single-article.twig', {
+                                imageSize       : {width:235},
+                                position        : articleCount + 1,
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                dev             : dev,
+                                cardId          : "two",
+                                containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                            
+                            <hr class="divide20-25 hidden-xs" data-tag="rook">
+                            
+                            {{this.render('partials/_single-article.twig', {
+                                imageSize       : {width:95},
+                                styleType       : "image-bottom",
+                                article         : articles[articleCount],
+                                position        : articleCount + 1,
+                                lazyload        : false,
+                                site            : site,
+                                dev             : dev,
+                                cardId          : "three",
+                                containerClass  : 'card-101-mobile card-102-tablet card-101-desktop-sm card-101-desktop-lg'
+                            }) | raw}}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-3">
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-12 hidden-sm">
+                            <div class="ad-square mrec-min-height" data-view="Apple">
+                                <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
+                                <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
+                                <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-6 col-md-12 u-tablet-margin-top-20 u-tablet-clear-both">
+                            {{this.render('partials/_single-article.twig', {
+                                imageSize       : {width:235},
+                                position        : articleCount + 1,
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                dev             : dev,
+                                cardId          : "four",
+                                containerClass  : 'card-102-mobile card-101-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-12 visible-sm-block">
+                            <div class="ad-square mrec-min-height" data-view="Apple">
+                                <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
+                                <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
+                                <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <hr class="divide20-25 hidden-xs" data-tag="colonal">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="ad-square banner-min-height" data-view="Apple">
+                        <div class='advert-desktop desktop-banner' data-adsize="banner"></div>
+                        <div class='advert-tablet tablet-banner' data-adsize="banner"></div>
+                        <div class='advert-mobile mobile-banner' data-adsize="banner"></div>
+                    </div>
+
+                    <hr class="divide20-25" data-tag="bishop">
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row" data-tag="couch">
+                <div class="col-sm-12 col-md-9">
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-4">
+                            {{this.render('partials/_single-article.twig', {
+                                imageSize       : {width:235},
+                                position        : articleCount + 1,
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                dev             : dev,
+                                cardId          : "five",
+                                containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                            
+                            <hr class="divide20-25">
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                            {{this.render('partials/_single-article.twig', {
+                                imageSize       : {width:235},
+                                position        : articleCount + 1,
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                dev             : dev,
+                                cardId          : "six",
+                                containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                            
+                            <hr class="divide20-25">
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                            {{this.render('partials/_single-article.twig', {
+                                imageSize       : {width:235},
+                                position        : articleCount + 1,
+                                lazyload        : false,
+                                article         : articles[articleCount],
+                                site            : site,
+                                dev             : dev,
+                                cardId          : "seven",
+                                containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                            
+                            <hr class="divide20-25 hidden-sm">
+                        </div>
+
+
+
+
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="ad-square mrec-min-height visible-sm-block" data-view="raspberry">
+                                <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
+                                <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
+                                <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    {# Trending tablet #}
+                    <div class="row u-tablet-margin-top-30">
+                        <div class="col-sm-12 col-md-3 visible-sm-block" data-tag="trending tablet">
+                        
+                            <div class="c-section-header u-margin-bottom-20">
+                                <a class="{{site}}" href="{{link}}">
+                                    <h2 class="c-section-header__h2">Trending News</h2>
+                                </a>
+                            </div>
+
+                            <div class="row">
+                                {% for i in 0..3 %}
+                                    <div class="col-sm-6 col-md-12">
+                                        {{this.render('partials/_single-article.twig', {
+                                            imageSize       : {width:95},
+                                            styleType       : "image-bottom",
+                                            article         : popularArticles[i],
+                                            site            : site,
+                                            dev             : dev,
+                                            cardId          : "trending" ~ i,
+                                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                                        }) | raw}}
+                                        <hr class="divide20-25 hidden-xs">
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        
+                        </div>
+                    </div>
+
+
+
+                    <div class="row" data-tag="table">
+                        {% for i in 0..5 %}
+                            <div class="col-sm-4 col-md-4">
+                                {{this.render('partials/_single-article.twig', {
+                                    imageSize       : {width:235},
+                                    position        : articleCount + 1,
+                                    lazyload        : false,
+                                    article         : articles[articleCount],
+                                    site            : site,
+                                    dev             : dev,
+                                    cardId          : "six"~i,
+                                    containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                                }) | raw}}
+                                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                                
+                                <hr class="divide20-25">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
 
                 </div>
 
-                 <hr class="divide18 visible-sm-block visible-xs-block space-only">
+
+
+
+                {# Trending desktop #}
+                <div class="col-sm-12 col-md-3 visible-md-block visible-lg-block" data-tag="trending">
+                    <div class="ad-square mrec-min-height u-desktop-margin-bottom-40" data-view="Cranberry">
+                        <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
+                        <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
+                        <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
+                    </div>
+
+
+
+
+
+
+                    <div class="c-section-header">
+                        <a class="{{site}}" href="{{link}}">
+                            <h2 class="c-section-header__h2">Trending News</h2>
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        {% for i in 0..3 %}
+                            <div class="col-sm-6 col-md-12">
+                                {{this.render('partials/_single-article.twig', {
+                                    imageSize       : {width:95},
+                                    styleType       : "image-bottom",
+                                    article         : popularArticles[i],
+                                    site            : site,
+                                    dev             : dev,
+                                    cardId          : "trending" ~ i,
+                                    containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                                }) | raw}}
+                                <hr class="divide20-25 hidden-xs">
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row" data-tag="bench">
+                {% for i in 0..3 %}
+                    <div class="col-sm-6 col-md-3">
+                        {{this.render('partials/_single-article.twig', {
+                            imageSize       : {width:235},
+                            position        : articleCount + 1,
+                            lazyload        : false,
+                            article         : articles[articleCount],
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "seven"~i,
+                            containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                        
+                        <hr class="divide20-25">
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+
+            <div class="row">
+                {% for i in 0..7 %}
+                    <div class="col-sm-6 col-md-3">
+                        {{this.render('partials/_single-article.twig', {
+                            imageSize       : {width:235},
+                            position        : articleCount + 1,
+                            lazyload        : false,
+                            article         : articles[articleCount],
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "eight"~i,
+                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                        
+                        <hr class="divide20-25">
+                    </div>
+                {% endfor %}
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% set articleCount = _AppHelper.getApplicationEnv() == 'DEV' ? 0 : 0 %}
+
+            <div class="row u-margin-top-100">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    {% if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount],
+                            position: articleCount + 1,
+                            imageSize: {width:640, height:400},
+                            site: site,
+                            containerClass: 'home-feature-sm home-feature-tablet home-feature-mobile'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% endif %}
+
+                </div>
+
+                <hr class="divide18 visible-sm-block visible-xs-block space-only">
 
                 
 
@@ -80,34 +455,34 @@
                             <div class='advert-desktop' data-adsize="mrec"></div>
                         </div>                      
 
-                     {% if articles[articleCount] %}
+                    {% if articles[articleCount] %}
                             <div class="col-sm-1 col-md-12 col-xs-12">
                                 <hr class="divide12 visible-md-block visible-lg-block space-only">                            
-                                 {{this.render('partials/_single-article.twig', {
-                                     article: articles[articleCount], 
-                                     imageSize: {width:160, height:190},
-                                     position: articleCount + 1,
-                                     site: site,
-                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile'
-                                 }) | raw}}
-                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:160, height:190},
+                                    position: articleCount + 1,
+                                    site: site,
+                                    containerClass: 'feature-side feature-side-tablet card-sm-mobile'
+                                }) | raw}}
+                                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                                 <hr class="divide visible-xs-block">
                             </div>
-                     {% endif %}
+                    {% endif %}
 
                     <!-- extra story for tablet, mobile -->
 
-                     {% if articles[articleCount] %}
+                    {% if articles[articleCount] %}
                             <div class="col-sm-1 visible-sm-block">
-                                 {{this.render('partials/_single-article.twig', {
-                                     article: articles[articleCount], 
-                                     imageSize: {width:160, height:190},
-                                     position: articleCount + 1,
-                                     site: site,
-                                     containerClass: 'feature-side-tablet'
-                                 }) | raw}}
+                                {{this.render('partials/_single-article.twig', {
+                                    article: articles[articleCount], 
+                                    imageSize: {width:160, height:190},
+                                    position: articleCount + 1,
+                                    site: site,
+                                    containerClass: 'feature-side-tablet'
+                                }) | raw}}
                             </div>
-                     {% endif %}
+                    {% endif %}
 
                     </div>
                 </div>
@@ -125,7 +500,7 @@
                             site: site,
                             containerClass: 'card-sm card-sm-tablet card-sm-mobile ' ~ visibleClass[i]
                         }) | raw}}
-                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                         {% if i < 3 %}<hr class="divide visible-xs-block">{% endif %}
                     </div>
                 {% endfor %}
@@ -133,10 +508,18 @@
             </div>
         </section>
 
+
+
+
+
         <div class="ad-container hidden-xs">
             <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-            
         </div>
+
+
+
+
+
         <div class="row visible-xs-block">
                 <div class="ad-square col-xs-12">
                     <div class="row">
@@ -163,7 +546,7 @@
                                     containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile'
                                 }) | raw}}
                                 <hr class="divide visible-xs-block">                    
-                                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                             </div>
                         {% endfor %}
                 </div>
@@ -197,7 +580,7 @@
 
                             </div>
 
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                         {% endfor %}
                     </div>
                 </div>
@@ -228,7 +611,7 @@
                                     containerClass: 'feature-side feature-side-tablet card-sm-mobile '
                                 }) | raw}}
 
-                                {% set popCount = (dev) ? popCount : popCount + 1 %}
+                                {% set popCount = (articlelock) ? popCount : popCount + 1 %}
                                 {% if i < 2 %}
                                     <hr class="divide18 hidden-xs">
                                     <hr class="divide visible-xs-block">
