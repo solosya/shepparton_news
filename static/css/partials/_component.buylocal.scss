@@ -20,6 +20,18 @@
         justify-content: space-between;
     }
 
+    &__picture {
+        @media #{$tablet} {
+            margin: 10px 0;
+            height: 38px;
+        }
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+    }
+
     &__heading {
         @include font-size(12);
         letter-spacing: 0.22px;
