@@ -138,27 +138,43 @@ cardTemplateBottom;
 
 
 Acme.templates.systemCardTemplate = 
-    cardTemplateTop + 
-        '{{#if hasMedia}}\
+    cardTemplateTop +
+
+        '<div class="{{cardType}}c-cards-view__category-top category {{site}} {% if params.premiumtags %} premium-tag{% endif %}">{{params.category}}</div> \
+        <h2 class="{{cardType}}c-cards-view__heading-top {{figureClass}}">{{ params.title }}</h2> \
+        \
+        {{#if hasMedia}}\
             <figure class="{{cardType}}c-cards-view__media">\
                 <img class="img-responsive lazyload" data-original="{{params.image}}" src="{{params.image}}" style="background-image:url("{{placeholder}}"")>\
             </figure>\
         {{/if}} \
         \
         <div class="{{cardType}}c-cards-view__container content">\
-            <div class="{{cardType}}category {{cardType}}c-cards-view__category {{site}} {{premiumTag}}">{{ labelFix params.category }}</div>\
-            <h2 class="{{cardType}}c-cards-view__heading">{{{ params.title }}}</h2>\
-            <p class="{{cardType}}excerpt {{cardType}}c-cards-view__description j-truncate">{{{ params.content }}}</p>\
-            <div class="{{cardType}}author {{cardType}}c-cards-view__author j-truncate">\
-                <img src="{{profileImg}}" class="img-circle">\
-                <p class="{{cardType}} {{cardType}}c-cards-view__author-name {{site}}">{{ params.author }}</p>\
-                <time class="{{cardType}} {{cardType}}c-cards-view__author-time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
-            </div>\
+            <div class="{{cardType}}c-cards-view__text-container content"> \
+                <div class="{{cardType}}category {{cardType}}c-cards-view__category {{site}} {{premiumTag}}">{{ labelFix params.category }}</div>\
+                <h2 class="{{cardType}}c-cards-view__heading">{{{ params.title }}}</h2>\
+                <p class="{{cardType}}excerpt {{cardType}}c-cards-view__description j-truncate">{{{ params.content }}}</p>\
+                <div class="{{cardType}}c-cards-view__author author"> \
+                    <p class="{{cardType}}c-cards-view__author-name {{site}}">{{ params.author }}</p> \
+                    <time class="{{cardType}}c-cards-view__author-time" datetime="{{params.publishDate}}">{{params.publishDate}}</time> \
+                </div> \
+                <time class="{{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time> \
+            </div> \
+            {{#if hasMedia}}\
+                <figure class="{{cardType}}c-cards-view__media-bottom">\
+                    <img class="img-responsive lazyload" data-original="{{params.image}}" src="{{params.image}}" style="background-image:url("{{placeholder}}"")>\
+                </figure>\
+            {{/if}} \
         </div>'+ 
     cardTemplateBottom;
 
 
 
+                // <div class="{{cardType}}author {{cardType}}c-cards-view__author j-truncate">\
+                //     <img src="{{profileImg}}" class="img-circle">\
+                //     <p class="{{cardType}} {{cardType}}c-cards-view__author-name {{site}}">{{ params.author }}</p>\
+                //     <time class="{{cardType}} {{cardType}}c-cards-view__author-time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
+                // </div>\
 
 
 

@@ -33,7 +33,7 @@
 
 <div class="{{params.cardType}}c-cards-view__container content">
 
-{% if styleType == "image-bottom" %}
+{% if styleType == "image-bottom" or styleType == "image-both" %}
     <div class="{{params.cardType}}c-cards-view__text-container content">
 {% endif %}
         <div class="{{params.cardType}}c-cards-view__category category {{params.site}} {% if params.premiumtags %} premium-tag{% endif %}">{{label}}</div>
@@ -51,11 +51,11 @@
         </div>
 
         <time class="{{params.cardType}}c-cards-view__time" datetime="{{publishDate}}">{{params.publishDate}}</time>
-    {% if styleType == "image-bottom" %}
+    {% if styleType == "image-bottom" or styleType == "image-both" %}
         </div>
     {% endif %}
 
-    {% if styleType == "image-bottom" %}
+    {% if styleType == "image-bottom"  or styleType == "image-both"  %}
         {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
             <figure class="{{params.cardType}}c-cards-view__media-bottom {{params.videoClass}}">
                 <picture>

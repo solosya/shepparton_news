@@ -135,6 +135,10 @@
             &__heading{
                 letter-spacing: 0.36px;
             }
+            &__text-container {
+                margin-right: auto;
+            }
+
         }
     }
 }
@@ -168,6 +172,10 @@
             &__description {
                 max-height: 61px;
             }
+            &__text-container {
+                min-width: 149px;
+            }
+    
         }
     }
 }
@@ -176,5 +184,12 @@
     @media #{$desktop-lg} {
         @include card-101-base();
         @include card-name("101 desktop lg");
+
+        .c-cards-view {
+            &__text-container {
+                min-width: 188px;
+            }
+        }
+
     }
 }

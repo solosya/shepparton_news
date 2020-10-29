@@ -84,7 +84,7 @@ Acme.Feed.prototype.fetch = function()
 Acme.Feed.prototype.events = function() 
 {
     var self = this;
-
+    console.log(self.elem);
     if (self.elem.length > 0) {
         self.elem.unbind().on('click', function(e) {
             e.preventDefault();
@@ -101,6 +101,7 @@ Acme.Feed.prototype.events = function()
         self.elem.show();
     });
 
+    console.log("offset: ", this.offset, "limit: ",this.limit);
     if (this.infinite && this.offset >= this.limit && self.elem.length > 0) {
         self.addWayPoint.call(self);
     }
@@ -109,10 +110,12 @@ Acme.Feed.prototype.events = function()
 Acme.Feed.prototype.addWayPoint = function()
 {
     var self = this;
+    console.log('adding waypoint');
     self.waypoint = new Waypoint({
         element: self.elem,
         offset: '80%',
         handler: function (direction) {
+            console.log('in the handler');
             if (direction == 'down') {
                 self.fetch();
             }
