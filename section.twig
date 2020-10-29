@@ -191,7 +191,7 @@
 
             <div class="row" data-tag="couch">
                 <div class="col-sm-12 col-md-9">
-                    <div class="row">
+                    <div class="row" style="display:flex;flex-wrap:wrap">
                         {% if articles[articleCount] %}
                         <div class="col-xs-6 col-sm-6 col-md-4">
                             {{this.render('partials/_single-article.twig', {
@@ -206,7 +206,7 @@
                             }) | raw}}
                             {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                             
-                            <hr class="divide20-25">
+                            <hr class="divide20-25 visible-xs-block visible-sm-block">
                         </div>
                         {% endif %}
 
@@ -225,7 +225,7 @@
                             }) | raw}}
                             {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                             
-                            <hr class="divide20-25">
+                            <hr class="divide20-25  visible-sm-block">
                         </div>
                         {% endif %}
 
@@ -244,10 +244,13 @@
                             }) | raw}}
                             {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                             
-                            <hr class="divide20-25 hidden-sm">
+                            {# <hr class="divide20-25 hidden-sm"> #}
                         </div>
                         {% endif %}
 
+                        <div class="col-xs-12 visible-xs-block">
+                            <hr class="divide20-25">
+                        </div>
 
 
 
@@ -285,7 +288,11 @@
                                             cardId          : "trending" ~ i,
                                             containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                                         }) | raw}}
-                                        <hr class="divide20-25 hidden-xs">
+                                        <hr class="divide20-25 hidden-xs hidden-sm">
+
+                                        {% if i < 2 %}
+                                            <hr class="divide20-25 visible-sm-block">
+                                        {% endif %}
                                     </div>
                                 {% endfor %}
 
@@ -296,9 +303,12 @@
 
 
 
-                    <div class="row" data-tag="table">
+                    <div class="row" style="display:flex;flex-wrap:wrap" data-tag="table">
                         {% for i in 0..5 if articles[articleCount] %}
                             <div class="col-xs-6 col-sm-4 col-md-4">
+
+                                <hr class="divide20-25 hidden-xs">
+
                                 {{this.render('partials/_single-article.twig', {
                                     imageSize       : {width:235},
                                     position        : articleCount + 1,
@@ -306,12 +316,11 @@
                                     article         : articles[articleCount],
                                     site            : site,
                                     dev             : dev,
-                                    cardId          : "six"~i,
+                                    cardId          : "twenty"~i,
                                     containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
                                 }) | raw}}
                                 {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                                 
-                                <hr class="divide20-25 hidden-xs">
                             </div>
                             {% if i % 2 == 1 and i != 5 %}
                                 <div class="col-xs-12 visible-xs-block">
@@ -342,7 +351,7 @@
 
 
 
-                    <div class="c-section-header">
+                    <div class="c-section-header u-margin-bottom-20">
                         <a class="{{site}}" href="{{link}}">
                             <h2 class="c-section-header__h2">Trending News</h2>
                         </a>
@@ -360,7 +369,9 @@
                                     cardId          : "trending" ~ i,
                                     containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                                 }) | raw}}
-                                <hr class="divide20-25">
+                                {% if i < 3 %}
+                                    <hr class="divide20-25">
+                                {% endif %}
                             </div>
                         {% endfor %}
 
@@ -373,9 +384,13 @@
 
 
 
-            <div class="row" data-tag="bench">
+            <div class="row" style="display:flex;flex-wrap:wrap;" data-tag="bench">
                 {% for i in 0..3 if articles[articleCount] %}
                     <div class="col-xs-6 col-sm-6 col-md-3">
+
+                        <hr class="divide20-25">
+
+
                         {{this.render('partials/_single-article.twig', {
                             imageSize       : {width:235},
                             position        : articleCount + 1,
@@ -388,7 +403,6 @@
                         }) | raw}}
                         {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                         
-                        <hr class="divide20-25">
                     </div>
                 {% endfor %}
             </div>
@@ -399,6 +413,10 @@
             <div class="row" style="display:flex;flex-wrap: wrap;">
                 {% for i in 0..7 if articles[articleCount] %}
                     <div class="col-xs-12 col-sm-6 col-md-3">
+
+                        <hr class="divide20-25">
+
+
                         {{this.render('partials/_single-article.twig', {
                             imageSize       : {width:235},
                             position        : articleCount + 1,
@@ -411,7 +429,6 @@
                         }) | raw}}
                         {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                         
-                        <hr class="divide20-25">
                     </div>
                 {% endfor %}
             </div>
@@ -699,8 +716,8 @@
             blogid          : "{{ blogData['guid'] }}",
             card_class      : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg',
             ads             : true,
-            beforeEach      : '<div class="col-xs-12 col-sm-6 col-md-3">',
-            afterEach       : '<hr class="divide20-25"></div>',
+            beforeEach      : '<div class="col-xs-12 col-sm-6 col-md-3"><hr class="divide20-25">',
+            afterEach       : '</div>',
             non_pinned      : {{articleCount}}
         });
 

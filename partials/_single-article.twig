@@ -183,11 +183,26 @@
     } %}
 
 
+    {% set isPinned = article.isPinned == 1 ? "Pinned" : "Unpinned" %}
+    {% set pinned_position = "" %}
+    {% if article.isPinned != 1 and article.pinnedAt > 0 %}
+        {% set pinned_position = " Previously pinned at " ~ article.pinnedAt %}
+    {% elseif article.isPinned == 1 %}
+        {% set pinned_position = " at position " ~ article.pinnedAt %}
+    {% endif %}
+
+
+
     {% set totalstring = "" %}
     {% set totals = (article.total is defined) ? article.total : false %}
     {% if totals and _User.isAdminUser() %}
         {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
         {% set totalstring = totalstring ~ " Published " ~ params.publishDate %}
+
+        {% set totalstring = "Viewed " ~ totals.view ~ " times" %}
+        {% set totalstring = totalstring ~ " Published " ~ params.publishDate ~ ". " ~ isPinned ~ pinned_position ~ " display order " ~ article.displayOrder %}
+
+
     {% endif %}
 
 
