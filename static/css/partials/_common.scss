@@ -133,7 +133,8 @@
         background:#f9f9f9;
         max-width:730px;
         min-height: 90px;
-        margin:auto;
+        margin-left:auto;
+        margin-right:auto;
     }
 
     &.ad-square__left {
@@ -685,4 +686,16 @@ span.leadsentence{
             }
         }
     }
+}
+
+.loadmore__container {
+    >div:nth-child(even) {
+        // background:red;
+        padding-left:7px;
+    }
+    >div:nth-child(odd) {
+        // background:green;
+        padding-right:7px;
+    }
+
 }
