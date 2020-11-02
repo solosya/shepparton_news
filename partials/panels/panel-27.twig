@@ -1,0 +1,44 @@
+{% set articleCount = 0 %}
+{% set dev = true %}
+{% set articlelock = false %}
+
+<section>
+    <div class="row" data-template="panel-24">
+        <div class="col-sm-12">
+            <div class="c-section-header">
+                <a class="{{site}}" href="{{link}}">
+                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row u-margin-top-20">
+
+        <div class="col-sm-12 col-md-12">
+            <div class="row">
+                {% for i in 0..3 if articles[articleCount] %}
+                    <div class="col-sm-3">
+                    {{this.render('../_single-article.twig', {
+                        styleType       : "image-bottom",
+                        swap            : false,
+                        cardId          : "panel26" ~ 1,
+                        article         : articles[articleCount],
+                        imageSize       : {width:300, height:200},
+                        site            : site,
+                        dev             : dev,
+                        containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% if i < 2 %}
+                        <hr class="divide20-25  visible-sm-block">
+                    {% endif %}
+
+                    <hr class="divide20-25 visible-xs-block">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>

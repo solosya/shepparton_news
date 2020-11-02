@@ -39,6 +39,11 @@
                     "type": "inputbox"
                 },
                 {
+                    "name": "multi_name",
+                    "label": "Multi Section Name",
+                    "type": "inputbox"
+                },
+                {
                     "label": "",
                     "type": "radio",
                     "name": "premium",

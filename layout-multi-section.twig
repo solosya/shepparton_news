@@ -1,0 +1,184 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData    = _Blog.getBlog() %}
+{% set layout      = blogData.layout %}
+{% set site        = networkData.title | lower | split(" ")[0]%}
+{% set homeBlog    = blogData['title'] | lower %}
+
+{% set layoutPage  = layout | split("-")[1] %}
+{% set config = _Network.getThemeConfig() %}
+{% set log = _AppHelper.log(blogData) %}
+
+
+{% set layoutPage = "" %}
+{% if blogData.additionalInfo.multi_name is defined %}
+    {% set layoutPage = blogData.additionalInfo.multi_name %}
+{% endif %}
+
+
+{{this.registerJs("Acme.cards = CardController();")}}
+
+{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}}
+
+{% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
+
+{% if dev %}
+    {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
+{% endif %}
+
+{% set sectionOrder = [] %}
+
+
+
+
+{% set bannerSpots = [2,5,8] %}
+{% set sectionOrder = theSections[site] %}
+
+
+
+{# *******************************************************
+            CONFIG OPTIONS SET IN PLATFORM
+******************************************************* #}
+
+{% if config['page'][layoutPage]['sections'] is defined %}
+    {% if config['page'][layoutPage]['active'] is not defined or config['page'][layoutPage]['active'] == true %}
+
+
+        {% set pageSections = config['page'][layoutPage]['sections'] %}
+        {% set sectionOrder = pageSections | keys %}
+        {% set blogFeeds = {} %}
+        {% for i, panel in pageSections %}
+            {% if panel['articleOrder'] is defined %}
+
+                {# If a panel has multiple blogs we get the count of items to fetch from iterating
+                over the articleOrder array #}
+                {% for blogName in panel['articleOrder'] %}
+
+                    {% if blogFeeds[blogName] is not defined %}
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : 1} }) %}
+                    {% else %}
+                        {% set count = blogFeeds[blogName].limit %}
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count + 1} }) %}
+                    {% endif %}
+                {% endfor %}
+
+
+
+            {# If a panel has a single blog we get the count of items to fetch from checking the articleCount key #}
+            {% else %}
+                {% set blogName = panel['blog'] %}
+                {% if panel['articleCount'] is defined %}
+                    {% set count = panel['articleCount'] %}
+                    {% if blogFeeds[blogName] is not defined or blogFeeds[blogName].limit < count %}
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count} }) %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# *******************************************************
+                Fetch all needed feeds
+******************************************************* #}
+{% for key, value in blogFeeds %}
+    {% for blog in networkData.networkBlogs %}
+
+
+        {# FOR DEV  #}
+        {% if dev %}
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : { 'feed' : articlesArr, 'link' : '#' } }) %}
+        {% endif %}
+
+
+        {# FOR PRODUCTION #}
+        {% if not dev and blog.title | lower == key | lower %}
+
+            {% set feed = _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) %}
+
+            {% set blogFeeds = blogFeeds | merge({
+                (key) : {
+                    'feed'      : feed,
+                    'link'      : blog.link
+                    }
+                }) %}
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+<main id="main" class="site-main" role="main" data-blog="{{ homeBlog }}">
+
+
+        <section class="container">
+            <div class="row">
+
+                <div class="col-sm-12 u-margin-bottom-30">
+                    <h2 class="section-heading {{site}}">{{this.title}}</h2>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+    {# *******************************************************
+                        RENDER SECTIONS
+    ******************************************************* #}
+    {% for pagesection in sectionOrder %}
+        {% set params = {
+            'section'     : pageSections[pagesection],
+            'blogFeeds'   : blogFeeds,
+            'site'        : site,
+            'dev'         : dev,
+            'networkData' : networkData,
+            'blogData'    : blogData
+        } %}
+
+        {{this.render('render.twig', params) | raw}}
+
+        {% if loop.index in bannerSpots %}
+            <div class="ad-container hidden-xs">
+                <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
+            </div>
+            <div class="ad-square visible-xs-block col-sm-9">
+                <div class="row"><hr class="divide"></div>
+                <div class='advert-mobile' data-adsize="mrec"></div>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+
+
+</main><!-- .site-main -->
+
+
