@@ -43,7 +43,7 @@
 
 
         <div class="row">
-            <div class="col-sm-12 u-margin-bottom-30">
+            <div class="col-12 u-margin-bottom-30">
                 <h2 class="section-heading {{site}}">{{this.title}}</h2>
                 <p class="blogowner {{site}}">by {{blogInfo.settings.contact.name}}</p>
             </div>
@@ -53,8 +53,8 @@
         {# *******************************************
                             DESKTOP
         ******************************************* #}
-        <div class="row hidden-sm">
-            <div class="col-sm-6">
+        <div class="row d-flex d-md-none d-lg-flex">
+            <div class="col-12 col-md-6 col-lg-6">
             
                 {% if articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
@@ -75,7 +75,7 @@
 
                 <div class="row">
                     {% if articles[articleCount] %}
-                    <div class="col-xs-6 col-sm-4 col-md-6 u-mobile-padding-right-7">
+                    <div class="col-6 col-md-4 col-lg-6 u-mobile-padding-right-7">
                         {{this.render('partials/_single-article.twig', {
                             imageSize       : {width:235},
                             styleType       : "image-both",
@@ -93,7 +93,7 @@
 
 
                     {% if articles[articleCount] %}
-                    <div class="col-xs-6 col-sm-4 col-md-6 u-mobile-padding-left-7">
+                    <div class="col-6 col-md-4 col-lg-6 u-mobile-padding-left-7">
                         {{this.render('partials/_single-article.twig', {
                             imageSize       : {width:235},
                             styleType       : "image-both",
@@ -111,11 +111,10 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 visible-xs-block u-mobile-margin-bottom-30">
 
+            {# Mobile #}
+            <div class="col-12 d-block d-md-none u-mobile-margin-bottom-30">
                 <hr class="divide20-25" data-tag="bingo">
-
-
                 <div class="ad-square mrec-min-height" data-view="Banana">
                     <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
                     <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
@@ -125,7 +124,7 @@
 
 
 
-            <div class="col-xs-12 col-sm-3">
+            <div class="col-12 col-lg-3">
             
                 {% if articles[articleCount] %}
                     {{this.render('partials/_single-article.twig', {
@@ -181,8 +180,8 @@
             </div>
 
 
-            <div class="col-xs-12 col-sm-3">
-                <div class="ad-square mrec-min-height hidden-xs" data-view="Apple">
+            <div class="col-12 col-md-3">
+                <div class="ad-square mrec-min-height d-none d-md-block" data-view="Apple">
                     <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
                     <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
                     <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
@@ -247,9 +246,9 @@
         ******************************************* #}
         {% set tabletCount = 0 %}
 
-        <div class="visible-sm-block">
+        <div class="d-none d-md-block d-lg-none">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-12 col-md-8">
                 
                     {% if articles[tabletCount] %}
                         {{this.render('partials/_single-article.twig', {
@@ -269,7 +268,7 @@
                 </div>
 
 
-                <div class="col-sm-4">
+                <div class="col-12 col-md-4">
                 
                     {% if articles[tabletCount] %}
                         {{this.render('partials/_single-article.twig', {
@@ -310,7 +309,7 @@
 
             <div class="row">
 
-                <div class="col-sm-6">
+                <div class="col-12 col-md-6">
 
                     {% if articles[tabletCount] %}
                         {{this.render('partials/_single-article.twig', {
@@ -367,7 +366,7 @@
                 </div>
 
 
-                <div class="col-sm-6">
+                <div class="col-12 col-md-6">
 
                     <div class="ad-square mrec-min-height u-tablet-margin-bottom-30" data-view="Pear">
                         <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
@@ -436,7 +435,7 @@
 
 
         <div class="row">
-            <div class="col-sm-12 col-md-12">
+            <div class="col-12">
                 <hr class="divide20-25" data-tag="colonal">
                 <div class="ad-square banner-min-height banner-min-height u-desktop-margin-bottom-20" data-view="Apple">
                     <div class='advert-desktop desktop-banner' data-adsize="banner"></div>
@@ -448,14 +447,14 @@
         </div>
 
 
-        <div class="row" style="display:flex;flex-wrap:wrap">
+        <div class="row">
             {% for i in 0..3 if articles[articleCount] %}
 
                 {% set mobilePadding = (i % 2 == 0) ? "u-mobile-padding-right-7" : "u-mobile-padding-left-7" %}
-                <div class="col-xs-6 col-sm-6 col-md-3 {{mobilePadding}}">
+                <div class="col-6 col-lg-3 {{mobilePadding}}">
 
                     {% if i > 1 %}
-                        <hr class="divide20-25 visible-xs-block visible-sm-block" data-tag="soldier">
+                        <hr class="divide20-25 d-block d-lg-none" data-tag="soldier">
                     {% endif %}
 
 
@@ -479,9 +478,9 @@
 
 
 
-        <div class="row" style="display:flex;flex-wrap:wrap">
+        <div class="row">
             {% for i in 0..2 if articles[articleCount] %}
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-12 col-md-6 col-lg-3">
                     <hr class="divide20-25" data-tag="rook">
 
                     {{this.render('partials/_single-article.twig', {
@@ -500,7 +499,7 @@
 
 
 
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
                 <hr class="divide20-25" data-tag="guard">
                 <div class="ad-square mrec-min-height  u-desktop-margin-bottom-20" data-view="Orange">
                     <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
@@ -514,7 +513,7 @@
 
 
             {% for i in 0..3 if articles[articleCount] %}
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-12 col-md-6 col-lg-3">
                     <hr class="divide20-25" data-tag="bishop">
 
                     {{this.render('partials/_single-article.twig', {
@@ -537,7 +536,7 @@
 
 
         <div class="row">
-            <div class="col-xs-12 col-md-12">
+            <div class="col-12">
                 <hr class="divide20-25" data-tag="king">
                 <div class="ad-square banner-min-height u-desktop-margin-bottom-20" data-view="Apple">
                     <div class='advert-desktop desktop-banner' data-adsize="banner"></div>
@@ -551,12 +550,12 @@
 
 
 
-        <div class="row" style="display:flex;flex-wrap:wrap">
+        <div class="row">
             {% for i in 0..3 if articles[articleCount] %}
                 {% set mobilePadding = (i % 2 == 0) ? "u-mobile-padding-right-7" : "u-mobile-padding-left-7" %}
-                <div class="col-xs-6 col-sm-6 col-md-3 {{mobilePadding}}">
+                <div class="col-6 col-md-6 col-lg-3 {{mobilePadding}}">
                     {% if i > 1 %}
-                        <hr class="divide20-25 visible-xs-block visible-sm-block" data-tag="bishop">
+                        <hr class="divide20-25 d-block d-lg-none" data-tag="bishop">
                     {% endif %}
 
                     {{this.render('partials/_single-article.twig', {
@@ -580,10 +579,10 @@
 
         </div>
 
-        <div class="row" style="display:flex;flex-wrap:wrap">
+        <div class="row">
             {% for i in 0..3 if articles[articleCount] %}
                 {% set mobilePadding = (i % 2 == 0) ? "u-mobile-padding-right-7" : "u-mobile-padding-left-7" %}
-                <div class="col-xs-6 col-sm-6 col-md-3 {{mobilePadding}}">
+                <div class="col-6 col-md-6 col-lg-3 {{mobilePadding}}">
                     <hr class="divide20-25" data-tag="queen">
 
                     {{this.render('partials/_single-article.twig', {
@@ -602,7 +601,7 @@
 
 
 
-        <section class="row loadmore__container {{site}}" id="loadmore_section" style="display:flex;flex-wrap: wrap"></section>
+        <section class="row loadmore__container {{site}}" id="loadmore_section"></section>
         
         <section class="loadmore__section {{site}}">
             {# {% if articles|length >= limit %} #}
@@ -634,7 +633,7 @@
             blogid          : "{{ blogInfo['guid'] }}",
             card_class      : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg',
             ads             : true,
-            beforeEach      : '<div class="col-xs-6 col-sm-6 col-md-3"><hr class="divide20-25">',
+            beforeEach      : '<div class="col-6 col-md-6 col-lg-3"><hr class="divide20-25">',
             afterEach       : '</div>',
             non_pinned      : {{articleCount}}
         });

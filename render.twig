@@ -4,6 +4,8 @@
 {% set feedArr = [] %}
 {% set blogLink = "" %}
 {% set thisBlog = {} %}
+{% set admin = _User.isAdminUser() %}
+{% set dev = true %}
 
 {# If a page section has articles from multiple blogs, assemble here #}
 {% if section.articleOrder is defined and section.articleOrder | length > 0 %}
@@ -43,6 +45,7 @@
         site            : site,
         networkData     : networkData,
         blogData        : blogData,
+        admin           : admin,
     } %}
 
     {% if section.template_params is defined and section.template_params | length > 0  %}

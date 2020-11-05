@@ -20,7 +20,7 @@
     {% set cache = setCache("networkData", networkData, 500) %}
 {% endif %}
 
-{# {% set log = _AppHelper.log(article) %} #}
+
 {% set syndication = 'Local Content' %}
 {% if article.feed_id != null and article.feed_id starts with 'S-' %}
     {% set syndication = 'National Syndicated' %}
@@ -230,11 +230,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                     
                     
                     
-                    <div class="col-lg-offset-1 col-md-8 col-lg-7" id="articleContentContainer">
+                    <div class="offset-xl-1 col-lg-8 col-xl-7" id="articleContentContainer">
 
                         <div class="row">
 
-                            <div class="col-md-12">
+                            <div class="col-12">
 
                                 <div class="content-block-top">
                                     <div id="pianoArticleHeader"></div>
@@ -262,7 +262,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             </div>
 
                             {% if articleImg %}
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     {% if imageToggle %}
                                         <div id="gallery-toggle" class="gallery-toggle">
                                             <ul class="gallery-toggle__list">
@@ -271,7 +271,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                             </ul>
                                         </div>
                                     {% endif %}
-
 
                                     <div class="gallery-container relative" data-featured="{{featured}}">
 
@@ -305,7 +304,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
-                            <div class="col-md-12 u-margin-top-40 u-mobile-margin-top-20">
+                            <div class="col-12  u-mobile-margin-top-20">
 
                                 <div class="hidden" id="oovvuu"> {{oovvuu}}</div>
                                 <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
@@ -359,11 +358,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                         SIDEBAR
                     *************** #}
 
-                    <div class="col-sm-12 col-md-4 col-lg-3 u-tablet-margin-top-25" style="min-height:1px;" id="old_adScrollContainer">
+                    <div class="col-12 col-lg-4 col-xl-3 u-tablet-margin-top-25" style="min-height:1px;" id="old_adScrollContainer">
                         <div class="article-sidebar" id="old_articleAdScroll">
-                            <div class="hidden-sm">
+                            <div class="d-block d-md-none d-lg-block u-mobile-margin-top-20 u-mobile-margin-bottom-30 u-mobile-center">
                                 <div class="ad-side-container">
-                                    <div class='advert-desktop u-fix-adsize' data-adsize="mrec"></div>
+                                    <div class='ad-square advert-desktop mrec-min-height u-fix-adsize' data-adsize="mrec"></div>
                                 </div>
                             </div>
 
@@ -371,10 +370,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
                             <div class="row">
                                 
-                                <div class="col-sm-6 col-md-12">
+                                <div class="col-12 col-md-6 col-lg-12">
 
                                     {% if recentArticles[0] %}
-                                        <div class="c-section-header u-margin-bottom-20">
+                                        <div class="c-section-header u-desktop-margin-top-30 u-margin-bottom-20">
                                             <a class="{{site}}" href="{{link}}">
                                                 <h2 class="c-section-header__h2 {{site}}">Latest articles</h2>
                                             </a>
@@ -399,17 +398,23 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     {% endfor %}
                                 </div>
 
-                                {% if config['newsletter'] is defined and config['newsletter'] != "" %}
 
-                                    <div class="visible-sm-block u-margin-bottom-30">
-                                        <div class="ad-side-container">
-                                            <div class='advert-desktop' data-adsize="mrec"></div>
-                                        </div>
+
+                                <div class="col-md-6 d-none d-md-block d-lg-none u-margin-bottom-30">
+                                    <div class="ad-square mrec-min-height ad-side-container">
+                                        <div class='advert-desktop' data-adsize="mrec"></div>
                                     </div>
 
+                                    {% if config['newsletter'] is defined and config['newsletter'] != "" %}
+                                        <div class="newsletter-iframe-container u-tablet-margin-top-40">
+                                            <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
+                                        </div>
+                                    {% endif %}
 
+                                </div>
 
-                                    <div class="col-sm-6 col-md-12">
+                                {% if config['newsletter'] is defined and config['newsletter'] != "" %}
+                                    <div class="col-12 col-md-6 col-lg-12 d-block d-md-none d-lg-block">
                                         <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;">
                                             <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
                                         </div>
@@ -444,13 +449,13 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
             <div class="row related-articles">
-                <div class="col-md-12">
+                <div class="col-12">
                     <h1 class="related-articles__header {{site}}">Most Popular</h1>
                 </div>
 
                 {% for i in 0..3 if relatedArticles[i] %}
                     {% set clear = i == 2 ? 'u-tablet-clear-both' : '' %}
-                    <div class="col-xs-6 col-md-3 {{clear}}">
+                    <div class="col-6 col-lg-3 {{clear}}">
                         {{this.render('partials/_single-article.twig', {
                             article: relatedArticles[i],
                             imageSize : {width:235},
@@ -458,7 +463,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                             site:   site
                         }) | raw}}
                         {% if i < 2 %}
-                            <hr class="divide20-25 visible-xs-block visible-sm-block">
+                            <hr class="divide20-25 d-block d-lg-none">
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -474,10 +479,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
 
+{# <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
-{# <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div> #}
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
-<div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
+<div class='advert-desktop advert-tablet' data-adsize="interstitial"></div> #}
 
 
 

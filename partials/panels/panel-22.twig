@@ -1,0 +1,128 @@
+{% set articleCount = 0 %}
+{% set articlelock = false %}
+
+<section>
+    <div class="row" data-template="panel-22">
+        <div class="col-sm-12">
+            <div class="c-section-header">
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 22</p>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row u-margin-top-20">
+        <div class="col-sm-12 col-md-9">
+            <div class="row">
+                <div class="col-sm-8 col-md-8">
+
+                    {% if articles[articleCount] %}
+                    {{this.render('../_single-article.twig', {
+                            imageSize       : {width:640, height:445},
+                            position        : articleCount + 1,
+                            swap            : false,
+                            article         : articles[articleCount],
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "one",
+                            containerClass  : 'card-100-mobile card-100-tablet card-100-desktop-sm card-100-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% endif %}
+
+                    <hr class="divide20-25 visible-xs-block visible-sm-block" data-tag="pawn">
+
+                </div>
+
+
+                {% if articles[articleCount] %}
+                <div class="col-xs-6 col-sm-4 col-md-4 u-mobile-padding-right-7">
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:235},
+                        position        : articleCount + 1,
+                        lazyload        : false,
+                        article         : articles[articleCount],
+                        site            : site,
+                        dev             : dev,
+                        cardId          : "two",
+                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    
+                    <hr class="divide20-25 hidden-xs" data-tag="rook">
+                </div>
+                {% endif %}
+
+
+                {% if articles[articleCount] %}
+                <div class="col-xs-6 col-sm-4 col-md-4 u-mobile-padding-left-7">
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:235},
+                        styleType       : "image-both",
+                        article         : articles[articleCount],
+                        position        : articleCount + 1,
+                        lazyload        : false,
+                        site            : site,
+                        dev             : dev,
+                        cardId          : "three",
+                        containerClass  : 'card-102-mobile card-102-tablet card-101-desktop-sm card-101-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                </div>
+                {% endif %}
+
+            </div>
+
+            <hr class="divide20-25 visible-xs-block" data-tag="knight">
+
+        </div>
+
+        <div class="col-sm-12 col-md-3">
+
+            <div class="row">
+
+
+
+                {% if articles[articleCount] %}
+                <div class="col-sm-6 col-md-12 u-tablet-margin-top-20 u-tablet-clear-both">
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:235},
+                        position        : articleCount + 1,
+                        styleType       : "image-both",
+                        lazyload        : false,
+                        article         : articles[articleCount],
+                        site            : site,
+                        dev             : dev,
+                        cardId          : "four",
+                        containerClass  : 'card-101-mobile card-101-tablet card-102-desktop-sm card-102-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    <hr class="divide20-25 visible-xs-block" data-tag="knight">
+                </div>
+                {% endif %}
+
+
+                <div class="col-sm-6 col-md-12">
+                    <hr class="divide20-25" data-tag="knight">
+
+                    <div class="ad-square mrec-min-height u-tablet-margin-top-20" data-view="Apple">
+                        <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
+                        <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
+                        <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>

@@ -1,26 +1,33 @@
 {% set articleCount = 0 %}
+{% set articlelock = false %}
+
 <div class="row">
 
-    <div class="col-sm-12">
+    <div class="col-12">
 
         <div class="row u-margin-bottom-20" data-template="panel-17">
 
-            <div class="col-sm-12">
+            <div class="col-12">
                 <div class="c-section-header ">
-                    <a class="{{site}}" href="{{link}}">
-                        <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                    <a class="{{site}} c-section-header__link" href="{{link}}">
+                        <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                        {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 17</p>
+                    {% endif %}
                     </a>
                 </div>
             </div>
         </div>
 
+
+
         <div class="row" data-template="panel-17">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-12 col-lg-6">
                 <div class="row">
                     {% for i in 0..1 if articles[articleCount] %}
                             {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
 
-                            <div class="col-xs-6 col-md-6 {{mobilePadding[i]}}">
+                            <div class="col-6 {{mobilePadding[i]}}">
                             {{this.render('../_single-article.twig', {
                                 article         : articles[articleCount],
                                 template        : 'property_card',
@@ -29,26 +36,26 @@
                                 site            : site,
                                 containerClass  : 'card-108-mobile card-108-tablet card-108-desktop-sm card-108-desktop-lg'
                             }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                             {% if i < 2 %}
-                                <hr class="divide25-40 visible-sm-block">
+                                <hr class="divide25-40 d-none d-md-block d-lg-none ">
                             {% endif %}
                         </div>
 
                     {% endfor %}
-                    <div class="col-xs-12">
-                        <hr class="divide25-30 visible-xs-block">
+                    <div class="col-12">
+                        <hr class="divide25-30 d-block d-md-none">
                     </div>
                 </div>
             </div>
 
 
-            <div class="cols-sm-12 col-md-6">
+            <div class="col-12 col-lg-6">
                 <div class="row">
                     {% for i in 0..1 if articles[articleCount] %}
                         {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
 
-                        <div class="col-xs-6 col-md-6 {{mobilePadding[i]}}">
+                        <div class="col-6 {{mobilePadding[i]}}">
                             {{this.render('../_single-article.twig', {
                                 article         : articles[articleCount],
                                 template        : 'property_card',
@@ -57,20 +64,20 @@
                                 site            : site,
                                 containerClass  : 'card-108-mobile card-108-tablet card-108-desktop-sm card-108-desktop-lg'
                             }) | raw}}
-                            {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                         </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
 
-        <hr class="divide25-30 visible-sm-block visible-md-block visible-lg-block">
+        <hr class="divide25-30 d-none d-md-block">
 
     </div>
 </div>
 
-<div class="ad-square hidden-xs u-mobile-no-margin-top">
+<div class="ad-square banner-min-height d-none d-md-block u-mobile-no-margin-top">
     <div class='advert-desktop  desktop-banner' data-adsize="banner"></div>
     <div class='advert-tablet  tablet-banner' data-adsize="banner"></div>
-    {# <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div> #}
+    <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>
 </div>

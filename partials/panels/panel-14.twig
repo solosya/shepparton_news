@@ -1,1 +1,77 @@
 {% set articleCount = 0 %}
+{% set cardIndex = 1 %}
+{% set articlelock = false %}
+
+<div class="row">
+    <div class="col-12">
+
+
+        <div class="row u-margin-bottom-20" data-template="panel-14">
+            <div class="col-12">
+                <div class="c-section-header">
+                    <a class="{{site}} c-section-header__link" href="{{link}}">
+                        <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                        {% if admin %}
+                            <p class="c-section-header__panel-name">Panel 14</p>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row" data-template="panel-14">
+
+            {% for i in 0..11 if articles[articleCount] %}
+
+                {% if loop.index == 7  %}
+                    <div class="col-12 d-block d-md-none">
+                        <div class="ad-square banner-min-height u-margin-bottom-30">
+                            <div class='advert-desktop desktop-banner' data-adsize="banner"></div>
+                            <div class='advert-tablet  tablet-banner' data-adsize="banner"></div>
+                            <div class='advert-mobile  mobile-banner' data-adsize="banner"></div>
+                        </div>
+                        <hr class="divide20-25">
+                    </div>
+                {% endif %}
+
+
+
+                <div class="col-6 col-md-6 col-lg-3">
+
+                    {% if loop.index > 4  %}
+                        <hr class="divide20-25 d-none d-lg-block">
+                    {% endif %}
+
+                    {% if loop.index > 2  %}
+                        <hr class="divide20-25 d-none d-md-block d-lg-none">
+                    {% endif %}
+
+                    {{this.render('../_single-article.twig', {
+                        article         : articles[articleCount],
+                        styleType       : "image-bottom",
+                        position        : cardIndex,
+                        imageSize       : {width:95, height:95},
+                        site            : site,
+                        dev             : dev,
+                        cardId          : "one" ~ i,
+                        containerClass  : 'card-102-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% set cardIndex = cardIndex + 1 %}
+
+                </div>
+
+                {% if loop.index % 2 == 0 and loop.index != 12 %}
+                    <div class="col-12 d-block d-md-none">
+                        <hr class="divide20-25">
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>

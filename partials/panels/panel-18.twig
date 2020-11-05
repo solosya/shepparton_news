@@ -4,14 +4,17 @@
 {% set articlelock = false %}
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-12">
 
 
         <div class="row u-margin-bottom-20" data-template="panel-18">
-            <div class="col-sm-12">
+            <div class="col-12">
                 <div class="c-section-header">
-                    <a class="{{site}}" href="{{link}}">
-                        <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                    <a class="{{site}} c-section-header__link" href="{{link}}">
+                        <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                        {% if admin %}
+                            <p class="c-section-header__panel-name">Panel 18</p>
+                        {% endif %}
                     </a>
                 </div>
             </div>
@@ -22,7 +25,7 @@
 
         <div class="row" data-template="panel-18">
 
-            <div class="col-sm-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
 

@@ -1,11 +1,17 @@
 {% set articleCount = 0 %}
+{% set dev = true %}
+{% set articlelock = false %}
 
 <section>
     <div class="row" data-template="panel-10">
-        <div class="col-sm-12">
+        <div class="col-12">
             <div class="c-section-header">
-                <a class="{{site}}" href="{{link}}">
-                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 10</p>
+                    {% endif %}
+
                 </a>
             </div>
         </div>
@@ -13,49 +19,37 @@
 
     <div class="row u-margin-top-20">
 
-        <div class="col-sm-12 col-md-6">
+        <div class="col-12">
             <div class="row">
-                {% for i in 0..1 if articles[articleCount] %}
-                    <div class="col-sm-6">
-                    {{this.render('../_single-article.twig', {
-                        article         : articles[articleCount],
-                        imageSize       : {width:300, height:200},
-                        site            : site,
-                        containerClass  : 'card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    {% if i < 2 %}
-                        <hr class="divide20-25  visible-sm-block">
-                    {% endif %}
+                {% for i in 0..3 if articles[articleCount] %}
+                    <div class="col-12 col-md-6 col-lg-3">
 
-                    <hr class="divide20-25 visible-xs-block">
+                        {% if i > 1 %}
+                            <hr class="divide20-25 d-none d-md-block d-lg-none">
+                        {% endif %}
+                        
+                        {% if i > 0 %}
+                            <hr class="divide20-25 d-block d-md-none">
+                        {% endif %}
+
+
+
+                        {{this.render('../_single-article.twig', {
+                            position        : articleCount + 1,
+                            article         : articles[articleCount],
+                            imageSize       : {width:300, height:200},
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "pod " ~ i,
+
+                            containerClass  : 'card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                     </div>
                 {% endfor %}
             </div>
         </div>
 
-
-        <div class="col-sm-12 col-md-6">
-            <div class="row">
-                {% for i in 0..1 if articles[articleCount] %}
-                    <div class="col-sm-6">
-                    {{this.render('../_single-article.twig', {
-                        article         : articles[articleCount],
-                        imageSize       : {width:300, height:200},
-                        site            : site,
-                        containerClass  : 'card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
-                    }) | raw}}
-                    {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                    </div>
-
-                    {% if i < 1 %}
-                        <hr class="divide20-25 visible-xs-block">
-                    {% endif %}
-
-
-                {% endfor %}
-            </div>
-        </div>
     </div>
 
 </section>

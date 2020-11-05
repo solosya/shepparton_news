@@ -1,13 +1,16 @@
 {% set articleCount = 0 %}
 
-<div class="col-sm-12 col-md-6">
+<div class="col-12 col-lg-6">
 
     <div class="row u-margin-bottom-20" data-template="panel-15">
 
-        <div class="col-sm-12">
+        <div class="col-12">
             <div class="c-section-header">
-                <a class="{{site}}" href="{{link}}">
-                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 15</p>
+                    {% endif %}
                 </a>
             </div>
         </div>
@@ -18,11 +21,12 @@
         {% for i in 0..1 if articles[articleCount] %}
             {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
 
-            <div class="col-xs-6 {{mobilePadding[i]}}">
+            <div class="col-6 {{mobilePadding[i]}}">
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
                     imageSize       : {width:300, height:197},
                     site            : site,
+                    dev             : dev,
                     containerClass  : 'card-111-mobile card-107-tablet card-107-desktop-sm card-107-desktop-lg'
                 }) | raw}}
                 {% set articleCount = (dev) ? articleCount : articleCount + 1 %}

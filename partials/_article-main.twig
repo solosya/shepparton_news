@@ -17,6 +17,10 @@
 
 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
     <figure class="{{params.cardType}}c-cards-view__media {{params.videoClass}}">
+        {% if dev %}
+            <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
+        {% endif %}
+
         <picture>
             <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.imageMedium}}">
             <source media="(max-width: 500px)" srcset="{{params.imageSmall}}">
@@ -58,6 +62,10 @@
     {% if styleType == "image-bottom"  or styleType == "image-both"  %}
         {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and params.imageSuppress == false %}
             <figure class="{{params.cardType}}c-cards-view__media-bottom {{params.videoClass}}">
+                {% if dev %}
+                    <div class="{{cardType}}c-cards-view__image_size">{{imgWidth}} x {{imgHeight}}</div>
+                {% endif %}
+
                 <picture>
                     <source media="(max-width: 767px) and (min-width: 501px)" srcset="{{params.imageMedium}}">
                     <source media="(max-width: 500px)" srcset="{{params.imageSmall}}">

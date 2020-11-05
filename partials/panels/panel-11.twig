@@ -1,13 +1,17 @@
 {% set articleCount = 0 %}
+{% set articlelock = false %}
 
 
-<div class="col-sm-12 col-md-9">
+<div class="col-12 col-lg-9">
     <div class="row u-margin-bottom-20" data-template="panel-11">
 
-        <div class="col-sm-12">
+        <div class="col-12">
             <div class="c-section-header">
-                <a class="{{site}}" href="{{link}}">
-                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 11</p>
+                    {% endif %}
                 </a>
             </div>
         </div>
@@ -16,15 +20,17 @@
     <div class="row">
 
         {% for i in 0..2 if articles[articleCount] %}
-            <div class="col-sm-4 col-md-4">
+            <div class="col-12 col-md-4">
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
                     site            : site,
+                    dev             : dev,
+                    cardId          : "moall",
                     containerClass  : 'card-103-mobile card-103-tablet card-103-desktop-sm card-103-desktop-lg'
                 }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                 {% if i < 2 %}
-                    <hr class="divide20-25 visible-xs-block">
+                    <hr class="divide20-25 d-block d-md-none">
                 {% endif %}
             </div>
         {% endfor %}
@@ -32,7 +38,7 @@
 
 
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-12">
             <hr class="divide20-25">
         </div>
     </div>
@@ -49,7 +55,7 @@
                 {#{% set pushClass="col-sm-offset-1" %}#}
                 {% set marginClass = "u-desktop-padding-left-30" %}
             {% endif %}
-            <div class="col-sm-6 {{pushClass}} {{marginClass}}">
+            <div class="col-12 col-md-6 {{pushClass}} {{marginClass}}">
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount],
                     imageSize       : {width:90, height:90},
@@ -58,13 +64,15 @@
                         "tablet"  : {width:90, height:90},
                         "desktop" : {width:90, height:90},
                     },
+                    dev             : dev,
+                    cardId          : "coiule",
                     imageSource     : 'author',
                     site            : site,
                     containerClass  : 'card-106-mobile card-106-tablet card-106-desktop-sm card-106-desktop-lg'
                 }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                 {% if i < 1 %}
-                    <hr class="divide20-25 visible-xs-block">
+                    <hr class="divide20-25 d-block d-md-none">
                 {% endif %}
             </div>
 

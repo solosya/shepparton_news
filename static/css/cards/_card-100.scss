@@ -93,7 +93,7 @@
 
             .c-cards-view {
                 &__container {
-                    width: 100%;
+                    width: auto;
                     margin-left: 0px;
                     padding: 191px 20px 0 30px;
                 }
@@ -152,7 +152,7 @@
                 //min-height: 449px;
                 .c-cards-view {
                     &__container {
-                        width: 100%;
+                        width: auto;
                         margin-left: 0px;
                         padding: 100px 20px 100px 25px;
                     }

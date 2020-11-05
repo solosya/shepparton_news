@@ -1,0 +1,72 @@
+{% set articleCount = 0 %}
+{% set articlelock = false %}
+
+<section>
+    <div class="row" data-template="panel-28">
+        <div class="col-sm-12">
+            <div class="c-section-header">
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 28</p>
+                    {% endif %}
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row u-margin-top-20">
+
+        <div class="col-sm-12 col-md-6">
+            <div class="row">
+                {% for i in 0..1 if articles[articleCount] %}
+                    <div class="col-sm-6">
+                    {{this.render('../_single-article.twig', {
+                        article         : articles[articleCount],
+                        position        : articleCount + 1,
+                        swap            : false,
+                        imageSize       : {width:300, height:200},
+                        site            : site,
+                        dev             : dev,
+                        containerClass  : 'card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% if i < 2 %}
+                        <hr class="divide20-25  visible-sm-block">
+                    {% endif %}
+
+                    <hr class="divide20-25 visible-xs-block">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-6">
+            <div class="row">
+                {% for i in 0..1 if articles[articleCount] %}
+                    <div class="col-sm-6">
+                    {{this.render('../_single-article.twig', {
+                        article         : articles[articleCount],
+                        imageSize       : {width:300, height:200},
+                        position        : articleCount + 1,
+                        swap            : false,
+                        site            : site,
+                        dev             : dev,
+                        containerClass  : 'card-105-mobile card-105-tablet card-105-desktop-sm card-105-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    </div>
+
+                    {% if i < 1 %}
+                        <hr class="divide20-25 visible-xs-block">
+                    {% endif %}
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>

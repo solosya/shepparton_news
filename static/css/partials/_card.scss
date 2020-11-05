@@ -49,7 +49,7 @@ a.card {
 
     &__cardId {
         position: absolute;
-        top: 0;
+        bottom: 0;
         font-size: 12px;
         padding: 0px 5px;
         background-color: #0b2a98;
@@ -60,7 +60,7 @@ a.card {
 
     &__image_size {
         position: absolute;
-        top: -20px;
+        top: 0;
         font-size: 12px;
         padding: 0px 5px;
         background-color: #0b2a98;
