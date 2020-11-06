@@ -3,7 +3,7 @@
 
 <section>
     <div class="row" data-template="panel-25">
-        <div class="col-sm-12">
+        <div class="col-12">
             <div class="c-section-header">
                 <a class="{{site}} c-section-header__link" href="{{link}}">
                     <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
@@ -16,12 +16,12 @@
         </div>
     </div>
 
-    <div class="row u-margin-top-20"  style="display:flex;flex-wrap:wrap">
+    <div class="row u-margin-top-20">
 
         {% for i in 0..2 if articles[articleCount] %}
-            <div class="col-sm-6 col-md-3">
+            <div class="col-6  col-lg-3">
                 {% if i > 1 %}
-                    <hr class="divide20-25  visible-sm-block">
+                    <hr class="divide20-25 d-none d-md-block d-lg-none">
                 {% endif %}
 
                 {{this.render('../_single-article.twig', {
@@ -33,13 +33,21 @@
                     containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
                 }) | raw}}
                 {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
-
             </div>
+
+            {% if i % 2 == 1 %}
+                <div class="col-12 d-block d-md-none">
+                    <hr class="divide20-25">
+                </div>
+            {% endif %}
+
+
+
         {% endfor %}
 
 
-        <div class="col-sm-6 col-md-3">
-            <hr class="divide20-25  visible-sm-block">
+        <div class="col-6  col-lg-3">
+            <hr class="divide20-25 d-none d-md-block d-lg-none">
 
             <div class="ad-square mrec-min-height" data-view="Nyon">
                 <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>

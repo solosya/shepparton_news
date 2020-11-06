@@ -15,16 +15,16 @@
 {% endif %}
 
 
-{{this.registerJs("Acme.cards = CardController();")}}
+{# {{this.registerJs("Acme.cards = CardController();")}} #}
 
-{% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
-{{this.registerJs( templatePath )}}
+{# {% set templatePath = "window.Acme.templatePath = '" ~ networkData.templatePath ~ "';" %}
+{{this.registerJs( templatePath )}} #}
 
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
 
-{% if dev %}
+{# {% if dev %}
     {% set articlesArr = _Blog.getBlogFeed({'limit': 1, 'offset': 0}) %}
-{% endif %}
+{% endif %} #}
 
 {% set sectionOrder = [] %}
 
@@ -178,6 +178,6 @@
 
 
 
-</main><!-- .site-main -->
+</main>
 
 

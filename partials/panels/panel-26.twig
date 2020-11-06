@@ -3,7 +3,7 @@
 
 <section>
     <div class="row" data-template="panel-26">
-        <div class="col-sm-12">
+        <div class="col-12">
             <div class="c-section-header">
                 <a class="{{site}} c-section-header__link" href="{{link}}">
                     <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
@@ -16,13 +16,13 @@
         </div>
     </div>
 
-    <div class="row u-margin-top-20" style="display:flex;flex-wrap:wrap">
+    <div class="row u-margin-top-20">
 
         {% for i in 0..3 if articles[articleCount] %}
-            <div class="col-sm-6 col-md-3">
+            <div class="col-12 col-md-6 col-lg-3">
 
                 {% if i > 1 %}
-                    <hr class="divide20-25  visible-sm-block">
+                    <hr class="divide20-25 d-none d-md-block d-lg-none">
                 {% endif %}
 
                 {{this.render('../_single-article.twig', {
