@@ -245,8 +245,13 @@
 
 
             {# Article admin buttons to delete/edit/pin #}
-            {% if article.userHasBlogAccess == '1' and swap != '' %}
-                {{ this.render('_article_admin.twig', {article: article, position:position, type: "article"} ) | raw }}
+            {% if article.userHasBlogAccess == '1' %}
+                {{ this.render('_article_admin.twig', {
+                    article: article, 
+                    position: position, 
+                    type: "article",
+                    swap: swap
+                } ) | raw }}
             {% endif %}
         </a>
     </div>
