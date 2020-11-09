@@ -188,7 +188,7 @@ $mainColor : red;
         border-radius: 5px;
         color:white;
         width:134px;
-        height:34px;
+        height:36px;
         &:hover {
             background: #dd9220;
         }
@@ -292,10 +292,10 @@ $mainColor : red;
             @media #{$up-to-desktop}{
                 // margin-left: 0;
             }
-            @media #{$mobile}{
-                width: min-content; 
-                max-width: min-content;
-            }
+            // @media #{$mobile}{
+            //     width: min-content; 
+            //     max-width: min-content;
+            // }
             
 
         }

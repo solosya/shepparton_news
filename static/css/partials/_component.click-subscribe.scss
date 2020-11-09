@@ -56,5 +56,9 @@
         @media #{$desktop-sm} {
             width: 136px;
         }
+        &:hover {
+            background: #dd9220;
+        }
+
     }
 }
