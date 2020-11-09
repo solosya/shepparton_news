@@ -27,7 +27,7 @@
                 <div class="col-6 col-md-6 col-lg-3 u-mobile-padding-right-7">
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount],
-                        position        : 1,
+                        position        : articleCount + 1,
                         imageSize       : {width:300, height:235},
                         site            : site,
                         dev             : dev,
@@ -57,7 +57,7 @@
                     
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount],
-                        position        : 1,
+                        position        : articleCount + 1,
                         styleType       : "image-bottom",
                         imageSize       : {width:95, height:95},
                         site            : site,
