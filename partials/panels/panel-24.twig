@@ -3,10 +3,10 @@
 
 <section>
     <div class="row" data-template="panel-24">
-        <div class="col-sm-12">
+        <div class="col-12">
             <div class="c-section-header">
                 <a class="{{site}} c-section-header__link" href="{{link}}">
-                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
                     {% if admin %}
                         <p class="c-section-header__panel-name">Panel 24</p>
                     {% endif %}
@@ -16,14 +16,17 @@
         </div>
     </div>
 
-    <div class="row u-margin-top-20" style="display:flex;flex-wrap:wrap">
+    <div class="row u-margin-top-20">
 
         {% for i in 0..3 if articles[articleCount] %}
-            <div class="col-sm-6 col-md-3">
+
+            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+
+            <div class="col-6 col-lg-3 {{mobilePadding[i%2]}}">
 
 
                 {% if i > 1 %}
-                    <hr class="divide20-25  visible-sm-block">
+                    <hr class="divide20-25  d-none d-md-block d-lg-none">
                 {% endif %}
 
 
@@ -38,7 +41,16 @@
                 }) | raw}}
                 {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
 
+
             </div>
+
+            {% if i % 2 == 1 and i != 3 %}
+                <div class="col-12 d-block d-md-none">
+                    <hr class="divide20-25">
+                </div>
+            {% endif %}
+
+
         {% endfor %}
     </div>
 

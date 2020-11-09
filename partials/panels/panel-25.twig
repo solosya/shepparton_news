@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="c-section-header">
                 <a class="{{site}} c-section-header__link" href="{{link}}">
-                    <h2 class="c-section-header__h2 {{site}}">{{title}}</h2>
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
                     {% if admin %}
                         <p class="c-section-header__panel-name">Panel 25</p>
                     {% endif %}
@@ -18,8 +18,11 @@
 
     <div class="row u-margin-top-20">
 
-        {% for i in 0..2 if articles[articleCount] %}
-            <div class="col-6  col-lg-3">
+        {% for i in 0..1 if articles[articleCount] %}
+
+            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+
+            <div class="col-6  col-lg-3 {{mobilePadding[i]}}">
                 {% if i > 1 %}
                     <hr class="divide20-25 d-none d-md-block d-lg-none">
                 {% endif %}
@@ -34,20 +37,32 @@
                 }) | raw}}
                 {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
             </div>
-
-            {% if i % 2 == 1 %}
-                <div class="col-12 d-block d-md-none">
-                    <hr class="divide20-25">
-                </div>
-            {% endif %}
-
-
-
         {% endfor %}
 
+        <div class="col-12 d-block d-md-none">
+            <hr class="divide20-25">
+        </div>
 
-        <div class="col-6  col-lg-3">
-            <hr class="divide20-25 d-none d-md-block d-lg-none">
+        {% if articles[articleCount] %}
+            <div class="col-12  col-md-6 col-lg-3">
+                <hr class="divide20-25 d-none d-md-block d-lg-none">
+                {{this.render('../_single-article.twig', {
+                    position        : articleCount + 1,
+                    styleType       : "image-both",
+                    article         : articles[articleCount],
+                    imageSize       : {width:300, height:200},
+                    site            : site,
+                    dev             : dev,
+                    containerClass  : 'card-101-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                }) | raw}}
+                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+            </div>
+        {% endif %}
+
+
+
+        <div class="col-12  col-md-6 col-lg-3">
+            <hr class="divide20-25 d-block d-md-block d-lg-none">
 
             <div class="ad-square mrec-min-height" data-view="Nyon">
                 <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
