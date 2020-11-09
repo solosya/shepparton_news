@@ -49,6 +49,18 @@
                 border-right: 2px solid black;
                 transform: rotate(45deg);
             }
+            &:hover { 
+                &:after {
+                    border-top: 2px solid #ed3a4b;
+                    border-right: 2px solid #ed3a4b;
+                }
+            }
+
+
         }
+        &:hover {
+            color: #ed3a4b;
+        }
+
     }
 }

@@ -142,6 +142,9 @@ $mainColor : red;
             width:20px;
             height:15px;
         }
+        &:hover {
+            color: #ed3a4b;
+        }
     }
 
     &__login-info {
@@ -186,7 +189,9 @@ $mainColor : red;
         color:white;
         width:134px;
         height:34px;
-
+        &:hover {
+            background: #dd9220;
+        }
         @media #{$mobile} {
             @include font-size(12);
             margin-right:16px;
@@ -220,7 +225,11 @@ $mainColor : red;
     }
     &__login {
         @include font-size(14);
-        color:#464646
+        color:#464646;
+        &:hover {
+            color: #ed3a4b;
+        }
+
     }
     &__login-profile {
         margin-left:8px;
