@@ -37,7 +37,7 @@
 
         <section>
             <div class="row">
-                <div class="col-sm-12 header">
+                <div class="col-12 header">
                     <div class="hk">
                         <h2 class="{{site}}">{{title}}</h2>
                         <p></p>
@@ -46,17 +46,17 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12 col-xs-12">
-                   {% if articles[articleCount] %}
-                       {{this.render('partials/_single-article.twig', {
-                           article: articles[articleCount],
-                           position: articleCount + 1,
-                           imageSize: {width:1050, height:600},
-                           site: site,
-                           containerClass: 'card-12-mobile card-12-tablet card-12-desktop'
-                       }) | raw}}
-                       {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                   {% endif %}
+                <div class="col-12">
+                    {% if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            article: articles[articleCount],
+                            position: articleCount + 1,
+                            imageSize: {width:1050, height:600},
+                            site: site,
+                            containerClass: 'card-12-mobile card-12-tablet card-12-desktop'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                    {% endif %}
                 </div>
                 {% for i in 0..2 if articles[articleCount] %}
                     <div class="col-sm-4 col-xs-12">
@@ -68,15 +68,15 @@
                             containerClass: 'card-13-mobile card-13-tablet card-13-desktop'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% if i < 2 %}<hr class="divide visible-xs-block">{% endif %}
+                        {% if i < 2 %}<hr class="divide d-block d-md-none ">{% endif %}
                     </div>
                 {% endfor %}
             </div>
-        <div class="ad-container hidden-xs">
+        <div class="ad-container d-none d-md-block">
             <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
 
         </div>
-        <div class="row visible-xs-block">
+        <div class="row d-block d-md-none">
                 <div class="ad-square col-xs-12">
                     <div class="row">
                         <hr class="divide">
@@ -90,7 +90,7 @@
          </div>
             <div class="row">
                 {% for i in 0..4 if articles[articleCount] %}
-                    <div class="col-sm-4 col-xs-12">
+                    <div class="col-12 col-md-4">
                         {{this.render('partials/_single-article.twig', {
                             article: articles[articleCount],
                             imageSize: {width:450, height:240},
@@ -99,20 +99,20 @@
                             containerClass: 'card-13-mobile card-13-tablet card-13-desktop'
                         }) | raw}}
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
-                        {% if i < 4 %}<hr class="divide visible-xs-block">{% endif %}
+                        {% if i < 4 %}<hr class="divide d-block d-md-none">{% endif %}
                     </div>
                 {% endfor %}
-                <div class="ad-square col-sm-4 visible-xs-block visible-lg-block col-xs-9">
-                    <div class="row visible-xs-block">
+                <div class="ad-square col-9 col-md-4  d-block d-lg-block">
+                    <div class="row d-block d-md-none">
                         <hr class="divide">
                     </div>
                     <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
-                    <div class="row visible-xs-block">
+                    <div class="row d-block d-md-none">
                         <hr class="divide">
                     </div>
                 </div>
             </div>
-            <div class="ad-container hidden-xs">
+            <div class="ad-container d-none d-md-block">
                 <div class='advert-tablet' data-adsize="banner"></div>
 
             </div>
@@ -151,7 +151,7 @@
             limit           : 9,
             name            : 'section-load',
             blogid          : "{{ blogData['guid'] }}",
-            card_class      : 'col-sm-4 col-xs-12 card-13-mobile card-13-tablet card-13-desktop',
+            card_class      : 'col-12 col-md-4 card-13-mobile card-13-tablet card-13-desktop',
             ads             : true,
             non_pinned      : {{articleCount}}
         });
