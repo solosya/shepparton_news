@@ -2,62 +2,66 @@
     // clear:both;
     font-family: $base-font-family;
 
-    a.card {
+
+    .c-cards-view {
         height:100%;
         margin: 25px 0;
         border-top:1px solid color(lightgrey);
         padding-top: 20px;
 
-        > article {
-            > figure{
-                display:none;
-            }
-            > .content{
-                width:100%;
-                height:100%;
-                position:relative;
+        &__media {
+            display:none;
+        }
 
-                > .category{
-                    font-size: rem(10);
-                    @include colourselect('');
-                }
-                > h2{
-                    font-size: rem(20);
-                    font-weight:bold;
-                    margin-top: 12px;
-                    overflow:hidden;
-                    line-height:1.15;
-                    height: 36px;
-                    color:black;
-                }
-                >p.excerpt {
-                    height: 70px;
-                }
-                .author{
-                    position:absolute;
-                    bottom:20px;
-                    > p {
-                        font-weight:bold;
-                        font-size: rem(14);
-                        border-right: none;
-                        color: #000;
-                    }
-                    > time {
-                        display: none;
-                    }
-                }
+        &__container {
+            width:100%;
+            height:100%;
+            position:relative;
 
-                > time {
-                    position: absolute;
-                    bottom: 0;
-                    display:block;
-                    font-family: $font-family-serif;
-                    font-size: rem(11);
-                    color: color(darkgrey);
-                    opacity: 0.7;
-                }
-               
-            }
+        }
+        &__category {
+            font-size: rem(10);
+            @include colourselect('');
+        }
+        &__heading {
+            font-size: rem(20);
+            font-weight:bold;
+            margin-top: 12px;
+            overflow:hidden;
+            line-height:1.15;
+            color:black;
+        }
+
+        &__description {
+            margin-top:10px;
+            height: 70px;
+            color:color(darkgrey);
+        }
+
+        &__author {
+            position:absolute;
+            bottom:20px;
+        }
+
+        &__author-name {
+            font-weight:bold;
+            font-size: rem(14);
+            border-right: none;
+            color: #000;
+        }
+
+        &__author-time {
+            display: none;
+        }
+
+        &__time {
+            position: absolute;
+            bottom: 0;
+            display:block;
+            font-family: $font-family-serif;
+            font-size: rem(11);
+            color: color(darkgrey);
+            opacity: 0.7;
         }
     }
 }
@@ -69,9 +73,10 @@
     @media screen and (min-width: $mmd-break){
         @include card-search-base();
 
-        a.card {
+        .c-cards-view {
             height:195px;
         }
+
     }
 }
 
@@ -84,19 +89,17 @@
         a.card {
             @include card-image-left(58px, 69px);
             height: 160px;
+        }
 
-            article {
-                > .content {
-                    h2{
-                        font-size: rem(14);
-                        height: 33px;
-                    }
+        .c-cards-view {
+            &__heading {
+                font-size: rem(14);
+                height: 33px;
+            }
 
-                    p.excerpt {
-                        height: 40px;
-                        font-size: rem(12);
-                    }
-                }
+            &__description {
+                height: 40px;
+                font-size: rem(12);
             }
         }
     }
@@ -108,21 +111,18 @@
 
         a.card {
             height:120px;
-
-            article {
-                > .content {
-                    h2 {
-                        font-size: rem(14);
-                        height: 34px;
-                    }
-
-                    p.excerpt {
-                        display: none;
-                    }
-                }
-            }
         }
 
+
+        .c-cards-view {
+            &__heading {
+                font-size: rem(14);
+            }
+
+            &__description {
+                display: none;
+            }
+        }
     }
 }
 
