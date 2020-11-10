@@ -4,61 +4,72 @@
         @include card-image-top(auto, 160px);
         height:250px;
         margin-bottom: 20px;
-        > article {
-            position:relative;
-            > figure {
-                margin-bottom: 6px;
-            }
+    }
 
-            > .content {
-                position:relative;
-                padding: 0;
 
-                > .category{
-                }
-                > h2{
-                    color:black;
-                    font-weight: bold;
-                    font-size: rem(17);
-                    line-height:1.29;
-                    margin-top:5px;
-                    margin-bottom:10px;
-                    height:45px;
-                }
-                > p.excerpt {
-                    color:black;
-                    display:none;
-                }
-                .author {
-                    color:black;
-                    display:none;
-                }
-                
-                > time {
-                }
-            }
+    .c-cards-view {
+
+        position:relative;
+        &__media {
+            margin-bottom: 6px;
         }
-        &.without__image {
-            background:color(offwhite);
-            .content {
-                padding:43px 20px 5px 20px;
 
-                height:100%;
+        &__container {
+            position:relative;
+            padding: 0;
+        }
 
-                h2 {
+        &__heading {
+            color:black;
+            font-weight: bold;
+            font-size: rem(17);
+            line-height:1.29;
+            margin-top:5px;
+            margin-bottom:10px;
+            height:45px;
+        }
+
+        &__description {
+            color:black;
+            display:none;
+        }
+        &__author {
+            color:black;
+            display:none;
+        }
+        &__author-name {
+        }
+
+        &__author-time {
+        }
+
+        &__time {
+        }
+    
+        &.without__image{
+
+            .c-cards-view {
+                &__container {
+                    background:color(offwhite);
+                    padding:43px 20px 5px 20px;
+
+                    height:100%;
+                }
+                &__heading {
                     font-size: rem(17);
                     line-height: 1.29;
                     height:70px;
                 }
-                > p.excerpt {
+
+                &__description {
                     display:block;
                     font-size: rem(15);
                     font-weight: 300;
                     line-height: 1.33;
                     max-height: 60px;
                 }
-
-                .author {
+        
+                &__author {
                     display:block;
                     height: 18px;
                     width: 100%;
@@ -73,9 +84,10 @@
                         margin-top:10px;
                     }
                 }
-
             }
         }
+
+
         &:after{
             content: '';
             width: 42px;
@@ -103,30 +115,33 @@
             a.card {
                 height:318px;
                 margin-bottom: 40px;
-       
-                > article {
-                    > .content {
-                        height: 158px;
-                        > p.excerpt {
-                            display:block;
-                            font-size: rem(15);
-                            font-weight: 300;
-                            line-height: 1.33;
-                            max-height: 60px;
-                        }
-                        .author {
-                            display: block;
-                            height: 18px;
-                            width: 100%;
-                        }
-                    }
-                }               
+            }
+
+            .c-cards-view {
+
+                &__container {
+                    height: 158px;
+                }
+
+                &__description {
+                    display:block;
+                    font-size: rem(15);
+                    font-weight: 300;
+                    line-height: 1.33;
+                    max-height: 60px;
+                }
+
+                &__author {
+                    display: block;
+                    height: 18px;
+                    width: 100%;
+
+                }
                 &.without__image{
                     .content {
                         padding: 73px 20px 5px 20px;
                     }
                 } 
-                       
             }
         }
     }
