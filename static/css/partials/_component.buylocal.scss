@@ -1,26 +1,42 @@
 .buylocal {
     @include flexbox();
     @include flex-direction(column);
+    @include align-items(center);
+
     padding-bottom:30px;
     border-bottom: 1px solid #979797;
 
     @media #{$mobile} {
-        @include align-items(center);
         border-top: 1px solid #979797;
         padding-bottom:15px;
     }
 
-
-
     @media #{$tablet} {
         @include flex-direction(row);
-        @include align-items(center);
+        // @include align-items(center);
         border-top: 1px solid #979797;
         padding-bottom:0;
         justify-content: space-between;
     }
 
+    // @media #{$desktop-up} {
+    //     @include align-items(center);
+    // }
+
+
+
+
     &__picture {
+
+        @media #{$desktop-lg} {
+            width:259px;
+        }
+        @media #{$desktop-sm} {
+            width:189px;
+        }
+
+        
+
         @media #{$tablet} {
             margin: 10px 0;
             height: 38px;
@@ -44,7 +60,7 @@
         text-transform: uppercase;
         margin-bottom:40px;
         color:black;
-
+        width:100%;
         @media #{$desktop-sm} {
             margin-bottom:30px;
         }
@@ -52,6 +68,7 @@
             border-bottom:none;
             padding:0;
             margin:0;
+            text-align:left;
 
         }
         @media #{$mobile} {

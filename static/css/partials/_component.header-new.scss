@@ -183,6 +183,7 @@ $mainColor : red;
         @include justify-content(center);
         @include font-size(15);
         flex-grow:1;
+        font-weight:600;
         // padding-top:3px;
         background:#f6ae42;
         border-radius: 5px;

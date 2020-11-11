@@ -66,6 +66,7 @@
             //}
         }
         &__author-time {
+            font-family: $base-font-family;
             @include font-size(12);
             margin-top:6px;
         }
