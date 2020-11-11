@@ -26,6 +26,7 @@
 
 
     &__p {
+        margin-top:10px;
         font-family:$base-font-family;
         color:#6e6e6e;
         @include font-size(12);

@@ -458,16 +458,18 @@
                     {% endif %}
 
 
-                    {{this.render('partials/_single-article.twig', {
-                        imageSize       : {width:235},
-                        article         : articles[articleCount],
-                        position        : articleCount + 1,
-                        site            : site,
-                        dev             : dev,
-                        cardId          : "eight" ~ i,
-                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
-                    }) | raw}}
-                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% if articles[articleCount] %}
+                        {{this.render('partials/_single-article.twig', {
+                            imageSize       : {width:235},
+                            article         : articles[articleCount],
+                            position        : articleCount + 1,
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "eight" ~ i,
+                            containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% endif %}
 
                 </div>
             {% endfor %}
