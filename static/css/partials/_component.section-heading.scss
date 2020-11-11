@@ -5,4 +5,8 @@
     text-transform: uppercase;
     font-weight: 700;
 
+    &--serif {
+        font-family: $font-family-serif;
+    }
+
 }
