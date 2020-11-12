@@ -4,6 +4,12 @@
 {% set articleCount = 0 %}
 {% set articlelock = false %}
 
+                                        
+{% set Newsletter = "" %}
+{% set Cblock = _ContentBlock.get({"title" : "Newsletter"}) %}
+{% if Cblock %}
+    {% set Newsletter = Cblock['content'] %}
+{% endif %}
 
 
 
@@ -49,10 +55,8 @@
 
 
         <div class="col-12 col-md-6 col-lg-12 u-desktop-margin-top-40">
-            <hr class="divide20-25 d-block d-md-none">
-            <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
-                <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
-            </div>
+            <hr class="divide20-25 d-block d-md-none d-lg-block">
+            {{Newsletter | raw}}
         </div>
     </div>
 
