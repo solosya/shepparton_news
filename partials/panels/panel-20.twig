@@ -25,6 +25,10 @@
         <div class="row" data-template="panel-20">
             {% for i in 0..3 if articles[articleCount] %}
                 <div class="col-6 col-md-6 col-lg-3 u-mobile-padding-right-7">
+                    {% if i > 1 %}
+                        <hr class="divide20-25 d-none d-md-block d-lg-none">
+                    {% endif %}
+
                     {{this.render('../_single-article.twig', {
                         article         : articles[articleCount],
                         position        : articleCount + 1,
@@ -38,8 +42,10 @@
                     {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
 
-                </div>
 
+
+                </div>
+                
                 {% if loop.index % 2 == 0 and loop.index != 4 %}
                     <div class="col-12 d-block d-md-none">
                         <hr class="divide20-25">
