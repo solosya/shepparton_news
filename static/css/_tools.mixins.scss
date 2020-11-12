@@ -1,223 +1,263 @@
+@mixin filterColor($class) {
+    @if $class != '' {
+        #{$class} {
+            color: #000;
+        }
+        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                color: #8bc833;
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                color: #118ce0;
+            }
+        }
+
+    } @else {
+
+        color: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);;
+        }
+        &.country, &.campaspe {
+            color: #8bc833;
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            color: #118ce0;
+        }
+
+    }
+
+}
+
+
 @mixin colourselect($class) {
-	@if $class != '' {
-		#{$class} {
-			color: #000;
-		}
-		
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	        	color: #f03746;
-	        }
-	    }
-		&.country, &.campaspe {
-			#{$class} {
-	        	color: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	    	#{$class} {
-	        	color: #118ce0;
-	        }
-	    }
+    @if $class != '' {
+        #{$class} {
+            color: #000;
+        }
+        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                color: #f03746;
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                color: #8bc833;
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                color: #118ce0;
+            }
+        }
 
-	} @else {
+    } @else {
 
-		color: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        color: #f03746;
-	    }
-		&.country, &.campaspe {
-	        color: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        color: #118ce0;
-	    }
+        color: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            color: #f03746;
+        }
+        &.country, &.campaspe {
+            color: #8bc833;
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            color: #118ce0;
+        }
 
-	}
+    }
 
 }
 
 @mixin colourselectdark($class) {
-	@if $class != '' {
-		#{$class} {
-			color: #000;
-		}
-		
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	        	color: #f03746;
-	        }
-	    }
-		&.country, &.campaspe {
-			#{$class} {
-	        	color: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	    	#{$class} {
-	        	color: #118ce0;
-	        }
-	    }
+    @if $class != '' {
+        #{$class} {
+            color: #000;
+        }
+        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                color: #f03746;
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                color: #8bc833;
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                color: #118ce0;
+            }
+        }
 
-	} @else {
+    } @else {
 
-		color: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        color: #f03746;
-	    }
-		&.country, &.campaspe {
-	        color: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        color: #118ce0;
-	    }
+        color: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            color: #f03746;
+        }
+        &.country, &.campaspe {
+            color: #8bc833;
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            color: #118ce0;
+        }
 
-	}
+    }
 
 }
 
 @mixin colourselectbackground($class) {
-	@if $class != '' {
-		#{$class} {
-			background-color: #000;
-		}
-		
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	        	background-color: #f03746;
-	        }
-	    }
-		&.country, &.campaspe {
-			#{$class} {
-	        	background-color: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	    	#{$class} {
-	        	background-color: #118ce0;
-	        }
-	    }
-	} @else {
-		background-color: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        background-color: #f03746;
-	    }
-		&.country, &.campaspe {
-	         background-color: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        background-color: #118ce0;
-	    }
-	}
+    @if $class != '' {
+        #{$class} {
+            background-color: #000;
+        }
+        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                background-color: #f03746;
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                background-color: #8bc833;
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                background-color: #118ce0;
+            }
+        }
+    } @else {
+        background-color: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            background-color: #f03746;
+        }
+        &.country, &.campaspe {
+             background-color: #8bc833;
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            background-color: #118ce0;
+        }
+    }
 
 }
 
 @mixin colourselectfill($class) {
-	@if $class != '' {
-		#{$class} {
-			fill: #000;
-		}
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-		        fill: #f03746;
-		    }
-	    }
-		&.country, &.campaspe {
-	         #{$class} {
-		         fill: #8bc833;
-		    }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        #{$class} {
-		        fill: #118ce0;
-		    }
-	    }
-	} @else {
+    @if $class != '' {
+        #{$class} {
+            fill: #000;
+        }
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                fill: #f03746;
+            }
+        }
+        &.country, &.campaspe {
+             #{$class} {
+                 fill: #8bc833;
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                fill: #118ce0;
+            }
+        }
+    } @else {
 
-	    fill: #000;
-		&.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        fill: #f03746;
-	    }
-		&.country, &.campaspe {
-	         fill: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	        fill: #118ce0;
-	    }
-	}
+        fill: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            fill: #f03746;
+        }
+        &.country, &.campaspe {
+             fill: #8bc833;
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            fill: #118ce0;
+        }
+    }
 
 }
 
 @mixin colourselectstroke($class) {
-	@if $class != '' {
-		#{$class} {
-	        stroke: #000;
-	        fill: #fff;
-	    }
-	    &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-	        #{$class} {
-	            stroke: #f03746;
-	        }
-	    }
-	    &.country, &.campaspe {
-	        #{$class} {
-	            stroke: #8bc833;
-	        }
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
-	       #{$class} {
-	            stroke: #118ce0;
-	        }
-	    }
-	} @else {
-		stroke: #000;
+    @if $class != '' {
+        #{$class} {
+            stroke: #000;
+            fill: #fff;
+        }
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                stroke: #f03746;
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                stroke: #8bc833;
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+           #{$class} {
+                stroke: #118ce0;
+            }
+        }
+    } @else {
+        stroke: #000;
         fill: #fff;	    
-	    &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {	        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {	        
             stroke: #f03746;	        
-	    }
-	    &.country, &.campaspe {	        
+        }
+        &.country, &.campaspe {	        
             stroke: #8bc833;
-	    }
-	    &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {	      
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {	      
             stroke: #118ce0;	       
-	    }
-	}
+        }
+    }
 }
 
 @mixin tintbefore($value:0.4) {
-	&:before {
-	  content: '';
-	  position: absolute;
-	  top: 0;
-	  bottom: 0;
-	  width: 100%;
-	  opacity: $value;
-	  background-color: #000;
-	  z-index: 1;
-	}
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: $value;
+      background-color: #000;
+      z-index: 1;
+    }
 }
 @mixin tintafter($value:0.4) {
-	&:after {
-	  content: '';
-	  position: absolute;
-	  top: 0;
-	  bottom: 0;
-	  width: 100%;
-	  opacity: $value;
-	  background-color: #000;
-	  z-index: 1;
-	}
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: $value;
+      background-color: #000;
+      z-index: 1;
+    }
 }
 
 @mixin gradientbefore() {
-	&:before {
-		content: '';
-		position: absolute;
-		top: 0;
-		height:100%;
-		bottom: 0;
-		width: 100%;
-		z-index: 1;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        height:100%;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
         background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
         background-image: -o-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
         background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
@@ -225,13 +265,13 @@
 }
 
 @mixin gradientafter() {
-	&:after {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 100%;
-		z-index: 1;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
         background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
         background-image: -o-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
         background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
@@ -240,97 +280,97 @@
 
 
 @mixin font-size($sizeValue: 16, $line: $sizeValue * 1.2) {
-	font-size: ($sizeValue / 16) + rem;
-	line-height: ($line / 16) + rem;
+    font-size: ($sizeValue / 16) + rem;
+    line-height: ($line / 16) + rem;
 }
 
 
 @mixin card-image-size($width, $height) {
-	width: $width;
+    width: $width;
     height: $height;
 }
 
 @mixin card-image-none {
-	> article {
-		> figure{
-			display:none;
-		}
-	}
+    > article {
+        > figure{
+            display:none;
+        }
+    }
 }
 
 
 @mixin card-image-full {
-	> article {
-		> figure{
-			position: absolute;
-			left: 0;
-			top: 0;
-			height:100%;
-			width: 100%;
-			z-index:1;
-		}
-		> .content {
-			position:relative;
-			z-index:2;
-		}
-	}
+    > article {
+        > figure{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height:100%;
+            width: 100%;
+            z-index:1;
+        }
+        > .content {
+            position:relative;
+            z-index:2;
+        }
+    }
 }
 
 @mixin card-image-left($width, $height:100%) {
-	> article {
-		> figure{
-			@include card-image-size($width, $height);
-			float: left;
-		}
-		> .content {
-			display:block;
-			width:auto;
-		}
-	}
+    > article {
+        > figure{
+            @include card-image-size($width, $height);
+            float: left;
+        }
+        > .content {
+            display:block;
+            width:auto;
+        }
+    }
 }
 
 
 @mixin card-image-right($width, $height:100%) {
-	> article {
-		> figure{
-			@include card-image-size($width, $height);
-			float: right;
-		}
-		> .content {
-			display:block;
-			width:auto;
-		}
-	}
+    > article {
+        > figure{
+            @include card-image-size($width, $height);
+            float: right;
+        }
+        > .content {
+            display:block;
+            width:auto;
+        }
+    }
 }
 
 
 @mixin card-image-top($width, $height:100%) {
-	> article {
-		> figure{
-			@include card-image-size($width, $height);
-			float: none;
-		}
-		> .content {
-			display:block;
-		}
-	}
+    > article {
+        > figure{
+            @include card-image-size($width, $height);
+            float: none;
+        }
+        > .content {
+            display:block;
+        }
+    }
 }
 
 @mixin card-image-bottom($width, $height:100%) {
-	> article {
+    > article {
 
-		@include flexbox;
-		@include flex-direction(column);
+        @include flexbox;
+        @include flex-direction(column);
 
-		> figure{
-			@include card-image-size($width, $height);
-			order:2;
-		}
-		> .content {
-			order:1;
-			display:block;
-		}
-	}
+        > figure{
+            @include card-image-size($width, $height);
+            order:2;
+        }
+        > .content {
+            order:1;
+            display:block;
+        }
+    }
 }
 
 @mixin clearfix() {
@@ -354,7 +394,7 @@
 
 
 @mixin card-name($name) {
-	// .acme-cards-view, .c-cards-view {
+    // .acme-cards-view, .c-cards-view {
     //     &:hover {
     //         &:before {
     //             content:$name;
@@ -369,7 +409,7 @@
     //             box-shadow: 2px 3px 5px #8e8e8e;
     //         }
     //     }
-	// }
+    // }
 }
 
 
@@ -393,61 +433,61 @@
 
 
 @mixin border-radius($radius) {
-	-webkit-border-radius: $radius;
-	border-radius: $radius;
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
 }
 
 
 
 // /* Padding */
 @mixin padding($padding) {
-  	padding:$padding;
+      padding:$padding;
 }
 @mixin padding-top($padding-top) {
-  	padding-top:$padding-top;
+      padding-top:$padding-top;
 }
 @mixin padding-right($padding-right) {
-  	padding-right:$padding-right;
+      padding-right:$padding-right;
 }
 @mixin padding-bottom($padding-bottom) {
-  	padding-bottom:$padding-bottom;
+      padding-bottom:$padding-bottom;
 }
 @mixin padding-left($padding-left) {
-  	padding-left:$padding-left;
+      padding-left:$padding-left;
 }
 
 // /* Transition */
 @mixin transition($transition) {
-	transition: all 0.3s ease-in;
-	-moz-transition: all 0.3s ease-in;
-	-o-transition: all 0.3s ease-in;
-	-webkit-transition: all 0.3s ease-in;
-	-ms-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
 }
 
 // /* Sizes */
 @mixin size($width, $height: $width) {
-  	width: $width;
-  	height: $height;
+      width: $width;
+      height: $height;
 }
 
 
 // // Image Cover Size
 @mixin background-size($background-size) {
-	-webkit-background-size:$background-size; /* Chrome, Safari, Opera */
-	   -moz-background-size:$background-size; /* Mozilla Firefox */
-	    -ms-background-size:$background-size; /* IE 9 */
-		 -o-background-size:$background-size;
-		    background-size:$background-size;
+    -webkit-background-size:$background-size; /* Chrome, Safari, Opera */
+       -moz-background-size:$background-size; /* Mozilla Firefox */
+        -ms-background-size:$background-size; /* IE 9 */
+         -o-background-size:$background-size;
+            background-size:$background-size;
 }
 
 
 // // Transform
 @mixin transform($transforms) {
-	-webkit-transform:$transforms; /* Chrome, Safari, Opera */
-	   -moz-transform:$transforms; /* Mozilla Firefox */
-	     -o-transform:$transforms;
-	    -ms-transform:$transforms; /* IE 9 */
+    -webkit-transform:$transforms; /* Chrome, Safari, Opera */
+       -moz-transform:$transforms; /* Mozilla Firefox */
+         -o-transform:$transforms;
+        -ms-transform:$transforms; /* IE 9 */
             transform:$transforms;
 }
 
@@ -455,38 +495,38 @@
 
 /* rotate */
 @mixin rotate ($deg) {
-	@include transform(rotate(#{$deg}deg));
+    @include transform(rotate(#{$deg}deg));
 }
 
 /* scale */
 @mixin scale($scale) {
-	@include transform(scale($scale));
+    @include transform(scale($scale));
 }
 
 /* translate */
 @mixin translate ($x, $y) {
-	@include transform(translate($x, $y));
+    @include transform(translate($x, $y));
 }
 
 @mixin translateY ($y) {
-	@include transform(translateY($y));
+    @include transform(translateY($y));
 }
 
 /* skew */
 @mixin skew ($x, $y) {
-	@include transform(skew(#{$x}deg, #{$y}deg));
+    @include transform(skew(#{$x}deg, #{$y}deg));
 }
 
 /* transform origin */
 @mixin transform-origin ($origin) {
-	-webkit-transform-origin: $origin;
-	/* Chrome, Safari, Opera */
-	-moz-transform-origin: $origin;
-	/* Mozilla Firefox */
-	-o-transform-origin: $origin;
-	-ms-transform-origin: $origin;
-	/* IE 9 */
-	transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    /* Chrome, Safari, Opera */
+    -moz-transform-origin: $origin;
+    /* Mozilla Firefox */
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    /* IE 9 */
+    transform-origin: $origin;
 }
 
 
@@ -553,22 +593,22 @@
 // // (Placeholder selectors for each type, for those who rather @extend)
 
 @mixin flexbox {
-	display:-webkit-box;
-	display:-webkit-flex;
-	display:-moz-flex;
-	display:-ms-flexbox;
-	display:flex;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:-ms-flexbox;
+    display:flex;
 }
 
 %flexbox { @include flexbox; }
 
 @mixin flex-height($int) { 
-	min-height: $int;
-	max-height: $int;
+    min-height: $int;
+    max-height: $int;
 }
 @mixin flex-width($int) { 
-	min-width: $int;
-	max-width: $int;
+    min-width: $int;
+    max-width: $int;
 }
 
 
@@ -598,23 +638,23 @@
 // // http://w3.org/tr/css3-flexbox/#flex-direction-property
 
 @mixin flex-direction($value:row) {
-	@if $value == row-reverse {
-		-webkit-box-direction:reverse;
-		-webkit-box-orient:horizontal;
-	} @else if $value == column {
-		-webkit-box-direction:normal;
-		-webkit-box-orient:vertical;
-	} @else if $value == column-reverse {
-		-webkit-box-direction:reverse;
-		-webkit-box-orient:vertical;
-	} @else {
-		-webkit-box-direction:normal;
-		-webkit-box-orient:horizontal;
-	}
-	-webkit-flex-direction:$value;
-	-moz-flex-direction:$value;
-	-ms-flex-direction:$value;
-	flex-direction:$value;
+    @if $value == row-reverse {
+        -webkit-box-direction:reverse;
+        -webkit-box-orient:horizontal;
+    } @else if $value == column {
+        -webkit-box-direction:normal;
+        -webkit-box-orient:vertical;
+    } @else if $value == column-reverse {
+        -webkit-box-direction:reverse;
+        -webkit-box-orient:vertical;
+    } @else {
+        -webkit-box-direction:normal;
+        -webkit-box-orient:horizontal;
+    }
+    -webkit-flex-direction:$value;
+    -moz-flex-direction:$value;
+    -ms-flex-direction:$value;
+    flex-direction:$value;
 }
 
 // // Flexbox Align Items
@@ -633,19 +673,19 @@
 // // http://w3.org/tr/css3-flexbox/#align-items-property
 
 @mixin align-items($value:stretch) {
-	@if $value == flex-start {
-		-webkit-box-align:start;
-		-ms-flex-align:start;
-	} @else if $value == flex-end {
-		-webkit-box-align:end;
-		-ms-flex-align:end;
-	} @else {
-		-webkit-box-align:$value;
-		-ms-flex-align:$value;
-	}
-	-webkit-align-items:$value;
-	-moz-align-items:$value;
-	align-items:$value;
+    @if $value == flex-start {
+        -webkit-box-align:start;
+        -ms-flex-align:start;
+    } @else if $value == flex-end {
+        -webkit-box-align:end;
+        -ms-flex-align:end;
+    } @else {
+        -webkit-box-align:$value;
+        -ms-flex-align:$value;
+    }
+    -webkit-align-items:$value;
+    -moz-align-items:$value;
+    align-items:$value;
 }
 @mixin justify-content($value:flex-start) {
     @if $value == flex-start {
@@ -675,17 +715,17 @@
 // // Default:auto
 
 @mixin align-self($value:auto) {
-	// No Webkit Box Fallback.
-	-webkit-align-self:$value;
-	-moz-align-self:$value;
-	@if $value == flex-start {
-		-ms-flex-item-align:start;
-	} @else if $value == flex-end {
-		-ms-flex-item-align:end;
-	} @else {
-		-ms-flex-item-align:$value;
-	}
-	align-self:$value;
+    // No Webkit Box Fallback.
+    -webkit-align-self:$value;
+    -moz-align-self:$value;
+    @if $value == flex-start {
+        -ms-flex-item-align:start;
+    } @else if $value == flex-end {
+        -ms-flex-item-align:end;
+    } @else {
+        -ms-flex-item-align:$value;
+    }
+    align-self:$value;
 }
 
 // //----------------------------------------------------------------------
@@ -703,24 +743,24 @@
 // // http://w3.org/tr/css3-flexbox/#align-content-property
 
 @mixin align-content($value:stretch) {
-	// No Webkit Box Fallback.
-	-webkit-align-content:$value;
-	-moz-align-content:$value;
-	@if $value == flex-start {
-		-ms-flex-line-pack:start;
-	} @else if $value == flex-end {
-		-ms-flex-line-pack:end;
-	} @else {
-		-ms-flex-line-pack:$value;
-	}
-	align-content:$value;
+    // No Webkit Box Fallback.
+    -webkit-align-content:$value;
+    -moz-align-content:$value;
+    @if $value == flex-start {
+        -ms-flex-line-pack:start;
+    } @else if $value == flex-end {
+        -ms-flex-line-pack:end;
+    } @else {
+        -ms-flex-line-pack:$value;
+    }
+    align-content:$value;
 }
 
 
 
 @mixin calc($property, $expression) {
-	#{$property}: -moz-calc(#{$expression});
-	#{$property}: -webkit-calc(#{$expression});
-	#{$property}: calc(#{$expression});
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
 }
 

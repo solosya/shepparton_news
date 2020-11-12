@@ -20,31 +20,24 @@
 {% endif %}
 
 
-{# <div class="row">
-    <div class="container hidden-md hidden-lg u-tablet-margin-top-10 ">
-        <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
-        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
-    </div>
-    <div class="col-sm-12 visible-sm-block"><hr class="divide10"></div>
-</div> #}
 
 
 <section class=""  data-template="panel 01">
     <div class="row">
 
         {# COLUMN 1  --  THE CENTER COLUMN ON DESKTOP #}
-        <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-3">
+        <div class="col-12 col-md-12 col-lg-6 order-lg-2">
             <div class="row">
 
 
-                <div class="col-xs-12 visible-sm-block">
+                <div class="col-12 d-none d-md-block d-lg-none">
                     {{this.render('../../partials/buylocal.twig', {
                         networkData: networkData
                     }) | raw}}
                 </div>
 
 
-                <div class="col-xs-12 col-sm-8 col-md-12 ">
+                <div class="col-12 col-md-8 col-lg-12 ">
 
                     {# CARD 1 #}
                     {% if articles[articleCount] %}
@@ -61,15 +54,15 @@
                         }) | raw}}
                         {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide20-25 hidden-sm" data-tag="malcom">
+                        <hr class="divide20-25 d-block d-md-none d-lg-block" data-tag="malcom">
 
                     {% endif %}
                 </div>
 
                 {# COLUMN 1#}
-                <div class="col-xs-12 col-sm-4 col-md-6 ">
+                <div class="col-12 col-md-4 col-lg-12">
                     <div class="row">
-                        <div class="col-xs-6 col-sm-12">
+                        <div class="col-6 col-md-12 col-lg-6 u-mobile-padding-right-7">
 
                             {# CARD 2 #}
                             {{this.render('../_single-article.twig', {
@@ -85,33 +78,13 @@
                             }) | raw}}
                             {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                             {% set cardIndex = cardIndex + 1 %}
-                            <hr class="divide20-25 hidden-xs hidden-md hidden-lg" data-tag="princton">
+                            <hr class="divide20-25 d-none d-md-block d-lg-none" data-tag="princton">
                         </div>
 
-                        {# CARD 4 desktop #}
-                        {# <div class="col-xs-6 col-sm-12 visible-md-block visible-lg-block">
-                            {{this.render('../_single-article.twig', {
-                                imageSize       : {width:95},
-                                styleType       : "image-bottom",
-                                position        : cardIndex + 1,
-                                lazyload        : false,
-                                article         : articles[articleCount +1],
-                                site            : site,
-                                swap            : false,
-                                dev             : dev,
-                                cardId          : "three",
-                                containerClass  : 'card-101-mobile card-102-tablet card-101-desktop-sm card-101-desktop-lg'
-                            }) | raw}}
 
-                            {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
-                            {% set cardIndex = cardIndex + 1 %}
-                            <hr class="divide20-25">
-                        </div> #}
+                        <div class="col-6 col-md-12 col-lg-6 d-none d-lg-block">
+                            {# CARD 3  DESKTOP #}
 
-
-
-                        <div class="col-xs-6 col-sm-12 visible-xs-block visible-sm-block">
-                            {# CARD 3 TABLET #}
                             {% if articles[articleCount] %}
                                 {{this.render('../_single-article.twig', {
                                     imageSize       : {height:235},
@@ -121,13 +94,35 @@
                                     site            : site,
                                     swap            : false,
                                     dev             : dev,
-                                    cardId          : "four",
+                                    cardId          : "three desk",
                                     containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
                                 }) | raw}}
 
-                                {# {% set articleCount = (articleLock) ? articleCount : articleCount %} #}
-                                {# {% set cardIndex = cardIndex + 1 %} #}
-                                <hr class="divide20-25 hidden-xs hidden-sm" data-tag="jb">
+                                {# {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
+                                {% set cardIndex = cardIndex + 1 %} #}
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="col-6 col-md-12 col-lg-6 d-block d-md-block d-lg-none u-mobile-padding-left-7">
+
+                            {% if articles[articleCount] %}
+                                {{this.render('../_single-article.twig', {
+                                    imageSize       : {height:235},
+                                    position        : cardIndex,
+                                    lazyload        : false,
+                                    article         : articles[articleCount],
+                                    site            : site,
+                                    swap            : false,
+                                    dev             : dev,
+                                    cardId          : "three tablet",
+                                    containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                                }) | raw}}
+                                {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
+                                {% set cardIndex = cardIndex + 1 %}
+
+                                <hr class="divide20-25 d-none d-lg-block" data-tag="jb">
                             {% endif %}
                         </div>
 
@@ -136,29 +131,23 @@
 
                 </div>
 
-                <div class="col-sm-12 visible-sm-block">
-                    <hr class="divide20-25 visible-sm-block" data-tag="willem">
-
+                <div class="col-12 d-none d-md-block d-lg-none">
+                    <hr class="divide20-25" data-tag="willem">
                 </div>
 
-                <div class="col-xs-12 u-mobile-margin-top-30 u-mobile-margin-bottom-30 visible-xs-block">
+                <div class="col-12 u-mobile-margin-top-30 u-mobile-margin-bottom-30 visible-xs-block">
                     <div class="ad-square" data-view="mobile-banner">
                         <div class='advert-mobile  mobile-banner' data-adsize="banner"></div>
                     </div>
-                    {# <hr class="divide20-25 visible-sm-block"> #}
                 </div>
 
 
 
                 {# COLUMN 2 #}
-                <div class="col-xs-12 col-sm-6 col-md-6 ">
+                <div class="col-12 col-md-6 col-lg-6 ">
                     {# CARD 3  DESKTOP #}
 
-                    {# divider for TABLET #}
-
-
-
-                    {% if articles[articleCount] %}
+                    {# {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             imageSize       : {height:235},
                             position        : cardIndex,
@@ -168,56 +157,14 @@
                             swap            : false,
                             dev             : dev,
                             cardId          : "five",
-                            containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg hidden-xs hidden-sm'
+                            containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg d-none d-lg-block'
                         }) | raw}}
 
                         {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
-                        {# <hr class="divide20-25 hidden-xs hidden-sm"> #}
-                    {% endif %}
-
-
-                    {# CARD 4 TABLET #}
-                    {# {% if articles[articleCount] %}
-                        {{this.render('../_single-article.twig', {
-                            imageSize       : {width:95},
-                            styleType       : "image-bottom",
-                            styleType       : "image-bottom",
-                            position        : cardIndex - 1,
-                            lazyload        : false,
-                            article         : articles[articleCount -1],
-                            site            : site,
-                            swap            : false,
-                            dev             : dev,
-                            cardId          : "six",
-                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg visible-xs-block visible-sm-block'
-                        }) | raw}}
-                        <hr class="divide20-25 hidden-sm hidden-md hidden-lg" data-tag="jude">
                     {% endif %} #}
 
                 </div>
-                {# <div class="col-xs-12 col-sm-6"> #}
-                    {# CARD 5 #}
-                    {# {% if articles[articleCount] %}
-                        {{this.render('../_single-article.twig', {
-                            imageSize       : {width:95},
-                            styleType       : "image-bottom",
-                            position        : cardIndex,
-                            lazyload        : false,
-                            article         : articles[articleCount],
-                            site            : site,
-                            swap            : false,
-                            dev             : dev,
-                            cardId          : "seven",
-                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-                        }) | raw}}
-
-                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
-                        {% set cardIndex = cardIndex + 1 %}
-                        <hr class="divide20-25 visible-xs-block visible-sm-block">
-                    {% endif %}
-
-                </div> #}
 
             </div>
 
@@ -249,11 +196,11 @@
 
 
         {# COLUMN 2 -- COLUMN 1 ON DESKTOP #}
-        <div class="col-xs-12 col-md-3 col-md-pull-6 ">
+        <div class="col-12 col-lg-3 order-lg-1 ">
 
             <div class="row">
                     {# CARDS 6,7 #}
-                    <div class="col-xs-12 col-sm-6 col-md-12">
+                    <div class="col-12 col-md-6 col-lg-12">
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:95},
                             styleType       : "image-bottom",
@@ -272,7 +219,7 @@
                     </div>
 
 
-                    <div class="col-xs-12 col-sm-6 col-md-12">
+                    <div class="col-12 col-md-6 col-lg-12">
                         {{this.render('../_single-article.twig', {
                             imageSize       : {width:95},
                             styleType       : "image-bottom",
@@ -287,39 +234,21 @@
                         }) | raw}}
                         {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
-                        <hr class="hidden-xs hidden-md hidden-lg divide20-25" data-tag="price">
+                        <hr class="d-none d-md-block d-lg-none divide20-25" data-tag="price">
                     </div>
 
 
             </div>
 
             <div class="row">
-                {# CARD 8 #}
-                {# <div class="col-xs-12 col-sm-6 col-md-12 wow">
-                    {{this.render('../_single-article.twig', {
-                        imageSize       : {width:95},
-                        styleType       : "image-bottom",
-                        position        : cardIndex,
-                        lazyload        : false,
-                        article         : articles[articleCount],
-                        site            : site,
-                        swap            : false,
-                        dev             : dev,
-                        cardId          : "nine",
-                        containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-                    }) | raw}}
-                    {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
-                    {% set cardIndex = cardIndex + 1 %}
-                    <hr class="divide20-25 visible-sm-block">
-                </div> #}
 
 
                 {# ************ MOST POPULAR DESKTOP ************   #}
-                <div class="col-xs-12 col-sm-6 col-md-12">
-                    <div class="c-section-header u-margin-top-30 hidden-sm">
+                <div class="col-12 col-md-6 col-lg-12">
+                    <div class="c-section-header u-margin-top-30 d-block d-md-none d-lg-block">
                         <h2 class="c-section-header__h2 {{site}}">Most popular</h2>
                     </div>
-                    <div class="leaderboard u-margin-top-13 hidden-sm">
+                    <div class="leaderboard u-margin-top-13 d-block d-md-none d-lg-block">
                     {% for i in 0..4 if popularArticles[i] %}
                         {{this.render('../_single-article.twig', {
                             article         : popularArticles[i],
@@ -335,16 +264,19 @@
 
                         {# {% if paymeter == true and pianoSubscribe == true %} #}
                     <div class="click-subscribe
-                        visible-xs-block
+                        d-block
+                        d-md-none
+                        d-lg-block
+                        {# visible-xs-block
                         visible-md-block
-                        visible-lg-block
+                        visible-lg-block #}
                         u-mobile-margin-top-30
                         u-mobile-margin-bottom-30
                         u-desktop-margin-top-30"
                         data-view="desktop/mobile">
 
                         <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
-                        <p class="click-subscribe__p">Subscribe to the news that <br class="visible-md-block" /> matters to you</p>
+                        <p class="click-subscribe__p">Subscribe to the news that <br class="d-none d-lg-block" /> matters to you</p>
                         {#<button class="click-subscribe__button">Subscribe now</button>#}
                         <a class="click-subscribe__button" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
                             Subscribe
@@ -353,8 +285,8 @@
                         {# {% endif %}   #}
 
 
-                    <div class="row visible-xs-block">
-                        <div class="col-xs-12">
+                    <div class="row d-block d-md-none">
+                        <div class="col-12">
                             {{this.render('../../partials/buylocal.twig', {
                                 networkData: networkData
                             }) | raw}}
@@ -393,25 +325,25 @@
 
 
         {# COLUMN 3 #}
-        <div class="col-xs-12 col-sm-12 col-md-3">
-            <div class="row u-margin-bottom-30 hidden-xs hidden-sm">
-                <div class="col-sm-1 col-md-12 hidden-xs hidden-sm ">
+        <div class="col-12 col-md-12 col-lg-3 order-lg-3">
+            <div class="row u-margin-bottom-30 d-none d-lg-block">
+                <div class="col-sm-1 col-md-12 ">
                     <div class="weather j-weather-panel {{site}}"></div>
                     <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
-                    <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
+                    <hr class="divide10  d-none d-md-block d-lg-none" style="margin-top: 50px;">
                 </div>
             </div>
 
             <div class="row">
 
 
-                <div class="col-xs-12 visible-md-block visible-lg-block">
+                <div class="col-12 d-none d-lg-block">
                     {{this.render('../../partials/buylocal.twig', {
                         networkData: networkData
                     }) | raw}}
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-12">
+                <div class="col-12 col-md-6 col-lg-12">
                     {# CARDS 9, 10 #}
                     {{this.render('../_single-article.twig', {
                         imageSize       : {width:95},
@@ -430,13 +362,13 @@
 
                     <hr class="divide20-25">
 
-                    <div class="ad-square mrec-min-height hidden-sm u-mobile-no-margin-top u-desktop-margin-top-30 u-desktop-margin-bottom-30" data-view="desktop-mrec">
+                    <div class="ad-square mrec-min-height d-md-none d-lg-block u-mobile-no-margin-top u-desktop-margin-top-30 u-desktop-margin-bottom-30" data-view="desktop-mrec">
                         <div class='advert-desktop  desktop-mrec' data-adsize="mrec"></div>
                         <div class='advert-tablet  tablet-mrec' data-adsize="mrec"></div>
                         <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>
                     </div>
 
-                    <hr class="divide20-25 hidden-sm">
+                    <hr class="divide20-25 d-md-none d-lg-block">
 
 
 
@@ -459,17 +391,17 @@
 
 
 
-                    <div class="click-subscribe u-tablet-margin-top-30 visible-sm-block" data-view="tablet">
+                    <div class="click-subscribe u-tablet-margin-top-30 d-none d-md-block d-lg-none" data-view="tablet">
                         <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
                         <p class="click-subscribe__p">Subscribe to the news that matters to you</p>
                         <button class="click-subscribe__button">Subscribe now</button>
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-12">
+                <div class="col-12 col-md-6 col-lg-12">
 
 
-                    <div class="ad-square visible-sm-block u-margin-bottom-20 u-mobile-no-margin-top u-desktop-no-margin-top" data-view="tablet-mrec">
+                    <div class="ad-square d-none d-md-block d-lg-none u-margin-bottom-20 u-mobile-no-margin-top u-desktop-no-margin-top" data-view="tablet-mrec">
                         <div class='advert-desktop desktop-mrec' data-adsize="mrec"></div>
                         <div class='advert-tablet tablet-mrec' data-adsize="mrec"></div>
                         <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
@@ -479,10 +411,10 @@
 
 
                 {# ************ MOST POPULAR TABLET ************   #}
-                    <div class="c-section-header u-tablet-margin-top-30 visible-sm-block">
+                    <div class="c-section-header u-tablet-margin-top-30 d-none d-md-block d-lg-none">
                         <h2 class="c-section-header__h2 {{site}}">Most popular</h2>
                     </div>
-                    <div class="leaderboard u-margin-top-13 u-tablet-margin-bottom-30 visible-sm-block">
+                    <div class="leaderboard u-margin-top-13 u-tablet-margin-bottom-30 d-none d-md-block d-lg-none">
                     {% for i in 0..4 if popularArticles[i] %}
                         {{this.render('../_single-article.twig', {
                             article         : popularArticles[i],
@@ -497,27 +429,6 @@
                     </div>
                     {# ************ END ************   #}
 
-
-                    {# CARD 11 #}
-                    {# {% if articles[articleCount] %}
-                        {{this.render('../_single-article.twig', {
-                            imageSize       : {width:95},
-                            styleType       : "image-bottom",
-                            position        : cardIndex,
-                            lazyload        : false,
-                            article         : articles[articleCount],
-                            site            : site,
-                            swap            : false,
-                            dev             : dev,
-                            cardId          : "eleven",
-                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
-                        }) | raw}}
-
-
-                        {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
-                        {% set cardIndex = cardIndex + 1 %}
-                    {% endif %} #}
-
                 </div>
             </div>
         </div>
@@ -530,9 +441,9 @@
             {% for i in 0..1 if articles[i] %}
                 {% set hidden = "" %}
                 {% if i == 2 %}
-                    {% set hidden = 'hidden-sm' %}
+                    {% set hidden = 'd-md-none d-lg-block' %}
                 {% endif %}
-                <div class="col-sm-6 col-md-4">
+                <div class="col-12 col-md-6 col-lg-4">
                     {# CARDS 8, 9 #}
                     {{this.render('../_single-article.twig', {
                         imageSize       : {height: 112, width:190},
@@ -547,7 +458,7 @@
                         containerClass  : 'card-104-mobile card-101-tablet card-104-desktop-sm card-104-desktop-lg ' ~ hidden
                     }) | raw}}
 
-                    <hr class="divide20-25 visible-xs-block"  data-tag="kelsi">
+                    <hr class="divide20-25  d-block d-md-none"  data-tag="kelsi">
 
                     {% set articleCount = (articleLock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
@@ -556,7 +467,7 @@
 
 
 
-            <div class="col-sm-6 col-md-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 {# CARD 10 #}
                 {{Newsletter | raw}}
             </div>
@@ -564,7 +475,7 @@
 
 
     </div>
-    <hr class="hidden-xs hidden-sm divide20-25" data-tag="fulla">
+    <hr class="d-none d-lg-block divide20-25" data-tag="fulla">
 </section>
 
 

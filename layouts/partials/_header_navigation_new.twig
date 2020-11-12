@@ -104,7 +104,7 @@
 
                 <div class="c-header-new__sub-info" style="background:white">
                         {% if paperButton == true and paymeter == true and pianoSubscribe == true %}
-                            <a class="c-header-new__read-link" id="pressreader-button" href="{{paperLink}}">
+                            <a class="c-header-new__read-link {{site}}" id="pressreader-button" href="{{paperLink}}">
                                 {{config['paperButton']['label']}}
                             </a>
                         {% endif %}
@@ -238,12 +238,12 @@
         <button class="standalone-menu__search-button o-glass" type="submit" id="searchsubmit"></button>
     </form>
 
-    <div class="standalone-menu__menu-toggle u-margin-top-30 j-menu-toggle">
+    <div class="standalone-menu__menu-toggle u-margin-top-20 j-menu-toggle">
         <button class="standalone-menu__toggle standalone-menu__toggle--active" data-value="section">Sections</button>
         <button class="standalone-menu__toggle" data-value="network">Network</button>
     </div>
 
-    <ul class="standalone-menu u-margin-top-30">
+    <ul class="standalone-menu u-margin-top-20">
         <div class="standalone-menu__tab standalone-menu__tab--active j-tab" data-tab="section">
         {{ this.render('../../partials/_menu.twig', {
             'menu': sectionMenu

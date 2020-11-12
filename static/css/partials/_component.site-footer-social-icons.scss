@@ -39,7 +39,8 @@
         }
     }
     &:hover {
-        color: #ed3a4b;
+        @include filterColor('');
+        // color: #ed3a4b;
     }
 
 }
@@ -50,7 +51,7 @@
     background-repeat: no-repeat;
     background-size:cover;
     &:hover {
-        color: #ed3a4b;
+        @include filterColor('');
     }
 
 }

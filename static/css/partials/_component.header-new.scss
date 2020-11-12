@@ -144,6 +144,10 @@ $mainColor : red;
         }
         &:hover {
             color: #ed3a4b;
+            &:after {
+                @include filterColor('');
+                // filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);
+            }
         }
     }
 
