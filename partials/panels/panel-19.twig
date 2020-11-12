@@ -38,12 +38,12 @@
                         <hr class="divide20-25 d-block d-md-none d-lg-block">
                     </div>
 
-                    <div class="col-12 col-md-4 col-lg-12 {{mobilePadding[i]}}">
+                    <div class="col-12 col-md-4 col-lg-12 ">
                         <div class="row">
+                            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
                             {% for i in 0..1 if articles[articleCount] %}
-                                <div class="col-6 col-md-12 col-lg-6">
+                                <div class="col-6 col-md-12 col-lg-6 {{mobilePadding[i]}}">
                                     {# cards 2,3 #}
-                                    {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
                                     {{this.render('../_single-article.twig', {
                                         article         : articles[articleCount],
                                         position        : cardIndex,
@@ -116,7 +116,6 @@
                         <div class="advert-tablet tablet-mrec" data-adsize="mrec"></div>
                         <div class="advert-mobile mobile-mrec" data-adsize="mrec"></div>
                     </div>
-
 
                 {% for i in 0..2 if articles[articleCount] %}
                     <div class="col-12">

@@ -23,6 +23,7 @@
 
 
         <div class="row" data-template="panel-14">
+            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
 
             {% for i in 0..11 if articles[articleCount] %}
 
@@ -39,7 +40,7 @@
 
 
 
-                <div class="col-6 col-md-6 col-lg-3">
+                <div class="col-6 col-md-6 col-lg-3 {{mobilePadding[i%2]}}">
 
                     {% if loop.index > 4  %}
                         <hr class="divide20-25 d-none d-lg-block">
