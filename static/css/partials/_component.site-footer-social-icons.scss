@@ -1,5 +1,7 @@
 .footer-social {
     height: 35px;
+    @include flexbox();
+    @include align-items(center);
     // display: flex;
     // display: -webkit-flex;
     // justify-content: flex-end;
@@ -10,11 +12,19 @@
         float:none;
         clear:both;
     }
+
+    &__divider {
+        height: 26px;
+        width: 1px;
+        background:white;
+        margin-right:15px;
+        margin-left: 15px;
+    }
 }
 
 .footer-social__icon {
-    margin-left: 35px;
-    border-right: none;
+    // margin-left: 35px;
+    // border-right: none;
 }
 
 
@@ -28,18 +38,21 @@
     background-repeat: no-repeat;
     background-size: conver;
 
-    &:first-child {
-        &:after {
-            content: '';
-            display: block;
-            height: 26px;
-            border-right: 1px solid white;
-            position: relative;
-            right: -20px;
-        }
-    }
+    // &:first-child {
+    //     &:after {
+    //         content: '';
+    //         display: block;
+    //         height: 26px;
+    //         border-right: 1px solid white;
+    //         position: relative;
+    //         right: -20px;
+    //     }
+    // }
     &:hover {
-        @include filterColor('');
+        @include svgHover('');
+        // filter: url('#shepparton-filter');
+
+        // @include filterColor('');
         // color: #ed3a4b;
     }
 
@@ -51,7 +64,11 @@
     background-repeat: no-repeat;
     background-size:cover;
     &:hover {
-        @include filterColor('');
+        @include svgHover('');
+        // filter: url('#shepparton-filter');
+
+        // filter: url('../filters/hover.svg#shepparton');
+        // @include filterColor('');
     }
 
 }

@@ -106,6 +106,7 @@
                         {% if paperButton == true and paymeter == true and pianoSubscribe == true %}
                             <a class="c-header-new__read-link {{site}}" id="pressreader-button" href="{{paperLink}}">
                                 {{config['paperButton']['label']}}
+                                <div class="c-header-new__read-link-icon {{site}}"></div>
                             </a>
                         {% endif %}
                     {#<a class="c-header-new__read-link" href="">Read paper</a>#}
@@ -181,9 +182,9 @@
 
 
 
-                            <div class="d-flex c-header-new__login-container j-piano-loggedout">
+                            <div class="d-flex c-header-new__login-container j-piano-loggedout {{site}}">
                                 <a class="c-header-new__login" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">Sign in</a>
-                                <img class="c-header-new__login-profile" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
+                                <img class="c-header-new__login-profile {{site}}" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
                             </div>
                         {% endif %}  
 

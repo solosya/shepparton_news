@@ -1,3 +1,5 @@
+
+// https://codepen.io/sosuke/pen/Pjoqqp
 @mixin filterColor($class) {
     @if $class != '' {
         #{$class} {
@@ -7,16 +9,19 @@
         &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
             #{$class} {
                 filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);
+                // filter: invert(35%) sepia(44%) saturate(5882%) hue-rotate(336deg) brightness(97%) contrast(95%);
             }
         }
         &.country, &.campaspe {
             #{$class} {
                 color: #8bc833;
+                // filter: invert(61%) sepia(99%) saturate(314%) hue-rotate(42deg) brightness(96%) contrast(91%);
             }
         }
         &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
             #{$class} {
                 color: #118ce0;
+                // filter: invert(41%) sepia(78%) saturate(2495%) hue-rotate(182deg) brightness(95%) contrast(87%);
             }
         }
 
@@ -24,13 +29,95 @@
 
         color: #000;
         &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
-            filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);;
+            filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);
         }
         &.country, &.campaspe {
             color: #8bc833;
         }
         &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
             color: #118ce0;
+        }
+
+    }
+
+}
+
+@mixin svgHover($class) {
+    @if $class != '' {
+        #{$class} {
+            color: #000;
+        }
+        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                filter: url('#red-filter');
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                filter: url('#green-filter');
+                // color: #8bc833;
+                // filter: invert(61%) sepia(99%) saturate(314%) hue-rotate(42deg) brightness(96%) contrast(91%);
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                filter: url('#blue-filter');
+                // color: #118ce0;
+                // filter: invert(41%) sepia(78%) saturate(2495%) hue-rotate(182deg) brightness(95%) contrast(87%);
+            }
+        }
+
+    } @else {
+
+        color: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            filter: url('#red-filter');
+        }
+        &.country, &.campaspe {
+            filter: url('#green-filter');
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            filter: url('#blue-filter');
+        }
+
+    }
+
+}
+
+@mixin svgHoverInvert($class) {
+    @if $class != '' {
+        #{$class} {
+            color: #000;
+        }
+        
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            #{$class} {
+                filter: invert(100%) url('#red-filter');
+            }
+        }
+        &.country, &.campaspe {
+            #{$class} {
+                filter: invert(100%) url('#green-filter');
+            }
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            #{$class} {
+                filter: invert(100%) url('#blue-filter');
+            }
+        }
+
+    } @else {
+
+        color: #000;
+        &.shepparton, &.shepptest, &.riverine, &.benalla, &.cobram, &.seymour, &.southern, &.tatura, &.deniliquin {
+            filter: invert(100%) url('#red-filter');
+        }
+        &.country, &.campaspe {
+            filter: invert(100%) url('#green-filter');
+        }
+        &.dairy, &.corowa, &.kyabram, &.mcivor, &.yarrawonga {
+            filter: invert(100%) url('#blue-filter');
         }
 
     }

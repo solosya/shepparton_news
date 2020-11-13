@@ -340,11 +340,13 @@
             background-position: top;
             height: 100%;
             width: 100%;
+        }
+        img {
+            width:100%;
             &:hover {
-                @include filterColor('');
-                // filter: invert(51%) sepia(60%) saturate(6307%) hue-rotate(330deg) brightness(90%) contrast(108%);
+                @include svgHover('');
+                // filter: url('#shepparton-filter');
             }
-    
         }
 
 

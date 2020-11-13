@@ -108,7 +108,7 @@ for Oovvuu to use to replicate the menu on the video site. #}
 
 
     {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=f40fb2f1" type="text/css" media="all">
+        <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/concat.min.css?v=640d1205" type="text/css" media="all">
     {% else %}
 
         <link rel='stylesheet' href='{{networkData.templatePath}}/static/deploy/concat.css' type='text/css' media='all' />
@@ -239,6 +239,37 @@ for Oovvuu to use to replicate the menu on the video site. #}
 <body class="{{ pageTypeClass }} {{ layout }} {{ pageClass }}" data-class="{{ pageClass | split(' ')[0] }}" data-site="{{site}}" data-networkid="{{networkData['id']}}" data-v="42">
 
 {{ this.beginBody() }}
+    <svg xmlns="<http://www.w3.org/2000/svg>" version="1.1">
+        <defs>
+            <filter id="red-filter">
+                <feColorMatrix
+                color-interpolation-filters="sRGB"
+                type="matrix"
+                values="0.94 0   0   0   0
+                        0   0.22  0   0   0
+                        0   0   0.27  0   0
+                        0   0   0   1   0 "/>
+            </filter>
+            <filter id="green-filter">
+                <feColorMatrix
+                color-interpolation-filters="sRGB"
+                type="matrix"
+                values="0.55 0   0   0   0
+                        0   0.78  0   0   0
+                        0   0   0.20  0   0
+                        0   0   0   1   0 "/>
+            </filter>
+            <filter id="blue-filter">
+                <feColorMatrix
+                color-interpolation-filters="sRGB"
+                type="matrix"
+                values="0.07 0   0   0   0
+                        0   0.55  0   0   0
+                        0   0   0.88  0   0
+                        0   0   0   1   0 "/>
+            </filter>
+        </defs>
+    </svg>
 
 
     {% set headerStyle = '' %}
