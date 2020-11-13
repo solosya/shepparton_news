@@ -132,26 +132,12 @@ $mainColor : red;
         @include font-size(12);
         font-weight:600;
         color:black;
-        // &:after {
-        //     content: '';
-        //     display:block;
-        //     margin-left:7px;
-        //     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTgiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxOCAxMyI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iZzd3Z3lzZW1vYSIgZD0iTTAgMEwxOCAwIDE4IDEzIDAgMTN6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnPgogICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjc2IC04NSkgdHJhbnNsYXRlKDEyNzYgODUpIj4KICAgICAgICAgICAgICAgICAgICA8bWFzayBpZD0idjF6aGV5aTlhYiIgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgICAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI2c3d2d5c2Vtb2EiLz4KICAgICAgICAgICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3LjE5NiAxMS4xNjljMCAuMTY4LS4wODIuMzE1LS4yMjcuNDAzLS4xNDUuMDg3LS4zMTQuMDkzLS40NjYuMDE1LTIuMDA2LTEuMDItNC40MDEtMS4wMi02LjQwOSAwbC0uNjkyLjM1N1YyLjAyMmwxLjA2LS41NDVjMS43NzYtLjkwNCAzLjg5OC0uOTA0IDUuNjczIDBsLjgwNS40MTNjLjE1OC4wODIuMjU2LjI0Mi4yNTYuNDJ2OC44NTl6TTQuNzAxIDEwLjgyYy0xLjEgMC0yLjIwMS4yNTYtMy4yMDUuNzY3LS4xNS4wNzctLjMyLjA3MS0uNDY1LS4wMTYtLjE0NC0uMDg4LS4yMjctLjIzNS0uMjI3LS40MDN2LTguODZjMC0uMTc3LjA5OC0uMzM3LjI1Ni0uNDE5bC44MDQtLjQxM2MxLjc3Ni0uOTA0IDMuODk4LS45MDQgNS42NzMgMGwxLjA2MS41NDV2OS45MjJsLS42OTQtLjM1N2MtMS4wMDItLjUxLTIuMTAyLS43NjYtMy4yMDMtLjc2NnptMTIuNjA4LTkuNjRsLS44MDYtLjQxNmMtMi4wMDYtMS4wMi00LjQwMS0xLjAyLTYuNDA5LjAwMUw5IDEuMzMgNy45MDQuNzY2Yy0yLjAwNi0xLjAyMS00LjQtMS4wMjEtNi40MDggMGwtLjgwNS40MTRDLjI2NSAxLjQgMCAxLjgzMiAwIDIuMzF2OC44NTljMCAuNDQ3LjIzLjg1My42MTQgMS4wODUuMzg0LjIzMy44NTIuMjQ5IDEuMjUuMDQ0IDEuNzc2LS45MDQgMy44OTgtLjkwNCA1LjY3MyAwbDEuMjc4LjY1Ny4wMTUuMDA3LjAyLjAwOGMuMDEuMDA0LjAyLjAwOC4wMy4wMWwuMDE5LjAwNy4wMzQuMDA3LjAxNi4wMDNMOSAxM2wuMDUxLS4wMDMuMDE2LS4wMDMuMDM0LS4wMDcuMDItLjAwNi4wMy0uMDEuMDItLjAxLjAxNC0uMDA2IDEuMjc3LS42NTdjMS43NzYtLjkwNCAzLjg5OC0uOTA0IDUuNjczIDAgLjQuMjA1Ljg2Ny4xODkgMS4yNTItLjA0NC4zODQtLjIzMi42MTMtLjYzOC42MTMtMS4wODV2LTguODZjMC0uNDc3LS4yNjUtLjkxLS42OS0xLjEyOXoiIG1hc2s9InVybCgjdjF6aGV5aTlhYikiLz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==');
-        //     background-repeat: no-repeat;
-        //     background-size:contain;
-        //     width:20px;
-        //     height:15px;
-        // }
         &:hover {
-            color: #ed3a4b;
-
+            // color: #ed3a4b;
+            @include colourselect('');
             .c-header-new__read-link-icon {
                 @include svgHoverInvert('');
             }
-            // &:after {
-            //     @include svgHoverInvert('');
-            //     // filter: invert(100%) url('#shepparton-filter');
-            // }
         }
     }
 
@@ -163,7 +149,6 @@ $mainColor : red;
         background-size:contain;
         width:20px;
         height:15px;
-        // @include svgHoverInvert('');
     }
 
 
@@ -256,7 +241,8 @@ $mainColor : red;
         @include font-size(14);
         color:#464646;
         &:hover {
-            color: #ed3a4b;
+            @include colourselect('');
+            // color: #ed3a4b;
         }
 
     }
