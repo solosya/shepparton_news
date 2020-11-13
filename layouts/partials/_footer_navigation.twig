@@ -7,7 +7,7 @@
         {% endif %}
 
         <li class="site-footer-links__menu-item">
-            <a href="{{item.link |raw}}" class="site-footer-links__link {{activeClass}} {{externalClass}} {{ policyClass }}" {% if item.target != "" %} target="{{item.target}}"{% endif %}>
+            <a href="{{item.link |raw}}" class="site-footer-links__link {{site}} {{activeClass}} {{externalClass}} {{ policyClass }}" {% if item.target != "" %} target="{{item.target}}"{% endif %}>
                 {% if item.label != "" %}
                     {{item.label}}
                 {% elseif item.blogTitle != "" %}

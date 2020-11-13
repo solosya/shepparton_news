@@ -36,7 +36,7 @@
                             {#</svg>#}
                         </a>
                     {% endif %}
-                    
+
                     <div class="footer-social__divider"></div>
 
                     {% if link.social['twitter'] is not empty %}
@@ -60,6 +60,7 @@
                     {{this.render('_footer_navigation.twig', {
                         items: footerMenu | slice(0, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
+                        site : site
                     }) | raw}}
                 {% endif %}
 
@@ -67,6 +68,7 @@
                     {{this.render('_footer_navigation.twig', {
                         items: footerMenu | slice(3, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
+                        site : site
                     }) | raw}}
                 {% endif %}
 
@@ -74,6 +76,7 @@
                     {{this.render('_footer_navigation.twig', {
                         items: footerMenu | slice(6, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
+                        site : site
                     }) | raw}}
                 {% endif %}
 
@@ -81,6 +84,7 @@
                     {{this.render('_footer_navigation.twig', {
                         items: footerMenu | slice(9, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
+                        site : site
                    }) | raw}}
                 {% endif %}
 
@@ -88,6 +92,7 @@
                     {{this.render('_footer_navigation.twig', {
                         items: footerMenu | slice(12, 3),
                         class: 'site-footer-links__menu site-footer-links__menu--padded',
+                        site : site
                     }) | raw}}
                 {% endif %}
 

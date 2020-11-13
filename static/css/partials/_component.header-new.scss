@@ -133,7 +133,6 @@ $mainColor : red;
         font-weight:600;
         color:black;
         &:hover {
-            // color: #ed3a4b;
             @include colourselect('');
             .c-header-new__read-link-icon {
                 @include svgHoverInvert('');
@@ -229,12 +228,6 @@ $mainColor : red;
     &__login-container {
         @include align-items(center);
 
-        // &:hover {
-        //     .c-header-new__login-profile {
-        //         @include filterColor('');
-
-        //     }
-        // }
 
     }
     &__login {
@@ -242,13 +235,11 @@ $mainColor : red;
         color:#464646;
         &:hover {
             @include colourselect('');
-            // color: #ed3a4b;
         }
 
     }
     &__login-profile {
         margin-left:8px;
-        // @include filterColor('');
         
     }
 

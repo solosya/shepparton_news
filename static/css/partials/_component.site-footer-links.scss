@@ -69,7 +69,7 @@
     color:white;
     text-transform:uppercase;
     &:hover {
-        color:#ed3a4b;
+        @include colourselect('');
     }
 
     @media screen and (max-width: $sm-break-down) {

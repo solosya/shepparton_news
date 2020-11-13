@@ -22,11 +22,6 @@
     }
 }
 
-.footer-social__icon {
-    // margin-left: 35px;
-    // border-right: none;
-}
-
 
 
 .footer-social__icon--facebook {
@@ -38,22 +33,8 @@
     background-repeat: no-repeat;
     background-size: conver;
 
-    // &:first-child {
-    //     &:after {
-    //         content: '';
-    //         display: block;
-    //         height: 26px;
-    //         border-right: 1px solid white;
-    //         position: relative;
-    //         right: -20px;
-    //     }
-    // }
     &:hover {
         @include svgHover('');
-        // filter: url('#shepparton-filter');
-
-        // @include filterColor('');
-        // color: #ed3a4b;
     }
 
 }
@@ -65,10 +46,6 @@
     background-size:cover;
     &:hover {
         @include svgHover('');
-        // filter: url('#shepparton-filter');
-
-        // filter: url('../filters/hover.svg#shepparton');
-        // @include filterColor('');
     }
 
 }
