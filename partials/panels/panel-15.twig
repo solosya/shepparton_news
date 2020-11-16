@@ -1,4 +1,5 @@
 {% set articleCount = 0 %}
+{% set articlelock = false %}
 
 <div class="col-12 col-lg-6">
 
@@ -30,7 +31,7 @@
                     swap            : 'false',
                     containerClass  : 'card-111-mobile card-107-tablet card-107-desktop-sm card-107-desktop-lg'
                 }) | raw}}
-                {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
             </div>
 
         {% endfor %}
