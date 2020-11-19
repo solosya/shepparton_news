@@ -143,8 +143,6 @@
                     {# Only shows on Mobile #}
                 {% if paymeter == true and pianoMenu == true %}  
 
-
-
                         <div class="c-header-new__mobile-auth">
 
                             <a class="c-header-new__subscribebutton"
@@ -165,13 +163,15 @@
                     <div class="c-navigation-new__icons">
                         {% if paymeter == true and pianoMenu == true %}  
                             {# <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li> #}
-                            <div class="d-block d-md-none j-piano-loggedin" style="display:none;">
+                            <div class="d-block d-md-none j-piano-loggedin" >
                                 <a class="c-header-new__login" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a>
                             </div>
 
-                            <ul class="auth-links d-none d-md-block j-piano-loggedin" style="display:none;">
-                                <li class="c-piano__account j-piano__account">
-                                    <img class="c-piano__arrow" src="{{networkData.templatePath}}/static/icons/downarrow.svg">
+                            <ul class="auth-links d-none d-md-block j-piano-loggedin" style="display:none !important">
+                                <li class="d-flex c-header-new__login-container j-piano__account">
+                                    <a class="c-header-new__login {{site}}" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a>
+                                    <img class="c-header-new__login-profile {{site}}" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
+
                                 </li>
                                 <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
                                     <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
