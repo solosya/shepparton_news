@@ -83,10 +83,10 @@ $('document').ready(function() {
 
 
     var adScroll = function() {
-
+        // console.log('doing scroll ad');
         //set sidebar height for desktop scrolling ad
         if ($('#articleContentContainer').length > 0) {
-            var articleTop = $('#articleContentContainer').position().top
+            var articleTop = $('#articleContentContainer').position().top;
             var theHeight = $('#articleContentContainer').height();
             $('#adScrollContainer').css("height",theHeight+"px");
             var screenHeight = $(window).height();
@@ -97,6 +97,7 @@ $('document').ready(function() {
             } else {
                 screenDiff = 843;
             }
+            // console.log(scrollMetric);
             // tell ad when to scroll and when not to based on the size of the article
             // 135 is the space above left for foldaway menu
             if ( scrollMetric[1] === 'up' && !isScolledPast(articleTop-135)) {
