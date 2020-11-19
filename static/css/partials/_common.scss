@@ -136,6 +136,10 @@
         margin-left:auto;
         margin-right:auto;
     }
+    &.vert-min-height {
+        background:#f7f7f7;
+        min-height: 600px;
+    }
 
     &.ad-square__left {
         @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
