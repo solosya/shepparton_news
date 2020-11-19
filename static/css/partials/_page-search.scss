@@ -1,26 +1,12 @@
 .searchPage {
-    margin-top: 50px;
-	font-family: $font-family-sans-serif;
-
-    h1 {
-        flex-grow: 0;
-        font-size: rem(30);
-        font-weight:300;
-        margin-bottom:25px;
-        text-transform:uppercase;
-        @include colourselect('');
-    }
-
-    h2 {
+ 
+    &__count {
+        font-family: $base-font-family;
+        @include font-size(20);
+        font-weight: 400;
+        color: #6e6e6e;
 
     }
-
-
-    .ajaxArticles {
-        margin-top:60px;
-    }
-
-
     
 
 }

@@ -37,9 +37,8 @@
 {% endif %}
 
 {% if themeColors.headingColor != "" %}
-    div.category,
+    {# div.category,
     p.category,
-    .searchPage h1,
     div.most-popular > h2, div.trending > h2,
     div.card-popular::before,
     h2.sidebar-header,
@@ -49,7 +48,7 @@
     .site-main .section-header p>a,
     .site-main .subscribe > h2,
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover    
-     {
+    {
         color: {{themeColors.headingColor}} !important;
     }
 
@@ -70,7 +69,7 @@
 
     .bar {
         content: {{ networkData.title | lower }};
-    }
+    } #}
 
     {% if site == 'dairy' %}
 

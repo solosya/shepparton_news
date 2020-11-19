@@ -95,6 +95,8 @@
                     width: 100%;
                     margin-left: 0px;
                     padding: 0px;
+                    @include flex-direction(column);
+
                 }
                 &__text-container {
 
@@ -119,6 +121,7 @@
                     min-height:auto;
                     max-height: 100px;
                     overflow: hidden;
+                    width:100%;
                 }
                 &__author {
                     margin-top:10px;

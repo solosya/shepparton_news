@@ -1,5 +1,5 @@
 
-{% set limit = 20 %}
+{% set limit = 15 %}
 {% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search, 'sortBy': 'published'}) %}
 {% set firstCount = articles | length %}
 
@@ -19,38 +19,68 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-12 col-lg-10">
-                        <h1>Search Results</h1>
+                    <div class="col-12 u-margin-bottom-30">
+                        <h2 class="section-heading {{site}} u-margin-bottom-10 ">Search Results</h2>
+                        <h2 class="searchPage__count u-margin-bottom-40">{{ articles | length }} Results found for ‘{{ search }}’</h2>
+
                     </div>
                 </div>
 
                 <div class="row" style="padding-bottom:25px;">
-                    <div class="col-12 col-md-9 col-lg-6">
-                        <h2>{{ articles | length }} Results found for ‘{{ search }}’</h2>
-                        {% for article in articles %}                                                                
-                            {{this.render('partials/_single-article.twig', {
-                                article: article, 
-                                position: (articleCount+1), 
-                                imageSuppress: true,
-                                site: site,
-                                containerClass: 'search search-tablet search-mobile'}) | raw}}
-                            {% set articleCount = articleCount + 1 %}
-                        {% endfor %}
+                    <div class="col-12 col-md-12 col-lg-9">
+
+                        <div class="row">
+                            {% for article in articles %}
+                                <div class="col-12 col-md-6 col-lg-4">
+                                {% if loop.index > 3 %}
+                                    <hr class="divide20-25">
+                                {% endif %}
+                                {% if loop.index == 3 %}
+                                    <hr class="divide20-25 d-block d-lg-none">
+                                {% endif %}
+                                {% if loop.index == 2 %}
+                                    <hr class="divide20-25 d-block d-md-none">
+                                {% endif %}
+
+                                    {{this.render('partials/_single-article.twig', {
+                                        article: article, 
+                                        position: (articleCount + 1), 
+                                        imageSuppress: true,
+                                        site: site,
+                                        containerClass: 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                </div>
+
+                                {% if loop.index == 3 %}
+                                    <div class="col-12 col-md-3 d-block d-md-none u-margin-top-30">
+                                        <div class="ad-square mrec-min-height">
+                                            <div class='advert-desktop advert-tablet advert-mobile' data-adsize="mrec"></div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+
+
+                        <section id="loadmore_section" class="row {{site}}"></section>
+
+
+
                     </div>
 
 
 
-                    <div class="col-12 col-md-3 col-lg-3">
-                        <div class="ad-square" >
+                    <div class="col-12 col-md-4 col-lg-3 d-none d-lg-block">
+                        <div class="ad-square mrec-min-height">
                             <div class='advert-desktop advert-tablet advert-mobile' data-adsize="mrec"></div>
                         </div>
                     </div>
 
 
 
-                    <section id="loadmore_section" class="col-12 col-md-9 col-lg-6 {{site}}"></section>
 
-                    <div class="col-12 col-md-9 col-lg-6 {{site}}">
+                    <div class="col-12 col-md-9 {{site}}">
                         {% if articles|length >= 2 %}
 
                             {{ this.render('/partials/ajaxarticles_new.twig', {
@@ -83,7 +113,10 @@
             loadtype        : "api/search",
             searchterm      : "{{search}}",
             name            : 'section-load',
-            card_class      : 'search search-tablet search-mobile',
+            card_class      : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg',
+            beforeEach      : '<div class="col-12 col-md-6 col-lg-4"><hr class="divide20-25">',
+            afterEach       : '</div>',
+
             non_pinned      : {{articleCount}}
         });
 
