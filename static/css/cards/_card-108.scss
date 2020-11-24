@@ -60,6 +60,8 @@
                 }
                 &--count {
                     @include font-size(14);
+                    color: black;
+
                 }
             }
             &__auction {
