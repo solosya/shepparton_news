@@ -132,6 +132,7 @@ $mainColor : red;
         @include font-size(12);
         font-weight:600;
         color:black;
+        padding:5px;
         &:hover {
             @include colourselect('');
             .c-header-new__read-link-icon {
