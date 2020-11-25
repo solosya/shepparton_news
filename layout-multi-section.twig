@@ -5,15 +5,13 @@
 {% set site        = networkData.title | lower | split(" ")[0]%}
 {% set homeBlog    = blogData['title'] | lower %}
 
-{% set layoutPage  = layout | split("-")[1] %}
 {% set config = _Network.getThemeConfig() %}
 
 
-{% set layoutPage = this.title %}
-{% if blogData.additionalInfo.multi_name is defined %}
+{% set layoutPage = homeBlog %}
+{% if blogData.additionalInfo.multi_name is defined and blogData.additionalInfo.multi_name != "" %}
     {% set layoutPage = blogData.additionalInfo.multi_name %}
 {% endif %}
-
 
 {# {{this.registerJs("Acme.cards = CardController();")}} #}
 
