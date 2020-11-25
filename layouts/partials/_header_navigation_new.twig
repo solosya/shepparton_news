@@ -169,12 +169,12 @@
 
                             <ul class="auth-links d-none d-md-block j-piano-loggedin" style="display:none !important">
                                 <li class="d-flex c-header-new__login-container j-piano__account">
-                                    <a class="c-header-new__login {{site}}" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a>
+                                    <a id="piano-user-name" class="c-header-new__login {{site}}" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a>
                                     <img class="c-header-new__login-profile {{site}}" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
 
                                 </li>
                                 <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
-                                    <li><a href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li>
+                                    <li><a href="javascript:void(0);">My Account</a></li>
                                     <li><a onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
                                 </ul>
                             </ul> 

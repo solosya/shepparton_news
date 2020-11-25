@@ -28,20 +28,6 @@
 
 
 
-        var testPiano =function(data) {
-            console.log('loggedin');
-            var inLogs = document.getElementsByClassName('j-piano-loggedin');
-            var outLogs = document.getElementsByClassName('j-piano-loggedout');
-            for (i=0;i<inLogs.length;i++){
-                inLogs[i].style.display = "block";
-            }
-            for (i=0;i<outLogs.length;i++){
-                outLogs[i].style.display = "none";
-            }             
-        };
-
-            testPiano();
-
 
 
     var gaData = {};
@@ -158,22 +144,26 @@
  
         tp.pianoId.init({
             loggedIn: function(data) {
-                console.log('loggedin');
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                var usernameElem = document.getElementById('piano-user-name');
+                var username = 'My account';
+                if (typeof tp !== 'undefined') {
+                    username = tp.pianoId.getUser().firstName;
+                }
+                usernameElem.textContent=username;
                 for (i=0;i<inLogs.length;i++){
                     inLogs[i].style.display = "block";
                 }
                 for (i=0;i<outLogs.length;i++){
-                    outLogs[i].style.display = "none";
+                    outLogs[i].setAttribute('style', 'display:none !important');
                 }             
-                },
+            },
             loggedOut: function() {
-                console.log('logged out');
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
                 for (i=0;i<inLogs.length;i++){
-                    inLogs[i].style.display = "none";
+                    inLogs[i].setAttribute('style', 'display:none !important');
                 }
                 for (i=0;i<outLogs.length;i++){
                     outLogs[i].style.display = "block";
