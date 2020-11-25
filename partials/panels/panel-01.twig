@@ -69,7 +69,7 @@
 
                             {# CARD 2 #}
                             {{this.render('../_single-article.twig', {
-                                imageSize       : {width:235},
+                                imageSize       : {width:312, height: 235},
                                 position        : cardIndex,
                                 lazyload        : false,
                                 article         : articles[articleCount],
@@ -107,7 +107,7 @@
                             {# CARD 3 TABLET #}
                             {% if articles[articleCount] %}
                                 {{this.render('../_single-article.twig', {
-                                    imageSize       : {height:235},
+                                    imageSize       : {width:312, height: 235},
                                     position        : cardIndex,
                                     lazyload        : false,
                                     article         : articles[articleCount],
@@ -147,7 +147,7 @@
 
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
-                            imageSize       : {height:235},
+                            imageSize       : {width:312, height: 235},
                             position        : cardIndex,
                             lazyload        : false,
                             article         : articles[articleCount],
@@ -413,7 +413,7 @@
                 <div class="col-12 col-md-6 col-lg-12">
                     {# CARDS 9, 10 #}
                     {{this.render('../_single-article.twig', {
-                        imageSize       : {width:95},
+                        imageSize       : {width:312, height: 235},
                         position        : cardIndex,
                         lazyload        : false,
                         article         : articles[articleCount],

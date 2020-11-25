@@ -26,6 +26,24 @@
 
 <script>
 
+
+
+        var testPiano =function(data) {
+            console.log('loggedin');
+            var inLogs = document.getElementsByClassName('j-piano-loggedin');
+            var outLogs = document.getElementsByClassName('j-piano-loggedout');
+            for (i=0;i<inLogs.length;i++){
+                inLogs[i].style.display = "block";
+            }
+            for (i=0;i<outLogs.length;i++){
+                outLogs[i].style.display = "none";
+            }             
+        };
+
+            testPiano();
+
+
+
     var gaData = {};
 
     (function(src){
@@ -149,7 +167,7 @@
                 for (i=0;i<outLogs.length;i++){
                     outLogs[i].style.display = "none";
                 }             
-                        },
+                },
             loggedOut: function() {
                 console.log('logged out');
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
