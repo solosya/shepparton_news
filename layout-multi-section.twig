@@ -9,7 +9,7 @@
 {% set config = _Network.getThemeConfig() %}
 
 
-{% set layoutPage = "" %}
+{% set layoutPage = {this.title} %}
 {% if blogData.additionalInfo.multi_name is defined %}
     {% set layoutPage = blogData.additionalInfo.multi_name %}
 {% endif %}
