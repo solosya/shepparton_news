@@ -264,6 +264,10 @@
 
             &--active { 
                 display:block;
+
+                @media #{$mobile-lg-up} {
+                    border-right: 1px solid #d5d5d5;
+                }
             }
 
 
