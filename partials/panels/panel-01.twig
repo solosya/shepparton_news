@@ -33,11 +33,11 @@
             <div class="row">
 
 
-                <div class="col-12 d-none d-md-block d-lg-none">
+                {# <div class="col-12 d-none d-md-block d-lg-none">
                     {{this.render('../../partials/buylocal.twig', {
                         networkData: networkData
                     }) | raw}}
-                </div>
+                </div> #}
 
 
                 <div class="col-12 col-md-8 col-lg-12 ">
@@ -346,13 +346,13 @@
                     {# {% endif %}   #}
 
 
-                    <div class="row d-block d-md-none">
+                    {# <div class="row d-block d-md-none">
                         <div class="col-12">
                             {{this.render('../../partials/buylocal.twig', {
                                 networkData: networkData
                             }) | raw}}
                         </div>
-                    </div>
+                    </div> #}
 
 
                     <div class="ad-square mrec-min-height d-none d-md-block d-lg-none u-mobile-no-margin-top u-desktop-margin-bottom-10" data-view="tablet-mrec">
@@ -404,13 +404,37 @@
             <div class="row">
 
 
-                <div class="col-12 d-none d-lg-block">
+                {# <div class="col-12 d-none d-lg-block">
                     {{this.render('../../partials/buylocal.twig', {
                         networkData: networkData
                     }) | raw}}
-                </div>
+                </div> #}
 
                 <div class="col-12 col-md-6 col-lg-12">
+                    {# CARDS 9, 10 #}
+                    {{this.render('../_single-article.twig', {
+                        imageSize       : {width:95},
+                        position        : cardIndex,
+                        lazyload        : false,
+                        article         : articles[articleCount],
+                        site            : site,
+                        swap            : false,
+                        dev             : dev,
+                        cardId          : "tenfour" ~ 1,
+                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                    {% set cardIndex = cardIndex + 1 %}
+
+                    <hr class="divide20-25">
+
+
+
+
+
+
+
+                {# <div class="col-12 col-md-6 col-lg-12"> #}
                     {# CARDS 9, 10 #}
                     {{this.render('../_single-article.twig', {
                         imageSize       : {width:95},
@@ -460,11 +484,6 @@
 
 
 
-                    <div class="click-subscribe u-tablet-margin-top-30 d-none d-md-block d-lg-none" data-view="tablet">
-                        <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
-                        <p class="click-subscribe__p">Subscribe to the news that matters to you</p>
-                        <button class="click-subscribe__button">Subscribe now</button>
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-12">
@@ -509,6 +528,13 @@
                         {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                         {% set cardIndex = cardIndex + 1 %}
                     {% endif %}
+
+
+                    <div class="click-subscribe u-tablet-margin-top-30 d-none d-md-block d-lg-none" data-view="tablet">
+                        <h4 class="click-subscribe__title">Stories about people you <br />know told by people you trust</h4>
+                        <p class="click-subscribe__p">Subscribe to the news that matters to you</p>
+                        <button class="click-subscribe__button">Subscribe now</button>
+                    </div>
 
                 </div>
             </div>

@@ -140,6 +140,7 @@
  
         tp.pianoId.init({
             loggedIn: function(data) {
+                console.log('loggedin');
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
                 for (i=0;i<inLogs.length;i++){
