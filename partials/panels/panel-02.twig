@@ -351,15 +351,16 @@
                 <div class="col-12 col-md-6 col-lg-12" data-site={{site}}>
 
                 {% if site == 'dairy' %}
-                    <div class="current-issue-card">
-                        <a class="download-current" href="https://issuu.com/dairynewsaustralia">View the current publication</a>
+                    <div class="u-margin-bottom-30">
+                        <div class="current-issue-card {{site}}">
+                            <a class="download-current" href="https://issuu.com/dairynewsaustralia">View the current publication</a>
+                        </div>
+
+                        <hr class="divide12">
+
+                        {{ this.render('../subscribe.twig', {site : site}) | raw }}
                     </div>
 
-                    <hr class="divide12 d-none d-lg-block">
-                    <hr class="divide10 d-block d-lg-none space-only">
-
-                    {{ this.render('../subscribe.twig') | raw }}
-                    <hr class="divide10 d-block d-lg-none space-only">                            
                 {% else %}
 
                     {{this.render('../_single-article.twig', {
