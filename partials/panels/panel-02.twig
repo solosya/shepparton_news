@@ -476,7 +476,11 @@
     <hr class="divide20-25">
 
     <div class="row">
-            {% for i in 0..1 if articles[i] %}
+
+            {% set cardCount = Newsletter == "" ? 2 : 1 %}
+
+
+            {% for i in 0..cardCount if articles[i] %}
                 {% set hidden = "" %}
                 {% if i == 2 %}
                     {% set hidden = 'd-md-none d-lg-block' %}
