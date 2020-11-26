@@ -343,8 +343,24 @@
                     }) | raw}}
                 </div> #}
 
+
+
+
+
+
                 <div class="col-12 col-md-6 col-lg-12">
 
+                {% if site == 'dairy' %}
+                    <div class="current-issue-card">
+                        <a class="download-current" href="https://issuu.com/dairynewsaustralia">View the current publication</a>
+                    </div>
+
+                    <hr class="divide12 d-none d-lg-block">
+                    <hr class="divide10 d-block d-lg-none space-only">
+
+                    {{ this.render('../subscribe.twig') | raw }}
+                    <hr class="divide10 d-block d-lg-none space-only">                            
+                {% else %}
 
                     {{this.render('../_single-article.twig', {
                         imageSize       : {width:312, height: 235},
@@ -362,6 +378,7 @@
                     {% set cardIndex = cardIndex + 1 %}
 
                     <hr class="divide20-25">
+                {% endif %}
 
 
 
