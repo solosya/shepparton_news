@@ -411,7 +411,7 @@
                 </div> #}
 
                 <div class="col-12 col-md-6 col-lg-12">
-                    {# CARDS 9, 10 #}
+
                     {{this.render('../_single-article.twig', {
                         imageSize       : {width:312, height: 235},
                         position        : cardIndex,
@@ -421,7 +421,7 @@
                         swap            : false,
                         dev             : dev,
                         cardId          : "tenfour" ~ 1,
-                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                        containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
                     }) | raw}}
                     {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
                     {% set cardIndex = cardIndex + 1 %}
