@@ -3,9 +3,18 @@
 
 {% set footerMenu = getCache("footerMenu") %}
 {% if (footerMenu is empty) %}
+    {% set footerMenu = _Menu.get({'menuType': 'footer'}) %}
+    {% set cache = setCache("footerMenu", footerMenu, 500) %} 
+{% endif %}
+
+
+
+
+{# {% set footerMenu = getCache("footerMenu") %}
+{% if (footerMenu is empty) %}
     {% set footerMenu = _Menu.get({'menuType': 'header', "menuGroupName":"footer"}) %}
     {% set cache = setCache("footerMenu", footerMenu, 500) %}
-{% endif %}
+{% endif %} #}
 
 
 
