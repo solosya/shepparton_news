@@ -22007,7 +22007,6 @@ Acme.Feed.prototype.fetch = function()
 Acme.Feed.prototype.events = function() 
 {
     var self = this;
-    console.log(self.elem);
     if (self.elem.length > 0) {
         self.elem.unbind().on('click', function(e) {
             e.preventDefault();
@@ -22024,7 +22023,6 @@ Acme.Feed.prototype.events = function()
         self.elem.show();
     });
 
-    console.log("offset: ", this.offset, "limit: ",this.limit);
     if (this.infinite && this.offset >= this.limit && self.elem.length > 0) {
         self.addWayPoint.call(self);
     }
@@ -23619,6 +23617,9 @@ $('document').ready(function() {
 
 
     var adScroll = function() {
+        if (isMobile()) {
+            return;
+        };
         // console.log('doing scroll ad');
         //set sidebar height for desktop scrolling ad
         if ($('#articleContentContainer').length > 0) {
@@ -23696,8 +23697,6 @@ $('document').ready(function() {
         }
     }
 
-
-
     // Onload and resize events
     pageWindow.on("resize", function () {
         // stickHeader();
@@ -23720,7 +23719,6 @@ $('document').ready(function() {
     // });
 
     $('.js-menu').on('click', function (event) {
-        console.log('clicked');
         event.preventDefault();
         // $('body').addClass('u-noscroll');
         $('.responsive-standalone').addClass('navigation-active');

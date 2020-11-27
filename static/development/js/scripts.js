@@ -83,6 +83,9 @@ $('document').ready(function() {
 
 
     var adScroll = function() {
+        if (isMobile()) {
+            return;
+        };
         // console.log('doing scroll ad');
         //set sidebar height for desktop scrolling ad
         if ($('#articleContentContainer').length > 0) {
