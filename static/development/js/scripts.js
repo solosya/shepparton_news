@@ -160,8 +160,6 @@ $('document').ready(function() {
         }
     }
 
-
-
     // Onload and resize events
     pageWindow.on("resize", function () {
         // stickHeader();
@@ -184,7 +182,6 @@ $('document').ready(function() {
     // });
 
     $('.js-menu').on('click', function (event) {
-        console.log('clicked');
         event.preventDefault();
         // $('body').addClass('u-noscroll');
         $('.responsive-standalone').addClass('navigation-active');

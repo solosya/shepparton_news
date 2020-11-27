@@ -2,19 +2,22 @@
 // 	background:#fff;
 // }
 
-.lockad-top {
-    position:absolute;
-    top:0;
-}
-.fixad {
-    position:fixed;
-    top:15px;
-}
-.lockad-bottom {
-    position:absolute;
-    bottom:50px;
-}
 
+@media #{$desktop-up} {
+
+    .lockad-top {
+        position:absolute;
+        top:0;
+    }
+    .fixad {
+        position:fixed;
+        top:15px;
+    }
+    .lockad-bottom {
+        position:absolute;
+        bottom:50px;
+    }
+}
 .owl-gallery-image.default, .owl-gallery-video.default {
     z-index:2;
     position :relative;

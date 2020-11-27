@@ -291,9 +291,10 @@ div[class*="col-sm"] {
 
 
 
-
-.u-fix-width-300 {
-    width: 300px !important;
+@media #{$desktop-up} {
+    .u-desktop-fix-width-300 {
+        width: 300px !important;
+    }
 }
 .u-fix-adsize{
     width: 300px !important;
