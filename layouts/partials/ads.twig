@@ -3,7 +3,7 @@
   var googletag = googletag || {};
   googletag.cmd = googletag.cmd || [];
   var fn_pageskin = "false";
-  if (screen.width >= 1260) { fn_pageskin = "true"; }
+  if (screen.width >= 1350) { fn_pageskin = "true"; }
 
   if (typeof googletag.pubads.setTargeting !== 'undefined') {
     googletag.pubads().setTargeting("inskin_yes",fn_pageskin);
