@@ -266,10 +266,10 @@
         .related-articles {
             margin-top: 105px;
             margin-bottom: 78px;
-            @media screen and (max-width: $sm-break-down) {
-                margin-top: 0;
-                margin-bottom:0;
-            }
+            // @media screen and (max-width: $sm-break-down) {
+            //     margin-top: 0;
+            //     margin-bottom:0;
+            // }
 
 
             &__header {
@@ -451,7 +451,7 @@
 
 div#pianoArticleContentLockable > div.tp-container-inner {       
     position: relative;
-    margin-bottom: 150px;
+    margin-bottom: 180px;
     margin-top: -150px;
     padding-top: 150px;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255) 150px);
