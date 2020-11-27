@@ -30,12 +30,15 @@
 
     <article class="">
 
+        {% if _User.isAdminUser() %}
+            <a href="{{article.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
+        {% endif %}
+
+
+
+
         <div class="row u-margin-top-40">
         
-            {% if _User.isAdminUser() %}
-                <a href="{{article.editUrl}}" target="_blank" class="_btn _btn--red u-block centerText u-margin-bottom-25">Edit article</a>
-            {% endif %}
-
 
             <div class="col-12 col-lg-6">
 
