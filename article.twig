@@ -550,9 +550,11 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         $(window).scroll(function() {
             if(!articleCompleted && $(window).scrollTop() + $(window).height() > document.getElementById('articleContentContainer').offsetTop + document.getElementById('articleContentContainer').offsetHeight) {
                 payWallFound = false;
-                articleContentIFrames = document.getElementById('pianoArticleContentLockable').getElementsByTagName('iFrame');
-                for (let i = 0; i < articleContentIFrames.length; i++) {
-                    if (articleContentIFrames[i].getAttribute('src') && articleContentIFrames[i].getAttribute('src').startsWith('https://buy-au.piano.io/')) {
+                var articleContentIFrames = document.getElementById('pianoArticleContentLockable');
+                if (articleContentIFrames === null) return;
+                var iFrame = articleContentIFrames.getElementsByTagName('iFrame');
+                for (let i = 0; i < iFrame.length; i++) {
+                    if (iFrame[i].getAttribute('src') && iFrame[i].getAttribute('src').startsWith('https://buy-au.piano.io/')) {
                         payWallFound = true;
                     }
                 }

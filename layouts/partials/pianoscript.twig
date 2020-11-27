@@ -147,6 +147,9 @@
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
                 var usernameElem = document.getElementById('piano-user-name');
+                if (usernameElem === null) {
+                    return;
+                }
                 var username = 'My account';
                 if (typeof tp !== 'undefined') {
                     username = tp.pianoId.getUser().firstName;
@@ -162,6 +165,10 @@
             loggedOut: function() {
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
+                if (outLogs === null) {
+                    return;
+                }
+
                 for (i=0;i<inLogs.length;i++){
                     inLogs[i].setAttribute('style', 'display:none !important');
                 }
