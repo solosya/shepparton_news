@@ -37,7 +37,7 @@
             {% endif %}
 
 
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6">
 
                 {% if articleImg %} 
 
@@ -52,7 +52,7 @@
             </div>
 
 
-            <div class="col-md-3 property-page-details property-page-details@sm hidden-xs hidden-sm">
+            <div class="col-12 col-lg-3 property-page-details property-page-details@sm d-none d-lg-block">
 
 
 
@@ -117,13 +117,13 @@
 
         <div class="row" style="margin-top:30px;">
 
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6">
 
                 <div class="property-page-attributes">
                     
 
                     {# social icons #}
-                    <div class="article-social article-social@sm hidden-xs hidden-sm" style="float:right">
+                    <div class="article-social article-social@sm d-none d-lg-block" style="float:right">
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="social-icon facebook-icon">
                             <svg class="svg-icons {{site}} article-social__icons">
                                 <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
@@ -184,7 +184,7 @@
 
 
                 {# for mobile #}
-                <div class="property-page-details property-page-details@sm hidden-md hidden-lg">
+                <div class="property-page-details property-page-details@sm d-block d-lg-none">
                     {% if article.additionalInfo.inspect_date1 %}
                         <div class="property-page-inspections">
                             <p class="property-page-inspections__text {{site}}">Open for inspection</p>
@@ -234,7 +234,7 @@
 
 
                     {# social icons for mobile #}
-                    <div class="article-social article-social@sm hidden-md hidden-lg u-margin-top-20 u-margin-bottom-15">
+                    <div class="article-social article-social@sm d-block d-lg-none u-margin-top-20 u-margin-bottom-15">
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="social-icon facebook-icon">
                             <svg class="svg-icons {{site}} article-social__icons">
                                 <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
