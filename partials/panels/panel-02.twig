@@ -326,13 +326,16 @@
 
         {# COLUMN 3 #}
         <div class="col-12 col-md-12 col-lg-3 order-lg-3">
-            <div class="row u-margin-bottom-30 d-none d-lg-block">
-                <div class="col-sm-1 col-md-12 ">
-                    <div class="weather j-weather-panel {{site}}"></div>
-                    <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
-                    <hr class="divide10  d-none d-md-block d-lg-none" style="margin-top: 50px;">
+            
+            {% if site != 'dairy' %}
+                <div class="row u-margin-bottom-30 d-none d-lg-block">
+                    <div class="col-sm-1 col-md-12 ">
+                        <div class="weather j-weather-panel {{site}}"></div>
+                        <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
+                        <hr class="divide10  d-none d-md-block d-lg-none" style="margin-top: 50px;">
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <div class="row">
 

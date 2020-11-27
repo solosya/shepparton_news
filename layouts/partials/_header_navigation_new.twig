@@ -129,10 +129,12 @@
         <div class="row">
             <div class="col-sm-12" style="background:white">
                 <div class="c-navigation-new  c-navigation-new-md">
-                    <div class="c-navigation-new__weather d-none d-md-block d-lg-none">
-                        <div class="weather j-weather-panel  {{site}}"></div>
-                        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
-                    </div>
+                    {% if site != 'dairy' %}
+                        <div class="c-navigation-new__weather d-none d-md-block d-lg-none">
+                            <div class="weather j-weather-panel  {{site}}"></div>
+                            <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                        </div>
+                    {% endif %}
 
 
                     <ul class="c-navigation-new__list">
@@ -195,14 +197,17 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="c-navigation-new__weather u-mobile-margin-top-10 d-block d-md-none">
-                        <div class="weather j-weather-panel  {{site}}"></div>
-                        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+            {% if site != 'dairy' %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="c-navigation-new__weather u-mobile-margin-top-10 d-block d-md-none">
+                            <div class="weather j-weather-panel  {{site}}"></div>
+                            <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
+
         </div>
     </div>
 
