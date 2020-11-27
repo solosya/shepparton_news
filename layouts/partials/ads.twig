@@ -5,9 +5,6 @@
   var fn_pageskin = "false";
   if (screen.width >= 1350) { fn_pageskin = "false"; }
 
-  if (typeof googletag.pubads.setTargeting !== 'undefined') {
-    googletag.pubads().setTargeting("inskin_yes",fn_pageskin);
-  }
 
   var rubicontag = rubicontag || {};
   rubicontag.cmd = rubicontag.cmd || [];
