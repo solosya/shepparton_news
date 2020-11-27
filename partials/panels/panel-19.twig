@@ -1,0 +1,148 @@
+{% set articleCount = 0 %}
+{% set cardIndex = 1 %}
+{% set articlelock = false %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="row u-margin-bottom-20" data-template="panel-19">
+
+            <div class="col-12">
+                <div class="c-section-header ">
+                    <a class="{{site}} c-section-header__link" href="{{link}}">
+                        <h2 class="c-section-header__h2  c-section-header__h2--more {{site}}">{{title}}</h2>
+                        {% if admin %}
+                            <p class="c-section-header__panel-name">Panel 19</p>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" data-template="panel-19">
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    {# card 1 #}
+                    <div class="col-12 col-md-8 col-lg-12">
+                        {{this.render('../_single-article.twig', {
+                            article         : articles[articleCount],
+                            position        : cardIndex,
+                            imageSize       : {width:470, height:445},
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "one",
+                            swap            : 'false',
+                            containerClass  : 'card-100-mobile card-100-tablet card-100-desktop-sm card-100-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+                        <hr class="divide20-25 d-block d-md-none d-lg-block">
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-12 ">
+                        <div class="row">
+                            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+                            {% for i in 0..1 if articles[articleCount] %}
+                                <div class="col-6 col-md-12 col-lg-6 {{mobilePadding[i]}}">
+                                    {# cards 2,3 #}
+                                    {{this.render('../_single-article.twig', {
+                                        article         : articles[articleCount],
+                                        position        : cardIndex,
+                                        imageSize       : {width:300, height:235},
+                                        site            : site,
+                                        dev             : dev,
+                                        cardId          : "two" ~ i,
+                                        swap            : 'false',
+                                        containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                                    }) | raw}}
+                                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                                    {% set cardIndex = cardIndex + 1 %}
+                                    {% if loop.index == 1 %}
+                                        <hr class="divide20-25 d-none d-md-block d-lg-none">
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row d-block d-lg-none">
+                    <div class="col-12">
+                        <hr class="divide20-25">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="row">
+                {# cards 4,5,6,7 #}
+                {% for i in 0..3 if articles[articleCount] %}
+                    <div class="col-12 col-md-12">
+                        {{this.render('../_single-article.twig', {
+                            article         : articles[articleCount],
+                            position        : cardIndex,
+                            imageSize       : {width:95, height:95},
+                            styleType       : "image-bottom",
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "three" ~ i,
+                            swap            : 'false',
+                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+
+                        {% if loop.index != 4  %}
+                            <hr class="divide20-25">
+                        {% endif %}
+                        {% if loop.index == 4  %}
+                            <hr class="divide20-25 d-block d-md-none">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+
+
+            <div class="col-12 col-md-6 col-lg-3">
+
+                <div class="row">
+
+
+                    <div class="col-12 ad-square mrec-min-height u-mobile-margin-bottom-20 u-tablet-margin-bottom-20 u-desktop-margin-bottom-30" data-view="desktop-mrec">
+                        <div class="advert-desktop desktop-mrec" data-adsize="mrec"></div>
+                        <div class="advert-tablet tablet-mrec" data-adsize="mrec"></div>
+                        <div class="advert-mobile mobile-mrec" data-adsize="mrec"></div>
+                    </div>
+
+                {% for i in 0..2 if articles[articleCount] %}
+                    <div class="col-12">
+                        {# cards 8,9,10 #}
+
+                        {{this.render('../_single-article.twig', {
+                            article         : articles[articleCount],
+                            position        : cardIndex,
+                            styleType       : "image-bottom",
+                            imageSize       : {width:95, height:95},
+                            site            : site,
+                            dev             : dev,
+                            cardId          : "four" ~ i,
+                            swap            : 'false',
+                            containerClass  : 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg'
+                        }) | raw}}
+                        {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+
+                        {% if loop.index != 3  %}
+                            <hr class="divide20-25">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

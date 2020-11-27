@@ -1,11 +1,11 @@
 
 
 {% set count = {} %}
-
 {% set feedArr = [] %}
-
 {% set blogLink = "" %}
 {% set thisBlog = {} %}
+{% set admin = _User.isAdminUser() %}
+{% set dev = true %}
 
 {# If a page section has articles from multiple blogs, assemble here #}
 {% if section.articleOrder is defined and section.articleOrder | length > 0 %}
@@ -45,28 +45,37 @@
         site            : site,
         networkData     : networkData,
         blogData        : blogData,
+        admin           : admin,
     } %}
 
     {% if section.template_params is defined and section.template_params | length > 0  %}
         {% set params = params | merge(section.template_params) %}
     {% endif %}
 
-    {% set margin = 'u-margin-top-30 u-desktop-margin-top-40' %}
+    {% set margin = 'u-mobile-margin-top-20 u-tablet-margin-top-30 u-desktop-margin-top-40' %}
 
     {% if section.background %}
         <div class="section-background {{margin}}">
             {% set margin = '' %}
     {% endif %}
 
-    {% if section.wrapper is not defined %}
-        <div class="container {{margin}}">
-    {% endif %}
+        {% if (section.wrapper is not defined and section.startWrapper is not defined) or section.startWrapper is defined and section.startWrapper == true %}
+            <div class="container {{section.title}} {{margin}}">
+        {% endif %}
 
-    {{this.render(section.template, params) | raw}} 
+        {% if section.startRow is defined and section.startRow == true %}
+            <div class="row">
+        {% endif %}
 
-    {% if section.wrapper is not defined %}
-        </div>
-    {% endif %}
+            {{this.render(section.template, params) | raw}}
+
+        {% if section.endRow is defined and section.endRow == true %}
+            </div>
+        {% endif %}
+
+        {% if (section.wrapper is not defined and section.endWrapper is not defined) or section.endWrapper is defined and section.endWrapper == true %}
+            </div>
+        {% endif %}
 
     {% if section.background %}
         </div>

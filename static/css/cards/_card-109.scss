@@ -1,0 +1,97 @@
+.leaderboard {
+    counter-reset: my-badass-counter;
+}
+.leaderboard {
+    .card {
+        @include flexbox();
+        &:before {
+            content: counter(my-badass-counter);
+            counter-increment: my-badass-counter;
+            font-family: $font-family-serif;
+            @include font-size(24);
+            font-weight:600;
+            color: #2b2a2a;
+        }
+    }
+}
+
+
+
+@mixin card-109-base() {
+    @include card-name("109 mobile");
+
+    .c-cards-view {
+        @include flex-direction(row);
+
+        &__media {
+            display:none;
+        }
+
+        &__container {
+        }
+
+        &__heading {
+            font-family: $font-family-serif;
+            @include font-size(15);
+            line-height: 1.47;
+            font-weight:600;
+            color: #2b2a2a;
+            margin-left:20px;
+        }
+        &__category {
+            display:none;
+        }
+
+        &__description {
+            display:none;
+            letter-spacing: 0.25px;
+        }
+
+        &__author {
+            display:none;
+        }
+
+        &__time {
+            display:none;
+        }
+    }
+}
+
+.card-109-mobile {
+    @media #{$mobile} {
+        @include card-109-base();
+        .c-cards-view {
+            &__heading {
+                letter-spacing: 0.27px;
+            }
+        }
+    }
+}
+
+
+.card-109-tablet {
+    @media #{$tablet} {
+        @include card-109-base();
+        @include card-name("109 tablet");
+    }
+}
+
+.card-109-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-109-base();
+        @include card-name("109 desktop");
+        .c-cards-view {
+            &__heading {
+                @include font-size(12);
+            }
+        }
+    }
+}
+
+.card-109-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-109-base();
+        @include card-name("109 desktop lg");
+    }
+}
+

@@ -1,0 +1,40 @@
+{% set articleCount = 0 %}
+
+<div class="col-12 col-lg-6">
+
+    <div class="row u-margin-bottom-20" data-template="panel-16">
+
+        <div class="col-12">
+            <div class="c-section-header u-mobile-margin-top-40 u-tablet-margin-top-40">
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 16</p>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" data-template="panel-16">
+        <div class="col-12 col-md-6">
+            {{this.render('../_single-article.twig', {
+                article         : articles[articleCount],
+                imageSize       : {width:300, height:197},
+                dev             : dev,
+                site            : site,
+                swap            : 'false',
+                containerClass  : 'card-107-mobile card-107-tablet card-107-desktop-sm card-107-desktop-lg'
+            }) | raw}}
+            <hr class="divide25-30 d-block d-md-none">
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="ad-square mrec-min-height u-mobile-no-margin-top u-desktop-no-margin-top" data-view="tablet-mrec">
+                <div class='advert-desktop  desktop-mrec' data-adsize="mrec"></div>
+                <div class='advert-tablet  tablet-mrec' data-adsize="mrec"></div>
+                <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>
+            </div>
+        </div>
+    </div>
+</div>

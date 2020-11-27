@@ -1,0 +1,63 @@
+{% set config = _Network.getThemeConfig() %}
+
+
+{% set articleCount = 0 %}
+{% set articlelock = false %}
+
+                                        
+{% set Newsletter = "" %}
+{% set Cblock = _ContentBlock.get({"title" : "Newsletter"}) %}
+{% if Cblock %}
+    {% set Newsletter = Cblock['content'] %}
+{% endif %}
+
+
+
+<div class="col-12 col-lg-3" data-panel="panel-12">
+    <div class="row u-mobile-margin-top-40 u-tablet-margin-top-40 u-margin-bottom-20">
+        <div class="col-12">
+            <div class="c-section-header">
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 12</p>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-12 col-md-6 col-lg-12">
+            <div class="row">
+            {% for i in 0..1 if articles[articleCount] %}
+                {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+                <div class="col-6 {{mobilePadding[i]}}">
+
+                    {{this.render('../_single-article.twig', {
+                        article         : articles[articleCount],
+                        imageSizes      : {
+                            "mobile"  : {height:210, width:0},
+                            "tablet"  : {height:222, width:167},
+                            "desktop" : {height:190, width:145},
+                        },
+                        logs            : true,
+                        site            : site,
+                        dev             : dev,
+                        swap            : 'false',
+                        containerClass  : 'card-110-mobile card-110-tablet card-110-desktop-sm card-110-desktop-lg'
+                    }) | raw}}
+                    {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+
+
+        <div class="col-12 col-md-6 col-lg-12 u-desktop-margin-top-40">
+            <hr class="divide20-25 d-block d-md-none d-lg-block">
+            {{Newsletter | raw}}
+        </div>
+    </div>
+
+</div>

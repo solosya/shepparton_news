@@ -138,7 +138,7 @@ $navbar-height:             70px;
 $center:					center;
 
 
-$desktop: 				"screen and (max-width : 1194px)";
+$desktop: 				"screen and (max-width : 1350px)";
 $desktop-up: 			"screen and (min-width : 992px)";
 $smallDevices: 			"screen and (min-width : 1025px) and (max-width : 1150px)";
 $ipadPortrait: 			"screen and (max-width : 992px)";
@@ -150,6 +150,14 @@ $tablet-up: 			"screen and (min-width : 768px)";
 $tablet: 				"screen and (min-width : 768px)  and (max-width : 991px)";
 $up-to-desktop: 		"screen and (max-width : 991px)";
 $mobile: 				"screen and (max-width : 767px)";
+
+
+
+$desktop-lg:            "screen and (min-width : 1350px)";
+$desktop-sm:            "screen and (min-width : 992px) and (max-width : 1349px)";
+$mobile-lg-up:          "screen and (min-width : 576px)";
+$mobile-lg:             "screen and (min-width : 576px) and (max-width : 767px)";
+$mobile-sm:             "screen and (max-width : 575px)";
 
 // Standard transition speed
 $transition: 0.4s;

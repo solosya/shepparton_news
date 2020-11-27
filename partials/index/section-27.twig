@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 
 <section class="row"  data-section="27">
-    <div class="col-md-9 col-sm-9 section-header">
+    <div class="col-md-12 col-sm-12 section-header">
         <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="col-sm-9 col-md-6">
+    <div class="col-sm-12 col-md-8">
         {% if articles[articleCount] %}
             {{this.render('../_single-article.twig', {
                 article:        articles[articleCount], 
@@ -34,9 +34,9 @@
                         {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
                     {% if i == 1 %}
                         
-                        <div class="col-xs-9 visible-xs-block"><div class="row"><hr class="divide"></div></div>
+                        <div class="col-xs-12 visible-xs-block"><div class="row"><hr class="divide"></div></div>
                     {% else %}
-                        <div class="col-xs-9 visible-xs-block"><hr class="divide"></div>
+                        <div class="col-xs-12 visible-xs-block"><hr class="divide"></div>
                     {% endif %}
 
                 {% endfor %}
@@ -49,9 +49,9 @@
 
 
 
-    <div class="col-md-3 col-sm-9">
+    <div class="col-sm-12 col-md-4">
        <div class="row sm-two-cols">
-            <div class="ad-square col-xs-9">
+            <div class="ad-square col-xs-12">
                 <div class='advert-desktop advert-mobile' data-adsize="mrec"></div>
                 <div class="row visible-xs-block">
                     <hr class="divide">
@@ -63,7 +63,7 @@
             </div>
                 
             {% for i in 0..1 if articles[articleCount] %}
-                <div class="col-md-9 col-sm-1 col-xs-9">
+                <div class="col-md-12 col-sm-1 col-xs-12">
                     {{this.render('../_single-article.twig', {
                         article:        articles[articleCount], 
                         imageSize:      {width:300},

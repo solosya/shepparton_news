@@ -1,0 +1,109 @@
+@mixin card-103-base() {
+    @include card-name("103 mobile");
+
+    .c-cards-view {
+        @include flexbox();
+        @include flex-direction(column);
+
+        &__media {
+            display:none;
+        }
+
+        &__container {
+        }
+
+        &__category {
+            display:none;
+        }
+
+        &__heading {
+            font-family: $font-family-serif;
+            @include font-size(20);
+            line-height:1.6rem;
+            font-weight:600;
+            font-style:italic;
+            color: #2b2a2a;
+            margin-bottom:7px;
+        }
+
+        &__description {
+            font-family: $base-font-family;
+            color: #565656;
+            @include font-size(14);
+            line-height: 1.25rem;
+            font-weight:300;
+            max-height:80px;
+            letter-spacing: 0.25px;
+            //@include flex-height(80px);
+        }
+
+        &__author {
+            display:flex;
+            position:relative;
+            margin-top:7px;
+        }
+
+        &__author-name {
+            margin-top: 3px;
+            font-family: $base-font-family;
+            font-weight:400;
+            color: #6e6e6e;
+            border:none;
+            @include font-size(12);
+            &:before {
+                content: "By ";
+            }
+        }
+        &__author-time {
+            display:none;
+        }
+
+        &__time {
+            display:none;
+        }
+    }
+}
+
+.card-103-mobile {
+    @media #{$mobile} {
+        @include card-103-base();
+        .c-cards-view {
+            &__description {
+                display:none;
+            }
+            &__heading {
+                letter-spacing: 0.36px;
+            }
+        }
+    }
+}
+
+
+.card-103-tablet {
+    @media #{$tablet} {
+        @include card-103-base();
+        @include card-name("103 tablet");
+
+        .c-cards-view {
+            &__description {
+                max-height:120px;
+            }
+        }
+
+    }
+}
+
+.card-103-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-103-base();
+        @include card-name("103 desktop");
+    }
+}
+
+.card-103-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-103-base();
+        @include card-name("103 desktop lg");
+    }
+}
+

@@ -15,7 +15,7 @@
     <section class="container">
         <div class="row">
             <!-- Begin User Profile -->
-            <div class="col-profile-left col-sm-4 col-xs-12">
+            <div class="col-profile-left col-12 col-md-4">
                 <!-- Begin User Profile Sidebar -->
                 <div class="profile-sidebar">
                     <div class="userprofile-sidebar-inner">
@@ -35,7 +35,7 @@
             </div>
 
 
-            <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
+            <div class="col-profile-right col-12 col-md-8 profile-details">
             
                 {# there are no blogs on dairy news #}
                 {% if 'dairy' not in (networkData.title | lower) %}
@@ -45,7 +45,8 @@
                 {{this.render('partials/user-profile/_recent_articles.twig', {
                     myArticles : myArticles, 
                     site:site,
-                    articleCount: 0 }) | raw }}
+                    articleCount: 0 
+                }) | raw }}
 
             </div>
         </div>

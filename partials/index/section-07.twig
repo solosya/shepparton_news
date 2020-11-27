@@ -3,7 +3,7 @@
 {% set mobileCount  = 0 %}
 
 <section class="row" data-template="section-07">
-    <div class="col-md-9 col-sm-9 section-header">
+    <div class="col-md-12 col-sm-12 section-header">
         <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{title}}</h2>
@@ -15,7 +15,7 @@
 
 <!-- desktop -->
     <div class="visible-md-block visible-lg-block">
-        {% set opinionClass = ["col-md-2", "col-md-2", "col-md-2", "col-md-3"] %}
+        {% set opinionClass = ["col-md-3", "col-md-3", "col-md-3", "col-md-3"] %}
 
         {% for i in 0..3 if articles[desktopCount] %}
             {% set finalClass = (i == 3) ? 'final' : '' %}
@@ -42,7 +42,7 @@
     <div class="visible-sm-block">
         {% for i in 0..2 if articles[tabletCount] %}
             {% set finalClass = (i == 2) ? 'final' : '' %}
-            <div class="col-sm-3">
+            <div class="col-sm-4">
 
                 {{this.render('../_single-article.twig', {
                     article:        articles[tabletCount], 

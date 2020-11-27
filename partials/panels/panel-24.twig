@@ -1,0 +1,58 @@
+{% set articleCount = 0 %}
+{% set articlelock = false %}
+
+<section>
+    <div class="row" data-template="panel-24">
+        <div class="col-12">
+            <div class="c-section-header">
+                <a class="{{site}} c-section-header__link" href="{{link}}">
+                    <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                    {% if admin %}
+                        <p class="c-section-header__panel-name">Panel 24</p>
+                    {% endif %}
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row u-margin-top-20">
+
+        {% for i in 0..3 if articles[articleCount] %}
+
+            {% set mobilePadding = ["u-mobile-padding-right-7", "u-mobile-padding-left-7"] %}
+
+            <div class="col-6 col-lg-3 {{mobilePadding[i%2]}}">
+
+
+                {% if i > 1 %}
+                    <hr class="divide20-25  d-none d-md-block d-lg-none">
+                {% endif %}
+
+
+                {{this.render('../_single-article.twig', {
+                    position        : articleCount + 1,
+                    article         : articles[articleCount],
+                    imageSize       : {width:300, height:200},
+                    site            : site,
+                    cardId          : "panel24" ~ 1,
+                    dev             : dev,
+                    swap            : 'false',
+                    containerClass  : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                }) | raw}}
+                {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+
+
+            </div>
+
+            {% if i % 2 == 1 and i != 3 %}
+                <div class="col-12 d-block d-md-none">
+                    <hr class="divide20-25">
+                </div>
+            {% endif %}
+
+
+        {% endfor %}
+    </div>
+
+</section>

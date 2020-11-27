@@ -1,0 +1,81 @@
+@mixin card-110-base() {
+    @include card-name("110 mobile");
+
+    .c-cards-view {
+
+        &__media {
+            height:189px;
+            width:142px;
+        }
+
+        &__container {
+            display:none;
+        }
+
+        &__heading {
+            display:none;
+        }
+        &__category {
+            display:none;
+        }
+
+        &__description {
+            display:none;
+        }
+
+        &__author {
+            display:none;
+        }
+
+        &__time {
+            display:none;
+        }
+    }
+}
+
+.card-110-mobile {
+    @media #{$mobile} {
+        @include card-110-base();
+        .c-cards-view {
+            &__media {
+                width:100%;
+                height:210px;
+            }
+        }
+    }
+}
+
+
+.card-110-tablet {
+    @media #{$tablet} {
+        @include card-110-base();
+        @include card-name("110 tablet");
+        .c-cards-view {
+            &__media {
+                height:222px;
+                width:167px;
+            }
+        }
+    }
+}
+
+.card-110-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-110-base();
+        @include card-name("110 desktop");
+        .c-cards-view {
+            &__media {
+                height:137px;
+                width:103px;
+            }
+        }
+    }
+}
+
+.card-110-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-110-base();
+        @include card-name("110 desktop lg");
+    }
+}
+

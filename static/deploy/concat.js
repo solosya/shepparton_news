@@ -21572,27 +21572,43 @@ cardTemplateBottom;
 
 
 Acme.templates.systemCardTemplate = 
-    cardTemplateTop + 
-        '{{#if hasMedia}}\
-            <figure>\
+    cardTemplateTop +
+
+        '<div class="{{cardType}}c-cards-view__category-top category {{site}} {% if params.premiumtags %} premium-tag{% endif %}">{{params.category}}</div> \
+        <h2 class="{{cardType}}c-cards-view__heading-top {{figureClass}}">{{ params.title }}</h2> \
+        \
+        {{#if hasMedia}}\
+            <figure class="{{cardType}}c-cards-view__media">\
                 <img class="img-responsive lazyload" data-original="{{params.image}}" src="{{params.image}}" style="background-image:url("{{placeholder}}"")>\
             </figure>\
         {{/if}} \
         \
-        <div class="content">\
-            <div class="{{cardType}}category {{site}} {{premiumTag}}">{{ labelFix params.category }}</div>\
-            <h2 class="j-truncate">{{{ params.title }}}</h2>\
-            <p class="{{cardType}}excerpt j-truncate">{{{ params.content }}}</p>\
-            <div class="{{cardType}}author j-truncate">\
-                <img src="{{profileImg}}" class="img-circle">\
-                <p class="{{cardType}} {{site}}">{{ params.author }}</p>\
-                <time class="{{cardType}}" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
-            </div>\
+        <div class="{{cardType}}c-cards-view__container content">\
+            <div class="{{cardType}}c-cards-view__text-container content"> \
+                <div class="{{cardType}}category {{cardType}}c-cards-view__category {{site}} {{premiumTag}}">{{ labelFix params.category }}</div>\
+                <h2 class="{{cardType}}c-cards-view__heading">{{{ params.title }}}</h2>\
+                <p class="{{cardType}}excerpt {{cardType}}c-cards-view__description j-truncate">{{{ params.content }}}</p>\
+                <div class="{{cardType}}c-cards-view__author author"> \
+                    <p class="{{cardType}}c-cards-view__author-name {{site}}">{{ params.author }}</p> \
+                    <time class="{{cardType}}c-cards-view__author-time" datetime="{{params.publishDate}}">{{params.publishDate}}</time> \
+                </div> \
+                <time class="{{cardType}}c-cards-view__time" datetime="{{params.publishDate}}">{{params.publishDate}}</time> \
+            </div> \
+            {{#if hasMedia}}\
+                <figure class="{{cardType}}c-cards-view__media-bottom">\
+                    <img class="img-responsive lazyload" data-original="{{params.image}}" src="{{params.image}}" style="background-image:url("{{placeholder}}"")>\
+                </figure>\
+            {{/if}} \
         </div>'+ 
     cardTemplateBottom;
 
 
 
+                // <div class="{{cardType}}author {{cardType}}c-cards-view__author j-truncate">\
+                //     <img src="{{profileImg}}" class="img-circle">\
+                //     <p class="{{cardType}} {{cardType}}c-cards-view__author-name {{site}}">{{ params.author }}</p>\
+                //     <time class="{{cardType}} {{cardType}}c-cards-view__author-time" datetime="{{params.publishDate}}">{{params.publishDate}}</time>\
+                // </div>\
 
 
 
@@ -21991,7 +22007,7 @@ Acme.Feed.prototype.fetch = function()
 Acme.Feed.prototype.events = function() 
 {
     var self = this;
-
+    console.log(self.elem);
     if (self.elem.length > 0) {
         self.elem.unbind().on('click', function(e) {
             e.preventDefault();
@@ -22008,6 +22024,7 @@ Acme.Feed.prototype.events = function()
         self.elem.show();
     });
 
+    console.log("offset: ", this.offset, "limit: ",this.limit);
     if (this.infinite && this.offset >= this.limit && self.elem.length > 0) {
         self.addWayPoint.call(self);
     }
@@ -22016,10 +22033,12 @@ Acme.Feed.prototype.events = function()
 Acme.Feed.prototype.addWayPoint = function()
 {
     var self = this;
+    console.log('adding waypoint');
     self.waypoint = new Waypoint({
         element: self.elem,
         offset: '80%',
         handler: function (direction) {
+            console.log('in the handler');
             if (direction == 'down') {
                 self.fetch();
             }
@@ -23600,10 +23619,10 @@ $('document').ready(function() {
 
 
     var adScroll = function() {
-
+        // console.log('doing scroll ad');
         //set sidebar height for desktop scrolling ad
         if ($('#articleContentContainer').length > 0) {
-            var articleTop = $('#articleContentContainer').position().top
+            var articleTop = $('#articleContentContainer').position().top;
             var theHeight = $('#articleContentContainer').height();
             $('#adScrollContainer').css("height",theHeight+"px");
             var screenHeight = $(window).height();
@@ -23614,6 +23633,7 @@ $('document').ready(function() {
             } else {
                 screenDiff = 843;
             }
+            // console.log(scrollMetric);
             // tell ad when to scroll and when not to based on the size of the article
             // 135 is the space above left for foldaway menu
             if ( scrollMetric[1] === 'up' && !isScolledPast(articleTop-135)) {
@@ -23699,8 +23719,72 @@ $('document').ready(function() {
     //     // console.log(scrollMetric);
     // });
 
+    $('.js-menu').on('click', function (event) {
+        console.log('clicked');
+        event.preventDefault();
+        // $('body').addClass('u-noscroll');
+        $('.responsive-standalone').addClass('navigation-active');
+        $('.responsive-standalone-close').addClass('open');
+        $(".responsive-standalone-overlay").animate({
+            "opacity": "toggle"
+        }, {
+            duration: 500
+        }, function () {
+            $(".responsive-standalone-overlay").fadeIn();
+        });
+        return false;
+    });
+
+    function closeMobileMenu() {
+        // $('body').removeClass('u-noscroll');
+        $('.responsive-standalone-close').removeClass('open');
+        $('.responsive-standalone').removeClass('navigation-active');
+        $(".responsive-standalone-overlay").hide();
+    }
+    $('.responsive-standalone-close').on('click', function (event) {
+        event.preventDefault();
+        closeMobileMenu();
+        return false;
+    });
+    $(".responsive-standalone-overlay").on('click', function () {
+        closeMobileMenu();
+    });
 
 
+    $('.j-menu-toggle').on('click', function (e) {
+        var tab = $(e.target).data('value');
+        $('.j-tab').each(function() {
+            var elem = $(this);
+            elem.removeClass('standalone-menu__tab--active');
+            if (elem.data('tab') === tab) {
+                elem.addClass('standalone-menu__tab--active');
+            }
+        });
+
+        $('.standalone-menu__toggle').each(function(e) {
+            var elem = $(this);
+            elem.removeClass('standalone-menu__toggle--active');
+            if (elem.data('value') === tab) {
+                elem.addClass('standalone-menu__toggle--active');
+            }
+
+        });
+    });
+
+    $(".list-arrow-container").on('click', function(e) {
+        console.log('clicked menu arrow');
+        $parent = $(this).parent();
+        var isActive = $parent.hasClass('active');
+        $('.standalone-menu__dropdown').each(function() {
+            var elem = $(this);
+            elem.removeClass('active');
+            elem.find('.custom-menu').removeClass('custom-menu--active');
+        });
+        if (!isActive) {
+            $parent.addClass('active');
+            $(this).siblings('.custom-menu').addClass('custom-menu--active');
+        }
+    });
 
     $("#menu-foldaway").on("click", function (e) {
         menu_top_foldaway.toggleClass('hide');
@@ -23962,38 +24046,16 @@ SearchController.Listing = (function ($) {
 
 }(jQuery));
 (function ($) {
-
+console.log('in the weather script');
     $(document).ready(function() {
         var dropdown = function(date) {
-            return '<div class="weather-date">' + 
-                        '<h1>Weather</h1>' + 
-                        '<p>' + date + '</p>' + 
-                    '</div>' + 
+            return '<div class="weather-date">' +
+                        '<h1>Weather</h1>' +
+                        '<p>' + date + '</p>' +
+                    '</div>' +
                     '<div id="weather-panels"></div>';
         }
 
-        var weatherPanel = function(data) {
-            var range = Math.round(data.day_high) + '&#176; - ' + Math.round(data.day_low) + '&#176;'
-
-            var icon = weatherIcons(data.icon);
-
-            return '<div class="panel">' +
-                        '<div style="width: 180px;">' +
-                            '<p class="date">' + data.date + '</p>' + 
-                            '<p class="location">'+data.location.split('/')[1]+'</p>' + 
-                            '<div class="show-weather">' +
-                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            '</div>' +
-                        '</div>' + 
-                        '<div style="width: 48px;">' +
-                            '<div class="icon">' + icon + '</div>' + 
-                        '</div>' + 
-                        '<div style="width: 120px;">' +
-                            '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + data.description + '</div>' + 
-                            '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
-                        '</div>' + 
-                    '</div>';
-            }
 
         var weatherPanel = function(location, showArrow) {
             return function(data) {
@@ -24005,27 +24067,34 @@ SearchController.Listing = (function ($) {
                 var description = data.description;
 
                 if (showArrow) {
-                    arrow = '<div class="show-weather">' +
-                                '<img src="' + _appJsConfig.templatePath + '/static/icons/weather/pointer-arrow-thin.svg">' +
-                            '</div>';
+                    arrow = '<div class="show-weather"></div>';
                 } else {
                     // if we're not showing the arrow, this must be a future forecast
                     description = weatherStatus(data.icon);
                 };
 
-                return '<div class="panel">' +
-                            '<div style="width: 180px;">' +
-                                '<p class="date">' + data.date + '</p>' + 
-                                '<p class="location">' + location + '</p>' + arrow +
-                            '</div>' + 
-                            '<div style="width: 48px;">' +
-                                '<div class="icon">' + icon + '</div>' + 
-                            '</div>' + 
-                            '<div style="width: 120px;">' +
-                                '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + description + '</div>' + 
-                                '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' + 
-                            '</div>' + 
+                var mainClass = "weather-panels-all";
+                if (showArrow) {
+                    mainClass = "weather-panels-main";
+                }
+                var html = '<div class="' + mainClass + ' panel">' +
+                            '<div class="weather-panels-main__cont">' +
+                                '<div class="weather-panels__date-loc" >' +
+                                    '<p class="date">' + data.date + '</p>' +
+                                    '<p class="location">' + location + '</p>' +
+                                '</div>' +
+                                arrow +
+                            '</div>' +
+                            '<div class="weather-panels__icon-cont">' +
+                                '<div class="icon">' + icon + '</div>' +
+                            '</div>' +
+                            '<div class="weather-panels__temp">' +
+                                '<div class="temp-desc">' + Math.round(data.temperature) + '&#176; ' + description + '</div>' +
+                                '<div class="wind">' + Math.round(data.wind_speed) + ' km/h | ' + range + '</div>' +
+                            '</div>' +
                         '</div>';
+                         //console.log(html);
+                return html;
             }
         }
 

@@ -21,7 +21,7 @@
 
     <main id="main" class="site-main eventForm" role="main">
         
-        <div class="container contact-us">
+        <div class="container contact-us u-margin-top-80">
 
             <section>
                 {# <div class="row">
@@ -44,7 +44,7 @@
                 {% else %}
 
 
-                    <div class="col-sm-12 col-md-5 ">
+                    <div class="col-12 col-lg-5 ">
                         <form id="contactForm" class="form-horizontal form-contact" action="{{_AppHelper.getContactFormUrl()}}" method="post" autoComplete="off">
                             <input type="hidden" name="_csrf" value="{{_AppHelper.getCsrfToken()}}" />
                             <input type="hidden" id="contactform-returnto" class="form-control" name="returnto" value="/@contact-us">
@@ -96,7 +96,7 @@
                     </div>
 
                     
-                    <div class="col-sm-12 col-md-3 contact-details">
+                    <div class="col-12 col-lg-3 contact-details">
                         {% if _Page.getPageData("contact-details") is defined %}
                             {% set contactpage = _Page.getPageData("contact-details") %}
                             {{contactpage.content | raw}}

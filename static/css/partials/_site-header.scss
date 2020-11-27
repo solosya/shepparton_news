@@ -53,7 +53,7 @@
 //     //     position: absolute;
 //     //     bottom: 40px;
 //     //     padding-left: 200px;
-//     // } 
+//     // }
 // }
 
 .top-ad {
@@ -64,7 +64,7 @@
 
     margin: 40px auto !important;
 
-    
+
 }
 
 .site-header {
@@ -91,7 +91,7 @@
             position: fixed;
             top: 0;
         }
-        
+
         // input.field {
         //     font-size: rem(16);
         // }
@@ -101,7 +101,7 @@
             padding-bottom:22px;
             padding-top:22px;
             background:black;
-            
+
             &__nav-container {
                 @include flexbox();
                 @include flex-direction(column);
@@ -241,7 +241,7 @@
                 li {
                     display:inline-block;
                     margin-right:37px;
-                    
+
                     a {
                         font-family: $base-font-family;
                         font-size: rem(14);
@@ -320,9 +320,9 @@
     }
 
     > a {
-        background-position: bottom; 
+        background-position: bottom;
         @media screen and (max-width: $sm-break){
-            background-position: left bottom; 
+            background-position: left bottom;
         }
     }
 
@@ -330,10 +330,6 @@
         height: 80px;
         width: 168px;
         margin-right:30px;
-        @media screen and (max-width: $mmd-break-down){
-           width: 120px;
-           margin-left: 15px;
-        }
         padding-top: 10px;
 
         > a {
@@ -341,6 +337,14 @@
             height: 100%;
             width: 100%;
         }
+        img {
+            width:100%;
+            &:hover {
+                @include svgHover('');
+            }
+        }
+
+
     }
     &.corowa-logo{
         height: 95px;
@@ -352,7 +356,7 @@
     }
 
     &.country {
-        @media screen and (min-width: $mmd-break){    
+        @media screen and (min-width: $mmd-break){
             height: 80px;
         }
     }
@@ -376,8 +380,8 @@
     }
     &.country {
         background-position: 0px 6px;
-        width: 25px;    
-        @media screen and (min-width: $mmd-break){ 
+        width: 25px;
+        @media screen and (min-width: $mmd-break){
             width: 250px;
             height: 52px;
         }
@@ -389,7 +393,7 @@
         width: 264px;
         @media screen and (max-width: $mmd-break){
             width:160px;
-        }        
+        }
     }
 
     &.riverine{
@@ -409,7 +413,7 @@
         height: 43px;
         @media #{$up-to-desktop} {
             background-size: 120px;
-            width: 120px;     
+            width: 120px;
         }
 
     }
@@ -420,7 +424,7 @@
         height: 51px;
         @media #{$up-to-desktop} {
             background-size: 115px;
-            width: 115px;     
+            width: 115px;
         }
     }
     &.cobram{
@@ -430,7 +434,7 @@
         height: 38px;
         @media #{$up-to-desktop} {
             background-size: 120px;
-            width: 120px;     
+            width: 120px;
         }
     }
     &.corowa{
@@ -440,7 +444,7 @@
         height: 62px;
         @media #{$up-to-desktop} {
             background-size: 57px;
-            width: 57px !important;     
+            width: 57px !important;
         }
     }
     &.deniliquin{
@@ -450,7 +454,7 @@
         height: 60px;
         @media #{$up-to-desktop} {
             background-size: 73px;
-            width: 73px !important;     
+            width: 73px !important;
         }
     }
     &.kyabram{
@@ -460,7 +464,7 @@
         width: 136px !important;
         @media #{$up-to-desktop} {
             background-size: 86px;
-            width: 86px !important;     
+            width: 86px !important;
         }
     }
     &.mcivor{
@@ -470,7 +474,7 @@
         width: 161px;
         @media #{$up-to-desktop} {
             background-size: 110px;
-            width: 110px !important;  
+            width: 110px !important;
         }
     }
     &.seymour{
@@ -481,7 +485,7 @@
         margin-bottom: -7px;
         @media #{$up-to-desktop} {
             background-size: 121px;
-            width: 121px !important;  
+            width: 121px !important;
         }
     }
     &.tatura{
@@ -491,7 +495,7 @@
         width: 172px;
         @media #{$up-to-desktop} {
             background-size: 120px;
-            width: 120px !important;  
+            width: 120px !important;
         }
     }
     &.yarrawonga{
@@ -501,7 +505,7 @@
         width: 160px !important;
         @media #{$up-to-desktop} {
             background-size: 120px;
-            width: 120px !important;  
+            width: 120px !important;
         }
     }
     &.southern{
@@ -511,7 +515,7 @@
         width: 134px !important;
         @media #{$up-to-desktop} {
             background-size: 86px;
-            width: 86px !important;     
+            width: 86px !important;
         }
     }
 }

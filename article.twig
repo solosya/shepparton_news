@@ -16,11 +16,11 @@
 {# {% set networkData = _Network.getNetworkData() %} #}
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
-    {% set networkData = _Network.getNetworkData() %} 
-    {% set cache = setCache("networkData", networkData, 500) %} 
+    {% set networkData = _Network.getNetworkData() %}
+    {% set cache = setCache("networkData", networkData, 500) %}
 {% endif %}
 
-{# {% set log = _AppHelper.log(article) %} #}
+
 {% set syndication = 'Local Content' %}
 {% if article.feed_id != null and article.feed_id starts with 'S-' %}
     {% set syndication = 'National Syndicated' %}
@@ -29,6 +29,11 @@
 {% endif %}
 
 
+{% set Newsletter = "" %}
+{% set Cblock = _ContentBlock.get({"title" : "Newsletter"}) %}
+{% if Cblock %}
+    {% set Newsletter = Cblock['content'] %}
+{% endif %}
 
 {% set feedId = article.feed_id ? article.feed_id : article.aap_id ? article.aap_id : "" %}
 
@@ -54,11 +59,6 @@
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
 and 3rd video at the end if there's been at least 5 paragraphs since the last video #}
 {% if site != 'country' and site != 'dairy' %}
-    {# {% set videoDivs = [
-        "<div id='head-video'></div></p>", 
-        "<div id='fourth-par-video'></div></p>", 
-        "<div id='foot-video'></div></p>"
-    ] %} #}
 
     {% set pianoDivsStart = [
         "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->"
@@ -67,8 +67,8 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
     {% set ArticleContent = article.content | split('<p>') %}
     {% set lastVideo = (ArticleContent | length > 12) ? true : false %}
     {% for i in 0..ArticleContent | length %}
-        
-       
+
+
         {% if i == 2 %}
             {% if config['piano']['paywall'] is defined and config['piano']['paywall'] == true %}
                 {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
@@ -76,21 +76,12 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             {% endif %}
         {% endif %}
 
-        {# {% if i == 5 %}
-            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[0]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-        {% endif %}
-
-        {% if i == 9 %}
-            {% set ArticleContent = ArticleContent | slice(0, i) | merge([videoDivs[1]]) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-        {% endif %} #}
-
     {% endfor %}
-    {# {% if lastVideo %}
-        {% set ArticleContent = ArticleContent | merge([videoDivs[2]]) %}
-    {% endif %} #}
 
     {% set ArticleContent = ArticleContent | join('<p>') %}
-    {# {{this.registerJsFile("https://videos.oovvuu.com/mmgp/v1/ovu_rec.js")}} #}
+
+
+
 
 {% elseif site == 'country' %}
     {% set pianoDivsStart = [
@@ -106,13 +97,13 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             {% endif %}
         {% endif %}
     {% endfor %}
-    
+
 
     {% set ArticleContent = ArticleContent | join('<p>') %}
-    
+
 {% endif %}
 {# end Oovvuu #}
-  
+
 
 
 
@@ -156,24 +147,24 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 {% set relatedArticles = getCache("articleRelated"~article.blog.id) %}
 {% if (relatedArticles is empty) %}
-    {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 3, interval: 168 }) %}
-    {% set cache = setCache("articleRelated"~article.blog.id, relatedArticles, 500) %} 
+    {% set relatedArticles = _Article.getPopularArticles({ blogId: article.blog.id, limit: 5, interval: 168 }) %}
+    {% set cache = setCache("articleRelated"~article.blog.id, relatedArticles, 500) %}
 {% endif %}
 
 {% set recentArticles = getCache("articleRecent") %}
 {% if (recentArticles is empty) %}
-    {% set recentArticles = _Article.getRecentArticles({ limit: 5 }) %}
-    {% set cache = setCache("articleRecent", recentArticles, 500) %} 
+    {% set recentArticles = _Article.getRecentArticles({ limit: 2 }) %}
+    {% set cache = setCache("articleRecent", recentArticles, 500) %}
 {% endif %}
 
 
 {# The below are used for Google analytics #}
 {% set incites = 'no' %}
-{% if article.additionalInfo is defined and article.additionalInfo.incites is defined and article.additionalInfo.incites != null %} 
+{% if article.additionalInfo is defined and article.additionalInfo.incites is defined and article.additionalInfo.incites != null %}
     {% set incites = article.additionalInfo.incites %}
 {% endif %}
 {% set atexCategories = "" %}
-{% if article.additionalInfo is defined and article.additionalInfo.categories is defined and article.additionalInfo.categories != null %} 
+{% if article.additionalInfo is defined and article.additionalInfo.categories is defined and article.additionalInfo.categories != null %}
     {% set atexCategories = article.additionalInfo.categories %}
 {% endif %}
 
@@ -241,66 +232,50 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
             <div class="page-content">
                 <div class="row" >
-                    <div class="col-md-6" id="articleContentContainer">
+                    
+                    
+                    
+                    <div class="offset-xl-1 col-lg-8 col-xl-7" id="articleContentContainer">
 
                         <div class="row">
 
-                            <div class="col-md-9">
+                            <div class="col-12">
 
                                 <div class="content-block-top">
                                     <div id="pianoArticleHeader"></div>
                                     <!-- For articles tagged as premium include premium article identifier HTML here – currently being designed -->
-
-                                    <a href="{{blogInfo.url}}"><p class="category {{site}}{% if premiumtags and premium == 'Premium' %} premium-tag{% endif %}" >{{article.label}}</p
-                                    ></a><time datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                                     {% if _User.isAdminUser() %}
-                                        <span style="float:right;color:#a9a9a9;font-size:13px;position:relative;top:6px;">Article id: {{feedId}}</span>
+                                        <div style="color:#a9a9a9;font-size:13px;position:relative;top:6px;">Article id: {{feedId}}</div>
                                     {% endif %}
 
-                                    <h1 id="article-title">{{ quotes.smarten(article.title) }}</h1>
-                                    
-                                    <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
-                                    <div class="article-social article-social__desktop visible-md-block visible-lg-block">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="social-icon facebook-icon">
-                                            <svg class="svg-icons {{site}} article-social__icons">
-                                                <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
-                                            </svg>                            
-                                        </a
-                                        ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="social-icon twitter-icon">
-                                            <svg class="svg-icons {{site}} article-social__icons">
-                                                <path fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
-                                            </svg>                            
-                                        </a
-                                        ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="social-icon email-icon">
-                                            <svg class="svg-icons {{site}} article-social__icons">
-                                                <g transform="translate(-548.000000, -1194.000000)">
-                                                    <path d="M548.084,1207.818 L555.182,1200.993 L548.063,1194.903 L548,1195.302 L548,1207.398 C548,1207.482 548.028,1207.622 548.084,1207.818 L548.084,1207.818 Z M556.085,1200.174 L557.03,1200.93 L558.899,1202.463 L560.768,1200.93 L561.713,1200.174 L568.853,1194.063 C568.727,1194.021 568.601,1194 568.475,1194 L549.302,1194 C549.162,1194 549.043,1194.021 548.945,1194.063 L556.085,1200.174 Z M549.302,1208.7 L568.475,1208.7 C568.601,1208.7 568.72,1208.679 568.832,1208.637 L561.671,1201.77 L558.899,1204.017 L556.127,1201.77 L548.966,1208.637 C549.078,1208.679 549.19,1208.7 549.302,1208.7 L549.302,1208.7 Z M569.714,1207.818 C569.756,1207.664 569.777,1207.524 569.777,1207.398 L569.777,1195.302 C569.777,1195.162 569.756,1195.029 569.714,1194.903 L562.616,1200.993 L569.714,1207.818 Z" id="Fill-6"></path>
-                                                </g>
-                                            </svg>                            
-                                        </a>
+                                    <div class="category-container">
+                                        <a href="{{blogInfo.url}}"><p class="category {{site}}{% if premiumtags and premium == 'Premium' %} premium-tag{% endif %}" >{{article.label}}</p></a>
+                                        <time class="article-time" datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                                     </div>
+                                    <h1 class="article-title" id="article-title">{{ quotes.smarten(article.title) }}</h1>
+
+                                    <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
+                                    
+                                    
                                     {% if _User.isAdminUser() %}
                                         <a href="#" id="oovvuu-curate" class="" style="margin-left:20px;padding-top:5px">Curate videos</a>
                                         <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
                                     {% endif %}
 
-                                </div>   
+                                </div>
 
-                                <hr class="divide18 visible-md-block visible-lg-block" />                      
+                            </div>
 
-                            </div>  
-                            
-                            {% if articleImg %} 
-                                <div class="col-md-9">
+                            {% if articleImg %}
+                                <div class="col-12">
                                     {% if imageToggle %}
                                         <div id="gallery-toggle" class="gallery-toggle">
                                             <ul class="gallery-toggle__list">
-                                                <li data-type="image" class="gallery-toggle__item {% if featured != 'video' %} gallery-toggle__item--selected {% endif %}">Image</li
-                                               ><li data-type="video" class="gallery-toggle__item {% if featured == 'video' %} gallery-toggle__item--selected {% endif %}">Video</li>
+                                                <li data-type="image" class="gallery-toggle__item {% if featured != 'video' %} gallery-toggle__item--selected {% endif %}">Image</li>
+                                                <li data-type="video" class="gallery-toggle__item {% if featured == 'video' %} gallery-toggle__item--selected {% endif %}">Video</li>
                                             </ul>
                                         </div>
                                     {% endif %}
-
 
                                     <div class="gallery-container relative" data-featured="{{featured}}">
 
@@ -332,30 +307,9 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                 </div>
                             {% endif %}
 
-                                                {# social icons #}
-                            
-                            <div class="article-social article-social@sm col-sm-9 visible-sm-block visible-xs-block">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="social-icon facebook-icon">
-                                    <svg class="svg-icons {{site}} article-social__icons">
-                                        <path fill-rule="evenodd" d="M5.893 6.223V4.59c0-.248.013-.441.04-.579.029-.137.084-.268.166-.392a.69.69 0 0 1 .393-.27c.18-.055.42-.082.724-.082h1.633V0H6.223C4.707 0 3.62.359 2.957 1.075c-.662.717-.993 1.778-.993 3.184v1.964H0V9.49h1.964V19h3.929V9.49h2.625l.352-3.267H5.893z"/>
-                                    </svg>                            
-                                </a
-                                ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="social-icon twitter-icon">
-                                    <svg class="svg-icons {{site}} article-social__icons">
-                                        <path fill-rule="evenodd" d="M17.367 2.509a3.954 3.954 0 0 0 1.77-2.218 7.817 7.817 0 0 1-2.554.986C15.775.425 14.79 0 13.624 0c-1.12 0-2.077.395-2.868 1.187-.792.792-1.187 1.748-1.187 2.869 0 .299.029.604.089.918a11.229 11.229 0 0 1-4.64-1.255A11.667 11.667 0 0 1 1.345.74c-.373.627-.56 1.3-.56 2.017 0 .717.164 1.366.493 1.95.329.582.77 1.06 1.322 1.434a4.098 4.098 0 0 1-1.815-.516c-.015 1.03.292 1.89.919 2.622a4.102 4.102 0 0 0 2.33 1.39 4.14 4.14 0 0 1-1.053.134c-.24 0-.493-.022-.762-.068a4.075 4.075 0 0 0 1.434 1.996 3.896 3.896 0 0 0 2.353.806c-1.464 1.15-3.137 1.726-5.02 1.726-.358 0-.686-.016-.985-.046C1.882 15.394 3.95 16 6.207 16c1.434.016 2.78-.208 4.033-.671 1.255-.464 2.33-1.068 3.227-1.815a11.42 11.42 0 0 0 2.308-2.623 11.949 11.949 0 0 0 1.435-3.114c.314-1.076.47-2.16.47-3.25 0-.224-.007-.396-.022-.515a8.124 8.124 0 0 0 2.017-2.084s-1.532.493-2.308.582z"/>
-                                    </svg>                            
-                                </a
-                                ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="social-icon email-icon">
-                                    <svg class="svg-icons {{site}} article-social__icons">
-                                        <g transform="translate(-548.000000, -1194.000000)">
-                                            <path d="M548.084,1207.818 L555.182,1200.993 L548.063,1194.903 L548,1195.302 L548,1207.398 C548,1207.482 548.028,1207.622 548.084,1207.818 L548.084,1207.818 Z M556.085,1200.174 L557.03,1200.93 L558.899,1202.463 L560.768,1200.93 L561.713,1200.174 L568.853,1194.063 C568.727,1194.021 568.601,1194 568.475,1194 L549.302,1194 C549.162,1194 549.043,1194.021 548.945,1194.063 L556.085,1200.174 Z M549.302,1208.7 L568.475,1208.7 C568.601,1208.7 568.72,1208.679 568.832,1208.637 L561.671,1201.77 L558.899,1204.017 L556.127,1201.77 L548.966,1208.637 C549.078,1208.679 549.19,1208.7 549.302,1208.7 L549.302,1208.7 Z M569.714,1207.818 C569.756,1207.664 569.777,1207.524 569.777,1207.398 L569.777,1195.302 C569.777,1195.162 569.756,1195.029 569.714,1194.903 L562.616,1200.993 L569.714,1207.818 Z" id="Fill-6"></path>
-                                        </g>
-                                    </svg>                            
-                                </a>
-                            </div>
-                            
 
-                            <div class="col-md-9 u-margin-top-40 u-mobile-margin-top-20">
+
+                            <div class="col-12  u-mobile-margin-top-20">
 
                                 <div class="hidden" id="oovvuu"> {{oovvuu}}</div>
                                 <div class="hidden" id="brightcove"> {{networkData.thirdPartyIntegrations.Brightcove.id}}</div>
@@ -366,132 +320,124 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                         </div>
                                         <div id='pianoArticleContentFooter'></div>
                                     {% endif %}
-                                </div><!-- .content-->
+                                </div>
 
+
+
+
+
+                                <div class="article-social article-social__desktop u-mobile-margin-top-30">
+                                    <p class="article-social__text">Share this article</p>
+
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" target="_blank" class="article-social__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="22" viewBox="0 0 9 16" class="article-social__svg {{site}}">
+                                            <path fill="{{themeColor}}" fill-rule="evenodd" d="M6.39 5.896V4.348c0-.234.013-.417.04-.548.027-.13.08-.254.16-.372.079-.118.204-.203.377-.254.172-.053.404-.079.695-.079h1.57V0H6.709c-1.457 0-2.504.34-3.14 1.018-.637.68-.955 1.685-.955 3.017v1.86H.725v3.096h1.888V18H6.39V8.99h2.525l.338-3.094H6.39z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}"  target="_blank" class="article-social__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 18" class="article-social__svg {{site}}">
+                                            <path fill="{{themeColor}}" fill-rule="evenodd" d="M19.938 2.823c.989-.588 1.662-1.42 2.02-2.496-.903.539-1.876.908-2.916 1.11C18.121.479 16.996 0 15.665 0c-1.28 0-2.371.445-3.275 1.336-.904.89-1.355 1.966-1.355 3.227 0 .336.033.68.102 1.033-1.893-.1-3.66-.571-5.297-1.412-1.636-.84-3.035-1.958-4.195-3.352-.426.705-.64 1.462-.64 2.269 0 .806.188 1.537.564 2.193.375.655.878 1.194 1.509 1.613-.734-.033-1.424-.226-2.072-.58-.018 1.16.333 2.126 1.048 2.95.717.824 1.604 1.345 2.661 1.563-.392.101-.793.151-1.202.151-.274 0-.563-.025-.87-.076.307.908.853 1.656 1.637 2.245.785.587 1.68.89 2.687.907-1.672 1.294-3.582 1.941-5.731 1.941-.41 0-.785-.017-1.125-.05 2.148 1.36 4.51 2.041 7.086 2.041 1.637.018 3.173-.234 4.604-.755 1.433-.522 2.661-1.202 3.685-2.042 1.023-.84 1.901-1.824 2.635-2.95.733-1.127 1.279-2.294 1.637-3.504.359-1.21.538-2.43.538-3.656 0-.253-.009-.446-.026-.58.904-.638 1.671-1.42 2.303-2.345 0 0-1.75.555-2.635.656z"/>
+                                        </svg>
+                                    </a>
+
+                                    <a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="article-social__link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="31" height="34" viewBox="0 0 24 15" class="article-social__svg {{site}}">
+                                            <path fill="{{themeColor}}" fill-rule="evenodd" d="M.232 13.818l7.203-6.825L.211.903l-.064.399v12.096c0 .084.028.224.085.42zm8.12-7.644l.959.756 1.896 1.533 1.897-1.533.96-.756L21.308.063C21.181.021 21.053 0 20.925 0H1.468c-.142 0-.263.021-.362.063l7.246 6.111zM1.468 14.7h19.457c.128 0 .25-.021.363-.063L14.02 7.77l-2.814 2.247L8.394 7.77l-7.267 6.867c.114.042.228.063.341.063zm20.715-.882c.042-.154.064-.294.064-.42V1.302c0-.14-.022-.273-.064-.399l-7.203 6.09 7.203 6.825z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>               
-                
+                    </div>
 
 
-                    {# {% cache 'recentLeader' 500 %} #}
-                    <div class="col-md-3 visible-md-block visible-lg-block" style="min-height:1px;" id="adScrollContainer">
-                        <div class="article-sidebar lockad-top u-left-unset u-fix-width-300" id="articleAdScroll">
-                            <div class="">
-                            
+
+
+
+
+
+
+
+
+                    {# **************
+                        SIDEBAR
+                    *************** #}
+
+                    <div class="col-12 col-lg-4 col-xl-3 u-tablet-margin-top-25" style="min-height:1px;" id="adScrollContainer">
+                        <div class="article-sidebar u-fix-width-300" id="articleAdScroll">
+                            <div class="d-block d-md-none d-lg-block u-mobile-margin-top-20 u-mobile-margin-bottom-30 u-mobile-center">
                                 <div class="ad-side-container">
-                                    <div class='advert-desktop u-fix-adsize' data-adsize="mrec"></div>
+                                    <div class='ad-square advert-desktop mrec-min-height u-fix-adsize' data-adsize="mrec"></div>
                                 </div>
                             </div>
 
 
-                            <div class="">
-                                {% if recentArticles[0] %}
-                                    <h2 class="sidebar-header {{site}}">Latest articles</h2>
-                                {% endif %}
-                                    
-                                {% if config['newsletter'] is defined and config['newsletter'] != "" %}
-                                    {% for i in 0..1 if recentArticles[i] %}
-                                        
-                                            {{this.render('partials/_single-article.twig', {
-                                                article: recentArticles[i], 
-                                                imageSuppress: false,
-                                                containerClass: 'feature-side feature-side-tablet card-sm-mobile',
-                                                site:   site
-                                            }) | raw}}
-                                            
-                                            {% if i < 2 %}
-                                                <hr class="divide15">
-                                            {% endif %}
-                                        
-                                    {% endfor %}
-                                    <div class=" col-sm-4 col-md-9">
-                                        <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;">
-                                            <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
+
+                            <div class="row">
+                                
+                                <div class="col-12 col-md-6 col-lg-12">
+
+                                    {% if recentArticles[0] %}
+                                        <div class="c-section-header u-desktop-margin-top-30 u-margin-bottom-20">
+                                            <a class="{{site}}" href="{{link}}">
+                                                <h2 class="c-section-header__h2 {{site}}">Latest articles</h2>
+                                            </a>
                                         </div>
-                                    </div>
-                                {% else %}
-                                    {% for i in 0..2 if recentArticles[i] %}
-                                        
-                                            {{this.render('partials/_single-article.twig', {
-                                                article: recentArticles[i], 
-                                                imageSuppress: false,
-                                                containerClass: 'feature-side feature-side-tablet card-sm-mobile',
-                                                site:   site
-                                            }) | raw}}
-                                            
-                                            {% if i < 2 %}
-                                                <hr class="divide15">
-                                            {% endif %}
-                                        
+
+                                    {% endif %}
+
+                                    {% for i in 0..1 if recentArticles[i] %}
+
+                                        {{this.render('partials/_single-article.twig', {
+                                            imageSize       : {width:95},
+                                            styleType       : "image-bottom",
+                                            article: recentArticles[i],
+                                            imageSuppress: false,
+                                            swap : false,
+                                            containerClass: 'card-101-mobile card-101-tablet card-101-desktop-sm card-101-desktop-lg',
+                                            site:   site
+                                        }) | raw}}
+
+                                        <hr class="divide20-25">
+
                                     {% endfor %}
-                                {% endif %}
-                                
-                            </div>
-                        </div>
-                    </div>               
-
-
-
-                    <div class="col-sm-9 visible-xs-block visible-sm-block u-margin-top-30">
-                        <div class="article-sidebar-device">
-
-        
-                            <div class="ad-side-container hidden-sm u-mobile-margin-top-15" style="height:250px;position:relative;width:300px;margin: 0 auto;">
-                                <div class='advert-mobile' data-adsize="mrec"></div>
-                            </div>
-                            <div class='advert-tablet visible-sm-block u-tablet-margin-top-30' data-adsize="banner"></div>
-
-                            {% if recentArticles[0] %}
-                                <h2 class="sidebar-header {{site}}">Latest articles</h2>
-                            {% endif %}
-                                
-                            {% if config['newsletter'] is defined and config['newsletter'] != "" %}
-                                {% for i in 0..2 if recentArticles[i] %}
-                                    <div class="col-md-9 col-sm-4">
-                                        {{this.render('partials/_single-article.twig', {
-                                            article: recentArticles[i], 
-                                            imageSuppress: false,
-                                            containerClass: 'feature-side feature-side-tablet card-sm-mobile',
-                                            site:   site
-                                        }) | raw}}
-                                        
-                                        {% if i < 4 %}
-                                            <hr class="divide15">
-                                        {% endif %}
-                                    </div>
-                                {% endfor %}
-                                <div class="col-sm-4 col-md-9 col-xs-9">
-                                    <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
-                                        <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
-                                    </div>
                                 </div>
-                            {% else %}
-                                {% for i in 0..3 if recentArticles[i] %}
-                                    <div class="col-md-9 col-sm-4">
-                                        {{this.render('partials/_single-article.twig', {
-                                            article: recentArticles[i], 
-                                            imageSuppress: false,
-                                            containerClass: 'feature-side feature-side-tablet card-sm-mobile',
-                                            site:   site
-                                        }) | raw}}
-                                        
-                                        {% if i < 4 %}
-                                            <hr class="divide15">
-                                        {% endif %}
+
+
+
+                                <div class="col-md-6 d-none d-md-block d-lg-none u-margin-bottom-30">
+                                    <div  class="ad-square mrec-min-height ad-side-container">
+                                        <div class='advert-desktop' data-adsize="mrec"></div>
                                     </div>
-                                {% endfor %}
-                            {% endif %}
 
+                                    {% if config['newsletter'] is defined and config['newsletter'] != "" %}
+                                        {{Newsletter | raw}}
+                                    {% endif %}
 
+                                </div>
+
+                                {% if config['newsletter'] is defined and config['newsletter'] != "" %}
+                                    <div class="col-12 col-md-6 col-lg-12 d-block d-md-none d-lg-block">
+                                        {{Newsletter | raw}}
+                                    </div>
+                                {% endif %}
+
+                            </div>
                         </div>
+                    </div>
 
-                    </div><!-- .article-sidebar-->
-                    {# {% endcache %} #}
 
                 </div>
 
-            </div><!-- .page-content-->
+            </div>
+
+
+
+
+
+
+
+
 
             <!-- Disqus Comment Added -->
             {% if networkData.thirdPartyIntegrations['disqus'] | length > 0 and networkData.thirdPartyIntegrations['disqus']['shortName'] != '' %}
@@ -500,23 +446,29 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
             {% cache 'popularLeader'~article.blog.id 300 %}
 
+
+
+
+
             <div class="row related-articles">
-                <div class="col-md-9">
-                    <h1>MOST POPULAR</h1>
+                <div class="col-12">
+                    <h1 class="related-articles__header {{site}}">Most Popular</h1>
                 </div>
-                
-                <div>
-                    {% for i in 0..2 if relatedArticles[i] %}
-                        <div class="col-sm-3">
-                            {{this.render('partials/_single-article.twig', {
-                                article: relatedArticles[i], 
-                                imageSize: {width: 300, height: 180},
-                                containerClass: 'card-sm-wide card-sm-wide-tablet card-sm-wide-mobile',
-                                site:   site
-                            }) | raw}}
-                        </div>
-                    {% endfor %}
-                </div>
+
+                {% for i in 0..3 if relatedArticles[i] %}
+                    {% set clear = i == 2 ? 'u-tablet-clear-both' : '' %}
+                    <div class="col-6 col-lg-3 {{clear}}">
+                        {{this.render('partials/_single-article.twig', {
+                            article: relatedArticles[i],
+                            imageSize : {width:235},
+                            containerClass: 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg',
+                            site:   site
+                        }) | raw}}
+                        {% if i < 2 %}
+                            <hr class="divide20-25 d-block d-lg-none">
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
             {% endcache %}
 
@@ -525,11 +477,14 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
 
     </article>
-</main><!--site-main-->
+</main>
+
+
+
+{# <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
 <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div>
-{# <div class='advert-desktop advert-mobile advert-tablet' data-adsize="teads"></div> #}
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
-<div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
+<div class='advert-desktop advert-tablet' data-adsize="interstitial"></div> #}
 
 
 
@@ -556,7 +511,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             var frameWindow = document.getElementById('newsletter-iframe').contentWindow;
             // Sends the client ID to the window inside the destination frame.
             frameWindow.postMessage(clientId, '{{config['newsletter']}}');
-        }); 
+        });
     </script>
 {% endif %}
 

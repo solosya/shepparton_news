@@ -1,0 +1,272 @@
+{# {% set headermenu = getCache("headermenu") %}
+{% if (headermenu is empty) %} #}
+    {% set headermenu = _Menu.get({'menuType': 'header', "menuGroupName":"header-main"}) %}
+    {# {% set cache = setCache("headermenu", headermenu, 500) %}
+{% endif %} #}
+
+
+{% set sectionMenu = getCache("sectionMenu") %}
+{% if (sectionMenu is empty) %}
+    {% set sectionMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'section-menu'}) %}
+    {% set cache = setCache("sectionMenu", sectionMenu, 500) %}
+{% endif %}
+
+
+{% set networkMenu = getCache("networkMenu") %}
+{% if (networkMenu is empty) %}
+    {% set networkMenu = _Menu.get({'menuType': 'header', 'menuGroupName': 'network-menu'}) %}
+    {% set cache = setCache("networkMenu", networkMenu, 500) %}
+{% endif %}
+
+{#{% set breakingButton  = config['breakingButton'] is defined and config['breakingButton']['active'] == true ? true : false %}#}
+{% set pianoMenu  = config['piano']['menu'] is defined and config['piano']['menu'] == true ? true : false %}
+
+{% set site            = networkData.title | lower | split(" ")[0]%}
+{% set pianoSubscribe  = config['piano']['subscribe'] is defined and config['piano']['subscribe'] == true ? true : false %}
+{% set paperButton     = config['paperButton'] is defined and config['paperButton']['active'] == true ? true : false %}
+{% set paperLink = "" %}
+
+{% if config['paperButton'] is defined and config['paperButton']['link'] is defined %}
+    {% set paperLink = config['paperButton']['link'] %}
+{% endif %}
+
+
+
+
+{% set loggedin = _User.isGuest() ? false : true %}
+{% set user = loggedin ? _User.getUser() : null %}
+
+
+
+
+{% set logoWidth = 650 %}
+{% set logoHeight = 144 %}
+
+{% if config['logo'] is defined %}
+    {% if config['logo']['width'] is defined %}
+        {% set logoWidth = config['logo']['width'] %}
+
+        {% if config['logo']['height'] is not defined %}
+            {% set logoHeight = 0 %}
+        {% endif %}
+    {% endif %}
+
+    {% if config['logo']['height'] is defined %}
+        {% set logoHeight = config['logo']['height'] %}
+
+        {% if config['logo']['width'] is not defined %}
+            {% set logoWidth = 0 %}
+        {% endif %}
+
+    {% endif %}
+{% endif %}
+
+{% set logo = networkData.templatePath~'/static/images/shepp-logo.svg'%}
+
+{% if networkData.logoMedia | length > 0 %}
+    {% set logo = _Media.getMediaUrl(networkData.logoMedia, logoWidth, logoHeight, {'crop': 'fit'} ) %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+<header class="c-header-new u-mobile-margin-bottom-70" data-header="0">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="c-header-new__main-info" style="background:white">
+
+                    <div class="c-navigation-new__menu-bar-containter">
+                        <div class="c-navigation-new__icons__menu o-hamburger js-menu"></div>
+                    </div>
+
+                    <a href="{{networkData.defaultBlogUrl}}" class="c-header-new__main-info__logo">
+                        <figure class="c-header-new__main-info__figure">
+                            <img src="{{logo}}" class="image-fluid" />
+                        </figure>
+                    </a>
+
+                    <div class="c-header-new__login-info" style="background:white">
+                        {% if paymeter == true and pianoSubscribe == true %}
+                            <a class="c-header-new__subscribebutton" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                Subscribe
+                            </a>
+                        {% endif %}  
+                    </div>
+                </div>
+
+                <div class="c-header-new__sub-info" style="background:white">
+                        {% if paperButton == true and paymeter == true and pianoSubscribe == true %}
+                            <a class="c-header-new__read-link {{site}}" id="pressreader-button" href="{{paperLink}}">
+                                {{config['paperButton']['label']}}
+                                <div class="c-header-new__read-link-icon {{site}}"></div>
+                            </a>
+                        {% endif %}
+                    {#<a class="c-header-new__read-link" href="">Read paper</a>#}
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+        {# ******************************************************
+                                MAIN NAV
+        ****************************************************** #}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="background:white">
+                <div class="c-navigation-new  c-navigation-new-md">
+                    <div class="c-navigation-new__weather d-none d-md-block d-lg-none">
+                        <div class="weather j-weather-panel  {{site}}"></div>
+                        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                    </div>
+
+
+                    <ul class="c-navigation-new__list">
+                        {{ this.render('../../partials/_menu.twig', {'menu': headermenu, 'site': site}) | raw }}
+                    </ul>
+
+
+                    {# Only shows on Mobile #}
+                {% if paymeter == true and pianoMenu == true %}  
+
+                        <div class="c-header-new__mobile-auth">
+
+                            <a class="c-header-new__subscribebutton"
+                                href="javascript:void(0);"
+                                onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+                                Subscribe
+                            </a>
+                            <a class="c-header-new__signinbutton"
+                                onclick="javascript:tp.pianoId.show({screen: 'login'});"
+                                href="javascript:void(0);">Sign in
+                            </a>
+
+                        </div>
+                    {% endif %}  
+
+
+
+                    <div class="c-navigation-new__icons">
+                        {% if paymeter == true and pianoMenu == true %}  
+                            {# <li class="hidden-sm hidden-md hidden-lg j-piano-loggedin" style="display:none;"><a class="account-item" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a></li> #}
+                            <div class="d-block d-md-none j-piano-loggedin" >
+                                <a class="c-header-new__login" onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a>
+                            </div>
+
+                            <ul class="auth-links d-none d-md-block j-piano-loggedin" style="display:none !important">
+                                <li class="d-flex c-header-new__login-container j-piano__account">
+                                    <a id="piano-user-name" class="c-header-new__login {{site}}" href="{{networkData.defaultBlogUrl}}/@my-account">My Account</a>
+                                    <img class="c-header-new__login-profile {{site}}" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
+
+                                </li>
+                                <ul class="c-piano__dropdown c-piano__dropdown--hidden j-piano__dropdown">
+                                    <li><a href="javascript:void(0);">My Account</a></li>
+                                    <li><a onclick="javascript: userLogout();" href="javascript:void(0);">log Out</a></li>
+                                </ul>
+                            </ul> 
+
+
+
+
+                            <div class="d-flex c-header-new__login-container j-piano-loggedout {{site}}">
+                                <a class="c-header-new__login {{site}}" onclick="javascript:tp.pianoId.show({screen: 'login'});" href="javascript:void(0);">Sign in</a>
+                                <img class="c-header-new__login-profile {{site}}" src="{{networkData.templatePath}}/static/icons/log-in-profile.svg">
+                            </div>
+                        {% endif %}  
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="c-navigation-new__weather u-mobile-margin-top-10 d-block d-md-none">
+                        <div class="weather j-weather-panel  {{site}}"></div>
+                        <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="responsive-standalone">
+
+    <div class="responsive-standalone-close">
+        <div class="responsive-standalone-close-close o-close "></div>
+    </div>
+
+    <form class="standalone-menu__search-form" method="get" id="searchform" action="{{networkData.defaultBlogUrl}}/search">
+        {# <div class="c-search-bar__icon">{{ this.render('../../../partials/icons.twig', {icon: 'search'} ) | raw }}</div> #}
+        <input class="standalone-menu__search-bar" type="text" name="s" placeholder="Search"/>
+        <button class="standalone-menu__search-button o-glass" type="submit" id="searchsubmit"></button>
+    </form>
+
+    <div class="standalone-menu__menu-toggle u-margin-top-20 j-menu-toggle">
+        <button class="standalone-menu__toggle standalone-menu__toggle--active" data-value="section">Sections</button>
+        <button class="standalone-menu__toggle" data-value="network">Network</button>
+    </div>
+
+    <ul class="standalone-menu u-margin-top-20">
+        <div class="standalone-menu__tab standalone-menu__tab--active j-tab" data-tab="section">
+        {{ this.render('../../partials/_menu.twig', {
+            'menu': sectionMenu
+            }) | raw }}
+        </div>
+
+        <div class="standalone-menu__tab j-tab" data-tab="network">
+        {{ this.render('../../partials/_menu.twig', {
+            'menu': networkMenu
+            }) | raw }}
+        </div>
+    </ul>
+
+    {% if paymeter == true and pianoMenu == true %}  
+    <div class="side-menu-subscribe">
+        <h4 class="side-menu-subscribe__title">Stories about people you <br />know told by people you trust</h4>
+        <p class="side-menu-subscribe__p u-margin-top-10">Subscribe to the news that matters to you</p>
+        <a class="side-menu-subscribe__button" href="javascript:void(0);" onclick="window.location.href=('{{networkData.defaultBlogUrl}}/membership?redirect='+encodeURIComponent(window.location.href));">
+            Subscribe now
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- <div class="responsive-standalone-overlay"></div> -->

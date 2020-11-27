@@ -18,10 +18,6 @@
 }
 
 .site-main {
-    margin-top:25px;
-    @media screen and (max-width: $sm-break-down) {
-        margin-top:20px;
-    }
 
     margin-bottom:100px;
 
@@ -33,230 +29,143 @@
     // }
 
 
-    .bloggerImg {
+    // .bloggerImg {
 
-        width:100%;
-        height:190px;
-        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-            height:139px;
-        }
-        @media screen and (max-width: $sm-break-down) {
-            margin-bottom:20px;
-        }
+    //     width:100%;
+    //     height:190px;
+    //     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
+    //         height:139px;
+    //     }
+    //     @media screen and (max-width: $sm-break-down) {
+    //         margin-bottom:20px;
+    //     }
 
-        >div.content {
-            position:absolute;
-            top: 25px;
-            left: 28px;
+    //     >div.content {
+    //         position:absolute;
+    //         top: 25px;
+    //         left: 28px;
 
-            >p.header {
-                font-size: rem(27);
-                color:white;
-                font-family:$font-family-serif;
-                margin-bottom:0;
-                @media #{$mobile} {
-                     margin-top:0;
-                }
+    //         >p.header {
+    //             font-size: rem(27);
+    //             color:white;
+    //             font-family:$font-family-serif;
+    //             margin-bottom:0;
+    //             @media #{$mobile} {
+    //                  margin-top:0;
+    //             }
 
-            }
-            >p.local {
-                font-size: rem(12);
-                color:black;
-                font-weight: 600;
-            }
-        }
-        >img {
-            position:absolute;
-            bottom:0;
-            left:50%;
-            margin-left:-80px;
-        }
+    //         }
+    //         >p.local {
+    //             font-size: rem(12);
+    //             color:black;
+    //             font-weight: 600;
+    //         }
+    //     }
+    //     >img {
+    //         position:absolute;
+    //         bottom:0;
+    //         left:50%;
+    //         margin-left:-80px;
+    //     }
 
-    }
+    // }
 
-    .row-space {
-        @media screen and (min-width: $sm-break){
-            margin-top:29px;
-        }
-        &.md {
-            @media screen and (max-width: $mmd-break){
-                margin-top:0;
-            }
-        }
-    }
+    // .row-space {
+    //     @media screen and (min-width: $sm-break){
+    //         margin-top:29px;
+    //     }
+    //     &.md {
+    //         @media screen and (max-width: $mmd-break){
+    //             margin-top:0;
+    //         }
+    //     }
+    // }
 
-    .row-space40 {
-        @media screen and (max-width: $sm-break-down){
-            padding: 0;
-        }
-        @media screen and (min-width: $sm-break){
-            margin-top:35px;
-        }
-        &.md {
-            @media screen and (max-width: $mmd-break){
-                margin-top:0;
-            }
-        }
-    }
+    // .row-space40 {
+    //     @media screen and (max-width: $sm-break-down){
+    //         padding: 0;
+    //     }
+    //     @media screen and (min-width: $sm-break){
+    //         margin-top:35px;
+    //     }
+    //     &.md {
+    //         @media screen and (max-width: $mmd-break){
+    //             margin-top:0;
+    //         }
+    //     }
+    // }
 
-    .home-main-stories {
-        // height:400px;
-        margin-bottom:40px;
+    // .home-main-stories {
+    //     // height:400px;
+    //     margin-bottom:40px;
 
-        @media screen and (max-width: $mmd-break-down){
-            height:auto;
-            margin-bottom:0px;
-        }
-        @media screen and (max-width: $sm-break-down){
-            margin-bottom:0px;
-        }
-
-
-        div.feature-side-mobile {
-            clear:both;
-        }
-        // div.card-sm-mobile {
-        //     clear:both;
-        // }
+    //     @media screen and (max-width: $mmd-break-down){
+    //         height:auto;
+    //         margin-bottom:0px;
+    //     }
+    //     @media screen and (max-width: $sm-break-down){
+    //         margin-bottom:0px;
+    //     }
 
 
-    }
-
-    .view-all-sport {
-        font-family: $font-family-serif;
-        font-size: rem(14);
-        font-style: italic;
-        border-top: 1px solid color(grey);
-        border-bottom: 1px solid color(grey);
-        text-align: center;
-        padding-bottom: 12px;
-        line-height: 1;
-        @include colourselect('');
-        &:after {
-            display: inline-block;
-            content: '';
-            background-image: url('../icons/arrow-icon.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            width: 35px;
-            height: 25px;
-            position: relative;
-            top: 10px;
-            left: 10px;
-        }
-    }
-
-    .most-popular, .events, .trending {
-        >h2 {
-            font-weight:600;
-            font-size: rem(22);
-            margin-bottom:13px;
-            line-height:1;
-            padding-bottom: 10px;
-            @include colourselect('');
-        }
-
-        @include colourselect('');
-    }
-
-    .advert-padding {
-        margin-top: 40px;
-        margin-bottom: 85px;
-    }
-
-    .section-background {
-        padding: 25px 0;
-        background:rgba(185,185,185,.2);
-        @media screen and (min-width: $mmd-break) {
-            margin: 30px 0 0 0;
-        }
-    }
+    //     div.feature-side-mobile {
+    //         clear:both;
+    //     }
+    //     // div.card-sm-mobile {
+    //     //     clear:both;
+    //     // }
 
 
+    // }
 
-    .current-issue-card {
-        display: flex;
-        margin: 0px;
-        height: 60px;
-        padding: 12px 0px;  
-        @include colourselectbackground(''); 
+    // .view-all-sport {
+    //     font-family: $font-family-serif;
+    //     font-size: rem(14);
+    //     font-style: italic;
+    //     border-top: 1px solid color(grey);
+    //     border-bottom: 1px solid color(grey);
+    //     text-align: center;
+    //     padding-bottom: 12px;
+    //     line-height: 1;
+    //     @include colourselect('');
+    //     &:after {
+    //         display: inline-block;
+    //         content: '';
+    //         background-image: url('../icons/arrow-icon.svg');
+    //         background-size: contain;
+    //         background-repeat: no-repeat;
+    //         width: 35px;
+    //         height: 25px;
+    //         position: relative;
+    //         top: 10px;
+    //         left: 10px;
+    //     }
+    // }
 
-        > a.download-current {
-            color: white;
-            text-transform: uppercase;
-            font-size: rem(15);
-            position: absolute;
-            top: 10px;
+    // .most-popular, .events, .trending {
+    //     >h2 {
+    //         font-weight:600;
+    //         font-size: rem(22);
+    //         margin-bottom:13px;
+    //         line-height:1;
+    //         padding-bottom: 10px;
+    //         @include colourselect('');
+    //     }
 
-            &:hover {
-                cursor: pointer !important;
-                text-decoration: none;
-            }
+    //     @include colourselect('');
+    // }
 
-            &::before {
-                position: relative;
-                top: 7px;
-                margin: 0px 10px;
-                content: ' ';
-                display: inline-block;
-                width: 27px;
-                height: 27px;
-                background-position:center;
-                background-repeat:no-repeat;
-                background-image: url('../images/arrow-in-circle-icon.svg');
-                -webkit-transform: rotate(-90deg);
-                transform: rotate(-90deg);                
-            }
-        }
+    // .advert-padding {
+    //     margin-top: 40px;
+    //     margin-bottom: 85px;
+    // }
 
-
-        @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {    
-            height: 74px;
-
-            > a.download-current {
-                top: 17px;
-            }
-        }         
-    }
-
-    .subscribe {
-        margin-bottom: 0px;
-
-        > h2 {
-            font-weight: 600;
-            font-size: rem(15);
-            letter-spacing: 0.9px;
-            text-transform: uppercase;
-            @include colourselect('');
-            &::after {
-                display: block;
-                content: 'Subscribe to our mailing list';
-                font-family: $font-family-serif;
-                margin: 5px 0px;
-                color: color(grey);
-                font-style: italic;
-                font-size: rem(11);
-                text-transform: none;
-                font-weight: 400;
-            }
-        }
-
-        > div.subscribe-group {
-            input[type="email"]  {
-                border-radius: 0px;
-                border: 1px solid black;
-                font-size: rem(11);
-                color: black;
-            }
-
-            button[type="submit"] {
-                width: 80px;
-                margin-left: 15px;
-                background: white;
-                border: 1px solid black;
-                font-size: rem(11);
-            }
-        }
-    }
+    // .section-background {
+    //     padding: 25px 0;
+    //     background:rgba(185,185,185,.2);
+    //     @media screen and (min-width: $mmd-break) {
+    //         margin: 30px 0 0 0;
+    //     }
+    // }
 
 }

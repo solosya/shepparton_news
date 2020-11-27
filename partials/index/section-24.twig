@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 
 <section class="row"  data-section="24">
-    <div class="col-sm-9 section-header">
+    <div class="col-sm-12 section-header">
         <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="">
-        <div class="col-md-3 col-sm-3 col-xs-9">
+        <div class="col-md-3 col-sm-4 col-xs-12">
             {% if articles[articleCount] %}
                 {{this.render('../_single-article.twig', {
                     article: articles[articleCount], 
@@ -28,9 +28,9 @@
         </div>
 
          {%  for i in 0..2 if articles[articleCount] %}
-            {% set classSM = ['2','4','4'] %}
+            {% set classSM = ['4','4','4'] %}
             {% set classTAB = ['card-sm-tablet','feature-side-tablet','feature-side-tablet'] %}
-             <div class="col-md-2 col-sm-{{ classSM[i] }} col-xs-9">
+             <div class="col-md-3 col-sm-{{ classSM[i] }} col-xs-12">
                 {{this.render('../_single-article.twig', {
                     article: articles[articleCount], 
                     imageSize: {width:300},

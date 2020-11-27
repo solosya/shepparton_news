@@ -1,10 +1,14 @@
 .site-footer-links {
-	margin-top:15px;
+    margin-top:25px;
+
+    @media screen and (max-width: $sm-break-down) {
+        margin-top:5px;
+    }
 }
 
 .site-footer-links__menu {
     float:left;
-    border-right:2px solid color(transwhite);
+    //border-right:2px solid color(transwhite);
     padding-right: 30px;
     padding-left: 0;
     margin-right: 30px;
@@ -14,27 +18,25 @@
         height: 62px;
         padding-right: 30px;
         padding-left: 5px;
-        margin-right: 20px;        
+        margin-right: 20px;
     }
 
     @media screen and (max-width: $sm-break-down) {
-        float:none;
-        border-right:none;
-        border-bottom:1px solid color(transwhite);
+        //float:none;
+        //border-right:none;
         padding-bottom:10px;
         margin-bottom:10px;
-        padding-left: 15px;
     }
 }
 
 .site-footer-links__menu--padded {
-    padding-right: 15px;     
+    padding-right: 75px;
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-        padding-right: 10px;
-    }    
+        padding-right: 120px;
+    }
     @media screen and (max-width: $sm-break-down) {
-        padding-right: 0px;
-    }             
+        padding-right: 5px;
+    }
 }
 
 .site-footer-links__menu--padded70 {
@@ -51,23 +53,26 @@
 
 .site-footer-links__menu-item {
     list-style:none;
-    margin-bottom:17px;
+    margin-bottom:14px;
     @media screen and (min-width: $sm-break) and (max-width: $md-break){
         margin-bottom:10px;
     }
     @media screen and (max-width: $sm-break) {
-        margin-bottom:7px;
+        margin-bottom:4px;
     }
 
 }
 .site-footer-links__link {
-    font-size: rem(12.5);
-    font-weight:bold;
-    letter-spacing: 0.4px;
+    @include font-size(16);
+    font-weight:500;
+    letter-spacing: 0.5px;
     color:white;
     text-transform:uppercase;
+    &:hover {
+        @include colourselect('');
+    }
 
-    @media screen and (min-width: $sm-break) and (max-width: $md-break){
-        font-size: rem(10);
+    @media screen and (max-width: $sm-break-down) {
+        @include font-size(14);
     }
 }

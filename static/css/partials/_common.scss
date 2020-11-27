@@ -2,7 +2,7 @@
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
- 
+
 .spinner:before {
   content: '';
   box-sizing: border-box;
@@ -69,6 +69,7 @@
 
 
 .google_ad {
+    // background-color:#e7e7e7;
     &:after {
         content: "Advertisement";
         font-size: rem(10);
@@ -78,27 +79,27 @@
         height:0;
         @media screen and (max-width: $sm-break-down){
             display:none;
-        }   
+        }
     }
     &.tablet-teads,
     &.desktop-teads,
     &.tablet-interstitial,
-    &.desktop-interstitial, {
+    &.desktop-interstitial {
         &:after {
             display:none;
         }
     }
-    
+
     &.tablet-banner{
         height: 90px;
         width: 728px;
-         margin-left: auto;
+        margin-left: auto;
         margin-right: auto;
     }
     &.desktop-banner{
         height: 90px;
         min-width: 728px;
-         margin-left: auto;
+        margin-left: auto;
         margin-right: auto;
     }
     &.mobile-mrec,
@@ -109,16 +110,37 @@
         margin-left: auto;
         margin-right: auto;
     }
+    &.mobile-banner {
+        height:40px;
+    }
 }
 
 .ad-square {
     // @include adtext;
-
+    // min-height:50px;
+    //background:gray;
     > .dairy {
-        @media screen and (max-width: $sm-break){        
+        @media screen and (max-width: $sm-break){
             margin: 30px auto 30px auto;
         }
     }
+
+    &.mrec-min-height {
+        background:#f7f7f7;
+        min-height: 250px;
+    }
+    &.banner-min-height {
+        background:#f7f7f7;
+        max-width:730px;
+        min-height: 90px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    &.vert-min-height {
+        background:#f7f7f7;
+        min-height: 600px;
+    }
+
     &.ad-square__left {
         @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
             left: 15px;
@@ -141,20 +163,20 @@
 
 .ad-container {
     text-align: center;
-    margin: 30px auto 30px auto;  
+    margin: 30px auto 30px auto;
 
     @media screen and (min-width: $mmd-break) {
-        width: 970px;       
+        width: 970px;
     }
 
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down){
         width: 728px;
-    }    
+    }
 
     @media screen and (max-width: $sm-break-down){
         margin: 0px auto;
-    } 
-    
+    }
+
     // @include adtext;
     &:after {
         margin-right: $grid-gutter-width / 2;
@@ -163,7 +185,7 @@
 
 
 #mainAjaxArticlescardClass, #mainAjaxArticles {
-    .ad-container {  
+    .ad-container {
         .google_ad div iframe{
             margin-top: 40px;
             @media screen and (max-width: $sm-break-down) {
@@ -203,19 +225,19 @@
     font-size: rem(19);
     font-weight: bold;
     border: 0;
-    border-right: 1px solid color(lightgrey);       
+    border-right: 1px solid color(lightgrey);
     margin-left: 15px;
     &:hover {
         color: transparent;
     }
-    
+
     &.facebook-icon {
         margin-left: 0px;
     }
 
     &:last-child {
         border-right: none;
-    }       
+    }
 }
 
 .page_section {
@@ -235,7 +257,7 @@
             // width: 26%;
         }
     }
-    
+
     a h2 {
         font-size: rem(20);
         font-family:$font-family-sans-serif;
@@ -244,7 +266,7 @@
         font-style: normal;
     }
     > a {
-        
+
         margin-right: 15px;
         font-family: $font-family-serif;
         font-style: italic;
@@ -275,7 +297,7 @@
         font-style: normal;
     }
     > a {
-        
+
         margin-right: 15px;
         font-family: $font-family-serif;
         font-style: italic;
@@ -318,7 +340,7 @@
 .search-icon{
     @include searchIcon;
     height: 19px;
-    width: 20px;  
+    width: 20px;
 }
 
 .search-icon-mobile {
@@ -350,11 +372,11 @@ div.fancybox-title {
 }
 
 .mainAjaxArticles {
-    &:after { 
-       content: "."; 
-       visibility: hidden; 
-       display: block; 
-       height: 0; 
+    &:after {
+       content: ".";
+       visibility: hidden;
+       display: block;
+       height: 0;
        clear: both;
     }
 }
@@ -428,44 +450,44 @@ h4.modal-title {
 //     font-weight: 600;
 //     border-radius: 0;
 //     padding: 10px 9px;
-//     border-bottom: 2px solid $brand-secondary;  
+//     border-bottom: 2px solid $brand-secondary;
 // }
 
 
 
-figcaption{
-    margin-top: 10px;
+// figcaption{
+//     margin-top: 10px;
 
-    @media screen and (max-width: $sm-break){
-        float: left;
-        margin-bottom: 30px;
-    }
-    
-    > p {
-        font-size: rem(12.5);
-        color: #6c6c6c;
-        font-style: italic;
-        font-family: $font-family-serif;
-        float: left;
+//     @media screen and (max-width: $sm-break){
+//         float: left;
+//         margin-bottom: 30px;
+//     }
 
-        @media screen and (max-width: $sm-break){
-            font-size: rem(11);
-            line-height: rem(15);
-            margin-bottom:15px;
-            width: 100%;
-        }
-    
+//     > p {
+//         font-size: rem(12.5);
+//         color: #6c6c6c;
+//         font-style: italic;
+//         font-family: $font-family-serif;
+//         float: left;
 
-        &.credit{
-            font-style: normal;
-            float: right;
+//         @media screen and (max-width: $sm-break){
+//             font-size: rem(11);
+//             line-height: rem(15);
+//             margin-bottom:15px;
+//             width: 100%;
+//         }
 
-            @media screen and (max-width: $sm-break){
-                float: left;
-            }
-        }
-    }
-}
+
+//         &.credit{
+//             font-style: normal;
+//             float: right;
+
+//             @media screen and (max-width: $sm-break){
+//                 float: left;
+//             }
+//         }
+//     }
+// }
 
 
 p.lead{
@@ -540,7 +562,7 @@ span.leadsentence{
     }
     .col-profile-left {
         width: 25%;
-        padding-right: 30px;        
+        padding-right: 30px;
     }
     .col-profile-right {
         width: 75%;
@@ -560,7 +582,7 @@ span.leadsentence{
 
         > div {
             position:relative;top:10%;margin:auto;
-        
+
             .head {
                 overflow:auto;
                 padding-bottom:11px;
@@ -645,7 +667,7 @@ span.leadsentence{
                         font-size:rem(12);
                         color:color(lightgrey);
                         font-style:italic;
-                        
+
                         @media screen and (max-width: $sm-break-down) {
                             float:none
                         }
@@ -668,4 +690,16 @@ span.leadsentence{
             }
         }
     }
+}
+
+.loadmore__container {
+    >div:nth-child(even) {
+        // background:red;
+        padding-left:7px;
+    }
+    >div:nth-child(odd) {
+        // background:green;
+        padding-right:7px;
+    }
+
 }

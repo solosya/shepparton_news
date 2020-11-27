@@ -1,0 +1,48 @@
+{% set articleCount = 0 %}
+{% set articlelock = false %}
+
+
+<div class="row u-margin-bottom-20" data-template="panel-23">
+
+    <div class="col-12">
+        <div class="c-section-header">
+            <a class="{{site}} c-section-header__link" href="{{link}}">
+                <h2 class="c-section-header__h2 c-section-header__h2--more {{site}}">{{title}}</h2>
+                {% if admin %}
+                    <p class="c-section-header__panel-name">Panel 23</p>
+                {% endif %}
+
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    {% for i in 0..3 if articles[articleCount] %}
+        <div class="col-12 col-md-6 col-lg-3">
+
+            {% if i > 1 %}
+                <hr class="divide20-25 d-block d-md-block d-lg-none">
+            {% endif %}
+            {% if i == 1 %}
+                <hr class="divide20-25 d-block d-md-none">
+            {% endif %}
+
+
+            {{this.render('../_single-article.twig', {
+                position        : articleCount + 1,
+                article         : articles[articleCount],
+                site            : site,
+                dev             : dev,
+                cardId          : "panel24" ~ 1,
+                swap            : 'false',
+                containerClass  : 'card-103-mobile card-103-tablet card-103-desktop-sm card-103-desktop-lg'
+            }) | raw}}
+            {% set articleCount = (articlelock) ? articleCount : articleCount + 1 %}
+        </div>
+    {% endfor %}
+</div>
+
+
+

@@ -1,0 +1,173 @@
+@mixin card-108-base() {
+    @include card-name("108 mobile");
+
+    position:relative;
+    .c-cards-view {
+        @include flex-direction(column);
+
+        position:relative;
+        &__media {
+            height: 197px;
+        }
+        &__container {
+            height: 100%;
+            padding: 0;
+            position:relative;
+        }
+
+
+        .property-page-attributes {
+            &__contract {
+                margin-top:15px;
+                color:black;
+                text-transform:uppercase;
+                @include font-size(14);
+            }
+            &__price {
+
+            }
+            &__address {
+                color:black;
+                font-family: $font-family-serif;
+                font-size:rem(15);
+                margin-top: 5px;
+                color:#2b2a2a;
+            }
+            &__spaces {
+                @include flexbox();
+                padding:0;
+                margin:0;
+                overflow:auto;
+                margin-bottom:12px;
+                margin-top:10px;
+                height: 14px;
+                overflow:hidden;
+
+                &--item {
+                    @include flexbox();
+                    @include align-items(center);
+                    height:100%;
+                    list-style:none;
+                    margin-right:15px;
+                    img {
+                        height:100%;
+                        background-size:contain;
+                    }
+                    span {
+                        @include font-size(14);
+                        margin-left:7px;
+                    }
+                }
+                &--count {
+                    @include font-size(14);
+                    color: black;
+
+                }
+            }
+            &__auction {
+
+            }
+        }
+
+
+
+        .cat-time {
+            line-height: 0;
+            padding-bottom: 8px;
+            margin-top: 15px;
+            time {
+                font-family: $font-family-serif;
+                font-size: rem(11);
+                color: color(darkgrey60pc);
+            }
+        }
+
+
+    }
+}
+
+
+.card-108-mobile{
+    @media #{$mobile} {
+        @include card-108-base();
+
+        .c-cards-view {
+
+            .property-page-attributes {
+                &__contract {
+                    //margin-top:15px;
+                    //color:black;
+                    //text-transform:uppercase;
+                    //@include font-size(14);
+                }
+                &__price {
+
+                }
+                &__address {
+                    //color:black;
+                    //font-family: $font-family-serif;
+                    font-size:rem(14);
+                    //margin-top: 5px;
+                    letter-spacing: 0.29px;
+                    //color:#2b2a2a;
+                }
+                &__spaces {
+
+                    &--item {
+                        img {
+                        }
+                        span {
+                        }
+                    }
+                    &--count {
+                        @include font-size(14);
+                    }
+                }
+                &__auction {
+
+                }
+            }
+        }
+    }
+}
+
+
+
+.card-108-tablet{
+    @media #{$tablet} {
+        @include card-108-base();
+        @include card-name("108 tablet");
+
+        .c-cards-view {
+        }
+    }
+}
+
+
+
+
+.card-108-desktop-sm{
+    @media #{$desktop-sm} {
+        @include card-108-base();
+        @include card-name("108 desktop");
+
+        .c-cards-view {
+            &__media {
+                height: 171px;
+            }
+        }
+    }
+}
+
+.card-108-desktop-lg{
+    @media #{$desktop-lg} {
+        @include card-108-base();
+        @include card-name("108 desktop-lg");
+
+        .c-cards-view {
+
+        }
+    }
+}
+
+

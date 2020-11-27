@@ -1,7 +1,11 @@
 //Bootstrap
+@import 'vendor/bootstrap/bootstrap';
+// @import 'vendor/bootstrap5-a2/bootstrap';
+
 @import "_settings.variables";
-@import "bootstrap";
-@import "datetimepicker";
+
+// @import "bootstrap";
+// @import "datetimepicker";
 @import "font-awesome-4.7.0/scss/font-awesome";
 
 
@@ -21,13 +25,16 @@
 
 
 @import "object.arrow";
-
-
+@import "object.hamburger";
+@import "object.cross";
+@import "object.glass";
 
 
 
 //components
+@import "component.buylocal";
 @import "component.section-header";
+@import "component.section-header-new";
 @import "component.contact-us";
 @import "component.blog-symbol";
 @import "component.blog-social-icons";
@@ -41,6 +48,8 @@
 @import "component.breaking-news";
 @import "component.editors-picks";
 @import "component.view-real-estate";
+@import "component.side-menu-subscribe";
+@import "component.click-subscribe";
 
 
 // Classifieds
@@ -49,14 +58,19 @@
 @import "component.classified-search";
 @import "component.classifieds-form";
 @import 'component.classifieds';
-@import 'component.form-pulldown'; 
-@import 'component.form-classified-search-pulldown'; 
+@import 'component.form-pulldown';
+@import 'component.form-classified-search-pulldown';
 @import 'component.section-head';
 @import 'component.buttons';
 @import 'component.load-more';
 @import 'component.lightbox-modal';
 @import 'component.profile-sidebar';
 
+@import "component.header-new";
+@import "component.navigation-new";
+@import "component.responsiveNav";
+@import "component.section-heading";
+@import "component.current-issue";
 
 
 // article page
@@ -88,7 +102,7 @@
 
 
 //Home page
-@import "page-index";
+// @import "page-index";
 @import "page-blog";
 @import "page-search";
 
@@ -148,3 +162,19 @@
 @import "acme-card";
 @import "acme-card-1";
 @import "acme-card-10";  // classifieds lightbox
+
+
+
+@import "card-100";  // C2 Large main page card
+@import "card-101";  // C1 image to the right beside excerpt
+@import "card-102";  // C3 Standard sm style
+@import "card-103";  // Opinion
+@import "card-104";  // C4 image to left (bottom row of panel 1)
+@import "card-105";  // podcast card
+@import "card-106";  // Blogs
+@import "card-107";  // C5 video cards
+@import "card-108";  // Real estate card
+@import "card-109";  // Most popular
+@import "card-110";  // Featured Publication (image only)
+@import "card-111";  // c6 mobile video cards
+@import "card-112";  // c3 variable tablet

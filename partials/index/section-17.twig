@@ -18,14 +18,14 @@
         <div class="weather j-weather-panel u-tablet-float-right {{site}}"></div>
         <div class="weather-dropdown hidden j-weather-panel-dropdown {{site}}"></div>
     </div>
-    <div class="col-sm-9 visible-sm-block"><hr class="divide10"></div>
+    <div class="col-sm-12 visible-sm-block"><hr class="divide10"></div>
 </div>
 
 {% if layout == 'breaking news' %}
 <section class="breaking-news u-desktop-margin-bottom-40 u-tablet-margin-bottom-40" data-template="section-17">
     <div class="row">
 
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="breaking-news_header breaking-news_header@md {{site}}">{{sectionLabel}}</h1>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row u-mobile-margin-bottom-20">
-        <div class="col-md-9">
+        <div class="col-md-12">
             {% if articles[articleCount] %}                                                                
                 {{this.render('../_single-article.twig', {
                     imageSize       : {width:970, height:478},
@@ -74,7 +74,7 @@
 
 
         {# {% if site not in bottomExceptions %}
-            <div class="editors-picks col-xs-9">
+            <div class="editors-picks col-xs-12">
                 <h1 class="editors-picks__h1 editors-picks__h1@sm">EDITOR'S PICKS</h1>
                 <p class="editors-picks__p editors-picks__p@sm">A selection of the latest Local, Regional, National &amp; World News.</p>
             </div>
@@ -82,7 +82,7 @@
 
 
 
-        <div class="col-xs-9 col-sm-9 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-8">
 
             {% if articles[articleCount] %}                                                                
                 {{this.render('../_single-article.twig', {
@@ -103,12 +103,12 @@
 
 
         {% if articles[articleCount] %}
-            <div class="col-xs-9 col-sm-9 col-md-3 sm-two-cols">
+            <div class="col-xs-12 col-sm-12 col-md-4 sm-two-cols">
                 <div class="row">
 
                     <hr class="divide15 visible-xs-block visible-sm-block space-only">
 
-                    <div class="col-sm-1 col-md-9 hidden-xs hidden-sm u-desktop-indent-left-20">
+                    <div class="col-sm-12 col-md-12 hidden-xs hidden-sm u-desktop-indent-left-20">
                         <div class="weather j-weather-panel {{site}}"></div>
                         <div class="weather-dropdown j-weather-panel-dropdown hidden {{site}}"></div>
                         <hr class="divide10 visible-sm-block" style="margin-top: 50px;">
@@ -120,7 +120,7 @@
                         {% for i in 0..2 if articles[i] %}
                     
                             {% set class = ['', '', 'visible-sm-block'] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9 {{class[i]}}">
+                            <div class="col-sm-12 col-md-12 col-xs-12 {{class[i]}}">
                                 {{this.render('../_single-article.twig', {
                                     imageSize       : {width:95},
                                     position        : cardIndex + 1, 
@@ -144,7 +144,7 @@
                         {% else %}
                             <hr class="divide15 visible-xs-block">
                         {% endif %} #}
-                        <div class="col-sm-1 col-md-9 col-xs-9">
+                        <div class="col-sm-12 col-md-12 col-xs-12">
                             <div class="newsletter-iframe-container" style="display: flex;flex-direction: column;overflow: hidden;margin: 0 -15px;padding: 0 15px;">
                             <iframe src="{{config['newsletter']}}" class="newsletter-iframe" id="newsletter-iframe" style="flex-grow: 1;border: none;margin: 0;padding: 0;height: 95px;"></iframe>
                         </div>
@@ -155,7 +155,7 @@
                         {% for i in 0..3 if articles[i] %}
                     
                             {% set class = ['', '', '', 'visible-sm-block'] %}
-                            <div class="col-sm-1 col-md-9 col-xs-9">
+                            <div class="col-sm-12 col-md-12 col-xs-12">
                                 {{this.render('../_single-article.twig', {
                                     imageSize       : {width:95},
                                     position        : cardIndex + 1, 
@@ -218,9 +218,9 @@
             
 
 
-            {% for i in 0..2 if articles[articleCount] %}
+            {# {% for i in 0..2 if articles[articleCount] %} #}
 
-                <div class="col-sm-3 col-md-2 col-xs-9">
+                <div class="col-sm-4 col-md-3 col-xs-12">
                     {% if articles[articleCount] %}
                         {{this.render('../_single-article.twig', {
                             article         : articles[articleCount], 
@@ -237,12 +237,46 @@
 
                     {% endif %}
                 </div>
-            {% endfor %}
+                <div class="col-sm-4 col-md-2 col-xs-12">
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            article         : articles[articleCount], 
+                            position        : cardIndex + 1, 
+                            imageSize       : {width:192, height:160},
+                            site            : site,
+                            swap            : false,
+                            dev             : dev,
+                            containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+                        <hr class="divide visible-xs-block">
+
+                    {% endif %}
+                </div>
+                <div class="col-sm-4 col-md-3 col-xs-12">
+                    {% if articles[articleCount] %}
+                        {{this.render('../_single-article.twig', {
+                            article         : articles[articleCount], 
+                            position        : cardIndex + 1, 
+                            imageSize       : {width:192, height:160},
+                            site            : site,
+                            swap            : false,
+                            dev             : dev,
+                            containerClass  : 'card-sm card-sm-tablet card-sm-mobile'
+                        }) | raw}}
+                        {% set articleCount = (dev) ? articleCount : articleCount + 1 %}
+                        {% set cardIndex = cardIndex + 1 %}
+                        <hr class="divide visible-xs-block">
+
+                    {% endif %}
+                </div>
+            {# {% endfor %} #}
 
 
             
 
-            <div class="col-sm-9 col-md-3 col-xs-9">
+            <div class="col-sm-12 col-md-3 col-xs-12">
                 <div class="ad-square u-margin-top-30 u-mobile-no-margin-top u-desktop-no-margin-top">
                     <div class='advert-desktop' data-adsize="mrec"></div>
                     {#<script async id="soft-point-banner" src="https://viztrade.com/api/banner.js?inventory=59"></script> #}
@@ -275,7 +309,7 @@
 
 
             {# ************ MOST POPULAR ************   #}
-            <div class="col-sm-3 col-md-3 col-xs-9 most-popular">
+            <div class="col-sm-4 col-md-4 col-xs-12 most-popular">
                 <h2 class="{{site}}">Most popular</h2>
 
                 {% for i in 0..4 if popularArticles[i] %}
@@ -293,7 +327,7 @@
 
 
 
-        <div class="col-sm-3 col-xs-9">
+        <div class="col-sm-4 col-xs-12">
             {% for i in 0..1 if articles[articleCount] %}
                 {{this.render('../_single-article.twig', {
                     article         : articles[articleCount], 
@@ -314,7 +348,7 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="col-sm-3 col-xs-9">
+        <div class="col-sm-4 col-xs-12">
 
             {% if articles[articleCount] %}
                 {{this.render('../_single-article.twig', {
@@ -334,7 +368,7 @@
 
 
         </div>
-        <div class="col-xs-9 visible-xs-block"><div class="row"><hr class="divide"></div></div>
+        <div class="col-xs-12 visible-xs-block"><div class="row"><hr class="divide"></div></div>
     </div>
 
 </section>

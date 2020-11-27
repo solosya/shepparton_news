@@ -1,33 +1,12 @@
 .searchPage {
-    margin-top: 50px;
-	font-family: $font-family-sans-serif;
+ 
+    &__count {
+        font-family: $base-font-family;
+        @include font-size(20);
+        font-weight: 400;
+        color: #6e6e6e;
 
-    h1 {
-        flex-grow: 0;
-        font-size: rem(30);
-        font-weight:300;
-        margin-bottom:25px;
-        text-transform:uppercase;
-        @include colourselect('');
     }
-
-    h2 {
-    	font-size: rem(24);
-    	color:color(darkgrey);
-    	line-height:1.75;
-    	letter-spacing: 0.7px;
-        @media screen and (max-width: $sm-break-down) {
-            font-size: rem(18);
-            font-weight: normal;
-            line-height: 2.33;
-            letter-spacing: 0.5px;
-        }    
-    }
-
-
-    .ajaxArticles {
-        margin-top:60px;
-    }
-
+    
 
 }

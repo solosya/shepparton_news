@@ -1,0 +1,136 @@
+
+@mixin card-107-base() {
+    @include card-name("107 mobile");
+
+    .c-cards-view {
+        @include flex-direction(column);
+
+        &__media {
+            width: 100%;
+            height: 197px;
+        }
+
+        &__container {
+        }
+        &__category {
+            display:none;
+        }
+
+        &__heading {
+            margin-top:15px;
+            font-family: $font-family-serif;
+            @include font-size(20);
+            font-weight:600;
+            color: #2b2a2a;
+            overflow:visible;
+        }
+        &__description {
+            display:none;
+            letter-spacing: 0.25px;
+        }
+        &__author {
+            //display:none;
+            display:flex;
+            position:relative;
+            margin-top:10px;
+        }
+
+        &__author-name {
+            font-family: $base-font-family;
+            font-weight:400;
+            color: #6e6e6e;
+            border:none;
+            @include font-size(12);
+            &:before {
+                content: "By ";
+            }
+        }
+        &__author-time {
+            display:none;
+        }
+
+
+        &__time {
+            display:none;
+        }
+
+
+        &.without__image {
+            background-color:#f7f7f7;
+            .c-cards-view {
+                &__container {
+                    width: 100%;
+                    margin-left: 0px;
+                    padding: 91px 30px 91px 30px;
+                }
+                &__category {
+                    margin-top: 36px;
+                    margin-bottom: 24px;
+                }
+                &__heading {
+                }
+                &__description {
+                    display:none;
+                }
+                &__author {
+                    margin-top:7px;
+                }
+            }
+        }
+    }
+}
+
+.card-107-mobile {
+    @media #{$mobile} {
+        @include card-107-base();
+        .c-cards-view {
+            &__media {
+                height: 50vw;
+            }
+            &__heading {
+                letter-spacing: 0.36px;
+            }
+        }
+    }
+}
+
+
+.card-107-tablet {
+
+    @media #{$tablet} {
+
+        @include card-107-base();
+        @include card-name("107 tablet");
+        .c-cards-view {
+
+            &__media {
+                width: 100%;
+                //height: 152px;
+            }
+        }
+
+    }
+}
+
+
+
+.card-107-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-107-base();
+        @include card-name("107 desktop");
+        .c-cards-view {
+
+            &__media {
+                height: 171px;
+            }
+        }
+    }
+}
+
+.card-107-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-107-base();
+        @include card-name("107 desktop lg");
+    }
+}
+

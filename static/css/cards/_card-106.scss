@@ -1,0 +1,116 @@
+@mixin card-106-base() {
+    @include card-name("106 mobile");
+
+    .c-cards-view {
+        @include flexbox();
+        @include flex-direction(row);
+
+        &__media {
+            flex-shrink:0;
+            width: 90px;
+            height: 90px;
+            margin-right:22px;
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        &__container {
+        }
+        &__category {
+            font-family: $font-family-serif;
+            @include font-size(20);
+            color: #2b2a2a !important;
+            font-weight:600;
+            margin-bottom:10px;
+            text-transform:none;
+        }
+        &__heading {
+            font-family: $font-family-serif;
+            @include font-size(20);
+            font-weight:600;
+            font-style:italic;
+            color: #878787;
+        }
+
+        &__description {
+            font-family: $base-font-family;
+            color: #565656;
+            @include font-size(14);
+            line-height: 1.25rem;
+            font-weight:300;
+            margin-top:10px;
+            max-height:60px;
+            height:auto;
+            letter-spacing: 0.25px;
+            //@include flex-height(55px);
+        }
+
+        &__author {
+            display:none;
+        }
+        &__author-name {
+        }
+        &__author-time {
+            display:none;
+        }
+        &__time {
+            display:none;
+        }
+    }
+}
+
+.card-106-mobile {
+    @media #{$mobile} {
+        @include card-106-base();
+        .c-cards-view {
+            &__media {
+                width: 77px;
+                height: 77px;
+            }
+            &__category {
+                @include font-size(16);
+            }
+            &__heading {
+                @include font-size(18);
+                letter-spacing: 0.33px;
+            }
+            &__description {
+                display:none;
+            }
+        }
+    }
+}
+
+
+.card-106-tablet {
+    @media #{$tablet} {
+        @include card-106-base();
+        @include card-name("106 tablet");
+        .c-cards-view {
+            &__description {
+                display:none;
+            }
+        }
+    }
+}
+
+.card-106-desktop-sm {
+    @media #{$desktop-sm} {
+        @include card-106-base();
+        @include card-name("106 desktop");
+        .c-cards-view {
+            &__description {
+                max-height:40px;
+            }
+        }
+    }
+}
+
+.card-106-desktop-lg {
+    @media #{$desktop-lg} {
+        @include card-106-base();
+        @include card-name("106 desktop lg");
+    }
+}
+

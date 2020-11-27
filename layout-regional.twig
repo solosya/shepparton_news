@@ -25,9 +25,9 @@
 
 
 
-{% set bannerSpots = [2,5,8] %}   
+{% set bannerSpots = [2,5,8] %}
 {% set sectionOrder = theSections[site] %}
-    
+
 
 
 {# *******************************************************
@@ -132,7 +132,7 @@
 
         <section class="container">
             <div class="row">
-                <div class="col-sm-9 header">
+                <div class="col-sm-12 header">
                     <div class="hk hk__segment">
                         <h2 class="{{site}}">{{this.title}}</h2>
                         <p></p>
@@ -156,13 +156,13 @@
             'networkData' : networkData,
             'blogData'    : blogData
         } %}
-    
-        {{this.render('render.twig', params) | raw}} 
+
+        {{this.render('render.twig', params) | raw}}
 
         {% if loop.index in bannerSpots %}
             <div class="ad-container hidden-xs">
                 <div class='advert-desktop advert-tablet' data-adsize="banner"></div>
-            </div> 
+            </div>
             <div class="ad-square visible-xs-block col-sm-9">
                 <div class="row"><hr class="divide"></div>
                 <div class='advert-mobile' data-adsize="mrec"></div>

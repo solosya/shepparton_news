@@ -12,9 +12,9 @@
 
     <!-- Begin Container -->
     <section class="container">
-        <div class="row">
+        <div class="row u-margin-top-60">
             <!-- Begin User Profile -->
-            <div class="col-profile-left col-sm-4 col-xs-12">
+            <div class="col-profile-left col-12 col-md-3 ">
                 <!-- Begin User Profile Sidebar -->
                 <div class="profile-sidebar">
                     <img src="{{profileImage}}" class="profile-sidebar__img img-responsive">
@@ -32,30 +32,29 @@
             </div>
 
 
-            <div class="col-profile-right col-sm-8 col-xs-12 profile-details">
-                <div class="row">
-                    <div id="loadmore_section" class="col-sm-9 section-header">
+            <div class="col-profile-right col-12 col-md-8 profile-details">
+                <div id="loadmore_section"  class="row">
+                    {% for i in 0..17 if userArticles[i] %}
 
-                        {% for i in 0..17 if userArticles[i] %}
+                        <div class="col-6 col-md-6 col-lg-4">
+                            {{this.render('partials/_single-article.twig', {
+                                article: userArticles[i], 
+                                imageSize: {width:190, height:160},
+                                site:site,
+                                containerClass: 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
+                            }) | raw}}
+                            <hr class="divide20-25 ">
+                        </div>
+                        
 
-                            <div class="col-md-3 col-sm-9">
-                                {{this.render('partials/_single-article.twig', {
-                                    article: userArticles[i], 
-                                    imageSize: {width:190, height:160},
-                                    site:site,
-                                    containerClass: 'card-sm feature-side-tablet card-sm-wide-mobile'
-                                }) | raw}}
-                                <hr class="divide18 visible-md-block visible-lg-block space-only">
-                            </div>
-                        {% endfor %}
+                    {% endfor %}
 
-                    </div>
                 </div>
 
 
                 <section style="margin-top:55px;">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-12 col-lg-9">
                             {% if userArticles|length >= limit %}
 
                                 {{ this.render('partials/ajaxarticles_new.twig', {
@@ -87,7 +86,7 @@
             container       : 'loadmore_section',
             offset          : {{limit}},
             limit           : 12,
-            beforeEach      : '<div class="col-md-3 col-sm-9">',
+            beforeEach      : '<div class="col-12 col-lg-3">',
             afterEach       : '<hr class="divide18 visible-md-block visible-lg-block space-only"></div>',
             loadtype        : 'user_articles',
             name            : 'user-load',

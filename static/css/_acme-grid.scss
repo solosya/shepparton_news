@@ -228,7 +228,7 @@ $acme-container-max-widths: (
 
 @mixin acme-make-grid-columns($columns: $acme-grid-columns, $gutter: $acme-grid-gutter-width, $breakpoints: $acme-grid-breakpoints) {
     // Common properties for all breakpoints
-    %grid-column {
+    %acme-grid-column {
         position: relative;
         width: 100%;
         min-height: 1px; // Prevent columns from collapsing when empty
@@ -244,12 +244,12 @@ $acme-container-max-widths: (
         // Allow columns to stretch full width below their breakpoints
         @for $i from 1 through $columns {
             .acme-col#{$infix}-#{$i} {
-                @extend %grid-column;
+                @extend %acme-grid-column;
             }
         }
         .acme-col#{$infix},
         .acme-col#{$infix}-auto {
-            @extend %grid-column;
+            @extend %acme-grid-column;
         }
 
         @include acme-media-breakpoint-up($breakpoint, $breakpoints) {

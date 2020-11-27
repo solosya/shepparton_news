@@ -1,25 +1,26 @@
 .publish {
     // padding-right: 0px;
-    margin-top:40px;
+    margin-top:105px;
     @media #{$mobile}{
-        margin-left: 0;
+        margin-left: -13px;
+        margin-top:30px;
     }
 }
 
 .publish__p {
-    font-size: rem(10);
+    @include font-size(12);
     color: white;
     float: left;
-    color:color(grey);
+    color:#9c9c9c;
     @media screen and (max-width: $sm-break-down) {
         float:none;
     }
 }
 
 .publish__link {
-    font-size: rem(10);
+    @include font-size(12);
     letter-spacing: 0.3px;
-    color:white;
+    color:#9c9c9c;
     float:right;
     @media screen and (max-width: $sm-break-down) {
         float:none;

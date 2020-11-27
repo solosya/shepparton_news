@@ -106,13 +106,13 @@
 	animation:dot 1.3s infinite;
 	animation-delay:0.3s;
 }
-@-webkit-keyframes dot {
-      0%{@include opacity(0);}
-     50%{@include opacity(0);}
-    100%{@include opacity(1);}
-}
-@keyframes dot {
-      0%{@include opacity(0);}
-     50%{@include opacity(0);}
-    100%{@include opacity(1);}
-}
+// @-webkit-keyframes dot {
+//       0%{@include opacity(0);}
+//      50%{@include opacity(0);}
+//     100%{@include opacity(1);}
+// }
+// @keyframes dot {
+//       0%{@include opacity(0);}
+//      50%{@include opacity(0);}
+//     100%{@include opacity(1);}
+// }

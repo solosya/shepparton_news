@@ -98,6 +98,7 @@ div[class*="col-sm"] {
 .no-padding {padding:0;}
 .u-padding-5 { padding:5px; }
 .u-padding-10 { padding:10px }
+.u-margin-top-200 { margin-top: 200px; }
 .u-margin-top-100 { margin-top: 100px; }
 .u-margin-top-80 { margin-top: 80px; }
 .u-margin-top-60 { margin-top: 60px; }
@@ -106,6 +107,7 @@ div[class*="col-sm"] {
 .u-margin-top-25 { margin-top: 25px; }
 .u-margin-top-20 { margin-top: 20px; }
 .u-margin-top-15 { margin-top: 15px; }
+.u-margin-top-13 { margin-top: 13px; }
 .u-margin-top-10 { margin-top: 10px; }
 
 
@@ -115,12 +117,17 @@ div[class*="col-sm"] {
 .u-margin-bottom-40 { margin-bottom: 40px; }
 .u-margin-bottom-30 { margin-bottom: 30px; }
 .u-margin-bottom-25 { margin-bottom: 25px; }
-.u-margin-bottom-25 { margin-bottom: 20px; }
+.u-margin-bottom-20 { margin-bottom: 20px; }
 .u-margin-bottom-15 { margin-bottom: 15px; }
 .u-margin-bottom-10 { margin-bottom: 10px; }
 
 
 @media #{$mobile} {
+
+
+    .u-mobile-padding-right-7 {padding-right: 7px !important}
+    .u-mobile-padding-left-7 {padding-left: 7px !important}
+
     .u-mobile-float-left { float:left; }
     .u-mobile-float-right { float:right; }
     .u-mobile-clear-both { clear:both; }
@@ -147,6 +154,9 @@ div[class*="col-sm"] {
     .u-mobile-margin-top-20 { margin-top: 20px; }
     .u-mobile-margin-top-15 { margin-top: 15px; }
     .u-mobile-margin-top-10 { margin-top: 10px; }
+
+    .u-mobile-center {margin-left:auto;margin-right:auto}
+
 
 }
 @media #{$tablet} {
@@ -201,6 +211,50 @@ div[class*="col-sm"] {
     .u-desktop-margin-top-20 { margin-top: 20px; }
     .u-desktop-margin-top-15 { margin-top: 15px; }
     .u-desktop-margin-top-10 { margin-top: 10px; }
+
+    .u-desktop-margin-right-60 { margin-right: 60px; }
+    .u-desktop-margin-right-50 { margin-right: 50px; }
+    .u-desktop-margin-right-45 { margin-right: 45px; }
+    .u-desktop-margin-right-40 { margin-right: 40px; }
+    .u-desktop-margin-right-30 { margin-right: 30px; }
+    .u-desktop-margin-right-25 { margin-right: 25px; }
+    .u-desktop-margin-right-20 { margin-right: 20px; }
+    .u-desktop-margin-right-15 { margin-right: 15px; }
+    .u-desktop-margin-right-10 { margin-right: 10px; }
+
+    .u-desktop-margin-left-60 { margin-left: 60px; }
+    .u-desktop-margin-left-50 { margin-left: 50px; }
+    .u-desktop-margin-left-45 { margin-left: 45px; }
+    .u-desktop-margin-left-40 { margin-left: 40px; }
+    .u-desktop-margin-left-30 { margin-left: 30px; }
+    .u-desktop-margin-left-25 { margin-left: 25px; }
+    .u-desktop-margin-left-20 { margin-left: 20px; }
+    .u-desktop-margin-left-15 { margin-left: 15px; }
+    .u-desktop-margin-left-10 { margin-left: 10px; }
+
+
+    .u-desktop-padding-right-60 { padding-right: 60px; }
+    .u-desktop-padding-right-50 { padding-right: 50px; }
+    .u-desktop-padding-right-45 { padding-right: 45px; }
+    .u-desktop-padding-right-40 { padding-right: 40px; }
+    .u-desktop-padding-right-30 { padding-right: 30px; }
+    .u-desktop-padding-right-25 { padding-right: 25px; }
+    .u-desktop-padding-right-20 { padding-right: 20px; }
+    .u-desktop-padding-right-15 { padding-right: 15px; }
+    .u-desktop-padding-right-10 { padding-right: 10px; }
+
+    .u-desktop-padding-left-60 { padding-left: 60px; }
+    .u-desktop-padding-left-50 { padding-left: 50px; }
+    .u-desktop-padding-left-45 { padding-left: 45px; }
+    .u-desktop-padding-left-40 { padding-left: 40px; }
+    .u-desktop-padding-left-30 { padding-left: 30px; }
+    .u-desktop-padding-left-25 { padding-left: 25px; }
+    .u-desktop-padding-left-20 { padding-left: 20px; }
+    .u-desktop-padding-left-15 { padding-left: 15px; }
+    .u-desktop-padding-left-10 { padding-left: 10px; }
+
+
+
 
     .u-desktop-indent-left-20 { margin-left: -20px; }
 }
@@ -375,6 +429,38 @@ div.space40 {
 }
 
 
+.u-desktop-borderElem {
+    @media #{$desktop-up} {
+        &--right {
+            &:after {
+                content: "";
+                display:block;
+                height:100%;
+                width:1px;
+                background-color:#979797;
+                position:absolute;
+                right:-5px;
+                top:0;
+            }
+        }
+    }
+}
+.u-border {
+    &-red {
+        border: 1px solid red;
+    }
+    &-green {
+        border: 1px solid green;
+    }
+    &-orange {
+        border: 1px solid orange;
+    }
+    &-blue {
+        border: 1px solid blue;
+    }
+
+
+}
 hr.divide {
     margin:28px 0;
     border: 0;
@@ -384,10 +470,91 @@ hr.divide {
     }
 }
 
+hr.divide11-11 {
+    margin:11px 0 11px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
+hr.divide15-10 {
+    margin:15px 0 10px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+hr.divide25-20 {
+    margin:25px 0 20px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+
+}
+hr.divide20-30 {
+    margin:20px 0 30px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
+hr.divide20-15 {
+    margin:20px 0 15px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
+
+hr.divide25-40 {
+    margin:25px 0 40px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
+hr.divide25-30 {
+    margin:25px 0 30px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
+hr.divide30-25 {
+    margin:30px 0 25px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
+
+
+hr.divide20-25 {
+    margin:20px 0 25px 0;
+    border: 0;
+    border-top: 1px solid #979797;
+    padding: 0;
+    width: 100%;
+}
+
 hr.divide24 {
     margin:24px 0;
     border: 0;
     border-top: 1px solid color(lightgrey);
+}
+hr.divide20 {
+    margin:20px 0;
+    border: 0;
+    border-top: 1px solid color(lightgrey);
+    padding: 0;
+    width: 100%;
 }
 hr.divide18 {
     margin:18px 0;
@@ -458,7 +625,7 @@ hr.divide10 {
             width: 300px;
             height: 75px;
         }
-        
+
     }
 }
 

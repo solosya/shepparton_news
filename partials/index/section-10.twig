@@ -1,7 +1,7 @@
 {% set articleCount = 0 %}
 
 <section class="row">
-    <div class="col-sm-9 section-header">
+    <div class="col-sm-12 section-header">
         <p><a class="{{site}}" href="{{link}}">View All</a></p>
         <div class="hk">
             <h2>{{ title }}</h2>
@@ -11,7 +11,7 @@
 
 
     {% for i in 0..2 if articles[articleCount] %}
-        <div class="col-sm-3 col-md-2 col-xs-9">
+        <div class="col-sm-3 col-md-2 col-xs-12">
                 {{this.render('../_single-article.twig', {
                 article: articles[articleCount], 
                 imageSize: {width:300},
@@ -26,11 +26,11 @@
 
 
 
-    <div class="col-md-3 col-sm-9 sm-two-cols u-tablet-margin-top-30">
+    <div class="col-md-3 col-sm-12 sm-two-cols u-tablet-margin-top-30">
 
         <div class="row">
             {% for i in 0..1 if articles[articleCount] %}
-                <div class="col-md-9 col-sm-1 col-xs-9">
+                <div class="col-md-12 col-sm-1 col-xs-12">
                     {{this.render('../_single-article.twig', {
                         article: articles[articleCount], 
                         imageSize: {width:300},

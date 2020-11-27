@@ -1,0 +1,12 @@
+.section-heading {
+    @include colourselectdark('');
+    font-family: $base-font-family;
+    @include font-size(32);
+    text-transform: uppercase;
+    font-weight: 700;
+
+    &--serif {
+        font-family: $font-family-serif;
+    }
+
+}
