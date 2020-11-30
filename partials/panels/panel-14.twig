@@ -29,10 +29,10 @@
 
                 {% if loop.index == 7  %}
                     <div class="col-12 d-block d-md-none">
-                        <div class="ad-square banner-min-height u-margin-bottom-30">
+                        <div class="ad-square mrec-min-height u-margin-bottom-30">
                             <div class='advert-desktop desktop-banner' data-adsize="banner"></div>
                             <div class='advert-tablet  tablet-banner' data-adsize="banner"></div>
-                            <div class='advert-mobile  mobile-banner' data-adsize="banner"></div>
+                            <div class='advert-mobile  mobile-mrec' data-adsize="mrec"></div>
                         </div>
                         <hr class="divide20-25">
                     </div>
@@ -73,6 +73,16 @@
                 {% endif %}
 
             {% endfor %}
+
+
+
+            <div class="col-12 d-block d-md-none">
+                <div class="ad-square mrec-min-height d-block d-md-none u-margin-top-30 u-margin-bottom-30">
+                    <div class='advert-mobile mobile-mrec' data-adsize="mrec"></div>
+                </div>
+            </div>
+
+
         </div>
 
     </div>
