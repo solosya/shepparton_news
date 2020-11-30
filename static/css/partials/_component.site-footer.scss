@@ -6,6 +6,7 @@
     height:375px;
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
         min-height:360px;
+        height:auto;
     }
 
     @media #{$mobile} {
