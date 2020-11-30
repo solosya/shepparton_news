@@ -12,7 +12,7 @@
     padding-right: 30px;
     padding-left: 0;
     margin-right: 30px;
-    height: 87px;
+    // height: 87px;
 
     @media screen and (min-width: $sm-break) and (max-width: $md-break){
         // height: 62px;
@@ -32,10 +32,12 @@
 
 .site-footer-links__menu--padded {
     padding-right: 75px;
-    @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-        padding-right: 120px;
+    @media #{$tablet} {
+        padding-right: 0;
+        width:190px;
+        padding-bottom:0;
     }
-    @media screen and (max-width: $sm-break-down) {
+    @media #{$mobile} {
         padding-right: 5px;
     }
     @media #{$desktop-sm} {
@@ -64,7 +66,7 @@
         margin-bottom:10px;
     }
     @media screen and (max-width: $sm-break) {
-        margin-bottom:4px;
+        margin-bottom:15px;
     }
 
 }
