@@ -5,7 +5,7 @@
     background: rgba(0,0,0,1);
     height:375px;
     @media screen and (min-width: $sm-break) and (max-width: $mmd-break-down) {
-        height:360px;
+        min-height:360px;
     }
 
     @media #{$mobile} {
