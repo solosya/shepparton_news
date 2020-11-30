@@ -155,8 +155,8 @@
     {% set imageSource = imageSource == 'article' ? article.featuredMedia : article.createdBy['media'] %}
 
     {% set imageSmall     = _Media.getMediaUrl(imageSource,imgSizes.mobile.width, imgSizes.mobile.height,   {'crop': 'fill', 'gravity': 'faces', "effect":'sharpen', 'quality': 100} ) %}
-    {% set imageMedium    = _Media.getMediaUrl(imageSource,imgSizes.tablet.width, imgSizes.tablet.height,   {'crop': 'fill', 'gravity': 'faces', "effect":'sharpen', 'quality': 100} ) %}
-    {% set imageLarge     = _Media.getMediaUrl(imageSource,imgSizes.desktop.width, imgSizes.desktop.height, {'crop': 'fill', 'gravity': 'faces', "effect":'sharpen', 'quality': 100} ) %}
+    {% set imageMedium    = _Media.getMediaUrl(imageSource,imgSizes.tablet.width, imgSizes.tablet.height,   {'crop': 'fill', 'gravity': 'faces', 'quality': 100} ) %}
+    {% set imageLarge     = _Media.getMediaUrl(imageSource,imgSizes.desktop.width, imgSizes.desktop.height, {'crop': 'fill', 'gravity': 'faces', 'quality': 100} ) %}
 
 
 
