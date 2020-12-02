@@ -17,159 +17,12 @@
 {% set layoutTitle = _Page.getLayoutTitle() | lower | replace({' ': '_'}) %}
 
 {% set dev = _AppHelper.getApplicationEnv() == 'DEV' ? false : false %}
-
 {% set config = _Network.getThemeConfig() %}
 
 
 {% set sectionOrder = [] %}
-
-
-
-{% set pageSections =  {
-
-
-    'index-country': {
-        'template': 'partials/index/section-15.twig',
-        'blogs'     : [(homeBlog)]
-    },
-    "opinion": {
-        'title'     : "Opinion",
-        'blogs'     : ['opinion'],
-        'template'  : 'partials/index/section-07.twig',
-    },
-
-    'dairy': {
-        'title'     : "Dairy",
-        'template'  : 'partials/index/section-26.twig',
-        'blogs'     : ['dairy']
-    },
-    "bloggers" :  {
-        "title"     : "Bloggers",
-        "blogs"     : ["blogs homepage"],
-        "template"  : "partials/index/section-25.twig",
-        "template_params" : {
-            "logo":  "/static/images/megaphone.svg",
-        }
-    },
-    'water': {
-        'title'     : "Water",
-        'template'  : 'partials/index/section-12.twig',
-        'blogs'     : ['water']
-    },
-    'horticulture': {
-        'title'     : "Horticulture",
-        'template'  : 'partials/index/section-08.twig',
-        'blogs'     : ['horticulture']
-    },
-    'viticulture': {
-        'title'     : "Viticulture",
-        'template'  : 'partials/index/section-23.twig',
-        'blogs'     : ['viticulture']
-    },
-    "livestock": {
-        'title'     : "Livestock",
-        'template'  : 'partials/index/section-08.twig',
-        'blogs'     : ['livestock'],
-    },
-    'cropping': {
-        'title'     : "Cropping",
-        'template'  : 'partials/index/section-08.twig',
-        'blogs'     : ['cropping']
-    },
-
-
-
-
-
-
-    'index-dairy': {
-        'template': 'partials/index/section-16.twig',
-        'blogs'     : [(homeBlog)],
-    },
-    'management': {
-        'title'     : "Management",
-        'template'  : 'partials/index/section-26.twig',
-        'template_params' : {
-            'ad': 'mrec-2'
-        },
-        'blogs'     : ['management']
-    },
-    'from the experts': {
-        'title'     : "From The Experts",
-        'template'  : 'partials/index/section-12.twig',
-        'blogs'     : ['from the experts']
-    },
-    'markets': {
-        'title'     : "Markets",
-        'template'  : 'partials/index/section-08.twig',
-        'blogs'     : ['markets']
-    },
-    'machinery & products': {
-        'title'     : "Machinery & Products",
-        'template'  : 'partials/index/section-23.twig',
-        'blogs'     : ['machinery & products'],
-        'template_params' : {
-                'ad': 'mrec-6'
-        }
-    },
-    'animal health': {
-        'title'     : "Animal Health",
-        'template'  : 'partials/index/section-08.twig',
-        'blogs'     : ['animal health']
-    }
-} %}
-
-
-
 {% set blogFeeds =  {} %}
 
-{% if site == 'country' %}
-
-    {% set blogFeeds = blogFeeds | merge({
-            (homeBlog):         { "limit" : 15},
-            "dairy":            { "limit" : 6},
-            "blogs homepage":   { "limit" : 2},
-            "water":            { "limit" : 4},
-            "opinion":          { "limit" : 4},
-            "horticulture":     { "limit" : 3},
-            "viticulture":      { "limit" : 3},
-            "livestock":        { "limit" : 3},
-            "cropping":         { "limit" : 3}
-        })
-    %}
-
-    {% set sectionOrder = ['index-country', 'opinion', 'dairy', 'bloggers', 'water', 'horticulture', 'viticulture', 'livestock', 'cropping'] %}
-
-{% endif %}
-
-
-{% if site == 'dairy' %}
-
-    {% set blogFeeds = blogFeeds | merge({
-            (homeBlog):             { "limit" : 15},
-            "management":           { "limit" : 6},
-            "from the experts":     { "limit" : 4},
-            "markets":              { "limit" : 3},
-            "machinery & products": { "limit" : 3},
-            "animal health":        { "limit" : 3}
-        })
-    %}
-
-    {% set sectionOrder = ['index-dairy', 'management', 'from the experts', 'markets', 'machinery & products', 'animal health'] %}
-
-{% endif %}
-
-
-
-
-{# {% set bannerSpots = [1,7,10] %}
-{% if site == 'country' %}
-    {% set bannerSpots = [1,4,7] %}
-{% elseif site == 'dairy' %}
-    {% set bannerSpots = [1,3,4] %}
-{% elseif 'shepp' in site %}
-    {% set bannerSpots = [1,3,6,9] %}
-{% endif %} #}
 
 
 
@@ -371,6 +224,6 @@
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
 <div class='advert-desktop advert-tablet' data-adsize="interstitial"></div>
-<div class='advert-desktop' data-adsize="teads"></div>
+{# <div class='advert-desktop' data-adsize="teads"></div> #}
 
 {% endcache %}
