@@ -250,7 +250,12 @@
     </div>
 
     <ul class="standalone-menu u-margin-top-20">
+        <li id="mobileMenuAccount" style="display:none" class="standalone-menu__dropdown mobile"><a href="{{networkData.defaultBlogUrl}}/my-account">My Account</a></li>
+        <li id="mobileMenuLogout" style="display:none" class="standalone-menu__dropdown mobile"><a onclick="javascript: userLogout();" href="javascript:void(0);">Log Out</a></li>
+
         <div class="standalone-menu__tab standalone-menu__tab--active j-tab" data-tab="section">
+        
+        
         {{ this.render('../../partials/_menu.twig', {
             'menu': sectionMenu
             }) | raw }}

@@ -167,6 +167,15 @@
         &__dropdown {
             position:relative;
             margin-bottom: 10px;
+
+            &.mobile {
+                @media #{$tablet-up} {
+                    display:none !important;
+                }            
+            }
+
+
+
             a {
                 display: block;
                 @include font-size(16);

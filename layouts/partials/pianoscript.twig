@@ -148,6 +148,8 @@
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
                 var usernameElem = document.getElementById('piano-user-name');
                 var mobileSignIn = document.getElementById('mobileSignIn');
+                var mobileMenuAccount = document.getElementById('mobileMenuAccount');
+                var mobileMenuLogout = document.getElementById('mobileMenuLogout');
                 if (usernameElem === null) {
                     return;
                 }
@@ -162,14 +164,23 @@
                 for (i=0;i<outLogs.length;i++){
                     outLogs[i].setAttribute('style', 'display:none !important');
                 }
-                if (mobileSignIn)  {
+
+                if (mobileSignIn) {
                     mobileSignIn.setAttribute('style', 'display:none !important');    
+                }
+                if (mobileMenuAccount) {
+                    mobileMenuAccount.setAttribute('style', 'block');
+                } 
+                if (mobileMenuLogout) {
+                    mobileMenuLogout.setAttribute('style', 'block');
                 }
             },
             loggedOut: function() {
                 var inLogs = document.getElementsByClassName('j-piano-loggedin');
                 var outLogs = document.getElementsByClassName('j-piano-loggedout');
                 var mobileSignIn = document.getElementById('mobileSignIn');
+                var mobileMenuAccount = document.getElementById('mobileMenuAccount');
+                var mobileMenuLogout = document.getElementById('mobileMenuLogout');
 
                 if (outLogs === null) {
                     return;
@@ -181,8 +192,16 @@
                 for (i=0;i<outLogs.length;i++){
                     outLogs[i].style.display = "block";
                 }
-                mobileSignIn.style.display = "block";
-                
+                if (mobileSignIn) {
+                    mobileSignIn.style.display = "flex";
+                }
+                if (mobileMenuAccount) {
+                    mobileMenuAccount && mobileMenuAccount.setAttribute('style', 'display:none !important');
+                } 
+                if (mobileMenuLogout) {
+                    mobileMenuLogout.setAttribute('style', 'display:none !important');
+                }
+
                 if (!document.getElementsByClassName('j-piano__dropdown')[0].classList.contains('c-piano__dropdown--hidden')){
                     document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
                     document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
@@ -280,6 +299,7 @@
 
     function userLogout() {
         tp.pianoId.logout();
+        closeMobileMenu();
         // Ends the current session after sending the logout event
         ga('send', 'event', ' Authentication', ' Logout ', ' Logged Out ', 0, {'sessionControl': 'end'});
     }

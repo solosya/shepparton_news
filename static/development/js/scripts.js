@@ -1,7 +1,9 @@
 Acme.articleFeeds = {};
 
-
+console.log('is this loading?');
 $('document').ready(function() {
+    console.log("runnign scripts");
+
     // window.Acme = {};
     var isMenuBroken, isMobile;
     var sbCustomMenuBreakPoint = 992;
@@ -199,12 +201,14 @@ $('document').ready(function() {
         return false;
     });
 
-    function closeMobileMenu() {
+    window.closeMobileMenu = function() {
         // $('body').removeClass('u-noscroll');
         $('.responsive-standalone-close').removeClass('open');
         $('.responsive-standalone').removeClass('navigation-active');
         $(".responsive-standalone-overlay").hide();
-    }
+    };
+
+    console.log(window);
     $('.responsive-standalone-close').on('click', function (event) {
         event.preventDefault();
         closeMobileMenu();
