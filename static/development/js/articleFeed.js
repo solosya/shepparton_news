@@ -201,7 +201,7 @@ Acme.View.articleFeed.prototype.render = function(data)
     self.options.nonPinnedOffset = data.existingNonPinnedCount;
 
     var html = [];
-    if (ads_on == "yes") {
+    if (ads_on == true) {
         html.push( window.templates.ads_infinite );
     }
 
@@ -226,10 +226,9 @@ Acme.View.articleFeed.prototype.render = function(data)
             if (self.afterEach) {
                 html.push( self.afterEach );
             }
-
-
-
         }
+
+
         if (self.before ) {
             var beforeStr =  self.before.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
             html = [beforeStr].concat(html);
@@ -269,7 +268,7 @@ Acme.View.articleFeed.prototype.render = function(data)
 
     this.cardModel.events();
 
-    if (ads_on == "yes") {
+    if (ads_on == true) {
         self.InsertAds();
     }
 
