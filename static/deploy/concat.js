@@ -23772,9 +23772,15 @@ $('document').ready(function() {
         });
     });
 
-    $(".list-arrow-container").on('click', function(e) {
-        console.log('clicked menu arrow');
-        $parent = $(this).parent();
+
+    $(".standalone-menu__dropdown").on('click', function(e) {
+        e.preventDefault();
+        var elem = $(this);
+        if (elem.is('li')) {
+            $parent = elem;
+        } else {
+            $parent = elem.parent();
+        }
         var isActive = $parent.hasClass('active');
         $('.standalone-menu__dropdown').each(function() {
             var elem = $(this);
@@ -23783,9 +23789,10 @@ $('document').ready(function() {
         });
         if (!isActive) {
             $parent.addClass('active');
-            $(this).siblings('.custom-menu').addClass('custom-menu--active');
+            $parent.find('.custom-menu').addClass('custom-menu--active');
         }
     });
+
 
     $("#menu-foldaway").on("click", function (e) {
         menu_top_foldaway.toggleClass('hide');

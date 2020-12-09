@@ -7,7 +7,7 @@
     {% set site = site is defined ? site : ""  %}
 
     <li class="standalone-menu__dropdown">
-        <a  class="{{activeClass}} {{externalClass}} {{site}}"
+        <a class="standalone-menu__dropdown-link {{activeClass}} {{externalClass}} {{site}}"
             href="{{parentItem.link | raw}}"
             {% if parentItem.target != "" %} 
                 target="{{parentItem.target}}"

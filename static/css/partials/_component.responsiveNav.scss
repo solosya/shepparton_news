@@ -167,7 +167,14 @@
         &__dropdown {
             position:relative;
             margin-bottom: 10px;
+            &:hover {
+                .list-arrow {
+                    > span {
+                        border-color:#ed3a4b;
 
+                    }
+                }
+            }
             &.mobile {
                 @media #{$tablet-up} {
                     display:none !important;
@@ -176,7 +183,7 @@
 
 
 
-            a {
+            &-link {
                 display: block;
                 @include font-size(16);
                 // padding: 20px 0 20px 0;
@@ -185,15 +192,18 @@
                 text-align: left;
                 width: $viewportSize;
                 color: white;
+                &:hover {
+                    color:#ed3a4b;
+                }
             }
 
             &.active {
                 a {
-                    color:$white;
+                    color:#ed3a4b;
                 }
 
                 .list-arrow {
-                    @include rotate(90);
+                    @include rotate(-90);
                     > span {
                         border-color:#ed3a4b;
 
@@ -267,6 +277,10 @@
                 a {
                     @include font-size(16);
                     color:#2b2a2a;
+                    &:hover {
+                        color:#ed3a4b;
+                    }
+    
                 }
 
             }
