@@ -241,7 +241,7 @@ $('document').ready(function() {
 
 
     $(".standalone-menu__dropdown").on('click', function(e) {
-        e.preventDefault();
+        // e.preventDefault();
         var elem = $(this);
         if (elem.is('li')) {
             $parent = elem;
