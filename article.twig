@@ -58,7 +58,7 @@
 {# The folling splits up the article content and places divs for Oovvuu videos in
 at certain points.  1st video after 3 paragraphs.  2nd video after 4 more paragraphs
 and 3rd video at the end if there's been at least 5 paragraphs since the last video #}
-{% if site != 'country' and site != 'dairy' %}
+{% if site != 'dairy' %}
 
     {% set pianoDivsStart = [
         "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->"
@@ -77,27 +77,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
         {% endif %}
 
     {% endfor %}
-
-    {% set ArticleContent = ArticleContent | join('<p>') %}
-
-
-
-
-{% elseif site == 'country' %}
-    {% set pianoDivsStart = [
-        "</p><div id='pianoArticleContentLockable'><!--Container div surrounding article contents from third paragraph to last paragraph -->"
-    ] %}
-
-    {% set ArticleContent = article.content | split('<p>') %}
-    {% for i in 0..ArticleContent | length %}
-        {% if i == 3 %}
-            {% if config['piano']['paywall'] is defined and config['piano']['paywall'] == true %}
-                {% set ArticleContent = ArticleContent | slice(0, i) | merge(pianoDivsStart) | merge( ArticleContent | slice(i, ArticleContent | length )) %}
-                {% set pianoActive = true %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-
 
     {% set ArticleContent = ArticleContent | join('<p>') %}
 
