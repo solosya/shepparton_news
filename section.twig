@@ -18,10 +18,10 @@
 
 
 
-{% set popularArticles = getCache("popularArticles") %}
+{% set popularArticles = getCache("section-popularArticles") %}
 {% if (popularArticles is empty) %}
 {% set popularArticles = _Article.getPopularArticles({ limit: 4, scope: 'network' }) %} 
-    {% set cache = setCache("popularArticles", popularArticles, 500) %} 
+    {% set cache = setCache("section-popularArticles", popularArticles, 500) %} 
 {% endif %}
 
 <!-- used to index each article as we loop over throughout the template -->
