@@ -19,6 +19,12 @@
     {% set themeId = '4IAtb6AbAuFQDlF' %}
 {% endif %}
 
+{% set themeColor   = "#f03746" %}
+{% if networkData['styling']['colours']['headingColor'] is defined %}
+    {% set themeColor = networkData['styling']['colours']['headingColor'] %}
+{% endif %}
+
+
 
 
 <main id="photo-sales" role="main" data-env="{{env}}"></main>
@@ -30,6 +36,7 @@
     window.searchid     = "{{blogData['id']}}";
     window.env          = "{{env}}";
     window.siteName     = "{{networkData['title']}}";
+    window.themeColor   = "{{themeColor}}";
 </script>
 
 
