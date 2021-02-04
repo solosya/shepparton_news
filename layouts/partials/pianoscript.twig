@@ -206,8 +206,16 @@
                     document.getElementsByClassName('j-piano__dropdown')[0].className += " c-piano__dropdown--hidden";
                     document.getElementsByClassName('j-piano__account')[0].classList.remove("c-piano__account--open");
                 }
+                
                 document.getElementById('pressreader-button').href ="{{paperLink}}";
                 document.getElementById('pressreader-button').target ="_self";
+                queryString = window.location.search;
+                urlParams = new URLSearchParams(queryString);
+                showLogin = urlParams.get('showLogin');
+
+                if(showLogin == 1) {
+                    tp.pianoId.show({screen: 'login'});
+                }
 
             }
         });

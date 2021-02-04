@@ -6,6 +6,24 @@
 {% if network.logoMedia | length > 0 %}
     {% set publisher = publisher|merge({logo:_Media.getMediaUrl(network.logoMedia, publisher.width, publisher.height, {'crop': 'lpad'} )})%}
 {% endif %}
+
+{% set ArticleContent = article.content %}
+
+{% set showPaywall = false %}
+{% if not _User.isAdminUser() and article.premiumContent %}
+    {% set showPaywall = true %}
+{% endif %}
+
+
+{% if showPaywall == true %}
+    {% set storySplit = ArticleContent | split('</p>')  %}
+    {% set para2      = storySplit[1] | slice(0, 200) ~ '</p>'  %}
+    {% set ArticleContent  = [storySplit[0], para2] | join('</p>') %}
+{% endif %}
+
+
+
+
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -14,7 +32,7 @@
         "headline": "{{article.title}}",
         "datePublished": "{{article.publishedDate}}",
         "dateModified": "{{article.updatedAt}}",
-        "description": "{{article.content}}",
+        "description": "{{ArticleContent}}",
         "author": {
             "@type": "Person",
             "name": "{{article.createdBy['displayName']}}"
@@ -97,7 +115,7 @@
             <a href="{{_AppHelper.buildUrl('profile/user-profile',{name: Html.encode(article.createdBy['username'])})}}" class="article__info_author" itemprop="name">By {{ article.createdBy['displayName'] }}</a>
 
             <div class="article__info_tabs">
-                {% set readingTime = Helper.getEstimatedReadingTime(article.content)%}
+                {% set readingTime = Helper.getEstimatedReadingTime(ArticleContent)%}
                 <div class="article__info_tab">{{article.publishedDate}}</div>
                 <div class="article__info_tab">{{Helper.renderReadingTime(readingTime) | raw}}</div>
             </div>
@@ -111,8 +129,21 @@
 
     <div class="article__container">
         <div class="article__content">
-            {{article.content | raw}}
+            {{ArticleContent | raw}}
         </div>
+
+        {% if showPaywall == true %}
+                </div>
+            </div>
+            {{this.render('layouts/partials/paywall_article_notice.twig', {
+                networkData:network, 
+                articleUrlEnc : article.url | url_encode,
+                articleUrl : article.url
+                }) | raw}}
+        {% endif %}
+
+
+
     </div>
 </div>
 

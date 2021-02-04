@@ -1940,6 +1940,53 @@ amp-sidebar .close__button {
 .sidebar-menu ul li a i {
     padding-right: 8px;
 }
+
+.c-article__paywalled-view {
+	width: 100%;
+    position: relative;
+    background: #ffffff;
+    padding: 0px 20px;
+    margin: 0 auto;
+}
+.c-paywalled-article {
+	position: relative;
+    background: #ffffff;
+    max-width: 770px;
+    padding: 7px 0px 0px;
+    margin: 0px auto 100px;
+    width: 90%;
+}
+.c-paywalled-article__container {
+	background-color: #f1f1f1;
+    color: #333339;
+    padding: 25px 20px 15px;
+    font-style: normal;
+    font-weight: 500;
+}
+.c-paywalled-article__publication {
+	margin: 0 0 12px;
+}
+.c-paywalled-article__title {
+	margin: 0 0 6px;
+}
+.c-paywalled-article__subscriptions {
+    color: #eda405;
+    font-size: 11pt;
+    text-decoration: underline;
+}
+.c-paywalled-article__action {
+	margin-top: 12px;
+}
+.c-paywalled-article__button {
+    background-color: #eda405;
+    color: #fff;
+    padding: 6px 8px;
+    display: inline-block;
+} 
+.c-paywalled-article__button:hover {
+    color: #fff;
+}  
+
 /* 
 
 .sidebar-menu i {
