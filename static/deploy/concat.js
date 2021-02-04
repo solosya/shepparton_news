@@ -23533,9 +23533,7 @@ Acme.confirmView = new Acme.Confirm('modal', 'signin', layouts);
 }(jQuery));
 Acme.articleFeeds = {};
 
-console.log('is this loading?');
 $('document').ready(function() {
-    console.log("runnign scripts");
 
     // window.Acme = {};
     var isMenuBroken, isMobile;
@@ -23741,7 +23739,6 @@ $('document').ready(function() {
         $(".responsive-standalone-overlay").hide();
     };
 
-    console.log(window);
     $('.responsive-standalone-close').on('click', function (event) {
         event.preventDefault();
         closeMobileMenu();
@@ -24054,7 +24051,7 @@ SearchController.Listing = (function ($) {
 
 }(jQuery));
 (function ($) {
-console.log('in the weather script');
+
     $(document).ready(function() {
         var dropdown = function(date) {
             return '<div class="weather-date">' +

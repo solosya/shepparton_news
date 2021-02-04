@@ -1,5 +1,5 @@
 (function ($) {
-console.log('in the weather script');
+
     $(document).ready(function() {
         var dropdown = function(date) {
             return '<div class="weather-date">' +

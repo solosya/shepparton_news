@@ -1,8 +1,6 @@
 Acme.articleFeeds = {};
 
-console.log('is this loading?');
 $('document').ready(function() {
-    console.log("runnign scripts");
 
     // window.Acme = {};
     var isMenuBroken, isMobile;
@@ -208,7 +206,6 @@ $('document').ready(function() {
         $(".responsive-standalone-overlay").hide();
     };
 
-    console.log(window);
     $('.responsive-standalone-close').on('click', function (event) {
         event.preventDefault();
         closeMobileMenu();
