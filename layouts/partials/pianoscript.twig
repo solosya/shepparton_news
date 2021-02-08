@@ -209,14 +209,19 @@
                 
                 document.getElementById('pressreader-button').href ="{{paperLink}}";
                 document.getElementById('pressreader-button').target ="_self";
+                
                 queryString = window.location.search;
                 urlParams = new URLSearchParams(queryString);
+                
                 showLogin = urlParams.get('showLogin');
-
-                if(showLogin == 1) {
+                if(showLogin == 'true') {
                     tp.pianoId.show({screen: 'login'});
                 }
 
+                showRegister = urlParams.get('showRegister');
+                if (showRegister == 'true') {
+                    tp.pianoId.show({screen: 'register'});
+                }
             }
         });
         tp.enableGACrossDomainLinking();
