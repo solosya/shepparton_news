@@ -11,8 +11,8 @@
     {% set teadsAdSetting = true %}
 {% endif %}
 
-{% set blogInfo = _Blog.getBlog() %}
 
+{# {% set log = _AppHelper.log(article) %} #}
 {# {% set networkData = _Network.getNetworkData() %} #}
 {% set networkData = getCache("networkData") %}
 {% if (networkData is empty) %}
@@ -152,13 +152,6 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% set testCount = 0 %}
 {% set premium = 'Free' %}
 
-{# {% if blogInfo['additionalInfo']['premium'] is defined %}
-    {% if blogInfo['additionalInfo']['premium'] == "Premium" %}
-        {% set premium = 'Premium' %}
-    {% elseif blogInfo['additionalInfo']['premium'] == "Free" %}
-        {% set premium = 'Free' %}
-    {% endif %}
-{% endif %} #}
 
 {% set premiumtags = false %}
 {% if config['Premium Tags'] is defined %}
@@ -228,7 +221,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     {% endif %}
 
                                     <div class="category-container">
-                                        <a href="{{blogInfo.url}}"><p class="category {{site}}{% if premiumtags and premium == 'Premium' %} premium-tag{% endif %}" >{{article.label}}</p></a>
+                                        <a href="{{article.blog.url}}"><p class="category {{site}}{% if premiumtags and premium == 'Premium' %} premium-tag{% endif %}" >{{article.label}}</p></a>
                                         <time class="article-time" datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                                     </div>
                                     <h1 class="article-title" id="article-title">{{ quotes.smarten(article.title) }}</h1>
@@ -514,6 +507,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
             "incites" : "{{incites}}",
             "categories" : "{{atexCategories}}",
             "syndication" : "{{syndication}}",
+            "blogTitle" : "{{article.blog.title}}"
         });
     </script>
 {% endif %}

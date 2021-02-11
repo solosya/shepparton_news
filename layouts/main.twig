@@ -18,10 +18,9 @@
 
 {% set paymeter = _AppHelper.getApplicationEnv() == 'PROD' ? true : true %}
 
-{# {% set paymeter = true %} #}
 {% set paymeterType  = config['piano']['paywall'] is defined and config['piano']['paywall'] == true ? 'piano' : 'syncronex' %}
 {% set pianoScripts  = config['piano']['scripts'] is defined and config['piano']['scripts'] == true ? true : false %}
-{# {% if site == 'dairy' or site == 'shepptest' %} #}
+
 {% if site == 'dairy' %}
     {% set paymeter = false %}
 {% endif %}
@@ -222,7 +221,6 @@ for Oovvuu to use to replicate the menu on the video site. #}
         document.getElementsByTagName("head")[0].appendChild(script);
     </script>
 
-    {# <script src="https://turbo.spotpass.io/js/piano.js" defer></script> #}
 
     {{ this.render('partials/ads.twig', {
         networkData: networkData,

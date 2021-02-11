@@ -24,59 +24,22 @@
     }
 {% endif %}
 
-{% if themeColors.linkColor != "" %}
+{# {% if themeColors.linkColor != "" %}
     a {
         color: {{themeColors.linkColor}} !important;
     }
-{% endif %}
+{% endif %} #}
 
-{% if themeColors.linkHoverColor != "" %}
+{# {% if themeColors.linkHoverColor != "" %}
     a:hover {
         color: {{themeColors.linkHoverColor}} !important;
     }
-{% endif %}
+{% endif %} #}
 
-{% if themeColors.headingColor != "" %}
-    {# div.category,
-    p.category,
-    div.most-popular > h2, div.trending > h2,
-    div.card-popular::before,
-    h2.sidebar-header,
-    div.temp-desc,
-    .search a.card>article>.content .author p,
-    div.hk h2,
-    .site-main .section-header p>a,
-    .site-main .subscribe > h2,
-    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover    
-    {
-        color: {{themeColors.headingColor}} !important;
-    }
+{# {% if themeColors.headingColor != "" %}
 
-    .social-modal__channel {
-        color: {{themeColors.headingColor}} !important;
-    }    
-
-    .home-feature > a.withImage__content>article>.content>.category,
-    .home-feature-sm > a.withImage__content>article>.content>.category,
-    .home-feature-xs > a.withImage__content>article>.content>.category,
-    .home-feature-thin > a.withImage__content>article>.content>.category {
-        color: white !important;
-    }
-
-    .foo {
-        content: {{ site }};
-    }
-
-    .bar {
-        content: {{ networkData.title | lower }};
-    } #}
 
     {% if site == 'dairy' %}
-
-        /*div.trending > h2,
-        h2.sidebar-header {
-            color: #f03746 !important;
-        }*/
 
         .card-opinion.final a.card>article>.content>h2 {
             color: white !important;
@@ -131,26 +94,25 @@
         color: black !important;
     }
 
-{% endif %}
-
+{% endif %} #}
+{# 
 {% if themeColors.navigationColor != "" %}
     .header__search-text, a.header__navigation-link {
         color: {{themeColors.navigationColor}} !important;
     }
+{% endif %} #}
 
-{% endif %}
-
-{% if themeColors.navigationHoverColor != "" %}
+{# {% if themeColors.navigationHoverColor != "" %}
     a.header__navigation-link:hover {
         color: {{themeColors.navigationHoverColor}} !important;
     }
-{% endif %}
+{% endif %} #}
 
-{% if themeColors.navigationActiveColor != "" %}
+{# {% if themeColors.navigationActiveColor != "" %}
     a.header__navigation-link.header__navigation-selected {
         color: {{themeColors.navigationActiveColor}} !important;
     }
-{% endif %}
+{% endif %} #}
 
 /*{% if themeColors.navigationBgColor != "" %}
 .header__navigation {
@@ -158,25 +120,25 @@
 }
 {% endif %}*/
 
-{% if themeColors.headerBgColor != "" %}
+{# {% if themeColors.headerBgColor != "" %}
 .header-bottom {
     background-color: {{themeColors.headerBgColor}} !important;
 }
-{% endif %}
-{% if themeColors.footerBgColor != "" %}
+{% endif %} #}
+{# {% if themeColors.footerBgColor != "" %}
 .site-footer .footer-top{
     background-color: {{themeColors.footerBgColor}} !important;
 }
-{% endif %}
+{% endif %} #}
 
-{% if themeColors.pageBgColor != "" %}
+{# {% if themeColors.pageBgColor != "" %}
 body, body > .section {
     background-color: {{themeColors.pageBgColor}} !important;
 }
 .sub_header {
     background-color: {{themeColors.pageBgColor}} !important;
 }
-{% endif %}
+{% endif %} #}
 
 
 {% if site == "country" or site == "campaspe" %}
@@ -199,10 +161,6 @@ body, body > .section {
     fill: #FFF;
     stroke: {{ iconColour }};
 }*/
-
-.card-opinion.final > a.card {
-    background: {{ iconColour }};
-}
 
 
 
