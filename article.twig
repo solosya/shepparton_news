@@ -142,7 +142,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 {% if article.additionalInfo is defined and article.additionalInfo.incites is defined and article.additionalInfo.incites != null %}
     {% set incites = article.additionalInfo.incites %}
 {% endif %}
-{% set atexCategories = "" %}
+{% set atexCategories = article.blog.title %}
 {% if article.additionalInfo is defined and article.additionalInfo.categories is defined and article.additionalInfo.categories != null %}
     {% set atexCategories = article.additionalInfo.categories %}
 {% endif %}
