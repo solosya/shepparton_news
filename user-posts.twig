@@ -3,7 +3,7 @@
 {% set networkData = _Network.getNetworkData() %}
 {% set site        = networkData.title | lower | split(" ")[0]%}
 
-{% set limit = 18 %}
+{% set limit = 20 %}
 
 
 {% set profileImage =_Media.getMediaUrl(user.media, 220, 190, {crop: 'thumb', gravity: 'face', type:'user'} )%}
