@@ -85,13 +85,12 @@
             infinite        : true,
             container       : 'loadmore_section',
             offset          : 20,
-            limit           : 12,
+            limit           : 20,
             beforeEach      : '<div class="col-6 col-md-6 col-lg-4">',
             afterEach       : '<hr class="divide20-25"></div>',
             loadtype        : 'user_articles',
             name            : 'user-load',
-            card_class      : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg',
-            non_pinned      : {{ userArticles|length }}
+            card_class      : 'card-102-mobile card-102-tablet card-102-desktop-sm card-102-desktop-lg'
         });
 
     });
