@@ -34,7 +34,7 @@
 
             <div class="col-profile-right col-12 col-md-8 profile-details">
                 <div id="loadmore_section"  class="row">
-                    {% for i in 0..17 if userArticles[i] %}
+                    {% for i in 0..19 if userArticles[i] %}
 
                         <div class="col-6 col-md-6 col-lg-4">
                             {{this.render('partials/_single-article.twig', {
@@ -84,8 +84,8 @@
             model           : new Card(),
             infinite        : true,
             container       : 'loadmore_section',
-            offset          : {{limit}},
-            limit           : {{limit}},
+            offset          : 20,
+            limit           : 12,
             beforeEach      : '<div class="col-6 col-md-6 col-lg-4">',
             afterEach       : '<hr class="divide20-25"></div>',
             loadtype        : 'user_articles',
