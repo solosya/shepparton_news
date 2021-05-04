@@ -31,8 +31,8 @@
         }
 
         &__heading {
-            @include font-size(22);
-            @include flex-height(99px);
+            @include font-size(18);
+            @include flex-height(81px);
             order: 3;
         }
         &__description {
@@ -73,8 +73,11 @@
                 &__description {
                     margin-bottom: 15px;
                     display: block;
-                    max-height: 90px;
+                    @include flex-height(50px);
                     overflow: hidden;
+                }
+                &__heading{
+                    @include flex-height(54px);
                 }
 
                 &__author {
@@ -132,6 +135,10 @@
                 max-width:100%;
                 // @include flex-width(167px);
             }   
+            &__heading {
+                @include font-size(22);
+                @include flex-height(66px);
+            }
 
             &__description {
                     display:none;
@@ -152,6 +159,7 @@
 
                     &__description {
                         display:block;
+                        @include flex-height(90px);
                     }
         
                     &__author {
