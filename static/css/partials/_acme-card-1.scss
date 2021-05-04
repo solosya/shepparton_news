@@ -114,7 +114,7 @@
 
         
         .acme-c-cards-view {
-            @include flex-height(280px);
+            @include flex-height(325px);
 
             @include flex-direction-classifieds(column, vertical);
 
@@ -144,7 +144,7 @@
                 .acme-c-cards-view {
 
                     &__heading {
-                        margin-top:70px;
+                        // margin-top:70px;
                     }
         
 
