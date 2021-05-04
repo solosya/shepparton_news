@@ -43,10 +43,12 @@
         }
 
         &__author {
+            display: none;
             order: 2;
             margin-bottom: 20px;
         }
         &__time {
+            display: none;
             @include font-size(15);
             font-weight: $weightMedium;
         }
@@ -114,7 +116,7 @@
 
         
         .acme-c-cards-view {
-            @include flex-height(325px);
+            @include flex-height(280px);
 
             @include flex-direction-classifieds(column, vertical);
 
@@ -125,7 +127,7 @@
             }
             &__media {
                 order: 2;
-                @include flex-height(192px);
+                @include flex-height(135px);
                 min-width:100%;
                 max-width:100%;
                 // @include flex-width(167px);
@@ -162,6 +164,17 @@
 
         }
 
+    }
+
+    @media #{$desktop-lg} {
+        .acme-c-cards-view {
+            @include flex-height(325px);
+
+            &__media {
+                @include flex-height(192px);
+               
+            }   
+        }
     }
 }
 
