@@ -84,15 +84,6 @@
 {% endif %}
 
 
-
-
-{% set imgHeight = 0 %}
-{% set imgWidth = 0 %}
-{% if imageSize is defined %}
-    {% set imgWidth  = (imageSize.width is defined) ? imageSize.width : imgWidth %}
-    {% set imgHeight = (imageSize.height is defined) ? imageSize.height : imgWidth %}
-{% endif %}
-
 {% set imgSizes = {
     "mobile"  : imageSizes is defined and imageSizes.mobile is defined  ? imageSizes.mobile  : {width:500, height:375},
     "tablet"  : imageSizes is defined and imageSizes.tablet is defined  ? imageSizes.tablet  : {width:768, height:500},
