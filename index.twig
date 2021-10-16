@@ -47,17 +47,20 @@
                 {# If a panel has multiple blogs we get the count of items to fetch from iterating
                 over the articleOrder array #}
                 {% for blogName in panel['articleOrder'] %}
-
                     {% if blogFeeds[blogName] is not defined %}
-                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : 1} }) %}
+                        {% set params = {"limit": 1} %}
                     {% else %}
-
                         {% set count = blogFeeds[blogName].limit %}
-
-                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count + 1} }) %}
+                        {% set params = { "limit" : count + 1} %}
                     {% endif %}
-                {% endfor %}
 
+                    {% set pinned = panel['excludePinned'] is defined ? panel['excludePinned'] : false %}
+                    {% if pinned == true or pinned == 'true' %}
+                        {% set params = params | merge({'excludePinned': true})%}
+                    {% endif %}
+                    {% set blogFeeds = blogFeeds | merge({ (blogName): params }) %}
+
+                {% endfor %}
 
 
             {# If a panel has a single blog we get the count of items to fetch from checking the articleCount key #}
@@ -70,7 +73,14 @@
                     {% set count = panel['articleCount'] %}
 
                     {% if blogFeeds[blogName] is not defined or blogFeeds[blogName].limit < count %}
-                        {% set blogFeeds = blogFeeds | merge({ (blogName): { "limit" : count} }) %}
+                        {% set params = { "limit" : count} %}
+                        
+                        {% set pinned = panel['excludePinned'] is defined ? panel['excludePinned'] : false %}
+                        {% if pinned == true or pinned == 'true' %}
+                            {% set params = params | merge({'excludePinned': true})%}
+                        {% endif %}
+                        
+                        {% set blogFeeds = blogFeeds | merge({ (blogName): params }) %}
                     {% endif %}
 
                 {% endif %}
@@ -144,8 +154,12 @@
 
         {# FOR PRODUCTION #}
         {% if not dev and blog.title | lower == key | lower %}
-
-            {% set feed = _Blog.getBlogFeed({'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid}) %}
+            {% set pinned = blogFeeds[key]['excludePinned'] is defined ? blogFeeds[key]['excludePinned'] : false %}
+            {% set feedParams = {'limit': blogFeeds[key]['limit'], 'offset': 0, 'blogid':blog.guid} %}
+            {% if pinned == true or pinned == 'true' %}
+                {% set feedParams = feedParams | merge({'includePinned': false})%}
+            {% endif %}
+            {% set feed = _Blog.getBlogFeed(feedParams) %}
 
             {% set blogFeeds = blogFeeds | merge({
                 (key) : {
@@ -160,7 +174,6 @@
 {% endfor %}
 
 
-{#{% set log = _AppHelper.log(blogFeeds) %}#}
 
 
 <main id="main" class="site-main" role="main" data-layout="{{layoutTitle}}">
