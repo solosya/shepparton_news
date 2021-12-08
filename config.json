@@ -1,7 +1,10 @@
 {
     "compressHtml" : false,
     "feed" : {
-        "rss_article_syndication" : true
+        "rss_article_syndication" : true,
+        "imageParams" : {
+            "width" : 750
+        }
     },
     "module" : {
         "debug" : {
