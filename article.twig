@@ -213,7 +213,10 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
 
                             <div class="col-12">
 
-                                <div class="content-block-top">
+                                <div class="content-block-top" itemscope itemtype="http://schema.org/NewsArticle">
+                                    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{article.blog.url}}"/>
+                                    <meta itemprop="url" content="{{article.blog.url}}">
+                                    <meta itemprop="dateModified" content="{{article.updatedAt}}">
                                     <div id="pianoArticleHeader"></div>
                                     <!-- For articles tagged as premium include premium article identifier HTML here – currently being designed -->
                                     {% if _User.isAdminUser() %}
@@ -226,7 +229,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     </div>
                                     <h1 class="article-title" id="article-title">{{ quotes.smarten(article.title) }}</h1>
 
-                                    <a class="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span> {{ article.createdBy['displayName'] }}</a>
+                                    <a class="author" itemprop="url" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span><p class="c-article__author-name" itemprop="name"> {{ article.createdBy['displayName'] }}</p></a>
                                     
                                     
                                     {% if _User.isAdminUser() %}
