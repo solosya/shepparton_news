@@ -240,7 +240,7 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     </div>
                                     <h1 class="article-title" id="article-title" itemprop="headline">{{ quotes.smarten(article.title) }}</h1>
 
-                                    <a class="author" itemprop="name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span>{{ article.createdBy['displayName'] }}</a>
+                                    <a class="author" itemprop="author" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span><div itemprop="name">{{ article.createdBy['displayName'] }}</div></a>
                                     
                                     
                                     {% if _User.isAdminUser() %}
