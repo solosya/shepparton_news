@@ -266,6 +266,13 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                     <div class="gallery-container relative" data-featured="{{featured}}">
 
                                         {% if images|length > 0 %}
+
+                                        {% if article.media[0]['type'] != 'video' %}
+                                        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" >
+                                            <meta itemprop="url" content="{{ _Media.getMediaUrl(article.media[0], 0, 0, {'crop': 'fill', 'gravity': 'auto'} )}}">
+                                        </div>
+                                    {% endif %}
+                                    
                                             {% set imageFeature = false %}
                                             {% if featured == 'image' or featured == 'doc' %}
                                                 {% set imageFeature = true %}
