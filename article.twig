@@ -239,8 +239,9 @@ and 3rd video at the end if there's been at least 5 paragraphs since the last vi
                                         <time class="article-time" datetime="{{publishedDate}}">{{article.publishedDate}}</time>
                                     </div>
                                     <h1 class="article-title" id="article-title" itemprop="headline">{{ quotes.smarten(article.title) }}</h1>
-
-                                    <a class="author" itemprop="name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span>{{ article.createdBy['displayName'] }}</a>
+                                    <div class="c-article__author" itemscope itemprop="author" itemtype="https://schema.org/Person">
+                                        <meta itemprop="name" content="{{article.createdBy['displayName']}}">
+                                    <a class="author" itemprop="url" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}/posts"><span>By</span>{{ article.createdBy['displayName'] }}</a>
                                     
                                     
                                     {% if _User.isAdminUser() %}
